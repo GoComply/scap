@@ -24,7 +24,7 @@ type Benchmark struct {
 
 	XmlLang string `xml:",attr"`
 
-	Status Status `xml:""`
+	Status Status `xml:"status"`
 
 	DcStatus DcStatusType `xml:"dc-status"`
 
@@ -42,7 +42,7 @@ type Benchmark struct {
 
 	PlainText PlainTextType `xml:"plain-text"`
 
-	PlatformSpecification cpe.PlatformSpecification `xml:""`
+	PlatformSpecification cpe.PlatformSpecification `xml:"platform-specification"`
 
 	Platform CPE2IdrefType `xml:"platform"`
 
@@ -50,13 +50,13 @@ type Benchmark struct {
 
 	Metadata MetadataType `xml:"metadata"`
 
-	Model Model `xml:""`
+	Model Model `xml:"model"`
 
-	Profile Profile `xml:""`
+	Profile Profile `xml:"Profile"`
 
-	Value Value `xml:""`
+	Value Value `xml:"Value"`
 
-	TestResult TestResult `xml:""`
+	TestResult TestResult `xml:"TestResult"`
 
 	Signature SignatureType `xml:"signature"`
 }
