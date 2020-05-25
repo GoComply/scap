@@ -17,6 +17,7 @@ type CpeItem struct {
 }
 
 // XSD ComplexType declarations
+
 type GeneratorType string
 
 type ItemType string
