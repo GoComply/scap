@@ -7,15 +7,18 @@ import (
 	"os"
 
 	"github.com/gocomply/scap/pkg/scap/models/cdf"
+	"github.com/gocomply/scap/pkg/scap/models/cpe_dict"
 )
 
 const (
 	xccdfBenchmarkElement = "Benchmark"
+	cpeCpeListElement     = "cpe-list"
 )
 
 type Document struct {
 	XMLName xml.Name `json:"-"`
 	*cdf.Benchmark
+	*cpe_dict.CpeList
 }
 
 func ReadDocument(r io.Reader) (*Document, error) {
@@ -34,6 +37,12 @@ func ReadDocument(r io.Reader) (*Document, error) {
 					return nil, err
 				}
 				return &Document{Benchmark: &bench}, nil
+			case cpeCpeListElement:
+				var cpeList cpe_dict.CpeList
+				if err := d.DecodeElement(&cpeList, &startElement); err != nil {
+					return nil, err
+				}
+				return &Document{CpeList: &cpeList}, nil
 			}
 		}
 	}
