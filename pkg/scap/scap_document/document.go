@@ -8,17 +8,20 @@ import (
 
 	"github.com/gocomply/scap/pkg/scap/models/cdf"
 	"github.com/gocomply/scap/pkg/scap/models/cpe_dict"
+	"github.com/gocomply/scap/pkg/scap/models/oval/oval_def"
 )
 
 const (
-	xccdfBenchmarkElement = "Benchmark"
-	cpeCpeListElement     = "cpe-list"
+	xccdfBenchmarkElement  = "Benchmark"
+	cpeCpeListElement      = "cpe-list"
+	ovalDefinitionsElement = "oval_definitions"
 )
 
 type Document struct {
 	XMLName xml.Name `json:"-"`
 	*cdf.Benchmark
 	*cpe_dict.CpeList
+	*oval_def.OvalDefinitions
 }
 
 func ReadDocument(r io.Reader) (*Document, error) {
@@ -31,6 +34,13 @@ func ReadDocument(r io.Reader) (*Document, error) {
 		switch startElement := token.(type) {
 		case xml.StartElement:
 			switch startElement.Name.Local {
+			case ovalDefinitionsElement:
+				var ovalDefs oval_def.OvalDefinitions
+				if err := d.DecodeElement(&ovalDefs, &startElement); err != nil {
+					return nil, err
+				}
+				return &Document{OvalDefinitions: &ovalDefs}, nil
+
 			case xccdfBenchmarkElement:
 				var bench cdf.Benchmark
 				if err := d.DecodeElement(&bench, &startElement); err != nil {
