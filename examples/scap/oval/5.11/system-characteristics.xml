@@ -11,7 +11,7 @@
   <generator>
     <oval:product_name>OVAL Definition Interpreter</oval:product_name>
     <oval:product_version>5.5 Build: 4</oval:product_version>
-    <oval:schema_version>5.5</oval:schema_version>
+    <oval:schema_version>5.11.3</oval:schema_version>
     <oval:timestamp>2009-04-10T13:04:10</oval:timestamp>
     <vendor>The MITRE Corporation</vendor>
   </generator>
