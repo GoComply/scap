@@ -8,6 +8,7 @@ import (
 
 	"github.com/gocomply/scap/pkg/scap/models/cdf"
 	"github.com/gocomply/scap/pkg/scap/models/cpe_dict"
+	"github.com/gocomply/scap/pkg/scap/models/ds"
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 	"github.com/gocomply/scap/pkg/scap/models/oval_res"
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
@@ -19,6 +20,7 @@ const (
 	ovalDefinitionsElement           = "oval_definitions"
 	ovalResultsElement               = "oval_results"
 	ovalSystemCharacteristicsElement = "oval_system_characteristics"
+	dsDataStreamCollectionElement    = "data-stream-collection"
 )
 
 type Document struct {
@@ -28,6 +30,7 @@ type Document struct {
 	*oval_def.OvalDefinitions
 	*oval_res.OvalResults
 	*oval_sc.OvalSystemCharacteristics
+	*ds.DataStreamCollection
 }
 
 func ReadDocument(r io.Reader) (*Document, error) {
@@ -40,6 +43,12 @@ func ReadDocument(r io.Reader) (*Document, error) {
 		switch startElement := token.(type) {
 		case xml.StartElement:
 			switch startElement.Name.Local {
+			case dsDataStreamCollectionElement:
+				var sds ds.DataStreamCollection
+				if err := d.DecodeElement(&sds, &startElement); err != nil {
+					return nil, err
+				}
+				return &Document{DataStreamCollection: &sds}, nil
 			case ovalDefinitionsElement:
 				var ovalDefs oval_def.OvalDefinitions
 				if err := d.DecodeElement(&ovalDefs, &startElement); err != nil {
