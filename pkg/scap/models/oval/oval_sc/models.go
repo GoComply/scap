@@ -5,9 +5,9 @@ package oval_sc
 import (
 	"encoding/xml"
 
-	"github.com/gocomply/scap/pkg/scap/models/oval/ds"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval/oval"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval/xml_dsig"
 )
 
 // Element
@@ -22,7 +22,7 @@ type OvalSystemCharacteristics struct {
 
 	SystemData SystemDataType `xml:"system_data"`
 
-	Signature ds.Signature `xml:"Signature"`
+	Signature xml_dsig.Signature `xml:"Signature"`
 }
 
 // Element

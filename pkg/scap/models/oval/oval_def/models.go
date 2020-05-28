@@ -5,9 +5,9 @@ package oval_def
 import (
 	"encoding/xml"
 
-	"github.com/gocomply/scap/pkg/scap/models/oval/ds"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval/oval"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval/xml_dsig"
 )
 
 // Element
@@ -26,7 +26,7 @@ type OvalDefinitions struct {
 
 	Variables VariablesType `xml:"variables"`
 
-	Signature ds.Signature `xml:"Signature"`
+	Signature xml_dsig.Signature `xml:"Signature"`
 }
 
 // Element

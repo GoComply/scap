@@ -5,11 +5,11 @@ package oval_res
 import (
 	"encoding/xml"
 
-	"github.com/gocomply/scap/pkg/scap/models/oval/ds"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval/oval"
 
 	"github.com/gocomply/scap/pkg/scap/models/oval/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval/xml_dsig"
 )
 
 // Element
@@ -26,7 +26,7 @@ type OvalResults struct {
 
 	Results ResultsType `xml:"results"`
 
-	Signature ds.Signature `xml:"Signature"`
+	Signature xml_dsig.Signature `xml:"Signature"`
 }
 
 // XSD ComplexType declarations
