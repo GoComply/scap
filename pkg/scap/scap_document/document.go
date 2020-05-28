@@ -8,9 +8,9 @@ import (
 
 	"github.com/gocomply/scap/pkg/scap/models/cdf"
 	"github.com/gocomply/scap/pkg/scap/models/cpe_dict"
-	"github.com/gocomply/scap/pkg/scap/models/oval/oval_def"
-	"github.com/gocomply/scap/pkg/scap/models/oval/oval_res"
-	"github.com/gocomply/scap/pkg/scap/models/oval/oval_sc"
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+	"github.com/gocomply/scap/pkg/scap/models/oval_res"
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 const (

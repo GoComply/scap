@@ -8,7 +8,7 @@ import (
 )
 
 func TestRFCFeedParsing(t *testing.T) {
-	doc, err := scap_document.ReadDocumentFromFile("../../../../../examples/scap/oval/5.11/comment.xml")
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/oval/5.11/comment.xml")
 	assert.Nil(t, err)
 	defs := doc.OvalDefinitions
 	assert.NotNil(t, defs)

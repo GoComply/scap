@@ -5,11 +5,11 @@ package oval_res
 import (
 	"encoding/xml"
 
-	"github.com/gocomply/scap/pkg/scap/models/oval/oval"
+	"github.com/gocomply/scap/pkg/scap/models/oval"
 
-	"github.com/gocomply/scap/pkg/scap/models/oval/oval_def"
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 
-	"github.com/gocomply/scap/pkg/scap/models/oval/xml_dsig"
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element

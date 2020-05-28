@@ -15,7 +15,7 @@ endif
 regenerate-models: gocomply_xsd2go .scap_schemas
 	gocomply_xsd2go convert .scap_schemas/schemas/cpe/2.3/cpe-dictionary_2.3.xsd github.com/gocomply/scap pkg/scap/models
 	gocomply_xsd2go convert .scap_schemas/schemas/xccdf/1.2/xccdf_1.2.xsd github.com/gocomply/scap pkg/scap/models
-	gocomply_xsd2go convert .scap_schemas/schemas/oval/5.11.3/oval-results-schema.xsd github.com/gocomply/scap pkg/scap/models/oval
+	gocomply_xsd2go convert .scap_schemas/schemas/oval/5.11.3/oval-results-schema.xsd github.com/gocomply/scap pkg/scap/models
 
 .scap_schemas:
 	git clone --depth 1 https://github.com/openscap/openscap .scap_schemas
