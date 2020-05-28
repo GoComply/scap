@@ -18,13 +18,13 @@ type DataStreamCollection struct {
 
 	SchematronVersion string `xml:"schematron-version,attr"`
 
-	DataStream DataStream `xml:"data-stream"`
+	DataStream []DataStream `xml:"data-stream"`
 
-	Component Component `xml:"component"`
+	Component []Component `xml:"component"`
 
-	ExtendedComponent ExtendedComponent `xml:"extended-component"`
+	ExtendedComponent []ExtendedComponent `xml:"extended-component"`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature []xml_dsig.Signature `xml:"Signature"`
 }
 
 // Element

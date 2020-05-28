@@ -24,39 +24,39 @@ type Benchmark struct {
 
 	XmlLang string `xml:",attr"`
 
-	Status Status `xml:"status"`
+	Status []Status `xml:"status"`
 
-	DcStatus DcStatusType `xml:"dc-status"`
+	DcStatus []DcStatusType `xml:"dc-status"`
 
-	Title TextType `xml:"title"`
+	Title []TextType `xml:"title"`
 
-	Description HtmlTextWithSubType `xml:"description"`
+	Description []HtmlTextWithSubType `xml:"description"`
 
-	Notice NoticeType `xml:"notice"`
+	Notice []NoticeType `xml:"notice"`
 
-	FrontMatter HtmlTextWithSubType `xml:"front-matter"`
+	FrontMatter []HtmlTextWithSubType `xml:"front-matter"`
 
-	RearMatter HtmlTextWithSubType `xml:"rear-matter"`
+	RearMatter []HtmlTextWithSubType `xml:"rear-matter"`
 
-	Reference ReferenceType `xml:"reference"`
+	Reference []ReferenceType `xml:"reference"`
 
-	PlainText PlainTextType `xml:"plain-text"`
+	PlainText []PlainTextType `xml:"plain-text"`
 
 	PlatformSpecification cpe.PlatformSpecification `xml:"platform-specification"`
 
-	Platform CPE2IdrefType `xml:"platform"`
+	Platform []CPE2IdrefType `xml:"platform"`
 
 	Version VersionType `xml:"version"`
 
-	Metadata MetadataType `xml:"metadata"`
+	Metadata []MetadataType `xml:"metadata"`
 
-	Model Model `xml:"model"`
+	Model []Model `xml:"model"`
 
-	Profile Profile `xml:"Profile"`
+	Profile []Profile `xml:"Profile"`
 
-	Value Value `xml:"Value"`
+	Value []Value `xml:"Value"`
 
-	TestResult TestResult `xml:"TestResult"`
+	TestResult []TestResult `xml:"TestResult"`
 
 	Signature SignatureType `xml:"signature"`
 }
@@ -72,7 +72,7 @@ type Model struct {
 
 	System string `xml:"system,attr"`
 
-	Param ParamType `xml:"param"`
+	Param []ParamType `xml:"param"`
 }
 
 // Element
