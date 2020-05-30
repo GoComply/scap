@@ -26,8 +26,8 @@ func TestSanityDsParsing(t *testing.T) {
 	assert.Equal(t, dataStream.ScapVersion, "1.3")
 	assert.Equal(t, dataStream.UseCase, "OTHER")
 
-	assert.Empty(t, dataStream.Dictionaries.ComponentRef)
-	assert.Empty(t, dataStream.ExtendedComponents.ComponentRef)
+	assert.Nil(t, dataStream.Dictionaries)
+	assert.Nil(t, dataStream.ExtendedComponents)
 	checklists := dataStream.Checklists.ComponentRef
 	assert.Equal(t, len(checklists), 2)
 	assert.Equal(t, checklists[0].Id, "scap_org.open-scap_cref_xccdf.xml")

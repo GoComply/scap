@@ -14,7 +14,7 @@ type Signature struct {
 
 	SignatureValue SignatureValue `xml:"SignatureValue"`
 
-	KeyInfo KeyInfo `xml:"KeyInfo"`
+	KeyInfo *KeyInfo `xml:"KeyInfo"`
 
 	Object []Object `xml:"Object"`
 }
@@ -51,7 +51,7 @@ type SignatureMethod struct {
 type Reference struct {
 	XMLName xml.Name `xml:Reference`
 
-	Transforms Transforms `xml:"Transforms"`
+	Transforms *Transforms `xml:"Transforms"`
 
 	DigestMethod DigestMethod `xml:"DigestMethod"`
 
@@ -104,7 +104,7 @@ type KeyValue struct {
 type RetrievalMethod struct {
 	XMLName xml.Name `xml:RetrievalMethod`
 
-	Transforms Transforms `xml:"Transforms"`
+	Transforms *Transforms `xml:"Transforms"`
 }
 
 // Element
@@ -175,7 +175,7 @@ type SignatureType struct {
 
 	SignatureValue SignatureValue `xml:"SignatureValue"`
 
-	KeyInfo KeyInfo `xml:"KeyInfo"`
+	KeyInfo *KeyInfo `xml:"KeyInfo"`
 
 	Object []Object `xml:"Object"`
 }
@@ -199,7 +199,7 @@ type SignatureMethodType struct {
 }
 
 type ReferenceType struct {
-	Transforms Transforms `xml:"Transforms"`
+	Transforms *Transforms `xml:"Transforms"`
 
 	DigestMethod DigestMethod `xml:"DigestMethod"`
 
@@ -223,7 +223,7 @@ type KeyValueType struct {
 }
 
 type RetrievalMethodType struct {
-	Transforms Transforms `xml:"Transforms"`
+	Transforms *Transforms `xml:"Transforms"`
 }
 
 type X509DataType struct {

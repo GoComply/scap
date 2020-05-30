@@ -23,11 +23,11 @@ type ElementMapping struct {
 
 	Test ElementMapItemType `xml:"test"`
 
-	Object ElementMapItemType `xml:"object"`
+	Object *ElementMapItemType `xml:"object"`
 
-	State ElementMapItemType `xml:"state"`
+	State *ElementMapItemType `xml:"state"`
 
-	Item ElementMapItemType `xml:"item"`
+	Item *ElementMapItemType `xml:"item"`
 }
 
 // Element
@@ -42,11 +42,11 @@ type Notes struct {
 type ElementMapType struct {
 	Test ElementMapItemType `xml:"test"`
 
-	Object ElementMapItemType `xml:"object"`
+	Object *ElementMapItemType `xml:"object"`
 
-	State ElementMapItemType `xml:"state"`
+	State *ElementMapItemType `xml:"state"`
 
-	Item ElementMapItemType `xml:"item"`
+	Item *ElementMapItemType `xml:"item"`
 }
 
 type ElementMapItemType struct {

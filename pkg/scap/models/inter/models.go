@@ -229,7 +229,7 @@ type GeneratorType struct {
 
 	Timestamp string `xml:"timestamp"`
 
-	AdditionalData ExtensionContainerType `xml:"additional_data"`
+	AdditionalData *ExtensionContainerType `xml:"additional_data"`
 }
 
 type ExtensionContainerType struct {

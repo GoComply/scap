@@ -39,13 +39,13 @@ type DataStream struct {
 
 	Timestamp string `xml:"timestamp,attr"`
 
-	Dictionaries RefListType `xml:"dictionaries"`
+	Dictionaries *RefListType `xml:"dictionaries"`
 
-	Checklists RefListType `xml:"checklists"`
+	Checklists *RefListType `xml:"checklists"`
 
 	Checks RefListType `xml:"checks"`
 
-	ExtendedComponents RefListType `xml:"extended-components"`
+	ExtendedComponents *RefListType `xml:"extended-components"`
 }
 
 // Element
@@ -76,7 +76,7 @@ type ComponentRef struct {
 
 	XlinkHref string `xml:",attr"`
 
-	Catalog er.Catalog `xml:"catalog"`
+	Catalog *er.Catalog `xml:"catalog"`
 }
 
 // XSD ComplexType declarations
