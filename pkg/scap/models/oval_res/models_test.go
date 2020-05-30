@@ -9,7 +9,9 @@ import (
 
 func TestRFCFeedParsing(t *testing.T) {
 	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/oval/5.11/results.xml")
-	assert.Nil(t, err)
+	if err != nil {
+		t.Fatal(err)
+	}
 	res := doc.OvalResults
 	assert.NotNil(t, res)
 	assert.Equal(t, res.XMLName.Space, "http://oval.mitre.org/XMLSchema/oval-results-5")

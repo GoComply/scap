@@ -9,7 +9,9 @@ import (
 
 func TestRFCFeedParsing(t *testing.T) {
 	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/ds/1.3/sds.ds.xml")
-	assert.Nil(t, err)
+	if err != nil {
+		t.Fatal(err)
+	}
 	ds := doc.DataStreamCollection
 	assert.NotNil(t, ds)
 	assert.Equal(t, ds.XMLName.Space, "http://scap.nist.gov/schema/scap/source/1.2")
