@@ -14,9 +14,14 @@ func TestRFCFeedParsing(t *testing.T) {
 	}
 	bench := doc.Benchmark
 	assert.NotNil(t, bench)
-	assert.Equal(t, bench.XMLName.Space, "http://checklists.nist.gov/xccdf/1.2")
+	assert.Equal(t, bench.XMLName.Space, "http://checklists.nist.gov/xccdf/1.1")
 	assert.Equal(t, bench.Id, "testing-xcccdf")
 	assert.Equal(t, len(bench.Status), 1)
 	assert.Empty(t, bench.Title)
 	assert.Empty(t, bench.Description)
+	profiles := doc.Profile
+	assert.Equal(t, len(profiles), 1)
+	profile := profiles[0]
+	assert.Equal(t, len(profile.Status), 1)
+	assert.Equal(t, len(profile.Title), 1)
 }

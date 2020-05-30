@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xccdf:Benchmark xmlns:xccdf="http://checklists.nist.gov/xccdf/1.2" id="testing-xcccdf">
+<xccdf:Benchmark xmlns:xccdf="http://checklists.nist.gov/xccdf/1.1" id="testing-xcccdf">
   <xccdf:status>incomplete</xccdf:status>
   <xccdf:version>2.0</xccdf:version>
+  <xccdf:Profile id="xyz">
+    <xccdf:status>draft</xccdf:status>
+    <xccdf:title>Enterprise XYZ Security Guidance</xccdf:title>
+    <xccdf:select idref="def-20120006" selected="true"/>
+  </xccdf:Profile>
   <xccdf:Rule selected="true" id="def-20120006">
     <xccdf:complex-check operator="AND" negate="1">
       <xccdf:check system="http://check-engine.test/pass">

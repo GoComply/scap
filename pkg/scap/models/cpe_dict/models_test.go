@@ -15,4 +15,8 @@ func TestSimpleParsing(t *testing.T) {
 	cpeList := doc.CpeList
 	assert.NotNil(t, cpeList)
 	assert.Equal(t, cpeList.XMLName.Space, "http://cpe.mitre.org/dictionary/2.0")
+	items := cpeList.CpeItem
+	assert.Equal(t, len(items), 7)
+	item2 := items[2]
+	assert.Equal(t, len(item2.References.Reference), 2)
 }
