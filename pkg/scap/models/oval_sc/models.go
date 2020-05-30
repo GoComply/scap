@@ -29,7 +29,7 @@ type OvalSystemCharacteristics struct {
 type Item struct {
 	XMLName xml.Name `xml:item`
 
-	Message oval.MessageType `xml:"message"`
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations
@@ -81,7 +81,7 @@ type SystemDataType struct {
 }
 
 type ItemType struct {
-	Message oval.MessageType `xml:"message"`
+	Message []oval.MessageType `xml:"message"`
 }
 
 type EntityItemSimpleBaseType struct {

@@ -22,7 +22,7 @@ type OvalResults struct {
 
 	Directives DefaultDirectivesType `xml:"directives"`
 
-	ClassDirectives ClassDirectivesType `xml:"class_directives"`
+	ClassDirectives []ClassDirectivesType `xml:"class_directives"`
 
 	OvalDefinitions *oval_def.OvalDefinitions `xml:"oval_definitions"`
 
