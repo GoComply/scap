@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRFCFeedParsing(t *testing.T) {
+func TestSanityOvalSyscharParsing(t *testing.T) {
 	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/oval/5.11/system-characteristics.xml")
 	if err != nil {
 		t.Fatal(err)

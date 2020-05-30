@@ -7,7 +7,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRFCFeedParsing(t *testing.T) {
+func TestSanityDsParsing(t *testing.T) {
 	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/ds/1.3/sds.ds.xml")
 	if err != nil {
 		t.Fatal(err)
