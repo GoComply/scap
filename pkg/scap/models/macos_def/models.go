@@ -293,10 +293,14 @@ type SystemsetupState struct {
 
 // XSD ComplexType declarations
 
-type EntityObjectDataTypeType string
+type EntityObjectDataTypeType struct {
+}
 
-type EntityStateDataTypeType string
+type EntityStateDataTypeType struct {
+}
 
-type EntityStatePermissionCompareType string
+type EntityStatePermissionCompareType struct {
+}
 
-type EntityStatePlistTypeType string
+type EntityStatePlistTypeType struct {
+}

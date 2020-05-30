@@ -28,58 +28,109 @@ type OvalSystemCharacteristics struct {
 // Element
 type Item struct {
 	XMLName xml.Name `xml:item`
+
+	Message oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations
 
-type SystemInfoType string
+type SystemInfoType struct {
+	OsName string `xml:"os_name"`
 
-type InterfacesType string
+	OsVersion string `xml:"os_version"`
 
-type InterfaceType string
+	Architecture string `xml:"architecture"`
 
-type CollectedObjectsType string
+	PrimaryHostName string `xml:"primary_host_name"`
 
-type ObjectType string
+	Interfaces InterfacesType `xml:"interfaces"`
+}
 
-type VariableValueType string
+type InterfacesType struct {
+	Interface []InterfaceType `xml:"interface"`
+}
 
-type ReferenceType string
+type InterfaceType struct {
+	InterfaceName string `xml:"interface_name"`
 
-type SystemDataType string
+	IpAddress string `xml:"ip_address"`
 
-type ItemType string
+	MacAddress string `xml:"mac_address"`
+}
 
-type EntityItemSimpleBaseType string
+type CollectedObjectsType struct {
+	Object []ObjectType `xml:"object"`
+}
 
-type EntityItemComplexBaseType string
+type ObjectType struct {
+	Message []oval.MessageType `xml:"message"`
 
-type EntityItemIPAddressType string
+	VariableValue []VariableValueType `xml:"variable_value"`
 
-type EntityItemIPAddressStringType string
+	Reference []ReferenceType `xml:"reference"`
+}
 
-type EntityItemAnySimpleType string
+type VariableValueType struct {
+}
 
-type EntityItemBinaryType string
+type ReferenceType struct {
+}
 
-type EntityItemBoolType string
+type SystemDataType struct {
+	Item []Item `xml:"item"`
+}
 
-type EntityItemFloatType string
+type ItemType struct {
+	Message oval.MessageType `xml:"message"`
+}
 
-type EntityItemIntType string
+type EntityItemSimpleBaseType struct {
+}
 
-type EntityItemStringType string
+type EntityItemComplexBaseType struct {
+}
 
-type EntityItemRecordType string
+type EntityItemIPAddressType struct {
+}
 
-type EntityItemFieldType string
+type EntityItemIPAddressStringType struct {
+}
 
-type EntityItemVersionType string
+type EntityItemAnySimpleType struct {
+}
 
-type EntityItemFilesetRevisionType string
+type EntityItemBinaryType struct {
+}
 
-type EntityItemIOSVersionType string
+type EntityItemBoolType struct {
+}
 
-type EntityItemEVRStringType string
+type EntityItemFloatType struct {
+}
 
-type EntityItemDebianEVRStringType string
+type EntityItemIntType struct {
+}
+
+type EntityItemStringType struct {
+}
+
+type EntityItemRecordType struct {
+}
+
+type EntityItemFieldType struct {
+}
+
+type EntityItemVersionType struct {
+}
+
+type EntityItemFilesetRevisionType struct {
+}
+
+type EntityItemIOSVersionType struct {
+}
+
+type EntityItemEVRStringType struct {
+}
+
+type EntityItemDebianEVRStringType struct {
+}

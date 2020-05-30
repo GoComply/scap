@@ -83,14 +83,20 @@ type VirtualizationinfoItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemClientUUIDType string
+type EntityItemClientUUIDType struct {
+}
 
-type EntityItemPermissionCompareType string
+type EntityItemPermissionCompareType struct {
+}
 
-type EntityItemPublisherTypeType string
+type EntityItemPublisherTypeType struct {
+}
 
-type EntityItemSmfServiceStateType string
+type EntityItemSmfServiceStateType struct {
+}
 
-type EntityItemV12NEnvType string
+type EntityItemV12NEnvType struct {
+}
 
-type EntityItemLDOMRoleType string
+type EntityItemLDOMRoleType struct {
+}

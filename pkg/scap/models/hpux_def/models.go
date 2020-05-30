@@ -98,4 +98,5 @@ type TrustedState struct {
 
 // XSD ComplexType declarations
 
-type Patch53Behaviors string
+type Patch53Behaviors struct {
+}

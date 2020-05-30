@@ -9,6 +9,8 @@ import (
 // Element
 type PlatformSpecification struct {
 	XMLName xml.Name `xml:platform-specification`
+
+	Platform []Platform `xml:"platform"`
 }
 
 // Element
@@ -19,11 +21,23 @@ type Platform struct {
 // Element
 type PlatformConfiguration struct {
 	XMLName xml.Name `xml:platform-configuration`
+
+	Title []TextType `xml:"title"`
+
+	Remark []TextType `xml:"remark"`
+
+	LogicalTest LogicalTest `xml:"logical-test"`
 }
 
 // Element
 type LogicalTest struct {
 	XMLName xml.Name `xml:logical-test`
+
+	LogicalTest []LogicalTestType `xml:"logical-test"`
+
+	FactRef []FactRef `xml:"fact-ref"`
+
+	CheckFactRef []CheckFactRef `xml:"check-fact-ref"`
 }
 
 // Element
@@ -38,18 +52,37 @@ type CheckFactRef struct {
 
 // XSD ComplexType declarations
 
-type PlatformSpecificationType string
+type PlatformSpecificationType struct {
+	Platform []Platform `xml:"platform"`
+}
 
-type PlatformBaseType string
+type PlatformBaseType struct {
+	Title []TextType `xml:"title"`
 
-type PlatformType string
+	Remark []TextType `xml:"remark"`
 
-type LogicalTestType string
+	LogicalTest LogicalTest `xml:"logical-test"`
+}
 
-type FactRefType string
+type PlatformType struct {
+}
 
-type CPEFactRefType string
+type LogicalTestType struct {
+	LogicalTest []LogicalTestType `xml:"logical-test"`
 
-type CheckFactRefType string
+	FactRef []FactRef `xml:"fact-ref"`
 
-type TextType string
+	CheckFactRef []CheckFactRef `xml:"check-fact-ref"`
+}
+
+type FactRefType struct {
+}
+
+type CPEFactRefType struct {
+}
+
+type CheckFactRefType struct {
+}
+
+type TextType struct {
+}

@@ -223,26 +223,38 @@ type YamlfilecontentState struct {
 
 // XSD ComplexType declarations
 
-type LdapBehaviors string
+type LdapBehaviors struct {
+}
 
-type Textfilecontent54Behaviors string
+type Textfilecontent54Behaviors struct {
+}
 
-type FileBehaviors string
+type FileBehaviors struct {
+}
 
-type EntityObjectEngineType string
+type EntityObjectEngineType struct {
+}
 
-type EntityStateEngineType string
+type EntityStateEngineType struct {
+}
 
-type EntityStateFamilyType string
+type EntityStateFamilyType struct {
+}
 
-type EntityObjectHashTypeType string
+type EntityObjectHashTypeType struct {
+}
 
-type EntityStateHashTypeType string
+type EntityStateHashTypeType struct {
+}
 
-type EntityObjectVariableRefType string
+type EntityObjectVariableRefType struct {
+}
 
-type EntityStateVariableRefType string
+type EntityStateVariableRefType struct {
+}
 
-type EntityStateLdaptypeType string
+type EntityStateLdaptypeType struct {
+}
 
-type EntityStateWindowsViewType string
+type EntityStateWindowsViewType struct {
+}

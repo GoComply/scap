@@ -33,8 +33,11 @@ type OslevelItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemFilesetStateType string
+type EntityItemFilesetStateType struct {
+}
 
-type EntityItemFixInstallationStatusType string
+type EntityItemFixInstallationStatusType struct {
+}
 
-type EntityItemInterimFixStateType string
+type EntityItemInterimFixStateType struct {
+}

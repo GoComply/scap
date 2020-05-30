@@ -218,30 +218,44 @@ type SnmpviewState struct {
 
 // XSD ComplexType declarations
 
-type EntityObjectAccessListIPVersionType string
+type EntityObjectAccessListIPVersionType struct {
+}
 
-type EntityObjectRoutingProtocolType string
+type EntityObjectRoutingProtocolType struct {
+}
 
-type EntityStateTrunkEncapType string
+type EntityStateTrunkEncapType struct {
+}
 
-type EntityStateSwitchportModeType string
+type EntityStateSwitchportModeType struct {
+}
 
-type EntityStateRoutingProtocolType string
+type EntityStateRoutingProtocolType struct {
+}
 
-type EntityStateRoutingAuthTypeStringType string
+type EntityStateRoutingAuthTypeStringType struct {
+}
 
-type EntityStateSNMPVersionStringType string
+type EntityStateSNMPVersionStringType struct {
+}
 
-type EntityStateSNMPSecLevelStringType string
+type EntityStateSNMPSecLevelStringType struct {
+}
 
-type EntityStateSNMPModeStringType string
+type EntityStateSNMPModeStringType struct {
+}
 
-type EntityStateSNMPAuthStringType string
+type EntityStateSNMPAuthStringType struct {
+}
 
-type EntityStateSNMPPrivStringType string
+type EntityStateSNMPPrivStringType struct {
+}
 
-type EntityStateAccessListIPVersionType string
+type EntityStateAccessListIPVersionType struct {
+}
 
-type EntityStateAccessListUseType string
+type EntityStateAccessListUseType struct {
+}
 
-type EntityStateAccessListInterfaceDirectionType string
+type EntityStateAccessListInterfaceDirectionType struct {
+}

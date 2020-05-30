@@ -23,6 +23,8 @@ type VisdkmanagedobjectItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemClassificationType string
+type EntityItemClassificationType struct {
+}
 
-type EntityItemSupportLevelType string
+type EntityItemSupportLevelType struct {
+}

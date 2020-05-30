@@ -728,102 +728,152 @@ type WuaupdatesearcherState struct {
 
 // XSD ComplexType declarations
 
-type AccesstokenBehaviors string
+type AccesstokenBehaviors struct {
+}
 
-type FileBehaviors string
+type FileBehaviors struct {
+}
 
-type FileAuditPermissions53Behaviors string
+type FileAuditPermissions53Behaviors struct {
+}
 
-type FileAuditPermissionsBehaviors string
+type FileAuditPermissionsBehaviors struct {
+}
 
-type FileEffectiveRights53Behaviors string
+type FileEffectiveRights53Behaviors struct {
+}
 
-type FileEffectiveRightsBehaviors string
+type FileEffectiveRightsBehaviors struct {
+}
 
-type NTUserBehaviors string
+type NTUserBehaviors struct {
+}
 
-type PrinterEffectiveRightsBehaviors string
+type PrinterEffectiveRightsBehaviors struct {
+}
 
-type RegistryBehaviors string
+type RegistryBehaviors struct {
+}
 
-type RegkeyAuditPermissions53Behaviors string
+type RegkeyAuditPermissions53Behaviors struct {
+}
 
-type RegkeyAuditPermissionsBehaviors string
+type RegkeyAuditPermissionsBehaviors struct {
+}
 
-type RegkeyEffectiveRights53Behaviors string
+type RegkeyEffectiveRights53Behaviors struct {
+}
 
-type RegkeyEffectiveRightsBehaviors string
+type RegkeyEffectiveRightsBehaviors struct {
+}
 
-type ServiceEffectiveRightsBehaviors string
+type ServiceEffectiveRightsBehaviors struct {
+}
 
-type SharedResourceAuditedPermissionsBehaviors string
+type SharedResourceAuditedPermissionsBehaviors struct {
+}
 
-type SharedResourceEffectiveRightsBehaviors string
+type SharedResourceEffectiveRightsBehaviors struct {
+}
 
-type SidBehaviors string
+type SidBehaviors struct {
+}
 
-type SidSidBehaviors string
+type SidSidBehaviors struct {
+}
 
-type WuaUpdateSearcherBehaviors string
+type WuaUpdateSearcherBehaviors struct {
+}
 
-type EntityStateAddrTypeType string
+type EntityStateAddrTypeType struct {
+}
 
-type EntityStateAdstypeType string
+type EntityStateAdstypeType struct {
+}
 
-type EntityStateAuditType string
+type EntityStateAuditType struct {
+}
 
-type EntityStateDriveTypeType string
+type EntityStateDriveTypeType struct {
+}
 
-type EntityStateInterfaceTypeType string
+type EntityStateInterfaceTypeType struct {
+}
 
-type EntityStateFileTypeType string
+type EntityStateFileTypeType struct {
+}
 
-type EntityStateFileAttributeType string
+type EntityStateFileAttributeType struct {
+}
 
-type EntityObjectNamingContextType string
+type EntityObjectNamingContextType struct {
+}
 
-type EntityStateNamingContextType string
+type EntityStateNamingContextType struct {
+}
 
-type EntityStateNTUserAccountTypeType string
+type EntityStateNTUserAccountTypeType struct {
+}
 
-type EntityStatePeTargetMachineType string
+type EntityStatePeTargetMachineType struct {
+}
 
-type EntityStatePeSubsystemType string
+type EntityStatePeSubsystemType struct {
+}
 
-type EntityObjectProtocolType string
+type EntityObjectProtocolType struct {
+}
 
-type EntityStateProtocolType string
+type EntityStateProtocolType struct {
+}
 
-type EntityObjectRegistryHiveType string
+type EntityObjectRegistryHiveType struct {
+}
 
-type EntityStateRegistryHiveType string
+type EntityStateRegistryHiveType struct {
+}
 
-type EntityStateRegistryTypeType string
+type EntityStateRegistryTypeType struct {
+}
 
-type EntityStateServiceControlsAcceptedType string
+type EntityStateServiceControlsAcceptedType struct {
+}
 
-type EntityStateServiceCurrentStateType string
+type EntityStateServiceCurrentStateType struct {
+}
 
-type EntityStateServiceStartTypeType string
+type EntityStateServiceStartTypeType struct {
+}
 
-type EntityStateServiceTypeType string
+type EntityStateServiceTypeType struct {
+}
 
-type EntityStateSharedResourceTypeType string
+type EntityStateSharedResourceTypeType struct {
+}
 
-type EntityObjectSystemMetricIndexType string
+type EntityObjectSystemMetricIndexType struct {
+}
 
-type EntityStateSystemMetricIndexType string
+type EntityStateSystemMetricIndexType struct {
+}
 
-type EntityObjectGUIDType string
+type EntityObjectGUIDType struct {
+}
 
-type EntityStateGUIDType string
+type EntityStateGUIDType struct {
+}
 
-type EntityObjectCmdletVerbType string
+type EntityObjectCmdletVerbType struct {
+}
 
-type EntityStateCmdletVerbType string
+type EntityStateCmdletVerbType struct {
+}
 
-type EntityStateWindowsViewType string
+type EntityStateWindowsViewType struct {
+}
 
-type EntityObjectUserRightType string
+type EntityObjectUserRightType struct {
+}
 
-type EntityStateUserRightType string
+type EntityStateUserRightType struct {
+}

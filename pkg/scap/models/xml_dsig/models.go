@@ -9,6 +9,14 @@ import (
 // Element
 type Signature struct {
 	XMLName xml.Name `xml:Signature`
+
+	SignedInfo SignedInfo `xml:"SignedInfo"`
+
+	SignatureValue SignatureValue `xml:"SignatureValue"`
+
+	KeyInfo KeyInfo `xml:"KeyInfo"`
+
+	Object []Object `xml:"Object"`
 }
 
 // Element
@@ -19,6 +27,12 @@ type SignatureValue struct {
 // Element
 type SignedInfo struct {
 	XMLName xml.Name `xml:SignedInfo`
+
+	CanonicalizationMethod CanonicalizationMethod `xml:"CanonicalizationMethod"`
+
+	SignatureMethod SignatureMethod `xml:"SignatureMethod"`
+
+	Reference []Reference `xml:"Reference"`
 }
 
 // Element
@@ -29,16 +43,26 @@ type CanonicalizationMethod struct {
 // Element
 type SignatureMethod struct {
 	XMLName xml.Name `xml:SignatureMethod`
+
+	HMACOutputLength string `xml:"HMACOutputLength"`
 }
 
 // Element
 type Reference struct {
 	XMLName xml.Name `xml:Reference`
+
+	Transforms Transforms `xml:"Transforms"`
+
+	DigestMethod DigestMethod `xml:"DigestMethod"`
+
+	DigestValue DigestValue `xml:"DigestValue"`
 }
 
 // Element
 type Transforms struct {
 	XMLName xml.Name `xml:Transforms`
+
+	Transform []Transform `xml:"Transform"`
 }
 
 // Element
@@ -79,6 +103,8 @@ type KeyValue struct {
 // Element
 type RetrievalMethod struct {
 	XMLName xml.Name `xml:RetrievalMethod`
+
+	Transforms Transforms `xml:"Transforms"`
 }
 
 // Element
@@ -94,6 +120,8 @@ type PGPData struct {
 // Element
 type SPKIData struct {
 	XMLName xml.Name `xml:SPKIData`
+
+	SPKISexp string `xml:"SPKISexp"`
 }
 
 // Element
@@ -104,11 +132,15 @@ type Object struct {
 // Element
 type Manifest struct {
 	XMLName xml.Name `xml:Manifest`
+
+	Reference []Reference `xml:"Reference"`
 }
 
 // Element
 type SignatureProperties struct {
 	XMLName xml.Name `xml:SignatureProperties`
+
+	SignatureProperty []SignatureProperty `xml:"SignatureProperty"`
 }
 
 // Element
@@ -119,55 +151,121 @@ type SignatureProperty struct {
 // Element
 type DSAKeyValue struct {
 	XMLName xml.Name `xml:DSAKeyValue`
+
+	G string `xml:"G"`
+
+	Y string `xml:"Y"`
+
+	J string `xml:"J"`
 }
 
 // Element
 type RSAKeyValue struct {
 	XMLName xml.Name `xml:RSAKeyValue`
+
+	Modulus string `xml:"Modulus"`
+
+	Exponent string `xml:"Exponent"`
 }
 
 // XSD ComplexType declarations
 
-type SignatureType string
+type SignatureType struct {
+	SignedInfo SignedInfo `xml:"SignedInfo"`
 
-type SignatureValueType string
+	SignatureValue SignatureValue `xml:"SignatureValue"`
 
-type SignedInfoType string
+	KeyInfo KeyInfo `xml:"KeyInfo"`
 
-type CanonicalizationMethodType string
+	Object []Object `xml:"Object"`
+}
 
-type SignatureMethodType string
+type SignatureValueType struct {
+}
 
-type ReferenceType string
+type SignedInfoType struct {
+	CanonicalizationMethod CanonicalizationMethod `xml:"CanonicalizationMethod"`
 
-type TransformsType string
+	SignatureMethod SignatureMethod `xml:"SignatureMethod"`
 
-type TransformType string
+	Reference []Reference `xml:"Reference"`
+}
 
-type DigestMethodType string
+type CanonicalizationMethodType struct {
+}
 
-type KeyInfoType string
+type SignatureMethodType struct {
+	HMACOutputLength string `xml:"HMACOutputLength"`
+}
 
-type KeyValueType string
+type ReferenceType struct {
+	Transforms Transforms `xml:"Transforms"`
 
-type RetrievalMethodType string
+	DigestMethod DigestMethod `xml:"DigestMethod"`
 
-type X509DataType string
+	DigestValue DigestValue `xml:"DigestValue"`
+}
 
-type X509IssuerSerialType string
+type TransformsType struct {
+	Transform []Transform `xml:"Transform"`
+}
 
-type PGPDataType string
+type TransformType struct {
+}
 
-type SPKIDataType string
+type DigestMethodType struct {
+}
 
-type ObjectType string
+type KeyInfoType struct {
+}
 
-type ManifestType string
+type KeyValueType struct {
+}
 
-type SignaturePropertiesType string
+type RetrievalMethodType struct {
+	Transforms Transforms `xml:"Transforms"`
+}
 
-type SignaturePropertyType string
+type X509DataType struct {
+}
 
-type DSAKeyValueType string
+type X509IssuerSerialType struct {
+	X509IssuerName string `xml:"X509IssuerName"`
 
-type RSAKeyValueType string
+	X509SerialNumber string `xml:"X509SerialNumber"`
+}
+
+type PGPDataType struct {
+}
+
+type SPKIDataType struct {
+	SPKISexp string `xml:"SPKISexp"`
+}
+
+type ObjectType struct {
+}
+
+type ManifestType struct {
+	Reference []Reference `xml:"Reference"`
+}
+
+type SignaturePropertiesType struct {
+	SignatureProperty []SignatureProperty `xml:"SignatureProperty"`
+}
+
+type SignaturePropertyType struct {
+}
+
+type DSAKeyValueType struct {
+	G string `xml:"G"`
+
+	Y string `xml:"Y"`
+
+	J string `xml:"J"`
+}
+
+type RSAKeyValueType struct {
+	Modulus string `xml:"Modulus"`
+
+	Exponent string `xml:"Exponent"`
+}

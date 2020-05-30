@@ -248,14 +248,20 @@ type SppolicyState struct {
 
 // XSD ComplexType declarations
 
-type EntityObjectUrlZoneType string
+type EntityObjectUrlZoneType struct {
+}
 
-type EntityStateEventSeverityType string
+type EntityStateEventSeverityType struct {
+}
 
-type EntityStateTraceSeverityType string
+type EntityStateTraceSeverityType struct {
+}
 
-type EntityStatePolicyRoleType string
+type EntityStatePolicyRoleType struct {
+}
 
-type EntityStatePolicyFeatureStateType string
+type EntityStatePolicyFeatureStateType struct {
+}
 
-type EntityStateUrlZoneType string
+type EntityStateUrlZoneType struct {
+}

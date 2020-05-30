@@ -37,16 +37,32 @@ type Notes struct {
 // Element
 type Definition struct {
 	XMLName xml.Name `xml:definition`
+
+	Signature xml_dsig.Signature `xml:"Signature"`
+
+	Metadata MetadataType `xml:"metadata"`
+
+	Notes oval.Notes `xml:"notes"`
+
+	Criteria CriteriaType `xml:"criteria"`
 }
 
 // Element
 type Test struct {
 	XMLName xml.Name `xml:test`
+
+	Signature xml_dsig.Signature `xml:"Signature"`
+
+	Notes oval.Notes `xml:"notes"`
 }
 
 // Element
 type Object struct {
 	XMLName xml.Name `xml:object`
+
+	Signature xml_dsig.Signature `xml:"Signature"`
+
+	Notes oval.Notes `xml:"notes"`
 }
 
 // Element
@@ -64,11 +80,19 @@ type Filter struct {
 // Element
 type State struct {
 	XMLName xml.Name `xml:state`
+
+	Signature xml_dsig.Signature `xml:"Signature"`
+
+	Notes oval.Notes `xml:"notes"`
 }
 
 // Element
 type Variable struct {
 	XMLName xml.Name `xml:variable`
+
+	Signature xml_dsig.Signature `xml:"Signature"`
+
+	Notes oval.Notes `xml:"notes"`
 }
 
 // Element
@@ -88,136 +112,237 @@ type LocalVariable struct {
 
 // XSD ComplexType declarations
 
-type DefinitionsType string
+type DefinitionsType struct {
+	Definition []Definition `xml:"definition"`
+}
 
-type DefinitionType string
+type DefinitionType struct {
+	Signature xml_dsig.Signature `xml:"Signature"`
 
-type MetadataType string
+	Metadata MetadataType `xml:"metadata"`
 
-type AffectedType string
+	Notes oval.Notes `xml:"notes"`
 
-type ReferenceType string
+	Criteria CriteriaType `xml:"criteria"`
+}
 
-type CriteriaType string
+type MetadataType struct {
+	Title string `xml:"title"`
 
-type CriterionType string
+	Affected []AffectedType `xml:"affected"`
 
-type ExtendDefinitionType string
+	Reference []ReferenceType `xml:"reference"`
 
-type TestsType string
+	Description string `xml:"description"`
+}
 
-type TestType string
+type AffectedType struct {
+	Platform []string `xml:"platform"`
 
-type ObjectRefType string
+	Product []string `xml:"product"`
+}
 
-type StateRefType string
+type ReferenceType struct {
+}
 
-type ObjectsType string
+type CriteriaType struct {
+}
 
-type ObjectType string
+type CriterionType struct {
+}
 
-type StatesType string
+type ExtendDefinitionType struct {
+}
 
-type StateType string
+type TestsType struct {
+	Test []Test `xml:"test"`
+}
 
-type VariablesType string
+type TestType struct {
+	Signature xml_dsig.Signature `xml:"Signature"`
 
-type VariableType string
+	Notes oval.Notes `xml:"notes"`
+}
 
-type PossibleValueType string
+type ObjectRefType struct {
+}
 
-type PossibleRestrictionType string
+type StateRefType struct {
+}
 
-type RestrictionType string
+type ObjectsType struct {
+	Object []Object `xml:"object"`
+}
 
-type ValueType string
+type ObjectType struct {
+	Signature xml_dsig.Signature `xml:"Signature"`
 
-type LiteralComponentType string
+	Notes oval.Notes `xml:"notes"`
+}
 
-type ObjectComponentType string
+type StatesType struct {
+	State []State `xml:"state"`
+}
 
-type VariableComponentType string
+type StateType struct {
+	Signature xml_dsig.Signature `xml:"Signature"`
 
-type ArithmeticFunctionType string
+	Notes oval.Notes `xml:"notes"`
+}
 
-type BeginFunctionType string
+type VariablesType struct {
+	Variable []Variable `xml:"variable"`
+}
 
-type ConcatFunctionType string
+type VariableType struct {
+	Signature xml_dsig.Signature `xml:"Signature"`
 
-type EndFunctionType string
+	Notes oval.Notes `xml:"notes"`
+}
 
-type EscapeRegexFunctionType string
+type PossibleValueType struct {
+}
 
-type SplitFunctionType string
+type PossibleRestrictionType struct {
+}
 
-type SubstringFunctionType string
+type RestrictionType struct {
+}
 
-type TimeDifferenceFunctionType string
+type ValueType struct {
+}
 
-type RegexCaptureFunctionType string
+type LiteralComponentType struct {
+}
 
-type UniqueFunctionType string
+type ObjectComponentType struct {
+}
 
-type CountFunctionType string
+type VariableComponentType struct {
+}
 
-type GlobToRegexFunctionType string
+type ArithmeticFunctionType struct {
+}
 
-type EntitySimpleBaseType string
+type BeginFunctionType struct {
+}
 
-type EntityComplexBaseType string
+type ConcatFunctionType struct {
+}
 
-type EntityObjectIPAddressType string
+type EndFunctionType struct {
+}
 
-type EntityObjectIPAddressStringType string
+type EscapeRegexFunctionType struct {
+}
 
-type EntityObjectAnySimpleType string
+type SplitFunctionType struct {
+}
 
-type EntityObjectBinaryType string
+type SubstringFunctionType struct {
+}
 
-type EntityObjectBoolType string
+type TimeDifferenceFunctionType struct {
+}
 
-type EntityObjectFloatType string
+type RegexCaptureFunctionType struct {
+}
 
-type EntityObjectIntType string
+type UniqueFunctionType struct {
+}
 
-type EntityObjectStringType string
+type CountFunctionType struct {
+}
 
-type EntityObjectVersionType string
+type GlobToRegexFunctionType struct {
+}
 
-type EntityObjectRecordType string
+type EntitySimpleBaseType struct {
+}
 
-type EntityObjectFieldType string
+type EntityComplexBaseType struct {
+}
 
-type EntityStateSimpleBaseType string
+type EntityObjectIPAddressType struct {
+}
 
-type EntityStateComplexBaseType string
+type EntityObjectIPAddressStringType struct {
+}
 
-type EntityStateIPAddressType string
+type EntityObjectAnySimpleType struct {
+}
 
-type EntityStateIPAddressStringType string
+type EntityObjectBinaryType struct {
+}
 
-type EntityStateAnySimpleType string
+type EntityObjectBoolType struct {
+}
 
-type EntityStateBinaryType string
+type EntityObjectFloatType struct {
+}
 
-type EntityStateBoolType string
+type EntityObjectIntType struct {
+}
 
-type EntityStateFloatType string
+type EntityObjectStringType struct {
+}
 
-type EntityStateIntType string
+type EntityObjectVersionType struct {
+}
 
-type EntityStateEVRStringType string
+type EntityObjectRecordType struct {
+}
 
-type EntityStateDebianEVRStringType string
+type EntityObjectFieldType struct {
+}
 
-type EntityStateVersionType string
+type EntityStateSimpleBaseType struct {
+}
 
-type EntityStateFileSetRevisionType string
+type EntityStateComplexBaseType struct {
+}
 
-type EntityStateIOSVersionType string
+type EntityStateIPAddressType struct {
+}
 
-type EntityStateStringType string
+type EntityStateIPAddressStringType struct {
+}
 
-type EntityStateRecordType string
+type EntityStateAnySimpleType struct {
+}
 
-type EntityStateFieldType string
+type EntityStateBinaryType struct {
+}
+
+type EntityStateBoolType struct {
+}
+
+type EntityStateFloatType struct {
+}
+
+type EntityStateIntType struct {
+}
+
+type EntityStateEVRStringType struct {
+}
+
+type EntityStateDebianEVRStringType struct {
+}
+
+type EntityStateVersionType struct {
+}
+
+type EntityStateFileSetRevisionType struct {
+}
+
+type EntityStateIOSVersionType struct {
+}
+
+type EntityStateStringType struct {
+}
+
+type EntityStateRecordType struct {
+}
+
+type EntityStateFieldType struct {
+}

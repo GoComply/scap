@@ -263,32 +263,47 @@ type VersionState struct {
 
 // XSD ComplexType declarations
 
-type EntityObjectAccessListIPVersionType string
+type EntityObjectAccessListIPVersionType struct {
+}
 
-type EntityObjectRoutingProtocolType string
+type EntityObjectRoutingProtocolType struct {
+}
 
-type EntityStateAccessListInterfaceDirectionType string
+type EntityStateAccessListInterfaceDirectionType struct {
+}
 
-type EntityStateAccessListIPVersionType string
+type EntityStateAccessListIPVersionType struct {
+}
 
-type EntityStateAccessListUseType string
+type EntityStateAccessListUseType struct {
+}
 
-type EntityStateRoutingAuthTypeStringType string
+type EntityStateRoutingAuthTypeStringType struct {
+}
 
-type EntityStateRoutingProtocolType string
+type EntityStateRoutingProtocolType struct {
+}
 
-type EntityStateSNMPVersionStringType string
+type EntityStateSNMPVersionStringType struct {
+}
 
-type EntityStateSNMPSecLevelStringType string
+type EntityStateSNMPSecLevelStringType struct {
+}
 
-type EntityStateSNMPModeStringType string
+type EntityStateSNMPModeStringType struct {
+}
 
-type EntityStateSNMPAuthStringType string
+type EntityStateSNMPAuthStringType struct {
+}
 
-type EntityStateSNMPPrivStringType string
+type EntityStateSNMPPrivStringType struct {
+}
 
-type EntityStateSwitchportModeType string
+type EntityStateSwitchportModeType struct {
+}
 
-type EntityStateTrainIdentifierType string
+type EntityStateTrainIdentifierType struct {
+}
 
-type EntityStateTrunkEncapType string
+type EntityStateTrunkEncapType struct {
+}

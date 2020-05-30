@@ -93,18 +93,26 @@ type XinetdItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemCapabilityType string
+type EntityItemCapabilityType struct {
+}
 
-type EntityItemEndpointType string
+type EntityItemEndpointType struct {
+}
 
-type EntityItemGconfTypeType string
+type EntityItemGconfTypeType struct {
+}
 
-type EntityItemRoutingTableFlagsType string
+type EntityItemRoutingTableFlagsType struct {
+}
 
-type EntityItemXinetdTypeStatusType string
+type EntityItemXinetdTypeStatusType struct {
+}
 
-type EntityItemWaitStatusType string
+type EntityItemWaitStatusType struct {
+}
 
-type EntityItemEncryptMethodType string
+type EntityItemEncryptMethodType struct {
+}
 
-type EntityItemInterfaceType string
+type EntityItemInterfaceType struct {
+}

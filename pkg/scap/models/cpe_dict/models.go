@@ -9,25 +9,68 @@ import (
 // Element
 type CpeList struct {
 	XMLName xml.Name `xml:cpe-list`
+
+	Generator GeneratorType `xml:"generator"`
+
+	CpeItem []CpeItem `xml:"cpe-item"`
 }
 
 // Element
 type CpeItem struct {
 	XMLName xml.Name `xml:cpe-item`
+
+	Title []TextType `xml:"title"`
+
+	Notes []NotesType `xml:"notes"`
+
+	References ReferencesType `xml:"references"`
+
+	Check []CheckType `xml:"check"`
+}
+
+// Element
+type Reference struct {
+	XMLName xml.Name `xml:reference`
 }
 
 // XSD ComplexType declarations
 
-type GeneratorType string
+type GeneratorType struct {
+	ProductName string `xml:"product_name"`
 
-type ItemType string
+	ProductVersion string `xml:"product_version"`
 
-type ListType string
+	SchemaVersion float64 `xml:"schema_version"`
 
-type TextType string
+	Timestamp string `xml:"timestamp"`
+}
 
-type NotesType string
+type ItemType struct {
+	Title []TextType `xml:"title"`
 
-type ReferencesType string
+	Notes []NotesType `xml:"notes"`
 
-type CheckType string
+	References ReferencesType `xml:"references"`
+
+	Check []CheckType `xml:"check"`
+}
+
+type ListType struct {
+	Generator GeneratorType `xml:"generator"`
+
+	CpeItem []CpeItem `xml:"cpe-item"`
+}
+
+type TextType struct {
+}
+
+type NotesType struct {
+	Note []string `xml:"note"`
+}
+
+type ReferencesType struct {
+	Reference []Reference `xml:"reference"`
+}
+
+type CheckType struct {
+}

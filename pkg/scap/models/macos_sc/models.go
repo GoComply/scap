@@ -98,8 +98,11 @@ type SystemsetupItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemDataTypeType string
+type EntityItemDataTypeType struct {
+}
 
-type EntityItemPermissionCompareType string
+type EntityItemPermissionCompareType struct {
+}
 
-type EntityItemPlistTypeType string
+type EntityItemPlistTypeType struct {
+}

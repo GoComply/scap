@@ -218,16 +218,23 @@ type SystemdunitpropertyState struct {
 
 // XSD ComplexType declarations
 
-type RpmInfoBehaviors string
+type RpmInfoBehaviors struct {
+}
 
-type RpmVerifyBehaviors string
+type RpmVerifyBehaviors struct {
+}
 
-type RpmVerifyFileBehaviors string
+type RpmVerifyFileBehaviors struct {
+}
 
-type RpmVerifyPackageBehaviors string
+type RpmVerifyPackageBehaviors struct {
+}
 
-type FileBehaviors string
+type FileBehaviors struct {
+}
 
-type EntityStateRpmVerifyResultType string
+type EntityStateRpmVerifyResultType struct {
+}
 
-type EntityStateProtocolType string
+type EntityStateProtocolType struct {
+}

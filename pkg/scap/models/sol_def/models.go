@@ -243,20 +243,29 @@ type VirtualizationinfoState struct {
 
 // XSD ComplexType declarations
 
-type PackageCheckBehaviors string
+type PackageCheckBehaviors struct {
+}
 
-type PatchBehaviors string
+type PatchBehaviors struct {
+}
 
-type EntityObjectPublisherTypeType string
+type EntityObjectPublisherTypeType struct {
+}
 
-type EntityStateClientUUIDType string
+type EntityStateClientUUIDType struct {
+}
 
-type EntityStatePermissionCompareType string
+type EntityStatePermissionCompareType struct {
+}
 
-type EntityStatePublisherTypeType string
+type EntityStatePublisherTypeType struct {
+}
 
-type EntityStateSmfServiceStateType string
+type EntityStateSmfServiceStateType struct {
+}
 
-type EntityStateV12NEnvType string
+type EntityStateV12NEnvType struct {
+}
 
-type EntityStateLDOMRoleType string
+type EntityStateLDOMRoleType struct {
+}

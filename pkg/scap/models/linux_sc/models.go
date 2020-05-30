@@ -78,6 +78,8 @@ type SystemdunitpropertyItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemRpmVerifyResultType string
+type EntityItemRpmVerifyResultType struct {
+}
 
-type EntityItemProtocolType string
+type EntityItemProtocolType struct {
+}

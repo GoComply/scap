@@ -88,26 +88,38 @@ type VersionItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemAccessListInterfaceDirectionType string
+type EntityItemAccessListInterfaceDirectionType struct {
+}
 
-type EntityItemAccessListIPVersionType string
+type EntityItemAccessListIPVersionType struct {
+}
 
-type EntityItemAccessListUseType string
+type EntityItemAccessListUseType struct {
+}
 
-type EntityItemRoutingAuthTypeStringType string
+type EntityItemRoutingAuthTypeStringType struct {
+}
 
-type EntityItemRoutingProtocolType string
+type EntityItemRoutingProtocolType struct {
+}
 
-type EntityItemSNMPVersionStringType string
+type EntityItemSNMPVersionStringType struct {
+}
 
-type EntityItemSNMPSecLevelStringType string
+type EntityItemSNMPSecLevelStringType struct {
+}
 
-type EntityItemSNMPModeStringType string
+type EntityItemSNMPModeStringType struct {
+}
 
-type EntityItemSNMPAuthStringType string
+type EntityItemSNMPAuthStringType struct {
+}
 
-type EntityItemSNMPPrivStringType string
+type EntityItemSNMPPrivStringType struct {
+}
 
-type EntityItemSwitchportModeType string
+type EntityItemSwitchportModeType struct {
+}
 
-type EntityItemTrunkEncapType string
+type EntityItemTrunkEncapType struct {
+}

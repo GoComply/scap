@@ -68,4 +68,5 @@ type XmlShowState struct {
 
 // XSD ComplexType declarations
 
-type EntityStateJunosReleaseTypeType string
+type EntityStateJunosReleaseTypeType struct {
+}

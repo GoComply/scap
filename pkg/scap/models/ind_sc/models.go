@@ -73,14 +73,20 @@ type YamlfilecontentItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemEngineType string
+type EntityItemEngineType struct {
+}
 
-type EntityItemFamilyType string
+type EntityItemFamilyType struct {
+}
 
-type EntityItemHashTypeType string
+type EntityItemHashTypeType struct {
+}
 
-type EntityItemVariableRefType string
+type EntityItemVariableRefType struct {
+}
 
-type EntityItemLdaptypeType string
+type EntityItemLdaptypeType struct {
+}
 
-type EntityItemWindowsViewType string
+type EntityItemWindowsViewType struct {
+}

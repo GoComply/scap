@@ -218,50 +218,74 @@ type WuaupdatesearcherItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemAddrTypeType string
+type EntityItemAddrTypeType struct {
+}
 
-type EntityItemAdstypeType string
+type EntityItemAdstypeType struct {
+}
 
-type EntityItemAuditType string
+type EntityItemAuditType struct {
+}
 
-type EntityItemDriveTypeType string
+type EntityItemDriveTypeType struct {
+}
 
-type EntityItemFileTypeType string
+type EntityItemFileTypeType struct {
+}
 
-type EntityItemFileAttributeType string
+type EntityItemFileAttributeType struct {
+}
 
-type EntityItemInterfaceTypeType string
+type EntityItemInterfaceTypeType struct {
+}
 
-type EntityItemNamingContextType string
+type EntityItemNamingContextType struct {
+}
 
-type EntityItemNTUserAccountTypeType string
+type EntityItemNTUserAccountTypeType struct {
+}
 
-type EntityItemPeTargetMachineType string
+type EntityItemPeTargetMachineType struct {
+}
 
-type EntityItemPeSubsystemType string
+type EntityItemPeSubsystemType struct {
+}
 
-type EntityItemProtocolType string
+type EntityItemProtocolType struct {
+}
 
-type EntityItemRegistryHiveType string
+type EntityItemRegistryHiveType struct {
+}
 
-type EntityItemRegistryTypeType string
+type EntityItemRegistryTypeType struct {
+}
 
-type EntityItemServiceControlsAcceptedType string
+type EntityItemServiceControlsAcceptedType struct {
+}
 
-type EntityItemServiceCurrentStateType string
+type EntityItemServiceCurrentStateType struct {
+}
 
-type EntityItemServiceStartTypeType string
+type EntityItemServiceStartTypeType struct {
+}
 
-type EntityItemServiceTypeType string
+type EntityItemServiceTypeType struct {
+}
 
-type EntityItemSharedResourceTypeType string
+type EntityItemSharedResourceTypeType struct {
+}
 
-type EntityItemSystemMetricIndexType string
+type EntityItemSystemMetricIndexType struct {
+}
 
-type EntityItemGUIDType string
+type EntityItemGUIDType struct {
+}
 
-type EntityItemCmdletVerbType string
+type EntityItemCmdletVerbType struct {
+}
 
-type EntityItemWindowsViewType string
+type EntityItemWindowsViewType struct {
+}
 
-type EntityItemUserRightType string
+type EntityItemUserRightType struct {
+}

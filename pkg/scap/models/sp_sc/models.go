@@ -88,12 +88,17 @@ type SppolicyItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemUrlZoneType string
+type EntityItemUrlZoneType struct {
+}
 
-type EntityItemEventSeverityType string
+type EntityItemEventSeverityType struct {
+}
 
-type EntityItemTraceSeverityType string
+type EntityItemTraceSeverityType struct {
+}
 
-type EntityItemPolicyFeatureStateType string
+type EntityItemPolicyFeatureStateType struct {
+}
 
-type EntityItemPolicyRoleType string
+type EntityItemPolicyRoleType struct {
+}

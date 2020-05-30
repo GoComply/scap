@@ -263,20 +263,29 @@ type XinetdState struct {
 
 // XSD ComplexType declarations
 
-type FileBehaviors string
+type FileBehaviors struct {
+}
 
-type EntityStateCapabilityType string
+type EntityStateCapabilityType struct {
+}
 
-type EntityStateEndpointType string
+type EntityStateEndpointType struct {
+}
 
-type EntityStateGconfTypeType string
+type EntityStateGconfTypeType struct {
+}
 
-type EntityStateRoutingTableFlagsType string
+type EntityStateRoutingTableFlagsType struct {
+}
 
-type EntityStateXinetdTypeStatusType string
+type EntityStateXinetdTypeStatusType struct {
+}
 
-type EntityStateWaitStatusType string
+type EntityStateWaitStatusType struct {
+}
 
-type EntityStateEncryptMethodType string
+type EntityStateEncryptMethodType struct {
+}
 
-type EntityStateInterfaceType string
+type EntityStateInterfaceType struct {
+}

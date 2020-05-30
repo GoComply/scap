@@ -9,6 +9,8 @@ import (
 
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
+
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
@@ -31,32 +33,75 @@ type OvalResults struct {
 
 // XSD ComplexType declarations
 
-type DirectivesType string
+type DirectivesType struct {
+	DefinitionTrue DirectiveType `xml:"definition_true"`
 
-type DefaultDirectivesType string
+	DefinitionFalse DirectiveType `xml:"definition_false"`
 
-type ClassDirectivesType string
+	DefinitionUnknown DirectiveType `xml:"definition_unknown"`
 
-type DirectiveType string
+	DefinitionError DirectiveType `xml:"definition_error"`
 
-type ResultsType string
+	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
-type SystemType string
+	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
+}
 
-type DefinitionsType string
+type DefaultDirectivesType struct {
+}
 
-type DefinitionType string
+type ClassDirectivesType struct {
+}
 
-type CriteriaType string
+type DirectiveType struct {
+}
 
-type CriterionType string
+type ResultsType struct {
+	System []SystemType `xml:"system"`
+}
 
-type ExtendDefinitionType string
+type SystemType struct {
+	Definitions DefinitionsType `xml:"definitions"`
 
-type TestsType string
+	Tests TestsType `xml:"tests"`
 
-type TestType string
+	OvalSystemCharacteristics oval_sc.OvalSystemCharacteristics `xml:"oval_system_characteristics"`
+}
 
-type TestedItemType string
+type DefinitionsType struct {
+	Definition []DefinitionType `xml:"definition"`
+}
 
-type TestedVariableType string
+type DefinitionType struct {
+	Message []oval.MessageType `xml:"message"`
+
+	Criteria CriteriaType `xml:"criteria"`
+}
+
+type CriteriaType struct {
+}
+
+type CriterionType struct {
+}
+
+type ExtendDefinitionType struct {
+}
+
+type TestsType struct {
+	Test []TestType `xml:"test"`
+}
+
+type TestType struct {
+	Message []oval.MessageType `xml:"message"`
+
+	TestedItem []TestedItemType `xml:"tested_item"`
+
+	TestedVariable []TestedVariableType `xml:"tested_variable"`
+}
+
+type TestedItemType struct {
+	Message []oval.MessageType `xml:"message"`
+}
+
+type TestedVariableType struct {
+}

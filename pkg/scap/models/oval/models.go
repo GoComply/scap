@@ -9,30 +9,73 @@ import (
 // Element
 type DeprecatedInfo struct {
 	XMLName xml.Name `xml:deprecated_info`
+
+	Version string `xml:"version"`
+
+	Reason string `xml:"reason"`
+
+	Comment string `xml:"comment"`
 }
 
 // Element
 type ElementMapping struct {
 	XMLName xml.Name `xml:element_mapping`
+
+	Test ElementMapItemType `xml:"test"`
+
+	Object ElementMapItemType `xml:"object"`
+
+	State ElementMapItemType `xml:"state"`
+
+	Item ElementMapItemType `xml:"item"`
 }
 
 // Element
 type Notes struct {
 	XMLName xml.Name `xml:notes`
+
+	Note []string `xml:"note"`
 }
 
 // XSD ComplexType declarations
 
-type ElementMapType string
+type ElementMapType struct {
+	Test ElementMapItemType `xml:"test"`
 
-type ElementMapItemType string
+	Object ElementMapItemType `xml:"object"`
 
-type DeprecatedInfoType string
+	State ElementMapItemType `xml:"state"`
 
-type GeneratorType string
+	Item ElementMapItemType `xml:"item"`
+}
 
-type SchemaVersionType string
+type ElementMapItemType struct {
+}
 
-type MessageType string
+type DeprecatedInfoType struct {
+	Version string `xml:"version"`
 
-type NotesType string
+	Reason string `xml:"reason"`
+
+	Comment string `xml:"comment"`
+}
+
+type GeneratorType struct {
+	ProductName string `xml:"product_name"`
+
+	ProductVersion string `xml:"product_version"`
+
+	SchemaVersion []SchemaVersionType `xml:"schema_version"`
+
+	Timestamp string `xml:"timestamp"`
+}
+
+type SchemaVersionType struct {
+}
+
+type MessageType struct {
+}
+
+type NotesType struct {
+	Note []string `xml:"note"`
+}

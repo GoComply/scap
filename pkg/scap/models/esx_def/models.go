@@ -68,12 +68,17 @@ type VisdkmanagedobjectState struct {
 
 // XSD ComplexType declarations
 
-type Patch56Behaviors string
+type Patch56Behaviors struct {
+}
 
-type PatchBehaviors string
+type PatchBehaviors struct {
+}
 
-type ViSdkManagedEntityBehaviors string
+type ViSdkManagedEntityBehaviors struct {
+}
 
-type EntityStateClassificationType string
+type EntityStateClassificationType struct {
+}
 
-type EntityStateSupportLevelType string
+type EntityStateSupportLevelType struct {
+}

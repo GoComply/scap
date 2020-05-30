@@ -78,6 +78,24 @@ type Model struct {
 // Element
 type Item struct {
 	XMLName xml.Name `xml:Item`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version VersionType `xml:"version"`
+
+	Title []TextWithSubType `xml:"title"`
+
+	Description []HtmlTextWithSubType `xml:"description"`
+
+	Warning []WarningType `xml:"warning"`
+
+	Question []TextType `xml:"question"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Metadata []MetadataType `xml:"metadata"`
 }
 
 // Element
@@ -98,138 +116,368 @@ type Value struct {
 // Element
 type Profile struct {
 	XMLName xml.Name `xml:Profile`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version VersionType `xml:"version"`
+
+	Title []TextWithSubType `xml:"title"`
+
+	Description []HtmlTextWithSubType `xml:"description"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Metadata []MetadataType `xml:"metadata"`
+
+	Signature SignatureType `xml:"signature"`
 }
 
 // Element
 type TestResult struct {
 	XMLName xml.Name `xml:TestResult`
+
+	Benchmark BenchmarkReferenceType `xml:"benchmark"`
+
+	TailoringFile TailoringReferenceType `xml:"tailoring-file"`
+
+	Title []TextType `xml:"title"`
+
+	Remark []TextType `xml:"remark"`
+
+	Organization []string `xml:"organization"`
+
+	Identity IdentityType `xml:"identity"`
+
+	Profile IdrefType `xml:"profile"`
+
+	Target []string `xml:"target"`
+
+	TargetAddress []string `xml:"target-address"`
+
+	TargetFacts TargetFactsType `xml:"target-facts"`
+
+	Platform []CPE2IdrefType `xml:"platform"`
+
+	RuleResult []RuleResultType `xml:"rule-result"`
+
+	Score []ScoreType `xml:"score"`
+
+	Metadata []MetadataType `xml:"metadata"`
+
+	Signature SignatureType `xml:"signature"`
 }
 
 // Element
 type Tailoring struct {
 	XMLName xml.Name `xml:Tailoring`
+
+	Benchmark TailoringBenchmarkReferenceType `xml:"benchmark"`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version TailoringVersionType `xml:"version"`
+
+	Metadata []MetadataType `xml:"metadata"`
+
+	Profile []Profile `xml:"Profile"`
+
+	Signature SignatureType `xml:"signature"`
 }
 
 // XSD ComplexType declarations
 
-type NoticeType string
+type NoticeType struct {
+}
 
-type DcStatusType string
+type DcStatusType struct {
+}
 
-type PlainTextType string
+type PlainTextType struct {
+}
 
-type ReferenceType string
+type ReferenceType struct {
+}
 
-type SignatureType string
+type SignatureType struct {
+}
 
-type MetadataType string
+type MetadataType struct {
+}
 
-type ParamType string
+type ParamType struct {
+}
 
-type VersionType string
+type VersionType struct {
+}
 
-type TextType string
+type TextType struct {
+}
 
-type HtmlTextType string
+type HtmlTextType struct {
+}
 
-type HtmlTextWithSubType string
+type HtmlTextWithSubType struct {
+}
 
-type ProfileNoteType string
+type ProfileNoteType struct {
+}
 
-type TextWithSubType string
+type TextWithSubType struct {
+	Sub []SubType `xml:"sub"`
+}
 
-type SubType string
+type SubType struct {
+}
 
-type IdrefType string
+type IdrefType struct {
+}
 
-type IdrefListType string
+type IdrefListType struct {
+}
 
-type CPE2IdrefType string
+type CPE2IdrefType struct {
+}
 
-type OverrideableCPE2IdrefType string
+type OverrideableCPE2IdrefType struct {
+}
 
-type ItemType string
+type ItemType struct {
+	Status []Status `xml:"status"`
 
-type SelectableItemType string
+	DcStatus []DcStatusType `xml:"dc-status"`
 
-type GroupType string
+	Version VersionType `xml:"version"`
 
-type RuleType string
+	Title []TextWithSubType `xml:"title"`
 
-type IdentType string
+	Description []HtmlTextWithSubType `xml:"description"`
 
-type WarningType string
+	Warning []WarningType `xml:"warning"`
 
-type FixTextType string
+	Question []TextType `xml:"question"`
 
-type FixType string
+	Reference []ReferenceType `xml:"reference"`
 
-type InstanceFixType string
+	Metadata []MetadataType `xml:"metadata"`
+}
 
-type ComplexCheckType string
+type SelectableItemType struct {
+}
 
-type CheckType string
+type GroupType struct {
+}
 
-type CheckImportType string
+type RuleType struct {
+}
 
-type CheckExportType string
+type IdentType struct {
+}
 
-type CheckContentRefType string
+type WarningType struct {
+}
 
-type CheckContentType string
+type FixTextType struct {
+}
 
-type ValueType string
+type FixType struct {
+}
 
-type ComplexValueType string
+type InstanceFixType struct {
+}
 
-type SelComplexValueType string
+type ComplexCheckType struct {
+}
 
-type SelChoicesType string
+type CheckType struct {
+	CheckImport []CheckImportType `xml:"check-import"`
 
-type SelStringType string
+	CheckExport []CheckExportType `xml:"check-export"`
 
-type SelNumType string
+	CheckContentRef []CheckContentRefType `xml:"check-content-ref"`
 
-type UriRefType string
+	CheckContent CheckContentType `xml:"check-content"`
+}
 
-type ProfileType string
+type CheckImportType struct {
+}
 
-type ProfileSelectType string
+type CheckExportType struct {
+}
 
-type ProfileSetValueType string
+type CheckContentRefType struct {
+}
 
-type ProfileSetComplexValueType string
+type CheckContentType struct {
+}
 
-type ProfileRefineValueType string
+type ValueType struct {
+}
 
-type ProfileRefineRuleType string
+type ComplexValueType struct {
+	Item []string `xml:"item"`
+}
 
-type TestResultType string
+type SelComplexValueType struct {
+}
 
-type BenchmarkReferenceType string
+type SelChoicesType struct {
+}
 
-type ScoreType string
+type SelStringType struct {
+}
 
-type TargetFactsType string
+type SelNumType struct {
+}
 
-type TargetIdRefType string
+type UriRefType struct {
+}
 
-type IdentityType string
+type ProfileType struct {
+	Status []Status `xml:"status"`
 
-type FactType string
+	DcStatus []DcStatusType `xml:"dc-status"`
 
-type TailoringReferenceType string
+	Version VersionType `xml:"version"`
 
-type RuleResultType string
+	Title []TextWithSubType `xml:"title"`
 
-type InstanceResultType string
+	Description []HtmlTextWithSubType `xml:"description"`
 
-type OverrideType string
+	Reference []ReferenceType `xml:"reference"`
 
-type MessageType string
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
 
-type TailoringType string
+	Metadata []MetadataType `xml:"metadata"`
 
-type TailoringBenchmarkReferenceType string
+	Signature SignatureType `xml:"signature"`
+}
 
-type TailoringVersionType string
+type ProfileSelectType struct {
+	Remark []TextType `xml:"remark"`
+}
+
+type ProfileSetValueType struct {
+}
+
+type ProfileSetComplexValueType struct {
+}
+
+type ProfileRefineValueType struct {
+	Remark []TextType `xml:"remark"`
+}
+
+type ProfileRefineRuleType struct {
+	Remark []TextType `xml:"remark"`
+}
+
+type TestResultType struct {
+	Benchmark BenchmarkReferenceType `xml:"benchmark"`
+
+	TailoringFile TailoringReferenceType `xml:"tailoring-file"`
+
+	Title []TextType `xml:"title"`
+
+	Remark []TextType `xml:"remark"`
+
+	Organization []string `xml:"organization"`
+
+	Identity IdentityType `xml:"identity"`
+
+	Profile IdrefType `xml:"profile"`
+
+	Target []string `xml:"target"`
+
+	TargetAddress []string `xml:"target-address"`
+
+	TargetFacts TargetFactsType `xml:"target-facts"`
+
+	Platform []CPE2IdrefType `xml:"platform"`
+
+	RuleResult []RuleResultType `xml:"rule-result"`
+
+	Score []ScoreType `xml:"score"`
+
+	Metadata []MetadataType `xml:"metadata"`
+
+	Signature SignatureType `xml:"signature"`
+}
+
+type BenchmarkReferenceType struct {
+}
+
+type ScoreType struct {
+}
+
+type TargetFactsType struct {
+	Fact []FactType `xml:"fact"`
+}
+
+type TargetIdRefType struct {
+}
+
+type IdentityType struct {
+}
+
+type FactType struct {
+}
+
+type TailoringReferenceType struct {
+}
+
+type RuleResultType struct {
+	Result string `xml:"result"`
+
+	Override []OverrideType `xml:"override"`
+
+	Ident []IdentType `xml:"ident"`
+
+	Metadata []MetadataType `xml:"metadata"`
+
+	Message []MessageType `xml:"message"`
+
+	Instance []InstanceResultType `xml:"instance"`
+
+	Fix []FixType `xml:"fix"`
+}
+
+type InstanceResultType struct {
+}
+
+type OverrideType struct {
+	OldResult string `xml:"old-result"`
+
+	NewResult string `xml:"new-result"`
+
+	Remark TextType `xml:"remark"`
+}
+
+type MessageType struct {
+}
+
+type TailoringType struct {
+	Benchmark TailoringBenchmarkReferenceType `xml:"benchmark"`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version TailoringVersionType `xml:"version"`
+
+	Metadata []MetadataType `xml:"metadata"`
+
+	Profile []Profile `xml:"Profile"`
+
+	Signature SignatureType `xml:"signature"`
+}
+
+type TailoringBenchmarkReferenceType struct {
+}
+
+type TailoringVersionType struct {
+}

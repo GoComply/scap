@@ -9,11 +9,29 @@ import (
 // Element
 type Ocil struct {
 	XMLName xml.Name `xml:ocil`
+
+	Generator GeneratorType `xml:"generator"`
+
+	Document DocumentType `xml:"document"`
+
+	Questionnaires QuestionnairesType `xml:"questionnaires"`
+
+	TestActions TestActionsType `xml:"test_actions"`
+
+	Questions QuestionsType `xml:"questions"`
+
+	Artifacts ArtifactsType `xml:"artifacts"`
+
+	Variables VariablesType `xml:"variables"`
+
+	Results ResultsType `xml:"results"`
 }
 
 // Element
 type TestAction struct {
 	XMLName xml.Name `xml:test_action`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
@@ -149,6 +167,8 @@ type ReferenceArtifactValue struct {
 // Element
 type Expression struct {
 	XMLName xml.Name `xml:expression`
+
+	Value string `xml:"value"`
 }
 
 // Element
@@ -173,156 +193,314 @@ type WhenBoolean struct {
 
 // XSD ComplexType declarations
 
-type OCILType string
+type OCILType struct {
+	Generator GeneratorType `xml:"generator"`
 
-type QuestionnairesType string
+	Document DocumentType `xml:"document"`
 
-type QuestionnaireType string
+	Questionnaires QuestionnairesType `xml:"questionnaires"`
 
-type GeneratorType string
+	TestActions TestActionsType `xml:"test_actions"`
 
-type ExtensionContainerType string
+	Questions QuestionsType `xml:"questions"`
 
-type DocumentType string
+	Artifacts ArtifactsType `xml:"artifacts"`
 
-type TestActionsType string
+	Variables VariablesType `xml:"variables"`
 
-type QuestionTestActionType string
+	Results ResultsType `xml:"results"`
+}
 
-type BooleanQuestionTestActionType string
+type QuestionnairesType struct {
+	Questionnaire []QuestionnaireType `xml:"questionnaire"`
+}
 
-type ChoiceQuestionTestActionType string
+type QuestionnaireType struct {
+}
 
-type NumericQuestionTestActionType string
+type GeneratorType struct {
+	ProductName string `xml:"product_name"`
 
-type StringQuestionTestActionType string
+	ProductVersion string `xml:"product_version"`
 
-type TestActionRefType string
+	Author []UserType `xml:"author"`
 
-type ChoiceTestActionConditionType string
+	SchemaVersion float64 `xml:"schema_version"`
 
-type EqualsTestActionConditionType string
+	Timestamp string `xml:"timestamp"`
 
-type RangeTestActionConditionType string
+	AdditionalData ExtensionContainerType `xml:"additional_data"`
+}
 
-type PatternTestActionConditionType string
+type ExtensionContainerType struct {
+}
 
-type PatternType string
+type DocumentType struct {
+	Title string `xml:"title"`
 
-type RangeType string
+	Description []string `xml:"description"`
 
-type TestActionConditionType string
+	Notice []string `xml:"notice"`
+}
 
-type RangeValueType string
+type TestActionsType struct {
+	TestAction []TestAction `xml:"test_action"`
+}
 
-type QuestionsType string
+type QuestionTestActionType struct {
+}
 
-type QuestionTextType string
+type BooleanQuestionTestActionType struct {
+}
 
-type QuestionType string
+type ChoiceQuestionTestActionType struct {
+}
 
-type BooleanQuestionType string
+type NumericQuestionTestActionType struct {
+}
 
-type ChoiceQuestionType string
+type StringQuestionTestActionType struct {
+}
 
-type NumericQuestionType string
+type TestActionRefType struct {
+}
 
-type StringQuestionType string
+type ChoiceTestActionConditionType struct {
+}
 
-type ChoiceType string
+type EqualsTestActionConditionType struct {
+}
 
-type ChoiceGroupType string
+type RangeTestActionConditionType struct {
+}
 
-type InstructionsType string
+type PatternTestActionConditionType struct {
+}
 
-type ResultsType string
+type PatternType struct {
+}
 
-type QuestionnaireResultsType string
+type RangeType struct {
+	Min RangeValueType `xml:"min"`
 
-type TestActionResultsType string
+	Max RangeValueType `xml:"max"`
+}
 
-type QuestionResultsType string
+type TestActionConditionType struct {
+	ArtifactRefs ArtifactRefsType `xml:"artifact_refs"`
+}
 
-type QuestionnaireResultType string
+type RangeValueType struct {
+}
 
-type TestActionResultType string
+type QuestionsType struct {
+	Question []Question `xml:"question"`
 
-type QuestionResultType string
+	ChoiceGroup []ChoiceGroupType `xml:"choice_group"`
+}
 
-type BooleanQuestionResultType string
+type QuestionTextType struct {
+	Sub []SubstitutionTextType `xml:"sub"`
+}
 
-type ChoiceQuestionResultType string
+type QuestionType struct {
+}
 
-type NumericQuestionResultType string
+type BooleanQuestionType struct {
+}
 
-type StringQuestionResultType string
+type ChoiceQuestionType struct {
+}
 
-type ChoiceAnswerType string
+type NumericQuestionType struct {
+}
 
-type ArtifactsType string
+type StringQuestionType struct {
+}
 
-type ArtifactType string
+type ChoiceType struct {
+}
 
-type ArtifactRefsType string
+type ChoiceGroupType struct {
+	Choice []ChoiceType `xml:"choice"`
+}
 
-type ArtifactRefType string
+type InstructionsType struct {
+	Title TextType `xml:"title"`
 
-type ArtifactResultsType string
+	Step []StepType `xml:"step"`
+}
 
-type ArtifactValueType string
+type ResultsType struct {
+	Title TextType `xml:"title"`
 
-type EmbeddedArtifactValueType string
+	QuestionnaireResults QuestionnaireResultsType `xml:"questionnaire_results"`
 
-type TextArtifactValueType string
+	TestActionResults TestActionResultsType `xml:"test_action_results"`
 
-type BinaryArtifactValueType string
+	QuestionResults QuestionResultsType `xml:"question_results"`
 
-type ReferenceArtifactValueType string
+	ArtifactResults ArtifactResultsType `xml:"artifact_results"`
 
-type ArtifactResultType string
+	Targets TargetsType `xml:"targets"`
+}
 
-type TargetsType string
+type QuestionnaireResultsType struct {
+	QuestionnaireResult []QuestionnaireResultType `xml:"questionnaire_result"`
+}
 
-type UserType string
+type TestActionResultsType struct {
+	TestActionResult []TestActionResultType `xml:"test_action_result"`
+}
 
-type SystemTargetType string
+type QuestionResultsType struct {
+	QuestionResult []QuestionResult `xml:"question_result"`
+}
 
-type VariablesType string
+type QuestionnaireResultType struct {
+	ArtifactResults ArtifactResultsType `xml:"artifact_results"`
+}
 
-type VariableType string
+type TestActionResultType struct {
+	ArtifactResults ArtifactResultsType `xml:"artifact_results"`
+}
 
-type ConstantVariableType string
+type QuestionResultType struct {
+}
 
-type LocalVariableType string
+type BooleanQuestionResultType struct {
+}
 
-type ExternalVariableType string
+type ChoiceQuestionResultType struct {
+}
 
-type SetExpressionBaseType string
+type NumericQuestionResultType struct {
+}
 
-type SetExpressionPatternType string
+type StringQuestionResultType struct {
+}
 
-type SetExpressionChoiceType string
+type ChoiceAnswerType struct {
+}
 
-type SetExpressionRangeType string
+type ArtifactsType struct {
+	Artifact []ArtifactType `xml:"artifact"`
+}
 
-type SetExpressionBooleanType string
+type ArtifactType struct {
+}
 
-type VariableSetType string
+type ArtifactRefsType struct {
+	ArtifactRef []ArtifactRefType `xml:"artifact_ref"`
+}
 
-type SubstitutionTextType string
+type ArtifactRefType struct {
+}
 
-type ReferenceType string
+type ArtifactResultsType struct {
+	ArtifactResult []ArtifactResultType `xml:"artifact_result"`
+}
 
-type StepType string
+type ArtifactValueType struct {
+}
 
-type ItemBaseType string
+type EmbeddedArtifactValueType struct {
+}
 
-type NamedItemBaseType string
+type TextArtifactValueType struct {
+}
 
-type CompoundTestActionType string
+type BinaryArtifactValueType struct {
+}
 
-type ReferencesType string
+type ReferenceArtifactValueType struct {
+}
 
-type OperationType string
+type ArtifactResultType struct {
+	ArtifactValue ArtifactValue `xml:"artifact_value"`
 
-type TextType string
+	Provider string `xml:"provider"`
+
+	Submitter UserType `xml:"submitter"`
+}
+
+type TargetsType struct {
+	Target []Target `xml:"target"`
+}
+
+type UserType struct {
+}
+
+type SystemTargetType struct {
+}
+
+type VariablesType struct {
+	Variable []Variable `xml:"variable"`
+}
+
+type VariableType struct {
+}
+
+type ConstantVariableType struct {
+}
+
+type LocalVariableType struct {
+}
+
+type ExternalVariableType struct {
+}
+
+type SetExpressionBaseType struct {
+	Value string `xml:"value"`
+}
+
+type SetExpressionPatternType struct {
+}
+
+type SetExpressionChoiceType struct {
+}
+
+type SetExpressionRangeType struct {
+}
+
+type SetExpressionBooleanType struct {
+}
+
+type VariableSetType struct {
+	Expression []Expression `xml:"expression"`
+}
+
+type SubstitutionTextType struct {
+}
+
+type ReferenceType struct {
+}
+
+type StepType struct {
+	Description TextType `xml:"description"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Step []StepType `xml:"step"`
+}
+
+type ItemBaseType struct {
+	Notes []string `xml:"notes"`
+}
+
+type NamedItemBaseType struct {
+}
+
+type CompoundTestActionType struct {
+}
+
+type ReferencesType struct {
+	Reference []ReferenceType `xml:"reference"`
+}
+
+type OperationType struct {
+	TestActionRef []TestActionRefType `xml:"test_action_ref"`
+}
+
+type TextType struct {
+}

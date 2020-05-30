@@ -203,22 +203,32 @@ type TelephonyState struct {
 
 // XSD ComplexType declarations
 
-type EntityStateEncryptionStatusType string
+type EntityStateEncryptionStatusType struct {
+}
 
-type EntityStateKeyguardDisabledFeaturesType string
+type EntityStateKeyguardDisabledFeaturesType struct {
+}
 
-type EntityStateNetworkType string
+type EntityStateNetworkType struct {
+}
 
-type EntityStatePasswordQualityType string
+type EntityStatePasswordQualityType struct {
+}
 
-type EntityStateWifiAuthAlgorithmType string
+type EntityStateWifiAuthAlgorithmType struct {
+}
 
-type EntityStateWifiCurrentStatusType string
+type EntityStateWifiCurrentStatusType struct {
+}
 
-type EntityStateWifiGroupCipherType string
+type EntityStateWifiGroupCipherType struct {
+}
 
-type EntityStateWifiKeyMgmtType string
+type EntityStateWifiKeyMgmtType struct {
+}
 
-type EntityStateWifiPairwiseCipherType string
+type EntityStateWifiPairwiseCipherType struct {
+}
 
-type EntityStateWifiProtocolType string
+type EntityStateWifiProtocolType struct {
+}

@@ -83,8 +83,11 @@ type OslevelState struct {
 
 // XSD ComplexType declarations
 
-type EntityStateFilesetStateType string
+type EntityStateFilesetStateType struct {
+}
 
-type EntityStateFixInstallationStatusType string
+type EntityStateFixInstallationStatusType struct {
+}
 
-type EntityStateInterimFixStateType string
+type EntityStateInterimFixStateType struct {
+}

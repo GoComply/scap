@@ -81,6 +81,9 @@ type ComponentRef struct {
 
 // XSD ComplexType declarations
 
-type ContentSourceType string
+type ContentSourceType struct {
+}
 
-type RefListType string
+type RefListType struct {
+	ComponentRef []ComponentRef `xml:"component-ref"`
+}

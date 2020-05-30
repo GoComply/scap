@@ -28,14 +28,20 @@ type Arc struct {
 
 // XSD ComplexType declarations
 
-type Simple string
+type Simple struct {
+}
 
-type Extended string
+type Extended struct {
+}
 
-type TitleEltType string
+type TitleEltType struct {
+}
 
-type ResourceType string
+type ResourceType struct {
+}
 
-type LocatorType string
+type LocatorType struct {
+}
 
-type ArcType string
+type ArcType struct {
+}
