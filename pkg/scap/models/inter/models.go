@@ -12,7 +12,7 @@ type Ocil struct {
 
 	Generator GeneratorType `xml:"generator"`
 
-	Document DocumentType `xml:"document"`
+	Document *DocumentType `xml:"document"`
 
 	Questionnaires QuestionnairesType `xml:"questionnaires"`
 
@@ -20,11 +20,11 @@ type Ocil struct {
 
 	Questions QuestionsType `xml:"questions"`
 
-	Artifacts ArtifactsType `xml:"artifacts"`
+	Artifacts *ArtifactsType `xml:"artifacts"`
 
-	Variables VariablesType `xml:"variables"`
+	Variables *VariablesType `xml:"variables"`
 
-	Results ResultsType `xml:"results"`
+	Results *ResultsType `xml:"results"`
 }
 
 // Element
@@ -196,7 +196,7 @@ type WhenBoolean struct {
 type OCILType struct {
 	Generator GeneratorType `xml:"generator"`
 
-	Document DocumentType `xml:"document"`
+	Document *DocumentType `xml:"document"`
 
 	Questionnaires QuestionnairesType `xml:"questionnaires"`
 
@@ -204,11 +204,11 @@ type OCILType struct {
 
 	Questions QuestionsType `xml:"questions"`
 
-	Artifacts ArtifactsType `xml:"artifacts"`
+	Artifacts *ArtifactsType `xml:"artifacts"`
 
-	Variables VariablesType `xml:"variables"`
+	Variables *VariablesType `xml:"variables"`
 
-	Results ResultsType `xml:"results"`
+	Results *ResultsType `xml:"results"`
 }
 
 type QuestionnairesType struct {
@@ -281,13 +281,13 @@ type PatternType struct {
 }
 
 type RangeType struct {
-	Min RangeValueType `xml:"min"`
+	Min *RangeValueType `xml:"min"`
 
-	Max RangeValueType `xml:"max"`
+	Max *RangeValueType `xml:"max"`
 }
 
 type TestActionConditionType struct {
-	ArtifactRefs ArtifactRefsType `xml:"artifact_refs"`
+	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 }
 
 type RangeValueType struct {
@@ -332,17 +332,17 @@ type InstructionsType struct {
 }
 
 type ResultsType struct {
-	Title TextType `xml:"title"`
+	Title *TextType `xml:"title"`
 
-	QuestionnaireResults QuestionnaireResultsType `xml:"questionnaire_results"`
+	QuestionnaireResults *QuestionnaireResultsType `xml:"questionnaire_results"`
 
-	TestActionResults TestActionResultsType `xml:"test_action_results"`
+	TestActionResults *TestActionResultsType `xml:"test_action_results"`
 
-	QuestionResults QuestionResultsType `xml:"question_results"`
+	QuestionResults *QuestionResultsType `xml:"question_results"`
 
-	ArtifactResults ArtifactResultsType `xml:"artifact_results"`
+	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 
-	Targets TargetsType `xml:"targets"`
+	Targets *TargetsType `xml:"targets"`
 }
 
 type QuestionnaireResultsType struct {
@@ -358,11 +358,11 @@ type QuestionResultsType struct {
 }
 
 type QuestionnaireResultType struct {
-	ArtifactResults ArtifactResultsType `xml:"artifact_results"`
+	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 }
 
 type TestActionResultType struct {
-	ArtifactResults ArtifactResultsType `xml:"artifact_results"`
+	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 }
 
 type QuestionResultType struct {
@@ -477,7 +477,7 @@ type ReferenceType struct {
 }
 
 type StepType struct {
-	Description TextType `xml:"description"`
+	Description *TextType `xml:"description"`
 
 	Reference []ReferenceType `xml:"reference"`
 

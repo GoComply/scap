@@ -18,11 +18,11 @@ type OvalSystemCharacteristics struct {
 
 	SystemInfo SystemInfoType `xml:"system_info"`
 
-	CollectedObjects CollectedObjectsType `xml:"collected_objects"`
+	CollectedObjects *CollectedObjectsType `xml:"collected_objects"`
 
-	SystemData SystemDataType `xml:"system_data"`
+	SystemData *SystemDataType `xml:"system_data"`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 }
 
 // Element

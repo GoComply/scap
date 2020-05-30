@@ -16,17 +16,17 @@ type OvalDefinitions struct {
 
 	Generator oval.GeneratorType `xml:"generator"`
 
-	Definitions DefinitionsType `xml:"definitions"`
+	Definitions *DefinitionsType `xml:"definitions"`
 
-	Tests TestsType `xml:"tests"`
+	Tests *TestsType `xml:"tests"`
 
-	Objects ObjectsType `xml:"objects"`
+	Objects *ObjectsType `xml:"objects"`
 
-	States StatesType `xml:"states"`
+	States *StatesType `xml:"states"`
 
-	Variables VariablesType `xml:"variables"`
+	Variables *VariablesType `xml:"variables"`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 }
 
 // Element
@@ -38,31 +38,31 @@ type Notes struct {
 type Definition struct {
 	XMLName xml.Name `xml:definition`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Metadata MetadataType `xml:"metadata"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 
-	Criteria CriteriaType `xml:"criteria"`
+	Criteria *CriteriaType `xml:"criteria"`
 }
 
 // Element
 type Test struct {
 	XMLName xml.Name `xml:test`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type Object struct {
 	XMLName xml.Name `xml:object`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
@@ -81,18 +81,18 @@ type Filter struct {
 type State struct {
 	XMLName xml.Name `xml:state`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type Variable struct {
 	XMLName xml.Name `xml:variable`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
@@ -117,13 +117,13 @@ type DefinitionsType struct {
 }
 
 type DefinitionType struct {
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Metadata MetadataType `xml:"metadata"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 
-	Criteria CriteriaType `xml:"criteria"`
+	Criteria *CriteriaType `xml:"criteria"`
 }
 
 type MetadataType struct {
@@ -159,9 +159,9 @@ type TestsType struct {
 }
 
 type TestType struct {
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 type ObjectRefType struct {
@@ -175,9 +175,9 @@ type ObjectsType struct {
 }
 
 type ObjectType struct {
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 type StatesType struct {
@@ -185,9 +185,9 @@ type StatesType struct {
 }
 
 type StateType struct {
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 type VariablesType struct {
@@ -195,9 +195,9 @@ type VariablesType struct {
 }
 
 type VariableType struct {
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 
-	Notes oval.Notes `xml:"notes"`
+	Notes *oval.Notes `xml:"notes"`
 }
 
 type PossibleValueType struct {

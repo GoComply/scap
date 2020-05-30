@@ -10,7 +10,7 @@ import (
 type CpeList struct {
 	XMLName xml.Name `xml:cpe-list`
 
-	Generator GeneratorType `xml:"generator"`
+	Generator *GeneratorType `xml:"generator"`
 
 	CpeItem []CpeItem `xml:"cpe-item"`
 }
@@ -23,7 +23,7 @@ type CpeItem struct {
 
 	Notes []NotesType `xml:"notes"`
 
-	References ReferencesType `xml:"references"`
+	References *ReferencesType `xml:"references"`
 
 	Check []CheckType `xml:"check"`
 }
@@ -50,13 +50,13 @@ type ItemType struct {
 
 	Notes []NotesType `xml:"notes"`
 
-	References ReferencesType `xml:"references"`
+	References *ReferencesType `xml:"references"`
 
 	Check []CheckType `xml:"check"`
 }
 
 type ListType struct {
-	Generator GeneratorType `xml:"generator"`
+	Generator *GeneratorType `xml:"generator"`
 
 	CpeItem []CpeItem `xml:"cpe-item"`
 }

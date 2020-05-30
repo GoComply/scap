@@ -42,7 +42,7 @@ type Benchmark struct {
 
 	PlainText []PlainTextType `xml:"plain-text"`
 
-	PlatformSpecification cpe.PlatformSpecification `xml:"platform-specification"`
+	PlatformSpecification *cpe.PlatformSpecification `xml:"platform-specification"`
 
 	Platform []CPE2IdrefType `xml:"platform"`
 
@@ -58,7 +58,7 @@ type Benchmark struct {
 
 	TestResult []TestResult `xml:"TestResult"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 // Element
@@ -83,7 +83,7 @@ type Item struct {
 
 	DcStatus []DcStatusType `xml:"dc-status"`
 
-	Version VersionType `xml:"version"`
+	Version *VersionType `xml:"version"`
 
 	Title []TextWithSubType `xml:"title"`
 
@@ -121,7 +121,7 @@ type Profile struct {
 
 	DcStatus []DcStatusType `xml:"dc-status"`
 
-	Version VersionType `xml:"version"`
+	Version *VersionType `xml:"version"`
 
 	Title []TextWithSubType `xml:"title"`
 
@@ -133,16 +133,16 @@ type Profile struct {
 
 	Metadata []MetadataType `xml:"metadata"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 // Element
 type TestResult struct {
 	XMLName xml.Name `xml:TestResult`
 
-	Benchmark BenchmarkReferenceType `xml:"benchmark"`
+	Benchmark *BenchmarkReferenceType `xml:"benchmark"`
 
-	TailoringFile TailoringReferenceType `xml:"tailoring-file"`
+	TailoringFile *TailoringReferenceType `xml:"tailoring-file"`
 
 	Title []TextType `xml:"title"`
 
@@ -150,15 +150,15 @@ type TestResult struct {
 
 	Organization []string `xml:"organization"`
 
-	Identity IdentityType `xml:"identity"`
+	Identity *IdentityType `xml:"identity"`
 
-	Profile IdrefType `xml:"profile"`
+	Profile *IdrefType `xml:"profile"`
 
 	Target []string `xml:"target"`
 
 	TargetAddress []string `xml:"target-address"`
 
-	TargetFacts TargetFactsType `xml:"target-facts"`
+	TargetFacts *TargetFactsType `xml:"target-facts"`
 
 	Platform []CPE2IdrefType `xml:"platform"`
 
@@ -168,14 +168,14 @@ type TestResult struct {
 
 	Metadata []MetadataType `xml:"metadata"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 // Element
 type Tailoring struct {
 	XMLName xml.Name `xml:Tailoring`
 
-	Benchmark TailoringBenchmarkReferenceType `xml:"benchmark"`
+	Benchmark *TailoringBenchmarkReferenceType `xml:"benchmark"`
 
 	Status []Status `xml:"status"`
 
@@ -187,7 +187,7 @@ type Tailoring struct {
 
 	Profile []Profile `xml:"Profile"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 // XSD ComplexType declarations
@@ -252,7 +252,7 @@ type ItemType struct {
 
 	DcStatus []DcStatusType `xml:"dc-status"`
 
-	Version VersionType `xml:"version"`
+	Version *VersionType `xml:"version"`
 
 	Title []TextWithSubType `xml:"title"`
 
@@ -301,7 +301,7 @@ type CheckType struct {
 
 	CheckContentRef []CheckContentRefType `xml:"check-content-ref"`
 
-	CheckContent CheckContentType `xml:"check-content"`
+	CheckContent *CheckContentType `xml:"check-content"`
 }
 
 type CheckImportType struct {
@@ -343,7 +343,7 @@ type ProfileType struct {
 
 	DcStatus []DcStatusType `xml:"dc-status"`
 
-	Version VersionType `xml:"version"`
+	Version *VersionType `xml:"version"`
 
 	Title []TextWithSubType `xml:"title"`
 
@@ -355,7 +355,7 @@ type ProfileType struct {
 
 	Metadata []MetadataType `xml:"metadata"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 type ProfileSelectType struct {
@@ -377,9 +377,9 @@ type ProfileRefineRuleType struct {
 }
 
 type TestResultType struct {
-	Benchmark BenchmarkReferenceType `xml:"benchmark"`
+	Benchmark *BenchmarkReferenceType `xml:"benchmark"`
 
-	TailoringFile TailoringReferenceType `xml:"tailoring-file"`
+	TailoringFile *TailoringReferenceType `xml:"tailoring-file"`
 
 	Title []TextType `xml:"title"`
 
@@ -387,15 +387,15 @@ type TestResultType struct {
 
 	Organization []string `xml:"organization"`
 
-	Identity IdentityType `xml:"identity"`
+	Identity *IdentityType `xml:"identity"`
 
-	Profile IdrefType `xml:"profile"`
+	Profile *IdrefType `xml:"profile"`
 
 	Target []string `xml:"target"`
 
 	TargetAddress []string `xml:"target-address"`
 
-	TargetFacts TargetFactsType `xml:"target-facts"`
+	TargetFacts *TargetFactsType `xml:"target-facts"`
 
 	Platform []CPE2IdrefType `xml:"platform"`
 
@@ -405,7 +405,7 @@ type TestResultType struct {
 
 	Metadata []MetadataType `xml:"metadata"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 type BenchmarkReferenceType struct {
@@ -461,7 +461,7 @@ type MessageType struct {
 }
 
 type TailoringType struct {
-	Benchmark TailoringBenchmarkReferenceType `xml:"benchmark"`
+	Benchmark *TailoringBenchmarkReferenceType `xml:"benchmark"`
 
 	Status []Status `xml:"status"`
 
@@ -473,7 +473,7 @@ type TailoringType struct {
 
 	Profile []Profile `xml:"Profile"`
 
-	Signature SignatureType `xml:"signature"`
+	Signature *SignatureType `xml:"signature"`
 }
 
 type TailoringBenchmarkReferenceType struct {

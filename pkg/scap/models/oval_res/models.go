@@ -24,11 +24,11 @@ type OvalResults struct {
 
 	ClassDirectives ClassDirectivesType `xml:"class_directives"`
 
-	OvalDefinitions oval_def.OvalDefinitions `xml:"oval_definitions"`
+	OvalDefinitions *oval_def.OvalDefinitions `xml:"oval_definitions"`
 
 	Results ResultsType `xml:"results"`
 
-	Signature xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.Signature `xml:"Signature"`
 }
 
 // XSD ComplexType declarations
@@ -61,9 +61,9 @@ type ResultsType struct {
 }
 
 type SystemType struct {
-	Definitions DefinitionsType `xml:"definitions"`
+	Definitions *DefinitionsType `xml:"definitions"`
 
-	Tests TestsType `xml:"tests"`
+	Tests *TestsType `xml:"tests"`
 
 	OvalSystemCharacteristics oval_sc.OvalSystemCharacteristics `xml:"oval_system_characteristics"`
 }
@@ -75,7 +75,7 @@ type DefinitionsType struct {
 type DefinitionType struct {
 	Message []oval.MessageType `xml:"message"`
 
-	Criteria CriteriaType `xml:"criteria"`
+	Criteria *CriteriaType `xml:"criteria"`
 }
 
 type CriteriaType struct {
