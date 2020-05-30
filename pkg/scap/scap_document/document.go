@@ -9,6 +9,7 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/cdf"
 	"github.com/gocomply/scap/pkg/scap/models/cpe_dict"
 	"github.com/gocomply/scap/pkg/scap/models/ds"
+	"github.com/gocomply/scap/pkg/scap/models/inter"
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 	"github.com/gocomply/scap/pkg/scap/models/oval_res"
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
@@ -21,6 +22,7 @@ const (
 	ovalResultsElement               = "oval_results"
 	ovalSystemCharacteristicsElement = "oval_system_characteristics"
 	dsDataStreamCollectionElement    = "data-stream-collection"
+	ocilOcilElement                  = "ocil"
 )
 
 type Document struct {
@@ -31,6 +33,7 @@ type Document struct {
 	*oval_res.OvalResults
 	*oval_sc.OvalSystemCharacteristics
 	*ds.DataStreamCollection
+	*inter.Ocil
 }
 
 func ReadDocument(r io.Reader) (*Document, error) {
@@ -79,6 +82,12 @@ func ReadDocument(r io.Reader) (*Document, error) {
 					return nil, err
 				}
 				return &Document{CpeList: &cpeList}, nil
+			case ocilOcilElement:
+				var ocil inter.Ocil
+				if err := d.DecodeElement(&ocil, &startElement); err != nil {
+					return nil, err
+				}
+				return &Document{Ocil: &ocil}, nil
 			}
 		}
 	}
