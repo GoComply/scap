@@ -4,11 +4,30 @@ package freebsd_sc
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type PortinfoItem struct {
 	XMLName xml.Name `xml:portinfo_item`
+
+	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Category *oval_sc.EntityItemStringType `xml:"category"`
+
+	Version *PortinfoItemVersion `xml:"version"`
+
+	Vendor *oval_sc.EntityItemStringType `xml:"vendor"`
+
+	Description *oval_sc.EntityItemStringType `xml:"description"`
+}
+
+// Element
+type PortinfoItemVersion struct {
+	XMLName xml.Name `xml:version`
 }
 
 // XSD ComplexType declarations

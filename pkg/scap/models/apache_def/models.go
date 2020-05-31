@@ -4,11 +4,17 @@ package apache_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type HttpdTest struct {
 	XMLName xml.Name `xml:httpd_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -19,6 +25,12 @@ type HttpdObject struct {
 // Element
 type HttpdState struct {
 	XMLName xml.Name `xml:httpd_state`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	BinaryName *oval_def.EntityStateStringType `xml:"binary_name"`
+
+	Version *oval_def.EntityStateVersionType `xml:"version"`
 }
 
 // XSD ComplexType declarations

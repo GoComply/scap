@@ -4,71 +4,167 @@ package macos_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type AccountinfoTest struct {
 	XMLName xml.Name `xml:accountinfo_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type AccountinfoObject struct {
 	XMLName xml.Name `xml:accountinfo_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type AccountinfoState struct {
 	XMLName xml.Name `xml:accountinfo_state`
+
+	Username *oval_def.EntityStateStringType `xml:"username"`
+
+	Password *oval_def.EntityStateStringType `xml:"password"`
+
+	Uid *oval_def.EntityStateIntType `xml:"uid"`
+
+	Gid *oval_def.EntityStateIntType `xml:"gid"`
+
+	Realname *oval_def.EntityStateStringType `xml:"realname"`
+
+	HomeDir *oval_def.EntityStateStringType `xml:"home_dir"`
+
+	LoginShell *oval_def.EntityStateStringType `xml:"login_shell"`
 }
 
 // Element
 type AuthorizationdbTest struct {
 	XMLName xml.Name `xml:authorizationdb_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type AuthorizationdbObject struct {
 	XMLName xml.Name `xml:authorizationdb_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type AuthorizationdbState struct {
 	XMLName xml.Name `xml:authorizationdb_state`
+
+	RightName *oval_def.EntityStateStringType `xml:"right_name"`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // Element
 type CorestorageTest struct {
 	XMLName xml.Name `xml:corestorage_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type CorestorageObject struct {
 	XMLName xml.Name `xml:corestorage_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type CorestorageState struct {
 	XMLName xml.Name `xml:corestorage_state`
+
+	Uuid *oval_def.EntityStateStringType `xml:"uuid"`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // Element
 type DiskutilTest struct {
 	XMLName xml.Name `xml:diskutil_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type DiskutilObject struct {
 	XMLName xml.Name `xml:diskutil_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type DiskutilState struct {
 	XMLName xml.Name `xml:diskutil_state`
+
+	Device *oval_def.EntityStateStringType `xml:"device"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Uread *EntityStatePermissionCompareType `xml:"uread"`
+
+	Uwrite *EntityStatePermissionCompareType `xml:"uwrite"`
+
+	Uexec *EntityStatePermissionCompareType `xml:"uexec"`
+
+	Gread *EntityStatePermissionCompareType `xml:"gread"`
+
+	Gwrite *EntityStatePermissionCompareType `xml:"gwrite"`
+
+	Gexec *EntityStatePermissionCompareType `xml:"gexec"`
+
+	Oread *EntityStatePermissionCompareType `xml:"oread"`
+
+	Owrite *EntityStatePermissionCompareType `xml:"owrite"`
+
+	Oexec *EntityStatePermissionCompareType `xml:"oexec"`
+
+	UserDiffers *oval_def.EntityStateBoolType `xml:"user_differs"`
+
+	ActualUser *oval_def.EntityStateIntType `xml:"actual_user"`
+
+	ExpectedUser *oval_def.EntityStateIntType `xml:"expected_user"`
+
+	GroupDiffers *oval_def.EntityStateBoolType `xml:"group_differs"`
+
+	ActualGroup *oval_def.EntityStateIntType `xml:"actual_group"`
+
+	ExpectedGroup *oval_def.EntityStateIntType `xml:"expected_group"`
+
+	SymlinkDiffers *oval_def.EntityStateBoolType `xml:"symlink_differs"`
+
+	ActualSymlink *oval_def.EntityStateStringType `xml:"actual_symlink"`
+
+	ExpectedSymlink *oval_def.EntityStateStringType `xml:"expected_symlink"`
 }
 
 // Element
 type GatekeeperTest struct {
 	XMLName xml.Name `xml:gatekeeper_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -79,161 +175,385 @@ type GatekeeperObject struct {
 // Element
 type GatekeeperState struct {
 	XMLName xml.Name `xml:gatekeeper_state`
+
+	Enabled *oval_def.EntityStateBoolType `xml:"enabled"`
+
+	Unlabeled *oval_def.EntityStateStringType `xml:"unlabeled"`
 }
 
 // Element
 type InetlisteningserversTest struct {
 	XMLName xml.Name `xml:inetlisteningservers_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type InetlisteningserversObject struct {
 	XMLName xml.Name `xml:inetlisteningservers_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type InetlisteningserversState struct {
 	XMLName xml.Name `xml:inetlisteningservers_state`
+
+	ProgramName *oval_def.EntityStateStringType `xml:"program_name"`
+
+	LocalAddress *oval_def.EntityStateIPAddressStringType `xml:"local_address"`
+
+	LocalFullAddress *oval_def.EntityStateStringType `xml:"local_full_address"`
+
+	LocalPort *oval_def.EntityStateIntType `xml:"local_port"`
+
+	ForeignAddress *oval_def.EntityStateIPAddressStringType `xml:"foreign_address"`
+
+	ForeignFullAddress *oval_def.EntityStateStringType `xml:"foreign_full_address"`
+
+	ForeignPort *oval_def.EntityStateStringType `xml:"foreign_port"`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
+
+	UserId *oval_def.EntityStateStringType `xml:"user_id"`
 }
 
 // Element
 type Inetlisteningserver510Test struct {
 	XMLName xml.Name `xml:inetlisteningserver510_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Inetlisteningserver510Object struct {
 	XMLName xml.Name `xml:inetlisteningserver510_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Inetlisteningserver510State struct {
 	XMLName xml.Name `xml:inetlisteningserver510_state`
+
+	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
+
+	LocalAddress *oval_def.EntityStateIPAddressStringType `xml:"local_address"`
+
+	LocalPort *oval_def.EntityStateIntType `xml:"local_port"`
+
+	LocalFullAddress *oval_def.EntityStateStringType `xml:"local_full_address"`
+
+	ProgramName *oval_def.EntityStateStringType `xml:"program_name"`
+
+	ForeignAddress *oval_def.EntityStateIPAddressStringType `xml:"foreign_address"`
+
+	ForeignPort *oval_def.EntityStateIntType `xml:"foreign_port"`
+
+	ForeignFullAddress *oval_def.EntityStateStringType `xml:"foreign_full_address"`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	UserId *oval_def.EntityStateIntType `xml:"user_id"`
 }
 
 // Element
 type KeychainTest struct {
 	XMLName xml.Name `xml:keychain_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type KeychainObject struct {
 	XMLName xml.Name `xml:keychain_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type KeychainState struct {
 	XMLName xml.Name `xml:keychain_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	LockOnSleep *oval_def.EntityStateBoolType `xml:"lock_on_sleep"`
+
+	Timeout *oval_def.EntityStateIntType `xml:"timeout"`
 }
 
 // Element
 type LaunchdTest struct {
 	XMLName xml.Name `xml:launchd_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type LaunchdObject struct {
 	XMLName xml.Name `xml:launchd_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LaunchdState struct {
 	XMLName xml.Name `xml:launchd_state`
+
+	Label *oval_def.EntityStateStringType `xml:"label"`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	Status *oval_def.EntityStateIntType `xml:"status"`
 }
 
 // Element
 type NvramTest struct {
 	XMLName xml.Name `xml:nvram_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type NvramObject struct {
 	XMLName xml.Name `xml:nvram_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type NvramState struct {
 	XMLName xml.Name `xml:nvram_state`
+
+	NvramVar *oval_def.EntityStateStringType `xml:"nvram_var"`
+
+	NvramValue *oval_def.EntityStateStringType `xml:"nvram_value"`
 }
 
 // Element
 type PlistTest struct {
 	XMLName xml.Name `xml:plist_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type PlistObject struct {
 	XMLName xml.Name `xml:plist_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type PlistState struct {
 	XMLName xml.Name `xml:plist_state`
+
+	Key *oval_def.EntityStateStringType `xml:"key"`
+
+	AppId *oval_def.EntityStateStringType `xml:"app_id"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Instance *oval_def.EntityStateIntType `xml:"instance"`
+
+	Type *EntityStatePlistTypeType `xml:"type"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type Plist510Test struct {
 	XMLName xml.Name `xml:plist510_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Plist510Object struct {
 	XMLName xml.Name `xml:plist510_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Plist510State struct {
 	XMLName xml.Name `xml:plist510_state`
+
+	Key *oval_def.EntityStateStringType `xml:"key"`
+
+	AppId *oval_def.EntityStateStringType `xml:"app_id"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Instance *oval_def.EntityStateIntType `xml:"instance"`
+
+	Type *EntityStatePlistTypeType `xml:"type"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type Plist511Test struct {
 	XMLName xml.Name `xml:plist511_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Plist511Object struct {
 	XMLName xml.Name `xml:plist511_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Plist511State struct {
 	XMLName xml.Name `xml:plist511_state`
+
+	AppId *oval_def.EntityStateStringType `xml:"app_id"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // Element
 type PwpolicyTest struct {
 	XMLName xml.Name `xml:pwpolicy_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type PwpolicyObject struct {
 	XMLName xml.Name `xml:pwpolicy_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type PwpolicyState struct {
 	XMLName xml.Name `xml:pwpolicy_state`
+
+	Username *oval_def.EntityStateStringType `xml:"username"`
+
+	Userpass *oval_def.EntityStateStringType `xml:"userpass"`
+
+	DirectoryNode *oval_def.EntityStateStringType `xml:"directory_node"`
+
+	MaxChars *oval_def.EntityStateIntType `xml:"maxChars"`
+
+	MaxFailedLoginAttempts *oval_def.EntityStateIntType `xml:"maxFailedLoginAttempts"`
+
+	MinChars *oval_def.EntityStateIntType `xml:"minChars"`
+
+	PasswordCannotBeName *oval_def.EntityStateBoolType `xml:"passwordCannotBeName"`
+
+	RequiresAlpha *oval_def.EntityStateBoolType `xml:"requiresAlpha"`
+
+	RequiresNumeric *oval_def.EntityStateBoolType `xml:"requiresNumeric"`
 }
 
 // Element
 type Pwpolicy59Test struct {
 	XMLName xml.Name `xml:pwpolicy59_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Pwpolicy59Object struct {
 	XMLName xml.Name `xml:pwpolicy59_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Pwpolicy59State struct {
 	XMLName xml.Name `xml:pwpolicy59_state`
+
+	TargetUser *oval_def.EntityStateStringType `xml:"target_user"`
+
+	Username *oval_def.EntityStateStringType `xml:"username"`
+
+	Userpass *oval_def.EntityStateStringType `xml:"userpass"`
+
+	DirectoryNode *oval_def.EntityStateStringType `xml:"directory_node"`
+
+	MaxChars *oval_def.EntityStateIntType `xml:"maxChars"`
+
+	MaxFailedLoginAttempts *oval_def.EntityStateIntType `xml:"maxFailedLoginAttempts"`
+
+	MinChars *oval_def.EntityStateIntType `xml:"minChars"`
+
+	PasswordCannotBeName *oval_def.EntityStateBoolType `xml:"passwordCannotBeName"`
+
+	RequiresAlpha *oval_def.EntityStateBoolType `xml:"requiresAlpha"`
+
+	RequiresNumeric *oval_def.EntityStateBoolType `xml:"requiresNumeric"`
+
+	MaxMinutesUntilChangePassword *oval_def.EntityStateIntType `xml:"maxMinutesUntilChangePassword"`
+
+	MinMinutesUntilChangePassword *oval_def.EntityStateIntType `xml:"minMinutesUntilChangePassword"`
+
+	RequiresMixedCase *oval_def.EntityStateBoolType `xml:"requiresMixedCase"`
+
+	RequiresSymbol *oval_def.EntityStateBoolType `xml:"requiresSymbol"`
+
+	MinutesUntilFailedLoginReset *oval_def.EntityStateIntType `xml:"minutesUntilFailedLoginReset"`
+
+	UsingHistory *oval_def.EntityStateIntType `xml:"usingHistory"`
+
+	CanModifyPasswordforSelf *oval_def.EntityStateBoolType `xml:"canModifyPasswordforSelf"`
+
+	UsingExpirationDate *oval_def.EntityStateBoolType `xml:"usingExpirationDate"`
+
+	UsingHardExpirationDate *oval_def.EntityStateBoolType `xml:"usingHardExpirationDate"`
+
+	ExpirationDateGMT *oval_def.EntityStateStringType `xml:"expirationDateGMT"`
+
+	HardExpireDateGMT *oval_def.EntityStateStringType `xml:"hardExpireDateGMT"`
+
+	MaxMinutesUntilDisabled *oval_def.EntityStateIntType `xml:"maxMinutesUntilDisabled"`
+
+	MaxMinutesOfNonUse *oval_def.EntityStateIntType `xml:"maxMinutesOfNonUse"`
+
+	NewPasswordRequired *oval_def.EntityStateBoolType `xml:"newPasswordRequired"`
+
+	NotGuessablePattern *oval_def.EntityStateBoolType `xml:"notGuessablePattern"`
 }
 
 // Element
 type RlimitTest struct {
 	XMLName xml.Name `xml:rlimit_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -244,11 +564,51 @@ type RlimitObject struct {
 // Element
 type RlimitState struct {
 	XMLName xml.Name `xml:rlimit_state`
+
+	CpuCurrent *oval_def.EntityStateIntType `xml:"cpu_current"`
+
+	CpuMax *oval_def.EntityStateIntType `xml:"cpu_max"`
+
+	FilesizeCurrent *oval_def.EntityStateIntType `xml:"filesize_current"`
+
+	FilesizeMax *oval_def.EntityStateIntType `xml:"filesize_max"`
+
+	DataCurrent *oval_def.EntityStateIntType `xml:"data_current"`
+
+	DataMax *oval_def.EntityStateIntType `xml:"data_max"`
+
+	StackCurrent *oval_def.EntityStateIntType `xml:"stack_current"`
+
+	StackMax *oval_def.EntityStateIntType `xml:"stack_max"`
+
+	CoreCurrent *oval_def.EntityStateIntType `xml:"core_current"`
+
+	CoreMax *oval_def.EntityStateIntType `xml:"core_max"`
+
+	RssCurrent *oval_def.EntityStateIntType `xml:"rss_current"`
+
+	RssMax *oval_def.EntityStateIntType `xml:"rss_max"`
+
+	MemlockCurrent *oval_def.EntityStateIntType `xml:"memlock_current"`
+
+	MemlockMax *oval_def.EntityStateIntType `xml:"memlock_max"`
+
+	MaxprocCurrent *oval_def.EntityStateIntType `xml:"maxproc_current"`
+
+	MaxprocMax *oval_def.EntityStateIntType `xml:"maxproc_max"`
+
+	MaxfilesCurrent *oval_def.EntityStateIntType `xml:"maxfiles_current"`
+
+	MaxfilesMax *oval_def.EntityStateIntType `xml:"maxfiles_max"`
 }
 
 // Element
 type SoftwareupdateTest struct {
 	XMLName xml.Name `xml:softwareupdate_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -259,26 +619,46 @@ type SoftwareupdateObject struct {
 // Element
 type SoftwareupdateState struct {
 	XMLName xml.Name `xml:softwareupdate_state`
+
+	Schedule *oval_def.EntityStateBoolType `xml:"schedule"`
+
+	SoftwareTitle *oval_def.EntityStateStringType `xml:"software_title"`
 }
 
 // Element
 type SystemprofilerTest struct {
 	XMLName xml.Name `xml:systemprofiler_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SystemprofilerObject struct {
 	XMLName xml.Name `xml:systemprofiler_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SystemprofilerState struct {
 	XMLName xml.Name `xml:systemprofiler_state`
+
+	DataType *EntityStateDataTypeType `xml:"data_type"`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // Element
 type SystemsetupTest struct {
 	XMLName xml.Name `xml:systemsetup_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -289,6 +669,40 @@ type SystemsetupObject struct {
 // Element
 type SystemsetupState struct {
 	XMLName xml.Name `xml:systemsetup_state`
+
+	Timezone *oval_def.EntityStateStringType `xml:"timezone"`
+
+	Usingnetworktime *oval_def.EntityStateBoolType `xml:"usingnetworktime"`
+
+	Networktimeserver *oval_def.EntityStateStringType `xml:"networktimeserver"`
+
+	Computersleep *oval_def.EntityStateIntType `xml:"computersleep"`
+
+	Displaysleep *oval_def.EntityStateIntType `xml:"displaysleep"`
+
+	Harddisksleep *oval_def.EntityStateIntType `xml:"harddisksleep"`
+
+	Wakeonmodem *oval_def.EntityStateBoolType `xml:"wakeonmodem"`
+
+	Wakeonnetworkaccess *oval_def.EntityStateBoolType `xml:"wakeonnetworkaccess"`
+
+	Restartfreeze *oval_def.EntityStateBoolType `xml:"restartfreeze"`
+
+	Allowpowerbuttontosleepcomputer *oval_def.EntityStateBoolType `xml:"allowpowerbuttontosleepcomputer"`
+
+	Remotelogin *oval_def.EntityStateBoolType `xml:"remotelogin"`
+
+	Remoteappleevents *oval_def.EntityStateBoolType `xml:"remoteappleevents"`
+
+	Computername *oval_def.EntityStateStringType `xml:"computername"`
+
+	Startupdisk *oval_def.EntityStateStringType `xml:"startupdisk"`
+
+	Waitforstartupafterpowerfailure *oval_def.EntityStateIntType `xml:"waitforstartupafterpowerfailure"`
+
+	Disablekeyboardwhenenclosurelockisengaged *oval_def.EntityStateBoolType `xml:"disablekeyboardwhenenclosurelockisengaged"`
+
+	Kernelbootarchitecturesetting *oval_def.EntityStateStringType `xml:"kernelbootarchitecturesetting"`
 }
 
 // XSD ComplexType declarations

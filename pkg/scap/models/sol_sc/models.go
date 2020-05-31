@@ -4,81 +4,237 @@ package sol_sc
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type FacetItem struct {
 	XMLName xml.Name `xml:facet_item`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Value *oval_sc.EntityItemBoolType `xml:"value"`
 }
 
 // Element
 type ImageItem struct {
 	XMLName xml.Name `xml:image_item`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type IsainfoItem struct {
 	XMLName xml.Name `xml:isainfo_item`
+
+	Bits *oval_sc.EntityItemIntType `xml:"bits"`
+
+	KernelIsa *oval_sc.EntityItemStringType `xml:"kernel_isa"`
+
+	ApplicationIsa *oval_sc.EntityItemStringType `xml:"application_isa"`
 }
 
 // Element
 type NddItem struct {
 	XMLName xml.Name `xml:ndd_item`
+
+	Device *oval_sc.EntityItemStringType `xml:"device"`
+
+	Instance *oval_sc.EntityItemIntType `xml:"instance"`
+
+	Parameter *oval_sc.EntityItemStringType `xml:"parameter"`
+
+	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type PackageItem struct {
 	XMLName xml.Name `xml:package_item`
+
+	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Category *oval_sc.EntityItemStringType `xml:"category"`
+
+	Version *oval_sc.EntityItemStringType `xml:"version"`
+
+	Vendor *oval_sc.EntityItemStringType `xml:"vendor"`
+
+	Description *oval_sc.EntityItemStringType `xml:"description"`
 }
 
 // Element
 type Package511Item struct {
 	XMLName xml.Name `xml:package511_item`
+
+	Publisher *oval_sc.EntityItemStringType `xml:"publisher"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Version *oval_sc.EntityItemVersionType `xml:"version"`
+
+	Timestamp *oval_sc.EntityItemStringType `xml:"timestamp"`
+
+	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
+
+	Summary *oval_sc.EntityItemStringType `xml:"summary"`
+
+	Description *oval_sc.EntityItemStringType `xml:"description"`
+
+	Category *oval_sc.EntityItemStringType `xml:"category"`
+
+	UpdatesAvailable *oval_sc.EntityItemBoolType `xml:"updates_available"`
 }
 
 // Element
 type PackageavoidlistItem struct {
 	XMLName xml.Name `xml:packageavoidlist_item`
+
+	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 }
 
 // Element
 type PackagecheckItem struct {
 	XMLName xml.Name `xml:packagecheck_item`
+
+	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
+
+	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
+
+	ChecksumDiffers *oval_sc.EntityItemBoolType `xml:"checksum_differs"`
+
+	SizeDiffers *oval_sc.EntityItemBoolType `xml:"size_differs"`
+
+	MtimeDiffers *oval_sc.EntityItemBoolType `xml:"mtime_differs"`
+
+	Uread *EntityItemPermissionCompareType `xml:"uread"`
+
+	Uwrite *EntityItemPermissionCompareType `xml:"uwrite"`
+
+	Uexec *EntityItemPermissionCompareType `xml:"uexec"`
+
+	Gread *EntityItemPermissionCompareType `xml:"gread"`
+
+	Gwrite *EntityItemPermissionCompareType `xml:"gwrite"`
+
+	Gexec *EntityItemPermissionCompareType `xml:"gexec"`
+
+	Oread *EntityItemPermissionCompareType `xml:"oread"`
+
+	Owrite *EntityItemPermissionCompareType `xml:"owrite"`
+
+	Oexec *EntityItemPermissionCompareType `xml:"oexec"`
 }
 
 // Element
 type PackagefreezelistItem struct {
 	XMLName xml.Name `xml:packagefreezelist_item`
+
+	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 }
 
 // Element
 type PackagepublisherItem struct {
 	XMLName xml.Name `xml:packagepublisher_item`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Type *EntityItemPublisherTypeType `xml:"type"`
+
+	OriginUri *oval_sc.EntityItemStringType `xml:"origin_uri"`
+
+	Alias *oval_sc.EntityItemStringType `xml:"alias"`
+
+	SslKey *oval_sc.EntityItemStringType `xml:"ssl_key"`
+
+	SslCert *oval_sc.EntityItemStringType `xml:"ssl_cert"`
+
+	ClientUuid *EntityItemClientUUIDType `xml:"client_uuid"`
+
+	CatalogUpdated *oval_sc.EntityItemIntType `xml:"catalog_updated"`
+
+	Enabled *oval_sc.EntityItemBoolType `xml:"enabled"`
+
+	Order *oval_sc.EntityItemIntType `xml:"order"`
+
+	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
 }
 
 // Element
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
+
+	Base *oval_sc.EntityItemIntType `xml:"base"`
+
+	Version *oval_sc.EntityItemIntType `xml:"version"`
 }
 
 // Element
 type SmfItem struct {
 	XMLName xml.Name `xml:smf_item`
+
+	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
+
+	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
+
+	ServiceState *EntityItemSmfServiceStateType `xml:"service_state"`
+
+	Protocol []oval_sc.EntityItemStringType `xml:"protocol"`
+
+	ServerExecutable *oval_sc.EntityItemStringType `xml:"server_executable"`
+
+	ServerArguements *oval_sc.EntityItemStringType `xml:"server_arguements"`
+
+	ExecAsUser *oval_sc.EntityItemStringType `xml:"exec_as_user"`
 }
 
 // Element
 type SmfpropertyItem struct {
 	XMLName xml.Name `xml:smfproperty_item`
+
+	Service *oval_sc.EntityItemStringType `xml:"service"`
+
+	Instance *oval_sc.EntityItemStringType `xml:"instance"`
+
+	Property *oval_sc.EntityItemStringType `xml:"property"`
+
+	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
+
+	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type VariantItem struct {
 	XMLName xml.Name `xml:variant_item`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type VirtualizationinfoItem struct {
 	XMLName xml.Name `xml:virtualizationinfo_item`
+
+	Current *oval_sc.EntityItemStringType `xml:"current"`
+
+	Supported []EntityItemV12NEnvType `xml:"supported"`
+
+	Parent *EntityItemV12NEnvType `xml:"parent"`
+
+	LdomRole []EntityItemLDOMRoleType `xml:"ldom-role"`
+
+	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
 }
 
 // XSD ComplexType declarations

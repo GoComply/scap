@@ -4,26 +4,42 @@ package pixos_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type LineTest struct {
 	XMLName xml.Name `xml:line_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type LineObject struct {
 	XMLName xml.Name `xml:line_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
+
+	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
+
+	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 }
 
 // Element
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -34,6 +50,14 @@ type VersionObject struct {
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	PixRelease *oval_def.EntityStateStringType `xml:"pix_release"`
+
+	PixMajorRelease *oval_def.EntityStateVersionType `xml:"pix_major_release"`
+
+	PixMinorRelease *oval_def.EntityStateVersionType `xml:"pix_minor_release"`
+
+	PixBuild *oval_def.EntityStateIntType `xml:"pix_build"`
 }
 
 // XSD ComplexType declarations

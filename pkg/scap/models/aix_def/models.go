@@ -4,71 +4,129 @@ package aix_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type InterimFixTest struct {
 	XMLName xml.Name `xml:interim_fix_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type InterimFixObject struct {
 	XMLName xml.Name `xml:interim_fix_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type InterimFixState struct {
 	XMLName xml.Name `xml:interim_fix_state`
+
+	Vuid *oval_def.EntityStateStringType `xml:"vuid"`
+
+	Label *oval_def.EntityStateStringType `xml:"label"`
+
+	Abstract *oval_def.EntityStateStringType `xml:"abstract"`
+
+	State *EntityStateInterimFixStateType `xml:"state"`
 }
 
 // Element
 type FilesetTest struct {
 	XMLName xml.Name `xml:fileset_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type FilesetObject struct {
 	XMLName xml.Name `xml:fileset_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type FilesetState struct {
 	XMLName xml.Name `xml:fileset_state`
+
+	Flstinst *oval_def.EntityStateStringType `xml:"flstinst"`
+
+	Level *oval_def.EntityStateVersionType `xml:"level"`
+
+	State *EntityStateFilesetStateType `xml:"state"`
+
+	Description *oval_def.EntityStateStringType `xml:"description"`
 }
 
 // Element
 type FixTest struct {
 	XMLName xml.Name `xml:fix_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type FixObject struct {
 	XMLName xml.Name `xml:fix_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type FixState struct {
 	XMLName xml.Name `xml:fix_state`
+
+	AparNumber *oval_def.EntityStateStringType `xml:"apar_number"`
+
+	Abstract *oval_def.EntityStateStringType `xml:"abstract"`
+
+	Symptom *oval_def.EntityStateStringType `xml:"symptom"`
+
+	InstallationStatus *EntityStateFixInstallationStatusType `xml:"installation_status"`
 }
 
 // Element
 type NoTest struct {
 	XMLName xml.Name `xml:no_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type NoObject struct {
 	XMLName xml.Name `xml:no_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type NoState struct {
 	XMLName xml.Name `xml:no_state`
+
+	Tunable *oval_def.EntityStateStringType `xml:"tunable"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type OslevelTest struct {
 	XMLName xml.Name `xml:oslevel_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -79,6 +137,8 @@ type OslevelObject struct {
 // Element
 type OslevelState struct {
 	XMLName xml.Name `xml:oslevel_state`
+
+	MaintenanceLevel oval_def.EntityStateVersionType `xml:"maintenance_level"`
 }
 
 // XSD ComplexType declarations

@@ -131,6 +131,7 @@ type EntityItemStringType struct {
 }
 
 type EntityItemRecordType struct {
+	Field []EntityItemFieldType `xml:"field"`
 }
 
 type EntityItemFieldType struct {

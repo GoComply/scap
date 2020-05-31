@@ -4,31 +4,63 @@ package aix_sc
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type InterimFixItem struct {
 	XMLName xml.Name `xml:interim_fix_item`
+
+	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
+
+	Label *oval_sc.EntityItemStringType `xml:"label"`
+
+	Abstract *oval_sc.EntityItemStringType `xml:"abstract"`
+
+	State *EntityItemInterimFixStateType `xml:"state"`
 }
 
 // Element
 type FilesetItem struct {
 	XMLName xml.Name `xml:fileset_item`
+
+	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
+
+	Level *oval_sc.EntityItemVersionType `xml:"level"`
+
+	State *EntityItemFilesetStateType `xml:"state"`
+
+	Description *oval_sc.EntityItemStringType `xml:"description"`
 }
 
 // Element
 type FixItem struct {
 	XMLName xml.Name `xml:fix_item`
+
+	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
+
+	Abstract *oval_sc.EntityItemStringType `xml:"abstract"`
+
+	Symptom *oval_sc.EntityItemStringType `xml:"symptom"`
+
+	InstallationStatus *EntityItemFixInstallationStatusType `xml:"installation_status"`
 }
 
 // Element
 type NoItem struct {
 	XMLName xml.Name `xml:no_item`
+
+	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
+
+	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type OslevelItem struct {
 	XMLName xml.Name `xml:oslevel_item`
+
+	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 }
 
 // XSD ComplexType declarations

@@ -107,16 +107,60 @@ type Item struct {
 // Element
 type Group struct {
 	XMLName xml.Name `xml:Group`
+
+	Value []Value `xml:"Value"`
+
+	Signature *SignatureType `xml:"signature"`
+
+	Group []Group `xml:"Group"`
+
+	Rule []Rule `xml:"Rule"`
 }
 
 // Element
 type Rule struct {
 	XMLName xml.Name `xml:Rule`
+
+	Ident []IdentType `xml:"ident"`
+
+	ImpactMetric string `xml:"impact-metric"`
+
+	ProfileNote []ProfileNoteType `xml:"profile-note"`
+
+	Fixtext []FixTextType `xml:"fixtext"`
+
+	Fix []FixType `xml:"fix"`
+
+	Signature *SignatureType `xml:"signature"`
+
+	Check []CheckType `xml:"check"`
+
+	ComplexCheck *ComplexCheckType `xml:"complex-check"`
 }
 
 // Element
 type Value struct {
 	XMLName xml.Name `xml:Value`
+
+	Match []SelStringType `xml:"match"`
+
+	LowerBound []SelNumType `xml:"lower-bound"`
+
+	UpperBound []SelNumType `xml:"upper-bound"`
+
+	Choices []SelChoicesType `xml:"choices"`
+
+	Source []UriRefType `xml:"source"`
+
+	Signature *SignatureType `xml:"signature"`
+
+	Value []SelStringType `xml:"value"`
+
+	ComplexValue []SelComplexValueType `xml:"complex-value"`
+
+	Default []SelStringType `xml:"default"`
+
+	ComplexDefault []SelComplexValueType `xml:"complex-default"`
 }
 
 // Element
@@ -343,10 +387,26 @@ type SelectableItemType struct {
 	Selected string `xml:"selected,attr"`
 
 	Weight string `xml:"weight,attr"`
+
+	Rationale []HtmlTextWithSubType `xml:"rationale"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Requires []IdrefListType `xml:"requires"`
+
+	Conflicts []IdrefType `xml:"conflicts"`
 }
 
 type GroupType struct {
 	Id string `xml:"id,attr"`
+
+	Value []Value `xml:"Value"`
+
+	Signature *SignatureType `xml:"signature"`
+
+	Group []Group `xml:"Group"`
+
+	Rule []Rule `xml:"Rule"`
 }
 
 type RuleType struct {
@@ -357,6 +417,22 @@ type RuleType struct {
 	Severity string `xml:"severity,attr"`
 
 	Multiple string `xml:"multiple,attr"`
+
+	Ident []IdentType `xml:"ident"`
+
+	ImpactMetric string `xml:"impact-metric"`
+
+	ProfileNote []ProfileNoteType `xml:"profile-note"`
+
+	Fixtext []FixTextType `xml:"fixtext"`
+
+	Fix []FixType `xml:"fix"`
+
+	Signature *SignatureType `xml:"signature"`
+
+	Check []CheckType `xml:"check"`
+
+	ComplexCheck *ComplexCheckType `xml:"complex-check"`
 }
 
 type IdentType struct {
@@ -458,6 +534,26 @@ type ValueType struct {
 	Interactive string `xml:"interactive,attr"`
 
 	InterfaceHint string `xml:"interfaceHint,attr"`
+
+	Match []SelStringType `xml:"match"`
+
+	LowerBound []SelNumType `xml:"lower-bound"`
+
+	UpperBound []SelNumType `xml:"upper-bound"`
+
+	Choices []SelChoicesType `xml:"choices"`
+
+	Source []UriRefType `xml:"source"`
+
+	Signature *SignatureType `xml:"signature"`
+
+	Value []SelStringType `xml:"value"`
+
+	ComplexValue []SelComplexValueType `xml:"complex-value"`
+
+	Default []SelStringType `xml:"default"`
+
+	ComplexDefault []SelComplexValueType `xml:"complex-default"`
 }
 
 type ComplexValueType struct {

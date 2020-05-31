@@ -4,11 +4,17 @@ package linux_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type ApparmorstatusTest struct {
 	XMLName xml.Name `xml:apparmorstatus_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -19,201 +25,595 @@ type ApparmorstatusObject struct {
 // Element
 type ApparmorstatusState struct {
 	XMLName xml.Name `xml:apparmorstatus_state`
+
+	LoadedProfilesCount *oval_def.EntityStateIntType `xml:"loaded_profiles_count"`
+
+	EnforceModeProfilesCount *oval_def.EntityStateIntType `xml:"enforce_mode_profiles_count"`
+
+	ComplainModeProfilesCount *oval_def.EntityStateIntType `xml:"complain_mode_profiles_count"`
+
+	ProcessesWithProfilesCount *oval_def.EntityStateIntType `xml:"processes_with_profiles_count"`
+
+	EnforceModeProcessesCount *oval_def.EntityStateIntType `xml:"enforce_mode_processes_count"`
+
+	ComplainModeProcessesCount *oval_def.EntityStateIntType `xml:"complain_mode_processes_count"`
+
+	UnconfinedProcessesWithProfilesCount *oval_def.EntityStateIntType `xml:"unconfined_processes_with_profiles_count"`
 }
 
 // Element
 type DpkginfoTest struct {
 	XMLName xml.Name `xml:dpkginfo_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type DpkginfoObject struct {
 	XMLName xml.Name `xml:dpkginfo_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type DpkginfoState struct {
 	XMLName xml.Name `xml:dpkginfo_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Arch *oval_def.EntityStateStringType `xml:"arch"`
+
+	Epoch *DpkginfoStateEpoch `xml:"epoch"`
+
+	Release *DpkginfoStateRelease `xml:"release"`
+
+	Version *DpkginfoStateVersion `xml:"version"`
+
+	Evr *DpkginfoStateEvr `xml:"evr"`
 }
 
 // Element
 type IflistenersTest struct {
 	XMLName xml.Name `xml:iflisteners_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type IflistenersObject struct {
 	XMLName xml.Name `xml:iflisteners_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type IflistenersState struct {
 	XMLName xml.Name `xml:iflisteners_state`
+
+	InterfaceName *oval_def.EntityStateStringType `xml:"interface_name"`
+
+	Protocol *EntityStateProtocolType `xml:"protocol"`
+
+	HwAddress *oval_def.EntityStateStringType `xml:"hw_address"`
+
+	ProgramName *oval_def.EntityStateStringType `xml:"program_name"`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	UserId *oval_def.EntityStateIntType `xml:"user_id"`
 }
 
 // Element
 type InetlisteningserversTest struct {
 	XMLName xml.Name `xml:inetlisteningservers_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type InetlisteningserversObject struct {
 	XMLName xml.Name `xml:inetlisteningservers_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type InetlisteningserversState struct {
 	XMLName xml.Name `xml:inetlisteningservers_state`
+
+	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
+
+	LocalAddress *oval_def.EntityStateIPAddressStringType `xml:"local_address"`
+
+	LocalPort *oval_def.EntityStateIntType `xml:"local_port"`
+
+	LocalFullAddress *oval_def.EntityStateStringType `xml:"local_full_address"`
+
+	ProgramName *oval_def.EntityStateStringType `xml:"program_name"`
+
+	ForeignAddress *oval_def.EntityStateIPAddressStringType `xml:"foreign_address"`
+
+	ForeignPort *oval_def.EntityStateIntType `xml:"foreign_port"`
+
+	ForeignFullAddress *oval_def.EntityStateStringType `xml:"foreign_full_address"`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	UserId *oval_def.EntityStateIntType `xml:"user_id"`
 }
 
 // Element
 type PartitionTest struct {
 	XMLName xml.Name `xml:partition_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type PartitionObject struct {
 	XMLName xml.Name `xml:partition_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type PartitionState struct {
 	XMLName xml.Name `xml:partition_state`
+
+	MountPoint *oval_def.EntityStateStringType `xml:"mount_point"`
+
+	Device *oval_def.EntityStateStringType `xml:"device"`
+
+	Uuid *oval_def.EntityStateStringType `xml:"uuid"`
+
+	FsType *oval_def.EntityStateStringType `xml:"fs_type"`
+
+	MountOptions *oval_def.EntityStateStringType `xml:"mount_options"`
+
+	TotalSpace *oval_def.EntityStateIntType `xml:"total_space"`
+
+	SpaceUsed *oval_def.EntityStateIntType `xml:"space_used"`
+
+	SpaceLeft *oval_def.EntityStateIntType `xml:"space_left"`
+
+	SpaceLeftForUnprivilegedUsers *oval_def.EntityStateIntType `xml:"space_left_for_unprivileged_users"`
+
+	BlockSize *oval_def.EntityStateIntType `xml:"block_size"`
 }
 
 // Element
 type RpminfoTest struct {
 	XMLName xml.Name `xml:rpminfo_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type RpminfoObject struct {
 	XMLName xml.Name `xml:rpminfo_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type RpminfoState struct {
 	XMLName xml.Name `xml:rpminfo_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Arch *oval_def.EntityStateStringType `xml:"arch"`
+
+	Epoch *RpminfoStateEpoch `xml:"epoch"`
+
+	Release *RpminfoStateRelease `xml:"release"`
+
+	Version *RpminfoStateVersion `xml:"version"`
+
+	Evr *oval_def.EntityStateEVRStringType `xml:"evr"`
+
+	SignatureKeyid *oval_def.EntityStateStringType `xml:"signature_keyid"`
+
+	ExtendedName *oval_def.EntityStateStringType `xml:"extended_name"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 }
 
 // Element
 type RpmverifyTest struct {
 	XMLName xml.Name `xml:rpmverify_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type RpmverifyObject struct {
 	XMLName xml.Name `xml:rpmverify_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type RpmverifyState struct {
 	XMLName xml.Name `xml:rpmverify_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	SizeDiffers *EntityStateRpmVerifyResultType `xml:"size_differs"`
+
+	ModeDiffers *EntityStateRpmVerifyResultType `xml:"mode_differs"`
+
+	Md5Differs *EntityStateRpmVerifyResultType `xml:"md5_differs"`
+
+	DeviceDiffers *EntityStateRpmVerifyResultType `xml:"device_differs"`
+
+	LinkMismatch *EntityStateRpmVerifyResultType `xml:"link_mismatch"`
+
+	OwnershipDiffers *EntityStateRpmVerifyResultType `xml:"ownership_differs"`
+
+	GroupDiffers *EntityStateRpmVerifyResultType `xml:"group_differs"`
+
+	MtimeDiffers *EntityStateRpmVerifyResultType `xml:"mtime_differs"`
+
+	CapabilitiesDiffer *EntityStateRpmVerifyResultType `xml:"capabilities_differ"`
+
+	ConfigurationFile *oval_def.EntityStateBoolType `xml:"configuration_file"`
+
+	DocumentationFile *oval_def.EntityStateBoolType `xml:"documentation_file"`
+
+	GhostFile *oval_def.EntityStateBoolType `xml:"ghost_file"`
+
+	LicenseFile *oval_def.EntityStateBoolType `xml:"license_file"`
+
+	ReadmeFile *oval_def.EntityStateBoolType `xml:"readme_file"`
 }
 
 // Element
 type RpmverifyfileTest struct {
 	XMLName xml.Name `xml:rpmverifyfile_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type RpmverifyfileObject struct {
 	XMLName xml.Name `xml:rpmverifyfile_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type RpmverifyfileState struct {
 	XMLName xml.Name `xml:rpmverifyfile_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Epoch *RpmverifyfileStateEpoch `xml:"epoch"`
+
+	Version *RpmverifyfileStateVersion `xml:"version"`
+
+	Release *RpmverifyfileStateRelease `xml:"release"`
+
+	Arch *oval_def.EntityStateStringType `xml:"arch"`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	ExtendedName *oval_def.EntityStateStringType `xml:"extended_name"`
+
+	SizeDiffers *EntityStateRpmVerifyResultType `xml:"size_differs"`
+
+	ModeDiffers *EntityStateRpmVerifyResultType `xml:"mode_differs"`
+
+	Md5Differs *EntityStateRpmVerifyResultType `xml:"md5_differs"`
+
+	FiledigestDiffers *EntityStateRpmVerifyResultType `xml:"filedigest_differs"`
+
+	DeviceDiffers *EntityStateRpmVerifyResultType `xml:"device_differs"`
+
+	LinkMismatch *EntityStateRpmVerifyResultType `xml:"link_mismatch"`
+
+	OwnershipDiffers *EntityStateRpmVerifyResultType `xml:"ownership_differs"`
+
+	GroupDiffers *EntityStateRpmVerifyResultType `xml:"group_differs"`
+
+	MtimeDiffers *EntityStateRpmVerifyResultType `xml:"mtime_differs"`
+
+	CapabilitiesDiffer *EntityStateRpmVerifyResultType `xml:"capabilities_differ"`
+
+	ConfigurationFile *oval_def.EntityStateBoolType `xml:"configuration_file"`
+
+	DocumentationFile *oval_def.EntityStateBoolType `xml:"documentation_file"`
+
+	GhostFile *oval_def.EntityStateBoolType `xml:"ghost_file"`
+
+	LicenseFile *oval_def.EntityStateBoolType `xml:"license_file"`
+
+	ReadmeFile *oval_def.EntityStateBoolType `xml:"readme_file"`
 }
 
 // Element
 type RpmverifypackageTest struct {
 	XMLName xml.Name `xml:rpmverifypackage_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type RpmverifypackageObject struct {
 	XMLName xml.Name `xml:rpmverifypackage_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type RpmverifypackageState struct {
 	XMLName xml.Name `xml:rpmverifypackage_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Epoch *RpmverifypackageStateEpoch `xml:"epoch"`
+
+	Version *RpmverifypackageStateVersion `xml:"version"`
+
+	Release *RpmverifypackageStateRelease `xml:"release"`
+
+	Arch *oval_def.EntityStateStringType `xml:"arch"`
+
+	ExtendedName *oval_def.EntityStateStringType `xml:"extended_name"`
+
+	DependencyCheckPassed *oval_def.EntityStateBoolType `xml:"dependency_check_passed"`
+
+	DigestCheckPassed *oval_def.EntityStateBoolType `xml:"digest_check_passed"`
+
+	VerificationScriptSuccessful *oval_def.EntityStateBoolType `xml:"verification_script_successful"`
+
+	SignatureCheckPassed *oval_def.EntityStateBoolType `xml:"signature_check_passed"`
 }
 
 // Element
 type SelinuxbooleanTest struct {
 	XMLName xml.Name `xml:selinuxboolean_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SelinuxbooleanObject struct {
 	XMLName xml.Name `xml:selinuxboolean_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SelinuxbooleanState struct {
 	XMLName xml.Name `xml:selinuxboolean_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	CurrentStatus *oval_def.EntityStateBoolType `xml:"current_status"`
+
+	PendingStatus *oval_def.EntityStateBoolType `xml:"pending_status"`
 }
 
 // Element
 type SelinuxsecuritycontextTest struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SelinuxsecuritycontextObject struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SelinuxsecuritycontextState struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	User *oval_def.EntityStateStringType `xml:"user"`
+
+	Role *oval_def.EntityStateStringType `xml:"role"`
+
+	Type *oval_def.EntityStateStringType `xml:"type"`
+
+	LowSensitivity *oval_def.EntityStateStringType `xml:"low_sensitivity"`
+
+	LowCategory *oval_def.EntityStateStringType `xml:"low_category"`
+
+	HighSensitivity *oval_def.EntityStateStringType `xml:"high_sensitivity"`
+
+	HighCategory *oval_def.EntityStateStringType `xml:"high_category"`
+
+	RawlowSensitivity *oval_def.EntityStateStringType `xml:"rawlow_sensitivity"`
+
+	RawlowCategory *oval_def.EntityStateStringType `xml:"rawlow_category"`
+
+	RawhighSensitivity *oval_def.EntityStateStringType `xml:"rawhigh_sensitivity"`
+
+	RawhighCategory *oval_def.EntityStateStringType `xml:"rawhigh_category"`
 }
 
 // Element
 type SlackwarepkginfoTest struct {
 	XMLName xml.Name `xml:slackwarepkginfo_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SlackwarepkginfoObject struct {
 	XMLName xml.Name `xml:slackwarepkginfo_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SlackwarepkginfoState struct {
 	XMLName xml.Name `xml:slackwarepkginfo_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Version *SlackwarepkginfoStateVersion `xml:"version"`
+
+	Architecture *oval_def.EntityStateStringType `xml:"architecture"`
+
+	Revision *oval_def.EntityStateStringType `xml:"revision"`
 }
 
 // Element
 type SystemdunitdependencyTest struct {
 	XMLName xml.Name `xml:systemdunitdependency_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SystemdunitdependencyObject struct {
 	XMLName xml.Name `xml:systemdunitdependency_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SystemdunitdependencyState struct {
 	XMLName xml.Name `xml:systemdunitdependency_state`
+
+	Unit *oval_def.EntityStateStringType `xml:"unit"`
+
+	Dependency *oval_def.EntityStateStringType `xml:"dependency"`
 }
 
 // Element
 type SystemdunitpropertyTest struct {
 	XMLName xml.Name `xml:systemdunitproperty_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SystemdunitpropertyObject struct {
 	XMLName xml.Name `xml:systemdunitproperty_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SystemdunitpropertyState struct {
 	XMLName xml.Name `xml:systemdunitproperty_state`
+
+	Unit *oval_def.EntityStateStringType `xml:"unit"`
+
+	Property *oval_def.EntityStateStringType `xml:"property"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
+}
+
+// Element
+type DpkginfoStateEpoch struct {
+	XMLName xml.Name `xml:epoch`
+}
+
+// Element
+type DpkginfoStateRelease struct {
+	XMLName xml.Name `xml:release`
+}
+
+// Element
+type DpkginfoStateVersion struct {
+	XMLName xml.Name `xml:version`
+}
+
+// Element
+type DpkginfoStateEvr struct {
+	XMLName xml.Name `xml:evr`
+}
+
+// Element
+type RpminfoStateEpoch struct {
+	XMLName xml.Name `xml:epoch`
+}
+
+// Element
+type RpminfoStateRelease struct {
+	XMLName xml.Name `xml:release`
+}
+
+// Element
+type RpminfoStateVersion struct {
+	XMLName xml.Name `xml:version`
+}
+
+// Element
+type RpmverifyfileStateEpoch struct {
+	XMLName xml.Name `xml:epoch`
+}
+
+// Element
+type RpmverifyfileStateVersion struct {
+	XMLName xml.Name `xml:version`
+}
+
+// Element
+type RpmverifyfileStateRelease struct {
+	XMLName xml.Name `xml:release`
+}
+
+// Element
+type RpmverifypackageStateEpoch struct {
+	XMLName xml.Name `xml:epoch`
+}
+
+// Element
+type RpmverifypackageStateVersion struct {
+	XMLName xml.Name `xml:version`
+}
+
+// Element
+type RpmverifypackageStateRelease struct {
+	XMLName xml.Name `xml:release`
+}
+
+// Element
+type SlackwarepkginfoStateVersion struct {
+	XMLName xml.Name `xml:version`
 }
 
 // XSD ComplexType declarations

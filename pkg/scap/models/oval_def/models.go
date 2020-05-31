@@ -32,6 +32,8 @@ type OvalDefinitions struct {
 // Element
 type Notes struct {
 	XMLName xml.Name `xml:notes`
+
+	Note []string `xml:"note"`
 }
 
 // Element
@@ -105,6 +107,8 @@ type ExternalVariable struct {
 // Element
 type ConstantVariable struct {
 	XMLName xml.Name `xml:constant_variable`
+
+	Value []ValueType `xml:"value"`
 }
 
 // Element
@@ -397,6 +401,7 @@ type EntityObjectVersionType struct {
 }
 
 type EntityObjectRecordType struct {
+	Field []EntityObjectFieldType `xml:"field"`
 }
 
 type EntityObjectFieldType struct {
@@ -457,6 +462,7 @@ type EntityStateStringType struct {
 }
 
 type EntityStateRecordType struct {
+	Field []EntityStateFieldType `xml:"field"`
 }
 
 type EntityStateFieldType struct {

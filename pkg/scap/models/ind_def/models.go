@@ -4,11 +4,17 @@ package ind_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type FamilyTest struct {
 	XMLName xml.Name `xml:family_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -19,156 +25,324 @@ type FamilyObject struct {
 // Element
 type FamilyState struct {
 	XMLName xml.Name `xml:family_state`
+
+	Family *EntityStateFamilyType `xml:"family"`
 }
 
 // Element
 type FilehashTest struct {
 	XMLName xml.Name `xml:filehash_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type FilehashObject struct {
 	XMLName xml.Name `xml:filehash_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type FilehashState struct {
 	XMLName xml.Name `xml:filehash_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Md5 *oval_def.EntityStateStringType `xml:"md5"`
+
+	Sha1 *oval_def.EntityStateStringType `xml:"sha1"`
+
+	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type Filehash58Test struct {
 	XMLName xml.Name `xml:filehash58_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Filehash58Object struct {
 	XMLName xml.Name `xml:filehash58_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Filehash58State struct {
 	XMLName xml.Name `xml:filehash58_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	HashType *EntityStateHashTypeType `xml:"hash_type"`
+
+	Hash *oval_def.EntityStateStringType `xml:"hash"`
+
+	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type EnvironmentvariableTest struct {
 	XMLName xml.Name `xml:environmentvariable_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type EnvironmentvariableObject struct {
 	XMLName xml.Name `xml:environmentvariable_object`
+
+	Set oval_def.Set `xml:"set"`
+
+	Name oval_def.EntityObjectStringType `xml:"name"`
 }
 
 // Element
 type EnvironmentvariableState struct {
 	XMLName xml.Name `xml:environmentvariable_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type Environmentvariable58Test struct {
 	XMLName xml.Name `xml:environmentvariable58_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Environmentvariable58Object struct {
 	XMLName xml.Name `xml:environmentvariable58_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Environmentvariable58State struct {
 	XMLName xml.Name `xml:environmentvariable58_state`
+
+	Pid *oval_def.EntityStateIntType `xml:"pid"`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type LdapTest struct {
 	XMLName xml.Name `xml:ldap_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type LdapObject struct {
 	XMLName xml.Name `xml:ldap_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LdapState struct {
 	XMLName xml.Name `xml:ldap_state`
+
+	Suffix *oval_def.EntityStateStringType `xml:"suffix"`
+
+	RelativeDn *oval_def.EntityStateStringType `xml:"relative_dn"`
+
+	Attribute *oval_def.EntityStateStringType `xml:"attribute"`
+
+	ObjectClass *oval_def.EntityStateStringType `xml:"object_class"`
+
+	Ldaptype *EntityStateLdaptypeType `xml:"ldaptype"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type Ldap57Test struct {
 	XMLName xml.Name `xml:ldap57_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Ldap57Object struct {
 	XMLName xml.Name `xml:ldap57_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Ldap57State struct {
 	XMLName xml.Name `xml:ldap57_state`
+
+	Suffix *oval_def.EntityStateStringType `xml:"suffix"`
+
+	RelativeDn *oval_def.EntityStateStringType `xml:"relative_dn"`
+
+	Attribute *oval_def.EntityStateStringType `xml:"attribute"`
+
+	ObjectClass *oval_def.EntityStateStringType `xml:"object_class"`
+
+	Ldaptype *EntityStateLdaptypeType `xml:"ldaptype"`
+
+	Value *oval_def.EntityStateRecordType `xml:"value"`
 }
 
 // Element
 type SqlTest struct {
 	XMLName xml.Name `xml:sql_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SqlObject struct {
 	XMLName xml.Name `xml:sql_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SqlState struct {
 	XMLName xml.Name `xml:sql_state`
+
+	Engine *EntityStateEngineType `xml:"engine"`
+
+	Version *oval_def.EntityStateStringType `xml:"version"`
+
+	ConnectionString *oval_def.EntityStateStringType `xml:"connection_string"`
+
+	Sql *oval_def.EntityStateStringType `xml:"sql"`
+
+	Result *oval_def.EntityStateAnySimpleType `xml:"result"`
 }
 
 // Element
 type Sql57Test struct {
 	XMLName xml.Name `xml:sql57_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Sql57Object struct {
 	XMLName xml.Name `xml:sql57_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Sql57State struct {
 	XMLName xml.Name `xml:sql57_state`
+
+	Engine *EntityStateEngineType `xml:"engine"`
+
+	Version *oval_def.EntityStateStringType `xml:"version"`
+
+	ConnectionString *oval_def.EntityStateStringType `xml:"connection_string"`
+
+	Sql *oval_def.EntityStateStringType `xml:"sql"`
+
+	Result *oval_def.EntityStateRecordType `xml:"result"`
 }
 
 // Element
 type Textfilecontent54Test struct {
 	XMLName xml.Name `xml:textfilecontent54_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Textfilecontent54Object struct {
 	XMLName xml.Name `xml:textfilecontent54_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Textfilecontent54State struct {
 	XMLName xml.Name `xml:textfilecontent54_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Pattern *oval_def.EntityStateStringType `xml:"pattern"`
+
+	Instance *oval_def.EntityStateIntType `xml:"instance"`
+
+	Text *oval_def.EntityStateAnySimpleType `xml:"text"`
+
+	Subexpression *oval_def.EntityStateAnySimpleType `xml:"subexpression"`
+
+	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type TextfilecontentTest struct {
 	XMLName xml.Name `xml:textfilecontent_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type TextfilecontentObject struct {
 	XMLName xml.Name `xml:textfilecontent_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type TextfilecontentState struct {
 	XMLName xml.Name `xml:textfilecontent_state`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Line *oval_def.EntityStateStringType `xml:"line"`
+
+	Subexpression *oval_def.EntityStateAnySimpleType `xml:"subexpression"`
+
+	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 }
 
 // Element
@@ -179,46 +353,92 @@ type UnknownTest struct {
 // Element
 type VariableTest struct {
 	XMLName xml.Name `xml:variable_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type VariableObject struct {
 	XMLName xml.Name `xml:variable_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type VariableState struct {
 	XMLName xml.Name `xml:variable_state`
+
+	VarRef *EntityStateVariableRefType `xml:"var_ref"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // Element
 type XmlfilecontentTest struct {
 	XMLName xml.Name `xml:xmlfilecontent_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type XmlfilecontentObject struct {
 	XMLName xml.Name `xml:xmlfilecontent_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type XmlfilecontentState struct {
 	XMLName xml.Name `xml:xmlfilecontent_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
+
+	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type YamlfilecontentTest struct {
 	XMLName xml.Name `xml:yamlfilecontent_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type YamlfilecontentObject struct {
 	XMLName xml.Name `xml:yamlfilecontent_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type YamlfilecontentState struct {
 	XMLName xml.Name `xml:yamlfilecontent_state`
+
+	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
+
+	Path *oval_def.EntityStateStringType `xml:"path"`
+
+	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Yamlpath *oval_def.EntityStateStringType `xml:"yamlpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
+
+	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 }
 
 // XSD ComplexType declarations

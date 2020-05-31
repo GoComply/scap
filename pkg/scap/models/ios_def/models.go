@@ -4,131 +4,281 @@ package ios_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type AclTest struct {
 	XMLName xml.Name `xml:acl_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type AclObject struct {
 	XMLName xml.Name `xml:acl_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type AclState struct {
 	XMLName xml.Name `xml:acl_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	IpVersion *EntityStateAccessListIPVersionType `xml:"ip_version"`
+
+	Use *EntityStateAccessListUseType `xml:"use"`
+
+	UsedIn *oval_def.EntityStateStringType `xml:"used_in"`
+
+	InterfaceDirection *EntityStateAccessListInterfaceDirectionType `xml:"interface_direction"`
+
+	AclConfigLines *oval_def.EntityStateStringType `xml:"acl_config_lines"`
+
+	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 }
 
 // Element
 type BgpneighborTest struct {
 	XMLName xml.Name `xml:bgpneighbor_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type BgpneighborObject struct {
 	XMLName xml.Name `xml:bgpneighbor_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type BgpneighborState struct {
 	XMLName xml.Name `xml:bgpneighbor_state`
+
+	Neighbor *oval_def.EntityStateStringType `xml:"neighbor"`
+
+	Password *oval_def.EntityStateStringType `xml:"password"`
 }
 
 // Element
 type GlobalTest struct {
 	XMLName xml.Name `xml:global_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type GlobalObject struct {
 	XMLName xml.Name `xml:global_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type GlobalState struct {
 	XMLName xml.Name `xml:global_state`
+
+	GlobalCommand *oval_def.EntityStateStringType `xml:"global_command"`
 }
 
 // Element
 type InterfaceTest struct {
 	XMLName xml.Name `xml:interface_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type InterfaceObject struct {
 	XMLName xml.Name `xml:interface_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type InterfaceState struct {
 	XMLName xml.Name `xml:interface_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	IpDirectedBroadcastCommand *InterfaceStateIpDirectedBroadcastCommand `xml:"ip_directed_broadcast_command"`
+
+	NoIpDirectedBroadcastCommand *oval_def.EntityStateStringType `xml:"no_ip_directed_broadcast_command"`
+
+	ProxyArpCommand *InterfaceStateProxyArpCommand `xml:"proxy_arp_command"`
+
+	ShutdownCommand *InterfaceStateShutdownCommand `xml:"shutdown_command"`
+
+	HardwareAddr *oval_def.EntityStateStringType `xml:"hardware_addr"`
+
+	Ipv4Address *oval_def.EntityStateIPAddressStringType `xml:"ipv4_address"`
+
+	Ipv6Address *oval_def.EntityStateIPAddressStringType `xml:"ipv6_address"`
+
+	Ipv4AccessList *oval_def.EntityStateStringType `xml:"ipv4_access_list"`
+
+	Ipv6AccessList *oval_def.EntityStateStringType `xml:"ipv6_access_list"`
+
+	CryptoMap *oval_def.EntityStateStringType `xml:"crypto_map"`
+
+	Ipv4UrpfCommand *oval_def.EntityStateStringType `xml:"ipv4_urpf_command"`
+
+	Ipv6UrpfCommand *oval_def.EntityStateStringType `xml:"ipv6_urpf_command"`
+
+	UrpfCommand *oval_def.EntityStateStringType `xml:"urpf_command"`
+
+	SwitchportTrunkEncapsulation *EntityStateTrunkEncapType `xml:"switchport_trunk_encapsulation"`
+
+	SwitchportMode *EntityStateSwitchportModeType `xml:"switchport_mode"`
+
+	SwitchportNativeVlan *InterfaceStateSwitchportNativeVlan `xml:"switchport_native_vlan"`
+
+	SwitchportAccessVlan *InterfaceStateSwitchportAccessVlan `xml:"switchport_access_vlan"`
+
+	SwitchportTrunkedVlans *oval_def.EntityStateStringType `xml:"switchport_trunked_vlans"`
+
+	SwitchportPrunedVlans *oval_def.EntityStateStringType `xml:"switchport_pruned_vlans"`
+
+	SwitchportPortSecurity *oval_def.EntityStateStringType `xml:"switchport_port_security"`
 }
 
 // Element
 type LineTest struct {
 	XMLName xml.Name `xml:line_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type LineObject struct {
 	XMLName xml.Name `xml:line_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
+
+	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
+
+	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 }
 
 // Element
 type RouterTest struct {
 	XMLName xml.Name `xml:router_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type RouterObject struct {
 	XMLName xml.Name `xml:router_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type RouterState struct {
 	XMLName xml.Name `xml:router_state`
+
+	Protocol EntityStateRoutingProtocolType `xml:"protocol"`
+
+	Id *oval_def.EntityStateIntType `xml:"id"`
+
+	Network *oval_def.EntityStateStringType `xml:"network"`
+
+	BgpNeighbor *oval_def.EntityStateStringType `xml:"bgp_neighbor"`
+
+	OspfAuthenticationArea *RouterStateOspfAuthenticationArea `xml:"ospf_authentication_area"`
+
+	RouterConfigLines *oval_def.EntityStateStringType `xml:"router_config_lines"`
 }
 
 // Element
 type RoutingprotocolauthintfTest struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type RoutingprotocolauthintfObject struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type RoutingprotocolauthintfState struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_state`
+
+	Interface *oval_def.EntityStateStringType `xml:"interface"`
+
+	Protocol *EntityStateRoutingProtocolType `xml:"protocol"`
+
+	Id *oval_def.EntityStateIntType `xml:"id"`
+
+	AuthType *EntityStateRoutingAuthTypeStringType `xml:"auth_type"`
+
+	OspfArea *RoutingprotocolauthintfStateOspfArea `xml:"ospf_area"`
+
+	KeyChain *oval_def.EntityStateStringType `xml:"key_chain"`
 }
 
 // Element
 type SectionTest struct {
 	XMLName xml.Name `xml:section_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SectionObject struct {
 	XMLName xml.Name `xml:section_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SectionState struct {
 	XMLName xml.Name `xml:section_state`
+
+	SectionCommand *oval_def.EntityStateStringType `xml:"section_command"`
+
+	SectionConfigLines *oval_def.EntityStateStringType `xml:"section_config_lines"`
+
+	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 }
 
 // Element
 type SnmpTest struct {
 	XMLName xml.Name `xml:snmp_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -139,86 +289,180 @@ type SnmpObject struct {
 // Element
 type SnmpState struct {
 	XMLName xml.Name `xml:snmp_state`
+
+	AccessList *oval_def.EntityStateStringType `xml:"access_list"`
+
+	CommunityName *oval_def.EntityStateStringType `xml:"community_name"`
 }
 
 // Element
 type SnmpcommunityTest struct {
 	XMLName xml.Name `xml:snmpcommunity_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SnmpcommunityObject struct {
 	XMLName xml.Name `xml:snmpcommunity_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SnmpcommunityState struct {
 	XMLName xml.Name `xml:snmpcommunity_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	View *oval_def.EntityStateStringType `xml:"view"`
+
+	Mode *EntityStateSNMPModeStringType `xml:"mode"`
+
+	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
+
+	Ipv6Acl *oval_def.EntityStateStringType `xml:"ipv6_acl"`
 }
 
 // Element
 type SnmpgroupTest struct {
 	XMLName xml.Name `xml:snmpgroup_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SnmpgroupObject struct {
 	XMLName xml.Name `xml:snmpgroup_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SnmpgroupState struct {
 	XMLName xml.Name `xml:snmpgroup_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Version *EntityStateSNMPVersionStringType `xml:"version"`
+
+	Snmpv3SecLevel *EntityStateSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
+
+	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
+
+	Ipv6Acl *oval_def.EntityStateStringType `xml:"ipv6_acl"`
+
+	ReadView *oval_def.EntityStateStringType `xml:"read_view"`
+
+	WriteView *oval_def.EntityStateStringType `xml:"write_view"`
+
+	NotifyView *oval_def.EntityStateStringType `xml:"notify_view"`
 }
 
 // Element
 type SnmphostTest struct {
 	XMLName xml.Name `xml:snmphost_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SnmphostObject struct {
 	XMLName xml.Name `xml:snmphost_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SnmphostState struct {
 	XMLName xml.Name `xml:snmphost_state`
+
+	Host *oval_def.EntityStateStringType `xml:"host"`
+
+	CommunityOrUser *oval_def.EntityStateStringType `xml:"community_or_user"`
+
+	Version *EntityStateSNMPVersionStringType `xml:"version"`
+
+	Snmpv3SecLevel *EntityStateSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
+
+	Traps *oval_def.EntityStateStringType `xml:"traps"`
 }
 
 // Element
 type SnmpuserTest struct {
 	XMLName xml.Name `xml:snmpuser_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SnmpuserObject struct {
 	XMLName xml.Name `xml:snmpuser_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SnmpuserState struct {
 	XMLName xml.Name `xml:snmpuser_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Group *oval_def.EntityStateStringType `xml:"group"`
+
+	Version *EntityStateSNMPVersionStringType `xml:"version"`
+
+	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
+
+	Ipv6Acl *oval_def.EntityStateStringType `xml:"ipv6_acl"`
+
+	Priv *EntityStateSNMPPrivStringType `xml:"priv"`
+
+	Auth *EntityStateSNMPAuthStringType `xml:"auth"`
 }
 
 // Element
 type SnmpviewTest struct {
 	XMLName xml.Name `xml:snmpview_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type SnmpviewObject struct {
 	XMLName xml.Name `xml:snmpview_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SnmpviewState struct {
 	XMLName xml.Name `xml:snmpview_state`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	MibFamily *oval_def.EntityStateStringType `xml:"mib_family"`
+
+	Include *oval_def.EntityStateBoolType `xml:"include"`
 }
 
 // Element
 type TclshTest struct {
 	XMLName xml.Name `xml:tclsh_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -229,11 +473,17 @@ type TclshObject struct {
 // Element
 type TclshState struct {
 	XMLName xml.Name `xml:tclsh_state`
+
+	Available *oval_def.EntityStateBoolType `xml:"available"`
 }
 
 // Element
 type Version55Test struct {
 	XMLName xml.Name `xml:version55_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -244,11 +494,31 @@ type Version55Object struct {
 // Element
 type Version55State struct {
 	XMLName xml.Name `xml:version55_state`
+
+	MajorVersion *oval_def.EntityStateIntType `xml:"major_version"`
+
+	MinorVersion *oval_def.EntityStateIntType `xml:"minor_version"`
+
+	Release *oval_def.EntityStateIntType `xml:"release"`
+
+	TrainIdentifier *oval_def.EntityStateStringType `xml:"train_identifier"`
+
+	Rebuild *oval_def.EntityStateIntType `xml:"rebuild"`
+
+	Subrebuild *oval_def.EntityStateStringType `xml:"subrebuild"`
+
+	MainlineRebuild *oval_def.EntityStateStringType `xml:"mainline_rebuild"`
+
+	VersionString *oval_def.EntityStateIOSVersionType `xml:"version_string"`
 }
 
 // Element
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -259,6 +529,49 @@ type VersionObject struct {
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	MajorRelease *oval_def.EntityStateStringType `xml:"major_release"`
+
+	TrainNumber *oval_def.EntityStateStringType `xml:"train_number"`
+
+	TrainIdentifier *EntityStateTrainIdentifierType `xml:"train_identifier"`
+
+	VersionString *oval_def.EntityStateIOSVersionType `xml:"version_string"`
+}
+
+// Element
+type InterfaceStateIpDirectedBroadcastCommand struct {
+	XMLName xml.Name `xml:ip_directed_broadcast_command`
+}
+
+// Element
+type InterfaceStateProxyArpCommand struct {
+	XMLName xml.Name `xml:proxy_arp_command`
+}
+
+// Element
+type InterfaceStateShutdownCommand struct {
+	XMLName xml.Name `xml:shutdown_command`
+}
+
+// Element
+type InterfaceStateSwitchportNativeVlan struct {
+	XMLName xml.Name `xml:switchport_native_vlan`
+}
+
+// Element
+type InterfaceStateSwitchportAccessVlan struct {
+	XMLName xml.Name `xml:switchport_access_vlan`
+}
+
+// Element
+type RouterStateOspfAuthenticationArea struct {
+	XMLName xml.Name `xml:ospf_authentication_area`
+}
+
+// Element
+type RoutingprotocolauthintfStateOspfArea struct {
+	XMLName xml.Name `xml:ospf_area`
 }
 
 // XSD ComplexType declarations

@@ -4,11 +4,19 @@ package apache_sc
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type HttpdItem struct {
 	XMLName xml.Name `xml:httpd_item`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	BinaryName *oval_sc.EntityItemStringType `xml:"binary_name"`
+
+	Version *oval_sc.EntityItemVersionType `xml:"version"`
 }
 
 // XSD ComplexType declarations

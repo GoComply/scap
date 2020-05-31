@@ -4,41 +4,83 @@ package catos_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type LineTest struct {
 	XMLName xml.Name `xml:line_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type LineObject struct {
 	XMLName xml.Name `xml:line_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
+
+	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
+
+	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 }
 
 // Element
 type ModuleTest struct {
 	XMLName xml.Name `xml:module_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type ModuleObject struct {
 	XMLName xml.Name `xml:module_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ModuleState struct {
 	XMLName xml.Name `xml:module_state`
+
+	ModuleNumber *oval_def.EntityStateIntType `xml:"module_number"`
+
+	Type *oval_def.EntityStateStringType `xml:"type"`
+
+	Model *oval_def.EntityStateStringType `xml:"model"`
+
+	SoftwareMajorRelease *oval_def.EntityStateVersionType `xml:"software_major_release"`
+
+	SoftwareIndividualRelease *oval_def.EntityStateIntType `xml:"software_individual_release"`
+
+	SoftwareVersionId *oval_def.EntityStateStringType `xml:"software_version_id"`
+
+	HardwareMajorRelease *oval_def.EntityStateVersionType `xml:"hardware_major_release"`
+
+	HardwareIndividualRelease *oval_def.EntityStateIntType `xml:"hardware_individual_release"`
+
+	FirmwareMajorRelease *oval_def.EntityStateVersionType `xml:"firmware_major_release"`
+
+	FirmwareIndividualRelease *oval_def.EntityStateIntType `xml:"firmware_individual_release"`
 }
 
 // Element
 type Version55Test struct {
 	XMLName xml.Name `xml:version55_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -49,11 +91,21 @@ type Version55Object struct {
 // Element
 type Version55State struct {
 	XMLName xml.Name `xml:version55_state`
+
+	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
+
+	ImageName *oval_def.EntityStateStringType `xml:"image_name"`
+
+	CatosRelease *oval_def.EntityStateVersionType `xml:"catos_release"`
 }
 
 // Element
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -64,6 +116,16 @@ type VersionObject struct {
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
+
+	ImageName *oval_def.EntityStateStringType `xml:"image_name"`
+
+	CatosMajorRelease *oval_def.EntityStateVersionType `xml:"catos_major_release"`
+
+	CatosIndividualRelease *oval_def.EntityStateIntType `xml:"catos_individual_release"`
+
+	CatosVersionId *oval_def.EntityStateStringType `xml:"catos_version_id"`
 }
 
 // XSD ComplexType declarations

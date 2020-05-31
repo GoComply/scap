@@ -4,71 +4,199 @@ package ind_sc
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type FamilyItem struct {
 	XMLName xml.Name `xml:family_item`
+
+	Family *EntityItemFamilyType `xml:"family"`
 }
 
 // Element
 type FilehashItem struct {
 	XMLName xml.Name `xml:filehash_item`
+
+	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Filename *oval_sc.EntityItemStringType `xml:"filename"`
+
+	Md5 *oval_sc.EntityItemStringType `xml:"md5"`
+
+	Sha1 *oval_sc.EntityItemStringType `xml:"sha1"`
+
+	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type Filehash58Item struct {
 	XMLName xml.Name `xml:filehash58_item`
+
+	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Filename *oval_sc.EntityItemStringType `xml:"filename"`
+
+	HashType *EntityItemHashTypeType `xml:"hash_type"`
+
+	Hash *oval_sc.EntityItemStringType `xml:"hash"`
+
+	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type EnvironmentvariableItem struct {
 	XMLName xml.Name `xml:environmentvariable_item`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type Environmentvariable58Item struct {
 	XMLName xml.Name `xml:environmentvariable58_item`
+
+	Pid *oval_sc.EntityItemIntType `xml:"pid"`
+
+	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type LdapItem struct {
 	XMLName xml.Name `xml:ldap_item`
+
+	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
+
+	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
+
+	Attribute *oval_sc.EntityItemStringType `xml:"attribute"`
+
+	ObjectClass *oval_sc.EntityItemStringType `xml:"object_class"`
+
+	Ldaptype *EntityItemLdaptypeType `xml:"ldaptype"`
+
+	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type Ldap57Item struct {
 	XMLName xml.Name `xml:ldap57_item`
+
+	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
+
+	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
+
+	Attribute *oval_sc.EntityItemStringType `xml:"attribute"`
+
+	ObjectClass *oval_sc.EntityItemStringType `xml:"object_class"`
+
+	Ldaptype *EntityItemLdaptypeType `xml:"ldaptype"`
+
+	Value []oval_sc.EntityItemRecordType `xml:"value"`
 }
 
 // Element
 type SqlItem struct {
 	XMLName xml.Name `xml:sql_item`
+
+	Engine *EntityItemEngineType `xml:"engine"`
+
+	Version *oval_sc.EntityItemStringType `xml:"version"`
+
+	ConnectionString *oval_sc.EntityItemStringType `xml:"connection_string"`
+
+	Sql *oval_sc.EntityItemStringType `xml:"sql"`
+
+	Result []oval_sc.EntityItemAnySimpleType `xml:"result"`
 }
 
 // Element
 type Sql57Item struct {
 	XMLName xml.Name `xml:sql57_item`
+
+	Engine *EntityItemEngineType `xml:"engine"`
+
+	Version *oval_sc.EntityItemStringType `xml:"version"`
+
+	ConnectionString *oval_sc.EntityItemStringType `xml:"connection_string"`
+
+	Sql *oval_sc.EntityItemStringType `xml:"sql"`
+
+	Result []oval_sc.EntityItemRecordType `xml:"result"`
 }
 
 // Element
 type TextfilecontentItem struct {
 	XMLName xml.Name `xml:textfilecontent_item`
+
+	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Filename *oval_sc.EntityItemStringType `xml:"filename"`
+
+	Pattern *oval_sc.EntityItemStringType `xml:"pattern"`
+
+	Instance *oval_sc.EntityItemIntType `xml:"instance"`
+
+	Line *oval_sc.EntityItemStringType `xml:"line"`
+
+	Text *oval_sc.EntityItemAnySimpleType `xml:"text"`
+
+	Subexpression []oval_sc.EntityItemAnySimpleType `xml:"subexpression"`
+
+	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type VariableItem struct {
 	XMLName xml.Name `xml:variable_item`
+
+	VarRef *EntityItemVariableRefType `xml:"var_ref"`
+
+	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // Element
 type XmlfilecontentItem struct {
 	XMLName xml.Name `xml:xmlfilecontent_item`
+
+	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Filename *oval_sc.EntityItemStringType `xml:"filename"`
+
+	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
+
+	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+
+	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 }
 
 // Element
 type YamlfilecontentItem struct {
 	XMLName xml.Name `xml:yamlfilecontent_item`
+
+	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
+
+	Path *oval_sc.EntityItemStringType `xml:"path"`
+
+	Filename *oval_sc.EntityItemStringType `xml:"filename"`
+
+	Yamlpath *oval_sc.EntityItemStringType `xml:"yamlpath"`
+
+	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+
+	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 }
 
 // XSD ComplexType declarations

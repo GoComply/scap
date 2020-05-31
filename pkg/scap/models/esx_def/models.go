@@ -4,41 +4,75 @@ package esx_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type Patch56Test struct {
 	XMLName xml.Name `xml:patch56_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type Patch56Object struct {
 	XMLName xml.Name `xml:patch56_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Patch56State struct {
 	XMLName xml.Name `xml:patch56_state`
+
+	PatchName *oval_def.EntityStateStringType `xml:"patch_name"`
+
+	KnowledgeBaseId *oval_def.EntityStateIntType `xml:"knowledge_base_id"`
+
+	BundleId *oval_def.EntityStateIntType `xml:"bundle_id"`
+
+	Classification *EntityStateClassificationType `xml:"classification"`
+
+	SupportLevel *EntityStateSupportLevelType `xml:"support_level"`
+
+	Status *oval_def.EntityStateBoolType `xml:"status"`
 }
 
 // Element
 type PatchTest struct {
 	XMLName xml.Name `xml:patch_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type PatchObject struct {
 	XMLName xml.Name `xml:patch_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type PatchState struct {
 	XMLName xml.Name `xml:patch_state`
+
+	PatchNumber *oval_def.EntityStateStringType `xml:"patch_number"`
+
+	Status *oval_def.EntityStateBoolType `xml:"status"`
 }
 
 // Element
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -49,21 +83,35 @@ type VersionObject struct {
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	Release *oval_def.EntityStateVersionType `xml:"release"`
+
+	Build *oval_def.EntityStateIntType `xml:"build"`
 }
 
 // Element
 type VisdkmanagedobjectTest struct {
 	XMLName xml.Name `xml:visdkmanagedobject_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type VisdkmanagedobjectObject struct {
 	XMLName xml.Name `xml:visdkmanagedobject_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type VisdkmanagedobjectState struct {
 	XMLName xml.Name `xml:visdkmanagedobject_state`
+
+	Property *oval_def.EntityStateStringType `xml:"property"`
+
+	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 }
 
 // XSD ComplexType declarations

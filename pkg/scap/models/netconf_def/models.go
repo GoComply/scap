@@ -4,21 +4,33 @@ package netconf_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type ConfigTest struct {
 	XMLName xml.Name `xml:config_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type ConfigObject struct {
 	XMLName xml.Name `xml:config_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ConfigState struct {
 	XMLName xml.Name `xml:config_state`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // XSD ComplexType declarations

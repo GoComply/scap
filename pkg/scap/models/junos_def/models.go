@@ -4,66 +4,124 @@ package junos_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type XmlConfigTest struct {
 	XMLName xml.Name `xml:xml_config_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type XmlConfigObject struct {
 	XMLName xml.Name `xml:xml_config_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type XmlConfigState struct {
 	XMLName xml.Name `xml:xml_config_state`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // Element
 type ShowTest struct {
 	XMLName xml.Name `xml:show_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type ShowObject struct {
 	XMLName xml.Name `xml:show_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ShowState struct {
 	XMLName xml.Name `xml:show_state`
+
+	Subcommand *oval_def.EntityStateStringType `xml:"subcommand"`
+
+	Value *oval_def.EntityStateStringType `xml:"value"`
 }
 
 // Element
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type VersionObject struct {
 	XMLName xml.Name `xml:version_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	Component *oval_def.EntityStateStringType `xml:"component"`
+
+	RawValue *oval_def.EntityStateStringType `xml:"raw_value"`
+
+	Major *oval_def.EntityStateIntType `xml:"major"`
+
+	Minor *oval_def.EntityStateIntType `xml:"minor"`
+
+	Type *EntityStateJunosReleaseTypeType `xml:"type"`
+
+	Build *oval_def.EntityStateIntType `xml:"build"`
+
+	MaintenanceRelease *oval_def.EntityStateIntType `xml:"maintenance_release"`
+
+	Spin *oval_def.EntityStateIntType `xml:"spin"`
+
+	BuildDate *oval_def.EntityStateIntType `xml:"build_date"`
 }
 
 // Element
 type XmlShowTest struct {
 	XMLName xml.Name `xml:xml_show_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type XmlShowObject struct {
 	XMLName xml.Name `xml:xml_show_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type XmlShowState struct {
 	XMLName xml.Name `xml:xml_show_state`
+
+	Subcommand *oval_def.EntityStateStringType `xml:"subcommand"`
+
+	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
+
+	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 }
 
 // XSD ComplexType declarations

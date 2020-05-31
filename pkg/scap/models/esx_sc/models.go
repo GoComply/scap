@@ -4,21 +4,45 @@ package esx_sc
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
+
+	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
+
+	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
+
+	KnowledgeBaseId *oval_sc.EntityItemIntType `xml:"knowledge_base_id"`
+
+	BundleId *oval_sc.EntityItemIntType `xml:"bundle_id"`
+
+	Classification *EntityItemClassificationType `xml:"classification"`
+
+	SupportLevel *EntityItemSupportLevelType `xml:"support_level"`
+
+	Status *oval_sc.EntityItemBoolType `xml:"status"`
 }
 
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
+
+	Release *oval_sc.EntityItemVersionType `xml:"release"`
+
+	Build *oval_sc.EntityItemIntType `xml:"build"`
 }
 
 // Element
 type VisdkmanagedobjectItem struct {
 	XMLName xml.Name `xml:visdkmanagedobject_item`
+
+	Property *oval_sc.EntityItemStringType `xml:"property"`
+
+	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 }
 
 // XSD ComplexType declarations

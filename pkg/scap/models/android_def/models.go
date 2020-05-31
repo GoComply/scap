@@ -4,26 +4,64 @@ package android_def
 
 import (
 	"encoding/xml"
+
+	"github.com/gocomply/scap/pkg/scap/models/oval_def"
 )
 
 // Element
 type AppmanagerTest struct {
 	XMLName xml.Name `xml:appmanager_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type AppmanagerObject struct {
 	XMLName xml.Name `xml:appmanager_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type AppmanagerState struct {
 	XMLName xml.Name `xml:appmanager_state`
+
+	ApplicationName *oval_def.EntityStateStringType `xml:"application_name"`
+
+	Uid *oval_def.EntityStateStringType `xml:"uid"`
+
+	Gid []oval_def.EntityStateStringType `xml:"gid"`
+
+	PackageName *oval_def.EntityStateStringType `xml:"package_name"`
+
+	DataDirectory *oval_def.EntityStateStringType `xml:"data_directory"`
+
+	Version *oval_def.EntityStateStringType `xml:"version"`
+
+	CurrentStatus *oval_def.EntityStateBoolType `xml:"current_status"`
+
+	Permission *oval_def.EntityStateStringType `xml:"permission"`
+
+	NativeLibDir *oval_def.EntityStateStringType `xml:"native_lib_dir"`
+
+	SigningCertificate []oval_def.EntityStateBinaryType `xml:"signing_certificate"`
+
+	FirstInstallTime *oval_def.EntityStateIntType `xml:"first_install_time"`
+
+	LastUpdateTime *oval_def.EntityStateIntType `xml:"last_update_time"`
+
+	PackageFileLocation *oval_def.EntityStateStringType `xml:"package_file_location"`
 }
 
 // Element
 type BluetoothTest struct {
 	XMLName xml.Name `xml:bluetooth_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -34,11 +72,19 @@ type BluetoothObject struct {
 // Element
 type BluetoothState struct {
 	XMLName xml.Name `xml:bluetooth_state`
+
+	Discoverable *oval_def.EntityStateBoolType `xml:"discoverable"`
+
+	CurrentStatus *oval_def.EntityStateBoolType `xml:"current_status"`
 }
 
 // Element
 type CameraTest struct {
 	XMLName xml.Name `xml:camera_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -49,11 +95,17 @@ type CameraObject struct {
 // Element
 type CameraState struct {
 	XMLName xml.Name `xml:camera_state`
+
+	CameraDisabledPolicy *oval_def.EntityStateBoolType `xml:"camera_disabled_policy"`
 }
 
 // Element
 type CertificateTest struct {
 	XMLName xml.Name `xml:certificate_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -64,11 +116,17 @@ type CertificateObject struct {
 // Element
 type CertificateState struct {
 	XMLName xml.Name `xml:certificate_state`
+
+	TrustedCertificate []oval_def.EntityStateBinaryType `xml:"trusted_certificate"`
 }
 
 // Element
 type DevicesettingsTest struct {
 	XMLName xml.Name `xml:devicesettings_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -79,11 +137,29 @@ type DevicesettingsObject struct {
 // Element
 type DevicesettingsState struct {
 	XMLName xml.Name `xml:devicesettings_state`
+
+	AdbEnabled *oval_def.EntityStateBoolType `xml:"adb_enabled"`
+
+	AllowMockLocation *oval_def.EntityStateBoolType `xml:"allow_mock_location"`
+
+	InstallNonMarketApps *oval_def.EntityStateBoolType `xml:"install_non_market_apps"`
+
+	DeviceAdmin []oval_def.EntityStateStringType `xml:"device_admin"`
+
+	AutoTime *oval_def.EntityStateBoolType `xml:"auto_time"`
+
+	AutoTimeZone *oval_def.EntityStateBoolType `xml:"auto_time_zone"`
+
+	UsbMassStorageEnabled *oval_def.EntityStateBoolType `xml:"usb_mass_storage_enabled"`
 }
 
 // Element
 type EncryptionTest struct {
 	XMLName xml.Name `xml:encryption_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -94,11 +170,19 @@ type EncryptionObject struct {
 // Element
 type EncryptionState struct {
 	XMLName xml.Name `xml:encryption_state`
+
+	EncryptionPolicyEnabled *oval_def.EntityStateBoolType `xml:"encryption_policy_enabled"`
+
+	EncryptionStatus *EntityStateEncryptionStatusType `xml:"encryption_status"`
 }
 
 // Element
 type LocationserviceTest struct {
 	XMLName xml.Name `xml:locationservice_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -109,11 +193,19 @@ type LocationserviceObject struct {
 // Element
 type LocationserviceState struct {
 	XMLName xml.Name `xml:locationservice_state`
+
+	GpsEnabled *oval_def.EntityStateBoolType `xml:"gps_enabled"`
+
+	NetworkEnabled *oval_def.EntityStateBoolType `xml:"network_enabled"`
 }
 
 // Element
 type NetworkTest struct {
 	XMLName xml.Name `xml:network_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -124,11 +216,19 @@ type NetworkObject struct {
 // Element
 type NetworkState struct {
 	XMLName xml.Name `xml:network_state`
+
+	AirplaneMode *oval_def.EntityStateBoolType `xml:"airplane_mode"`
+
+	NfcEnabled *oval_def.EntityStateBoolType `xml:"nfc_enabled"`
 }
 
 // Element
 type PasswordTest struct {
 	XMLName xml.Name `xml:password_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -139,11 +239,47 @@ type PasswordObject struct {
 // Element
 type PasswordState struct {
 	XMLName xml.Name `xml:password_state`
+
+	MaxNumFailedUserAuth *oval_def.EntityStateIntType `xml:"max_num_failed_user_auth"`
+
+	PasswordHist *oval_def.EntityStateIntType `xml:"password_hist"`
+
+	PasswordQuality *EntityStatePasswordQualityType `xml:"password_quality"`
+
+	PasswordMinLength *oval_def.EntityStateIntType `xml:"password_min_length"`
+
+	PasswordMinLetters *oval_def.EntityStateIntType `xml:"password_min_letters"`
+
+	PasswordMinLowerCaseLetters *oval_def.EntityStateIntType `xml:"password_min_lower_case_letters"`
+
+	PasswordMinNonLetters *oval_def.EntityStateIntType `xml:"password_min_non_letters"`
+
+	PasswordMinNumeric *oval_def.EntityStateIntType `xml:"password_min_numeric"`
+
+	PasswordMinSymbols *oval_def.EntityStateIntType `xml:"password_min_symbols"`
+
+	PasswordMinUpperCaseLetters *oval_def.EntityStateIntType `xml:"password_min_upper_case_letters"`
+
+	PasswordExpirationTimeout *oval_def.EntityStateIntType `xml:"password_expiration_timeout"`
+
+	PasswordVisible *oval_def.EntityStateBoolType `xml:"password_visible"`
+
+	ActivePasswordSufficient *oval_def.EntityStateBoolType `xml:"active_password_sufficient"`
+
+	CurrentFailedPasswordAttempts *oval_def.EntityStateIntType `xml:"current_failed_password_attempts"`
+
+	ScreenLockTimeout *oval_def.EntityStateIntType `xml:"screen_lock_timeout"`
+
+	KeyguardDisabledFeatures *EntityStateKeyguardDisabledFeaturesType `xml:"keyguard_disabled_features"`
 }
 
 // Element
 type SystemdetailsTest struct {
 	XMLName xml.Name `xml:systemdetails_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -154,11 +290,39 @@ type SystemdetailsObject struct {
 // Element
 type SystemdetailsState struct {
 	XMLName xml.Name `xml:systemdetails_state`
+
+	Hardware *oval_def.EntityStateStringType `xml:"hardware"`
+
+	Manufacturer *oval_def.EntityStateStringType `xml:"manufacturer"`
+
+	Model *oval_def.EntityStateStringType `xml:"model"`
+
+	Product *oval_def.EntityStateStringType `xml:"product"`
+
+	CpuAbi *oval_def.EntityStateStringType `xml:"cpu_abi"`
+
+	CpuAbi2 *oval_def.EntityStateStringType `xml:"cpu_abi2"`
+
+	BuildFingerprint *oval_def.EntityStateStringType `xml:"build_fingerprint"`
+
+	OsVersionCodeName *oval_def.EntityStateStringType `xml:"os_version_code_name"`
+
+	OsVersionBuildNumber *oval_def.EntityStateStringType `xml:"os_version_build_number"`
+
+	OsVersionReleaseName *oval_def.EntityStateStringType `xml:"os_version_release_name"`
+
+	OsVersionSdkNumber *oval_def.EntityStateIntType `xml:"os_version_sdk_number"`
+
+	HardwareKeystore *oval_def.EntityStateBoolType `xml:"hardware_keystore"`
 }
 
 // Element
 type WifiTest struct {
 	XMLName xml.Name `xml:wifi_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -169,26 +333,62 @@ type WifiObject struct {
 // Element
 type WifiState struct {
 	XMLName xml.Name `xml:wifi_state`
+
+	WifiStatus *oval_def.EntityStateBoolType `xml:"wifi_status"`
+
+	NetworkAvailabilityNotification *oval_def.EntityStateBoolType `xml:"network_availability_notification"`
 }
 
 // Element
 type WifinetworkTest struct {
 	XMLName xml.Name `xml:wifinetwork_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
 type WifinetworkObject struct {
 	XMLName xml.Name `xml:wifinetwork_object`
+
+	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type WifinetworkState struct {
 	XMLName xml.Name `xml:wifinetwork_state`
+
+	Ssid *oval_def.EntityStateStringType `xml:"ssid"`
+
+	Bssid *oval_def.EntityStateStringType `xml:"bssid"`
+
+	AuthAlgorithms []EntityStateWifiAuthAlgorithmType `xml:"auth_algorithms"`
+
+	GroupCiphers []EntityStateWifiGroupCipherType `xml:"group_ciphers"`
+
+	KeyManagement []EntityStateWifiKeyMgmtType `xml:"key_management"`
+
+	PairwiseCiphers []EntityStateWifiPairwiseCipherType `xml:"pairwise_ciphers"`
+
+	Protocols []EntityStateWifiProtocolType `xml:"protocols"`
+
+	HiddenSsid *oval_def.EntityStateBoolType `xml:"hidden_ssid"`
+
+	NetworkId *oval_def.EntityStateIntType `xml:"network_id"`
+
+	Priority *oval_def.EntityStateIntType `xml:"priority"`
+
+	CurrentStatus *EntityStateWifiCurrentStatusType `xml:"current_status"`
 }
 
 // Element
 type TelephonyTest struct {
 	XMLName xml.Name `xml:telephony_test`
+
+	Object oval_def.ObjectRefType `xml:"object"`
+
+	State []oval_def.StateRefType `xml:"state"`
 }
 
 // Element
@@ -199,6 +399,12 @@ type TelephonyObject struct {
 // Element
 type TelephonyState struct {
 	XMLName xml.Name `xml:telephony_state`
+
+	NetworkType *EntityStateNetworkType `xml:"network_type"`
+
+	SimCountryIso *oval_def.EntityStateStringType `xml:"sim_country_iso"`
+
+	SimOperatorCode *oval_def.EntityStateStringType `xml:"sim_operator_code"`
 }
 
 // XSD ComplexType declarations
