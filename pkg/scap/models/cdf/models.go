@@ -60,9 +60,9 @@ type Benchmark struct {
 
 	Signature *SignatureType `xml:"signature"`
 
-	Group Group `xml:"Group"`
+	Group []Group `xml:"Group"`
 
-	Rule Rule `xml:"Rule"`
+	Rule []Rule `xml:"Rule"`
 }
 
 // Element
@@ -141,15 +141,15 @@ type Profile struct {
 
 	Signature *SignatureType `xml:"signature"`
 
-	Select *ProfileSelectType `xml:"select"`
+	Select []ProfileSelectType `xml:"select"`
 
-	SetComplexValue *ProfileSetComplexValueType `xml:"set-complex-value"`
+	SetComplexValue []ProfileSetComplexValueType `xml:"set-complex-value"`
 
-	SetValue *ProfileSetValueType `xml:"set-value"`
+	SetValue []ProfileSetValueType `xml:"set-value"`
 
-	RefineValue *ProfileRefineValueType `xml:"refine-value"`
+	RefineValue []ProfileRefineValueType `xml:"refine-value"`
 
-	RefineRule *ProfileRefineRuleType `xml:"refine-rule"`
+	RefineRule []ProfileRefineRuleType `xml:"refine-rule"`
 }
 
 // Element
@@ -186,11 +186,11 @@ type TestResult struct {
 
 	Signature *SignatureType `xml:"signature"`
 
-	TargetIdRef TargetIdRefType `xml:"target-id-ref"`
+	TargetIdRef []TargetIdRefType `xml:"target-id-ref"`
 
-	SetValue ProfileSetValueType `xml:"set-value"`
+	SetValue []ProfileSetValueType `xml:"set-value"`
 
-	SetComplexValue ProfileSetComplexValueType `xml:"set-complex-value"`
+	SetComplexValue []ProfileSetComplexValueType `xml:"set-complex-value"`
 }
 
 // Element
@@ -486,15 +486,15 @@ type ProfileType struct {
 
 	Signature *SignatureType `xml:"signature"`
 
-	Select *ProfileSelectType `xml:"select"`
+	Select []ProfileSelectType `xml:"select"`
 
-	SetComplexValue *ProfileSetComplexValueType `xml:"set-complex-value"`
+	SetComplexValue []ProfileSetComplexValueType `xml:"set-complex-value"`
 
-	SetValue *ProfileSetValueType `xml:"set-value"`
+	SetValue []ProfileSetValueType `xml:"set-value"`
 
-	RefineValue *ProfileRefineValueType `xml:"refine-value"`
+	RefineValue []ProfileRefineValueType `xml:"refine-value"`
 
-	RefineRule *ProfileRefineRuleType `xml:"refine-rule"`
+	RefineRule []ProfileRefineRuleType `xml:"refine-rule"`
 }
 
 type ProfileSelectType struct {
@@ -579,11 +579,11 @@ type TestResultType struct {
 
 	Signature *SignatureType `xml:"signature"`
 
-	TargetIdRef TargetIdRefType `xml:"target-id-ref"`
+	TargetIdRef []TargetIdRefType `xml:"target-id-ref"`
 
-	SetValue ProfileSetValueType `xml:"set-value"`
+	SetValue []ProfileSetValueType `xml:"set-value"`
 
-	SetComplexValue ProfileSetComplexValueType `xml:"set-complex-value"`
+	SetComplexValue []ProfileSetComplexValueType `xml:"set-complex-value"`
 }
 
 type BenchmarkReferenceType struct {
