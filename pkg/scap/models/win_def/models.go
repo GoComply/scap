@@ -747,15 +747,27 @@ type FileBehaviors struct {
 }
 
 type FileAuditPermissions53Behaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type FileAuditPermissionsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type FileEffectiveRights53Behaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type FileEffectiveRightsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type NTUserBehaviors struct {
@@ -783,15 +795,27 @@ type RegistryBehaviors struct {
 }
 
 type RegkeyAuditPermissions53Behaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type RegkeyAuditPermissionsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type RegkeyEffectiveRights53Behaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type RegkeyEffectiveRightsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type ServiceEffectiveRightsBehaviors struct {

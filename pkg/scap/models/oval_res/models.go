@@ -48,9 +48,11 @@ type DirectivesType struct {
 }
 
 type DefaultDirectivesType struct {
+	IncludeSourceDefinitions string `xml:"include_source_definitions,attr"`
 }
 
 type ClassDirectivesType struct {
+	Class string `xml:"class,attr"`
 }
 
 type DirectiveType struct {

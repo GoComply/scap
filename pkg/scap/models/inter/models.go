@@ -216,6 +216,9 @@ type QuestionnairesType struct {
 }
 
 type QuestionnaireType struct {
+	Id string `xml:"id,attr"`
+
+	ChildOnly string `xml:"child_only,attr"`
 }
 
 type GeneratorType struct {
@@ -248,6 +251,9 @@ type TestActionsType struct {
 }
 
 type QuestionTestActionType struct {
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
 }
 
 type BooleanQuestionTestActionType struct {
@@ -270,6 +276,7 @@ type ChoiceTestActionConditionType struct {
 }
 
 type EqualsTestActionConditionType struct {
+	VarRef string `xml:"var_ref,attr"`
 }
 
 type RangeTestActionConditionType struct {
@@ -313,18 +320,25 @@ type QuestionTextType struct {
 }
 
 type QuestionType struct {
+	Id string `xml:"id,attr"`
 }
 
 type BooleanQuestionType struct {
+	DefaultAnswer string `xml:"default_answer,attr"`
+
+	Model string `xml:"model,attr"`
 }
 
 type ChoiceQuestionType struct {
+	DefaultAnswerRef string `xml:"default_answer_ref,attr"`
 }
 
 type NumericQuestionType struct {
+	DefaultAnswer string `xml:"default_answer,attr"`
 }
 
 type StringQuestionType struct {
+	DefaultAnswer string `xml:"default_answer,attr"`
 }
 
 type ChoiceType struct {
@@ -418,6 +432,9 @@ type ArtifactsType struct {
 }
 
 type ArtifactType struct {
+	Id string `xml:"id,attr"`
+
+	Persistent string `xml:"persistent,attr"`
 }
 
 type ArtifactRefsType struct {
@@ -438,6 +455,7 @@ type ArtifactValueType struct {
 }
 
 type EmbeddedArtifactValueType struct {
+	MimeType string `xml:"mime_type,attr"`
 }
 
 type TextArtifactValueType struct {
@@ -476,12 +494,16 @@ type VariablesType struct {
 }
 
 type VariableType struct {
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
 }
 
 type ConstantVariableType struct {
 }
 
 type LocalVariableType struct {
+	QuestionRef string `xml:"question_ref,attr"`
 }
 
 type ExternalVariableType struct {
@@ -492,15 +514,21 @@ type SetExpressionBaseType struct {
 }
 
 type SetExpressionPatternType struct {
+	Pattern string `xml:"pattern,attr"`
 }
 
 type SetExpressionChoiceType struct {
+	ChoiceRef string `xml:"choice_ref,attr"`
 }
 
 type SetExpressionRangeType struct {
+	Min string `xml:"min,attr"`
+
+	Max string `xml:"max,attr"`
 }
 
 type SetExpressionBooleanType struct {
+	Value string `xml:"value,attr"`
 }
 
 type VariableSetType struct {

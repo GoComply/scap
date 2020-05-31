@@ -65,6 +65,7 @@ type PlatformBaseType struct {
 }
 
 type PlatformType struct {
+	Id string `xml:"id,attr"`
 }
 
 type LogicalTestType struct {
@@ -84,9 +85,15 @@ type FactRefType struct {
 }
 
 type CPEFactRefType struct {
+	Name string `xml:"name,attr"`
 }
 
 type CheckFactRefType struct {
+	System string `xml:"system,attr"`
+
+	Href string `xml:"href,attr"`
+
+	IdRef string `xml:"id-ref,attr"`
 }
 
 type TextType struct {

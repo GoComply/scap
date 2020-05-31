@@ -24,4 +24,6 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	profile := profiles[0]
 	assert.Equal(t, len(profile.Status), 1)
 	assert.Equal(t, len(profile.Title), 1)
+
+	assert.Equal(t, len(doc.Rule), 1)
 }

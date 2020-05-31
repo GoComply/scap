@@ -412,6 +412,9 @@ type EntityStateSimpleBaseType struct {
 }
 
 type EntityStateComplexBaseType struct {
+	EntityCheck string `xml:"entity_check,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
 }
 
 type EntityStateIPAddressType struct {

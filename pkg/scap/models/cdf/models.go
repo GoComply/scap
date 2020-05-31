@@ -284,6 +284,7 @@ type TextWithSubType struct {
 }
 
 type SubType struct {
+	Use string `xml:"use,attr"`
 }
 
 type IdrefType struct {
@@ -299,6 +300,7 @@ type CPE2IdrefType struct {
 }
 
 type OverrideableCPE2IdrefType struct {
+	Override string `xml:"override,attr"`
 }
 
 type ItemType struct {
@@ -338,12 +340,23 @@ type ItemType struct {
 }
 
 type SelectableItemType struct {
+	Selected string `xml:"selected,attr"`
+
+	Weight string `xml:"weight,attr"`
 }
 
 type GroupType struct {
+	Id string `xml:"id,attr"`
 }
 
 type RuleType struct {
+	Id string `xml:"id,attr"`
+
+	Role string `xml:"role,attr"`
+
+	Severity string `xml:"severity,attr"`
+
+	Multiple string `xml:"multiple,attr"`
 }
 
 type IdentType struct {
@@ -351,9 +364,19 @@ type IdentType struct {
 }
 
 type WarningType struct {
+	Category string `xml:"category,attr"`
 }
 
 type FixTextType struct {
+	Fixref string `xml:"fixref,attr"`
+
+	Reboot string `xml:"reboot,attr"`
+
+	Strategy string `xml:"strategy,attr"`
+
+	Disruption string `xml:"disruption,attr"`
+
+	Complexity string `xml:"complexity,attr"`
 }
 
 type FixType struct {
@@ -426,6 +449,15 @@ type CheckContentType struct {
 }
 
 type ValueType struct {
+	Id string `xml:"id,attr"`
+
+	Type string `xml:"type,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Interactive string `xml:"interactive,attr"`
+
+	InterfaceHint string `xml:"interfaceHint,attr"`
 }
 
 type ComplexValueType struct {
@@ -433,6 +465,7 @@ type ComplexValueType struct {
 }
 
 type SelComplexValueType struct {
+	Selector string `xml:"selector,attr"`
 }
 
 type SelChoicesType struct {
@@ -510,6 +543,7 @@ type ProfileSetValueType struct {
 }
 
 type ProfileSetComplexValueType struct {
+	Idref string `xml:"idref,attr"`
 }
 
 type ProfileRefineValueType struct {
@@ -707,6 +741,7 @@ type TailoringType struct {
 }
 
 type TailoringBenchmarkReferenceType struct {
+	Version string `xml:"version,attr"`
 }
 
 type TailoringVersionType struct {

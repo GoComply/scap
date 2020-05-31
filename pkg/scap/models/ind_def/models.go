@@ -228,6 +228,11 @@ type LdapBehaviors struct {
 }
 
 type Textfilecontent54Behaviors struct {
+	IgnoreCase string `xml:"ignore_case,attr"`
+
+	Multiline string `xml:"multiline,attr"`
+
+	Singleline string `xml:"singleline,attr"`
 }
 
 type FileBehaviors struct {
