@@ -31,6 +31,8 @@ type CpeItem struct {
 // Element
 type Reference struct {
 	XMLName xml.Name `xml:reference`
+
+	Href string `xml:"href,attr"`
 }
 
 // XSD ComplexType declarations

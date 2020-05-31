@@ -64,6 +64,8 @@ type Benchmark struct {
 // Element
 type Status struct {
 	XMLName xml.Name `xml:status`
+
+	Date string `xml:"date,attr"`
 }
 
 // Element

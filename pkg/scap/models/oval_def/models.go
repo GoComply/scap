@@ -75,6 +75,8 @@ type Set struct {
 // Element
 type Filter struct {
 	XMLName xml.Name `xml:filter`
+
+	Action string `xml:"action,attr"`
 }
 
 // Element
