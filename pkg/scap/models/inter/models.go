@@ -290,6 +290,10 @@ type RangeType struct {
 
 type TestActionConditionType struct {
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
+
+	Result string `xml:"result"`
+
+	TestActionRef TestActionRefType `xml:"test_action_ref"`
 }
 
 type RangeValueType struct {

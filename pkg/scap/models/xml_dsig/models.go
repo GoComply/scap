@@ -110,6 +110,16 @@ type RetrievalMethod struct {
 // Element
 type X509Data struct {
 	XMLName xml.Name `xml:X509Data`
+
+	X509IssuerSerial X509IssuerSerialType `xml:"X509IssuerSerial"`
+
+	X509SKI string `xml:"X509SKI"`
+
+	X509SubjectName string `xml:"X509SubjectName"`
+
+	X509Certificate string `xml:"X509Certificate"`
+
+	X509CRL string `xml:"X509CRL"`
 }
 
 // Element
@@ -248,6 +258,15 @@ type RetrievalMethodType struct {
 }
 
 type X509DataType struct {
+	X509IssuerSerial X509IssuerSerialType `xml:"X509IssuerSerial"`
+
+	X509SKI string `xml:"X509SKI"`
+
+	X509SubjectName string `xml:"X509SubjectName"`
+
+	X509Certificate string `xml:"X509Certificate"`
+
+	X509CRL string `xml:"X509CRL"`
 }
 
 type X509IssuerSerialType struct {

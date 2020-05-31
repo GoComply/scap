@@ -59,6 +59,10 @@ type Benchmark struct {
 	TestResult []TestResult `xml:"TestResult"`
 
 	Signature *SignatureType `xml:"signature"`
+
+	Group Group `xml:"Group"`
+
+	Rule Rule `xml:"Rule"`
 }
 
 // Element
@@ -136,6 +140,16 @@ type Profile struct {
 	Metadata []MetadataType `xml:"metadata"`
 
 	Signature *SignatureType `xml:"signature"`
+
+	Select *ProfileSelectType `xml:"select"`
+
+	SetComplexValue *ProfileSetComplexValueType `xml:"set-complex-value"`
+
+	SetValue *ProfileSetValueType `xml:"set-value"`
+
+	RefineValue *ProfileRefineValueType `xml:"refine-value"`
+
+	RefineRule *ProfileRefineRuleType `xml:"refine-rule"`
 }
 
 // Element
@@ -171,6 +185,12 @@ type TestResult struct {
 	Metadata []MetadataType `xml:"metadata"`
 
 	Signature *SignatureType `xml:"signature"`
+
+	TargetIdRef TargetIdRefType `xml:"target-id-ref"`
+
+	SetValue ProfileSetValueType `xml:"set-value"`
+
+	SetComplexValue ProfileSetComplexValueType `xml:"set-complex-value"`
 }
 
 // Element
@@ -465,6 +485,16 @@ type ProfileType struct {
 	Metadata []MetadataType `xml:"metadata"`
 
 	Signature *SignatureType `xml:"signature"`
+
+	Select *ProfileSelectType `xml:"select"`
+
+	SetComplexValue *ProfileSetComplexValueType `xml:"set-complex-value"`
+
+	SetValue *ProfileSetValueType `xml:"set-value"`
+
+	RefineValue *ProfileRefineValueType `xml:"refine-value"`
+
+	RefineRule *ProfileRefineRuleType `xml:"refine-rule"`
 }
 
 type ProfileSelectType struct {
@@ -548,6 +578,12 @@ type TestResultType struct {
 	Metadata []MetadataType `xml:"metadata"`
 
 	Signature *SignatureType `xml:"signature"`
+
+	TargetIdRef TargetIdRefType `xml:"target-id-ref"`
+
+	SetValue ProfileSetValueType `xml:"set-value"`
+
+	SetComplexValue ProfileSetComplexValueType `xml:"set-complex-value"`
 }
 
 type BenchmarkReferenceType struct {
@@ -622,6 +658,10 @@ type RuleResultType struct {
 	Instance []InstanceResultType `xml:"instance"`
 
 	Fix []FixType `xml:"fix"`
+
+	Check []CheckType `xml:"check"`
+
+	ComplexCheck *ComplexCheckType `xml:"complex-check"`
 }
 
 type InstanceResultType struct {
