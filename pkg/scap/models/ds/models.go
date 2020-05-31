@@ -72,9 +72,9 @@ type ComponentRef struct {
 
 	Id string `xml:"id,attr"`
 
-	XlinkType string `xml:",attr"`
+	XlinkType string `xml:"type,attr"`
 
-	XlinkHref string `xml:",attr"`
+	XlinkHref string `xml:"href,attr"`
 
 	Catalog *er.Catalog `xml:"catalog"`
 }

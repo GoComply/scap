@@ -22,7 +22,7 @@ type Benchmark struct {
 
 	StyleHref string `xml:"style-href,attr"`
 
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Status []Status `xml:"status"`
 
@@ -197,9 +197,9 @@ type Tailoring struct {
 type NoticeType struct {
 	Id string `xml:"id,attr"`
 
-	XmlBase string `xml:",attr"`
+	XmlBase string `xml:"base,attr"`
 
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 }
 
 type DcStatusType struct {
@@ -232,31 +232,31 @@ type VersionType struct {
 }
 
 type TextType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
 }
 
 type HtmlTextType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
 }
 
 type HtmlTextWithSubType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
 }
 
 type ProfileNoteType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Tag string `xml:"tag,attr"`
 }
 
 type TextWithSubType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
 
@@ -292,9 +292,9 @@ type ItemType struct {
 
 	ProhibitChanges string `xml:"prohibitChanges,attr"`
 
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
-	XmlBase string `xml:",attr"`
+	XmlBase string `xml:"base,attr"`
 
 	Id string `xml:"Id,attr"`
 
@@ -373,7 +373,7 @@ type CheckType struct {
 
 	MultiCheck string `xml:"multi-check,attr"`
 
-	XmlBase string `xml:",attr"`
+	XmlBase string `xml:"base,attr"`
 
 	CheckImport []CheckImportType `xml:"check-import"`
 
@@ -444,7 +444,7 @@ type ProfileType struct {
 
 	Extends string `xml:"extends,attr"`
 
-	XmlBase string `xml:",attr"`
+	XmlBase string `xml:"base,attr"`
 
 	Id2 string `xml:"Id,attr"`
 

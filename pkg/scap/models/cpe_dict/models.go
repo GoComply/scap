@@ -72,11 +72,11 @@ type ListType struct {
 }
 
 type TextType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 }
 
 type NotesType struct {
-	XmlLang string `xml:",attr"`
+	XmlLang string `xml:"lang,attr"`
 
 	Note []string `xml:"note"`
 }
