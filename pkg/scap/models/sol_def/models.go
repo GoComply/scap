@@ -244,9 +244,15 @@ type VirtualizationinfoState struct {
 // XSD ComplexType declarations
 
 type PackageCheckBehaviors struct {
+	FileattributesOnly string `xml:"fileattributes_only,attr"`
+
+	FilecontentsOnly string `xml:"filecontents_only,attr"`
+
+	NoVolatileeditable string `xml:"no_volatileeditable,attr"`
 }
 
 type PatchBehaviors struct {
+	Supersedence string `xml:"supersedence,attr"`
 }
 
 type EntityObjectPublisherTypeType struct {

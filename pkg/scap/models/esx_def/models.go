@@ -69,12 +69,15 @@ type VisdkmanagedobjectState struct {
 // XSD ComplexType declarations
 
 type Patch56Behaviors struct {
+	Supersedence string `xml:"supersedence,attr"`
 }
 
 type PatchBehaviors struct {
+	Supersedence string `xml:"supersedence,attr"`
 }
 
 type ViSdkManagedEntityBehaviors struct {
+	ManagedEntityType string `xml:"managed_entity_type,attr"`
 }
 
 type EntityStateClassificationType struct {

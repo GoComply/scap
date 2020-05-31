@@ -68,6 +68,10 @@ type PlatformType struct {
 }
 
 type LogicalTestType struct {
+	Operator string `xml:"operator,attr"`
+
+	Negate string `xml:"negate,attr"`
+
 	LogicalTest []LogicalTestType `xml:"logical-test"`
 
 	FactRef []FactRef `xml:"fact-ref"`
@@ -76,6 +80,7 @@ type LogicalTestType struct {
 }
 
 type FactRefType struct {
+	Description string `xml:"description,attr"`
 }
 
 type CPEFactRefType struct {
@@ -85,4 +90,5 @@ type CheckFactRefType struct {
 }
 
 type TextType struct {
+	XmlLang string `xml:",attr"`
 }

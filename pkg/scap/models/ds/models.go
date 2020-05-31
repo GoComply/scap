@@ -82,6 +82,7 @@ type ComponentRef struct {
 // XSD ComplexType declarations
 
 type ContentSourceType struct {
+	Href string `xml:"href,attr"`
 }
 
 type RefListType struct {

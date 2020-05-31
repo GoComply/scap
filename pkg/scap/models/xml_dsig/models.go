@@ -171,6 +171,8 @@ type RSAKeyValue struct {
 // XSD ComplexType declarations
 
 type SignatureType struct {
+	Id string `xml:"Id,attr"`
+
 	SignedInfo SignedInfo `xml:"SignedInfo"`
 
 	SignatureValue SignatureValue `xml:"SignatureValue"`
@@ -181,9 +183,12 @@ type SignatureType struct {
 }
 
 type SignatureValueType struct {
+	Id string `xml:"Id,attr"`
 }
 
 type SignedInfoType struct {
+	Id string `xml:"Id,attr"`
+
 	CanonicalizationMethod CanonicalizationMethod `xml:"CanonicalizationMethod"`
 
 	SignatureMethod SignatureMethod `xml:"SignatureMethod"`
@@ -192,13 +197,22 @@ type SignedInfoType struct {
 }
 
 type CanonicalizationMethodType struct {
+	Algorithm string `xml:"Algorithm,attr"`
 }
 
 type SignatureMethodType struct {
+	Algorithm string `xml:"Algorithm,attr"`
+
 	HMACOutputLength string `xml:"HMACOutputLength"`
 }
 
 type ReferenceType struct {
+	Id string `xml:"Id,attr"`
+
+	URI string `xml:"URI,attr"`
+
+	Type string `xml:"Type,attr"`
+
 	Transforms *Transforms `xml:"Transforms"`
 
 	DigestMethod DigestMethod `xml:"DigestMethod"`
@@ -211,18 +225,25 @@ type TransformsType struct {
 }
 
 type TransformType struct {
+	Algorithm string `xml:"Algorithm,attr"`
 }
 
 type DigestMethodType struct {
+	Algorithm string `xml:"Algorithm,attr"`
 }
 
 type KeyInfoType struct {
+	Id string `xml:"Id,attr"`
 }
 
 type KeyValueType struct {
 }
 
 type RetrievalMethodType struct {
+	URI string `xml:"URI,attr"`
+
+	Type string `xml:"Type,attr"`
+
 	Transforms *Transforms `xml:"Transforms"`
 }
 
@@ -243,17 +264,29 @@ type SPKIDataType struct {
 }
 
 type ObjectType struct {
+	Id string `xml:"Id,attr"`
+
+	MimeType string `xml:"MimeType,attr"`
+
+	Encoding string `xml:"Encoding,attr"`
 }
 
 type ManifestType struct {
+	Id string `xml:"Id,attr"`
+
 	Reference []Reference `xml:"Reference"`
 }
 
 type SignaturePropertiesType struct {
+	Id string `xml:"Id,attr"`
+
 	SignatureProperty []SignatureProperty `xml:"SignatureProperty"`
 }
 
 type SignaturePropertyType struct {
+	Target string `xml:"Target,attr"`
+
+	Id string `xml:"Id,attr"`
 }
 
 type DSAKeyValueType struct {

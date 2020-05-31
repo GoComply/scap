@@ -119,6 +119,14 @@ type DefinitionsType struct {
 }
 
 type DefinitionType struct {
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Class string `xml:"class,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Metadata MetadataType `xml:"metadata"`
@@ -139,21 +147,49 @@ type MetadataType struct {
 }
 
 type AffectedType struct {
+	Family string `xml:"family,attr"`
+
 	Platform []string `xml:"platform"`
 
 	Product []string `xml:"product"`
 }
 
 type ReferenceType struct {
+	Source string `xml:"source,attr"`
+
+	RefId string `xml:"ref_id,attr"`
+
+	RefUrl string `xml:"ref_url,attr"`
 }
 
 type CriteriaType struct {
+	ApplicabilityCheck string `xml:"applicability_check,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Comment string `xml:"comment,attr"`
 }
 
 type CriterionType struct {
+	ApplicabilityCheck string `xml:"applicability_check,attr"`
+
+	TestRef string `xml:"test_ref,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Comment string `xml:"comment,attr"`
 }
 
 type ExtendDefinitionType struct {
+	ApplicabilityCheck string `xml:"applicability_check,attr"`
+
+	DefinitionRef string `xml:"definition_ref,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Comment string `xml:"comment,attr"`
 }
 
 type TestsType struct {
@@ -161,15 +197,31 @@ type TestsType struct {
 }
 
 type TestType struct {
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
 }
 
 type ObjectRefType struct {
+	ObjectRef string `xml:"object_ref,attr"`
 }
 
 type StateRefType struct {
+	StateRef string `xml:"state_ref,attr"`
 }
 
 type ObjectsType struct {
@@ -177,6 +229,14 @@ type ObjectsType struct {
 }
 
 type ObjectType struct {
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -187,6 +247,16 @@ type StatesType struct {
 }
 
 type StateType struct {
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -197,57 +267,90 @@ type VariablesType struct {
 }
 
 type VariableType struct {
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
 }
 
 type PossibleValueType struct {
+	Hint string `xml:"hint,attr"`
 }
 
 type PossibleRestrictionType struct {
+	Operator string `xml:"operator,attr"`
+
+	Hint string `xml:"hint,attr"`
 }
 
 type RestrictionType struct {
+	Operation string `xml:"operation,attr"`
 }
 
 type ValueType struct {
 }
 
 type LiteralComponentType struct {
+	Datatype string `xml:"datatype,attr"`
 }
 
 type ObjectComponentType struct {
+	ObjectRef string `xml:"object_ref,attr"`
+
+	ItemField string `xml:"item_field,attr"`
+
+	RecordField string `xml:"record_field,attr"`
 }
 
 type VariableComponentType struct {
+	VarRef string `xml:"var_ref,attr"`
 }
 
 type ArithmeticFunctionType struct {
+	ArithmeticOperation string `xml:"arithmetic_operation,attr"`
 }
 
 type BeginFunctionType struct {
+	Character string `xml:"character,attr"`
 }
 
 type ConcatFunctionType struct {
 }
 
 type EndFunctionType struct {
+	Character string `xml:"character,attr"`
 }
 
 type EscapeRegexFunctionType struct {
 }
 
 type SplitFunctionType struct {
+	Delimiter string `xml:"delimiter,attr"`
 }
 
 type SubstringFunctionType struct {
+	SubstringStart string `xml:"substring_start,attr"`
+
+	SubstringLength string `xml:"substring_length,attr"`
 }
 
 type TimeDifferenceFunctionType struct {
+	Format1 string `xml:"format_1,attr"`
+
+	Format2 string `xml:"format_2,attr"`
 }
 
 type RegexCaptureFunctionType struct {
+	Pattern string `xml:"pattern,attr"`
 }
 
 type UniqueFunctionType struct {
@@ -257,6 +360,7 @@ type CountFunctionType struct {
 }
 
 type GlobToRegexFunctionType struct {
+	GlobNoescape string `xml:"glob_noescape,attr"`
 }
 
 type EntitySimpleBaseType struct {
@@ -296,9 +400,15 @@ type EntityObjectRecordType struct {
 }
 
 type EntityObjectFieldType struct {
+	Name string `xml:"name,attr"`
+
+	EntityCheck string `xml:"entity_check,attr"`
 }
 
 type EntityStateSimpleBaseType struct {
+	EntityCheck string `xml:"entity_check,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
 }
 
 type EntityStateComplexBaseType struct {
@@ -347,4 +457,7 @@ type EntityStateRecordType struct {
 }
 
 type EntityStateFieldType struct {
+	Name string `xml:"name,attr"`
+
+	EntityCheck string `xml:"entity_check,attr"`
 }

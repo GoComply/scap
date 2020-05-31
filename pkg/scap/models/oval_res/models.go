@@ -54,6 +54,9 @@ type ClassDirectivesType struct {
 }
 
 type DirectiveType struct {
+	Reported string `xml:"reported,attr"`
+
+	Content string `xml:"content,attr"`
 }
 
 type ResultsType struct {
@@ -73,18 +76,57 @@ type DefinitionsType struct {
 }
 
 type DefinitionType struct {
+	DefinitionId string `xml:"definition_id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	VariableInstance string `xml:"variable_instance,attr"`
+
+	Class string `xml:"class,attr"`
+
+	Result string `xml:"result,attr"`
+
 	Message []oval.MessageType `xml:"message"`
 
 	Criteria *CriteriaType `xml:"criteria"`
 }
 
 type CriteriaType struct {
+	ApplicabilityCheck string `xml:"applicability_check,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Result string `xml:"result,attr"`
 }
 
 type CriterionType struct {
+	ApplicabilityCheck string `xml:"applicability_check,attr"`
+
+	TestRef string `xml:"test_ref,attr"`
+
+	Version string `xml:"version,attr"`
+
+	VariableInstance string `xml:"variable_instance,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Result string `xml:"result,attr"`
 }
 
 type ExtendDefinitionType struct {
+	ApplicabilityCheck string `xml:"applicability_check,attr"`
+
+	DefinitionRef string `xml:"definition_ref,attr"`
+
+	Version string `xml:"version,attr"`
+
+	VariableInstance string `xml:"variable_instance,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Result string `xml:"result,attr"`
 }
 
 type TestsType struct {
@@ -92,6 +134,20 @@ type TestsType struct {
 }
 
 type TestType struct {
+	TestId string `xml:"test_id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	VariableInstance string `xml:"variable_instance,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Result string `xml:"result,attr"`
+
 	Message []oval.MessageType `xml:"message"`
 
 	TestedItem []TestedItemType `xml:"tested_item"`
@@ -100,8 +156,13 @@ type TestType struct {
 }
 
 type TestedItemType struct {
+	ItemId string `xml:"item_id,attr"`
+
+	Result string `xml:"result,attr"`
+
 	Message []oval.MessageType `xml:"message"`
 }
 
 type TestedVariableType struct {
+	VariableId string `xml:"variable_id,attr"`
 }

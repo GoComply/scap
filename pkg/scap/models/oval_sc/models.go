@@ -63,6 +63,16 @@ type CollectedObjectsType struct {
 }
 
 type ObjectType struct {
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	VariableInstance string `xml:"variable_instance,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Flag string `xml:"flag,attr"`
+
 	Message []oval.MessageType `xml:"message"`
 
 	VariableValue []VariableValueType `xml:"variable_value"`
@@ -71,9 +81,11 @@ type ObjectType struct {
 }
 
 type VariableValueType struct {
+	VariableId string `xml:"variable_id,attr"`
 }
 
 type ReferenceType struct {
+	ItemRef string `xml:"item_ref,attr"`
 }
 
 type SystemDataType struct {
@@ -81,6 +93,10 @@ type SystemDataType struct {
 }
 
 type ItemType struct {
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
+
 	Message []oval.MessageType `xml:"message"`
 }
 
@@ -118,6 +134,7 @@ type EntityItemRecordType struct {
 }
 
 type EntityItemFieldType struct {
+	Name string `xml:"name,attr"`
 }
 
 type EntityItemVersionType struct {

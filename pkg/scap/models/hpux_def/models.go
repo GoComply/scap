@@ -99,4 +99,5 @@ type TrustedState struct {
 // XSD ComplexType declarations
 
 type Patch53Behaviors struct {
+	Supersedence string `xml:"supersedence,attr"`
 }

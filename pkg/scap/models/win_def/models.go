@@ -729,9 +729,21 @@ type WuaupdatesearcherState struct {
 // XSD ComplexType declarations
 
 type AccesstokenBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type FileBehaviors struct {
+	MaxDepth string `xml:"max_depth,attr"`
+
+	Recurse string `xml:"recurse,attr"`
+
+	RecurseDirection string `xml:"recurse_direction,attr"`
+
+	RecurseFileSystem string `xml:"recurse_file_system,attr"`
+
+	WindowsView string `xml:"windows_view,attr"`
 }
 
 type FileAuditPermissions53Behaviors struct {
@@ -747,12 +759,27 @@ type FileEffectiveRightsBehaviors struct {
 }
 
 type NTUserBehaviors struct {
+	IncludeDefault string `xml:"include_default,attr"`
+
+	MaxDepth string `xml:"max_depth,attr"`
+
+	RecurseDirection string `xml:"recurse_direction,attr"`
+
+	WindowsView string `xml:"windows_view,attr"`
 }
 
 type PrinterEffectiveRightsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type RegistryBehaviors struct {
+	MaxDepth string `xml:"max_depth,attr"`
+
+	RecurseDirection string `xml:"recurse_direction,attr"`
+
+	WindowsView string `xml:"windows_view,attr"`
 }
 
 type RegkeyAuditPermissions53Behaviors struct {
@@ -768,21 +795,33 @@ type RegkeyEffectiveRightsBehaviors struct {
 }
 
 type ServiceEffectiveRightsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type SharedResourceAuditedPermissionsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
 }
 
 type SharedResourceEffectiveRightsBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
 }
 
 type SidBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type SidSidBehaviors struct {
+	IncludeGroup string `xml:"include_group,attr"`
+
+	ResolveGroup string `xml:"resolve_group,attr"`
 }
 
 type WuaUpdateSearcherBehaviors struct {
+	IncludeSupersededUpdates string `xml:"include_superseded_updates,attr"`
 }
 
 type EntityStateAddrTypeType struct {

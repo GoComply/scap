@@ -50,6 +50,7 @@ type ElementMapType struct {
 }
 
 type ElementMapItemType struct {
+	TargetNamespace string `xml:"target_namespace,attr"`
 }
 
 type DeprecatedInfoType struct {
@@ -71,9 +72,11 @@ type GeneratorType struct {
 }
 
 type SchemaVersionType struct {
+	Platform string `xml:"platform,attr"`
 }
 
 type MessageType struct {
+	Level string `xml:"level,attr"`
 }
 
 type NotesType struct {

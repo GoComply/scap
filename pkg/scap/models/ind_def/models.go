@@ -224,12 +224,22 @@ type YamlfilecontentState struct {
 // XSD ComplexType declarations
 
 type LdapBehaviors struct {
+	Scope string `xml:"scope,attr"`
 }
 
 type Textfilecontent54Behaviors struct {
 }
 
 type FileBehaviors struct {
+	MaxDepth string `xml:"max_depth,attr"`
+
+	Recurse string `xml:"recurse,attr"`
+
+	RecurseDirection string `xml:"recurse_direction,attr"`
+
+	RecurseFileSystem string `xml:"recurse_file_system,attr"`
+
+	WindowsView string `xml:"windows_view,attr"`
 }
 
 type EntityObjectEngineType struct {

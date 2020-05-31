@@ -219,18 +219,85 @@ type SystemdunitpropertyState struct {
 // XSD ComplexType declarations
 
 type RpmInfoBehaviors struct {
+	Filepaths string `xml:"filepaths,attr"`
 }
 
 type RpmVerifyBehaviors struct {
+	Nodeps string `xml:"nodeps,attr"`
+
+	Nodigest string `xml:"nodigest,attr"`
+
+	Nofiles string `xml:"nofiles,attr"`
+
+	Noscripts string `xml:"noscripts,attr"`
+
+	Nosignature string `xml:"nosignature,attr"`
+
+	Nolinkto string `xml:"nolinkto,attr"`
+
+	Nomd5 string `xml:"nomd5,attr"`
+
+	Nosize string `xml:"nosize,attr"`
+
+	Nouser string `xml:"nouser,attr"`
+
+	Nogroup string `xml:"nogroup,attr"`
+
+	Nomtime string `xml:"nomtime,attr"`
+
+	Nomode string `xml:"nomode,attr"`
+
+	Nordev string `xml:"nordev,attr"`
+
+	Noconfigfiles string `xml:"noconfigfiles,attr"`
+
+	Noghostfiles string `xml:"noghostfiles,attr"`
 }
 
 type RpmVerifyFileBehaviors struct {
+	Nolinkto string `xml:"nolinkto,attr"`
+
+	Nomd5 string `xml:"nomd5,attr"`
+
+	Nosize string `xml:"nosize,attr"`
+
+	Nouser string `xml:"nouser,attr"`
+
+	Nogroup string `xml:"nogroup,attr"`
+
+	Nomtime string `xml:"nomtime,attr"`
+
+	Nomode string `xml:"nomode,attr"`
+
+	Nordev string `xml:"nordev,attr"`
+
+	Noconfigfiles string `xml:"noconfigfiles,attr"`
+
+	Noghostfiles string `xml:"noghostfiles,attr"`
+
+	Nofiledigest string `xml:"nofiledigest,attr"`
+
+	Nocaps string `xml:"nocaps,attr"`
 }
 
 type RpmVerifyPackageBehaviors struct {
+	Nodeps string `xml:"nodeps,attr"`
+
+	Nodigest string `xml:"nodigest,attr"`
+
+	Noscripts string `xml:"noscripts,attr"`
+
+	Nosignature string `xml:"nosignature,attr"`
 }
 
 type FileBehaviors struct {
+	MaxDepth string `xml:"max_depth,attr"`
+
+	Recurse string `xml:"recurse,attr"`
+
+	RecurseDirection string `xml:"recurse_direction,attr"`
+
+	RecurseFileSystem string `xml:"recurse_file_system,attr"`
 }
 
 type EntityStateRpmVerifyResultType struct {

@@ -48,6 +48,14 @@ type GeneratorType struct {
 }
 
 type ItemType struct {
+	Name string `xml:"name,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
+	DeprecatedBy string `xml:"deprecated_by,attr"`
+
+	DeprecationDate string `xml:"deprecation_date,attr"`
+
 	Title []TextType `xml:"title"`
 
 	Notes []NotesType `xml:"notes"`
@@ -64,9 +72,12 @@ type ListType struct {
 }
 
 type TextType struct {
+	XmlLang string `xml:",attr"`
 }
 
 type NotesType struct {
+	XmlLang string `xml:",attr"`
+
 	Note []string `xml:"note"`
 }
 
@@ -75,4 +86,7 @@ type ReferencesType struct {
 }
 
 type CheckType struct {
+	System string `xml:"system,attr"`
+
+	Href string `xml:"href,attr"`
 }

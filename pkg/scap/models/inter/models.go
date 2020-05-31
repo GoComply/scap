@@ -263,6 +263,7 @@ type StringQuestionTestActionType struct {
 }
 
 type TestActionRefType struct {
+	Negate string `xml:"negate,attr"`
 }
 
 type ChoiceTestActionConditionType struct {
@@ -278,6 +279,7 @@ type PatternTestActionConditionType struct {
 }
 
 type PatternType struct {
+	VarRef string `xml:"var_ref,attr"`
 }
 
 type RangeType struct {
@@ -291,6 +293,9 @@ type TestActionConditionType struct {
 }
 
 type RangeValueType struct {
+	Inclusive string `xml:"inclusive,attr"`
+
+	VarRef string `xml:"var_ref,attr"`
 }
 
 type QuestionsType struct {
@@ -319,9 +324,14 @@ type StringQuestionType struct {
 }
 
 type ChoiceType struct {
+	Id string `xml:"id,attr"`
+
+	VarRef string `xml:"var_ref,attr"`
 }
 
 type ChoiceGroupType struct {
+	Id string `xml:"id,attr"`
+
 	Choice []ChoiceType `xml:"choice"`
 }
 
@@ -332,6 +342,10 @@ type InstructionsType struct {
 }
 
 type ResultsType struct {
+	StartTime string `xml:"start_time,attr"`
+
+	EndTime string `xml:"end_time,attr"`
+
 	Title *TextType `xml:"title"`
 
 	QuestionnaireResults *QuestionnaireResultsType `xml:"questionnaire_results"`
@@ -358,14 +372,25 @@ type QuestionResultsType struct {
 }
 
 type QuestionnaireResultType struct {
+	QuestionnaireRef string `xml:"questionnaire_ref,attr"`
+
+	Result string `xml:"result,attr"`
+
 	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 }
 
 type TestActionResultType struct {
+	TestActionRef string `xml:"test_action_ref,attr"`
+
+	Result string `xml:"result,attr"`
+
 	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 }
 
 type QuestionResultType struct {
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
 }
 
 type BooleanQuestionResultType struct {
@@ -381,6 +406,7 @@ type StringQuestionResultType struct {
 }
 
 type ChoiceAnswerType struct {
+	ChoiceRef string `xml:"choice_ref,attr"`
 }
 
 type ArtifactsType struct {
@@ -395,6 +421,9 @@ type ArtifactRefsType struct {
 }
 
 type ArtifactRefType struct {
+	Idref string `xml:"idref,attr"`
+
+	Required string `xml:"required,attr"`
 }
 
 type ArtifactResultsType struct {
@@ -417,6 +446,10 @@ type ReferenceArtifactValueType struct {
 }
 
 type ArtifactResultType struct {
+	ArtifactRef string `xml:"artifact_ref,attr"`
+
+	Timestamp string `xml:"timestamp,attr"`
+
 	ArtifactValue ArtifactValue `xml:"artifact_value"`
 
 	Provider string `xml:"provider"`
@@ -471,12 +504,18 @@ type VariableSetType struct {
 }
 
 type SubstitutionTextType struct {
+	VarRef string `xml:"var_ref,attr"`
 }
 
 type ReferenceType struct {
+	Href string `xml:"href,attr"`
 }
 
 type StepType struct {
+	IsDone string `xml:"is_done,attr"`
+
+	IsRequired string `xml:"is_required,attr"`
+
 	Description *TextType `xml:"description"`
 
 	Reference []ReferenceType `xml:"reference"`
@@ -485,6 +524,8 @@ type StepType struct {
 }
 
 type ItemBaseType struct {
+	Revision string `xml:"revision,attr"`
+
 	Notes []string `xml:"notes"`
 }
 
@@ -499,8 +540,13 @@ type ReferencesType struct {
 }
 
 type OperationType struct {
+	Operation string `xml:"operation,attr"`
+
+	Negate string `xml:"negate,attr"`
+
 	TestActionRef []TestActionRefType `xml:"test_action_ref"`
 }
 
 type TextType struct {
+	XmlLang string `xml:",attr"`
 }

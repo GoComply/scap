@@ -195,15 +195,24 @@ type Tailoring struct {
 // XSD ComplexType declarations
 
 type NoticeType struct {
+	Id string `xml:"id,attr"`
+
+	XmlBase string `xml:",attr"`
+
+	XmlLang string `xml:",attr"`
 }
 
 type DcStatusType struct {
 }
 
 type PlainTextType struct {
+	Id string `xml:"id,attr"`
 }
 
 type ReferenceType struct {
+	Href string `xml:"href,attr"`
+
+	Override string `xml:"override,attr"`
 }
 
 type SignatureType struct {
@@ -213,24 +222,44 @@ type MetadataType struct {
 }
 
 type ParamType struct {
+	Name string `xml:"name,attr"`
 }
 
 type VersionType struct {
+	Time string `xml:"time,attr"`
+
+	Update string `xml:"update,attr"`
 }
 
 type TextType struct {
+	XmlLang string `xml:",attr"`
+
+	Override string `xml:"override,attr"`
 }
 
 type HtmlTextType struct {
+	XmlLang string `xml:",attr"`
+
+	Override string `xml:"override,attr"`
 }
 
 type HtmlTextWithSubType struct {
+	XmlLang string `xml:",attr"`
+
+	Override string `xml:"override,attr"`
 }
 
 type ProfileNoteType struct {
+	XmlLang string `xml:",attr"`
+
+	Tag string `xml:"tag,attr"`
 }
 
 type TextWithSubType struct {
+	XmlLang string `xml:",attr"`
+
+	Override string `xml:"override,attr"`
+
 	Sub []SubType `xml:"sub"`
 }
 
@@ -238,18 +267,37 @@ type SubType struct {
 }
 
 type IdrefType struct {
+	Idref string `xml:"idref,attr"`
 }
 
 type IdrefListType struct {
+	Idref string `xml:"idref,attr"`
 }
 
 type CPE2IdrefType struct {
+	Idref string `xml:"idref,attr"`
 }
 
 type OverrideableCPE2IdrefType struct {
 }
 
 type ItemType struct {
+	Abstract string `xml:"abstract,attr"`
+
+	ClusterId string `xml:"cluster-id,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	Hidden string `xml:"hidden,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	XmlLang string `xml:",attr"`
+
+	XmlBase string `xml:",attr"`
+
+	Id string `xml:"Id,attr"`
+
 	Status []Status `xml:"status"`
 
 	DcStatus []DcStatusType `xml:"dc-status"`
@@ -279,6 +327,7 @@ type RuleType struct {
 }
 
 type IdentType struct {
+	System string `xml:"system,attr"`
 }
 
 type WarningType struct {
@@ -288,15 +337,44 @@ type FixTextType struct {
 }
 
 type FixType struct {
+	Id string `xml:"id,attr"`
+
+	Reboot string `xml:"reboot,attr"`
+
+	Strategy string `xml:"strategy,attr"`
+
+	Disruption string `xml:"disruption,attr"`
+
+	Complexity string `xml:"complexity,attr"`
+
+	System string `xml:"system,attr"`
+
+	Platform string `xml:"platform,attr"`
 }
 
 type InstanceFixType struct {
+	Context string `xml:"context,attr"`
 }
 
 type ComplexCheckType struct {
+	Operator string `xml:"operator,attr"`
+
+	Negate string `xml:"negate,attr"`
 }
 
 type CheckType struct {
+	System string `xml:"system,attr"`
+
+	Negate string `xml:"negate,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Selector string `xml:"selector,attr"`
+
+	MultiCheck string `xml:"multi-check,attr"`
+
+	XmlBase string `xml:",attr"`
+
 	CheckImport []CheckImportType `xml:"check-import"`
 
 	CheckExport []CheckExportType `xml:"check-export"`
@@ -307,12 +385,21 @@ type CheckType struct {
 }
 
 type CheckImportType struct {
+	ImportName string `xml:"import-name,attr"`
+
+	ImportXpath string `xml:"import-xpath,attr"`
 }
 
 type CheckExportType struct {
+	ValueId string `xml:"value-id,attr"`
+
+	ExportName string `xml:"export-name,attr"`
 }
 
 type CheckContentRefType struct {
+	Href string `xml:"href,attr"`
+
+	Name string `xml:"name,attr"`
 }
 
 type CheckContentType struct {
@@ -329,18 +416,38 @@ type SelComplexValueType struct {
 }
 
 type SelChoicesType struct {
+	MustMatch string `xml:"mustMatch,attr"`
+
+	Selector string `xml:"selector,attr"`
 }
 
 type SelStringType struct {
+	Selector string `xml:"selector,attr"`
 }
 
 type SelNumType struct {
+	Selector string `xml:"selector,attr"`
 }
 
 type UriRefType struct {
+	Uri string `xml:"uri,attr"`
 }
 
 type ProfileType struct {
+	Id string `xml:"id,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	Abstract string `xml:"abstract,attr"`
+
+	NoteTag string `xml:"note-tag,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	XmlBase string `xml:",attr"`
+
+	Id2 string `xml:"Id,attr"`
+
 	Status []Status `xml:"status"`
 
 	DcStatus []DcStatusType `xml:"dc-status"`
@@ -361,24 +468,57 @@ type ProfileType struct {
 }
 
 type ProfileSelectType struct {
+	Idref string `xml:"idref,attr"`
+
+	Selected string `xml:"selected,attr"`
+
 	Remark []TextType `xml:"remark"`
 }
 
 type ProfileSetValueType struct {
+	Idref string `xml:"idref,attr"`
 }
 
 type ProfileSetComplexValueType struct {
 }
 
 type ProfileRefineValueType struct {
+	Idref string `xml:"idref,attr"`
+
+	Selector string `xml:"selector,attr"`
+
+	Operator string `xml:"operator,attr"`
+
 	Remark []TextType `xml:"remark"`
 }
 
 type ProfileRefineRuleType struct {
+	Idref string `xml:"idref,attr"`
+
+	Weight string `xml:"weight,attr"`
+
+	Selector string `xml:"selector,attr"`
+
+	Severity string `xml:"severity,attr"`
+
+	Role string `xml:"role,attr"`
+
 	Remark []TextType `xml:"remark"`
 }
 
 type TestResultType struct {
+	Id string `xml:"id,attr"`
+
+	StartTime string `xml:"start-time,attr"`
+
+	EndTime string `xml:"end-time,attr"`
+
+	TestSystem string `xml:"test-system,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Id2 string `xml:"Id,attr"`
+
 	Benchmark *BenchmarkReferenceType `xml:"benchmark"`
 
 	TailoringFile *TailoringReferenceType `xml:"tailoring-file"`
@@ -411,9 +551,15 @@ type TestResultType struct {
 }
 
 type BenchmarkReferenceType struct {
+	Href string `xml:"href,attr"`
+
+	Id string `xml:"id,attr"`
 }
 
 type ScoreType struct {
+	System string `xml:"system,attr"`
+
+	Maximum string `xml:"maximum,attr"`
 }
 
 type TargetFactsType struct {
@@ -421,18 +567,48 @@ type TargetFactsType struct {
 }
 
 type TargetIdRefType struct {
+	System string `xml:"system,attr"`
+
+	Href string `xml:"href,attr"`
+
+	Name string `xml:"name,attr"`
 }
 
 type IdentityType struct {
+	Authenticated string `xml:"authenticated,attr"`
+
+	Privileged string `xml:"privileged,attr"`
 }
 
 type FactType struct {
+	Name string `xml:"name,attr"`
+
+	Type string `xml:"type,attr"`
 }
 
 type TailoringReferenceType struct {
+	Href string `xml:"href,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Time string `xml:"time,attr"`
 }
 
 type RuleResultType struct {
+	Idref string `xml:"idref,attr"`
+
+	Role string `xml:"role,attr"`
+
+	Severity string `xml:"severity,attr"`
+
+	Time string `xml:"time,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Weight string `xml:"weight,attr"`
+
 	Result string `xml:"result"`
 
 	Override []OverrideType `xml:"override"`
@@ -449,9 +625,16 @@ type RuleResultType struct {
 }
 
 type InstanceResultType struct {
+	Context string `xml:"context,attr"`
+
+	ParentContext string `xml:"parentContext,attr"`
 }
 
 type OverrideType struct {
+	Time string `xml:"time,attr"`
+
+	Authority string `xml:"authority,attr"`
+
 	OldResult string `xml:"old-result"`
 
 	NewResult string `xml:"new-result"`
@@ -460,9 +643,14 @@ type OverrideType struct {
 }
 
 type MessageType struct {
+	Severity string `xml:"severity,attr"`
 }
 
 type TailoringType struct {
+	Id string `xml:"id,attr"`
+
+	Id2 string `xml:"Id,attr"`
+
 	Benchmark *TailoringBenchmarkReferenceType `xml:"benchmark"`
 
 	Status []Status `xml:"status"`
@@ -482,4 +670,5 @@ type TailoringBenchmarkReferenceType struct {
 }
 
 type TailoringVersionType struct {
+	Time string `xml:"time,attr"`
 }

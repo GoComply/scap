@@ -264,6 +264,13 @@ type XinetdState struct {
 // XSD ComplexType declarations
 
 type FileBehaviors struct {
+	MaxDepth string `xml:"max_depth,attr"`
+
+	Recurse string `xml:"recurse,attr"`
+
+	RecurseDirection string `xml:"recurse_direction,attr"`
+
+	RecurseFileSystem string `xml:"recurse_file_system,attr"`
 }
 
 type EntityStateCapabilityType struct {
