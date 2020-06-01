@@ -402,6 +402,8 @@ type QuestionsType struct {
 
 type QuestionTextType struct {
 	Sub []SubstitutionTextType `xml:"sub"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionType struct {
@@ -656,6 +658,8 @@ type SubstitutionTextType struct {
 
 type ReferenceType struct {
 	Href string `xml:"href,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StepType struct {

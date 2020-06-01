@@ -208,12 +208,16 @@ type SignedInfoType struct {
 
 type CanonicalizationMethodType struct {
 	Algorithm string `xml:"Algorithm,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SignatureMethodType struct {
 	Algorithm string `xml:"Algorithm,attr"`
 
 	HMACOutputLength string `xml:"HMACOutputLength"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceType struct {
@@ -236,17 +240,24 @@ type TransformsType struct {
 
 type TransformType struct {
 	Algorithm string `xml:"Algorithm,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DigestMethodType struct {
 	Algorithm string `xml:"Algorithm,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type KeyInfoType struct {
 	Id string `xml:"Id,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type KeyValueType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type RetrievalMethodType struct {
@@ -288,6 +299,8 @@ type ObjectType struct {
 	MimeType string `xml:"MimeType,attr"`
 
 	Encoding string `xml:"Encoding,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ManifestType struct {
@@ -306,6 +319,8 @@ type SignaturePropertyType struct {
 	Target string `xml:"Target,attr"`
 
 	Id string `xml:"Id,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DSAKeyValueType struct {

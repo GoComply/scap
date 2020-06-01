@@ -29,15 +29,18 @@ type Arc struct {
 // XSD ComplexType declarations
 
 type Simple struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type Extended struct {
 }
 
 type TitleEltType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type ResourceType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type LocatorType struct {

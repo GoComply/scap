@@ -22,6 +22,8 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	profiles := doc.Profile
 	assert.Equal(t, len(profiles), 1)
 	profile := profiles[0]
+	assert.Equal(t, len(profile.Title), 1)
+	assert.Equal(t, profile.Title[0].InnerXml, "Enterprise XYZ Security Guidance")
 	assert.Equal(t, len(profile.Status), 1)
 	assert.Equal(t, len(profile.Title), 1)
 

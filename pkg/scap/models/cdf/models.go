@@ -264,6 +264,8 @@ type NoticeType struct {
 	XmlBase string `xml:"base,attr"`
 
 	XmlLang string `xml:"lang,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DcStatusType struct {
@@ -279,6 +281,8 @@ type ReferenceType struct {
 	Href string `xml:"href,attr"`
 
 	Override string `xml:"override,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SignatureType struct {
@@ -313,18 +317,24 @@ type HtmlTextType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type HtmlTextWithSubType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileNoteType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Tag string `xml:"tag,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextWithSubType struct {
@@ -333,6 +343,8 @@ type TextWithSubType struct {
 	Override string `xml:"override,attr"`
 
 	Sub []SubType `xml:"sub"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SubType struct {
@@ -451,6 +463,8 @@ type IdentType struct {
 
 type WarningType struct {
 	Category string `xml:"category,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FixTextType struct {
@@ -463,6 +477,8 @@ type FixTextType struct {
 	Disruption string `xml:"disruption,attr"`
 
 	Complexity string `xml:"complexity,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FixType struct {
@@ -479,6 +495,8 @@ type FixType struct {
 	System string `xml:"system,attr"`
 
 	Platform string `xml:"platform,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type InstanceFixType struct {
@@ -517,6 +535,8 @@ type CheckImportType struct {
 	ImportName string `xml:"import-name,attr"`
 
 	ImportXpath string `xml:"import-xpath,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckExportType struct {
@@ -532,6 +552,7 @@ type CheckContentRefType struct {
 }
 
 type CheckContentType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type ValueType struct {
