@@ -271,6 +271,8 @@ type DcStatusType struct {
 
 type PlainTextType struct {
 	Id string `xml:"id,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ReferenceType struct {
@@ -287,18 +289,24 @@ type MetadataType struct {
 
 type ParamType struct {
 	Name string `xml:"name,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type VersionType struct {
 	Time string `xml:"time,attr"`
 
 	Update string `xml:"update,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type HtmlTextType struct {
@@ -437,6 +445,8 @@ type RuleType struct {
 
 type IdentType struct {
 	System string `xml:"system,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type WarningType struct {
@@ -572,6 +582,8 @@ type SelChoicesType struct {
 
 type SelStringType struct {
 	Selector string `xml:"selector,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type SelNumType struct {
@@ -636,6 +648,8 @@ type ProfileSelectType struct {
 
 type ProfileSetValueType struct {
 	Idref string `xml:"idref,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ProfileSetComplexValueType struct {
@@ -744,12 +758,16 @@ type IdentityType struct {
 	Authenticated string `xml:"authenticated,attr"`
 
 	Privileged string `xml:"privileged,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type FactType struct {
 	Name string `xml:"name,attr"`
 
 	Type string `xml:"type,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type TailoringReferenceType struct {
@@ -798,6 +816,8 @@ type InstanceResultType struct {
 	Context string `xml:"context,attr"`
 
 	ParentContext string `xml:"parentContext,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type OverrideType struct {
@@ -814,6 +834,8 @@ type OverrideType struct {
 
 type MessageType struct {
 	Severity string `xml:"severity,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type TailoringType struct {
@@ -842,4 +864,6 @@ type TailoringBenchmarkReferenceType struct {
 
 type TailoringVersionType struct {
 	Time string `xml:"time,attr"`
+
+	Text string `xml:",chardata"`
 }

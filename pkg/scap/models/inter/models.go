@@ -370,6 +370,8 @@ type PatternTestActionConditionType struct {
 
 type PatternType struct {
 	VarRef string `xml:"var_ref,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type RangeType struct {

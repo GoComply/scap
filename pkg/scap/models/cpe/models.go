@@ -98,4 +98,6 @@ type CheckFactRefType struct {
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
+
+	Text string `xml:",chardata"`
 }

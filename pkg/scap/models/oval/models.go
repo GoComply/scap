@@ -77,6 +77,8 @@ type SchemaVersionType struct {
 
 type MessageType struct {
 	Level string `xml:"level,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type NotesType struct {

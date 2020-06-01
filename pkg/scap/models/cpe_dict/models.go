@@ -73,6 +73,8 @@ type ListType struct {
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type NotesType struct {
@@ -89,4 +91,6 @@ type CheckType struct {
 	System string `xml:"system,attr"`
 
 	Href string `xml:"href,attr"`
+
+	Text string `xml:",chardata"`
 }
