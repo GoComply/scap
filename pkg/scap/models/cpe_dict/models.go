@@ -33,6 +33,8 @@ type Reference struct {
 	XMLName xml.Name `xml:reference`
 
 	Href string `xml:"href,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 // XSD ComplexType declarations

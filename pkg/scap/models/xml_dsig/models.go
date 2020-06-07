@@ -78,6 +78,8 @@ type DigestMethod struct {
 // Element
 type DigestValue struct {
 	XMLName xml.Name `xml:DigestValue`
+
+	Text string `xml:",chardata"`
 }
 
 // Element
@@ -88,11 +90,15 @@ type KeyInfo struct {
 // Element
 type KeyName struct {
 	XMLName xml.Name `xml:KeyName`
+
+	Text string `xml:",chardata"`
 }
 
 // Element
 type MgmtData struct {
 	XMLName xml.Name `xml:MgmtData`
+
+	Text string `xml:",chardata"`
 }
 
 // Element
