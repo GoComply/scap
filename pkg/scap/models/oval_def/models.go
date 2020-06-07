@@ -79,6 +79,8 @@ type Filter struct {
 	XMLName xml.Name `xml:filter`
 
 	Action string `xml:"action,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 // Element
@@ -288,6 +290,8 @@ type VariableType struct {
 
 type PossibleValueType struct {
 	Hint string `xml:"hint,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type PossibleRestrictionType struct {
@@ -298,13 +302,18 @@ type PossibleRestrictionType struct {
 
 type RestrictionType struct {
 	Operation string `xml:"operation,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ValueType struct {
+	Text string `xml:",chardata"`
 }
 
 type LiteralComponentType struct {
 	Datatype string `xml:"datatype,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ObjectComponentType struct {
@@ -368,6 +377,7 @@ type GlobToRegexFunctionType struct {
 }
 
 type EntitySimpleBaseType struct {
+	Text string `xml:",chardata"`
 }
 
 type EntityComplexBaseType struct {
@@ -408,12 +418,16 @@ type EntityObjectFieldType struct {
 	Name string `xml:"name,attr"`
 
 	EntityCheck string `xml:"entity_check,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type EntityStateSimpleBaseType struct {
 	EntityCheck string `xml:"entity_check,attr"`
 
 	CheckExistence string `xml:"check_existence,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type EntityStateComplexBaseType struct {
@@ -469,4 +483,6 @@ type EntityStateFieldType struct {
 	Name string `xml:"name,attr"`
 
 	EntityCheck string `xml:"entity_check,attr"`
+
+	Text string `xml:",chardata"`
 }

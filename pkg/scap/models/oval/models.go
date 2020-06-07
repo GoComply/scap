@@ -51,6 +51,8 @@ type ElementMapType struct {
 
 type ElementMapItemType struct {
 	TargetNamespace string `xml:"target_namespace,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type DeprecatedInfoType struct {
@@ -73,6 +75,8 @@ type GeneratorType struct {
 
 type SchemaVersionType struct {
 	Platform string `xml:"platform,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type MessageType struct {

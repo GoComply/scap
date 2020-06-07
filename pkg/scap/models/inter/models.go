@@ -348,6 +348,8 @@ type StringQuestionTestActionType struct {
 
 type TestActionRefType struct {
 	Negate string `xml:"negate,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ChoiceTestActionConditionType struct {
@@ -392,6 +394,8 @@ type RangeValueType struct {
 	Inclusive string `xml:"inclusive,attr"`
 
 	VarRef string `xml:"var_ref,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type QuestionsType struct {
@@ -436,6 +440,8 @@ type ChoiceType struct {
 	Id string `xml:"id,attr"`
 
 	VarRef string `xml:"var_ref,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ChoiceGroupType struct {
@@ -659,6 +665,7 @@ type SubstitutionTextType struct {
 type ReferenceType struct {
 	Href string `xml:"href,attr"`
 
+	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -708,4 +715,6 @@ type OperationType struct {
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
+
+	Text string `xml:",chardata"`
 }

@@ -70,6 +70,8 @@ type Status struct {
 	XMLName xml.Name `xml:status`
 
 	Date string `xml:"date,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 // Element
@@ -609,6 +611,8 @@ type SelStringType struct {
 
 type SelNumType struct {
 	Selector string `xml:"selector,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type UriRefType struct {
@@ -761,6 +765,8 @@ type ScoreType struct {
 	System string `xml:"system,attr"`
 
 	Maximum string `xml:"maximum,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type TargetFactsType struct {

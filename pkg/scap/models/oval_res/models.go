@@ -167,4 +167,6 @@ type TestedItemType struct {
 
 type TestedVariableType struct {
 	VariableId string `xml:"variable_id,attr"`
+
+	Text string `xml:",chardata"`
 }

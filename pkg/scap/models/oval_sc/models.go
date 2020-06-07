@@ -82,6 +82,8 @@ type ObjectType struct {
 
 type VariableValueType struct {
 	VariableId string `xml:"variable_id,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type ReferenceType struct {
@@ -101,6 +103,7 @@ type ItemType struct {
 }
 
 type EntityItemSimpleBaseType struct {
+	Text string `xml:",chardata"`
 }
 
 type EntityItemComplexBaseType struct {
@@ -136,6 +139,8 @@ type EntityItemRecordType struct {
 
 type EntityItemFieldType struct {
 	Name string `xml:"name,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type EntityItemVersionType struct {

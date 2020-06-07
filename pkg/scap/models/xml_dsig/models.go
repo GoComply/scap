@@ -22,6 +22,8 @@ type Signature struct {
 // Element
 type SignatureValue struct {
 	XMLName xml.Name `xml:SignatureValue`
+
+	Text string `xml:",chardata"`
 }
 
 // Element
@@ -200,6 +202,8 @@ type SignatureType struct {
 
 type SignatureValueType struct {
 	Id string `xml:"Id,attr"`
+
+	Text string `xml:",chardata"`
 }
 
 type SignedInfoType struct {
