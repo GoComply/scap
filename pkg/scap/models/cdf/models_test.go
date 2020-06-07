@@ -17,15 +17,27 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	assert.Equal(t, bench.XMLName.Space, "http://checklists.nist.gov/xccdf/1.1")
 	assert.Equal(t, bench.Id, "testing-xcccdf")
 	assert.Equal(t, len(bench.Status), 1)
+	assert.Equal(t, bench.Status[0].Text, "incomplete")
 	assert.Empty(t, bench.Title)
 	assert.Empty(t, bench.Description)
+	assert.Equal(t, bench.Version.Text, "2.0")
+	assert.Equal(t, bench.Version.Time, "")
+	assert.Equal(t, bench.Version.Update, "")
 	profiles := doc.Profile
 	assert.Equal(t, len(profiles), 1)
 	profile := profiles[0]
 	assert.Equal(t, len(profile.Title), 1)
 	assert.Equal(t, profile.Title[0].InnerXml, "Enterprise XYZ Security Guidance")
 	assert.Equal(t, len(profile.Status), 1)
+	assert.Equal(t, profile.Status[0].Text, "draft")
 	assert.Equal(t, len(profile.Title), 1)
+	assert.Equal(t, len(profile.Select), 1)
+	assert.Equal(t, profile.Select[0].Idref, "def-20120006")
+	assert.Equal(t, profile.Select[0].Selected, "true")
+	assert.Empty(t, profile.Select[0].Remark)
 
 	assert.Equal(t, len(doc.Rule), 1)
+	rule := doc.Rule[0]
+	assert.Equal(t, rule.ComplexCheck.Operator, "AND")
+	assert.Equal(t, rule.ComplexCheck.Negate, "1")
 }
