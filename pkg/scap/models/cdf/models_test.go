@@ -40,4 +40,12 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	rule := doc.Rule[0]
 	assert.Equal(t, rule.ComplexCheck.Operator, "AND")
 	assert.Equal(t, rule.ComplexCheck.Negate, "1")
+	assert.Empty(t, rule.ComplexCheck.ComplexCheck)
+	checks := rule.ComplexCheck.Check
+	assert.Equal(t, len(checks), 3)
+	assert.Equal(t, checks[0].System, "http://check-engine.test/pass")
+	assert.Equal(t, len(checks[0].CheckContentRef), 1)
+	assert.Equal(t, checks[0].CheckContentRef[0].Href, "file")
+	assert.Equal(t, checks[0].CheckContentRef[0].Name, "oval:def:20120006")
+
 }
