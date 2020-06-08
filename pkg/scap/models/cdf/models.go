@@ -397,6 +397,8 @@ type HtmlTextWithSubType struct {
 
 	Override string `xml:"override,attr"`
 
+	Sub []SubType `xml:"sub"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -404,6 +406,8 @@ type ProfileNoteType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Tag string `xml:"tag,attr"`
+
+	Sub []SubType `xml:"sub"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -665,6 +669,8 @@ type WarningType struct {
 
 	Override string `xml:"override,attr"`
 
+	Sub []SubType `xml:"sub"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -682,6 +688,8 @@ type FixTextType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Override string `xml:"override,attr"`
+
+	Sub []SubType `xml:"sub"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -701,6 +709,10 @@ type FixType struct {
 
 	Platform string `xml:"platform,attr"`
 
+	Sub []SubType `xml:"sub"`
+
+	Instance []InstanceFixType `xml:"instance"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -712,6 +724,10 @@ type ComplexCheckType struct {
 	Operator string `xml:"operator,attr"`
 
 	Negate string `xml:"negate,attr"`
+
+	Check []CheckType `xml:"check"`
+
+	ComplexCheck []ComplexCheckType `xml:"complex-check"`
 }
 
 type CheckType struct {
@@ -838,6 +854,10 @@ type SelChoicesType struct {
 	MustMatch string `xml:"mustMatch,attr"`
 
 	Selector string `xml:"selector,attr"`
+
+	Choice []string `xml:"choice"`
+
+	ComplexChoice []ComplexValueType `xml:"complex-choice"`
 }
 
 type SelStringType struct {

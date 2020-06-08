@@ -216,6 +216,12 @@ type CriteriaType struct {
 	Negate string `xml:"negate,attr"`
 
 	Comment string `xml:"comment,attr"`
+
+	Criteria []CriteriaType `xml:"criteria"`
+
+	Criterion []CriterionType `xml:"criterion"`
+
+	ExtendDefinition []ExtendDefinitionType `xml:"extend_definition"`
 }
 
 type CriterionType struct {
@@ -338,6 +344,8 @@ type PossibleRestrictionType struct {
 	Operator string `xml:"operator,attr"`
 
 	Hint string `xml:"hint,attr"`
+
+	Restriction []RestrictionType `xml:"restriction"`
 }
 
 type RestrictionType struct {

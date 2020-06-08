@@ -70,6 +70,8 @@ type Transforms struct {
 // Element
 type Transform struct {
 	XMLName xml.Name `xml:Transform`
+
+	XPath []string `xml:"XPath"`
 }
 
 // Element
@@ -87,6 +89,20 @@ type DigestValue struct {
 // Element
 type KeyInfo struct {
 	XMLName xml.Name `xml:KeyInfo`
+
+	KeyName []KeyName `xml:"KeyName"`
+
+	KeyValue []KeyValue `xml:"KeyValue"`
+
+	RetrievalMethod []RetrievalMethod `xml:"RetrievalMethod"`
+
+	X509Data []X509Data `xml:"X509Data"`
+
+	PGPData []PGPData `xml:"PGPData"`
+
+	SPKIData []SPKIData `xml:"SPKIData"`
+
+	MgmtData []MgmtData `xml:"MgmtData"`
 }
 
 // Element
@@ -106,6 +122,10 @@ type MgmtData struct {
 // Element
 type KeyValue struct {
 	XMLName xml.Name `xml:KeyValue`
+
+	DSAKeyValue DSAKeyValue `xml:"DSAKeyValue"`
+
+	RSAKeyValue RSAKeyValue `xml:"RSAKeyValue"`
 }
 
 // Element
@@ -251,6 +271,8 @@ type TransformsType struct {
 type TransformType struct {
 	Algorithm string `xml:"Algorithm,attr"`
 
+	XPath []string `xml:"XPath"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -263,10 +285,28 @@ type DigestMethodType struct {
 type KeyInfoType struct {
 	Id string `xml:"Id,attr"`
 
+	KeyName []KeyName `xml:"KeyName"`
+
+	KeyValue []KeyValue `xml:"KeyValue"`
+
+	RetrievalMethod []RetrievalMethod `xml:"RetrievalMethod"`
+
+	X509Data []X509Data `xml:"X509Data"`
+
+	PGPData []PGPData `xml:"PGPData"`
+
+	SPKIData []SPKIData `xml:"SPKIData"`
+
+	MgmtData []MgmtData `xml:"MgmtData"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type KeyValueType struct {
+	DSAKeyValue DSAKeyValue `xml:"DSAKeyValue"`
+
+	RSAKeyValue RSAKeyValue `xml:"RSAKeyValue"`
+
 	InnerXml string `xml:",innerxml"`
 }
 

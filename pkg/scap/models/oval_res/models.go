@@ -121,6 +121,12 @@ type CriteriaType struct {
 	Negate string `xml:"negate,attr"`
 
 	Result string `xml:"result,attr"`
+
+	Criteria []CriteriaType `xml:"criteria"`
+
+	Criterion []CriterionType `xml:"criterion"`
+
+	ExtendDefinition []ExtendDefinitionType `xml:"extend_definition"`
 }
 
 type CriterionType struct {

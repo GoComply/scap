@@ -9,6 +9,30 @@ import (
 // Element
 type Catalog struct {
 	XMLName xml.Name `xml:catalog`
+
+	Public []Public `xml:"public"`
+
+	System []System `xml:"system"`
+
+	Uri []Uri `xml:"uri"`
+
+	RewriteSystem []RewriteSystem `xml:"rewriteSystem"`
+
+	RewriteURI []RewriteURI `xml:"rewriteURI"`
+
+	UriSuffix []UriSuffix `xml:"uriSuffix"`
+
+	SystemSuffix []SystemSuffix `xml:"systemSuffix"`
+
+	DelegatePublic []DelegatePublic `xml:"delegatePublic"`
+
+	DelegateSystem []DelegateSystem `xml:"delegateSystem"`
+
+	DelegateURI []DelegateURI `xml:"delegateURI"`
+
+	NextCatalog []NextCatalog `xml:"nextCatalog"`
+
+	Group []Group `xml:"group"`
 }
 
 // Element
@@ -69,6 +93,28 @@ type NextCatalog struct {
 // Element
 type Group struct {
 	XMLName xml.Name `xml:group`
+
+	Public []Public `xml:"public"`
+
+	System []System `xml:"system"`
+
+	Uri []Uri `xml:"uri"`
+
+	RewriteSystem []RewriteSystem `xml:"rewriteSystem"`
+
+	RewriteURI []RewriteURI `xml:"rewriteURI"`
+
+	UriSuffix []UriSuffix `xml:"uriSuffix"`
+
+	SystemSuffix []SystemSuffix `xml:"systemSuffix"`
+
+	DelegatePublic []DelegatePublic `xml:"delegatePublic"`
+
+	DelegateSystem []DelegateSystem `xml:"delegateSystem"`
+
+	DelegateURI []DelegateURI `xml:"delegateURI"`
+
+	NextCatalog []NextCatalog `xml:"nextCatalog"`
 }
 
 // XSD ComplexType declarations
