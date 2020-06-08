@@ -4,7 +4,6 @@ package cdf
 
 import (
 	"encoding/xml"
-
 	"github.com/gocomply/scap/pkg/scap/models/cpe"
 )
 

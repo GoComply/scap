@@ -4,9 +4,7 @@ package ds
 
 import (
 	"encoding/xml"
-
 	"github.com/gocomply/scap/pkg/scap/models/er"
-
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 

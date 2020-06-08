@@ -4,11 +4,8 @@ package esx_def
 
 import (
 	"encoding/xml"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
-
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 

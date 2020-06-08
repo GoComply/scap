@@ -4,9 +4,7 @@ package ios_sc
 
 import (
 	"encoding/xml"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval"
-
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
