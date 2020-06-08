@@ -982,7 +982,7 @@ type InfopolicycollObject struct {
 type InfopolicycollState struct {
 	XMLName xml.Name `xml:infopolicycoll_state`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Version string `xml:"version,attr"`
 
@@ -994,7 +994,7 @@ type InfopolicycollState struct {
 
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
-	Id *oval_def.EntityStateStringType `xml:"id"`
+	IdElm *oval_def.EntityStateStringType `xml:"id"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 

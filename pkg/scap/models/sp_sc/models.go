@@ -341,13 +341,13 @@ type BestbetItem struct {
 type InfopolicycollItem struct {
 	XMLName xml.Name `xml:infopolicycoll_item`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Status string `xml:"status,attr"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
-	Id *oval_sc.EntityItemStringType `xml:"id"`
+	IdElm *oval_sc.EntityItemStringType `xml:"id"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 

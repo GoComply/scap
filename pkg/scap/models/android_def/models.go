@@ -61,7 +61,7 @@ type AppmanagerState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -79,7 +79,7 @@ type AppmanagerState struct {
 
 	DataDirectory *oval_def.EntityStateStringType `xml:"data_directory"`
 
-	Version *oval_def.EntityStateStringType `xml:"version"`
+	VersionElm *oval_def.EntityStateStringType `xml:"version"`
 
 	CurrentStatus *oval_def.EntityStateBoolType `xml:"current_status"`
 

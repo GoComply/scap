@@ -363,7 +363,7 @@ type SwlistState struct {
 
 	Fileset *oval_def.EntityStateStringType `xml:"fileset"`
 
-	Version *SwlistStateVersion `xml:"version"`
+	VersionElm *SwlistStateVersion `xml:"version"`
 
 	Title *oval_def.EntityStateStringType `xml:"title"`
 

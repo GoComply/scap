@@ -75,7 +75,7 @@ type PortinfoState struct {
 
 	Category *oval_def.EntityStateStringType `xml:"category"`
 
-	Version *PortinfoStateVersion `xml:"version"`
+	VersionElm *PortinfoStateVersion `xml:"version"`
 
 	Vendor *oval_def.EntityStateStringType `xml:"vendor"`
 

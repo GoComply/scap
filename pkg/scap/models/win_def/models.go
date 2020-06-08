@@ -790,7 +790,7 @@ type FileState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -816,7 +816,7 @@ type FileState struct {
 
 	MsChecksum *oval_def.EntityStateStringType `xml:"ms_checksum"`
 
-	Version *oval_def.EntityStateVersionType `xml:"version"`
+	VersionElm *oval_def.EntityStateVersionType `xml:"version"`
 
 	Type *EntityStateFileTypeType `xml:"type"`
 
@@ -1777,7 +1777,7 @@ type MetabaseObject struct {
 type MetabaseState struct {
 	XMLName xml.Name `xml:metabase_state`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Version string `xml:"version,attr"`
 
@@ -1789,7 +1789,7 @@ type MetabaseState struct {
 
 	Key *oval_def.EntityStateStringType `xml:"key"`
 
-	Id *oval_def.EntityStateIntType `xml:"id"`
+	IdElm *oval_def.EntityStateIntType `xml:"id"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -3819,7 +3819,7 @@ type UserState struct {
 
 	Operator string `xml:"operator,attr"`
 
-	Comment2 string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr"`
 
 	Deprecated string `xml:"deprecated,attr"`
 
@@ -3833,7 +3833,7 @@ type UserState struct {
 
 	FullName *oval_def.EntityStateStringType `xml:"full_name"`
 
-	Comment *oval_def.EntityStateStringType `xml:"comment"`
+	CommentElm *oval_def.EntityStateStringType `xml:"comment"`
 
 	PasswordAgeDays *oval_def.EntityStateIntType `xml:"password_age_days"`
 

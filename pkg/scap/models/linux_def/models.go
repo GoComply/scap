@@ -154,7 +154,7 @@ type DpkginfoState struct {
 
 	Release *DpkginfoStateRelease `xml:"release"`
 
-	Version *DpkginfoStateVersion `xml:"version"`
+	VersionElm *DpkginfoStateVersion `xml:"version"`
 
 	Evr *DpkginfoStateEvr `xml:"evr"`
 
@@ -478,7 +478,7 @@ type RpminfoState struct {
 
 	Release *RpminfoStateRelease `xml:"release"`
 
-	Version *RpminfoStateVersion `xml:"version"`
+	VersionElm *RpminfoStateVersion `xml:"version"`
 
 	Evr *oval_def.EntityStateEVRStringType `xml:"evr"`
 
@@ -654,7 +654,7 @@ type RpmverifyfileState struct {
 
 	Epoch *RpmverifyfileStateEpoch `xml:"epoch"`
 
-	Version *RpmverifyfileStateVersion `xml:"version"`
+	VersionElm *RpmverifyfileStateVersion `xml:"version"`
 
 	Release *RpmverifyfileStateRelease `xml:"release"`
 
@@ -763,7 +763,7 @@ type RpmverifypackageState struct {
 
 	Epoch *RpmverifypackageStateEpoch `xml:"epoch"`
 
-	Version *RpmverifypackageStateVersion `xml:"version"`
+	VersionElm *RpmverifypackageStateVersion `xml:"version"`
 
 	Release *RpmverifypackageStateRelease `xml:"release"`
 
@@ -1012,7 +1012,7 @@ type SlackwarepkginfoState struct {
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
-	Version *SlackwarepkginfoStateVersion `xml:"version"`
+	VersionElm *SlackwarepkginfoStateVersion `xml:"version"`
 
 	Architecture *oval_def.EntityStateStringType `xml:"architecture"`
 

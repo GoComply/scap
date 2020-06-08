@@ -527,7 +527,7 @@ type SnmpHostState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -541,7 +541,7 @@ type SnmpHostState struct {
 
 	Snmpv3User *oval_def.EntityStateStringType `xml:"snmpv3_user"`
 
-	Version *EntityStateSNMPVersionStringType `xml:"version"`
+	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
 
 	Poll *oval_def.EntityStateBoolType `xml:"poll"`
 

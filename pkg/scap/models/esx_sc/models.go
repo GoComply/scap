@@ -14,7 +14,7 @@ type PatchItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status2 string `xml:"status,attr"`
+	Status string `xml:"status,attr"`
 
 	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
 
@@ -28,7 +28,7 @@ type PatchItem struct {
 
 	SupportLevel *EntityItemSupportLevelType `xml:"support_level"`
 
-	Status *oval_sc.EntityItemBoolType `xml:"status"`
+	StatusElm *oval_sc.EntityItemBoolType `xml:"status"`
 
 	Message []oval.MessageType `xml:"message"`
 }

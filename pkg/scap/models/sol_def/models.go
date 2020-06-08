@@ -345,7 +345,7 @@ type PackageState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -359,7 +359,7 @@ type PackageState struct {
 
 	Category *oval_def.EntityStateStringType `xml:"category"`
 
-	Version *oval_def.EntityStateStringType `xml:"version"`
+	VersionElm *oval_def.EntityStateStringType `xml:"version"`
 
 	Vendor *oval_def.EntityStateStringType `xml:"vendor"`
 
@@ -422,7 +422,7 @@ type Package511State struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -434,7 +434,7 @@ type Package511State struct {
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
-	Version *oval_def.EntityStateVersionType `xml:"version"`
+	VersionElm *oval_def.EntityStateVersionType `xml:"version"`
 
 	Timestamp *oval_def.EntityStateStringType `xml:"timestamp"`
 
@@ -863,7 +863,7 @@ type PatchState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -873,7 +873,7 @@ type PatchState struct {
 
 	Base *oval_def.EntityStateIntType `xml:"base"`
 
-	Version *oval_def.EntityStateIntType `xml:"version"`
+	VersionElm *oval_def.EntityStateIntType `xml:"version"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

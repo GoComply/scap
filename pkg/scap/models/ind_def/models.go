@@ -576,7 +576,7 @@ type SqlState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -586,7 +586,7 @@ type SqlState struct {
 
 	Engine *EntityStateEngineType `xml:"engine"`
 
-	Version *oval_def.EntityStateStringType `xml:"version"`
+	VersionElm *oval_def.EntityStateStringType `xml:"version"`
 
 	ConnectionString *oval_def.EntityStateStringType `xml:"connection_string"`
 
@@ -651,7 +651,7 @@ type Sql57State struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -661,7 +661,7 @@ type Sql57State struct {
 
 	Engine *EntityStateEngineType `xml:"engine"`
 
-	Version *oval_def.EntityStateStringType `xml:"version"`
+	VersionElm *oval_def.EntityStateStringType `xml:"version"`
 
 	ConnectionString *oval_def.EntityStateStringType `xml:"connection_string"`
 

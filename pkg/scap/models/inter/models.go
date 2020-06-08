@@ -352,7 +352,7 @@ type WhenRange struct {
 type WhenBoolean struct {
 	XMLName xml.Name `xml:when_boolean`
 
-	Value string `xml:"value"`
+	ValueElm string `xml:"value"`
 }
 
 // Element
@@ -989,9 +989,9 @@ type SetExpressionRangeType struct {
 }
 
 type SetExpressionBooleanType struct {
-	Value2 string `xml:"value,attr"`
+	Value string `xml:"value,attr"`
 
-	Value string `xml:"value"`
+	ValueElm string `xml:"value"`
 }
 
 type VariableSetType struct {

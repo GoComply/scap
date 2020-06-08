@@ -59,7 +59,7 @@ type HttpdState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -71,7 +71,7 @@ type HttpdState struct {
 
 	BinaryName *oval_def.EntityStateStringType `xml:"binary_name"`
 
-	Version *oval_def.EntityStateVersionType `xml:"version"`
+	VersionElm *oval_def.EntityStateVersionType `xml:"version"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

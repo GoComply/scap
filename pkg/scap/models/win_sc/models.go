@@ -654,13 +654,13 @@ type LockoutpolicyItem struct {
 type MetabaseItem struct {
 	XMLName xml.Name `xml:metabase_item`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Status string `xml:"status,attr"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
-	Id *oval_sc.EntityItemIntType `xml:"id"`
+	IdElm *oval_sc.EntityItemIntType `xml:"id"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 

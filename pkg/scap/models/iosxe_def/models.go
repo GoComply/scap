@@ -454,7 +454,7 @@ type RouterObject struct {
 type RouterState struct {
 	XMLName xml.Name `xml:router_state`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Version string `xml:"version,attr"`
 
@@ -466,7 +466,7 @@ type RouterState struct {
 
 	Protocol EntityStateRoutingProtocolType `xml:"protocol"`
 
-	Id *oval_def.EntityStateIntType `xml:"id"`
+	IdElm *oval_def.EntityStateIntType `xml:"id"`
 
 	Network *oval_def.EntityStateStringType `xml:"network"`
 
@@ -600,7 +600,7 @@ type RoutingprotocolauthintfObject struct {
 type RoutingprotocolauthintfState struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_state`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Version string `xml:"version,attr"`
 
@@ -614,7 +614,7 @@ type RoutingprotocolauthintfState struct {
 
 	Protocol *EntityStateRoutingProtocolType `xml:"protocol"`
 
-	Id *oval_def.EntityStateIntType `xml:"id"`
+	IdElm *oval_def.EntityStateIntType `xml:"id"`
 
 	AuthType *EntityStateRoutingAuthTypeStringType `xml:"auth_type"`
 
@@ -758,7 +758,7 @@ type SnmphostState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -770,7 +770,7 @@ type SnmphostState struct {
 
 	CommunityOrUser *oval_def.EntityStateStringType `xml:"community_or_user"`
 
-	Version *EntityStateSNMPVersionStringType `xml:"version"`
+	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
 
 	Snmpv3SecLevel *EntityStateSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
 
@@ -908,7 +908,7 @@ type SnmpuserState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -920,7 +920,7 @@ type SnmpuserState struct {
 
 	Group *oval_def.EntityStateStringType `xml:"group"`
 
-	Version *EntityStateSNMPVersionStringType `xml:"version"`
+	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
 
 	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
 
@@ -987,7 +987,7 @@ type SnmpgroupState struct {
 
 	Id string `xml:"id,attr"`
 
-	Version2 string `xml:"version,attr"`
+	Version string `xml:"version,attr"`
 
 	Operator string `xml:"operator,attr"`
 
@@ -997,7 +997,7 @@ type SnmpgroupState struct {
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
-	Version *EntityStateSNMPVersionStringType `xml:"version"`
+	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
 
 	Snmpv3SecLevel *EntityStateSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
 

@@ -133,13 +133,13 @@ type LineItem struct {
 type RouterItem struct {
 	XMLName xml.Name `xml:router_item`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Status string `xml:"status,attr"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
-	Id *oval_sc.EntityItemIntType `xml:"id"`
+	IdElm *oval_sc.EntityItemIntType `xml:"id"`
 
 	Network []oval_sc.EntityItemStringType `xml:"network"`
 
@@ -156,7 +156,7 @@ type RouterItem struct {
 type RoutingprotocolauthintfItem struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_item`
 
-	Id2 string `xml:"id,attr"`
+	Id string `xml:"id,attr"`
 
 	Status string `xml:"status,attr"`
 
@@ -164,7 +164,7 @@ type RoutingprotocolauthintfItem struct {
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
-	Id *oval_sc.EntityItemIntType `xml:"id"`
+	IdElm *oval_sc.EntityItemIntType `xml:"id"`
 
 	AuthType *EntityItemRoutingAuthTypeStringType `xml:"auth_type"`
 

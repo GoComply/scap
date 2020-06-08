@@ -218,13 +218,13 @@ type LaunchdItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status2 string `xml:"status,attr"`
+	Status string `xml:"status,attr"`
 
 	Label oval_sc.EntityItemStringType `xml:"label"`
 
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
-	Status *oval_sc.EntityItemIntType `xml:"status"`
+	StatusElm *oval_sc.EntityItemIntType `xml:"status"`
 
 	Message []oval.MessageType `xml:"message"`
 }
