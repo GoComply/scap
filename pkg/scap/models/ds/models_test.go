@@ -34,18 +34,29 @@ func TestSanityDsParsing(t *testing.T) {
 	assert.Equal(t, checklists[0].XlinkType, "")
 	assert.Equal(t, checklists[0].XlinkHref, "file:xccdf.sds.xml#scap_1_comp_xccdf.xml")
 	assert.Equal(t, len(checklists[0].Catalog.Uri), 1)
-	// assert.Equal(t, checklists[0].Catalog.Uri[0].Name, "test_deriving_xccdf_result_from_oval_pass.oval.xml")
+	assert.Equal(t, checklists[0].Catalog.Uri[0].Name, "test_deriving_xccdf_result_from_oval_pass.oval.xml")
+	assert.Equal(t, checklists[0].Catalog.Uri[0].Uri, "#scap_org.open-scap_cref_oval.xml")
 
 	assert.Equal(t, checklists[1].Id, "scap_org.open-scap_cref_xccdf-file.xml")
 	assert.Equal(t, checklists[1].XlinkType, "")
 	assert.Equal(t, checklists[1].XlinkHref, "file:xccdf.xml")
+	assert.Equal(t, len(checklists[1].Catalog.Uri), 1)
+	assert.Equal(t, checklists[1].Catalog.Uri[0].Name, "test_deriving_xccdf_result_from_oval_pass.oval.xml")
+	assert.Equal(t, checklists[1].Catalog.Uri[0].Uri, "#scap_org.open-scap_cref_oval.xml")
 
 	checks := dataStream.Checks.ComponentRef
 	assert.Equal(t, len(checks), 1)
 	assert.Equal(t, checks[0].Id, "scap_org.open-scap_cref_oval.xml")
+	assert.Equal(t, checks[0].XlinkType, "")
+	assert.Equal(t, checks[0].XlinkHref, "#scap_1_comp_pass.oval.xml")
 
 	assert.Equal(t, len(ds.Component), 1)
 	component := ds.Component[0]
 	assert.Equal(t, component.Id, "scap_1_comp_pass.oval.xml")
 	assert.Equal(t, component.Timestamp, "2016-02-02T14:06:14")
+	ovalDef := component.OvalDefinitions
+	assert.Equal(t, ovalDef.Generator.ProductName, "Text Editors")
+	definitions := ovalDef.Definitions.Definition
+	assert.Equal(t, len(definitions), 1)
+	assert.Equal(t, definitions[0].Id, "oval:moc.elpmaxe.www:def:1")
 }
