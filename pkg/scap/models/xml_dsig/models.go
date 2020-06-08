@@ -10,6 +10,8 @@ import (
 type Signature struct {
 	XMLName xml.Name `xml:Signature`
 
+	Id string `xml:"Id,attr"`
+
 	SignedInfo SignedInfo `xml:"SignedInfo"`
 
 	SignatureValue SignatureValue `xml:"SignatureValue"`
@@ -23,12 +25,16 @@ type Signature struct {
 type SignatureValue struct {
 	XMLName xml.Name `xml:SignatureValue`
 
+	Id string `xml:"Id,attr"`
+
 	Text string `xml:",chardata"`
 }
 
 // Element
 type SignedInfo struct {
 	XMLName xml.Name `xml:SignedInfo`
+
+	Id string `xml:"Id,attr"`
 
 	CanonicalizationMethod CanonicalizationMethod `xml:"CanonicalizationMethod"`
 
@@ -40,11 +46,15 @@ type SignedInfo struct {
 // Element
 type CanonicalizationMethod struct {
 	XMLName xml.Name `xml:CanonicalizationMethod`
+
+	Algorithm string `xml:"Algorithm,attr"`
 }
 
 // Element
 type SignatureMethod struct {
 	XMLName xml.Name `xml:SignatureMethod`
+
+	Algorithm string `xml:"Algorithm,attr"`
 
 	HMACOutputLength string `xml:"HMACOutputLength"`
 }
@@ -52,6 +62,12 @@ type SignatureMethod struct {
 // Element
 type Reference struct {
 	XMLName xml.Name `xml:Reference`
+
+	Id string `xml:"Id,attr"`
+
+	URI string `xml:"URI,attr"`
+
+	Type string `xml:"Type,attr"`
 
 	Transforms *Transforms `xml:"Transforms"`
 
@@ -71,12 +87,16 @@ type Transforms struct {
 type Transform struct {
 	XMLName xml.Name `xml:Transform`
 
+	Algorithm string `xml:"Algorithm,attr"`
+
 	XPath []string `xml:"XPath"`
 }
 
 // Element
 type DigestMethod struct {
 	XMLName xml.Name `xml:DigestMethod`
+
+	Algorithm string `xml:"Algorithm,attr"`
 }
 
 // Element
@@ -89,6 +109,8 @@ type DigestValue struct {
 // Element
 type KeyInfo struct {
 	XMLName xml.Name `xml:KeyInfo`
+
+	Id string `xml:"Id,attr"`
 
 	KeyName []KeyName `xml:"KeyName"`
 
@@ -132,6 +154,10 @@ type KeyValue struct {
 type RetrievalMethod struct {
 	XMLName xml.Name `xml:RetrievalMethod`
 
+	URI string `xml:"URI,attr"`
+
+	Type string `xml:"Type,attr"`
+
 	Transforms *Transforms `xml:"Transforms"`
 }
 
@@ -165,11 +191,19 @@ type SPKIData struct {
 // Element
 type Object struct {
 	XMLName xml.Name `xml:Object`
+
+	Id string `xml:"Id,attr"`
+
+	MimeType string `xml:"MimeType,attr"`
+
+	Encoding string `xml:"Encoding,attr"`
 }
 
 // Element
 type Manifest struct {
 	XMLName xml.Name `xml:Manifest`
+
+	Id string `xml:"Id,attr"`
 
 	Reference []Reference `xml:"Reference"`
 }
@@ -178,12 +212,18 @@ type Manifest struct {
 type SignatureProperties struct {
 	XMLName xml.Name `xml:SignatureProperties`
 
+	Id string `xml:"Id,attr"`
+
 	SignatureProperty []SignatureProperty `xml:"SignatureProperty"`
 }
 
 // Element
 type SignatureProperty struct {
 	XMLName xml.Name `xml:SignatureProperty`
+
+	Target string `xml:"Target,attr"`
+
+	Id string `xml:"Id,attr"`
 }
 
 // Element

@@ -27,6 +27,10 @@ type OvalSystemCharacteristics struct {
 type Item struct {
 	XMLName xml.Name `xml:item`
 
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
+
 	Message []oval.MessageType `xml:"message"`
 }
 

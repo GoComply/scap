@@ -17,6 +17,8 @@ type PlatformSpecification struct {
 type Platform struct {
 	XMLName xml.Name `xml:platform`
 
+	Id string `xml:"id,attr"`
+
 	Title []TextType `xml:"title"`
 
 	Remark []TextType `xml:"remark"`
@@ -39,6 +41,10 @@ type PlatformConfiguration struct {
 type LogicalTest struct {
 	XMLName xml.Name `xml:logical-test`
 
+	Operator string `xml:"operator,attr"`
+
+	Negate string `xml:"negate,attr"`
+
 	LogicalTest []LogicalTestType `xml:"logical-test"`
 
 	FactRef []FactRef `xml:"fact-ref"`
@@ -49,11 +55,23 @@ type LogicalTest struct {
 // Element
 type FactRef struct {
 	XMLName xml.Name `xml:fact-ref`
+
+	Name string `xml:"name,attr"`
+
+	Description string `xml:"description,attr"`
 }
 
 // Element
 type CheckFactRef struct {
 	XMLName xml.Name `xml:check-fact-ref`
+
+	System string `xml:"system,attr"`
+
+	Href string `xml:"href,attr"`
+
+	IdRef string `xml:"id-ref,attr"`
+
+	Description string `xml:"description,attr"`
 }
 
 // XSD ComplexType declarations

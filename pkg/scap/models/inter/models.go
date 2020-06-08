@@ -31,12 +31,20 @@ type Ocil struct {
 type TestAction struct {
 	XMLName xml.Name `xml:test_action`
 
+	Revision string `xml:"revision,attr"`
+
 	Notes []string `xml:"notes"`
 }
 
 // Element
 type QuestionTestAction struct {
 	XMLName xml.Name `xml:question_test_action`
+
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -54,6 +62,12 @@ type QuestionTestAction struct {
 // Element
 type BooleanQuestionTestAction struct {
 	XMLName xml.Name `xml:boolean_question_test_action`
+
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	WhenTrue TestActionConditionType `xml:"when_true"`
 
@@ -76,6 +90,12 @@ type BooleanQuestionTestAction struct {
 type ChoiceQuestionTestAction struct {
 	XMLName xml.Name `xml:choice_question_test_action`
 
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
 	Title *TextType `xml:"title"`
@@ -95,6 +115,12 @@ type ChoiceQuestionTestAction struct {
 type NumericQuestionTestAction struct {
 	XMLName xml.Name `xml:numeric_question_test_action`
 
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	Title *TextType `xml:"title"`
 
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
@@ -111,6 +137,12 @@ type NumericQuestionTestAction struct {
 // Element
 type StringQuestionTestAction struct {
 	XMLName xml.Name `xml:string_question_test_action`
+
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
@@ -131,6 +163,10 @@ type StringQuestionTestAction struct {
 type Question struct {
 	XMLName xml.Name `xml:question`
 
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
@@ -141,6 +177,14 @@ type Question struct {
 // Element
 type BooleanQuestion struct {
 	XMLName xml.Name `xml:boolean_question`
+
+	DefaultAnswer string `xml:"default_answer,attr"`
+
+	Model string `xml:"model,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -153,6 +197,12 @@ type BooleanQuestion struct {
 type ChoiceQuestion struct {
 	XMLName xml.Name `xml:choice_question`
 
+	DefaultAnswerRef string `xml:"default_answer_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
@@ -163,6 +213,12 @@ type ChoiceQuestion struct {
 // Element
 type NumericQuestion struct {
 	XMLName xml.Name `xml:numeric_question`
+
+	DefaultAnswer string `xml:"default_answer,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -175,6 +231,12 @@ type NumericQuestion struct {
 type StringQuestion struct {
 	XMLName xml.Name `xml:string_question`
 
+	DefaultAnswer string `xml:"default_answer,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
@@ -186,6 +248,12 @@ type StringQuestion struct {
 type Variable struct {
 	XMLName xml.Name `xml:variable`
 
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	Description *TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
@@ -194,6 +262,12 @@ type Variable struct {
 // Element
 type ConstantVariable struct {
 	XMLName xml.Name `xml:constant_variable`
+
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	Value string `xml:"value"`
 
@@ -206,6 +280,14 @@ type ConstantVariable struct {
 type LocalVariable struct {
 	XMLName xml.Name `xml:local_variable`
 
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	Set string `xml:"set"`
 
 	Description *TextType `xml:"description"`
@@ -217,6 +299,12 @@ type LocalVariable struct {
 type ExternalVariable struct {
 	XMLName xml.Name `xml:external_variable`
 
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
+
 	Description *TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
@@ -226,6 +314,8 @@ type ExternalVariable struct {
 type Target struct {
 	XMLName xml.Name `xml:target`
 
+	Revision string `xml:"revision,attr"`
+
 	Name string `xml:"name"`
 
 	Notes []string `xml:"notes"`
@@ -234,6 +324,8 @@ type Target struct {
 // Element
 type User struct {
 	XMLName xml.Name `xml:user`
+
+	Revision string `xml:"revision,attr"`
 
 	Organization []string `xml:"organization"`
 
@@ -250,6 +342,8 @@ type User struct {
 type System struct {
 	XMLName xml.Name `xml:system`
 
+	Revision string `xml:"revision,attr"`
+
 	Organization string `xml:"organization"`
 
 	Ipaddress []string `xml:"ipaddress"`
@@ -264,11 +358,19 @@ type System struct {
 // Element
 type QuestionResult struct {
 	XMLName xml.Name `xml:question_result`
+
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
 }
 
 // Element
 type BooleanQuestionResult struct {
 	XMLName xml.Name `xml:boolean_question_result`
+
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
 
 	Answer bool `xml:"answer"`
 }
@@ -277,6 +379,10 @@ type BooleanQuestionResult struct {
 type ChoiceQuestionResult struct {
 	XMLName xml.Name `xml:choice_question_result`
 
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
+
 	Answer ChoiceAnswerType `xml:"answer"`
 }
 
@@ -284,12 +390,20 @@ type ChoiceQuestionResult struct {
 type NumericQuestionResult struct {
 	XMLName xml.Name `xml:numeric_question_result`
 
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
+
 	Answer float64 `xml:"answer"`
 }
 
 // Element
 type StringQuestionResult struct {
 	XMLName xml.Name `xml:string_question_result`
+
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
 
 	Answer string `xml:"answer"`
 }
@@ -303,12 +417,16 @@ type ArtifactValue struct {
 type TextArtifactValue struct {
 	XMLName xml.Name `xml:text_artifact_value`
 
+	MimeType string `xml:"mime_type,attr"`
+
 	Data string `xml:"data"`
 }
 
 // Element
 type BinaryArtifactValue struct {
 	XMLName xml.Name `xml:binary_artifact_value`
+
+	MimeType string `xml:"mime_type,attr"`
 
 	Data string `xml:"data"`
 }
@@ -331,12 +449,16 @@ type Expression struct {
 type WhenPattern struct {
 	XMLName xml.Name `xml:when_pattern`
 
+	Pattern string `xml:"pattern,attr"`
+
 	Value string `xml:"value"`
 }
 
 // Element
 type WhenChoice struct {
 	XMLName xml.Name `xml:when_choice`
+
+	ChoiceRef string `xml:"choice_ref,attr"`
 
 	Value string `xml:"value"`
 }
@@ -345,12 +467,18 @@ type WhenChoice struct {
 type WhenRange struct {
 	XMLName xml.Name `xml:when_range`
 
+	Min string `xml:"min,attr"`
+
+	Max string `xml:"max,attr"`
+
 	Value string `xml:"value"`
 }
 
 // Element
 type WhenBoolean struct {
 	XMLName xml.Name `xml:when_boolean`
+
+	Value string `xml:"value,attr"`
 
 	ValueElm string `xml:"value"`
 }

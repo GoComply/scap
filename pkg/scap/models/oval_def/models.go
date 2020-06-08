@@ -38,6 +38,14 @@ type Notes struct {
 type Definition struct {
 	XMLName xml.Name `xml:definition`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Class string `xml:"class,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Metadata MetadataType `xml:"metadata"`
@@ -51,6 +59,20 @@ type Definition struct {
 type Test struct {
 	XMLName xml.Name `xml:test`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -59,6 +81,14 @@ type Test struct {
 // Element
 type Object struct {
 	XMLName xml.Name `xml:object`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -85,6 +115,16 @@ type Filter struct {
 type State struct {
 	XMLName xml.Name `xml:state`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -93,6 +133,16 @@ type State struct {
 // Element
 type Variable struct {
 	XMLName xml.Name `xml:variable`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

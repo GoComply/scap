@@ -19,6 +19,14 @@ type CpeList struct {
 type CpeItem struct {
 	XMLName xml.Name `xml:cpe-item`
 
+	Name string `xml:"name,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
+	DeprecatedBy string `xml:"deprecated_by,attr"`
+
+	DeprecationDate string `xml:"deprecation_date,attr"`
+
 	Title []TextType `xml:"title"`
 
 	Notes []NotesType `xml:"notes"`

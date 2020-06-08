@@ -86,6 +86,22 @@ type Model struct {
 type Item struct {
 	XMLName xml.Name `xml:Item`
 
+	Abstract string `xml:"abstract,attr"`
+
+	ClusterId string `xml:"cluster-id,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	Hidden string `xml:"hidden,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	XmlBase string `xml:"base,attr"`
+
+	Id string `xml:"Id,attr"`
+
 	Status []Status `xml:"status"`
 
 	DcStatus []DcStatusType `xml:"dc-status"`
@@ -108,6 +124,26 @@ type Item struct {
 // Element
 type Group struct {
 	XMLName xml.Name `xml:Group`
+
+	Id string `xml:"id,attr"`
+
+	Selected string `xml:"selected,attr"`
+
+	Weight string `xml:"weight,attr"`
+
+	Abstract string `xml:"abstract,attr"`
+
+	ClusterId string `xml:"cluster-id,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	Hidden string `xml:"hidden,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	XmlBase string `xml:"base,attr"`
 
 	Value []Value `xml:"Value"`
 
@@ -147,6 +183,32 @@ type Group struct {
 // Element
 type Rule struct {
 	XMLName xml.Name `xml:Rule`
+
+	Id string `xml:"id,attr"`
+
+	Role string `xml:"role,attr"`
+
+	Severity string `xml:"severity,attr"`
+
+	Multiple string `xml:"multiple,attr"`
+
+	Selected string `xml:"selected,attr"`
+
+	Weight string `xml:"weight,attr"`
+
+	Abstract string `xml:"abstract,attr"`
+
+	ClusterId string `xml:"cluster-id,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	Hidden string `xml:"hidden,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	XmlBase string `xml:"base,attr"`
 
 	Ident []IdentType `xml:"ident"`
 
@@ -195,6 +257,30 @@ type Rule struct {
 type Value struct {
 	XMLName xml.Name `xml:Value`
 
+	Id string `xml:"id,attr"`
+
+	Type string `xml:"type,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Interactive string `xml:"interactive,attr"`
+
+	InterfaceHint string `xml:"interfaceHint,attr"`
+
+	Abstract string `xml:"abstract,attr"`
+
+	ClusterId string `xml:"cluster-id,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	Hidden string `xml:"hidden,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	XmlBase string `xml:"base,attr"`
+
 	Match []SelStringType `xml:"match"`
 
 	LowerBound []SelNumType `xml:"lower-bound"`
@@ -238,6 +324,20 @@ type Value struct {
 type Profile struct {
 	XMLName xml.Name `xml:Profile`
 
+	Id string `xml:"id,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	Abstract string `xml:"abstract,attr"`
+
+	NoteTag string `xml:"note-tag,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	XmlBase string `xml:"base,attr"`
+
+	Id2 string `xml:"Id,attr"`
+
 	Status []Status `xml:"status"`
 
 	DcStatus []DcStatusType `xml:"dc-status"`
@@ -270,6 +370,18 @@ type Profile struct {
 // Element
 type TestResult struct {
 	XMLName xml.Name `xml:TestResult`
+
+	Id string `xml:"id,attr"`
+
+	StartTime string `xml:"start-time,attr"`
+
+	EndTime string `xml:"end-time,attr"`
+
+	TestSystem string `xml:"test-system,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Id2 string `xml:"Id,attr"`
 
 	Benchmark *BenchmarkReferenceType `xml:"benchmark"`
 
@@ -311,6 +423,10 @@ type TestResult struct {
 // Element
 type Tailoring struct {
 	XMLName xml.Name `xml:Tailoring`
+
+	Id string `xml:"id,attr"`
+
+	Id2 string `xml:"Id,attr"`
 
 	Benchmark *TailoringBenchmarkReferenceType `xml:"benchmark"`
 
