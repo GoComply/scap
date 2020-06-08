@@ -12,7 +12,9 @@ import (
 type AclItem struct {
 	XMLName xml.Name `xml:acl_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -27,33 +29,45 @@ type AclItem struct {
 	AclConfigLines *oval_sc.EntityItemStringType `xml:"acl_config_lines"`
 
 	ConfigLine []oval_sc.EntityItemStringType `xml:"config_line"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type BgpneighborItem struct {
 	XMLName xml.Name `xml:bgpneighbor_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Neighbor *oval_sc.EntityItemStringType `xml:"neighbor"`
 
 	Password *oval_sc.EntityItemStringType `xml:"password"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type GlobalItem struct {
 	XMLName xml.Name `xml:global_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	GlobalCommand *oval_sc.EntityItemStringType `xml:"global_command"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type InterfaceItem struct {
 	XMLName xml.Name `xml:interface_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -96,24 +110,32 @@ type InterfaceItem struct {
 	SwitchportPrunedVlans *oval_sc.EntityItemStringType `xml:"switchport_pruned_vlans"`
 
 	SwitchportPortSecurity *oval_sc.EntityItemStringType `xml:"switchport_port_security"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RouterItem struct {
 	XMLName xml.Name `xml:router_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id2 string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
@@ -126,13 +148,17 @@ type RouterItem struct {
 	OspfAuthenticationArea []RouterItemOspfAuthenticationArea `xml:"ospf_authentication_area"`
 
 	RouterConfigLines *oval_sc.EntityItemStringType `xml:"router_config_lines"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RoutingprotocolauthintfItem struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id2 string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Interface *oval_sc.EntityItemStringType `xml:"interface"`
 
@@ -145,37 +171,49 @@ type RoutingprotocolauthintfItem struct {
 	OspfArea *RoutingprotocolauthintfItemOspfArea `xml:"ospf_area"`
 
 	KeyChain *oval_sc.EntityItemStringType `xml:"key_chain"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SectionItem struct {
 	XMLName xml.Name `xml:section_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	SectionCommand *oval_sc.EntityItemStringType `xml:"section_command"`
 
 	SectionConfigLines *oval_sc.EntityItemStringType `xml:"section_config_lines"`
 
 	ConfigLine []oval_sc.EntityItemStringType `xml:"config_line"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SnmpItem struct {
 	XMLName xml.Name `xml:snmp_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	AccessList *oval_sc.EntityItemStringType `xml:"access_list"`
 
 	CommunityName *oval_sc.EntityItemStringType `xml:"community_name"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SnmpcommunityItem struct {
 	XMLName xml.Name `xml:snmpcommunity_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -186,13 +224,17 @@ type SnmpcommunityItem struct {
 	Ipv4Acl *oval_sc.EntityItemStringType `xml:"ipv4_acl"`
 
 	Ipv6Acl *oval_sc.EntityItemStringType `xml:"ipv6_acl"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SnmpgroupItem struct {
 	XMLName xml.Name `xml:snmpgroup_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -209,13 +251,17 @@ type SnmpgroupItem struct {
 	WriteView *oval_sc.EntityItemStringType `xml:"write_view"`
 
 	NotifyView *oval_sc.EntityItemStringType `xml:"notify_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SnmphostItem struct {
 	XMLName xml.Name `xml:snmphost_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Host *oval_sc.EntityItemStringType `xml:"host"`
 
@@ -226,13 +272,17 @@ type SnmphostItem struct {
 	Snmpv3SecLevel *EntityItemSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
 
 	Traps *oval_sc.EntityItemStringType `xml:"traps"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SnmpuserItem struct {
 	XMLName xml.Name `xml:snmpuser_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -247,35 +297,47 @@ type SnmpuserItem struct {
 	Priv *EntityItemSNMPPrivStringType `xml:"priv"`
 
 	Auth *EntityItemSNMPAuthStringType `xml:"auth"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SnmpviewItem struct {
 	XMLName xml.Name `xml:snmpview_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	MibFamily *oval_sc.EntityItemStringType `xml:"mib_family"`
 
 	Include *oval_sc.EntityItemBoolType `xml:"include"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type TclshItem struct {
 	XMLName xml.Name `xml:tclsh_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	MajorRelease *oval_sc.EntityItemStringType `xml:"major_release"`
 
@@ -296,6 +358,8 @@ type VersionItem struct {
 	MainlineRebuild *oval_sc.EntityItemStringType `xml:"mainline_rebuild"`
 
 	VersionString *oval_sc.EntityItemIOSVersionType `xml:"version_string"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element

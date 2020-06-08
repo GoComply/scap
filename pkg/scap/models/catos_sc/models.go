@@ -12,18 +12,24 @@ import (
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ModuleItem struct {
 	XMLName xml.Name `xml:module_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ModuleNumber *oval_sc.EntityItemIntType `xml:"module_number"`
 
@@ -44,13 +50,17 @@ type ModuleItem struct {
 	FirmwareMajorRelease *oval_sc.EntityItemVersionType `xml:"firmware_major_release"`
 
 	FirmwareIndividualRelease *oval_sc.EntityItemIntType `xml:"firmware_individual_release"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	SwitchSeries *oval_sc.EntityItemStringType `xml:"switch_series"`
 
@@ -63,6 +73,8 @@ type VersionItem struct {
 	CatosIndividualRelease *oval_sc.EntityItemIntType `xml:"catos_individual_release"`
 
 	CatosVersionId *oval_sc.EntityItemStringType `xml:"catos_version_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

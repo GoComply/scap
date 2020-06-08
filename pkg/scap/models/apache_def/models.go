@@ -13,18 +13,40 @@ import (
 type HttpdTest struct {
 	XMLName xml.Name `xml:httpd_test`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type HttpdObject struct {
 	XMLName xml.Name `xml:httpd_object`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -35,15 +57,25 @@ type HttpdObject struct {
 type HttpdState struct {
 	XMLName xml.Name `xml:httpd_state`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version2 string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
 	BinaryName *oval_def.EntityStateStringType `xml:"binary_name"`
 
 	Version *oval_def.EntityStateVersionType `xml:"version"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // XSD ComplexType declarations

@@ -12,7 +12,9 @@ import (
 type PortinfoItem struct {
 	XMLName xml.Name `xml:portinfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -25,6 +27,8 @@ type PortinfoItem struct {
 	Vendor *oval_sc.EntityItemStringType `xml:"vendor"`
 
 	Description *oval_sc.EntityItemStringType `xml:"description"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element

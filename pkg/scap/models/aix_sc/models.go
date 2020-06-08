@@ -12,7 +12,9 @@ import (
 type InterimFixItem struct {
 	XMLName xml.Name `xml:interim_fix_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
 
@@ -21,13 +23,17 @@ type InterimFixItem struct {
 	Abstract *oval_sc.EntityItemStringType `xml:"abstract"`
 
 	State *EntityItemInterimFixStateType `xml:"state"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FilesetItem struct {
 	XMLName xml.Name `xml:fileset_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
 
@@ -36,13 +42,17 @@ type FilesetItem struct {
 	State *EntityItemFilesetStateType `xml:"state"`
 
 	Description *oval_sc.EntityItemStringType `xml:"description"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FixItem struct {
 	XMLName xml.Name `xml:fix_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
 
@@ -51,26 +61,36 @@ type FixItem struct {
 	Symptom *oval_sc.EntityItemStringType `xml:"symptom"`
 
 	InstallationStatus *EntityItemFixInstallationStatusType `xml:"installation_status"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type NoItem struct {
 	XMLName xml.Name `xml:no_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type OslevelItem struct {
 	XMLName xml.Name `xml:oslevel_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

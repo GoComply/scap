@@ -13,70 +13,130 @@ import (
 type LineTest struct {
 	XMLName xml.Name `xml:line_test`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type LineObject struct {
 	XMLName xml.Name `xml:line_object`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
+	Set oval_def.Set `xml:"set"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
-
-	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
 
 	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type ModuleTest struct {
 	XMLName xml.Name `xml:module_test`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type ModuleObject struct {
 	XMLName xml.Name `xml:module_object`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
+	Set oval_def.Set `xml:"set"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
-
-	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ModuleState struct {
 	XMLName xml.Name `xml:module_state`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	ModuleNumber *oval_def.EntityStateIntType `xml:"module_number"`
 
@@ -97,24 +157,50 @@ type ModuleState struct {
 	FirmwareMajorRelease *oval_def.EntityStateVersionType `xml:"firmware_major_release"`
 
 	FirmwareIndividualRelease *oval_def.EntityStateIntType `xml:"firmware_individual_release"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type Version55Test struct {
 	XMLName xml.Name `xml:version55_test`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type Version55Object struct {
 	XMLName xml.Name `xml:version55_object`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -125,33 +211,65 @@ type Version55Object struct {
 type Version55State struct {
 	XMLName xml.Name `xml:version55_state`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
 
 	ImageName *oval_def.EntityStateStringType `xml:"image_name"`
 
 	CatosRelease *oval_def.EntityStateVersionType `xml:"catos_release"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
+	Check string `xml:"check,attr"`
+
+	StateOperator string `xml:"state_operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type VersionObject struct {
 	XMLName xml.Name `xml:version_object`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -162,9 +280,15 @@ type VersionObject struct {
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Id string `xml:"id,attr"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Version string `xml:"version,attr"`
+
+	Operator string `xml:"operator,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
 
@@ -175,6 +299,10 @@ type VersionState struct {
 	CatosIndividualRelease *oval_def.EntityStateIntType `xml:"catos_individual_release"`
 
 	CatosVersionId *oval_def.EntityStateStringType `xml:"catos_version_id"`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // XSD ComplexType declarations

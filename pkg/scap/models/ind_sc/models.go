@@ -12,16 +12,22 @@ import (
 type FamilyItem struct {
 	XMLName xml.Name `xml:family_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Family *EntityItemFamilyType `xml:"family"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FilehashItem struct {
 	XMLName xml.Name `xml:filehash_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -34,13 +40,17 @@ type FilehashItem struct {
 	Sha1 *oval_sc.EntityItemStringType `xml:"sha1"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Filehash58Item struct {
 	XMLName xml.Name `xml:filehash58_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -53,37 +63,49 @@ type Filehash58Item struct {
 	Hash *oval_sc.EntityItemStringType `xml:"hash"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type EnvironmentvariableItem struct {
 	XMLName xml.Name `xml:environmentvariable_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Environmentvariable58Item struct {
 	XMLName xml.Name `xml:environmentvariable58_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type LdapItem struct {
 	XMLName xml.Name `xml:ldap_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -96,13 +118,17 @@ type LdapItem struct {
 	Ldaptype *EntityItemLdaptypeType `xml:"ldaptype"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Ldap57Item struct {
 	XMLName xml.Name `xml:ldap57_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -115,13 +141,17 @@ type Ldap57Item struct {
 	Ldaptype *EntityItemLdaptypeType `xml:"ldaptype"`
 
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SqlItem struct {
 	XMLName xml.Name `xml:sql_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Engine *EntityItemEngineType `xml:"engine"`
 
@@ -132,13 +162,17 @@ type SqlItem struct {
 	Sql *oval_sc.EntityItemStringType `xml:"sql"`
 
 	Result []oval_sc.EntityItemAnySimpleType `xml:"result"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Sql57Item struct {
 	XMLName xml.Name `xml:sql57_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Engine *EntityItemEngineType `xml:"engine"`
 
@@ -149,13 +183,17 @@ type Sql57Item struct {
 	Sql *oval_sc.EntityItemStringType `xml:"sql"`
 
 	Result []oval_sc.EntityItemRecordType `xml:"result"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type TextfilecontentItem struct {
 	XMLName xml.Name `xml:textfilecontent_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -174,24 +212,32 @@ type TextfilecontentItem struct {
 	Subexpression []oval_sc.EntityItemAnySimpleType `xml:"subexpression"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VariableItem struct {
 	XMLName xml.Name `xml:variable_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	VarRef *EntityItemVariableRefType `xml:"var_ref"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type XmlfilecontentItem struct {
 	XMLName xml.Name `xml:xmlfilecontent_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -204,13 +250,17 @@ type XmlfilecontentItem struct {
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type YamlfilecontentItem struct {
 	XMLName xml.Name `xml:yamlfilecontent_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -223,6 +273,8 @@ type YamlfilecontentItem struct {
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

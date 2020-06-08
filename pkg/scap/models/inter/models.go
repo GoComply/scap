@@ -38,8 +38,6 @@ type TestAction struct {
 type QuestionTestAction struct {
 	XMLName xml.Name `xml:question_test_action`
 
-	Notes []string `xml:"notes"`
-
 	Title *TextType `xml:"title"`
 
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
@@ -49,13 +47,17 @@ type QuestionTestAction struct {
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
 	WhenError *TestActionConditionType `xml:"when_error"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type BooleanQuestionTestAction struct {
 	XMLName xml.Name `xml:boolean_question_test_action`
 
-	Notes []string `xml:"notes"`
+	WhenTrue TestActionConditionType `xml:"when_true"`
+
+	WhenFalse TestActionConditionType `xml:"when_false"`
 
 	Title *TextType `xml:"title"`
 
@@ -67,16 +69,14 @@ type BooleanQuestionTestAction struct {
 
 	WhenError *TestActionConditionType `xml:"when_error"`
 
-	WhenTrue TestActionConditionType `xml:"when_true"`
-
-	WhenFalse TestActionConditionType `xml:"when_false"`
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type ChoiceQuestionTestAction struct {
 	XMLName xml.Name `xml:choice_question_test_action`
 
-	Notes []string `xml:"notes"`
+	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
 	Title *TextType `xml:"title"`
 
@@ -88,15 +88,13 @@ type ChoiceQuestionTestAction struct {
 
 	WhenError *TestActionConditionType `xml:"when_error"`
 
-	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type NumericQuestionTestAction struct {
 	XMLName xml.Name `xml:numeric_question_test_action`
 
-	Notes []string `xml:"notes"`
-
 	Title *TextType `xml:"title"`
 
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
@@ -106,13 +104,15 @@ type NumericQuestionTestAction struct {
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
 	WhenError *TestActionConditionType `xml:"when_error"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type StringQuestionTestAction struct {
 	XMLName xml.Name `xml:string_question_test_action`
 
-	Notes []string `xml:"notes"`
+	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
 	Title *TextType `xml:"title"`
 
@@ -124,141 +124,141 @@ type StringQuestionTestAction struct {
 
 	WhenError *TestActionConditionType `xml:"when_error"`
 
-	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type Question struct {
 	XMLName xml.Name `xml:question`
 
-	Notes []string `xml:"notes"`
-
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type BooleanQuestion struct {
 	XMLName xml.Name `xml:boolean_question`
 
-	Notes []string `xml:"notes"`
-
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type ChoiceQuestion struct {
 	XMLName xml.Name `xml:choice_question`
 
-	Notes []string `xml:"notes"`
-
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type NumericQuestion struct {
 	XMLName xml.Name `xml:numeric_question`
 
-	Notes []string `xml:"notes"`
-
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type StringQuestion struct {
 	XMLName xml.Name `xml:string_question`
 
-	Notes []string `xml:"notes"`
-
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type Variable struct {
 	XMLName xml.Name `xml:variable`
 
-	Notes []string `xml:"notes"`
-
 	Description *TextType `xml:"description"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type ConstantVariable struct {
 	XMLName xml.Name `xml:constant_variable`
 
-	Notes []string `xml:"notes"`
+	Value string `xml:"value"`
 
 	Description *TextType `xml:"description"`
 
-	Value string `xml:"value"`
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type LocalVariable struct {
 	XMLName xml.Name `xml:local_variable`
 
-	Notes []string `xml:"notes"`
+	Set string `xml:"set"`
 
 	Description *TextType `xml:"description"`
 
-	Set string `xml:"set"`
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type ExternalVariable struct {
 	XMLName xml.Name `xml:external_variable`
 
-	Notes []string `xml:"notes"`
-
 	Description *TextType `xml:"description"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type Target struct {
 	XMLName xml.Name `xml:target`
 
-	Notes []string `xml:"notes"`
-
 	Name string `xml:"name"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type User struct {
 	XMLName xml.Name `xml:user`
 
-	Notes []string `xml:"notes"`
-
-	Name string `xml:"name"`
-
 	Organization []string `xml:"organization"`
 
 	Position []string `xml:"position"`
 
 	Email []string `xml:"email"`
+
+	Name string `xml:"name"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
 type System struct {
 	XMLName xml.Name `xml:system`
 
-	Notes []string `xml:"notes"`
-
-	Name string `xml:"name"`
-
 	Organization string `xml:"organization"`
 
 	Ipaddress []string `xml:"ipaddress"`
 
 	Description *TextType `xml:"description"`
+
+	Name string `xml:"name"`
+
+	Notes []string `xml:"notes"`
 }
 
 // Element
@@ -391,7 +391,7 @@ type QuestionnaireType struct {
 
 	ChildOnly string `xml:"child_only,attr"`
 
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -400,6 +400,8 @@ type QuestionnaireType struct {
 	References *ReferencesType `xml:"references"`
 
 	Actions OperationType `xml:"actions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type GeneratorType struct {
@@ -436,7 +438,7 @@ type QuestionTestActionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -447,28 +449,42 @@ type QuestionTestActionType struct {
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
 	WhenError *TestActionConditionType `xml:"when_error"`
+
+	Notes []string `xml:"notes"`
 }
 
 type BooleanQuestionTestActionType struct {
-	Notes []string `xml:"notes"`
+	QuestionRef string `xml:"question_ref,attr"`
 
-	Title *TextType `xml:"title"`
+	Id string `xml:"id,attr"`
 
-	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
-
-	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
-
-	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
-
-	WhenError *TestActionConditionType `xml:"when_error"`
+	Revision string `xml:"revision,attr"`
 
 	WhenTrue TestActionConditionType `xml:"when_true"`
 
 	WhenFalse TestActionConditionType `xml:"when_false"`
+
+	Title *TextType `xml:"title"`
+
+	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
+
+	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
+
+	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
+
+	WhenError *TestActionConditionType `xml:"when_error"`
+
+	Notes []string `xml:"notes"`
 }
 
 type ChoiceQuestionTestActionType struct {
-	Notes []string `xml:"notes"`
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
+	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
 	Title *TextType `xml:"title"`
 
@@ -480,11 +496,15 @@ type ChoiceQuestionTestActionType struct {
 
 	WhenError *TestActionConditionType `xml:"when_error"`
 
-	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
+	Notes []string `xml:"notes"`
 }
 
 type NumericQuestionTestActionType struct {
-	Notes []string `xml:"notes"`
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -495,10 +515,18 @@ type NumericQuestionTestActionType struct {
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
 	WhenError *TestActionConditionType `xml:"when_error"`
+
+	Notes []string `xml:"notes"`
 }
 
 type StringQuestionTestActionType struct {
-	Notes []string `xml:"notes"`
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
+
+	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
 	Title *TextType `xml:"title"`
 
@@ -510,7 +538,7 @@ type StringQuestionTestActionType struct {
 
 	WhenError *TestActionConditionType `xml:"when_error"`
 
-	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
+	Notes []string `xml:"notes"`
 }
 
 type TestActionRefType struct {
@@ -520,45 +548,45 @@ type TestActionRefType struct {
 }
 
 type ChoiceTestActionConditionType struct {
+	ChoiceRef []string `xml:"choice_ref"`
+
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
 	Result string `xml:"result"`
 
 	TestActionRef TestActionRefType `xml:"test_action_ref"`
-
-	ChoiceRef []string `xml:"choice_ref"`
 }
 
 type EqualsTestActionConditionType struct {
 	VarRef string `xml:"var_ref,attr"`
 
+	Value []float64 `xml:"value"`
+
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
 	Result string `xml:"result"`
 
 	TestActionRef TestActionRefType `xml:"test_action_ref"`
-
-	Value []float64 `xml:"value"`
 }
 
 type RangeTestActionConditionType struct {
+	Range []RangeType `xml:"range"`
+
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
 	Result string `xml:"result"`
 
 	TestActionRef TestActionRefType `xml:"test_action_ref"`
-
-	Range []RangeType `xml:"range"`
 }
 
 type PatternTestActionConditionType struct {
+	Pattern []PatternType `xml:"pattern"`
+
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
 	Result string `xml:"result"`
 
 	TestActionRef TestActionRefType `xml:"test_action_ref"`
-
-	Pattern []PatternType `xml:"pattern"`
 }
 
 type PatternType struct {
@@ -604,11 +632,13 @@ type QuestionTextType struct {
 type QuestionType struct {
 	Id string `xml:"id,attr"`
 
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type BooleanQuestionType struct {
@@ -616,41 +646,57 @@ type BooleanQuestionType struct {
 
 	Model string `xml:"model,attr"`
 
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type ChoiceQuestionType struct {
 	DefaultAnswerRef string `xml:"default_answer_ref,attr"`
 
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type NumericQuestionType struct {
 	DefaultAnswer string `xml:"default_answer,attr"`
 
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type StringQuestionType struct {
 	DefaultAnswer string `xml:"default_answer,attr"`
 
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
 	Instructions *InstructionsType `xml:"instructions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type ChoiceType struct {
@@ -726,18 +772,34 @@ type QuestionResultType struct {
 }
 
 type BooleanQuestionResultType struct {
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
+
 	Answer bool `xml:"answer"`
 }
 
 type ChoiceQuestionResultType struct {
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
+
 	Answer ChoiceAnswerType `xml:"answer"`
 }
 
 type NumericQuestionResultType struct {
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
+
 	Answer float64 `xml:"answer"`
 }
 
 type StringQuestionResultType struct {
+	QuestionRef string `xml:"question_ref,attr"`
+
+	Response string `xml:"response,attr"`
+
 	Answer string `xml:"answer"`
 }
 
@@ -754,11 +816,13 @@ type ArtifactType struct {
 
 	Persistent string `xml:"persistent,attr"`
 
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	Title TextType `xml:"title"`
 
 	Description TextType `xml:"description"`
+
+	Notes []string `xml:"notes"`
 }
 
 type ArtifactRefsType struct {
@@ -783,10 +847,14 @@ type EmbeddedArtifactValueType struct {
 }
 
 type TextArtifactValueType struct {
+	MimeType string `xml:"mime_type,attr"`
+
 	Data string `xml:"data"`
 }
 
 type BinaryArtifactValueType struct {
+	MimeType string `xml:"mime_type,attr"`
+
 	Data string `xml:"data"`
 }
 
@@ -811,27 +879,31 @@ type TargetsType struct {
 }
 
 type UserType struct {
-	Notes []string `xml:"notes"`
-
-	Name string `xml:"name"`
+	Revision string `xml:"revision,attr"`
 
 	Organization []string `xml:"organization"`
 
 	Position []string `xml:"position"`
 
 	Email []string `xml:"email"`
+
+	Name string `xml:"name"`
+
+	Notes []string `xml:"notes"`
 }
 
 type SystemTargetType struct {
-	Notes []string `xml:"notes"`
-
-	Name string `xml:"name"`
+	Revision string `xml:"revision,attr"`
 
 	Organization string `xml:"organization"`
 
 	Ipaddress []string `xml:"ipaddress"`
 
 	Description *TextType `xml:"description"`
+
+	Name string `xml:"name"`
+
+	Notes []string `xml:"notes"`
 }
 
 type VariablesType struct {
@@ -843,33 +915,53 @@ type VariableType struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	Description *TextType `xml:"description"`
+
+	Notes []string `xml:"notes"`
 }
 
 type ConstantVariableType struct {
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
+
+	Value string `xml:"value"`
 
 	Description *TextType `xml:"description"`
 
-	Value string `xml:"value"`
+	Notes []string `xml:"notes"`
 }
 
 type LocalVariableType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
+
+	Set string `xml:"set"`
 
 	Description *TextType `xml:"description"`
 
-	Set string `xml:"set"`
+	Notes []string `xml:"notes"`
 }
 
 type ExternalVariableType struct {
-	Notes []string `xml:"notes"`
+	Id string `xml:"id,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Revision string `xml:"revision,attr"`
 
 	Description *TextType `xml:"description"`
+
+	Notes []string `xml:"notes"`
 }
 
 type SetExpressionBaseType struct {
@@ -913,6 +1005,8 @@ type SubstitutionTextType struct {
 type ReferenceType struct {
 	Href string `xml:"href,attr"`
 
+	XmlLang string `xml:"lang,attr"`
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
@@ -936,13 +1030,15 @@ type ItemBaseType struct {
 }
 
 type NamedItemBaseType struct {
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	Name string `xml:"name"`
+
+	Notes []string `xml:"notes"`
 }
 
 type CompoundTestActionType struct {
-	Notes []string `xml:"notes"`
+	Revision string `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -951,6 +1047,8 @@ type CompoundTestActionType struct {
 	References *ReferencesType `xml:"references"`
 
 	Actions OperationType `xml:"actions"`
+
+	Notes []string `xml:"notes"`
 }
 
 type ReferencesType struct {

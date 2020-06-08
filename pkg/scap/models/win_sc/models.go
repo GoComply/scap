@@ -12,7 +12,9 @@ import (
 type AccesstokenItem struct {
 	XMLName xml.Name `xml:accesstoken_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	SecurityPrinciple *oval_sc.EntityItemStringType `xml:"security_principle"`
 
@@ -105,13 +107,17 @@ type AccesstokenItem struct {
 	Sedenyservicelogonright *oval_sc.EntityItemBoolType `xml:"sedenyservicelogonright"`
 
 	Setrustedcredmanaccessnameright *oval_sc.EntityItemBoolType `xml:"setrustedcredmanaccessnameright"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ActivedirectoryItem struct {
 	XMLName xml.Name `xml:activedirectory_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	NamingContext *EntityItemNamingContextType `xml:"naming_context"`
 
@@ -124,13 +130,17 @@ type ActivedirectoryItem struct {
 	Adstype *EntityItemAdstypeType `xml:"adstype"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Activedirectory57Item struct {
 	XMLName xml.Name `xml:activedirectory57_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	NamingContext *EntityItemNamingContextType `xml:"naming_context"`
 
@@ -143,13 +153,17 @@ type Activedirectory57Item struct {
 	Adstype *EntityItemAdstypeType `xml:"adstype"`
 
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type AuditeventpolicyItem struct {
 	XMLName xml.Name `xml:auditeventpolicy_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	AccountLogon *EntityItemAuditType `xml:"account_logon"`
 
@@ -168,13 +182,17 @@ type AuditeventpolicyItem struct {
 	PrivilegeUse *EntityItemAuditType `xml:"privilege_use"`
 
 	System *EntityItemAuditType `xml:"system"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type AuditeventpolicysubcategoriesItem struct {
 	XMLName xml.Name `xml:auditeventpolicysubcategories_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	CredentialValidation *EntityItemAuditType `xml:"credential_validation"`
 
@@ -297,13 +315,17 @@ type AuditeventpolicysubcategoriesItem struct {
 	UserDeviceClaims *EntityItemAuditType `xml:"user_device_claims"`
 
 	AuditDetailedtrackingTokenrightadjusted *EntityItemAuditType `xml:"audit_detailedtracking_tokenrightadjusted"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type CmdletItem struct {
 	XMLName xml.Name `xml:cmdlet_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ModuleName *oval_sc.EntityItemStringType `xml:"module_name"`
 
@@ -320,26 +342,34 @@ type CmdletItem struct {
 	Select *oval_sc.EntityItemRecordType `xml:"select"`
 
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type DnscacheItem struct {
 	XMLName xml.Name `xml:dnscache_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
 	Ttl *oval_sc.EntityItemIntType `xml:"ttl"`
 
 	IpAddress []oval_sc.EntityItemIPAddressStringType `xml:"ip_address"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FileItem struct {
 	XMLName xml.Name `xml:file_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -380,13 +410,17 @@ type FileItem struct {
 	ProductVersion *FileItemProductVersion `xml:"product_version"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FileauditedpermissionsItem struct {
 	XMLName xml.Name `xml:fileauditedpermissions_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -437,13 +471,17 @@ type FileauditedpermissionsItem struct {
 	FileWriteAttributes *EntityItemAuditType `xml:"file_write_attributes"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FileeffectiverightsItem struct {
 	XMLName xml.Name `xml:fileeffectiverights_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -494,39 +532,51 @@ type FileeffectiverightsItem struct {
 	FileWriteAttributes *oval_sc.EntityItemBoolType `xml:"file_write_attributes"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type GroupItem struct {
 	XMLName xml.Name `xml:group_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Group *oval_sc.EntityItemStringType `xml:"group"`
 
 	User []oval_sc.EntityItemStringType `xml:"user"`
 
 	Subgroup []oval_sc.EntityItemStringType `xml:"subgroup"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type GroupSidItem struct {
 	XMLName xml.Name `xml:group_sid_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	GroupSid *oval_sc.EntityItemStringType `xml:"group_sid"`
 
 	UserSid []oval_sc.EntityItemStringType `xml:"user_sid"`
 
 	SubgroupSid []oval_sc.EntityItemStringType `xml:"subgroup_sid"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type InterfaceItem struct {
 	XMLName xml.Name `xml:interface_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -543,39 +593,51 @@ type InterfaceItem struct {
 	Netmask *oval_sc.EntityItemIPAddressStringType `xml:"netmask"`
 
 	AddrType []EntityItemAddrTypeType `xml:"addr_type"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type JunctionItem struct {
 	XMLName xml.Name `xml:junction_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Path oval_sc.EntityItemStringType `xml:"path"`
 
 	CanonicalPath oval_sc.EntityItemStringType `xml:"canonical_path"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type LicenseItem struct {
 	XMLName xml.Name `xml:license_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Type *EntityItemRegistryTypeType `xml:"type"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type LockoutpolicyItem struct {
 	XMLName xml.Name `xml:lockoutpolicy_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ForceLogoff *oval_sc.EntityItemIntType `xml:"force_logoff"`
 
@@ -584,13 +646,17 @@ type LockoutpolicyItem struct {
 	LockoutObservationWindow *oval_sc.EntityItemIntType `xml:"lockout_observation_window"`
 
 	LockoutThreshold *oval_sc.EntityItemIntType `xml:"lockout_threshold"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type MetabaseItem struct {
 	XMLName xml.Name `xml:metabase_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id2 string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -603,13 +669,17 @@ type MetabaseItem struct {
 	DataType *oval_sc.EntityItemStringType `xml:"data_type"`
 
 	Data []oval_sc.EntityItemAnySimpleType `xml:"data"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type NtuserItem struct {
 	XMLName xml.Name `xml:ntuser_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -636,13 +706,17 @@ type NtuserItem struct {
 	Type *EntityItemRegistryTypeType `xml:"type"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PasswordpolicyItem struct {
 	XMLName xml.Name `xml:passwordpolicy_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	MaxPasswdAge *oval_sc.EntityItemIntType `xml:"max_passwd_age"`
 
@@ -657,13 +731,17 @@ type PasswordpolicyItem struct {
 	ReversibleEncryption *oval_sc.EntityItemBoolType `xml:"reversible_encryption"`
 
 	AnonymousNameLookup *oval_sc.EntityItemBoolType `xml:"anonymous_name_lookup"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PeheaderItem struct {
 	XMLName xml.Name `xml:peheader_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -776,13 +854,17 @@ type PeheaderItem struct {
 	RealNumberOfDirectoryEntries *oval_sc.EntityItemIntType `xml:"real_number_of_directory_entries"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PortItem struct {
 	XMLName xml.Name `xml:port_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
 
@@ -795,13 +877,17 @@ type PortItem struct {
 	ForeignAddress *oval_sc.EntityItemIPAddressStringType `xml:"foreign_address"`
 
 	ForeignPort *oval_sc.EntityItemStringType `xml:"foreign_port"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PrintereffectiverightsItem struct {
 	XMLName xml.Name `xml:printereffectiverights_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	PrinterName *oval_sc.EntityItemStringType `xml:"printer_name"`
 
@@ -834,13 +920,17 @@ type PrintereffectiverightsItem struct {
 	JobAccessAdminister *oval_sc.EntityItemBoolType `xml:"job_access_administer"`
 
 	JobAccessRead *oval_sc.EntityItemBoolType `xml:"job_access_read"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ProcessItem struct {
 	XMLName xml.Name `xml:process_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
@@ -861,13 +951,17 @@ type ProcessItem struct {
 	PrimaryWindowText *oval_sc.EntityItemStringType `xml:"primary_window_text"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RegistryItem struct {
 	XMLName xml.Name `xml:registry_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
@@ -884,13 +978,17 @@ type RegistryItem struct {
 	ExpandedValue *oval_sc.EntityItemAnySimpleType `xml:"expanded_value"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RegkeyauditedpermissionsItem struct {
 	XMLName xml.Name `xml:regkeyauditedpermissions_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
@@ -939,13 +1037,17 @@ type RegkeyauditedpermissionsItem struct {
 	KeyWow64Res *EntityItemAuditType `xml:"key_wow64_res"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RegkeyeffectiverightsItem struct {
 	XMLName xml.Name `xml:regkeyeffectiverights_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
@@ -994,13 +1096,17 @@ type RegkeyeffectiverightsItem struct {
 	KeyWow64Res *oval_sc.EntityItemBoolType `xml:"key_wow64_res"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ServiceItem struct {
 	XMLName xml.Name `xml:service_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -1025,13 +1131,17 @@ type ServiceItem struct {
 	ServiceFlag *oval_sc.EntityItemBoolType `xml:"service_flag"`
 
 	Dependencies []oval_sc.EntityItemStringType `xml:"dependencies"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ServiceeffectiverightsItem struct {
 	XMLName xml.Name `xml:serviceeffectiverights_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -1068,13 +1178,17 @@ type ServiceeffectiverightsItem struct {
 	ServiceInterrogate *oval_sc.EntityItemBoolType `xml:"service_interrogate"`
 
 	ServiceUserDefined *oval_sc.EntityItemBoolType `xml:"service_user_defined"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SharedresourceItem struct {
 	XMLName xml.Name `xml:sharedresource_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
@@ -1101,13 +1215,17 @@ type SharedresourceItem struct {
 	AccessPermPermission *oval_sc.EntityItemBoolType `xml:"access_perm_permission"`
 
 	AccessAllPermission *oval_sc.EntityItemBoolType `xml:"access_all_permission"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SharedresourceauditedpermissionsItem struct {
 	XMLName xml.Name `xml:sharedresourceauditedpermissions_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
@@ -1132,13 +1250,17 @@ type SharedresourceauditedpermissionsItem struct {
 	GenericExecute *EntityItemAuditType `xml:"generic_execute"`
 
 	GenericAll *EntityItemAuditType `xml:"generic_all"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SharedresourceeffectiverightsItem struct {
 	XMLName xml.Name `xml:sharedresourceeffectiverights_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
@@ -1163,50 +1285,66 @@ type SharedresourceeffectiverightsItem struct {
 	GenericExecute *oval_sc.EntityItemBoolType `xml:"generic_execute"`
 
 	GenericAll *oval_sc.EntityItemBoolType `xml:"generic_all"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SidItem struct {
 	XMLName xml.Name `xml:sid_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
 	TrusteeDomain *oval_sc.EntityItemStringType `xml:"trustee_domain"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SidSidItem struct {
 	XMLName xml.Name `xml:sid_sid_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
 	TrusteeDomain *oval_sc.EntityItemStringType `xml:"trustee_domain"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SystemmetricItem struct {
 	XMLName xml.Name `xml:systemmetric_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Index *EntityItemSystemMetricIndexType `xml:"index"`
 
 	Value *oval_sc.EntityItemIntType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type UacItem struct {
 	XMLName xml.Name `xml:uac_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	AdminApprovalMode *oval_sc.EntityItemBoolType `xml:"admin_approval_mode"`
 
@@ -1225,13 +1363,17 @@ type UacItem struct {
 	SecureDesktop *oval_sc.EntityItemBoolType `xml:"secure_desktop"`
 
 	VirtualizeWriteFailures *oval_sc.EntityItemBoolType `xml:"virtualize_write_failures"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type UserItem struct {
 	XMLName xml.Name `xml:user_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	User *oval_sc.EntityItemStringType `xml:"user"`
 
@@ -1268,13 +1410,17 @@ type UserItem struct {
 	TrustedForDelegation *oval_sc.EntityItemBoolType `xml:"trusted_for_delegation"`
 
 	TrustedToAuthenticateForDelegation *oval_sc.EntityItemBoolType `xml:"trusted_to_authenticate_for_delegation"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type UserSidItem struct {
 	XMLName xml.Name `xml:user_sid_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	UserSid *oval_sc.EntityItemStringType `xml:"user_sid"`
 
@@ -1283,26 +1429,34 @@ type UserSidItem struct {
 	GroupSid []oval_sc.EntityItemStringType `xml:"group_sid"`
 
 	LastLogon *oval_sc.EntityItemIntType `xml:"last_logon"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type UserrightItem struct {
 	XMLName xml.Name `xml:userright_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Userright *EntityItemUserRightType `xml:"userright"`
 
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VolumeItem struct {
 	XMLName xml.Name `xml:volume_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Rootpath *oval_sc.EntityItemStringType `xml:"rootpath"`
 
@@ -1355,43 +1509,57 @@ type VolumeItem struct {
 	FileSupportsOpenByFileId *oval_sc.EntityItemBoolType `xml:"file_supports_open_by_file_id"`
 
 	FileSupportsUsnJournal *oval_sc.EntityItemBoolType `xml:"file_supports_usn_journal"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type WmiItem struct {
 	XMLName xml.Name `xml:wmi_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Namespace *oval_sc.EntityItemStringType `xml:"namespace"`
 
 	Wql *oval_sc.EntityItemStringType `xml:"wql"`
 
 	Result []oval_sc.EntityItemAnySimpleType `xml:"result"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Wmi57Item struct {
 	XMLName xml.Name `xml:wmi57_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Namespace *oval_sc.EntityItemStringType `xml:"namespace"`
 
 	Wql *oval_sc.EntityItemStringType `xml:"wql"`
 
 	Result []oval_sc.EntityItemRecordType `xml:"result"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type WuaupdatesearcherItem struct {
 	XMLName xml.Name `xml:wuaupdatesearcher_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	SearchCriteria *oval_sc.EntityItemStringType `xml:"search_criteria"`
 
 	UpdateId []oval_sc.EntityItemStringType `xml:"update_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element

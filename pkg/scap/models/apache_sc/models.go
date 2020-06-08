@@ -12,13 +12,17 @@ import (
 type HttpdItem struct {
 	XMLName xml.Name `xml:httpd_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
 	BinaryName *oval_sc.EntityItemStringType `xml:"binary_name"`
 
 	Version *oval_sc.EntityItemVersionType `xml:"version"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

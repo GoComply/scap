@@ -12,18 +12,24 @@ import (
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	PixRelease *oval_sc.EntityItemStringType `xml:"pix_release"`
 
@@ -32,6 +38,8 @@ type VersionItem struct {
 	PixMinorRelease *oval_sc.EntityItemVersionType `xml:"pix_minor_release"`
 
 	PixBuild *oval_sc.EntityItemIntType `xml:"pix_build"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

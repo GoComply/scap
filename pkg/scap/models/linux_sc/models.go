@@ -12,7 +12,9 @@ import (
 type ApparmorstatusItem struct {
 	XMLName xml.Name `xml:apparmorstatus_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	LoadedProfilesCount *oval_sc.EntityItemIntType `xml:"loaded_profiles_count"`
 
@@ -27,13 +29,17 @@ type ApparmorstatusItem struct {
 	ComplainModeProcessesCount *oval_sc.EntityItemIntType `xml:"complain_mode_processes_count"`
 
 	UnconfinedProcessesWithProfilesCount *oval_sc.EntityItemIntType `xml:"unconfined_processes_with_profiles_count"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type DpkginfoItem struct {
 	XMLName xml.Name `xml:dpkginfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -46,13 +52,17 @@ type DpkginfoItem struct {
 	Version *DpkginfoItemVersion `xml:"version"`
 
 	Evr *DpkginfoItemEvr `xml:"evr"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type IflistenersItem struct {
 	XMLName xml.Name `xml:iflisteners_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
 
@@ -65,13 +75,17 @@ type IflistenersItem struct {
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:inetlisteningserver_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -92,13 +106,17 @@ type InetlisteningserverItem struct {
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PartitionItem struct {
 	XMLName xml.Name `xml:partition_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	MountPoint *oval_sc.EntityItemStringType `xml:"mount_point"`
 
@@ -119,13 +137,17 @@ type PartitionItem struct {
 	SpaceLeftForUnprivilegedUsers *oval_sc.EntityItemIntType `xml:"space_left_for_unprivileged_users"`
 
 	BlockSize *oval_sc.EntityItemIntType `xml:"block_size"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RpminfoItem struct {
 	XMLName xml.Name `xml:rpminfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -144,13 +166,17 @@ type RpminfoItem struct {
 	ExtendedName *oval_sc.EntityItemStringType `xml:"extended_name"`
 
 	Filepath []oval_sc.EntityItemStringType `xml:"filepath"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RpmverifyItem struct {
 	XMLName xml.Name `xml:rpmverify_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -183,13 +209,17 @@ type RpmverifyItem struct {
 	LicenseFile *oval_sc.EntityItemBoolType `xml:"license_file"`
 
 	ReadmeFile *oval_sc.EntityItemBoolType `xml:"readme_file"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RpmverifyfileItem struct {
 	XMLName xml.Name `xml:rpmverifyfile_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -234,13 +264,17 @@ type RpmverifyfileItem struct {
 	LicenseFile *oval_sc.EntityItemBoolType `xml:"license_file"`
 
 	ReadmeFile *oval_sc.EntityItemBoolType `xml:"readme_file"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RpmverifypackageItem struct {
 	XMLName xml.Name `xml:rpmverifypackage_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -261,26 +295,34 @@ type RpmverifypackageItem struct {
 	VerificationScriptSuccessful *oval_sc.EntityItemBoolType `xml:"verification_script_successful"`
 
 	SignatureCheckPassed *oval_sc.EntityItemBoolType `xml:"signature_check_passed"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SelinuxbooleanItem struct {
 	XMLName xml.Name `xml:selinuxboolean_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	CurrentStatus *oval_sc.EntityItemBoolType `xml:"current_status"`
 
 	PendingStatus *oval_sc.EntityItemBoolType `xml:"pending_status"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SelinuxsecuritycontextItem struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -311,13 +353,17 @@ type SelinuxsecuritycontextItem struct {
 	RawhighSensitivity *oval_sc.EntityItemStringType `xml:"rawhigh_sensitivity"`
 
 	RawhighCategory *oval_sc.EntityItemStringType `xml:"rawhigh_category"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SlackwarepkginfoItem struct {
 	XMLName xml.Name `xml:slackwarepkginfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -326,30 +372,40 @@ type SlackwarepkginfoItem struct {
 	Architecture *oval_sc.EntityItemStringType `xml:"architecture"`
 
 	Revision *oval_sc.EntityItemStringType `xml:"revision"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SystemdunitdependencyItem struct {
 	XMLName xml.Name `xml:systemdunitdependency_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
 	Dependency []oval_sc.EntityItemStringType `xml:"dependency"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SystemdunitpropertyItem struct {
 	XMLName xml.Name `xml:systemdunitproperty_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element

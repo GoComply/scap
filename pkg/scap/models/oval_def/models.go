@@ -103,6 +103,16 @@ type Variable struct {
 type ExternalVariable struct {
 	XMLName xml.Name `xml:external_variable`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -112,16 +122,36 @@ type ExternalVariable struct {
 type ConstantVariable struct {
 	XMLName xml.Name `xml:constant_variable`
 
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
+
+	Value []ValueType `xml:"value"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
-
-	Value []ValueType `xml:"value"`
 }
 
 // Element
 type LocalVariable struct {
 	XMLName xml.Name `xml:local_variable`
+
+	Id string `xml:"id,attr"`
+
+	Version string `xml:"version,attr"`
+
+	Datatype string `xml:"datatype,attr"`
+
+	Comment string `xml:"comment,attr"`
+
+	Deprecated string `xml:"deprecated,attr"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -486,6 +516,10 @@ type EntityStateStringType struct {
 }
 
 type EntityStateRecordType struct {
+	EntityCheck string `xml:"entity_check,attr"`
+
+	CheckExistence string `xml:"check_existence,attr"`
+
 	Field []EntityStateFieldType `xml:"field"`
 }
 

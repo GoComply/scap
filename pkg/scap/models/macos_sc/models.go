@@ -12,7 +12,9 @@ import (
 type AccountinfoItem struct {
 	XMLName xml.Name `xml:accountinfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -27,39 +29,51 @@ type AccountinfoItem struct {
 	HomeDir *oval_sc.EntityItemStringType `xml:"home_dir"`
 
 	LoginShell *oval_sc.EntityItemStringType `xml:"login_shell"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type AuthorizationdbItem struct {
 	XMLName xml.Name `xml:authorizationdb_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	RightName *oval_sc.EntityItemStringType `xml:"right_name"`
 
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type CorestorageItem struct {
 	XMLName xml.Name `xml:corestorage_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Uuid oval_sc.EntityItemStringType `xml:"uuid"`
 
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type DiskutilItem struct {
 	XMLName xml.Name `xml:diskutil_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -100,24 +114,32 @@ type DiskutilItem struct {
 	ActualSymlink *oval_sc.EntityItemStringType `xml:"actual_symlink"`
 
 	ExpectedSymlink *oval_sc.EntityItemStringType `xml:"expected_symlink"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type GatekeeperItem struct {
 	XMLName xml.Name `xml:gatekeeper_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Enabled oval_sc.EntityItemBoolType `xml:"enabled"`
 
 	Unlabeled []oval_sc.EntityItemStringType `xml:"unlabeled"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:inetlisteningserver_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
@@ -138,13 +160,17 @@ type InetlisteningserverItem struct {
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
 	UserId *oval_sc.EntityItemStringType `xml:"user_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Inetlisteningserver510Item struct {
 	XMLName xml.Name `xml:inetlisteningserver510_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -165,50 +191,66 @@ type Inetlisteningserver510Item struct {
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type KeychainItem struct {
 	XMLName xml.Name `xml:keychain_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
 	LockOnSleep *oval_sc.EntityItemBoolType `xml:"lock_on_sleep"`
 
 	Timeout *oval_sc.EntityItemIntType `xml:"timeout"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type LaunchdItem struct {
 	XMLName xml.Name `xml:launchd_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status2 string `xml:"status,attr"`
 
 	Label oval_sc.EntityItemStringType `xml:"label"`
 
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
 	Status *oval_sc.EntityItemIntType `xml:"status"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type NvramItem struct {
 	XMLName xml.Name `xml:nvram_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	NvramVar *oval_sc.EntityItemStringType `xml:"nvram_var"`
 
 	NvramValue *oval_sc.EntityItemStringType `xml:"nvram_value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PlistItem struct {
 	XMLName xml.Name `xml:plist_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -221,13 +263,17 @@ type PlistItem struct {
 	Type *EntityItemPlistTypeType `xml:"type"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Plist511Item struct {
 	XMLName xml.Name `xml:plist511_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	AppId *oval_sc.EntityItemStringType `xml:"app_id"`
 
@@ -236,13 +282,17 @@ type Plist511Item struct {
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PwpolicyItem struct {
 	XMLName xml.Name `xml:pwpolicy_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -261,13 +311,17 @@ type PwpolicyItem struct {
 	RequiresAlpha *oval_sc.EntityItemBoolType `xml:"requiresAlpha"`
 
 	RequiresNumeric *oval_sc.EntityItemBoolType `xml:"requiresNumeric"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Pwpolicy59Item struct {
 	XMLName xml.Name `xml:pwpolicy59_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	TargetUser *oval_sc.EntityItemStringType `xml:"target_user"`
 
@@ -318,13 +372,17 @@ type Pwpolicy59Item struct {
 	NewPasswordRequired *oval_sc.EntityItemBoolType `xml:"newPasswordRequired"`
 
 	NotGuessablePattern *oval_sc.EntityItemBoolType `xml:"notGuessablePattern"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RlimitItem struct {
 	XMLName xml.Name `xml:rlimit_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	CpuCurrent oval_sc.EntityItemIntType `xml:"cpu_current"`
 
@@ -361,37 +419,49 @@ type RlimitItem struct {
 	MaxfilesCurrent oval_sc.EntityItemIntType `xml:"maxfiles_current"`
 
 	MaxfilesMax oval_sc.EntityItemIntType `xml:"maxfiles_max"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SoftwareupdateItem struct {
 	XMLName xml.Name `xml:softwareupdate_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Schedule oval_sc.EntityItemBoolType `xml:"schedule"`
 
 	SoftwareTitle []oval_sc.EntityItemStringType `xml:"software_title"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SystemprofilerItem struct {
 	XMLName xml.Name `xml:systemprofiler_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	DataType *EntityItemDataTypeType `xml:"data_type"`
 
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SystemsetupItem struct {
 	XMLName xml.Name `xml:systemsetup_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Timezone oval_sc.EntityItemStringType `xml:"timezone"`
 
@@ -430,6 +500,8 @@ type SystemsetupItem struct {
 	Disablekeyboardwhenenclosurelockisengaged oval_sc.EntityItemBoolType `xml:"disablekeyboardwhenenclosurelockisengaged"`
 
 	Kernelbootarchitecturesetting oval_sc.EntityItemStringType `xml:"kernelbootarchitecturesetting"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

@@ -109,32 +109,6 @@ type Item struct {
 type Group struct {
 	XMLName xml.Name `xml:Group`
 
-	Status []Status `xml:"status"`
-
-	DcStatus []DcStatusType `xml:"dc-status"`
-
-	Version *VersionType `xml:"version"`
-
-	Title []TextWithSubType `xml:"title"`
-
-	Description []HtmlTextWithSubType `xml:"description"`
-
-	Warning []WarningType `xml:"warning"`
-
-	Question []TextType `xml:"question"`
-
-	Reference []ReferenceType `xml:"reference"`
-
-	Metadata []MetadataType `xml:"metadata"`
-
-	Rationale []HtmlTextWithSubType `xml:"rationale"`
-
-	Platform []OverrideableCPE2IdrefType `xml:"platform"`
-
-	Requires []IdrefListType `xml:"requires"`
-
-	Conflicts []IdrefType `xml:"conflicts"`
-
 	Value []Value `xml:"Value"`
 
 	Signature *SignatureType `xml:"signature"`
@@ -142,11 +116,14 @@ type Group struct {
 	Group []Group `xml:"Group"`
 
 	Rule []Rule `xml:"Rule"`
-}
 
-// Element
-type Rule struct {
-	XMLName xml.Name `xml:Rule`
+	Rationale []HtmlTextWithSubType `xml:"rationale"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Requires []IdrefListType `xml:"requires"`
+
+	Conflicts []IdrefType `xml:"conflicts"`
 
 	Status []Status `xml:"status"`
 
@@ -165,14 +142,11 @@ type Rule struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+}
 
-	Rationale []HtmlTextWithSubType `xml:"rationale"`
-
-	Platform []OverrideableCPE2IdrefType `xml:"platform"`
-
-	Requires []IdrefListType `xml:"requires"`
-
-	Conflicts []IdrefType `xml:"conflicts"`
+// Element
+type Rule struct {
+	XMLName xml.Name `xml:Rule`
 
 	Ident []IdentType `xml:"ident"`
 
@@ -189,11 +163,14 @@ type Rule struct {
 	Check []CheckType `xml:"check"`
 
 	ComplexCheck *ComplexCheckType `xml:"complex-check"`
-}
 
-// Element
-type Value struct {
-	XMLName xml.Name `xml:Value`
+	Rationale []HtmlTextWithSubType `xml:"rationale"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Requires []IdrefListType `xml:"requires"`
+
+	Conflicts []IdrefType `xml:"conflicts"`
 
 	Status []Status `xml:"status"`
 
@@ -212,6 +189,11 @@ type Value struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+}
+
+// Element
+type Value struct {
+	XMLName xml.Name `xml:Value`
 
 	Match []SelStringType `xml:"match"`
 
@@ -232,6 +214,24 @@ type Value struct {
 	Default []SelStringType `xml:"default"`
 
 	ComplexDefault []SelComplexValueType `xml:"complex-default"`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version *VersionType `xml:"version"`
+
+	Title []TextWithSubType `xml:"title"`
+
+	Description []HtmlTextWithSubType `xml:"description"`
+
+	Warning []WarningType `xml:"warning"`
+
+	Question []TextType `xml:"question"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Metadata []MetadataType `xml:"metadata"`
 }
 
 // Element
@@ -420,6 +420,8 @@ type TextWithSubType struct {
 
 type SubType struct {
 	Use string `xml:"use,attr"`
+
+	Idref string `xml:"idref,attr"`
 }
 
 type IdrefType struct {
@@ -436,6 +438,8 @@ type CPE2IdrefType struct {
 
 type OverrideableCPE2IdrefType struct {
 	Override string `xml:"override,attr"`
+
+	Idref string `xml:"idref,attr"`
 }
 
 type ItemType struct {
@@ -479,6 +483,30 @@ type SelectableItemType struct {
 
 	Weight string `xml:"weight,attr"`
 
+	Abstract string `xml:"abstract,attr"`
+
+	ClusterId string `xml:"cluster-id,attr"`
+
+	Extends string `xml:"extends,attr"`
+
+	Hidden string `xml:"hidden,attr"`
+
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	XmlBase string `xml:"base,attr"`
+
+	Id string `xml:"Id,attr"`
+
+	Rationale []HtmlTextWithSubType `xml:"rationale"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Requires []IdrefListType `xml:"requires"`
+
+	Conflicts []IdrefType `xml:"conflicts"`
+
 	Status []Status `xml:"status"`
 
 	DcStatus []DcStatusType `xml:"dc-status"`
@@ -496,44 +524,28 @@ type SelectableItemType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
-
-	Rationale []HtmlTextWithSubType `xml:"rationale"`
-
-	Platform []OverrideableCPE2IdrefType `xml:"platform"`
-
-	Requires []IdrefListType `xml:"requires"`
-
-	Conflicts []IdrefType `xml:"conflicts"`
 }
 
 type GroupType struct {
 	Id string `xml:"id,attr"`
 
-	Status []Status `xml:"status"`
+	Selected string `xml:"selected,attr"`
 
-	DcStatus []DcStatusType `xml:"dc-status"`
+	Weight string `xml:"weight,attr"`
 
-	Version *VersionType `xml:"version"`
+	Abstract string `xml:"abstract,attr"`
 
-	Title []TextWithSubType `xml:"title"`
+	ClusterId string `xml:"cluster-id,attr"`
 
-	Description []HtmlTextWithSubType `xml:"description"`
+	Extends string `xml:"extends,attr"`
 
-	Warning []WarningType `xml:"warning"`
+	Hidden string `xml:"hidden,attr"`
 
-	Question []TextType `xml:"question"`
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
 
-	Reference []ReferenceType `xml:"reference"`
+	XmlLang string `xml:"lang,attr"`
 
-	Metadata []MetadataType `xml:"metadata"`
-
-	Rationale []HtmlTextWithSubType `xml:"rationale"`
-
-	Platform []OverrideableCPE2IdrefType `xml:"platform"`
-
-	Requires []IdrefListType `xml:"requires"`
-
-	Conflicts []IdrefType `xml:"conflicts"`
+	XmlBase string `xml:"base,attr"`
 
 	Value []Value `xml:"Value"`
 
@@ -542,6 +554,32 @@ type GroupType struct {
 	Group []Group `xml:"Group"`
 
 	Rule []Rule `xml:"Rule"`
+
+	Rationale []HtmlTextWithSubType `xml:"rationale"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Requires []IdrefListType `xml:"requires"`
+
+	Conflicts []IdrefType `xml:"conflicts"`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version *VersionType `xml:"version"`
+
+	Title []TextWithSubType `xml:"title"`
+
+	Description []HtmlTextWithSubType `xml:"description"`
+
+	Warning []WarningType `xml:"warning"`
+
+	Question []TextType `xml:"question"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Metadata []MetadataType `xml:"metadata"`
 }
 
 type RuleType struct {
@@ -553,31 +591,23 @@ type RuleType struct {
 
 	Multiple string `xml:"multiple,attr"`
 
-	Status []Status `xml:"status"`
+	Selected string `xml:"selected,attr"`
 
-	DcStatus []DcStatusType `xml:"dc-status"`
+	Weight string `xml:"weight,attr"`
 
-	Version *VersionType `xml:"version"`
+	Abstract string `xml:"abstract,attr"`
 
-	Title []TextWithSubType `xml:"title"`
+	ClusterId string `xml:"cluster-id,attr"`
 
-	Description []HtmlTextWithSubType `xml:"description"`
+	Extends string `xml:"extends,attr"`
 
-	Warning []WarningType `xml:"warning"`
+	Hidden string `xml:"hidden,attr"`
 
-	Question []TextType `xml:"question"`
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
 
-	Reference []ReferenceType `xml:"reference"`
+	XmlLang string `xml:"lang,attr"`
 
-	Metadata []MetadataType `xml:"metadata"`
-
-	Rationale []HtmlTextWithSubType `xml:"rationale"`
-
-	Platform []OverrideableCPE2IdrefType `xml:"platform"`
-
-	Requires []IdrefListType `xml:"requires"`
-
-	Conflicts []IdrefType `xml:"conflicts"`
+	XmlBase string `xml:"base,attr"`
 
 	Ident []IdentType `xml:"ident"`
 
@@ -594,6 +624,32 @@ type RuleType struct {
 	Check []CheckType `xml:"check"`
 
 	ComplexCheck *ComplexCheckType `xml:"complex-check"`
+
+	Rationale []HtmlTextWithSubType `xml:"rationale"`
+
+	Platform []OverrideableCPE2IdrefType `xml:"platform"`
+
+	Requires []IdrefListType `xml:"requires"`
+
+	Conflicts []IdrefType `xml:"conflicts"`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version *VersionType `xml:"version"`
+
+	Title []TextWithSubType `xml:"title"`
+
+	Description []HtmlTextWithSubType `xml:"description"`
+
+	Warning []WarningType `xml:"warning"`
+
+	Question []TextType `xml:"question"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Metadata []MetadataType `xml:"metadata"`
 }
 
 type IdentType struct {
@@ -604,6 +660,10 @@ type IdentType struct {
 
 type WarningType struct {
 	Category string `xml:"category,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	Override string `xml:"override,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -618,6 +678,10 @@ type FixTextType struct {
 	Disruption string `xml:"disruption,attr"`
 
 	Complexity string `xml:"complexity,attr"`
+
+	XmlLang string `xml:"lang,attr"`
+
+	Override string `xml:"override,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -707,23 +771,19 @@ type ValueType struct {
 
 	InterfaceHint string `xml:"interfaceHint,attr"`
 
-	Status []Status `xml:"status"`
+	Abstract string `xml:"abstract,attr"`
 
-	DcStatus []DcStatusType `xml:"dc-status"`
+	ClusterId string `xml:"cluster-id,attr"`
 
-	Version *VersionType `xml:"version"`
+	Extends string `xml:"extends,attr"`
 
-	Title []TextWithSubType `xml:"title"`
+	Hidden string `xml:"hidden,attr"`
 
-	Description []HtmlTextWithSubType `xml:"description"`
+	ProhibitChanges string `xml:"prohibitChanges,attr"`
 
-	Warning []WarningType `xml:"warning"`
+	XmlLang string `xml:"lang,attr"`
 
-	Question []TextType `xml:"question"`
-
-	Reference []ReferenceType `xml:"reference"`
-
-	Metadata []MetadataType `xml:"metadata"`
+	XmlBase string `xml:"base,attr"`
 
 	Match []SelStringType `xml:"match"`
 
@@ -744,6 +804,24 @@ type ValueType struct {
 	Default []SelStringType `xml:"default"`
 
 	ComplexDefault []SelComplexValueType `xml:"complex-default"`
+
+	Status []Status `xml:"status"`
+
+	DcStatus []DcStatusType `xml:"dc-status"`
+
+	Version *VersionType `xml:"version"`
+
+	Title []TextWithSubType `xml:"title"`
+
+	Description []HtmlTextWithSubType `xml:"description"`
+
+	Warning []WarningType `xml:"warning"`
+
+	Question []TextType `xml:"question"`
+
+	Reference []ReferenceType `xml:"reference"`
+
+	Metadata []MetadataType `xml:"metadata"`
 }
 
 type ComplexValueType struct {
@@ -1048,6 +1126,10 @@ type TailoringType struct {
 
 type TailoringBenchmarkReferenceType struct {
 	Version string `xml:"version,attr"`
+
+	Href string `xml:"href,attr"`
+
+	Id string `xml:"id,attr"`
 }
 
 type TailoringVersionType struct {

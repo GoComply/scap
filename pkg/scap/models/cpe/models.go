@@ -98,6 +98,8 @@ type FactRefType struct {
 
 type CPEFactRefType struct {
 	Name string `xml:"name,attr"`
+
+	Description string `xml:"description,attr"`
 }
 
 type CheckFactRefType struct {
@@ -106,6 +108,8 @@ type CheckFactRefType struct {
 	Href string `xml:"href,attr"`
 
 	IdRef string `xml:"id-ref,attr"`
+
+	Description string `xml:"description,attr"`
 }
 
 type TextType struct {

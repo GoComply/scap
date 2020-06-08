@@ -12,20 +12,26 @@ import (
 type DnscacheItem struct {
 	XMLName xml.Name `xml:dnscache_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
 	Ttl *oval_sc.EntityItemIntType `xml:"ttl"`
 
 	IpAddress []oval_sc.EntityItemIPAddressStringType `xml:"ip_address"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FileItem struct {
 	XMLName xml.Name `xml:file_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -72,13 +78,17 @@ type FileItem struct {
 	Oexec *oval_sc.EntityItemBoolType `xml:"oexec"`
 
 	HasExtendedAcl *oval_sc.EntityItemBoolType `xml:"has_extended_acl"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type FileextendedattributeItem struct {
 	XMLName xml.Name `xml:fileextendedattribute_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -89,13 +99,17 @@ type FileextendedattributeItem struct {
 	AttributeName *oval_sc.EntityItemStringType `xml:"attribute_name"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type GconfItem struct {
 	XMLName xml.Name `xml:gconf_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -112,13 +126,17 @@ type GconfItem struct {
 	IsDefault *oval_sc.EntityItemBoolType `xml:"is_default"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type InetdItem struct {
 	XMLName xml.Name `xml:inetd_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -133,13 +151,17 @@ type InetdItem struct {
 	ExecAsUser *oval_sc.EntityItemStringType `xml:"exec_as_user"`
 
 	WaitStatus *EntityItemWaitStatusType `xml:"wait_status"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type InterfaceItem struct {
 	XMLName xml.Name `xml:interface_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -154,13 +176,17 @@ type InterfaceItem struct {
 	Netmask *oval_sc.EntityItemIPAddressStringType `xml:"netmask"`
 
 	Flag []oval_sc.EntityItemStringType `xml:"flag"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PasswordItem struct {
 	XMLName xml.Name `xml:password_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -177,13 +203,17 @@ type PasswordItem struct {
 	LoginShell *oval_sc.EntityItemStringType `xml:"login_shell"`
 
 	LastLogin *oval_sc.EntityItemIntType `xml:"last_login"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ProcessItem struct {
 	XMLName xml.Name `xml:process_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Command *oval_sc.EntityItemStringType `xml:"command"`
 
@@ -204,13 +234,17 @@ type ProcessItem struct {
 	Tty *oval_sc.EntityItemStringType `xml:"tty"`
 
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Process58Item struct {
 	XMLName xml.Name `xml:process58_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
@@ -241,13 +275,17 @@ type Process58Item struct {
 	SelinuxDomainLabel *oval_sc.EntityItemStringType `xml:"selinux_domain_label"`
 
 	SessionId *oval_sc.EntityItemIntType `xml:"session_id"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RoutingtableItem struct {
 	XMLName xml.Name `xml:routingtable_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Destination *oval_sc.EntityItemIPAddressType `xml:"destination"`
 
@@ -256,13 +294,17 @@ type RoutingtableItem struct {
 	Flags []EntityItemRoutingTableFlagsType `xml:"flags"`
 
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type RunlevelItem struct {
 	XMLName xml.Name `xml:runlevel_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -271,13 +313,17 @@ type RunlevelItem struct {
 	Start *oval_sc.EntityItemBoolType `xml:"start"`
 
 	Kill *oval_sc.EntityItemBoolType `xml:"kill"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SccsItem struct {
 	XMLName xml.Name `xml:sccs_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -298,13 +344,17 @@ type SccsItem struct {
 	Sequence *oval_sc.EntityItemStringType `xml:"sequence"`
 
 	WhatString *oval_sc.EntityItemStringType `xml:"what_string"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ShadowItem struct {
 	XMLName xml.Name `xml:shadow_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -325,35 +375,47 @@ type ShadowItem struct {
 	Flag *ShadowItemFlag `xml:"flag"`
 
 	EncryptMethod *EntityItemEncryptMethodType `xml:"encrypt_method"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SymlinkItem struct {
 	XMLName xml.Name `xml:symlink_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
 	CanonicalPath oval_sc.EntityItemStringType `xml:"canonical_path"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SysctlItem struct {
 	XMLName xml.Name `xml:sysctl_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type UnameItem struct {
 	XMLName xml.Name `xml:uname_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	MachineClass *oval_sc.EntityItemStringType `xml:"machine_class"`
 
@@ -366,13 +428,17 @@ type UnameItem struct {
 	OsVersion *oval_sc.EntityItemStringType `xml:"os_version"`
 
 	ProcessorType *oval_sc.EntityItemStringType `xml:"processor_type"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type XinetdItem struct {
 	XMLName xml.Name `xml:xinetd_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -399,6 +465,8 @@ type XinetdItem struct {
 	Wait *oval_sc.EntityItemBoolType `xml:"wait"`
 
 	Disabled *oval_sc.EntityItemBoolType `xml:"disabled"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element

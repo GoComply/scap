@@ -12,7 +12,9 @@ import (
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status2 string `xml:"status,attr"`
 
 	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
 
@@ -27,28 +29,38 @@ type PatchItem struct {
 	SupportLevel *EntityItemSupportLevelType `xml:"support_level"`
 
 	Status *oval_sc.EntityItemBoolType `xml:"status"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Release *oval_sc.EntityItemVersionType `xml:"release"`
 
 	Build *oval_sc.EntityItemIntType `xml:"build"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VisdkmanagedobjectItem struct {
 	XMLName xml.Name `xml:visdkmanagedobject_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

@@ -12,46 +12,60 @@ import (
 type FacetItem struct {
 	XMLName xml.Name `xml:facet_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value *oval_sc.EntityItemBoolType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type ImageItem struct {
 	XMLName xml.Name `xml:image_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type IsainfoItem struct {
 	XMLName xml.Name `xml:isainfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Bits *oval_sc.EntityItemIntType `xml:"bits"`
 
 	KernelIsa *oval_sc.EntityItemStringType `xml:"kernel_isa"`
 
 	ApplicationIsa *oval_sc.EntityItemStringType `xml:"application_isa"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type NddItem struct {
 	XMLName xml.Name `xml:ndd_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -60,13 +74,17 @@ type NddItem struct {
 	Parameter *oval_sc.EntityItemStringType `xml:"parameter"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PackageItem struct {
 	XMLName xml.Name `xml:package_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -79,13 +97,17 @@ type PackageItem struct {
 	Vendor *oval_sc.EntityItemStringType `xml:"vendor"`
 
 	Description *oval_sc.EntityItemStringType `xml:"description"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type Package511Item struct {
 	XMLName xml.Name `xml:package511_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Publisher *oval_sc.EntityItemStringType `xml:"publisher"`
 
@@ -104,22 +126,30 @@ type Package511Item struct {
 	Category *oval_sc.EntityItemStringType `xml:"category"`
 
 	UpdatesAvailable *oval_sc.EntityItemBoolType `xml:"updates_available"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PackageavoidlistItem struct {
 	XMLName xml.Name `xml:packageavoidlist_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PackagecheckItem struct {
 	XMLName xml.Name `xml:packagecheck_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -148,22 +178,30 @@ type PackagecheckItem struct {
 	Owrite *EntityItemPermissionCompareType `xml:"owrite"`
 
 	Oexec *EntityItemPermissionCompareType `xml:"oexec"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PackagefreezelistItem struct {
 	XMLName xml.Name `xml:packagefreezelist_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PackagepublisherItem struct {
 	XMLName xml.Name `xml:packagepublisher_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -186,24 +224,32 @@ type PackagepublisherItem struct {
 	Order *oval_sc.EntityItemIntType `xml:"order"`
 
 	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Base *oval_sc.EntityItemIntType `xml:"base"`
 
 	Version *oval_sc.EntityItemIntType `xml:"version"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SmfItem struct {
 	XMLName xml.Name `xml:smf_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
@@ -218,13 +264,17 @@ type SmfItem struct {
 	ServerArguements *oval_sc.EntityItemStringType `xml:"server_arguements"`
 
 	ExecAsUser *oval_sc.EntityItemStringType `xml:"exec_as_user"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SmfpropertyItem struct {
 	XMLName xml.Name `xml:smfproperty_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Service *oval_sc.EntityItemStringType `xml:"service"`
 
@@ -235,26 +285,34 @@ type SmfpropertyItem struct {
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VariantItem struct {
 	XMLName xml.Name `xml:variant_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type VirtualizationinfoItem struct {
 	XMLName xml.Name `xml:virtualizationinfo_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Current *oval_sc.EntityItemStringType `xml:"current"`
 
@@ -265,6 +323,8 @@ type VirtualizationinfoItem struct {
 	LdomRole []EntityItemLDOMRoleType `xml:"ldom-role"`
 
 	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // XSD ComplexType declarations

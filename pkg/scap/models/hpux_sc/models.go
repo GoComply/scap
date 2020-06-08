@@ -12,33 +12,43 @@ import (
 type GetconfItem struct {
 	XMLName xml.Name `xml:getconf_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
 	Pathname *oval_sc.EntityItemStringType `xml:"pathname"`
 
 	Output *oval_sc.EntityItemAnySimpleType `xml:"output"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type NddItem struct {
 	XMLName xml.Name `xml:ndd_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
 	Parameter *oval_sc.EntityItemStringType `xml:"parameter"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
@@ -47,13 +57,17 @@ type PatchItem struct {
 	AreaPatched *oval_sc.EntityItemStringType `xml:"area_patched"`
 
 	PatchBase *oval_sc.EntityItemStringType `xml:"patch_base"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type SwlistItem struct {
 	XMLName xml.Name `xml:swlist_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
@@ -66,13 +80,17 @@ type SwlistItem struct {
 	Title *oval_sc.EntityItemStringType `xml:"title"`
 
 	Vendor *oval_sc.EntityItemStringType `xml:"vendor"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
 type TrustedItem struct {
 	XMLName xml.Name `xml:trusted_item`
 
-	Message []oval.MessageType `xml:"message"`
+	Id string `xml:"id,attr"`
+
+	Status string `xml:"status,attr"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -135,6 +153,8 @@ type TrustedItem struct {
 	MaxULogins *oval_sc.EntityItemIntType `xml:"max_u_logins"`
 
 	LockFlag *oval_sc.EntityItemBoolType `xml:"lock_flag"`
+
+	Message []oval.MessageType `xml:"message"`
 }
 
 // Element
