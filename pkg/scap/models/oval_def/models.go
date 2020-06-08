@@ -104,11 +104,19 @@ type Variable struct {
 // Element
 type ExternalVariable struct {
 	XMLName xml.Name `xml:external_variable`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type ConstantVariable struct {
 	XMLName xml.Name `xml:constant_variable`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Value []ValueType `xml:"value"`
 }
@@ -116,6 +124,10 @@ type ConstantVariable struct {
 // Element
 type LocalVariable struct {
 	XMLName xml.Name `xml:local_variable`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // XSD ComplexType declarations

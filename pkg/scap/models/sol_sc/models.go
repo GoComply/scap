@@ -5,12 +5,16 @@ package sol_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type FacetItem struct {
 	XMLName xml.Name `xml:facet_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
@@ -23,6 +27,8 @@ type FacetItem struct {
 type ImageItem struct {
 	XMLName xml.Name `xml:image_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
@@ -34,6 +40,8 @@ type ImageItem struct {
 type IsainfoItem struct {
 	XMLName xml.Name `xml:isainfo_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Bits *oval_sc.EntityItemIntType `xml:"bits"`
 
 	KernelIsa *oval_sc.EntityItemStringType `xml:"kernel_isa"`
@@ -44,6 +52,8 @@ type IsainfoItem struct {
 // Element
 type NddItem struct {
 	XMLName xml.Name `xml:ndd_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -57,6 +67,8 @@ type NddItem struct {
 // Element
 type PackageItem struct {
 	XMLName xml.Name `xml:package_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -74,6 +86,8 @@ type PackageItem struct {
 // Element
 type Package511Item struct {
 	XMLName xml.Name `xml:package511_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Publisher *oval_sc.EntityItemStringType `xml:"publisher"`
 
@@ -98,12 +112,16 @@ type Package511Item struct {
 type PackageavoidlistItem struct {
 	XMLName xml.Name `xml:packageavoidlist_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 }
 
 // Element
 type PackagecheckItem struct {
 	XMLName xml.Name `xml:packagecheck_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -138,12 +156,16 @@ type PackagecheckItem struct {
 type PackagefreezelistItem struct {
 	XMLName xml.Name `xml:packagefreezelist_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 }
 
 // Element
 type PackagepublisherItem struct {
 	XMLName xml.Name `xml:packagepublisher_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -172,6 +194,8 @@ type PackagepublisherItem struct {
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Base *oval_sc.EntityItemIntType `xml:"base"`
 
 	Version *oval_sc.EntityItemIntType `xml:"version"`
@@ -180,6 +204,8 @@ type PatchItem struct {
 // Element
 type SmfItem struct {
 	XMLName xml.Name `xml:smf_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
@@ -200,6 +226,8 @@ type SmfItem struct {
 type SmfpropertyItem struct {
 	XMLName xml.Name `xml:smfproperty_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Service *oval_sc.EntityItemStringType `xml:"service"`
 
 	Instance *oval_sc.EntityItemStringType `xml:"instance"`
@@ -215,6 +243,8 @@ type SmfpropertyItem struct {
 type VariantItem struct {
 	XMLName xml.Name `xml:variant_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
@@ -225,6 +255,8 @@ type VariantItem struct {
 // Element
 type VirtualizationinfoItem struct {
 	XMLName xml.Name `xml:virtualizationinfo_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Current *oval_sc.EntityItemStringType `xml:"current"`
 

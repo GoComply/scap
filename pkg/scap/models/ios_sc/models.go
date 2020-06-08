@@ -5,12 +5,16 @@ package ios_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type AclItem struct {
 	XMLName xml.Name `xml:acl_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -31,6 +35,8 @@ type AclItem struct {
 type BgpneighborItem struct {
 	XMLName xml.Name `xml:bgpneighbor_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Neighbor *oval_sc.EntityItemStringType `xml:"neighbor"`
 
 	Password *oval_sc.EntityItemStringType `xml:"password"`
@@ -40,12 +46,16 @@ type BgpneighborItem struct {
 type GlobalItem struct {
 	XMLName xml.Name `xml:global_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	GlobalCommand *oval_sc.EntityItemStringType `xml:"global_command"`
 }
 
 // Element
 type InterfaceItem struct {
 	XMLName xml.Name `xml:interface_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -94,6 +104,8 @@ type InterfaceItem struct {
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
@@ -102,6 +114,8 @@ type LineItem struct {
 // Element
 type RouterItem struct {
 	XMLName xml.Name `xml:router_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
@@ -120,6 +134,8 @@ type RouterItem struct {
 type RoutingprotocolauthintfItem struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Interface *oval_sc.EntityItemStringType `xml:"interface"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
@@ -137,6 +153,8 @@ type RoutingprotocolauthintfItem struct {
 type SectionItem struct {
 	XMLName xml.Name `xml:section_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	SectionCommand *oval_sc.EntityItemStringType `xml:"section_command"`
 
 	SectionConfigLines *oval_sc.EntityItemStringType `xml:"section_config_lines"`
@@ -148,6 +166,8 @@ type SectionItem struct {
 type SnmpItem struct {
 	XMLName xml.Name `xml:snmp_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	AccessList *oval_sc.EntityItemStringType `xml:"access_list"`
 
 	CommunityName *oval_sc.EntityItemStringType `xml:"community_name"`
@@ -156,6 +176,8 @@ type SnmpItem struct {
 // Element
 type SnmpcommunityItem struct {
 	XMLName xml.Name `xml:snmpcommunity_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -171,6 +193,8 @@ type SnmpcommunityItem struct {
 // Element
 type SnmpgroupItem struct {
 	XMLName xml.Name `xml:snmpgroup_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -193,6 +217,8 @@ type SnmpgroupItem struct {
 type SnmphostItem struct {
 	XMLName xml.Name `xml:snmphost_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Host *oval_sc.EntityItemStringType `xml:"host"`
 
 	CommunityOrUser *oval_sc.EntityItemStringType `xml:"community_or_user"`
@@ -207,6 +233,8 @@ type SnmphostItem struct {
 // Element
 type SnmpuserItem struct {
 	XMLName xml.Name `xml:snmpuser_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -227,6 +255,8 @@ type SnmpuserItem struct {
 type SnmpviewItem struct {
 	XMLName xml.Name `xml:snmpview_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	MibFamily *oval_sc.EntityItemStringType `xml:"mib_family"`
@@ -238,12 +268,16 @@ type SnmpviewItem struct {
 type TclshItem struct {
 	XMLName xml.Name `xml:tclsh_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
 }
 
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	MajorRelease *oval_sc.EntityItemStringType `xml:"major_release"`
 

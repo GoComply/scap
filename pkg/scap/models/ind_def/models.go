@@ -5,12 +5,20 @@ package ind_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type FamilyTest struct {
 	XMLName xml.Name `xml:family_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -20,11 +28,19 @@ type FamilyTest struct {
 // Element
 type FamilyObject struct {
 	XMLName xml.Name `xml:family_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type FamilyState struct {
 	XMLName xml.Name `xml:family_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Family *EntityStateFamilyType `xml:"family"`
 }
@@ -32,6 +48,10 @@ type FamilyState struct {
 // Element
 type FilehashTest struct {
 	XMLName xml.Name `xml:filehash_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -42,12 +62,20 @@ type FilehashTest struct {
 type FilehashObject struct {
 	XMLName xml.Name `xml:filehash_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type FilehashState struct {
 	XMLName xml.Name `xml:filehash_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
@@ -66,6 +94,10 @@ type FilehashState struct {
 type Filehash58Test struct {
 	XMLName xml.Name `xml:filehash58_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -75,12 +107,20 @@ type Filehash58Test struct {
 type Filehash58Object struct {
 	XMLName xml.Name `xml:filehash58_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Filehash58State struct {
 	XMLName xml.Name `xml:filehash58_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
@@ -99,6 +139,10 @@ type Filehash58State struct {
 type EnvironmentvariableTest struct {
 	XMLName xml.Name `xml:environmentvariable_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -107,6 +151,10 @@ type EnvironmentvariableTest struct {
 // Element
 type EnvironmentvariableObject struct {
 	XMLName xml.Name `xml:environmentvariable_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Set oval_def.Set `xml:"set"`
 
@@ -117,6 +165,10 @@ type EnvironmentvariableObject struct {
 type EnvironmentvariableState struct {
 	XMLName xml.Name `xml:environmentvariable_state`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
@@ -125,6 +177,10 @@ type EnvironmentvariableState struct {
 // Element
 type Environmentvariable58Test struct {
 	XMLName xml.Name `xml:environmentvariable58_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -135,12 +191,20 @@ type Environmentvariable58Test struct {
 type Environmentvariable58Object struct {
 	XMLName xml.Name `xml:environmentvariable58_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Environmentvariable58State struct {
 	XMLName xml.Name `xml:environmentvariable58_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Pid *oval_def.EntityStateIntType `xml:"pid"`
 
@@ -153,6 +217,10 @@ type Environmentvariable58State struct {
 type LdapTest struct {
 	XMLName xml.Name `xml:ldap_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -162,12 +230,20 @@ type LdapTest struct {
 type LdapObject struct {
 	XMLName xml.Name `xml:ldap_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LdapState struct {
 	XMLName xml.Name `xml:ldap_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Suffix *oval_def.EntityStateStringType `xml:"suffix"`
 
@@ -186,6 +262,10 @@ type LdapState struct {
 type Ldap57Test struct {
 	XMLName xml.Name `xml:ldap57_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -195,12 +275,20 @@ type Ldap57Test struct {
 type Ldap57Object struct {
 	XMLName xml.Name `xml:ldap57_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Ldap57State struct {
 	XMLName xml.Name `xml:ldap57_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Suffix *oval_def.EntityStateStringType `xml:"suffix"`
 
@@ -219,6 +307,10 @@ type Ldap57State struct {
 type SqlTest struct {
 	XMLName xml.Name `xml:sql_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -228,12 +320,20 @@ type SqlTest struct {
 type SqlObject struct {
 	XMLName xml.Name `xml:sql_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SqlState struct {
 	XMLName xml.Name `xml:sql_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Engine *EntityStateEngineType `xml:"engine"`
 
@@ -250,6 +350,10 @@ type SqlState struct {
 type Sql57Test struct {
 	XMLName xml.Name `xml:sql57_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -259,12 +363,20 @@ type Sql57Test struct {
 type Sql57Object struct {
 	XMLName xml.Name `xml:sql57_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Sql57State struct {
 	XMLName xml.Name `xml:sql57_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Engine *EntityStateEngineType `xml:"engine"`
 
@@ -281,6 +393,10 @@ type Sql57State struct {
 type Textfilecontent54Test struct {
 	XMLName xml.Name `xml:textfilecontent54_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -290,12 +406,20 @@ type Textfilecontent54Test struct {
 type Textfilecontent54Object struct {
 	XMLName xml.Name `xml:textfilecontent54_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Textfilecontent54State struct {
 	XMLName xml.Name `xml:textfilecontent54_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
@@ -318,6 +442,10 @@ type Textfilecontent54State struct {
 type TextfilecontentTest struct {
 	XMLName xml.Name `xml:textfilecontent_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -327,12 +455,20 @@ type TextfilecontentTest struct {
 type TextfilecontentObject struct {
 	XMLName xml.Name `xml:textfilecontent_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type TextfilecontentState struct {
 	XMLName xml.Name `xml:textfilecontent_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
@@ -348,11 +484,19 @@ type TextfilecontentState struct {
 // Element
 type UnknownTest struct {
 	XMLName xml.Name `xml:unknown_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type VariableTest struct {
 	XMLName xml.Name `xml:variable_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -363,12 +507,20 @@ type VariableTest struct {
 type VariableObject struct {
 	XMLName xml.Name `xml:variable_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type VariableState struct {
 	XMLName xml.Name `xml:variable_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	VarRef *EntityStateVariableRefType `xml:"var_ref"`
 
@@ -379,6 +531,10 @@ type VariableState struct {
 type XmlfilecontentTest struct {
 	XMLName xml.Name `xml:xmlfilecontent_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -388,12 +544,20 @@ type XmlfilecontentTest struct {
 type XmlfilecontentObject struct {
 	XMLName xml.Name `xml:xmlfilecontent_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type XmlfilecontentState struct {
 	XMLName xml.Name `xml:xmlfilecontent_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
@@ -412,6 +576,10 @@ type XmlfilecontentState struct {
 type YamlfilecontentTest struct {
 	XMLName xml.Name `xml:yamlfilecontent_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -421,12 +589,20 @@ type YamlfilecontentTest struct {
 type YamlfilecontentObject struct {
 	XMLName xml.Name `xml:yamlfilecontent_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type YamlfilecontentState struct {
 	XMLName xml.Name `xml:yamlfilecontent_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 

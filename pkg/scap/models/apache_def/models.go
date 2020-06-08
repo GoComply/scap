@@ -5,12 +5,20 @@ package apache_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type HttpdTest struct {
 	XMLName xml.Name `xml:httpd_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -20,11 +28,19 @@ type HttpdTest struct {
 // Element
 type HttpdObject struct {
 	XMLName xml.Name `xml:httpd_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type HttpdState struct {
 	XMLName xml.Name `xml:httpd_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Path *oval_def.EntityStateStringType `xml:"path"`
 

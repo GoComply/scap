@@ -5,12 +5,16 @@ package esx_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
 
@@ -31,6 +35,8 @@ type PatchItem struct {
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Release *oval_sc.EntityItemVersionType `xml:"release"`
 
 	Build *oval_sc.EntityItemIntType `xml:"build"`
@@ -39,6 +45,8 @@ type VersionItem struct {
 // Element
 type VisdkmanagedobjectItem struct {
 	XMLName xml.Name `xml:visdkmanagedobject_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 

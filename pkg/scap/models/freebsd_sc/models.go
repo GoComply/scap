@@ -5,12 +5,16 @@ package freebsd_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type PortinfoItem struct {
 	XMLName xml.Name `xml:portinfo_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 

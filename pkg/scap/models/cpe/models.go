@@ -16,6 +16,12 @@ type PlatformSpecification struct {
 // Element
 type Platform struct {
 	XMLName xml.Name `xml:platform`
+
+	Title []TextType `xml:"title"`
+
+	Remark []TextType `xml:"remark"`
+
+	LogicalTest LogicalTest `xml:"logical-test"`
 }
 
 // Element
@@ -66,6 +72,12 @@ type PlatformBaseType struct {
 
 type PlatformType struct {
 	Id string `xml:"id,attr"`
+
+	Title []TextType `xml:"title"`
+
+	Remark []TextType `xml:"remark"`
+
+	LogicalTest LogicalTest `xml:"logical-test"`
 }
 
 type LogicalTestType struct {

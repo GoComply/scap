@@ -5,12 +5,16 @@ package sp_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type SpwebapplicationItem struct {
 	XMLName xml.Name `xml:spwebapplication_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Webapplicationurl *oval_sc.EntityItemStringType `xml:"webapplicationurl"`
 
@@ -121,6 +125,8 @@ type SpwebapplicationItem struct {
 type SpgroupItem struct {
 	XMLName xml.Name `xml:spgroup_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
 	Gname *oval_sc.EntityItemStringType `xml:"gname"`
@@ -135,6 +141,8 @@ type SpgroupItem struct {
 // Element
 type SpwebItem struct {
 	XMLName xml.Name `xml:spweb_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Webcollectionurl *oval_sc.EntityItemStringType `xml:"webcollectionurl"`
 
@@ -151,6 +159,8 @@ type SpwebItem struct {
 type SplistItem struct {
 	XMLName xml.Name `xml:splist_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
 	Irmenabled *oval_sc.EntityItemBoolType `xml:"irmenabled"`
@@ -163,6 +173,8 @@ type SplistItem struct {
 // Element
 type SpantivirussettingsItem struct {
 	XMLName xml.Name `xml:spantivirussettings_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Spwebservicename *oval_sc.EntityItemStringType `xml:"spwebservicename"`
 
@@ -189,6 +201,8 @@ type SpantivirussettingsItem struct {
 type SpsiteadministrationItem struct {
 	XMLName xml.Name `xml:spsiteadministration_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
 	Storagemaxlevel *oval_sc.EntityItemIntType `xml:"storagemaxlevel"`
@@ -200,6 +214,8 @@ type SpsiteadministrationItem struct {
 type SpsiteItem struct {
 	XMLName xml.Name `xml:spsite_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
 	Quotaname *oval_sc.EntityItemStringType `xml:"quotaname"`
@@ -210,6 +226,8 @@ type SpsiteItem struct {
 // Element
 type SpcrawlruleItem struct {
 	XMLName xml.Name `xml:spcrawlrule_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -232,6 +250,8 @@ type SpcrawlruleItem struct {
 type SpjobdefinitionItem struct {
 	XMLName xml.Name `xml:spjobdefinition_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
 	Displayname *oval_sc.EntityItemStringType `xml:"displayname"`
@@ -246,6 +266,8 @@ type SpjobdefinitionItem struct {
 // Element
 type Spjobdefinition510Item struct {
 	XMLName xml.Name `xml:spjobdefinition510_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -262,6 +284,8 @@ type Spjobdefinition510Item struct {
 type BestbetItem struct {
 	XMLName xml.Name `xml:bestbet_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
 	Bestbeturl *oval_sc.EntityItemStringType `xml:"bestbeturl"`
@@ -274,6 +298,8 @@ type BestbetItem struct {
 // Element
 type InfopolicycollItem struct {
 	XMLName xml.Name `xml:infopolicycoll_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -289,6 +315,8 @@ type InfopolicycollItem struct {
 // Element
 type SpdiagnosticsserviceItem struct {
 	XMLName xml.Name `xml:spdiagnosticsservice_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -309,6 +337,8 @@ type SpdiagnosticsserviceItem struct {
 type SpdiagnosticslevelItem struct {
 	XMLName xml.Name `xml:spdiagnosticslevel_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
 	Eventseverity *EntityItemEventSeverityType `xml:"eventseverity"`
@@ -325,6 +355,8 @@ type SpdiagnosticslevelItem struct {
 // Element
 type SppolicyfeatureItem struct {
 	XMLName xml.Name `xml:sppolicyfeature_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -350,6 +382,8 @@ type SppolicyfeatureItem struct {
 // Element
 type SppolicyItem struct {
 	XMLName xml.Name `xml:sppolicy_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 

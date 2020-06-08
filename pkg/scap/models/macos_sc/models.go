@@ -5,12 +5,16 @@ package macos_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type AccountinfoItem struct {
 	XMLName xml.Name `xml:accountinfo_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -31,6 +35,8 @@ type AccountinfoItem struct {
 type AuthorizationdbItem struct {
 	XMLName xml.Name `xml:authorizationdb_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	RightName *oval_sc.EntityItemStringType `xml:"right_name"`
 
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
@@ -42,6 +48,8 @@ type AuthorizationdbItem struct {
 type CorestorageItem struct {
 	XMLName xml.Name `xml:corestorage_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Uuid oval_sc.EntityItemStringType `xml:"uuid"`
 
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
@@ -52,6 +60,8 @@ type CorestorageItem struct {
 // Element
 type DiskutilItem struct {
 	XMLName xml.Name `xml:diskutil_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -98,6 +108,8 @@ type DiskutilItem struct {
 type GatekeeperItem struct {
 	XMLName xml.Name `xml:gatekeeper_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Enabled oval_sc.EntityItemBoolType `xml:"enabled"`
 
 	Unlabeled []oval_sc.EntityItemStringType `xml:"unlabeled"`
@@ -106,6 +118,8 @@ type GatekeeperItem struct {
 // Element
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:inetlisteningserver_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
@@ -132,6 +146,8 @@ type InetlisteningserverItem struct {
 type Inetlisteningserver510Item struct {
 	XMLName xml.Name `xml:inetlisteningserver510_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
 	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
@@ -157,6 +173,8 @@ type Inetlisteningserver510Item struct {
 type KeychainItem struct {
 	XMLName xml.Name `xml:keychain_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
 	LockOnSleep *oval_sc.EntityItemBoolType `xml:"lock_on_sleep"`
@@ -167,6 +185,8 @@ type KeychainItem struct {
 // Element
 type LaunchdItem struct {
 	XMLName xml.Name `xml:launchd_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Label oval_sc.EntityItemStringType `xml:"label"`
 
@@ -179,6 +199,8 @@ type LaunchdItem struct {
 type NvramItem struct {
 	XMLName xml.Name `xml:nvram_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	NvramVar *oval_sc.EntityItemStringType `xml:"nvram_var"`
 
 	NvramValue *oval_sc.EntityItemStringType `xml:"nvram_value"`
@@ -187,6 +209,8 @@ type NvramItem struct {
 // Element
 type PlistItem struct {
 	XMLName xml.Name `xml:plist_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -205,6 +229,8 @@ type PlistItem struct {
 type Plist511Item struct {
 	XMLName xml.Name `xml:plist511_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	AppId *oval_sc.EntityItemStringType `xml:"app_id"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
@@ -217,6 +243,8 @@ type Plist511Item struct {
 // Element
 type PwpolicyItem struct {
 	XMLName xml.Name `xml:pwpolicy_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -240,6 +268,8 @@ type PwpolicyItem struct {
 // Element
 type Pwpolicy59Item struct {
 	XMLName xml.Name `xml:pwpolicy59_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	TargetUser *oval_sc.EntityItemStringType `xml:"target_user"`
 
@@ -296,6 +326,8 @@ type Pwpolicy59Item struct {
 type RlimitItem struct {
 	XMLName xml.Name `xml:rlimit_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	CpuCurrent oval_sc.EntityItemIntType `xml:"cpu_current"`
 
 	CpuMax oval_sc.EntityItemIntType `xml:"cpu_max"`
@@ -337,6 +369,8 @@ type RlimitItem struct {
 type SoftwareupdateItem struct {
 	XMLName xml.Name `xml:softwareupdate_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Schedule oval_sc.EntityItemBoolType `xml:"schedule"`
 
 	SoftwareTitle []oval_sc.EntityItemStringType `xml:"software_title"`
@@ -345,6 +379,8 @@ type SoftwareupdateItem struct {
 // Element
 type SystemprofilerItem struct {
 	XMLName xml.Name `xml:systemprofiler_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	DataType *EntityItemDataTypeType `xml:"data_type"`
 
@@ -356,6 +392,8 @@ type SystemprofilerItem struct {
 // Element
 type SystemsetupItem struct {
 	XMLName xml.Name `xml:systemsetup_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Timezone oval_sc.EntityItemStringType `xml:"timezone"`
 

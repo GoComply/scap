@@ -49,10 +49,34 @@ type DirectivesType struct {
 
 type DefaultDirectivesType struct {
 	IncludeSourceDefinitions string `xml:"include_source_definitions,attr"`
+
+	DefinitionTrue DirectiveType `xml:"definition_true"`
+
+	DefinitionFalse DirectiveType `xml:"definition_false"`
+
+	DefinitionUnknown DirectiveType `xml:"definition_unknown"`
+
+	DefinitionError DirectiveType `xml:"definition_error"`
+
+	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
+
+	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
 }
 
 type ClassDirectivesType struct {
 	Class string `xml:"class,attr"`
+
+	DefinitionTrue DirectiveType `xml:"definition_true"`
+
+	DefinitionFalse DirectiveType `xml:"definition_false"`
+
+	DefinitionUnknown DirectiveType `xml:"definition_unknown"`
+
+	DefinitionError DirectiveType `xml:"definition_error"`
+
+	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
+
+	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
 }
 
 type DirectiveType struct {

@@ -5,12 +5,16 @@ package linux_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type ApparmorstatusItem struct {
 	XMLName xml.Name `xml:apparmorstatus_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	LoadedProfilesCount *oval_sc.EntityItemIntType `xml:"loaded_profiles_count"`
 
@@ -31,6 +35,8 @@ type ApparmorstatusItem struct {
 type DpkginfoItem struct {
 	XMLName xml.Name `xml:dpkginfo_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Arch *oval_sc.EntityItemStringType `xml:"arch"`
@@ -48,6 +54,8 @@ type DpkginfoItem struct {
 type IflistenersItem struct {
 	XMLName xml.Name `xml:iflisteners_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
 
 	Protocol *EntityItemProtocolType `xml:"protocol"`
@@ -64,6 +72,8 @@ type IflistenersItem struct {
 // Element
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:inetlisteningserver_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -90,6 +100,8 @@ type InetlisteningserverItem struct {
 type PartitionItem struct {
 	XMLName xml.Name `xml:partition_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	MountPoint *oval_sc.EntityItemStringType `xml:"mount_point"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
@@ -115,6 +127,8 @@ type PartitionItem struct {
 type RpminfoItem struct {
 	XMLName xml.Name `xml:rpminfo_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Arch *oval_sc.EntityItemStringType `xml:"arch"`
@@ -137,6 +151,8 @@ type RpminfoItem struct {
 // Element
 type RpmverifyItem struct {
 	XMLName xml.Name `xml:rpmverify_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -174,6 +190,8 @@ type RpmverifyItem struct {
 // Element
 type RpmverifyfileItem struct {
 	XMLName xml.Name `xml:rpmverifyfile_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -224,6 +242,8 @@ type RpmverifyfileItem struct {
 type RpmverifypackageItem struct {
 	XMLName xml.Name `xml:rpmverifypackage_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Epoch *RpmverifypackageItemEpoch `xml:"epoch"`
@@ -249,6 +269,8 @@ type RpmverifypackageItem struct {
 type SelinuxbooleanItem struct {
 	XMLName xml.Name `xml:selinuxboolean_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	CurrentStatus *oval_sc.EntityItemBoolType `xml:"current_status"`
@@ -259,6 +281,8 @@ type SelinuxbooleanItem struct {
 // Element
 type SelinuxsecuritycontextItem struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -295,6 +319,8 @@ type SelinuxsecuritycontextItem struct {
 type SlackwarepkginfoItem struct {
 	XMLName xml.Name `xml:slackwarepkginfo_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Version *SlackwarepkginfoItemVersion `xml:"version"`
@@ -308,6 +334,8 @@ type SlackwarepkginfoItem struct {
 type SystemdunitdependencyItem struct {
 	XMLName xml.Name `xml:systemdunitdependency_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
 	Dependency []oval_sc.EntityItemStringType `xml:"dependency"`
@@ -316,6 +344,8 @@ type SystemdunitdependencyItem struct {
 // Element
 type SystemdunitpropertyItem struct {
 	XMLName xml.Name `xml:systemdunitproperty_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 

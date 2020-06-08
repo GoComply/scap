@@ -5,12 +5,20 @@ package sp_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type SpwebapplicationTest struct {
 	XMLName xml.Name `xml:spwebapplication_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -21,12 +29,20 @@ type SpwebapplicationTest struct {
 type SpwebapplicationObject struct {
 	XMLName xml.Name `xml:spwebapplication_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpwebapplicationState struct {
 	XMLName xml.Name `xml:spwebapplication_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Webapplicationurl *oval_def.EntityStateStringType `xml:"webapplicationurl"`
 
@@ -137,6 +153,10 @@ type SpwebapplicationState struct {
 type SpgroupTest struct {
 	XMLName xml.Name `xml:spgroup_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -146,12 +166,20 @@ type SpgroupTest struct {
 type SpgroupObject struct {
 	XMLName xml.Name `xml:spgroup_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpgroupState struct {
 	XMLName xml.Name `xml:spgroup_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
@@ -168,6 +196,10 @@ type SpgroupState struct {
 type SpwebTest struct {
 	XMLName xml.Name `xml:spweb_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -177,12 +209,20 @@ type SpwebTest struct {
 type SpwebObject struct {
 	XMLName xml.Name `xml:spweb_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpwebState struct {
 	XMLName xml.Name `xml:spweb_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Webcollectionurl *oval_def.EntityStateStringType `xml:"webcollectionurl"`
 
@@ -199,6 +239,10 @@ type SpwebState struct {
 type SplistTest struct {
 	XMLName xml.Name `xml:splist_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -208,12 +252,20 @@ type SplistTest struct {
 type SplistObject struct {
 	XMLName xml.Name `xml:splist_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SplistState struct {
 	XMLName xml.Name `xml:splist_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Spsiteurl *oval_def.EntityStateStringType `xml:"spsiteurl"`
 
@@ -228,6 +280,10 @@ type SplistState struct {
 type SpantivirussettingsTest struct {
 	XMLName xml.Name `xml:spantivirussettings_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -237,12 +293,20 @@ type SpantivirussettingsTest struct {
 type SpantivirussettingsObject struct {
 	XMLName xml.Name `xml:spantivirussettings_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpantivirussettingsState struct {
 	XMLName xml.Name `xml:spantivirussettings_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Spwebservicename *oval_def.EntityStateStringType `xml:"spwebservicename"`
 
@@ -269,6 +333,10 @@ type SpantivirussettingsState struct {
 type SpsiteadministrationTest struct {
 	XMLName xml.Name `xml:spsiteadministration_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -278,12 +346,20 @@ type SpsiteadministrationTest struct {
 type SpsiteadministrationObject struct {
 	XMLName xml.Name `xml:spsiteadministration_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpsiteadministrationState struct {
 	XMLName xml.Name `xml:spsiteadministration_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
@@ -296,6 +372,10 @@ type SpsiteadministrationState struct {
 type SpsiteTest struct {
 	XMLName xml.Name `xml:spsite_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -305,12 +385,20 @@ type SpsiteTest struct {
 type SpsiteObject struct {
 	XMLName xml.Name `xml:spsite_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpsiteState struct {
 	XMLName xml.Name `xml:spsite_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
@@ -323,6 +411,10 @@ type SpsiteState struct {
 type SpcrawlruleTest struct {
 	XMLName xml.Name `xml:spcrawlrule_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -332,12 +424,20 @@ type SpcrawlruleTest struct {
 type SpcrawlruleObject struct {
 	XMLName xml.Name `xml:spcrawlrule_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpcrawlruleState struct {
 	XMLName xml.Name `xml:spcrawlrule_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Spsiteurl *oval_def.EntityStateStringType `xml:"spsiteurl"`
 
@@ -360,6 +460,10 @@ type SpcrawlruleState struct {
 type SpjobdefinitionTest struct {
 	XMLName xml.Name `xml:spjobdefinition_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -369,12 +473,20 @@ type SpjobdefinitionTest struct {
 type SpjobdefinitionObject struct {
 	XMLName xml.Name `xml:spjobdefinition_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpjobdefinitionState struct {
 	XMLName xml.Name `xml:spjobdefinition_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Webappuri *oval_def.EntityStateStringType `xml:"webappuri"`
 
@@ -391,6 +503,10 @@ type SpjobdefinitionState struct {
 type Spjobdefinition510Test struct {
 	XMLName xml.Name `xml:spjobdefinition510_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -400,12 +516,20 @@ type Spjobdefinition510Test struct {
 type Spjobdefinition510Object struct {
 	XMLName xml.Name `xml:spjobdefinition510_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Spjobdefinition510State struct {
 	XMLName xml.Name `xml:spjobdefinition510_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Webappuri *oval_def.EntityStateStringType `xml:"webappuri"`
 
@@ -422,6 +546,10 @@ type Spjobdefinition510State struct {
 type BestbetTest struct {
 	XMLName xml.Name `xml:bestbet_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -431,12 +559,20 @@ type BestbetTest struct {
 type BestbetObject struct {
 	XMLName xml.Name `xml:bestbet_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type BestbetState struct {
 	XMLName xml.Name `xml:bestbet_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
@@ -451,6 +587,10 @@ type BestbetState struct {
 type InfopolicycollTest struct {
 	XMLName xml.Name `xml:infopolicycoll_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -460,12 +600,20 @@ type InfopolicycollTest struct {
 type InfopolicycollObject struct {
 	XMLName xml.Name `xml:infopolicycoll_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type InfopolicycollState struct {
 	XMLName xml.Name `xml:infopolicycoll_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
@@ -482,6 +630,10 @@ type InfopolicycollState struct {
 type SpdiagnosticsserviceTest struct {
 	XMLName xml.Name `xml:spdiagnosticsservice_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -491,12 +643,20 @@ type SpdiagnosticsserviceTest struct {
 type SpdiagnosticsserviceObject struct {
 	XMLName xml.Name `xml:spdiagnosticsservice_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpdiagnosticsserviceState struct {
 	XMLName xml.Name `xml:spdiagnosticsservice_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Farmname *oval_def.EntityStateStringType `xml:"farmname"`
 
@@ -517,6 +677,10 @@ type SpdiagnosticsserviceState struct {
 type SpdiagnosticslevelTest struct {
 	XMLName xml.Name `xml:spdiagnosticslevel_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -526,12 +690,20 @@ type SpdiagnosticslevelTest struct {
 type SpdiagnosticslevelObject struct {
 	XMLName xml.Name `xml:spdiagnosticslevel_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SpdiagnosticslevelState struct {
 	XMLName xml.Name `xml:spdiagnosticslevel_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Farmname *oval_def.EntityStateStringType `xml:"farmname"`
 
@@ -550,6 +722,10 @@ type SpdiagnosticslevelState struct {
 type SppolicyfeatureTest struct {
 	XMLName xml.Name `xml:sppolicyfeature_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -559,12 +735,20 @@ type SppolicyfeatureTest struct {
 type SppolicyfeatureObject struct {
 	XMLName xml.Name `xml:sppolicyfeature_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SppolicyfeatureState struct {
 	XMLName xml.Name `xml:sppolicyfeature_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Farmname *oval_def.EntityStateStringType `xml:"farmname"`
 
@@ -591,6 +775,10 @@ type SppolicyfeatureState struct {
 type SppolicyTest struct {
 	XMLName xml.Name `xml:sppolicy_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State *oval_def.StateRefType `xml:"state"`
@@ -600,12 +788,20 @@ type SppolicyTest struct {
 type SppolicyObject struct {
 	XMLName xml.Name `xml:sppolicy_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SppolicyState struct {
 	XMLName xml.Name `xml:sppolicy_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Webappuri *oval_def.EntityStateStringType `xml:"webappuri"`
 

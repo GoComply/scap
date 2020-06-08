@@ -5,12 +5,20 @@ package aix_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type InterimFixTest struct {
 	XMLName xml.Name `xml:interim_fix_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -21,12 +29,20 @@ type InterimFixTest struct {
 type InterimFixObject struct {
 	XMLName xml.Name `xml:interim_fix_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type InterimFixState struct {
 	XMLName xml.Name `xml:interim_fix_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Vuid *oval_def.EntityStateStringType `xml:"vuid"`
 
@@ -41,6 +57,10 @@ type InterimFixState struct {
 type FilesetTest struct {
 	XMLName xml.Name `xml:fileset_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -50,12 +70,20 @@ type FilesetTest struct {
 type FilesetObject struct {
 	XMLName xml.Name `xml:fileset_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type FilesetState struct {
 	XMLName xml.Name `xml:fileset_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Flstinst *oval_def.EntityStateStringType `xml:"flstinst"`
 
@@ -70,6 +98,10 @@ type FilesetState struct {
 type FixTest struct {
 	XMLName xml.Name `xml:fix_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -79,12 +111,20 @@ type FixTest struct {
 type FixObject struct {
 	XMLName xml.Name `xml:fix_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type FixState struct {
 	XMLName xml.Name `xml:fix_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	AparNumber *oval_def.EntityStateStringType `xml:"apar_number"`
 
@@ -99,6 +139,10 @@ type FixState struct {
 type NoTest struct {
 	XMLName xml.Name `xml:no_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -108,12 +152,20 @@ type NoTest struct {
 type NoObject struct {
 	XMLName xml.Name `xml:no_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type NoState struct {
 	XMLName xml.Name `xml:no_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Tunable *oval_def.EntityStateStringType `xml:"tunable"`
 
@@ -124,6 +176,10 @@ type NoState struct {
 type OslevelTest struct {
 	XMLName xml.Name `xml:oslevel_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -132,11 +188,19 @@ type OslevelTest struct {
 // Element
 type OslevelObject struct {
 	XMLName xml.Name `xml:oslevel_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type OslevelState struct {
 	XMLName xml.Name `xml:oslevel_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	MaintenanceLevel oval_def.EntityStateVersionType `xml:"maintenance_level"`
 }

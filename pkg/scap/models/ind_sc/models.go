@@ -5,6 +5,8 @@ package ind_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
@@ -12,12 +14,16 @@ import (
 type FamilyItem struct {
 	XMLName xml.Name `xml:family_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Family *EntityItemFamilyType `xml:"family"`
 }
 
 // Element
 type FilehashItem struct {
 	XMLName xml.Name `xml:filehash_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -36,6 +42,8 @@ type FilehashItem struct {
 type Filehash58Item struct {
 	XMLName xml.Name `xml:filehash58_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
@@ -53,6 +61,8 @@ type Filehash58Item struct {
 type EnvironmentvariableItem struct {
 	XMLName xml.Name `xml:environmentvariable_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
@@ -61,6 +71,8 @@ type EnvironmentvariableItem struct {
 // Element
 type Environmentvariable58Item struct {
 	XMLName xml.Name `xml:environmentvariable58_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
@@ -72,6 +84,8 @@ type Environmentvariable58Item struct {
 // Element
 type LdapItem struct {
 	XMLName xml.Name `xml:ldap_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -90,6 +104,8 @@ type LdapItem struct {
 type Ldap57Item struct {
 	XMLName xml.Name `xml:ldap57_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
 	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
@@ -107,6 +123,8 @@ type Ldap57Item struct {
 type SqlItem struct {
 	XMLName xml.Name `xml:sql_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Engine *EntityItemEngineType `xml:"engine"`
 
 	Version *oval_sc.EntityItemStringType `xml:"version"`
@@ -122,6 +140,8 @@ type SqlItem struct {
 type Sql57Item struct {
 	XMLName xml.Name `xml:sql57_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Engine *EntityItemEngineType `xml:"engine"`
 
 	Version *oval_sc.EntityItemStringType `xml:"version"`
@@ -136,6 +156,8 @@ type Sql57Item struct {
 // Element
 type TextfilecontentItem struct {
 	XMLName xml.Name `xml:textfilecontent_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -160,6 +182,8 @@ type TextfilecontentItem struct {
 type VariableItem struct {
 	XMLName xml.Name `xml:variable_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	VarRef *EntityItemVariableRefType `xml:"var_ref"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
@@ -168,6 +192,8 @@ type VariableItem struct {
 // Element
 type XmlfilecontentItem struct {
 	XMLName xml.Name `xml:xmlfilecontent_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -185,6 +211,8 @@ type XmlfilecontentItem struct {
 // Element
 type YamlfilecontentItem struct {
 	XMLName xml.Name `xml:yamlfilecontent_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 

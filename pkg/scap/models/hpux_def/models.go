@@ -5,12 +5,20 @@ package hpux_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type GetconfTest struct {
 	XMLName xml.Name `xml:getconf_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -21,12 +29,20 @@ type GetconfTest struct {
 type GetconfObject struct {
 	XMLName xml.Name `xml:getconf_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type GetconfState struct {
 	XMLName xml.Name `xml:getconf_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	ParameterName *oval_def.EntityStateStringType `xml:"parameter_name"`
 
@@ -39,6 +55,10 @@ type GetconfState struct {
 type NddTest struct {
 	XMLName xml.Name `xml:ndd_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -48,12 +68,20 @@ type NddTest struct {
 type NddObject struct {
 	XMLName xml.Name `xml:ndd_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type NddState struct {
 	XMLName xml.Name `xml:ndd_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Device *oval_def.EntityStateStringType `xml:"device"`
 
@@ -66,6 +94,10 @@ type NddState struct {
 type Patch53Test struct {
 	XMLName xml.Name `xml:patch53_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -75,12 +107,20 @@ type Patch53Test struct {
 type Patch53Object struct {
 	XMLName xml.Name `xml:patch53_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type Patch53State struct {
 	XMLName xml.Name `xml:patch53_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Swtype *oval_def.EntityStateStringType `xml:"swtype"`
 
@@ -93,6 +133,10 @@ type Patch53State struct {
 type PatchTest struct {
 	XMLName xml.Name `xml:patch_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -102,6 +146,10 @@ type PatchTest struct {
 type PatchObject struct {
 	XMLName xml.Name `xml:patch_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 
 	PatchName oval_def.EntityObjectStringType `xml:"patch_name"`
@@ -110,6 +158,10 @@ type PatchObject struct {
 // Element
 type PatchState struct {
 	XMLName xml.Name `xml:patch_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	PatchName *oval_def.EntityStateStringType `xml:"patch_name"`
 
@@ -124,6 +176,10 @@ type PatchState struct {
 type SwlistTest struct {
 	XMLName xml.Name `xml:swlist_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -133,12 +189,20 @@ type SwlistTest struct {
 type SwlistObject struct {
 	XMLName xml.Name `xml:swlist_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type SwlistState struct {
 	XMLName xml.Name `xml:swlist_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Swlist *oval_def.EntityStateStringType `xml:"swlist"`
 
@@ -157,6 +221,10 @@ type SwlistState struct {
 type TrustedTest struct {
 	XMLName xml.Name `xml:trusted_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -166,12 +234,20 @@ type TrustedTest struct {
 type TrustedObject struct {
 	XMLName xml.Name `xml:trusted_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type TrustedState struct {
 	XMLName xml.Name `xml:trusted_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Username *oval_def.EntityStateStringType `xml:"username"`
 

@@ -5,12 +5,16 @@ package unix_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type DnscacheItem struct {
 	XMLName xml.Name `xml:dnscache_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
@@ -22,6 +26,8 @@ type DnscacheItem struct {
 // Element
 type FileItem struct {
 	XMLName xml.Name `xml:file_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -74,6 +80,8 @@ type FileItem struct {
 type FileextendedattributeItem struct {
 	XMLName xml.Name `xml:fileextendedattribute_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
@@ -88,6 +96,8 @@ type FileextendedattributeItem struct {
 // Element
 type GconfItem struct {
 	XMLName xml.Name `xml:gconf_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -110,6 +120,8 @@ type GconfItem struct {
 type InetdItem struct {
 	XMLName xml.Name `xml:inetd_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
@@ -129,6 +141,8 @@ type InetdItem struct {
 type InterfaceItem struct {
 	XMLName xml.Name `xml:interface_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Type *EntityItemInterfaceType `xml:"type"`
@@ -147,6 +161,8 @@ type InterfaceItem struct {
 // Element
 type PasswordItem struct {
 	XMLName xml.Name `xml:password_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -168,6 +184,8 @@ type PasswordItem struct {
 // Element
 type ProcessItem struct {
 	XMLName xml.Name `xml:process_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Command *oval_sc.EntityItemStringType `xml:"command"`
 
@@ -193,6 +211,8 @@ type ProcessItem struct {
 // Element
 type Process58Item struct {
 	XMLName xml.Name `xml:process58_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
@@ -229,6 +249,8 @@ type Process58Item struct {
 type RoutingtableItem struct {
 	XMLName xml.Name `xml:routingtable_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Destination *oval_sc.EntityItemIPAddressType `xml:"destination"`
 
 	Gateway *oval_sc.EntityItemIPAddressType `xml:"gateway"`
@@ -242,6 +264,8 @@ type RoutingtableItem struct {
 type RunlevelItem struct {
 	XMLName xml.Name `xml:runlevel_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
 	Runlevel *oval_sc.EntityItemStringType `xml:"runlevel"`
@@ -254,6 +278,8 @@ type RunlevelItem struct {
 // Element
 type SccsItem struct {
 	XMLName xml.Name `xml:sccs_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -280,6 +306,8 @@ type SccsItem struct {
 type ShadowItem struct {
 	XMLName xml.Name `xml:shadow_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
 	Password *oval_sc.EntityItemStringType `xml:"password"`
@@ -305,6 +333,8 @@ type ShadowItem struct {
 type SymlinkItem struct {
 	XMLName xml.Name `xml:symlink_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
 	CanonicalPath oval_sc.EntityItemStringType `xml:"canonical_path"`
@@ -314,6 +344,8 @@ type SymlinkItem struct {
 type SysctlItem struct {
 	XMLName xml.Name `xml:sysctl_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
@@ -322,6 +354,8 @@ type SysctlItem struct {
 // Element
 type UnameItem struct {
 	XMLName xml.Name `xml:uname_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	MachineClass *oval_sc.EntityItemStringType `xml:"machine_class"`
 
@@ -339,6 +373,8 @@ type UnameItem struct {
 // Element
 type XinetdItem struct {
 	XMLName xml.Name `xml:xinetd_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 

@@ -5,12 +5,16 @@ package catos_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -20,6 +24,8 @@ type LineItem struct {
 // Element
 type ModuleItem struct {
 	XMLName xml.Name `xml:module_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	ModuleNumber *oval_sc.EntityItemIntType `xml:"module_number"`
 
@@ -45,6 +51,8 @@ type ModuleItem struct {
 // Element
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	SwitchSeries *oval_sc.EntityItemStringType `xml:"switch_series"`
 

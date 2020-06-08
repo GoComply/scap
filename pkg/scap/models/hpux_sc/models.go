@@ -5,12 +5,16 @@ package hpux_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type GetconfItem struct {
 	XMLName xml.Name `xml:getconf_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
@@ -23,6 +27,8 @@ type GetconfItem struct {
 type NddItem struct {
 	XMLName xml.Name `xml:ndd_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
 	Parameter *oval_sc.EntityItemStringType `xml:"parameter"`
@@ -33,6 +39,8 @@ type NddItem struct {
 // Element
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
@@ -46,6 +54,8 @@ type PatchItem struct {
 // Element
 type SwlistItem struct {
 	XMLName xml.Name `xml:swlist_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
@@ -63,6 +73,8 @@ type SwlistItem struct {
 // Element
 type TrustedItem struct {
 	XMLName xml.Name `xml:trusted_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 

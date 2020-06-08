@@ -5,12 +5,20 @@ package apple_ios_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type GlobalrestrictionsTest struct {
 	XMLName xml.Name `xml:globalrestrictions_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -20,11 +28,19 @@ type GlobalrestrictionsTest struct {
 // Element
 type GlobalrestrictionsObject struct {
 	XMLName xml.Name `xml:globalrestrictions_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type GlobalrestrictionsState struct {
 	XMLName xml.Name `xml:globalrestrictions_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	AllowAccountModification *oval_def.EntityStateBoolType `xml:"allow_account_modification"`
 
@@ -111,6 +127,10 @@ type GlobalrestrictionsState struct {
 type PasscodepolicyTest struct {
 	XMLName xml.Name `xml:passcodepolicy_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -119,11 +139,19 @@ type PasscodepolicyTest struct {
 // Element
 type PasscodepolicyObject struct {
 	XMLName xml.Name `xml:passcodepolicy_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type PasscodepolicyState struct {
 	XMLName xml.Name `xml:passcodepolicy_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	AllowSimple *oval_def.EntityStateBoolType `xml:"allow_simple"`
 
@@ -150,6 +178,10 @@ type PasscodepolicyState struct {
 type ProfileTest struct {
 	XMLName xml.Name `xml:profile_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -159,12 +191,20 @@ type ProfileTest struct {
 type ProfileObject struct {
 	XMLName xml.Name `xml:profile_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ProfileState struct {
 	XMLName xml.Name `xml:profile_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	HasRemovalPasscode *oval_def.EntityStateBoolType `xml:"has_removal_passcode"`
 

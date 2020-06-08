@@ -5,12 +5,20 @@ package catos_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type LineTest struct {
 	XMLName xml.Name `xml:line_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -21,12 +29,20 @@ type LineTest struct {
 type LineObject struct {
 	XMLName xml.Name `xml:line_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
 
@@ -37,6 +53,10 @@ type LineState struct {
 type ModuleTest struct {
 	XMLName xml.Name `xml:module_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -46,12 +66,20 @@ type ModuleTest struct {
 type ModuleObject struct {
 	XMLName xml.Name `xml:module_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ModuleState struct {
 	XMLName xml.Name `xml:module_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	ModuleNumber *oval_def.EntityStateIntType `xml:"module_number"`
 
@@ -78,6 +106,10 @@ type ModuleState struct {
 type Version55Test struct {
 	XMLName xml.Name `xml:version55_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -86,11 +118,19 @@ type Version55Test struct {
 // Element
 type Version55Object struct {
 	XMLName xml.Name `xml:version55_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type Version55State struct {
 	XMLName xml.Name `xml:version55_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
 
@@ -103,6 +143,10 @@ type Version55State struct {
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -111,11 +155,19 @@ type VersionTest struct {
 // Element
 type VersionObject struct {
 	XMLName xml.Name `xml:version_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
 

@@ -5,12 +5,20 @@ package android_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type AppmanagerTest struct {
 	XMLName xml.Name `xml:appmanager_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -21,12 +29,20 @@ type AppmanagerTest struct {
 type AppmanagerObject struct {
 	XMLName xml.Name `xml:appmanager_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type AppmanagerState struct {
 	XMLName xml.Name `xml:appmanager_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	ApplicationName *oval_def.EntityStateStringType `xml:"application_name"`
 
@@ -59,6 +75,10 @@ type AppmanagerState struct {
 type BluetoothTest struct {
 	XMLName xml.Name `xml:bluetooth_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -67,11 +87,19 @@ type BluetoothTest struct {
 // Element
 type BluetoothObject struct {
 	XMLName xml.Name `xml:bluetooth_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type BluetoothState struct {
 	XMLName xml.Name `xml:bluetooth_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Discoverable *oval_def.EntityStateBoolType `xml:"discoverable"`
 
@@ -82,6 +110,10 @@ type BluetoothState struct {
 type CameraTest struct {
 	XMLName xml.Name `xml:camera_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -90,11 +122,19 @@ type CameraTest struct {
 // Element
 type CameraObject struct {
 	XMLName xml.Name `xml:camera_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type CameraState struct {
 	XMLName xml.Name `xml:camera_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	CameraDisabledPolicy *oval_def.EntityStateBoolType `xml:"camera_disabled_policy"`
 }
@@ -102,6 +142,10 @@ type CameraState struct {
 // Element
 type CertificateTest struct {
 	XMLName xml.Name `xml:certificate_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -111,11 +155,19 @@ type CertificateTest struct {
 // Element
 type CertificateObject struct {
 	XMLName xml.Name `xml:certificate_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type CertificateState struct {
 	XMLName xml.Name `xml:certificate_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	TrustedCertificate []oval_def.EntityStateBinaryType `xml:"trusted_certificate"`
 }
@@ -123,6 +175,10 @@ type CertificateState struct {
 // Element
 type DevicesettingsTest struct {
 	XMLName xml.Name `xml:devicesettings_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -132,11 +188,19 @@ type DevicesettingsTest struct {
 // Element
 type DevicesettingsObject struct {
 	XMLName xml.Name `xml:devicesettings_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type DevicesettingsState struct {
 	XMLName xml.Name `xml:devicesettings_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	AdbEnabled *oval_def.EntityStateBoolType `xml:"adb_enabled"`
 
@@ -157,6 +221,10 @@ type DevicesettingsState struct {
 type EncryptionTest struct {
 	XMLName xml.Name `xml:encryption_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -165,11 +233,19 @@ type EncryptionTest struct {
 // Element
 type EncryptionObject struct {
 	XMLName xml.Name `xml:encryption_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type EncryptionState struct {
 	XMLName xml.Name `xml:encryption_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	EncryptionPolicyEnabled *oval_def.EntityStateBoolType `xml:"encryption_policy_enabled"`
 
@@ -180,6 +256,10 @@ type EncryptionState struct {
 type LocationserviceTest struct {
 	XMLName xml.Name `xml:locationservice_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -188,11 +268,19 @@ type LocationserviceTest struct {
 // Element
 type LocationserviceObject struct {
 	XMLName xml.Name `xml:locationservice_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type LocationserviceState struct {
 	XMLName xml.Name `xml:locationservice_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	GpsEnabled *oval_def.EntityStateBoolType `xml:"gps_enabled"`
 
@@ -203,6 +291,10 @@ type LocationserviceState struct {
 type NetworkTest struct {
 	XMLName xml.Name `xml:network_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -211,11 +303,19 @@ type NetworkTest struct {
 // Element
 type NetworkObject struct {
 	XMLName xml.Name `xml:network_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type NetworkState struct {
 	XMLName xml.Name `xml:network_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	AirplaneMode *oval_def.EntityStateBoolType `xml:"airplane_mode"`
 
@@ -226,6 +326,10 @@ type NetworkState struct {
 type PasswordTest struct {
 	XMLName xml.Name `xml:password_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -234,11 +338,19 @@ type PasswordTest struct {
 // Element
 type PasswordObject struct {
 	XMLName xml.Name `xml:password_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type PasswordState struct {
 	XMLName xml.Name `xml:password_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	MaxNumFailedUserAuth *oval_def.EntityStateIntType `xml:"max_num_failed_user_auth"`
 
@@ -277,6 +389,10 @@ type PasswordState struct {
 type SystemdetailsTest struct {
 	XMLName xml.Name `xml:systemdetails_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -285,11 +401,19 @@ type SystemdetailsTest struct {
 // Element
 type SystemdetailsObject struct {
 	XMLName xml.Name `xml:systemdetails_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type SystemdetailsState struct {
 	XMLName xml.Name `xml:systemdetails_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Hardware *oval_def.EntityStateStringType `xml:"hardware"`
 
@@ -320,6 +444,10 @@ type SystemdetailsState struct {
 type WifiTest struct {
 	XMLName xml.Name `xml:wifi_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -328,11 +456,19 @@ type WifiTest struct {
 // Element
 type WifiObject struct {
 	XMLName xml.Name `xml:wifi_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type WifiState struct {
 	XMLName xml.Name `xml:wifi_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	WifiStatus *oval_def.EntityStateBoolType `xml:"wifi_status"`
 
@@ -343,6 +479,10 @@ type WifiState struct {
 type WifinetworkTest struct {
 	XMLName xml.Name `xml:wifinetwork_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -352,12 +492,20 @@ type WifinetworkTest struct {
 type WifinetworkObject struct {
 	XMLName xml.Name `xml:wifinetwork_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type WifinetworkState struct {
 	XMLName xml.Name `xml:wifinetwork_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Ssid *oval_def.EntityStateStringType `xml:"ssid"`
 
@@ -386,6 +534,10 @@ type WifinetworkState struct {
 type TelephonyTest struct {
 	XMLName xml.Name `xml:telephony_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -394,11 +546,19 @@ type TelephonyTest struct {
 // Element
 type TelephonyObject struct {
 	XMLName xml.Name `xml:telephony_object`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 }
 
 // Element
 type TelephonyState struct {
 	XMLName xml.Name `xml:telephony_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	NetworkType *EntityStateNetworkType `xml:"network_type"`
 

@@ -5,12 +5,20 @@ package junos_def
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_def"
+
+	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
 // Element
 type XmlConfigTest struct {
 	XMLName xml.Name `xml:xml_config_test`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -21,12 +29,20 @@ type XmlConfigTest struct {
 type XmlConfigObject struct {
 	XMLName xml.Name `xml:xml_config_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type XmlConfigState struct {
 	XMLName xml.Name `xml:xml_config_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
@@ -37,6 +53,10 @@ type XmlConfigState struct {
 type ShowTest struct {
 	XMLName xml.Name `xml:show_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -46,12 +66,20 @@ type ShowTest struct {
 type ShowObject struct {
 	XMLName xml.Name `xml:show_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type ShowState struct {
 	XMLName xml.Name `xml:show_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Subcommand *oval_def.EntityStateStringType `xml:"subcommand"`
 
@@ -62,6 +90,10 @@ type ShowState struct {
 type VersionTest struct {
 	XMLName xml.Name `xml:version_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -71,12 +103,20 @@ type VersionTest struct {
 type VersionObject struct {
 	XMLName xml.Name `xml:version_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Component *oval_def.EntityStateStringType `xml:"component"`
 
@@ -101,6 +141,10 @@ type VersionState struct {
 type XmlShowTest struct {
 	XMLName xml.Name `xml:xml_show_test`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
@@ -110,12 +154,20 @@ type XmlShowTest struct {
 type XmlShowObject struct {
 	XMLName xml.Name `xml:xml_show_object`
 
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
+
 	Set oval_def.Set `xml:"set"`
 }
 
 // Element
 type XmlShowState struct {
 	XMLName xml.Name `xml:xml_show_state`
+
+	Signature *xml_dsig.Signature `xml:"Signature"`
+
+	Notes *oval.Notes `xml:"notes"`
 
 	Subcommand *oval_def.EntityStateStringType `xml:"subcommand"`
 

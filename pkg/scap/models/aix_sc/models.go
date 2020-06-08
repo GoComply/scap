@@ -5,12 +5,16 @@ package aix_sc
 import (
 	"encoding/xml"
 
+	"github.com/gocomply/scap/pkg/scap/models/oval"
+
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
 // Element
 type InterimFixItem struct {
 	XMLName xml.Name `xml:interim_fix_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
 
@@ -25,6 +29,8 @@ type InterimFixItem struct {
 type FilesetItem struct {
 	XMLName xml.Name `xml:fileset_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
 
 	Level *oval_sc.EntityItemVersionType `xml:"level"`
@@ -37,6 +43,8 @@ type FilesetItem struct {
 // Element
 type FixItem struct {
 	XMLName xml.Name `xml:fix_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
 
@@ -51,6 +59,8 @@ type FixItem struct {
 type NoItem struct {
 	XMLName xml.Name `xml:no_item`
 
+	Message []oval.MessageType `xml:"message"`
+
 	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
 
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
@@ -59,6 +69,8 @@ type NoItem struct {
 // Element
 type OslevelItem struct {
 	XMLName xml.Name `xml:oslevel_item`
+
+	Message []oval.MessageType `xml:"message"`
 
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 }
