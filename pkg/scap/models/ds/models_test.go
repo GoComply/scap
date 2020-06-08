@@ -31,7 +31,14 @@ func TestSanityDsParsing(t *testing.T) {
 	checklists := dataStream.Checklists.ComponentRef
 	assert.Equal(t, len(checklists), 2)
 	assert.Equal(t, checklists[0].Id, "scap_org.open-scap_cref_xccdf.xml")
+	assert.Equal(t, checklists[0].XlinkType, "")
+	assert.Equal(t, checklists[0].XlinkHref, "file:xccdf.sds.xml#scap_1_comp_xccdf.xml")
+	assert.Equal(t, len(checklists[0].Catalog.Uri), 1)
+	// assert.Equal(t, checklists[0].Catalog.Uri[0].Name, "test_deriving_xccdf_result_from_oval_pass.oval.xml")
+
 	assert.Equal(t, checklists[1].Id, "scap_org.open-scap_cref_xccdf-file.xml")
+	assert.Equal(t, checklists[1].XlinkType, "")
+	assert.Equal(t, checklists[1].XlinkHref, "file:xccdf.xml")
 
 	checks := dataStream.Checks.ComponentRef
 	assert.Equal(t, len(checks), 1)
