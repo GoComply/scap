@@ -21,4 +21,11 @@ func TestSanityOcilParsing(t *testing.T) {
 
 	questionnaires := ocil.Questionnaires.Questionnaire
 	assert.Equal(t, len(questionnaires), 1121)
+	assert.Equal(t, questionnaires[0].Id, "ocil:ssg-accounts_user_interactive_home_directory_defined_ocil:questionnaire:1")
+	assert.Equal(t, questionnaires[0].Title.Text, "All Interactive Users Must Have A Home Directory Defined")
+	assert.Equal(t, len(questionnaires[0].Actions.TestActionRef), 1)
+	assert.Equal(t, questionnaires[0].Actions.TestActionRef[0].Text, "ocil:ssg-accounts_user_interactive_home_directory_defined_action:testaction:1")
+
+	testActions := ocil.TestActions.TestAction
+	assert.Equal(t, len(testActions), 0)
 }
