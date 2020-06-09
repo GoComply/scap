@@ -11,6 +11,7 @@ const (
 	DocumentTypeOvalResults
 	DocumentTypeSourceDataStream
 	DocumentTypeXccdfBenchmark
+	DocumentTypeXccdfTailoring
 )
 
 func (typ DocumentType) String() string {
@@ -29,6 +30,8 @@ func (typ DocumentType) String() string {
 		return "SCAP Source DataStream"
 	case DocumentTypeXccdfBenchmark:
 		return "XCCDF Benchmark"
+	case DocumentTypeXccdfTailoring:
+		return "XCCDF Tailoring"
 	case DocumentTypeUnknown:
 		fallthrough
 	default:
@@ -51,6 +54,8 @@ func (typ DocumentType) ShortName() string {
 	case DocumentTypeSourceDataStream:
 		return "sds"
 	case DocumentTypeXccdfBenchmark:
+		fallthrough
+	case DocumentTypeXccdfTailoring:
 		return "xccdf"
 	case DocumentTypeUnknown:
 		fallthrough
