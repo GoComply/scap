@@ -1,5 +1,16 @@
 package ds
 
+import (
+	"strings"
+)
+
+func (ds *DataStreamCollection) GetComponentByRef(ref *ComponentRef) *Component {
+	if strings.HasPrefix(ref.XlinkHref, "#") {
+		return ds.GetComponentById(strings.TrimPrefix(ref.XlinkHref, "#"))
+	}
+	return nil
+}
+
 func (ds *DataStreamCollection) GetComponentById(componentId string) *Component {
 	for idx, _ := range ds.Component {
 		comp := &ds.Component[idx]
