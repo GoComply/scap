@@ -3,7 +3,7 @@ package constants
 type DocumentType int
 
 const (
-	DocumentTypeUknown DocumentType = iota
+	DocumentTypeUnknown DocumentType = iota
 	DocumentTypeCpeDict
 	DocumentTypeOcil
 	DocumentTypeOvalDefinitions
