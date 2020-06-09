@@ -48,7 +48,7 @@ type AccesstokenObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -205,7 +205,7 @@ type ActivedirectoryObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -282,7 +282,7 @@ type Activedirectory57Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -625,7 +625,7 @@ type CmdletObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -706,7 +706,7 @@ type DnscacheObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -777,7 +777,7 @@ type FileObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -882,7 +882,7 @@ type Fileauditedpermissions53Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -995,7 +995,7 @@ type FileauditedpermissionsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1106,7 +1106,7 @@ type Fileeffectiverights53Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1219,7 +1219,7 @@ type FileeffectiverightsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1330,7 +1330,7 @@ type GroupObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1401,7 +1401,7 @@ type GroupSidObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1472,7 +1472,7 @@ type InterfaceObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1553,7 +1553,7 @@ type JunctionObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1624,7 +1624,7 @@ type LicenseObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1766,7 +1766,7 @@ type MetabaseObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1843,7 +1843,7 @@ type NtuserObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2011,7 +2011,7 @@ type PeheaderObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2188,7 +2188,7 @@ type PortObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2265,7 +2265,7 @@ type PrintereffectiverightsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2362,9 +2362,9 @@ type ProcessObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
-	CommandLine oval_def.EntityObjectStringType `xml:"command_line"`
+	CommandLine *oval_def.EntityObjectStringType `xml:"command_line"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2441,7 +2441,7 @@ type Process58Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2526,7 +2526,7 @@ type RegistryObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2607,7 +2607,7 @@ type Regkeyauditedpermissions53Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2718,7 +2718,7 @@ type RegkeyauditedpermissionsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2829,7 +2829,7 @@ type Regkeyeffectiverights53Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -2940,7 +2940,7 @@ type RegkeyeffectiverightsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3051,7 +3051,7 @@ type ServiceObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3140,7 +3140,7 @@ type ServiceeffectiverightsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3241,7 +3241,7 @@ type SharedresourceObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3332,7 +3332,7 @@ type SharedresourceauditedpermissionsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3421,7 +3421,7 @@ type SharedresourceeffectiverightsObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3510,7 +3510,7 @@ type SidObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3581,7 +3581,7 @@ type SidSidObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3652,7 +3652,7 @@ type SystemmetricObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3802,7 +3802,7 @@ type UserObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3903,7 +3903,7 @@ type UserSid55Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -3976,9 +3976,9 @@ type UserSidObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
-	User oval_def.EntityObjectStringType `xml:"user"`
+	User *oval_def.EntityObjectStringType `xml:"user"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -4049,7 +4049,7 @@ type UserrightObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -4120,7 +4120,7 @@ type VolumeObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -4237,7 +4237,7 @@ type WmiObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -4308,7 +4308,7 @@ type Wmi57Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -4379,7 +4379,7 @@ type WuaupdatesearcherObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

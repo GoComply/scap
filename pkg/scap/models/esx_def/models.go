@@ -48,7 +48,7 @@ type Patch56Object struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -125,7 +125,7 @@ type PatchObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -261,7 +261,7 @@ type VisdkmanagedobjectObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

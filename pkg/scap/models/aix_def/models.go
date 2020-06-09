@@ -48,7 +48,7 @@ type InterimFixObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -121,7 +121,7 @@ type FilesetObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -194,7 +194,7 @@ type FixObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -267,7 +267,7 @@ type NoObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

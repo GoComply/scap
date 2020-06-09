@@ -145,9 +145,9 @@ type MgmtData struct {
 type KeyValue struct {
 	XMLName xml.Name `xml:KeyValue`
 
-	DSAKeyValue DSAKeyValue `xml:"DSAKeyValue"`
+	DSAKeyValue *DSAKeyValue `xml:"DSAKeyValue"`
 
-	RSAKeyValue RSAKeyValue `xml:"RSAKeyValue"`
+	RSAKeyValue *RSAKeyValue `xml:"RSAKeyValue"`
 }
 
 // Element
@@ -165,7 +165,7 @@ type RetrievalMethod struct {
 type X509Data struct {
 	XMLName xml.Name `xml:X509Data`
 
-	X509IssuerSerial X509IssuerSerialType `xml:"X509IssuerSerial"`
+	X509IssuerSerial *X509IssuerSerialType `xml:"X509IssuerSerial"`
 
 	X509SKI string `xml:"X509SKI"`
 
@@ -343,9 +343,9 @@ type KeyInfoType struct {
 }
 
 type KeyValueType struct {
-	DSAKeyValue DSAKeyValue `xml:"DSAKeyValue"`
+	DSAKeyValue *DSAKeyValue `xml:"DSAKeyValue"`
 
-	RSAKeyValue RSAKeyValue `xml:"RSAKeyValue"`
+	RSAKeyValue *RSAKeyValue `xml:"RSAKeyValue"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -359,7 +359,7 @@ type RetrievalMethodType struct {
 }
 
 type X509DataType struct {
-	X509IssuerSerial X509IssuerSerialType `xml:"X509IssuerSerial"`
+	X509IssuerSerial *X509IssuerSerialType `xml:"X509IssuerSerial"`
 
 	X509SKI string `xml:"X509SKI"`
 

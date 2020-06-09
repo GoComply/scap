@@ -48,7 +48,7 @@ type AclObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -127,7 +127,7 @@ type ClassMapObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -208,7 +208,7 @@ type InterfaceObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -299,7 +299,7 @@ type LineObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -368,7 +368,7 @@ type PolicyMapObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -443,7 +443,7 @@ type ServicePolicyObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -514,7 +514,7 @@ type SnmpHostObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -593,7 +593,7 @@ type SnmpUserObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -666,7 +666,7 @@ type SnmpGroupObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -735,7 +735,7 @@ type TcpMapObject struct {
 
 	Deprecated string `xml:"deprecated,attr"`
 
-	Set oval_def.Set `xml:"set"`
+	Set *oval_def.Set `xml:"set"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

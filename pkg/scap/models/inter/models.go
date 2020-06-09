@@ -682,7 +682,7 @@ type ChoiceTestActionConditionType struct {
 
 	Result string `xml:"result"`
 
-	TestActionRef TestActionRefType `xml:"test_action_ref"`
+	TestActionRef *TestActionRefType `xml:"test_action_ref"`
 }
 
 type EqualsTestActionConditionType struct {
@@ -694,7 +694,7 @@ type EqualsTestActionConditionType struct {
 
 	Result string `xml:"result"`
 
-	TestActionRef TestActionRefType `xml:"test_action_ref"`
+	TestActionRef *TestActionRefType `xml:"test_action_ref"`
 }
 
 type RangeTestActionConditionType struct {
@@ -704,7 +704,7 @@ type RangeTestActionConditionType struct {
 
 	Result string `xml:"result"`
 
-	TestActionRef TestActionRefType `xml:"test_action_ref"`
+	TestActionRef *TestActionRefType `xml:"test_action_ref"`
 }
 
 type PatternTestActionConditionType struct {
@@ -714,7 +714,7 @@ type PatternTestActionConditionType struct {
 
 	Result string `xml:"result"`
 
-	TestActionRef TestActionRefType `xml:"test_action_ref"`
+	TestActionRef *TestActionRefType `xml:"test_action_ref"`
 }
 
 type PatternType struct {
@@ -734,7 +734,7 @@ type TestActionConditionType struct {
 
 	Result string `xml:"result"`
 
-	TestActionRef TestActionRefType `xml:"test_action_ref"`
+	TestActionRef *TestActionRefType `xml:"test_action_ref"`
 }
 
 type RangeValueType struct {

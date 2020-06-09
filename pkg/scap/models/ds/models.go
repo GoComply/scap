@@ -58,15 +58,15 @@ type Component struct {
 
 	Timestamp string `xml:"timestamp,attr"`
 
-	Benchmark cdf.Benchmark `xml:"Benchmark"`
+	Benchmark *cdf.Benchmark `xml:"Benchmark"`
 
-	OvalDefinitions oval_def.OvalDefinitions `xml:"oval_definitions"`
+	OvalDefinitions *oval_def.OvalDefinitions `xml:"oval_definitions"`
 
-	Ocil inter.Ocil `xml:"ocil"`
+	Ocil *inter.Ocil `xml:"ocil"`
 
-	CpeList cpe_dict.CpeList `xml:"cpe-list"`
+	CpeList *cpe_dict.CpeList `xml:"cpe-list"`
 
-	Tailoring cdf.Tailoring `xml:"Tailoring"`
+	Tailoring *cdf.Tailoring `xml:"Tailoring"`
 }
 
 // Element
