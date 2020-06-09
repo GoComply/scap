@@ -29,7 +29,7 @@ func (typ DocumentType) String() string {
 		return "SCAP Source DataStream"
 	case DocumentTypeXccdfBenchmark:
 		return "XCCDF Benchmark"
-	case DocumentTypeUknown:
+	case DocumentTypeUnknown:
 		fallthrough
 	default:
 		return "Uknown Document"
@@ -52,7 +52,7 @@ func (typ DocumentType) ShortName() string {
 		return "sds"
 	case DocumentTypeXccdfBenchmark:
 		return "xccdf"
-	case DocumentTypeUknown:
+	case DocumentTypeUnknown:
 		fallthrough
 	default:
 		return "unknown"
