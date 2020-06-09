@@ -35,3 +35,26 @@ func (typ DocumentType) String() string {
 		return "Uknown Document"
 	}
 }
+
+func (typ DocumentType) ShortName() string {
+	switch typ {
+	case DocumentTypeCpeDict:
+		return "cpe"
+	case DocumentTypeOcil:
+		return "ocil"
+	case DocumentTypeOvalDefinitions:
+		fallthrough
+	case DocumentTypeOvalSyschar:
+		fallthrough
+	case DocumentTypeOvalResults:
+		return "oval"
+	case DocumentTypeSourceDataStream:
+		return "sds"
+	case DocumentTypeXccdfBenchmark:
+		return "xccdf"
+	case DocumentTypeUknown:
+		fallthrough
+	default:
+		return "unknown"
+	}
+}
