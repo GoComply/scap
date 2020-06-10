@@ -103,3 +103,23 @@ func ReadDocumentFromFile(filepath string) (*Document, error) {
 	}
 	return ReadDocument(reader)
 }
+
+func (doc *Document) Xmlns() string {
+	switch doc.Type {
+	case constants.DocumentTypeXccdfBenchmark:
+		return doc.Benchmark.XMLName.Space
+	case constants.DocumentTypeCpeDict:
+		return doc.CpeList.XMLName.Space
+	case constants.DocumentTypeOvalDefinitions:
+		return doc.OvalDefinitions.XMLName.Space
+	case constants.DocumentTypeOvalResults:
+		return doc.OvalResults.XMLName.Space
+	case constants.DocumentTypeOvalSyschar:
+		return doc.OvalSystemCharacteristics.XMLName.Space
+	case constants.DocumentTypeOcil:
+		return doc.Ocil.XMLName.Space
+	case constants.DocumentTypeSourceDataStream:
+		return doc.DataStreamCollection.XMLName.Space
+	}
+	return ""
+}
