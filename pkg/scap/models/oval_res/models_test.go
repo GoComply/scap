@@ -55,3 +55,11 @@ func TestSanityOvalResultsParsing(t *testing.T) {
 	assert.Equal(t, len(objects[0].Message), 0)
 	assert.Equal(t, len(objects[0].Reference), 1)
 }
+
+func TestOvalResScapVersion(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/oval/5.11/results.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "5.11", doc.ScapVersion())
+}

@@ -22,3 +22,11 @@ func TestSanityOvalDefParsing(t *testing.T) {
 	assert.Equal(t, definitions[0].Metadata.Title, "Test presence /etc/passwd")
 	assert.Equal(t, definitions[0].Metadata.Description, "Test presence /etc/passwd")
 }
+
+func TestOvalDefsScapVersion(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/oval/5.11/comment.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "5.11", doc.ScapVersion())
+}

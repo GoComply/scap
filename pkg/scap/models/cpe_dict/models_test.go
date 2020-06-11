@@ -27,3 +27,11 @@ func TestSimpleParsing(t *testing.T) {
 	assert.Equal(t, item2.References.Reference[0].Href, "http://wordpress.org/plugins/xhanch-my-twitter/changelog/")
 	assert.Equal(t, item2.References.Reference[0].Text, "Xhance My Twitter Plugin page on Wordpress")
 }
+
+func TestCpeDictScapVersion(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/cpe/2.3/official-cpe-dictionary_v2.3.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "2.3", doc.ScapVersion())
+}

@@ -123,3 +123,24 @@ func (doc *Document) Xmlns() string {
 	}
 	return ""
 }
+
+// This comment is self explanatory.
+func (doc *Document) ScapVersion() string {
+	switch doc.Type {
+	case constants.DocumentTypeXccdfBenchmark:
+		return doc.Benchmark.ScapVersion()
+	case constants.DocumentTypeCpeDict:
+		return doc.CpeList.ScapVersion()
+	case constants.DocumentTypeOvalDefinitions:
+		return doc.OvalDefinitions.ScapVersion()
+	case constants.DocumentTypeOvalResults:
+		return doc.OvalResults.ScapVersion()
+	case constants.DocumentTypeOvalSyschar:
+		return doc.OvalSystemCharacteristics.ScapVersion()
+	case constants.DocumentTypeOcil:
+		return doc.Ocil.ScapVersion()
+	case constants.DocumentTypeSourceDataStream:
+		return doc.DataStreamCollection.ScapVersion()
+	}
+	return ""
+}

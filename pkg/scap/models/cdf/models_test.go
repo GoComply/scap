@@ -49,3 +49,11 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	assert.Equal(t, checks[0].CheckContentRef[0].Name, "oval:def:20120006")
 
 }
+
+func TestXccdfScapVersion(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/xccdf/1.2/test_xccdf_complex_check_nand.xccdf.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "1.1", doc.ScapVersion())
+}

@@ -34,3 +34,11 @@ func TestSanityOvalSyscharParsing(t *testing.T) {
 	assert.Equal(t, len(objects), 223)
 	assert.Equal(t, len(objects[0].Message), 1)
 }
+
+func TestOvalSyscharScapVersion(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/oval/5.11/system-characteristics.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "5.11.3", doc.ScapVersion())
+}

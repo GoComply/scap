@@ -1,5 +1,9 @@
 package oval_def
 
+func (defs *OvalDefinitions) ScapVersion() string {
+	return defs.Generator.ScapVersion()
+}
+
 func (defs *OvalDefinitions) DefinitionClasses() []DefinitionClass {
 	res := []DefinitionClass{}
 	seen := map[string]struct{}{}

@@ -29,3 +29,11 @@ func TestSanityOcilParsing(t *testing.T) {
 	testActions := ocil.TestActions.TestAction
 	assert.Equal(t, len(testActions), 0)
 }
+
+func TestOcilScapVersion(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/ocil/2.0/ssg-rhel8-ocil.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.Equal(t, "2.0", doc.ScapVersion())
+}
