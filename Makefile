@@ -21,3 +21,8 @@ regenerate-models: gocomply_xsd2go .scap_schemas
 
 .scap_schemas:
 	git clone --depth 1 https://github.com/openscap/openscap .scap_schemas
+
+vendor:
+	$(GO) mod tidy
+	$(GO) mod vendor
+	$(GO) mod verify
