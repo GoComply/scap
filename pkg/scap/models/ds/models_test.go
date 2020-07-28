@@ -12,6 +12,18 @@ func TestSanityDsParsing(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
+	expectSanityDS(t, doc)
+}
+
+func TestSanityDsParsingBzip2(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/ds/1.3/sds.ds.xml.bz2")
+	if err != nil {
+		t.Fatal(err)
+	}
+	expectSanityDS(t, doc)
+}
+
+func expectSanityDS(t *testing.T, doc *scap_document.Document) {
 	ds := doc.DataStreamCollection
 	assert.NotNil(t, ds)
 	assert.Equal(t, ds.XMLName.Space, "http://scap.nist.gov/schema/scap/source/1.2")
