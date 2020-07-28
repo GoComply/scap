@@ -30,6 +30,7 @@ const (
 type Document struct {
 	XMLName xml.Name               `json:"-"`
 	Type    constants.DocumentType `json:"-"`
+	Bzip2   bool                   `json:"-"`
 	*cdf.Benchmark
 	*cpe_dict.CpeList
 	*oval_def.OvalDefinitions
@@ -40,7 +41,7 @@ type Document struct {
 }
 
 func ReadDocument(r io.Reader) (*Document, error) {
-	r, err := bz2.Decompress(r)
+	r, bzip2, err := bz2.Decompress(r)
 	if err != nil {
 		return nil, err
 	}
@@ -58,43 +59,43 @@ func ReadDocument(r io.Reader) (*Document, error) {
 				if err := d.DecodeElement(&sds, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{DataStreamCollection: &sds, Type: constants.DocumentTypeSourceDataStream}, nil
+				return &Document{Bzip2: bzip2, DataStreamCollection: &sds, Type: constants.DocumentTypeSourceDataStream}, nil
 			case ovalDefinitionsElement:
 				var ovalDefs oval_def.OvalDefinitions
 				if err := d.DecodeElement(&ovalDefs, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{OvalDefinitions: &ovalDefs, Type: constants.DocumentTypeOvalDefinitions}, nil
+				return &Document{Bzip2: bzip2, OvalDefinitions: &ovalDefs, Type: constants.DocumentTypeOvalDefinitions}, nil
 			case ovalSystemCharacteristicsElement:
 				var ovalSyschar oval_sc.OvalSystemCharacteristics
 				if err := d.DecodeElement(&ovalSyschar, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{OvalSystemCharacteristics: &ovalSyschar, Type: constants.DocumentTypeOvalSyschar}, nil
+				return &Document{Bzip2: bzip2, OvalSystemCharacteristics: &ovalSyschar, Type: constants.DocumentTypeOvalSyschar}, nil
 			case ovalResultsElement:
 				var ovalRes oval_res.OvalResults
 				if err := d.DecodeElement(&ovalRes, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{OvalResults: &ovalRes, Type: constants.DocumentTypeOvalResults}, nil
+				return &Document{Bzip2: bzip2, OvalResults: &ovalRes, Type: constants.DocumentTypeOvalResults}, nil
 			case xccdfBenchmarkElement:
 				var bench cdf.Benchmark
 				if err := d.DecodeElement(&bench, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{Benchmark: &bench, Type: constants.DocumentTypeXccdfBenchmark}, nil
+				return &Document{Bzip2: bzip2, Benchmark: &bench, Type: constants.DocumentTypeXccdfBenchmark}, nil
 			case cpeCpeListElement:
 				var cpeList cpe_dict.CpeList
 				if err := d.DecodeElement(&cpeList, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{CpeList: &cpeList, Type: constants.DocumentTypeCpeDict}, nil
+				return &Document{Bzip2: bzip2, CpeList: &cpeList, Type: constants.DocumentTypeCpeDict}, nil
 			case ocilOcilElement:
 				var ocil inter.Ocil
 				if err := d.DecodeElement(&ocil, &startElement); err != nil {
 					return nil, err
 				}
-				return &Document{Ocil: &ocil, Type: constants.DocumentTypeOcil}, nil
+				return &Document{Bzip2: bzip2, Ocil: &ocil, Type: constants.DocumentTypeOcil}, nil
 			}
 		}
 	}
