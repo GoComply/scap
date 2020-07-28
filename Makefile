@@ -6,7 +6,7 @@ all: regenerate-models test
 test:
 	$(GO) test ./...
 
-.PHONY: gocomply_xsd2go
+.PHONY: gocomply_xsd2go vendor
 gocomply_xsd2go:
 ifeq ("$(wildcard $(GOPATH)/bin/gocomply_xsd2go)","")
 	go get -u -v github.com/gocomply/xsd2go/cli/gocomply_xsd2go
