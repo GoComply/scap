@@ -5,6 +5,8 @@ This project represents complete parsers of SCAP standard. Parsers are generated
 
 Users are advised to use [OpenSCAP](https://www.open-scap.org/) for SCAP evaluation and for any advanced use of SCAP standard. This project is beneficial for quick manipulation of SCAP data within golang code.
 
+![SCAP Build CI](https://github.com/GoComply/scap/workflows/SCAP%20Build%20CI/badge.svg)
+
 ## Examplary usage
 ```
 	import "github.com/gocomply/scap/pkg/scap/scap_document"
