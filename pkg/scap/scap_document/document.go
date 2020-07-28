@@ -6,6 +6,7 @@ import (
 	"io"
 	"os"
 
+	"github.com/gocomply/scap/pkg/bz2"
 	"github.com/gocomply/scap/pkg/scap/constants"
 	"github.com/gocomply/scap/pkg/scap/models/cdf"
 	"github.com/gocomply/scap/pkg/scap/models/cpe_dict"
@@ -39,6 +40,10 @@ type Document struct {
 }
 
 func ReadDocument(r io.Reader) (*Document, error) {
+	r, err := bz2.Decompress(r)
+	if err != nil {
+		return nil, err
+	}
 	d := xml.NewDecoder(r)
 	for {
 		token, err := d.Token()
