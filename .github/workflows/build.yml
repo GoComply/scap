@@ -1,4 +1,4 @@
-name: SCAP Build CI
+name: Build CI
 
 on:
   push:
