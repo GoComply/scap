@@ -14,7 +14,7 @@ type GetconfItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
@@ -31,7 +31,7 @@ type NddItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -48,7 +48,7 @@ type PatchItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
@@ -67,7 +67,7 @@ type SwlistItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
@@ -90,7 +90,7 @@ type TrustedItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 

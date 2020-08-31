@@ -14,7 +14,7 @@ type FamilyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Family *EntityItemFamilyType `xml:"family"`
 
@@ -27,7 +27,7 @@ type FilehashItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -50,7 +50,7 @@ type Filehash58Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -73,7 +73,7 @@ type EnvironmentvariableItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -88,7 +88,7 @@ type Environmentvariable58Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
@@ -105,7 +105,7 @@ type LdapItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -128,7 +128,7 @@ type Ldap57Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -151,7 +151,7 @@ type SqlItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Engine *EntityItemEngineType `xml:"engine"`
 
@@ -172,7 +172,7 @@ type Sql57Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Engine *EntityItemEngineType `xml:"engine"`
 
@@ -193,7 +193,7 @@ type TextfilecontentItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -222,7 +222,7 @@ type VariableItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	VarRef *EntityItemVariableRefType `xml:"var_ref"`
 
@@ -237,7 +237,7 @@ type XmlfilecontentItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -260,7 +260,7 @@ type YamlfilecontentItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 

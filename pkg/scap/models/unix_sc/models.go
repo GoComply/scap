@@ -14,7 +14,7 @@ type DnscacheItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
@@ -31,7 +31,7 @@ type FileItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -88,7 +88,7 @@ type FileextendedattributeItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -109,7 +109,7 @@ type GconfItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -136,7 +136,7 @@ type InetdItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -161,7 +161,7 @@ type InterfaceItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -186,7 +186,7 @@ type PasswordItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -213,7 +213,7 @@ type ProcessItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Command *oval_sc.EntityItemStringType `xml:"command"`
 
@@ -244,7 +244,7 @@ type Process58Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
@@ -285,7 +285,7 @@ type RoutingtableItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Destination *oval_sc.EntityItemIPAddressType `xml:"destination"`
 
@@ -304,7 +304,7 @@ type RunlevelItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -323,7 +323,7 @@ type SccsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -354,7 +354,7 @@ type ShadowItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -385,7 +385,7 @@ type SymlinkItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -400,7 +400,7 @@ type SysctlItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -415,7 +415,7 @@ type UnameItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	MachineClass *oval_sc.EntityItemStringType `xml:"machine_class"`
 
@@ -438,7 +438,7 @@ type XinetdItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 

@@ -14,7 +14,7 @@ type AccountinfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -39,7 +39,7 @@ type AuthorizationdbItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	RightName *oval_sc.EntityItemStringType `xml:"right_name"`
 
@@ -56,7 +56,7 @@ type CorestorageItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Uuid oval_sc.EntityItemStringType `xml:"uuid"`
 
@@ -73,7 +73,7 @@ type DiskutilItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -124,7 +124,7 @@ type GatekeeperItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Enabled oval_sc.EntityItemBoolType `xml:"enabled"`
 
@@ -139,7 +139,7 @@ type InetlisteningserverItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
@@ -170,7 +170,7 @@ type Inetlisteningserver510Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -201,7 +201,7 @@ type KeychainItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -218,7 +218,7 @@ type LaunchdItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Label oval_sc.EntityItemStringType `xml:"label"`
 
@@ -235,7 +235,7 @@ type NvramItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	NvramVar *oval_sc.EntityItemStringType `xml:"nvram_var"`
 
@@ -250,7 +250,7 @@ type PlistItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -273,7 +273,7 @@ type Plist511Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	AppId *oval_sc.EntityItemStringType `xml:"app_id"`
 
@@ -292,7 +292,7 @@ type PwpolicyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -321,7 +321,7 @@ type Pwpolicy59Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	TargetUser *oval_sc.EntityItemStringType `xml:"target_user"`
 
@@ -382,7 +382,7 @@ type RlimitItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	CpuCurrent oval_sc.EntityItemIntType `xml:"cpu_current"`
 
@@ -429,7 +429,7 @@ type SoftwareupdateItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Schedule oval_sc.EntityItemBoolType `xml:"schedule"`
 
@@ -444,7 +444,7 @@ type SystemprofilerItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	DataType *EntityItemDataTypeType `xml:"data_type"`
 
@@ -461,7 +461,7 @@ type SystemsetupItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Timezone oval_sc.EntityItemStringType `xml:"timezone"`
 

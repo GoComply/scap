@@ -14,7 +14,7 @@ type HttpdItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 

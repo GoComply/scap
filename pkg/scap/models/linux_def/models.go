@@ -17,15 +17,15 @@ type ApparmorstatusTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -44,9 +44,9 @@ type ApparmorstatusObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -61,11 +61,11 @@ type ApparmorstatusState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	LoadedProfilesCount *oval_def.EntityStateIntType `xml:"loaded_profiles_count"`
 
@@ -94,15 +94,15 @@ type DpkginfoTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -121,9 +121,9 @@ type DpkginfoObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -140,11 +140,11 @@ type DpkginfoState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -171,15 +171,15 @@ type IflistenersTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -198,9 +198,9 @@ type IflistenersObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -217,11 +217,11 @@ type IflistenersState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	InterfaceName *oval_def.EntityStateStringType `xml:"interface_name"`
 
@@ -248,15 +248,15 @@ type InetlisteningserversTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -275,9 +275,9 @@ type InetlisteningserversObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -294,11 +294,11 @@ type InetlisteningserversState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
 
@@ -333,15 +333,15 @@ type PartitionTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -360,9 +360,9 @@ type PartitionObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -379,11 +379,11 @@ type PartitionState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	MountPoint *oval_def.EntityStateStringType `xml:"mount_point"`
 
@@ -418,15 +418,15 @@ type RpminfoTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -445,9 +445,9 @@ type RpminfoObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -464,11 +464,11 @@ type RpminfoState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -501,15 +501,15 @@ type RpmverifyTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -528,9 +528,9 @@ type RpmverifyObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -547,11 +547,11 @@ type RpmverifyState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -598,15 +598,15 @@ type RpmverifyfileTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -625,9 +625,9 @@ type RpmverifyfileObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -644,11 +644,11 @@ type RpmverifyfileState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -707,15 +707,15 @@ type RpmverifypackageTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -734,9 +734,9 @@ type RpmverifypackageObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -753,11 +753,11 @@ type RpmverifypackageState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -792,15 +792,15 @@ type SelinuxbooleanTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -819,9 +819,9 @@ type SelinuxbooleanObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -838,11 +838,11 @@ type SelinuxbooleanState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -863,15 +863,15 @@ type SelinuxsecuritycontextTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -890,9 +890,9 @@ type SelinuxsecuritycontextObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -909,11 +909,11 @@ type SelinuxsecuritycontextState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
@@ -958,15 +958,15 @@ type SlackwarepkginfoTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -985,9 +985,9 @@ type SlackwarepkginfoObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -1004,11 +1004,11 @@ type SlackwarepkginfoState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
@@ -1031,15 +1031,15 @@ type SystemdunitdependencyTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -1058,9 +1058,9 @@ type SystemdunitdependencyObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -1077,11 +1077,11 @@ type SystemdunitdependencyState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Unit *oval_def.EntityStateStringType `xml:"unit"`
 
@@ -1100,15 +1100,15 @@ type SystemdunitpropertyTest struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
@@ -1127,9 +1127,9 @@ type SystemdunitpropertyObject struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -1146,11 +1146,11 @@ type SystemdunitpropertyState struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Unit *oval_def.EntityStateStringType `xml:"unit"`
 
@@ -1236,85 +1236,85 @@ type SlackwarepkginfoStateVersion struct {
 // XSD ComplexType declarations
 
 type RpmInfoBehaviors struct {
-	Filepaths string `xml:"filepaths,attr"`
+	Filepaths string `xml:"filepaths,attr,omitempty"`
 }
 
 type RpmVerifyBehaviors struct {
-	Nodeps string `xml:"nodeps,attr"`
+	Nodeps string `xml:"nodeps,attr,omitempty"`
 
-	Nodigest string `xml:"nodigest,attr"`
+	Nodigest string `xml:"nodigest,attr,omitempty"`
 
-	Nofiles string `xml:"nofiles,attr"`
+	Nofiles string `xml:"nofiles,attr,omitempty"`
 
-	Noscripts string `xml:"noscripts,attr"`
+	Noscripts string `xml:"noscripts,attr,omitempty"`
 
-	Nosignature string `xml:"nosignature,attr"`
+	Nosignature string `xml:"nosignature,attr,omitempty"`
 
-	Nolinkto string `xml:"nolinkto,attr"`
+	Nolinkto string `xml:"nolinkto,attr,omitempty"`
 
-	Nomd5 string `xml:"nomd5,attr"`
+	Nomd5 string `xml:"nomd5,attr,omitempty"`
 
-	Nosize string `xml:"nosize,attr"`
+	Nosize string `xml:"nosize,attr,omitempty"`
 
-	Nouser string `xml:"nouser,attr"`
+	Nouser string `xml:"nouser,attr,omitempty"`
 
-	Nogroup string `xml:"nogroup,attr"`
+	Nogroup string `xml:"nogroup,attr,omitempty"`
 
-	Nomtime string `xml:"nomtime,attr"`
+	Nomtime string `xml:"nomtime,attr,omitempty"`
 
-	Nomode string `xml:"nomode,attr"`
+	Nomode string `xml:"nomode,attr,omitempty"`
 
-	Nordev string `xml:"nordev,attr"`
+	Nordev string `xml:"nordev,attr,omitempty"`
 
-	Noconfigfiles string `xml:"noconfigfiles,attr"`
+	Noconfigfiles string `xml:"noconfigfiles,attr,omitempty"`
 
-	Noghostfiles string `xml:"noghostfiles,attr"`
+	Noghostfiles string `xml:"noghostfiles,attr,omitempty"`
 }
 
 type RpmVerifyFileBehaviors struct {
-	Nolinkto string `xml:"nolinkto,attr"`
+	Nolinkto string `xml:"nolinkto,attr,omitempty"`
 
-	Nomd5 string `xml:"nomd5,attr"`
+	Nomd5 string `xml:"nomd5,attr,omitempty"`
 
-	Nosize string `xml:"nosize,attr"`
+	Nosize string `xml:"nosize,attr,omitempty"`
 
-	Nouser string `xml:"nouser,attr"`
+	Nouser string `xml:"nouser,attr,omitempty"`
 
-	Nogroup string `xml:"nogroup,attr"`
+	Nogroup string `xml:"nogroup,attr,omitempty"`
 
-	Nomtime string `xml:"nomtime,attr"`
+	Nomtime string `xml:"nomtime,attr,omitempty"`
 
-	Nomode string `xml:"nomode,attr"`
+	Nomode string `xml:"nomode,attr,omitempty"`
 
-	Nordev string `xml:"nordev,attr"`
+	Nordev string `xml:"nordev,attr,omitempty"`
 
-	Noconfigfiles string `xml:"noconfigfiles,attr"`
+	Noconfigfiles string `xml:"noconfigfiles,attr,omitempty"`
 
-	Noghostfiles string `xml:"noghostfiles,attr"`
+	Noghostfiles string `xml:"noghostfiles,attr,omitempty"`
 
-	Nofiledigest string `xml:"nofiledigest,attr"`
+	Nofiledigest string `xml:"nofiledigest,attr,omitempty"`
 
-	Nocaps string `xml:"nocaps,attr"`
+	Nocaps string `xml:"nocaps,attr,omitempty"`
 }
 
 type RpmVerifyPackageBehaviors struct {
-	Nodeps string `xml:"nodeps,attr"`
+	Nodeps string `xml:"nodeps,attr,omitempty"`
 
-	Nodigest string `xml:"nodigest,attr"`
+	Nodigest string `xml:"nodigest,attr,omitempty"`
 
-	Noscripts string `xml:"noscripts,attr"`
+	Noscripts string `xml:"noscripts,attr,omitempty"`
 
-	Nosignature string `xml:"nosignature,attr"`
+	Nosignature string `xml:"nosignature,attr,omitempty"`
 }
 
 type FileBehaviors struct {
-	MaxDepth string `xml:"max_depth,attr"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse string `xml:"recurse,attr"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection string `xml:"recurse_direction,attr"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem string `xml:"recurse_file_system,attr"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 }
 
 type EntityStateRpmVerifyResultType struct {

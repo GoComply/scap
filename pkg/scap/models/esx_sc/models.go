@@ -14,7 +14,7 @@ type PatchItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
 
@@ -39,7 +39,7 @@ type VersionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Release *oval_sc.EntityItemVersionType `xml:"release"`
 
@@ -54,7 +54,7 @@ type VisdkmanagedobjectItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 

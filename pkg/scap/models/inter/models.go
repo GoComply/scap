@@ -178,9 +178,9 @@ type Question struct {
 type BooleanQuestion struct {
 	XMLName xml.Name `xml:boolean_question`
 
-	DefaultAnswer string `xml:"default_answer,attr"`
+	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
-	Model string `xml:"model,attr"`
+	Model string `xml:"model,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -197,7 +197,7 @@ type BooleanQuestion struct {
 type ChoiceQuestion struct {
 	XMLName xml.Name `xml:choice_question`
 
-	DefaultAnswerRef string `xml:"default_answer_ref,attr"`
+	DefaultAnswerRef string `xml:"default_answer_ref,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -214,7 +214,7 @@ type ChoiceQuestion struct {
 type NumericQuestion struct {
 	XMLName xml.Name `xml:numeric_question`
 
-	DefaultAnswer string `xml:"default_answer,attr"`
+	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -231,7 +231,7 @@ type NumericQuestion struct {
 type StringQuestion struct {
 	XMLName xml.Name `xml:string_question`
 
-	DefaultAnswer string `xml:"default_answer,attr"`
+	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -361,7 +361,7 @@ type QuestionResult struct {
 
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 }
 
 // Element
@@ -370,7 +370,7 @@ type BooleanQuestionResult struct {
 
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer bool `xml:"answer"`
 }
@@ -381,7 +381,7 @@ type ChoiceQuestionResult struct {
 
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer ChoiceAnswerType `xml:"answer"`
 }
@@ -392,7 +392,7 @@ type NumericQuestionResult struct {
 
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer float64 `xml:"answer"`
 }
@@ -403,7 +403,7 @@ type StringQuestionResult struct {
 
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer string `xml:"answer"`
 }
@@ -517,7 +517,7 @@ type QuestionnairesType struct {
 type QuestionnaireType struct {
 	Id string `xml:"id,attr"`
 
-	ChildOnly string `xml:"child_only,attr"`
+	ChildOnly string `xml:"child_only,attr,omitempty"`
 
 	Revision string `xml:"revision,attr"`
 
@@ -686,7 +686,7 @@ type ChoiceTestActionConditionType struct {
 }
 
 type EqualsTestActionConditionType struct {
-	VarRef string `xml:"var_ref,attr"`
+	VarRef string `xml:"var_ref,attr,omitempty"`
 
 	Value []float64 `xml:"value"`
 
@@ -718,7 +718,7 @@ type PatternTestActionConditionType struct {
 }
 
 type PatternType struct {
-	VarRef string `xml:"var_ref,attr"`
+	VarRef string `xml:"var_ref,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -740,7 +740,7 @@ type TestActionConditionType struct {
 type RangeValueType struct {
 	Inclusive string `xml:"inclusive,attr"`
 
-	VarRef string `xml:"var_ref,attr"`
+	VarRef string `xml:"var_ref,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -770,9 +770,9 @@ type QuestionType struct {
 }
 
 type BooleanQuestionType struct {
-	DefaultAnswer string `xml:"default_answer,attr"`
+	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
-	Model string `xml:"model,attr"`
+	Model string `xml:"model,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -786,7 +786,7 @@ type BooleanQuestionType struct {
 }
 
 type ChoiceQuestionType struct {
-	DefaultAnswerRef string `xml:"default_answer_ref,attr"`
+	DefaultAnswerRef string `xml:"default_answer_ref,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -800,7 +800,7 @@ type ChoiceQuestionType struct {
 }
 
 type NumericQuestionType struct {
-	DefaultAnswer string `xml:"default_answer,attr"`
+	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -814,7 +814,7 @@ type NumericQuestionType struct {
 }
 
 type StringQuestionType struct {
-	DefaultAnswer string `xml:"default_answer,attr"`
+	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -830,7 +830,7 @@ type StringQuestionType struct {
 type ChoiceType struct {
 	Id string `xml:"id,attr"`
 
-	VarRef string `xml:"var_ref,attr"`
+	VarRef string `xml:"var_ref,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -848,9 +848,9 @@ type InstructionsType struct {
 }
 
 type ResultsType struct {
-	StartTime string `xml:"start_time,attr"`
+	StartTime string `xml:"start_time,attr,omitempty"`
 
-	EndTime string `xml:"end_time,attr"`
+	EndTime string `xml:"end_time,attr,omitempty"`
 
 	Title *TextType `xml:"title"`
 
@@ -896,13 +896,13 @@ type TestActionResultType struct {
 type QuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 }
 
 type BooleanQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer bool `xml:"answer"`
 }
@@ -910,7 +910,7 @@ type BooleanQuestionResultType struct {
 type ChoiceQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer ChoiceAnswerType `xml:"answer"`
 }
@@ -918,7 +918,7 @@ type ChoiceQuestionResultType struct {
 type NumericQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer float64 `xml:"answer"`
 }
@@ -926,7 +926,7 @@ type NumericQuestionResultType struct {
 type StringQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr"`
+	Response string `xml:"response,attr,omitempty"`
 
 	Answer string `xml:"answer"`
 }
@@ -942,7 +942,7 @@ type ArtifactsType struct {
 type ArtifactType struct {
 	Id string `xml:"id,attr"`
 
-	Persistent string `xml:"persistent,attr"`
+	Persistent string `xml:"persistent,attr,omitempty"`
 
 	Revision string `xml:"revision,attr"`
 
@@ -960,7 +960,7 @@ type ArtifactRefsType struct {
 type ArtifactRefType struct {
 	Idref string `xml:"idref,attr"`
 
-	Required string `xml:"required,attr"`
+	Required string `xml:"required,attr,omitempty"`
 }
 
 type ArtifactResultsType struct {
@@ -1140,9 +1140,9 @@ type ReferenceType struct {
 }
 
 type StepType struct {
-	IsDone string `xml:"is_done,attr"`
+	IsDone string `xml:"is_done,attr,omitempty"`
 
-	IsRequired string `xml:"is_required,attr"`
+	IsRequired string `xml:"is_required,attr,omitempty"`
 
 	Description *TextType `xml:"description"`
 
@@ -1184,9 +1184,9 @@ type ReferencesType struct {
 }
 
 type OperationType struct {
-	Operation string `xml:"operation,attr"`
+	Operation string `xml:"operation,attr,omitempty"`
 
-	Negate string `xml:"negate,attr"`
+	Negate string `xml:"negate,attr,omitempty"`
 
 	TestActionRef []TestActionRefType `xml:"test_action_ref"`
 }

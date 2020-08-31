@@ -14,7 +14,7 @@ type ApparmorstatusItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	LoadedProfilesCount *oval_sc.EntityItemIntType `xml:"loaded_profiles_count"`
 
@@ -39,7 +39,7 @@ type DpkginfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -62,7 +62,7 @@ type IflistenersItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
 
@@ -85,7 +85,7 @@ type InetlisteningserverItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -116,7 +116,7 @@ type PartitionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	MountPoint *oval_sc.EntityItemStringType `xml:"mount_point"`
 
@@ -147,7 +147,7 @@ type RpminfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -176,7 +176,7 @@ type RpmverifyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -219,7 +219,7 @@ type RpmverifyfileItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -274,7 +274,7 @@ type RpmverifypackageItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -305,7 +305,7 @@ type SelinuxbooleanItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -322,7 +322,7 @@ type SelinuxsecuritycontextItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -363,7 +363,7 @@ type SlackwarepkginfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -382,7 +382,7 @@ type SystemdunitdependencyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
@@ -397,7 +397,7 @@ type SystemdunitpropertyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 

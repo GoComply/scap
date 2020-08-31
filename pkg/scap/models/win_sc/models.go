@@ -14,7 +14,7 @@ type AccesstokenItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	SecurityPrinciple *oval_sc.EntityItemStringType `xml:"security_principle"`
 
@@ -117,7 +117,7 @@ type ActivedirectoryItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	NamingContext *EntityItemNamingContextType `xml:"naming_context"`
 
@@ -140,7 +140,7 @@ type Activedirectory57Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	NamingContext *EntityItemNamingContextType `xml:"naming_context"`
 
@@ -163,7 +163,7 @@ type AuditeventpolicyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	AccountLogon *EntityItemAuditType `xml:"account_logon"`
 
@@ -192,7 +192,7 @@ type AuditeventpolicysubcategoriesItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	CredentialValidation *EntityItemAuditType `xml:"credential_validation"`
 
@@ -325,7 +325,7 @@ type CmdletItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ModuleName *oval_sc.EntityItemStringType `xml:"module_name"`
 
@@ -352,7 +352,7 @@ type DnscacheItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
@@ -369,7 +369,7 @@ type FileItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -420,7 +420,7 @@ type FileauditedpermissionsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -481,7 +481,7 @@ type FileeffectiverightsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -542,7 +542,7 @@ type GroupItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Group *oval_sc.EntityItemStringType `xml:"group"`
 
@@ -559,7 +559,7 @@ type GroupSidItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	GroupSid *oval_sc.EntityItemStringType `xml:"group_sid"`
 
@@ -576,7 +576,7 @@ type InterfaceItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -603,7 +603,7 @@ type JunctionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Path oval_sc.EntityItemStringType `xml:"path"`
 
@@ -620,7 +620,7 @@ type LicenseItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -637,7 +637,7 @@ type LockoutpolicyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ForceLogoff *oval_sc.EntityItemIntType `xml:"force_logoff"`
 
@@ -656,7 +656,7 @@ type MetabaseItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -679,7 +679,7 @@ type NtuserItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -716,7 +716,7 @@ type PasswordpolicyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	MaxPasswdAge *oval_sc.EntityItemIntType `xml:"max_passwd_age"`
 
@@ -741,7 +741,7 @@ type PeheaderItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -864,7 +864,7 @@ type PortItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
 
@@ -887,7 +887,7 @@ type PrintereffectiverightsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	PrinterName *oval_sc.EntityItemStringType `xml:"printer_name"`
 
@@ -930,7 +930,7 @@ type ProcessItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
@@ -961,7 +961,7 @@ type RegistryItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
@@ -988,7 +988,7 @@ type RegkeyauditedpermissionsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
@@ -1047,7 +1047,7 @@ type RegkeyeffectiverightsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
@@ -1106,7 +1106,7 @@ type ServiceItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -1141,7 +1141,7 @@ type ServiceeffectiverightsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -1188,7 +1188,7 @@ type SharedresourceItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
@@ -1225,7 +1225,7 @@ type SharedresourceauditedpermissionsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
@@ -1260,7 +1260,7 @@ type SharedresourceeffectiverightsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
@@ -1295,7 +1295,7 @@ type SidItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
@@ -1312,7 +1312,7 @@ type SidSidItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
@@ -1329,7 +1329,7 @@ type SystemmetricItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Index *EntityItemSystemMetricIndexType `xml:"index"`
 
@@ -1344,7 +1344,7 @@ type UacItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	AdminApprovalMode *oval_sc.EntityItemBoolType `xml:"admin_approval_mode"`
 
@@ -1373,7 +1373,7 @@ type UserItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	User *oval_sc.EntityItemStringType `xml:"user"`
 
@@ -1420,7 +1420,7 @@ type UserSidItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	UserSid *oval_sc.EntityItemStringType `xml:"user_sid"`
 
@@ -1439,7 +1439,7 @@ type UserrightItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Userright *EntityItemUserRightType `xml:"userright"`
 
@@ -1456,7 +1456,7 @@ type VolumeItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Rootpath *oval_sc.EntityItemStringType `xml:"rootpath"`
 
@@ -1519,7 +1519,7 @@ type WmiItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Namespace *oval_sc.EntityItemStringType `xml:"namespace"`
 
@@ -1536,7 +1536,7 @@ type Wmi57Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Namespace *oval_sc.EntityItemStringType `xml:"namespace"`
 
@@ -1553,7 +1553,7 @@ type WuaupdatesearcherItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	SearchCriteria *oval_sc.EntityItemStringType `xml:"search_criteria"`
 

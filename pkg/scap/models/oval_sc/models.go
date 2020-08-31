@@ -29,7 +29,7 @@ type Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Message []oval.MessageType `xml:"message"`
 }
@@ -69,9 +69,9 @@ type ObjectType struct {
 
 	Version string `xml:"version,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr"`
+	VariableInstance string `xml:"variable_instance,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment string `xml:"comment,attr,omitempty"`
 
 	Flag string `xml:"flag,attr"`
 
@@ -99,7 +99,7 @@ type SystemDataType struct {
 type ItemType struct {
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Message []oval.MessageType `xml:"message"`
 }

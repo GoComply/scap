@@ -14,7 +14,7 @@ type FacetItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
@@ -31,7 +31,7 @@ type ImageItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
@@ -48,7 +48,7 @@ type IsainfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Bits *oval_sc.EntityItemIntType `xml:"bits"`
 
@@ -65,7 +65,7 @@ type NddItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -84,7 +84,7 @@ type PackageItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -107,7 +107,7 @@ type Package511Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Publisher *oval_sc.EntityItemStringType `xml:"publisher"`
 
@@ -136,7 +136,7 @@ type PackageavoidlistItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
@@ -149,7 +149,7 @@ type PackagecheckItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -188,7 +188,7 @@ type PackagefreezelistItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
@@ -201,7 +201,7 @@ type PackagepublisherItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -234,7 +234,7 @@ type PatchItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Base *oval_sc.EntityItemIntType `xml:"base"`
 
@@ -249,7 +249,7 @@ type SmfItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
@@ -274,7 +274,7 @@ type SmfpropertyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Service *oval_sc.EntityItemStringType `xml:"service"`
 
@@ -295,7 +295,7 @@ type VariantItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
@@ -312,7 +312,7 @@ type VirtualizationinfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Current *oval_sc.EntityItemStringType `xml:"current"`
 

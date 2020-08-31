@@ -14,7 +14,7 @@ type SpwebapplicationItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Webapplicationurl *oval_sc.EntityItemStringType `xml:"webapplicationurl"`
 
@@ -129,7 +129,7 @@ type SpgroupItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -150,7 +150,7 @@ type SpwebItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Webcollectionurl *oval_sc.EntityItemStringType `xml:"webcollectionurl"`
 
@@ -171,7 +171,7 @@ type SplistItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -190,7 +190,7 @@ type SpantivirussettingsItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Spwebservicename *oval_sc.EntityItemStringType `xml:"spwebservicename"`
 
@@ -221,7 +221,7 @@ type SpsiteadministrationItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -238,7 +238,7 @@ type SpsiteItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -255,7 +255,7 @@ type SpcrawlruleItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -282,7 +282,7 @@ type SpjobdefinitionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -303,7 +303,7 @@ type Spjobdefinition510Item struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -324,7 +324,7 @@ type BestbetItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -343,7 +343,7 @@ type InfopolicycollItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -364,7 +364,7 @@ type SpdiagnosticsserviceItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -389,7 +389,7 @@ type SpdiagnosticslevelItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -412,7 +412,7 @@ type SppolicyfeatureItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -443,7 +443,7 @@ type SppolicyItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 

@@ -21,11 +21,11 @@ type CpeItem struct {
 
 	Name string `xml:"name,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
-	DeprecatedBy string `xml:"deprecated_by,attr"`
+	DeprecatedBy string `xml:"deprecated_by,attr,omitempty"`
 
-	DeprecationDate string `xml:"deprecation_date,attr"`
+	DeprecationDate string `xml:"deprecation_date,attr,omitempty"`
 
 	Title []TextType `xml:"title"`
 
@@ -60,11 +60,11 @@ type GeneratorType struct {
 type ItemType struct {
 	Name string `xml:"name,attr"`
 
-	Deprecated string `xml:"deprecated,attr"`
+	Deprecated string `xml:"deprecated,attr,omitempty"`
 
-	DeprecatedBy string `xml:"deprecated_by,attr"`
+	DeprecatedBy string `xml:"deprecated_by,attr,omitempty"`
 
-	DeprecationDate string `xml:"deprecation_date,attr"`
+	DeprecationDate string `xml:"deprecation_date,attr,omitempty"`
 
 	Title []TextType `xml:"title"`
 
@@ -100,7 +100,7 @@ type ReferencesType struct {
 type CheckType struct {
 	System string `xml:"system,attr"`
 
-	Href string `xml:"href,attr"`
+	Href string `xml:"href,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }

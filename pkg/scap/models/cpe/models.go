@@ -58,7 +58,7 @@ type FactRef struct {
 
 	Name string `xml:"name,attr"`
 
-	Description string `xml:"description,attr"`
+	Description string `xml:"description,attr,omitempty"`
 }
 
 // Element
@@ -71,7 +71,7 @@ type CheckFactRef struct {
 
 	IdRef string `xml:"id-ref,attr"`
 
-	Description string `xml:"description,attr"`
+	Description string `xml:"description,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
@@ -111,13 +111,13 @@ type LogicalTestType struct {
 }
 
 type FactRefType struct {
-	Description string `xml:"description,attr"`
+	Description string `xml:"description,attr,omitempty"`
 }
 
 type CPEFactRefType struct {
 	Name string `xml:"name,attr"`
 
-	Description string `xml:"description,attr"`
+	Description string `xml:"description,attr,omitempty"`
 }
 
 type CheckFactRefType struct {
@@ -127,7 +127,7 @@ type CheckFactRefType struct {
 
 	IdRef string `xml:"id-ref,attr"`
 
-	Description string `xml:"description,attr"`
+	Description string `xml:"description,attr,omitempty"`
 }
 
 type TextType struct {

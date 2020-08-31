@@ -14,7 +14,7 @@ type AclItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -39,7 +39,7 @@ type BgpneighborItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Neighbor *oval_sc.EntityItemStringType `xml:"neighbor"`
 
@@ -54,7 +54,7 @@ type GlobalItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	GlobalCommand *oval_sc.EntityItemStringType `xml:"global_command"`
 
@@ -67,7 +67,7 @@ type InterfaceItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -120,7 +120,7 @@ type LineItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -135,7 +135,7 @@ type RouterItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
@@ -158,7 +158,7 @@ type RoutingprotocolauthintfItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Interface *oval_sc.EntityItemStringType `xml:"interface"`
 
@@ -181,7 +181,7 @@ type SectionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	SectionCommand *oval_sc.EntityItemStringType `xml:"section_command"`
 
@@ -198,7 +198,7 @@ type SnmpItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	AccessList *oval_sc.EntityItemStringType `xml:"access_list"`
 
@@ -213,7 +213,7 @@ type SnmpcommunityItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -234,7 +234,7 @@ type SnmpgroupItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -261,7 +261,7 @@ type SnmphostItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Host *oval_sc.EntityItemStringType `xml:"host"`
 
@@ -282,7 +282,7 @@ type SnmpuserItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -307,7 +307,7 @@ type SnmpviewItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -324,7 +324,7 @@ type TclshItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
 
@@ -337,7 +337,7 @@ type VersionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	MajorRelease *oval_sc.EntityItemStringType `xml:"major_release"`
 

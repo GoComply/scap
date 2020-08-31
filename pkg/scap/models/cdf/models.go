@@ -13,13 +13,13 @@ type Benchmark struct {
 
 	Id string `xml:"id,attr"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
-	Resolved string `xml:"resolved,attr"`
+	Resolved string `xml:"resolved,attr,omitempty"`
 
-	Style string `xml:"style,attr"`
+	Style string `xml:"style,attr,omitempty"`
 
-	StyleHref string `xml:"style-href,attr"`
+	StyleHref string `xml:"style-href,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -68,7 +68,7 @@ type Benchmark struct {
 type Status struct {
 	XMLName xml.Name `xml:status`
 
-	Date string `xml:"date,attr"`
+	Date string `xml:"date,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -86,21 +86,21 @@ type Model struct {
 type Item struct {
 	XMLName xml.Name `xml:Item`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
 	XmlBase string `xml:"base,attr"`
 
-	Id string `xml:"Id,attr"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	Status []Status `xml:"status"`
 
@@ -127,19 +127,19 @@ type Group struct {
 
 	Id string `xml:"id,attr"`
 
-	Selected string `xml:"selected,attr"`
+	Selected string `xml:"selected,attr,omitempty"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -186,25 +186,25 @@ type Rule struct {
 
 	Id string `xml:"id,attr"`
 
-	Role string `xml:"role,attr"`
+	Role string `xml:"role,attr,omitempty"`
 
-	Severity string `xml:"severity,attr"`
+	Severity string `xml:"severity,attr,omitempty"`
 
-	Multiple string `xml:"multiple,attr"`
+	Multiple string `xml:"multiple,attr,omitempty"`
 
-	Selected string `xml:"selected,attr"`
+	Selected string `xml:"selected,attr,omitempty"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -259,23 +259,23 @@ type Value struct {
 
 	Id string `xml:"id,attr"`
 
-	Type string `xml:"type,attr"`
+	Type string `xml:"type,attr,omitempty"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Interactive string `xml:"interactive,attr"`
+	Interactive string `xml:"interactive,attr,omitempty"`
 
-	InterfaceHint string `xml:"interfaceHint,attr"`
+	InterfaceHint string `xml:"interfaceHint,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -326,17 +326,17 @@ type Profile struct {
 
 	Id string `xml:"id,attr"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	NoteTag string `xml:"note-tag,attr"`
+	NoteTag string `xml:"note-tag,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
 	XmlBase string `xml:"base,attr"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
 	Status []Status `xml:"status"`
 
@@ -373,15 +373,15 @@ type TestResult struct {
 
 	Id string `xml:"id,attr"`
 
-	StartTime string `xml:"start-time,attr"`
+	StartTime string `xml:"start-time,attr,omitempty"`
 
 	EndTime string `xml:"end-time,attr"`
 
-	TestSystem string `xml:"test-system,attr"`
+	TestSystem string `xml:"test-system,attr,omitempty"`
 
-	Version string `xml:"version,attr"`
+	Version string `xml:"version,attr,omitempty"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
 	Benchmark *BenchmarkReferenceType `xml:"benchmark"`
 
@@ -426,7 +426,7 @@ type Tailoring struct {
 
 	Id string `xml:"id,attr"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
 	Benchmark *TailoringBenchmarkReferenceType `xml:"benchmark"`
 
@@ -485,9 +485,9 @@ type ParamType struct {
 }
 
 type VersionType struct {
-	Time string `xml:"time,attr"`
+	Time string `xml:"time,attr,omitempty"`
 
-	Update string `xml:"update,attr"`
+	Update string `xml:"update,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -495,7 +495,7 @@ type VersionType struct {
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -503,7 +503,7 @@ type TextType struct {
 type HtmlTextType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -511,7 +511,7 @@ type HtmlTextType struct {
 type HtmlTextWithSubType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	Sub []SubType `xml:"sub"`
 
@@ -531,7 +531,7 @@ type ProfileNoteType struct {
 type TextWithSubType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	Sub []SubType `xml:"sub"`
 
@@ -539,7 +539,7 @@ type TextWithSubType struct {
 }
 
 type SubType struct {
-	Use string `xml:"use,attr"`
+	Use string `xml:"use,attr,omitempty"`
 
 	Idref string `xml:"idref,attr"`
 }
@@ -557,27 +557,27 @@ type CPE2IdrefType struct {
 }
 
 type OverrideableCPE2IdrefType struct {
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	Idref string `xml:"idref,attr"`
 }
 
 type ItemType struct {
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
 	XmlBase string `xml:"base,attr"`
 
-	Id string `xml:"Id,attr"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	Status []Status `xml:"status"`
 
@@ -599,25 +599,25 @@ type ItemType struct {
 }
 
 type SelectableItemType struct {
-	Selected string `xml:"selected,attr"`
+	Selected string `xml:"selected,attr,omitempty"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
 	XmlBase string `xml:"base,attr"`
 
-	Id string `xml:"Id,attr"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	Rationale []HtmlTextWithSubType `xml:"rationale"`
 
@@ -649,19 +649,19 @@ type SelectableItemType struct {
 type GroupType struct {
 	Id string `xml:"id,attr"`
 
-	Selected string `xml:"selected,attr"`
+	Selected string `xml:"selected,attr,omitempty"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -705,25 +705,25 @@ type GroupType struct {
 type RuleType struct {
 	Id string `xml:"id,attr"`
 
-	Role string `xml:"role,attr"`
+	Role string `xml:"role,attr,omitempty"`
 
-	Severity string `xml:"severity,attr"`
+	Severity string `xml:"severity,attr,omitempty"`
 
-	Multiple string `xml:"multiple,attr"`
+	Multiple string `xml:"multiple,attr,omitempty"`
 
-	Selected string `xml:"selected,attr"`
+	Selected string `xml:"selected,attr,omitempty"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -779,11 +779,11 @@ type IdentType struct {
 }
 
 type WarningType struct {
-	Category string `xml:"category,attr"`
+	Category string `xml:"category,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	Sub []SubType `xml:"sub"`
 
@@ -791,19 +791,19 @@ type WarningType struct {
 }
 
 type FixTextType struct {
-	Fixref string `xml:"fixref,attr"`
+	Fixref string `xml:"fixref,attr,omitempty"`
 
-	Reboot string `xml:"reboot,attr"`
+	Reboot string `xml:"reboot,attr,omitempty"`
 
-	Strategy string `xml:"strategy,attr"`
+	Strategy string `xml:"strategy,attr,omitempty"`
 
-	Disruption string `xml:"disruption,attr"`
+	Disruption string `xml:"disruption,attr,omitempty"`
 
-	Complexity string `xml:"complexity,attr"`
+	Complexity string `xml:"complexity,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
-	Override string `xml:"override,attr"`
+	Override string `xml:"override,attr,omitempty"`
 
 	Sub []SubType `xml:"sub"`
 
@@ -811,19 +811,19 @@ type FixTextType struct {
 }
 
 type FixType struct {
-	Id string `xml:"id,attr"`
+	Id string `xml:"id,attr,omitempty"`
 
-	Reboot string `xml:"reboot,attr"`
+	Reboot string `xml:"reboot,attr,omitempty"`
 
-	Strategy string `xml:"strategy,attr"`
+	Strategy string `xml:"strategy,attr,omitempty"`
 
-	Disruption string `xml:"disruption,attr"`
+	Disruption string `xml:"disruption,attr,omitempty"`
 
-	Complexity string `xml:"complexity,attr"`
+	Complexity string `xml:"complexity,attr,omitempty"`
 
-	System string `xml:"system,attr"`
+	System string `xml:"system,attr,omitempty"`
 
-	Platform string `xml:"platform,attr"`
+	Platform string `xml:"platform,attr,omitempty"`
 
 	Sub []SubType `xml:"sub"`
 
@@ -833,13 +833,13 @@ type FixType struct {
 }
 
 type InstanceFixType struct {
-	Context string `xml:"context,attr"`
+	Context string `xml:"context,attr,omitempty"`
 }
 
 type ComplexCheckType struct {
 	Operator string `xml:"operator,attr"`
 
-	Negate string `xml:"negate,attr"`
+	Negate string `xml:"negate,attr,omitempty"`
 
 	Check []CheckType `xml:"check"`
 
@@ -849,13 +849,13 @@ type ComplexCheckType struct {
 type CheckType struct {
 	System string `xml:"system,attr"`
 
-	Negate string `xml:"negate,attr"`
+	Negate string `xml:"negate,attr,omitempty"`
 
-	Id string `xml:"id,attr"`
+	Id string `xml:"id,attr,omitempty"`
 
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
-	MultiCheck string `xml:"multi-check,attr"`
+	MultiCheck string `xml:"multi-check,attr,omitempty"`
 
 	XmlBase string `xml:"base,attr"`
 
@@ -871,7 +871,7 @@ type CheckType struct {
 type CheckImportType struct {
 	ImportName string `xml:"import-name,attr"`
 
-	ImportXpath string `xml:"import-xpath,attr"`
+	ImportXpath string `xml:"import-xpath,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -895,23 +895,23 @@ type CheckContentType struct {
 type ValueType struct {
 	Id string `xml:"id,attr"`
 
-	Type string `xml:"type,attr"`
+	Type string `xml:"type,attr,omitempty"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
-	Interactive string `xml:"interactive,attr"`
+	Interactive string `xml:"interactive,attr,omitempty"`
 
-	InterfaceHint string `xml:"interfaceHint,attr"`
+	InterfaceHint string `xml:"interfaceHint,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	ClusterId string `xml:"cluster-id,attr"`
+	ClusterId string `xml:"cluster-id,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
-	Hidden string `xml:"hidden,attr"`
+	Hidden string `xml:"hidden,attr,omitempty"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
 	XmlLang string `xml:"lang,attr"`
 
@@ -961,15 +961,15 @@ type ComplexValueType struct {
 }
 
 type SelComplexValueType struct {
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
 	Item []string `xml:"item"`
 }
 
 type SelChoicesType struct {
-	MustMatch string `xml:"mustMatch,attr"`
+	MustMatch string `xml:"mustMatch,attr,omitempty"`
 
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
 	Choice []string `xml:"choice"`
 
@@ -977,13 +977,13 @@ type SelChoicesType struct {
 }
 
 type SelStringType struct {
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
 
 type SelNumType struct {
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -995,17 +995,17 @@ type UriRefType struct {
 type ProfileType struct {
 	Id string `xml:"id,attr"`
 
-	ProhibitChanges string `xml:"prohibitChanges,attr"`
+	ProhibitChanges string `xml:"prohibitChanges,attr,omitempty"`
 
-	Abstract string `xml:"abstract,attr"`
+	Abstract string `xml:"abstract,attr,omitempty"`
 
-	NoteTag string `xml:"note-tag,attr"`
+	NoteTag string `xml:"note-tag,attr,omitempty"`
 
-	Extends string `xml:"extends,attr"`
+	Extends string `xml:"extends,attr,omitempty"`
 
 	XmlBase string `xml:"base,attr"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
 	Status []Status `xml:"status"`
 
@@ -1059,9 +1059,9 @@ type ProfileSetComplexValueType struct {
 type ProfileRefineValueType struct {
 	Idref string `xml:"idref,attr"`
 
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
-	Operator string `xml:"operator,attr"`
+	Operator string `xml:"operator,attr,omitempty"`
 
 	Remark []TextType `xml:"remark"`
 }
@@ -1069,13 +1069,13 @@ type ProfileRefineValueType struct {
 type ProfileRefineRuleType struct {
 	Idref string `xml:"idref,attr"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
-	Selector string `xml:"selector,attr"`
+	Selector string `xml:"selector,attr,omitempty"`
 
-	Severity string `xml:"severity,attr"`
+	Severity string `xml:"severity,attr,omitempty"`
 
-	Role string `xml:"role,attr"`
+	Role string `xml:"role,attr,omitempty"`
 
 	Remark []TextType `xml:"remark"`
 }
@@ -1083,15 +1083,15 @@ type ProfileRefineRuleType struct {
 type TestResultType struct {
 	Id string `xml:"id,attr"`
 
-	StartTime string `xml:"start-time,attr"`
+	StartTime string `xml:"start-time,attr,omitempty"`
 
 	EndTime string `xml:"end-time,attr"`
 
-	TestSystem string `xml:"test-system,attr"`
+	TestSystem string `xml:"test-system,attr,omitempty"`
 
-	Version string `xml:"version,attr"`
+	Version string `xml:"version,attr,omitempty"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
 	Benchmark *BenchmarkReferenceType `xml:"benchmark"`
 
@@ -1133,13 +1133,13 @@ type TestResultType struct {
 type BenchmarkReferenceType struct {
 	Href string `xml:"href,attr"`
 
-	Id string `xml:"id,attr"`
+	Id string `xml:"id,attr,omitempty"`
 }
 
 type ScoreType struct {
-	System string `xml:"system,attr"`
+	System string `xml:"system,attr,omitempty"`
 
-	Maximum string `xml:"maximum,attr"`
+	Maximum string `xml:"maximum,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -1153,7 +1153,7 @@ type TargetIdRefType struct {
 
 	Href string `xml:"href,attr"`
 
-	Name string `xml:"name,attr"`
+	Name string `xml:"name,attr,omitempty"`
 }
 
 type IdentityType struct {
@@ -1167,7 +1167,7 @@ type IdentityType struct {
 type FactType struct {
 	Name string `xml:"name,attr"`
 
-	Type string `xml:"type,attr"`
+	Type string `xml:"type,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -1185,15 +1185,15 @@ type TailoringReferenceType struct {
 type RuleResultType struct {
 	Idref string `xml:"idref,attr"`
 
-	Role string `xml:"role,attr"`
+	Role string `xml:"role,attr,omitempty"`
 
-	Severity string `xml:"severity,attr"`
+	Severity string `xml:"severity,attr,omitempty"`
 
-	Time string `xml:"time,attr"`
+	Time string `xml:"time,attr,omitempty"`
 
-	Version string `xml:"version,attr"`
+	Version string `xml:"version,attr,omitempty"`
 
-	Weight string `xml:"weight,attr"`
+	Weight string `xml:"weight,attr,omitempty"`
 
 	Result string `xml:"result"`
 
@@ -1215,9 +1215,9 @@ type RuleResultType struct {
 }
 
 type InstanceResultType struct {
-	Context string `xml:"context,attr"`
+	Context string `xml:"context,attr,omitempty"`
 
-	ParentContext string `xml:"parentContext,attr"`
+	ParentContext string `xml:"parentContext,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -1243,7 +1243,7 @@ type MessageType struct {
 type TailoringType struct {
 	Id string `xml:"id,attr"`
 
-	Id2 string `xml:"Id,attr"`
+	Id2 string `xml:"Id,attr,omitempty"`
 
 	Benchmark *TailoringBenchmarkReferenceType `xml:"benchmark"`
 
@@ -1261,11 +1261,11 @@ type TailoringType struct {
 }
 
 type TailoringBenchmarkReferenceType struct {
-	Version string `xml:"version,attr"`
+	Version string `xml:"version,attr,omitempty"`
 
 	Href string `xml:"href,attr"`
 
-	Id string `xml:"id,attr"`
+	Id string `xml:"id,attr,omitempty"`
 }
 
 type TailoringVersionType struct {

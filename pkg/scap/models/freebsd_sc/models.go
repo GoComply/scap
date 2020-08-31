@@ -14,7 +14,7 @@ type PortinfoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 

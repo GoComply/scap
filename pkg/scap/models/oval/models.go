@@ -50,7 +50,7 @@ type ElementMapType struct {
 }
 
 type ElementMapItemType struct {
-	TargetNamespace string `xml:"target_namespace,attr"`
+	TargetNamespace string `xml:"target_namespace,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -74,13 +74,13 @@ type GeneratorType struct {
 }
 
 type SchemaVersionType struct {
-	Platform string `xml:"platform,attr"`
+	Platform string `xml:"platform,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
 
 type MessageType struct {
-	Level string `xml:"level,attr"`
+	Level string `xml:"level,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }

@@ -14,7 +14,7 @@ type LineItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -29,7 +29,7 @@ type VersionItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	PixRelease *oval_sc.EntityItemStringType `xml:"pix_release"`
 

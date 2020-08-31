@@ -14,7 +14,7 @@ type InterimFixItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
 
@@ -33,7 +33,7 @@ type FilesetItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
 
@@ -52,7 +52,7 @@ type FixItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
 
@@ -71,7 +71,7 @@ type NoItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
 
@@ -86,7 +86,7 @@ type OslevelItem struct {
 
 	Id string `xml:"id,attr"`
 
-	Status string `xml:"status,attr"`
+	Status string `xml:"status,attr,omitempty"`
 
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 
