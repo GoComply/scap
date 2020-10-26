@@ -481,7 +481,9 @@ type SlackwarepkginfoItemVersion struct {
 // XSD ComplexType declarations
 
 type EntityItemRpmVerifyResultType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }

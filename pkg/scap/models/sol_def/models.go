@@ -1186,29 +1186,40 @@ type PackageCheckBehaviors struct {
 	FilecontentsOnly string `xml:"filecontents_only,attr,omitempty"`
 
 	NoVolatileeditable string `xml:"no_volatileeditable,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PatchBehaviors struct {
 	Supersedence string `xml:"supersedence,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectPublisherTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateClientUUIDType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePermissionCompareType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePublisherTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSmfServiceStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateV12NEnvType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateLDOMRoleType struct {
+	InnerXml string `xml:",innerxml"`
 }

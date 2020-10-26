@@ -96,10 +96,13 @@ type OslevelItem struct {
 // XSD ComplexType declarations
 
 type EntityItemFilesetStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFixInstallationStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemInterimFixStateType struct {
+	InnerXml string `xml:",innerxml"`
 }

@@ -41,6 +41,8 @@ type DirectivesType struct {
 	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
 	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DefaultDirectivesType struct {
@@ -57,6 +59,8 @@ type DefaultDirectivesType struct {
 	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
 	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ClassDirectivesType struct {
@@ -73,16 +77,22 @@ type ClassDirectivesType struct {
 	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
 	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DirectiveType struct {
 	Reported string `xml:"reported,attr"`
 
 	Content string `xml:"content,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ResultsType struct {
 	System []SystemType `xml:"system"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SystemType struct {
@@ -91,10 +101,14 @@ type SystemType struct {
 	Tests *TestsType `xml:"tests"`
 
 	OvalSystemCharacteristics oval_sc.OvalSystemCharacteristics `xml:"oval_system_characteristics"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DefinitionsType struct {
 	Definition []DefinitionType `xml:"definition"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DefinitionType struct {
@@ -111,6 +125,8 @@ type DefinitionType struct {
 	Message []oval.MessageType `xml:"message"`
 
 	Criteria *CriteriaType `xml:"criteria"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CriteriaType struct {
@@ -127,6 +143,8 @@ type CriteriaType struct {
 	Criterion []CriterionType `xml:"criterion"`
 
 	ExtendDefinition []ExtendDefinitionType `xml:"extend_definition"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CriterionType struct {
@@ -141,6 +159,8 @@ type CriterionType struct {
 	Negate string `xml:"negate,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ExtendDefinitionType struct {
@@ -155,10 +175,14 @@ type ExtendDefinitionType struct {
 	Negate string `xml:"negate,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestsType struct {
 	Test []TestType `xml:"test"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestType struct {
@@ -181,6 +205,8 @@ type TestType struct {
 	TestedItem []TestedItemType `xml:"tested_item"`
 
 	TestedVariable []TestedVariableType `xml:"tested_variable"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestedItemType struct {
@@ -189,10 +215,13 @@ type TestedItemType struct {
 	Result string `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestedVariableType struct {
 	VariableId string `xml:"variable_id,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }

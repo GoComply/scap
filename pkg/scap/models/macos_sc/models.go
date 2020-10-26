@@ -507,10 +507,13 @@ type SystemsetupItem struct {
 // XSD ComplexType declarations
 
 type EntityItemDataTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPermissionCompareType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPlistTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }

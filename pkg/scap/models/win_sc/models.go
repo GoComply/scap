@@ -1575,73 +1575,97 @@ type ProcessItemPriority struct {
 // XSD ComplexType declarations
 
 type EntityItemAddrTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAdstypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAuditType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemDriveTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFileTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFileAttributeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemInterfaceTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemNamingContextType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemNTUserAccountTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPeTargetMachineType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPeSubsystemType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRegistryHiveType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRegistryTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemServiceControlsAcceptedType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemServiceCurrentStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemServiceStartTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemServiceTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSharedResourceTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSystemMetricIndexType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemGUIDType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemCmdletVerbType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemWindowsViewType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemUserRightType struct {
+	InnerXml string `xml:",innerxml"`
 }

@@ -542,25 +542,33 @@ type ShadowItemFlag struct {
 // XSD ComplexType declarations
 
 type EntityItemCapabilityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEndpointType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemGconfTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRoutingTableFlagsType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemXinetdTypeStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemWaitStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEncryptMethodType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemInterfaceType struct {
+	InnerXml string `xml:",innerxml"`
 }

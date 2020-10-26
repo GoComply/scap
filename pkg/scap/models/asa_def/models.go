@@ -839,37 +839,49 @@ type VersionState struct {
 // XSD ComplexType declarations
 
 type EntityObjectAccessListIPVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAccessListIPVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAccessListUseType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAccessListInterfaceDirectionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateClassMapType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateInspectionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateApplyServicePolicyType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateMatchType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSNMPVersionStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSNMPSecLevelStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSNMPAuthStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSNMPPrivStringType struct {
+	InnerXml string `xml:",innerxml"`
 }

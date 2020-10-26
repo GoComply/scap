@@ -1237,6 +1237,8 @@ type SlackwarepkginfoStateVersion struct {
 
 type RpmInfoBehaviors struct {
 	Filepaths string `xml:"filepaths,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyBehaviors struct {
@@ -1269,6 +1271,8 @@ type RpmVerifyBehaviors struct {
 	Noconfigfiles string `xml:"noconfigfiles,attr,omitempty"`
 
 	Noghostfiles string `xml:"noghostfiles,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyFileBehaviors struct {
@@ -1295,6 +1299,8 @@ type RpmVerifyFileBehaviors struct {
 	Nofiledigest string `xml:"nofiledigest,attr,omitempty"`
 
 	Nocaps string `xml:"nocaps,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyPackageBehaviors struct {
@@ -1305,6 +1311,8 @@ type RpmVerifyPackageBehaviors struct {
 	Noscripts string `xml:"noscripts,attr,omitempty"`
 
 	Nosignature string `xml:"nosignature,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileBehaviors struct {
@@ -1315,10 +1323,14 @@ type FileBehaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateRpmVerifyResultType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }

@@ -4430,6 +4430,8 @@ type AccesstokenBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileBehaviors struct {
@@ -4442,6 +4444,8 @@ type FileBehaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileAuditPermissions53Behaviors struct {
@@ -4458,6 +4462,8 @@ type FileAuditPermissions53Behaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileAuditPermissionsBehaviors struct {
@@ -4474,6 +4480,8 @@ type FileAuditPermissionsBehaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileEffectiveRights53Behaviors struct {
@@ -4490,6 +4498,8 @@ type FileEffectiveRights53Behaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileEffectiveRightsBehaviors struct {
@@ -4506,6 +4516,8 @@ type FileEffectiveRightsBehaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type NTUserBehaviors struct {
@@ -4516,12 +4528,16 @@ type NTUserBehaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PrinterEffectiveRightsBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RegistryBehaviors struct {
@@ -4530,6 +4546,8 @@ type RegistryBehaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyAuditPermissions53Behaviors struct {
@@ -4542,6 +4560,8 @@ type RegkeyAuditPermissions53Behaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyAuditPermissionsBehaviors struct {
@@ -4554,6 +4574,8 @@ type RegkeyAuditPermissionsBehaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyEffectiveRights53Behaviors struct {
@@ -4566,6 +4588,8 @@ type RegkeyEffectiveRights53Behaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyEffectiveRightsBehaviors struct {
@@ -4578,127 +4602,172 @@ type RegkeyEffectiveRightsBehaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ServiceEffectiveRightsBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SharedResourceAuditedPermissionsBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SharedResourceEffectiveRightsBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SidBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SidSidBehaviors struct {
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type WuaUpdateSearcherBehaviors struct {
 	IncludeSupersededUpdates string `xml:"include_superseded_updates,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAddrTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAdstypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAuditType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateDriveTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateInterfaceTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFileTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFileAttributeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectNamingContextType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateNamingContextType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateNTUserAccountTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePeTargetMachineType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePeSubsystemType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectRegistryHiveType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateRegistryHiveType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateRegistryTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateServiceControlsAcceptedType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateServiceCurrentStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateServiceStartTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateServiceTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSharedResourceTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectSystemMetricIndexType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSystemMetricIndexType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectGUIDType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateGUIDType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectCmdletVerbType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateCmdletVerbType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWindowsViewType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectUserRightType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateUserRightType struct {
+	InnerXml string `xml:",innerxml"`
 }
