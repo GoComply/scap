@@ -258,12 +258,15 @@ type SignatureType struct {
 	KeyInfo *KeyInfo `xml:"KeyInfo"`
 
 	Object []Object `xml:"Object"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SignatureValueType struct {
 	Id string `xml:"Id,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type SignedInfoType struct {
@@ -274,6 +277,8 @@ type SignedInfoType struct {
 	SignatureMethod SignatureMethod `xml:"SignatureMethod"`
 
 	Reference []Reference `xml:"Reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CanonicalizationMethodType struct {
@@ -302,10 +307,14 @@ type ReferenceType struct {
 	DigestMethod DigestMethod `xml:"DigestMethod"`
 
 	DigestValue DigestValue `xml:"DigestValue"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TransformsType struct {
 	Transform []Transform `xml:"Transform"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TransformType struct {
@@ -356,6 +365,8 @@ type RetrievalMethodType struct {
 	Type string `xml:"Type,attr,omitempty"`
 
 	Transforms *Transforms `xml:"Transforms"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type X509DataType struct {
@@ -368,19 +379,26 @@ type X509DataType struct {
 	X509Certificate string `xml:"X509Certificate"`
 
 	X509CRL string `xml:"X509CRL"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type X509IssuerSerialType struct {
 	X509IssuerName string `xml:"X509IssuerName"`
 
 	X509SerialNumber string `xml:"X509SerialNumber"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PGPDataType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type SPKIDataType struct {
 	SPKISexp string `xml:"SPKISexp"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectType struct {
@@ -397,12 +415,16 @@ type ManifestType struct {
 	Id string `xml:"Id,attr,omitempty"`
 
 	Reference []Reference `xml:"Reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SignaturePropertiesType struct {
 	Id string `xml:"Id,attr,omitempty"`
 
 	SignatureProperty []SignatureProperty `xml:"SignatureProperty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SignaturePropertyType struct {
@@ -419,10 +441,14 @@ type DSAKeyValueType struct {
 	Y string `xml:"Y"`
 
 	J string `xml:"J"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RSAKeyValueType struct {
 	Modulus string `xml:"Modulus"`
 
 	Exponent string `xml:"Exponent"`
+
+	InnerXml string `xml:",innerxml"`
 }

@@ -400,37 +400,49 @@ type RoutingprotocolauthintfItemOspfArea struct {
 // XSD ComplexType declarations
 
 type EntityItemAccessListInterfaceDirectionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAccessListIPVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAccessListUseType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRoutingAuthTypeStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRoutingProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPVersionStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPSecLevelStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPModeStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPAuthStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPPrivStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSwitchportModeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemTrunkEncapType struct {
+	InnerXml string `xml:",innerxml"`
 }

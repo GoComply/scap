@@ -212,6 +212,8 @@ type LocalVariable struct {
 
 type DefinitionsType struct {
 	Definition []Definition `xml:"definition"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type DefinitionType struct {
@@ -230,6 +232,8 @@ type DefinitionType struct {
 	Notes *oval.Notes `xml:"notes"`
 
 	Criteria *CriteriaType `xml:"criteria"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type MetadataType struct {
@@ -240,6 +244,8 @@ type MetadataType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Description string `xml:"description"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type AffectedType struct {
@@ -248,6 +254,8 @@ type AffectedType struct {
 	Platform []string `xml:"platform"`
 
 	Product []string `xml:"product"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceType struct {
@@ -256,6 +264,8 @@ type ReferenceType struct {
 	RefId string `xml:"ref_id,attr"`
 
 	RefUrl string `xml:"ref_url,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CriteriaType struct {
@@ -272,6 +282,8 @@ type CriteriaType struct {
 	Criterion []CriterionType `xml:"criterion"`
 
 	ExtendDefinition []ExtendDefinitionType `xml:"extend_definition"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CriterionType struct {
@@ -282,6 +294,8 @@ type CriterionType struct {
 	Negate string `xml:"negate,attr,omitempty"`
 
 	Comment string `xml:"comment,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ExtendDefinitionType struct {
@@ -292,10 +306,14 @@ type ExtendDefinitionType struct {
 	Negate string `xml:"negate,attr,omitempty"`
 
 	Comment string `xml:"comment,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestsType struct {
 	Test []Test `xml:"test"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestType struct {
@@ -316,18 +334,26 @@ type TestType struct {
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectRefType struct {
 	ObjectRef string `xml:"object_ref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StateRefType struct {
 	StateRef string `xml:"state_ref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectsType struct {
 	Object []Object `xml:"object"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectType struct {
@@ -342,10 +368,14 @@ type ObjectType struct {
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StatesType struct {
 	State []State `xml:"state"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StateType struct {
@@ -362,10 +392,14 @@ type StateType struct {
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariablesType struct {
 	Variable []Variable `xml:"variable"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariableType struct {
@@ -382,12 +416,15 @@ type VariableType struct {
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PossibleValueType struct {
 	Hint string `xml:"hint,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type PossibleRestrictionType struct {
@@ -396,22 +433,27 @@ type PossibleRestrictionType struct {
 	Hint string `xml:"hint,attr"`
 
 	Restriction []RestrictionType `xml:"restriction"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RestrictionType struct {
 	Operation string `xml:"operation,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ValueType struct {
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type LiteralComponentType struct {
 	Datatype string `xml:"datatype,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectComponentType struct {
@@ -420,96 +462,133 @@ type ObjectComponentType struct {
 	ItemField string `xml:"item_field,attr"`
 
 	RecordField string `xml:"record_field,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariableComponentType struct {
 	VarRef string `xml:"var_ref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArithmeticFunctionType struct {
 	ArithmeticOperation string `xml:"arithmetic_operation,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type BeginFunctionType struct {
 	Character string `xml:"character,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ConcatFunctionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EndFunctionType struct {
 	Character string `xml:"character,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EscapeRegexFunctionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type SplitFunctionType struct {
 	Delimiter string `xml:"delimiter,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SubstringFunctionType struct {
 	SubstringStart string `xml:"substring_start,attr"`
 
 	SubstringLength string `xml:"substring_length,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TimeDifferenceFunctionType struct {
 	Format1 string `xml:"format_1,attr,omitempty"`
 
 	Format2 string `xml:"format_2,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RegexCaptureFunctionType struct {
 	Pattern string `xml:"pattern,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type UniqueFunctionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type CountFunctionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type GlobToRegexFunctionType struct {
 	GlobNoescape string `xml:"glob_noescape,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntitySimpleBaseType struct {
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityComplexBaseType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIPAddressType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIPAddressStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectAnySimpleType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectBinaryType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectBoolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectFloatType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIntType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectRecordType struct {
 	Field []EntityObjectFieldType `xml:"field"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectFieldType struct {
@@ -517,7 +596,8 @@ type EntityObjectFieldType struct {
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSimpleBaseType struct {
@@ -525,52 +605,68 @@ type EntityStateSimpleBaseType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateComplexBaseType struct {
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIPAddressType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIPAddressStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAnySimpleType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateBinaryType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateBoolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFloatType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIntType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEVRStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateDebianEVRStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFileSetRevisionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIOSVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateRecordType struct {
@@ -579,6 +675,8 @@ type EntityStateRecordType struct {
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Field []EntityStateFieldType `xml:"field"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFieldType struct {
@@ -586,5 +684,6 @@ type EntityStateFieldType struct {
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }

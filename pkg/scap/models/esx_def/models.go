@@ -295,18 +295,26 @@ type VisdkmanagedobjectState struct {
 
 type Patch56Behaviors struct {
 	Supersedence string `xml:"supersedence,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PatchBehaviors struct {
 	Supersedence string `xml:"supersedence,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ViSdkManagedEntityBehaviors struct {
 	ManagedEntityType string `xml:"managed_entity_type,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateClassificationType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSupportLevelType struct {
+	InnerXml string `xml:",innerxml"`
 }

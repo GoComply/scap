@@ -1545,13 +1545,17 @@ type SystemsetupState struct {
 // XSD ComplexType declarations
 
 type EntityObjectDataTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateDataTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePermissionCompareType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePlistTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }

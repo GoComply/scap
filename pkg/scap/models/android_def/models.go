@@ -983,31 +983,41 @@ type TelephonyState struct {
 // XSD ComplexType declarations
 
 type EntityStateEncryptionStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateKeyguardDisabledFeaturesType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateNetworkType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePasswordQualityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWifiAuthAlgorithmType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWifiCurrentStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWifiGroupCipherType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWifiKeyMgmtType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWifiPairwiseCipherType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWifiProtocolType struct {
+	InnerXml string `xml:",innerxml"`
 }

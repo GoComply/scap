@@ -47,12 +47,15 @@ type ElementMapType struct {
 	State *ElementMapItemType `xml:"state"`
 
 	Item *ElementMapItemType `xml:"item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ElementMapItemType struct {
 	TargetNamespace string `xml:"target_namespace,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type DeprecatedInfoType struct {
@@ -61,6 +64,8 @@ type DeprecatedInfoType struct {
 	Reason string `xml:"reason"`
 
 	Comment string `xml:"comment"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type GeneratorType struct {
@@ -71,20 +76,26 @@ type GeneratorType struct {
 	SchemaVersion []SchemaVersionType `xml:"schema_version"`
 
 	Timestamp string `xml:"timestamp"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SchemaVersionType struct {
 	Platform string `xml:"platform,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type MessageType struct {
 	Level string `xml:"level,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type NotesType struct {
 	Note []string `xml:"note"`
+
+	InnerXml string `xml:",innerxml"`
 }

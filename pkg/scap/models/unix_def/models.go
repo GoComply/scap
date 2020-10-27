@@ -1468,28 +1468,38 @@ type FileBehaviors struct {
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateCapabilityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEndpointType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateGconfTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateRoutingTableFlagsType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateXinetdTypeStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWaitStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEncryptMethodType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateInterfaceType struct {
+	InnerXml string `xml:",innerxml"`
 }

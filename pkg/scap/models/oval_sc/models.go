@@ -46,10 +46,14 @@ type SystemInfoType struct {
 	PrimaryHostName string `xml:"primary_host_name"`
 
 	Interfaces InterfacesType `xml:"interfaces"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type InterfacesType struct {
 	Interface []InterfaceType `xml:"interface"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type InterfaceType struct {
@@ -58,10 +62,14 @@ type InterfaceType struct {
 	IpAddress string `xml:"ip_address"`
 
 	MacAddress string `xml:"mac_address"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CollectedObjectsType struct {
 	Object []ObjectType `xml:"object"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectType struct {
@@ -80,20 +88,27 @@ type ObjectType struct {
 	VariableValue []VariableValueType `xml:"variable_value"`
 
 	Reference []ReferenceType `xml:"reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariableValueType struct {
 	VariableId string `xml:"variable_id,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceType struct {
 	ItemRef string `xml:"item_ref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SystemDataType struct {
 	Item []Item `xml:"item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ItemType struct {
@@ -102,60 +117,80 @@ type ItemType struct {
 	Status string `xml:"status,attr,omitempty"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSimpleBaseType struct {
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemComplexBaseType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIPAddressType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIPAddressStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAnySimpleType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemBinaryType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemBoolType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFloatType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIntType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRecordType struct {
 	Field []EntityItemFieldType `xml:"field"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFieldType struct {
 	Name string `xml:"name,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFilesetRevisionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIOSVersionType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEVRStringType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemDebianEVRStringType struct {
+	InnerXml string `xml:",innerxml"`
 }

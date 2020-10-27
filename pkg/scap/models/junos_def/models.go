@@ -304,4 +304,5 @@ type XmlShowState struct {
 // XSD ComplexType declarations
 
 type EntityStateJunosReleaseTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }

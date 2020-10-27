@@ -1328,19 +1328,25 @@ type SppolicyState struct {
 // XSD ComplexType declarations
 
 type EntityObjectUrlZoneType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEventSeverityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateTraceSeverityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePolicyRoleType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStatePolicyFeatureStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateUrlZoneType struct {
+	InnerXml string `xml:",innerxml"`
 }

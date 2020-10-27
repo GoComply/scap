@@ -270,7 +270,7 @@ type YamlfilecontentItem struct {
 
 	Yamlpath *oval_sc.EntityItemStringType `xml:"yamlpath"`
 
-	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
+	Value []oval_sc.EntityItemRecordType `xml:"value"`
 
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
@@ -280,19 +280,25 @@ type YamlfilecontentItem struct {
 // XSD ComplexType declarations
 
 type EntityItemEngineType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFamilyType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemHashTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemVariableRefType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemLdaptypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemWindowsViewType struct {
+	InnerXml string `xml:",innerxml"`
 }

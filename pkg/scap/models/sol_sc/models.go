@@ -330,19 +330,25 @@ type VirtualizationinfoItem struct {
 // XSD ComplexType declarations
 
 type EntityItemClientUUIDType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPermissionCompareType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPublisherTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSmfServiceStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemV12NEnvType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemLDOMRoleType struct {
+	InnerXml string `xml:",innerxml"`
 }

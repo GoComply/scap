@@ -463,16 +463,21 @@ type SppolicyItem struct {
 // XSD ComplexType declarations
 
 type EntityItemUrlZoneType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEventSeverityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemTraceSeverityType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPolicyFeatureStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPolicyRoleType struct {
+	InnerXml string `xml:",innerxml"`
 }

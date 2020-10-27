@@ -66,7 +66,9 @@ type VisdkmanagedobjectItem struct {
 // XSD ComplexType declarations
 
 type EntityItemClassificationType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSupportLevelType struct {
+	InnerXml string `xml:",innerxml"`
 }

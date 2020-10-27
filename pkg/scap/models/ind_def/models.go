@@ -1067,7 +1067,7 @@ type YamlfilecontentState struct {
 
 	Yamlpath *oval_def.EntityStateStringType `xml:"yamlpath"`
 
-	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
+	Value *oval_def.EntityStateRecordType `xml:"value"`
 
 	WindowsView *EntityStateWindowsViewType `xml:"windows_view"`
 
@@ -1080,6 +1080,8 @@ type YamlfilecontentState struct {
 
 type LdapBehaviors struct {
 	Scope string `xml:"scope,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type Textfilecontent54Behaviors struct {
@@ -1098,6 +1100,8 @@ type Textfilecontent54Behaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FileBehaviors struct {
@@ -1110,31 +1114,42 @@ type FileBehaviors struct {
 	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	WindowsView string `xml:"windows_view,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectEngineType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEngineType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFamilyType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectHashTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateHashTypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectVariableRefType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateVariableRefType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateLdaptypeType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateWindowsViewType struct {
+	InnerXml string `xml:",innerxml"`
 }

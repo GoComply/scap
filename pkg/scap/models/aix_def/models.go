@@ -365,10 +365,13 @@ type OslevelState struct {
 // XSD ComplexType declarations
 
 type EntityStateFilesetStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFixInstallationStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateInterimFixStateType struct {
+	InnerXml string `xml:",innerxml"`
 }
