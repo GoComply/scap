@@ -103,7 +103,7 @@ type Set struct {
 
 	Set []Set `xml:"set"`
 
-	ObjectReference []oval.string `xml:"object_reference"`
+	ObjectReference string `xml:"object_reference"`
 
 	Filter []Filter `xml:"filter"`
 }
