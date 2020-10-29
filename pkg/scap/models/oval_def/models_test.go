@@ -30,3 +30,15 @@ func TestOvalDefsScapVersion(t *testing.T) {
 	}
 	assert.Equal(t, "5.11", doc.ScapVersion())
 }
+
+func TestTestType(t *testing.T) {
+	doc, err := scap_document.ReadDocumentFromFile("../../../../examples/scap/CIS-Benchmarks/082520/CIS_Ubuntu_Linux_20.04_LTS_Benchmark_v1.0.0-cpe-oval.xml")
+	if err != nil {
+		t.Fatal(err)
+	}
+	assert.NotNil(t, doc.OvalDefinitions)
+	assert.Equal(t, 1, len(doc.OvalDefinitions.Definitions.Definition))
+
+	assert.Equal(t, 3, len(doc.OvalDefinitions.Tests.Test))
+
+}

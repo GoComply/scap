@@ -276,6 +276,12 @@ type ProfileObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Identifier *oval_def.EntityObjectStringType `xml:"identifier"`
+
+	Uuid *oval_def.EntityObjectStringType `xml:"uuid"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`

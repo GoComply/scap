@@ -179,6 +179,12 @@ type X509Data struct {
 // Element
 type PGPData struct {
 	XMLName xml.Name `xml:PGPData`
+
+	PGPKeyID string `xml:"PGPKeyID"`
+
+	PGPKeyPacket string `xml:"PGPKeyPacket"`
+
+	PGPKeyPacket string `xml:"PGPKeyPacket"`
 }
 
 // Element
@@ -392,6 +398,12 @@ type X509IssuerSerialType struct {
 }
 
 type PGPDataType struct {
+	PGPKeyID string `xml:"PGPKeyID"`
+
+	PGPKeyPacket string `xml:"PGPKeyPacket"`
+
+	PGPKeyPacket string `xml:"PGPKeyPacket"`
+
 	InnerXml string `xml:",innerxml"`
 }
 

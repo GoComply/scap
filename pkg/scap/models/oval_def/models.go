@@ -100,6 +100,12 @@ type Set struct {
 	XMLName xml.Name `xml:set`
 
 	SetOperator string `xml:"set_operator,attr,omitempty"`
+
+	Set []Set `xml:"set"`
+
+	ObjectReference []oval.string `xml:"object_reference"`
+
+	Filter []Filter `xml:"filter"`
 }
 
 // Element

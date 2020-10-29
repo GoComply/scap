@@ -50,6 +50,12 @@ type FacetObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -120,6 +126,12 @@ type ImageObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Name *oval_def.EntityStateStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -261,6 +273,12 @@ type NddObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Device *oval_def.EntityObjectStringType `xml:"device"`
+
+	Parameter *oval_def.EntityObjectStringType `xml:"parameter"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -333,6 +351,10 @@ type PackageObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Pkginst *oval_def.EntityObjectStringType `xml:"pkginst"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -410,6 +432,16 @@ type Package511Object struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Publisher *oval_def.EntityObjectStringType `xml:"publisher"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	VersionElm *oval_def.EntityObjectVersionType `xml:"version"`
+
+	Timestamp *oval_def.EntityObjectStringType `xml:"timestamp"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -558,6 +590,14 @@ type PackagecheckObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *PackageCheckBehaviors `xml:"behaviors"`
+
+	Pkginst *oval_def.EntityObjectStringType `xml:"pkginst"`
+
+	Filepath oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -717,6 +757,14 @@ type PackagepublisherObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Type *EntityObjectPublisherTypeType `xml:"type"`
+
+	OriginUri *oval_def.EntityObjectStringType `xml:"origin_uri"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -831,6 +879,14 @@ type Patch54Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Behaviors *PatchBehaviors `xml:"behaviors"`
+
+	Base *oval_def.EntityObjectIntType `xml:"base"`
+
+	VersionElm *oval_def.EntityObjectIntType `xml:"version"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -921,6 +977,10 @@ type SmfObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Fmri *oval_def.EntityObjectStringType `xml:"fmri"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1000,6 +1060,14 @@ type SmfpropertyObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Service *oval_def.EntityObjectStringType `xml:"service"`
+
+	Instance *oval_def.EntityObjectStringType `xml:"instance"`
+
+	Property *oval_def.EntityObjectStringType `xml:"property"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1074,6 +1142,12 @@ type VariantObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

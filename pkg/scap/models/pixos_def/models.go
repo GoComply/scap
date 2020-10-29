@@ -50,6 +50,10 @@ type LineObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	ShowSubcommand *oval_def.EntityObjectStringType `xml:"show_subcommand"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`

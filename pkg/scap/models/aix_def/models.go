@@ -50,6 +50,10 @@ type InterimFixObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Vuid *oval_def.EntityObjectStringType `xml:"vuid"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -122,6 +126,10 @@ type FilesetObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Flstinst *oval_def.EntityObjectStringType `xml:"flstinst"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -196,6 +204,10 @@ type FixObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	AparNumber *oval_def.EntityObjectStringType `xml:"apar_number"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -268,6 +280,10 @@ type NoObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Tunable *oval_def.EntityObjectStringType `xml:"tunable"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

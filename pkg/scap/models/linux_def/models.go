@@ -127,6 +127,10 @@ type DpkginfoObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -204,6 +208,10 @@ type IflistenersObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	InterfaceName *oval_def.EntityObjectStringType `xml:"interface_name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -280,6 +288,14 @@ type InetlisteningserversObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Protocol *oval_def.EntityObjectStringType `xml:"protocol"`
+
+	LocalAddress *oval_def.EntityObjectIPAddressStringType `xml:"local_address"`
+
+	LocalPort *oval_def.EntityObjectIntType `xml:"local_port"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -366,6 +382,10 @@ type PartitionObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	MountPoint *oval_def.EntityObjectStringType `xml:"mount_point"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -451,6 +471,12 @@ type RpminfoObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Behaviors *RpmInfoBehaviors `xml:"behaviors"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -533,6 +559,14 @@ type RpmverifyObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *RpmVerifyBehaviors `xml:"behaviors"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -630,6 +664,22 @@ type RpmverifyfileObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *RpmVerifyFileBehaviors `xml:"behaviors"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Epoch *RpmverifyfileObjectEpoch `xml:"epoch"`
+
+	VersionElm *RpmverifyfileObjectVersion `xml:"version"`
+
+	Release *RpmverifyfileObjectRelease `xml:"release"`
+
+	Arch *oval_def.EntityObjectStringType `xml:"arch"`
+
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -740,6 +790,20 @@ type RpmverifypackageObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Behaviors *RpmVerifyPackageBehaviors `xml:"behaviors"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Epoch *RpmverifypackageObjectEpoch `xml:"epoch"`
+
+	VersionElm *RpmverifypackageObjectVersion `xml:"version"`
+
+	Release *RpmverifypackageObjectRelease `xml:"release"`
+
+	Arch *oval_def.EntityObjectStringType `xml:"arch"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -825,6 +889,10 @@ type SelinuxbooleanObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -895,6 +963,18 @@ type SelinuxsecuritycontextObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *FileBehaviors `xml:"behaviors"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Pid *oval_def.EntityObjectIntType `xml:"pid"`
+
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Filename *oval_def.EntityObjectStringType `xml:"filename"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -991,6 +1071,10 @@ type SlackwarepkginfoObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1064,6 +1148,10 @@ type SystemdunitdependencyObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Unit *oval_def.EntityObjectStringType `xml:"unit"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1133,6 +1221,12 @@ type SystemdunitpropertyObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Unit *oval_def.EntityObjectStringType `xml:"unit"`
+
+	Property *oval_def.EntityObjectStringType `xml:"property"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1199,6 +1293,21 @@ type RpminfoStateVersion struct {
 }
 
 // Element
+type RpmverifyfileObjectEpoch struct {
+	XMLName xml.Name `xml:epoch`
+}
+
+// Element
+type RpmverifyfileObjectVersion struct {
+	XMLName xml.Name `xml:version`
+}
+
+// Element
+type RpmverifyfileObjectRelease struct {
+	XMLName xml.Name `xml:release`
+}
+
+// Element
 type RpmverifyfileStateEpoch struct {
 	XMLName xml.Name `xml:epoch`
 }
@@ -1210,6 +1319,21 @@ type RpmverifyfileStateVersion struct {
 
 // Element
 type RpmverifyfileStateRelease struct {
+	XMLName xml.Name `xml:release`
+}
+
+// Element
+type RpmverifypackageObjectEpoch struct {
+	XMLName xml.Name `xml:epoch`
+}
+
+// Element
+type RpmverifypackageObjectVersion struct {
+	XMLName xml.Name `xml:version`
+}
+
+// Element
+type RpmverifypackageObjectRelease struct {
 	XMLName xml.Name `xml:release`
 }
 

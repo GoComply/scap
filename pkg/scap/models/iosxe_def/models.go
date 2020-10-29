@@ -50,6 +50,10 @@ type GlobalObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	GlobalCommand *oval_def.EntityObjectStringType `xml:"global_command"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -116,6 +120,10 @@ type LineObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	ShowSubcommand *oval_def.EntityObjectStringType `xml:"show_subcommand"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -269,6 +277,10 @@ type InterfaceObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -374,6 +386,10 @@ type SectionObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	SectionCommand *oval_def.EntityObjectStringType `xml:"section_command"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -444,6 +460,12 @@ type RouterObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Protocol *EntityObjectRoutingProtocolType `xml:"protocol"`
+
+	IdElm *oval_def.EntityObjectIntType `xml:"id"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -522,6 +544,10 @@ type BgpneighborObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Neighbor *oval_def.EntityObjectStringType `xml:"neighbor"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -590,6 +616,12 @@ type RoutingprotocolauthintfObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Interface *oval_def.EntityObjectStringType `xml:"interface"`
+
+	Protocol *EntityObjectRoutingProtocolType `xml:"protocol"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -667,6 +699,12 @@ type AclObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	IpVersion *EntityObjectAccessListIPVersionType `xml:"ip_version"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -747,6 +785,10 @@ type SnmphostObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Host *oval_def.EntityObjectStringType `xml:"host"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -822,6 +864,10 @@ type SnmpcommunityObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -896,6 +942,10 @@ type SnmpuserObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -975,6 +1025,10 @@ type SnmpgroupObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1056,6 +1110,10 @@ type SnmpviewObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

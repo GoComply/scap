@@ -50,6 +50,10 @@ type SpwebapplicationObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Webapplicationurl *oval_def.EntityObjectStringType `xml:"webapplicationurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -219,6 +223,10 @@ type SpgroupObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -293,6 +301,12 @@ type SpwebObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Webcollectionurl *oval_def.EntityObjectStringType `xml:"webcollectionurl"`
+
+	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -369,6 +383,10 @@ type SplistObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Spsiteurl *oval_def.EntityObjectStringType `xml:"spsiteurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -441,6 +459,12 @@ type SpantivirussettingsObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Spwebservicename *oval_def.EntityObjectStringType `xml:"spwebservicename"`
+
+	Spfarmname *oval_def.EntityObjectStringType `xml:"spfarmname"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -527,6 +551,10 @@ type SpsiteadministrationObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -598,6 +626,10 @@ type SpsiteObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -668,6 +700,10 @@ type SpcrawlruleObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Spsiteurl *oval_def.EntityObjectStringType `xml:"spsiteurl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -750,6 +786,10 @@ type SpjobdefinitionObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Webappuri *oval_def.EntityObjectStringType `xml:"webappuri"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -824,6 +864,12 @@ type Spjobdefinition510Object struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Webappuri *oval_def.EntityObjectStringType `xml:"webappuri"`
+
+	Displayname *oval_def.EntityObjectStringType `xml:"displayname"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -900,6 +946,12 @@ type BestbetObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
+
+	Bestbeturl *oval_def.EntityObjectStringType `xml:"bestbeturl"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -972,6 +1024,12 @@ type InfopolicycollObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
+
+	IdElm *oval_def.EntityObjectStringType `xml:"id"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1047,6 +1105,10 @@ type SpdiagnosticsserviceObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Farmname *oval_def.EntityObjectStringType `xml:"farmname"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1127,6 +1189,10 @@ type SpdiagnosticslevelObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Farmname *oval_def.EntityObjectStringType `xml:"farmname"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1203,6 +1269,10 @@ type SppolicyfeatureObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Farmname *oval_def.EntityObjectStringType `xml:"farmname"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1288,6 +1358,10 @@ type SppolicyObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Webappuri *oval_def.EntityObjectStringType `xml:"webappuri"`
+
+	Urlzone *EntityObjectUrlZoneType `xml:"urlzone"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

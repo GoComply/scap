@@ -50,6 +50,10 @@ type DnscacheObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	DomainName *oval_def.EntityObjectStringType `xml:"domain_name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -120,6 +124,16 @@ type FileObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *FileBehaviors `xml:"behaviors"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Filename *oval_def.EntityObjectStringType `xml:"filename"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -232,6 +246,18 @@ type FileextendedattributeObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Behaviors *FileBehaviors `xml:"behaviors"`
+
+	AttributeName *oval_def.EntityObjectStringType `xml:"attribute_name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Filename *oval_def.EntityObjectStringType `xml:"filename"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -306,6 +332,12 @@ type GconfObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Key *oval_def.EntityObjectStringType `xml:"key"`
+
+	Source *oval_def.EntityObjectStringType `xml:"source"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -388,6 +420,12 @@ type InetdObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Protocol *oval_def.EntityObjectStringType `xml:"protocol"`
+
+	ServiceName *oval_def.EntityObjectStringType `xml:"service_name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -467,6 +505,10 @@ type InterfaceObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -545,6 +587,10 @@ type PasswordObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Username *oval_def.EntityObjectStringType `xml:"username"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -714,6 +760,12 @@ type Process58Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	CommandLine *oval_def.EntityObjectStringType `xml:"command_line"`
+
+	Pid *oval_def.EntityObjectIntType `xml:"pid"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -809,6 +861,10 @@ type RoutingtableObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Destination *oval_def.EntityObjectIPAddressType `xml:"destination"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -882,6 +938,12 @@ type RunlevelObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	ServiceName *oval_def.EntityObjectStringType `xml:"service_name"`
+
+	Runlevel *oval_def.EntityObjectStringType `xml:"runlevel"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -954,6 +1016,16 @@ type SccsObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *FileBehaviors `xml:"behaviors"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Path *oval_def.EntityObjectStringType `xml:"path"`
+
+	Filename *oval_def.EntityObjectStringType `xml:"filename"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1040,6 +1112,10 @@ type ShadowObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Username *oval_def.EntityObjectStringType `xml:"username"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1125,6 +1201,10 @@ type SymlinkObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -1193,6 +1273,10 @@ type SysctlObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Name *oval_def.EntityObjectStringType `xml:"name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -1337,6 +1421,12 @@ type XinetdObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Protocol *oval_def.EntityObjectStringType `xml:"protocol"`
+
+	ServiceName *oval_def.EntityObjectStringType `xml:"service_name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

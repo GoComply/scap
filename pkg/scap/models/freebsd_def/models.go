@@ -50,6 +50,10 @@ type PortinfoObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Pkginst *oval_def.EntityObjectStringType `xml:"pkginst"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
