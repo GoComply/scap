@@ -46,7 +46,7 @@ type DirectivesType struct {
 }
 
 type DefaultDirectivesType struct {
-	IncludeSourceDefinitions *string `xml:"include_source_definitions,attr,omitempty"`
+	IncludeSourceDefinitions string `xml:"include_source_definitions,attr,omitempty"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
@@ -84,7 +84,7 @@ type ClassDirectivesType struct {
 type DirectiveType struct {
 	Reported string `xml:"reported,attr"`
 
-	Content *string `xml:"content,attr,omitempty"`
+	Content string `xml:"content,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -116,9 +116,9 @@ type DefinitionType struct {
 
 	Version string `xml:"version,attr"`
 
-	VariableInstance *string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance string `xml:"variable_instance,attr,omitempty"`
 
-	Class *string `xml:"class,attr,omitempty"`
+	Class string `xml:"class,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
 
@@ -130,11 +130,11 @@ type DefinitionType struct {
 }
 
 type CriteriaType struct {
-	ApplicabilityCheck *string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
 
 	Operator string `xml:"operator,attr"`
 
-	Negate *string `xml:"negate,attr,omitempty"`
+	Negate string `xml:"negate,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
 
@@ -148,15 +148,15 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
-	ApplicabilityCheck *string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
 
 	TestRef string `xml:"test_ref,attr"`
 
 	Version string `xml:"version,attr"`
 
-	VariableInstance *string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance string `xml:"variable_instance,attr,omitempty"`
 
-	Negate *string `xml:"negate,attr,omitempty"`
+	Negate string `xml:"negate,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
 
@@ -164,15 +164,15 @@ type CriterionType struct {
 }
 
 type ExtendDefinitionType struct {
-	ApplicabilityCheck *string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
 
 	DefinitionRef string `xml:"definition_ref,attr"`
 
 	Version string `xml:"version,attr"`
 
-	VariableInstance *string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance string `xml:"variable_instance,attr,omitempty"`
 
-	Negate *string `xml:"negate,attr,omitempty"`
+	Negate string `xml:"negate,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
 
@@ -190,13 +190,13 @@ type TestType struct {
 
 	Version string `xml:"version,attr"`
 
-	VariableInstance *string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance string `xml:"variable_instance,attr,omitempty"`
 
-	CheckExistence *string `xml:"check_existence,attr,omitempty"`
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator *string `xml:"state_operator,attr,omitempty"`
+	StateOperator string `xml:"state_operator,attr,omitempty"`
 
 	Result string `xml:"result,attr"`
 

@@ -1360,93 +1360,93 @@ type SlackwarepkginfoStateVersion struct {
 // XSD ComplexType declarations
 
 type RpmInfoBehaviors struct {
-	Filepaths *string `xml:"filepaths,attr,omitempty"`
+	Filepaths string `xml:"filepaths,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyBehaviors struct {
-	Nodeps *string `xml:"nodeps,attr,omitempty"`
+	Nodeps string `xml:"nodeps,attr,omitempty"`
 
-	Nodigest *string `xml:"nodigest,attr,omitempty"`
+	Nodigest string `xml:"nodigest,attr,omitempty"`
 
-	Nofiles *string `xml:"nofiles,attr,omitempty"`
+	Nofiles string `xml:"nofiles,attr,omitempty"`
 
-	Noscripts *string `xml:"noscripts,attr,omitempty"`
+	Noscripts string `xml:"noscripts,attr,omitempty"`
 
-	Nosignature *string `xml:"nosignature,attr,omitempty"`
+	Nosignature string `xml:"nosignature,attr,omitempty"`
 
-	Nolinkto *string `xml:"nolinkto,attr,omitempty"`
+	Nolinkto string `xml:"nolinkto,attr,omitempty"`
 
-	Nomd5 *string `xml:"nomd5,attr,omitempty"`
+	Nomd5 string `xml:"nomd5,attr,omitempty"`
 
-	Nosize *string `xml:"nosize,attr,omitempty"`
+	Nosize string `xml:"nosize,attr,omitempty"`
 
-	Nouser *string `xml:"nouser,attr,omitempty"`
+	Nouser string `xml:"nouser,attr,omitempty"`
 
-	Nogroup *string `xml:"nogroup,attr,omitempty"`
+	Nogroup string `xml:"nogroup,attr,omitempty"`
 
-	Nomtime *string `xml:"nomtime,attr,omitempty"`
+	Nomtime string `xml:"nomtime,attr,omitempty"`
 
-	Nomode *string `xml:"nomode,attr,omitempty"`
+	Nomode string `xml:"nomode,attr,omitempty"`
 
-	Nordev *string `xml:"nordev,attr,omitempty"`
+	Nordev string `xml:"nordev,attr,omitempty"`
 
-	Noconfigfiles *string `xml:"noconfigfiles,attr,omitempty"`
+	Noconfigfiles string `xml:"noconfigfiles,attr,omitempty"`
 
-	Noghostfiles *string `xml:"noghostfiles,attr,omitempty"`
+	Noghostfiles string `xml:"noghostfiles,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyFileBehaviors struct {
-	Nolinkto *string `xml:"nolinkto,attr,omitempty"`
+	Nolinkto string `xml:"nolinkto,attr,omitempty"`
 
-	Nomd5 *string `xml:"nomd5,attr,omitempty"`
+	Nomd5 string `xml:"nomd5,attr,omitempty"`
 
-	Nosize *string `xml:"nosize,attr,omitempty"`
+	Nosize string `xml:"nosize,attr,omitempty"`
 
-	Nouser *string `xml:"nouser,attr,omitempty"`
+	Nouser string `xml:"nouser,attr,omitempty"`
 
-	Nogroup *string `xml:"nogroup,attr,omitempty"`
+	Nogroup string `xml:"nogroup,attr,omitempty"`
 
-	Nomtime *string `xml:"nomtime,attr,omitempty"`
+	Nomtime string `xml:"nomtime,attr,omitempty"`
 
-	Nomode *string `xml:"nomode,attr,omitempty"`
+	Nomode string `xml:"nomode,attr,omitempty"`
 
-	Nordev *string `xml:"nordev,attr,omitempty"`
+	Nordev string `xml:"nordev,attr,omitempty"`
 
-	Noconfigfiles *string `xml:"noconfigfiles,attr,omitempty"`
+	Noconfigfiles string `xml:"noconfigfiles,attr,omitempty"`
 
-	Noghostfiles *string `xml:"noghostfiles,attr,omitempty"`
+	Noghostfiles string `xml:"noghostfiles,attr,omitempty"`
 
-	Nofiledigest *string `xml:"nofiledigest,attr,omitempty"`
+	Nofiledigest string `xml:"nofiledigest,attr,omitempty"`
 
-	Nocaps *string `xml:"nocaps,attr,omitempty"`
+	Nocaps string `xml:"nocaps,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyPackageBehaviors struct {
-	Nodeps *string `xml:"nodeps,attr,omitempty"`
+	Nodeps string `xml:"nodeps,attr,omitempty"`
 
-	Nodigest *string `xml:"nodigest,attr,omitempty"`
+	Nodigest string `xml:"nodigest,attr,omitempty"`
 
-	Noscripts *string `xml:"noscripts,attr,omitempty"`
+	Noscripts string `xml:"noscripts,attr,omitempty"`
 
-	Nosignature *string `xml:"nosignature,attr,omitempty"`
+	Nosignature string `xml:"nosignature,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileBehaviors struct {
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

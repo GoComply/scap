@@ -539,7 +539,7 @@ type SwlistStateVersion struct {
 // XSD ComplexType declarations
 
 type Patch53Behaviors struct {
-	Supersedence *string `xml:"supersedence,attr,omitempty"`
+	Supersedence string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

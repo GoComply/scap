@@ -253,7 +253,7 @@ type RSAKeyValue struct {
 // XSD ComplexType declarations
 
 type SignatureType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	SignedInfo SignedInfo `xml:"SignedInfo"`
 
@@ -267,14 +267,14 @@ type SignatureType struct {
 }
 
 type SignatureValueType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type SignedInfoType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	CanonicalizationMethod CanonicalizationMethod `xml:"CanonicalizationMethod"`
 
@@ -300,11 +300,11 @@ type SignatureMethodType struct {
 }
 
 type ReferenceType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
-	URI *string `xml:"URI,attr,omitempty"`
+	URI string `xml:"URI,attr,omitempty"`
 
-	Type *string `xml:"Type,attr,omitempty"`
+	Type string `xml:"Type,attr,omitempty"`
 
 	Transforms *Transforms `xml:"Transforms"`
 
@@ -336,7 +336,7 @@ type DigestMethodType struct {
 }
 
 type KeyInfoType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	KeyName []KeyName `xml:"KeyName"`
 
@@ -366,7 +366,7 @@ type KeyValueType struct {
 type RetrievalMethodType struct {
 	URI string `xml:"URI,attr"`
 
-	Type *string `xml:"Type,attr,omitempty"`
+	Type string `xml:"Type,attr,omitempty"`
 
 	Transforms *Transforms `xml:"Transforms"`
 
@@ -410,17 +410,17 @@ type SPKIDataType struct {
 }
 
 type ObjectType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
-	MimeType *string `xml:"MimeType,attr,omitempty"`
+	MimeType string `xml:"MimeType,attr,omitempty"`
 
-	Encoding *string `xml:"Encoding,attr,omitempty"`
+	Encoding string `xml:"Encoding,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ManifestType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	Reference []Reference `xml:"Reference"`
 
@@ -428,7 +428,7 @@ type ManifestType struct {
 }
 
 type SignaturePropertiesType struct {
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	SignatureProperty []SignatureProperty `xml:"SignatureProperty"`
 
@@ -438,7 +438,7 @@ type SignaturePropertiesType struct {
 type SignaturePropertyType struct {
 	Target string `xml:"Target,attr"`
 
-	Id *string `xml:"Id,attr,omitempty"`
+	Id string `xml:"Id,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

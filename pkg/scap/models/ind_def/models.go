@@ -1191,41 +1191,41 @@ type YamlfilecontentState struct {
 // XSD ComplexType declarations
 
 type LdapBehaviors struct {
-	Scope *string `xml:"scope,attr,omitempty"`
+	Scope string `xml:"scope,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type Textfilecontent54Behaviors struct {
-	IgnoreCase *string `xml:"ignore_case,attr,omitempty"`
+	IgnoreCase string `xml:"ignore_case,attr,omitempty"`
 
-	Multiline *string `xml:"multiline,attr,omitempty"`
+	Multiline string `xml:"multiline,attr,omitempty"`
 
-	Singleline *string `xml:"singleline,attr,omitempty"`
+	Singleline string `xml:"singleline,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileBehaviors struct {
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

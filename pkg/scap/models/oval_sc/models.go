@@ -77,9 +77,9 @@ type ObjectType struct {
 
 	Version string `xml:"version,attr"`
 
-	VariableInstance *string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance string `xml:"variable_instance,attr,omitempty"`
 
-	Comment *string `xml:"comment,attr,omitempty"`
+	Comment string `xml:"comment,attr,omitempty"`
 
 	Flag string `xml:"flag,attr"`
 
@@ -114,7 +114,7 @@ type SystemDataType struct {
 type ItemType struct {
 	Id string `xml:"id,attr"`
 
-	Status *string `xml:"status,attr,omitempty"`
+	Status string `xml:"status,attr,omitempty"`
 
 	Message []oval.MessageType `xml:"message"`
 

@@ -4711,223 +4711,223 @@ type Process58StatePriority struct {
 // XSD ComplexType declarations
 
 type AccesstokenBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileBehaviors struct {
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileAuditPermissions53Behaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileAuditPermissionsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileEffectiveRights53Behaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FileEffectiveRightsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	Recurse *string `xml:"recurse,attr,omitempty"`
+	Recurse string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type NTUserBehaviors struct {
-	IncludeDefault *string `xml:"include_default,attr,omitempty"`
+	IncludeDefault string `xml:"include_default,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PrinterEffectiveRightsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RegistryBehaviors struct {
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyAuditPermissions53Behaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyAuditPermissionsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyEffectiveRights53Behaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RegkeyEffectiveRightsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
-	MaxDepth *string `xml:"max_depth,attr,omitempty"`
+	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
-	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
 
-	WindowsView *string `xml:"windows_view,attr,omitempty"`
+	WindowsView string `xml:"windows_view,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ServiceEffectiveRightsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SharedResourceAuditedPermissionsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SharedResourceEffectiveRightsBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SidBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SidSidBehaviors struct {
-	IncludeGroup *string `xml:"include_group,attr,omitempty"`
+	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
-	ResolveGroup *string `xml:"resolve_group,attr,omitempty"`
+	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type WuaUpdateSearcherBehaviors struct {
-	IncludeSupersededUpdates *string `xml:"include_superseded_updates,attr,omitempty"`
+	IncludeSupersededUpdates string `xml:"include_superseded_updates,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
