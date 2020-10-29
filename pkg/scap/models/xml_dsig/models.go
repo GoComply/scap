@@ -183,8 +183,6 @@ type PGPData struct {
 	PGPKeyID string `xml:"PGPKeyID"`
 
 	PGPKeyPacket string `xml:"PGPKeyPacket"`
-
-	PGPKeyPacket string `xml:"PGPKeyPacket"`
 }
 
 // Element
