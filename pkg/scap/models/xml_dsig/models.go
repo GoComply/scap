@@ -402,8 +402,6 @@ type PGPDataType struct {
 
 	PGPKeyPacket string `xml:"PGPKeyPacket"`
 
-	PGPKeyPacket string `xml:"PGPKeyPacket"`
-
 	InnerXml string `xml:",innerxml"`
 }
 
