@@ -1255,17 +1255,17 @@ type VirtualizationinfoState struct {
 // XSD ComplexType declarations
 
 type PackageCheckBehaviors struct {
-	FileattributesOnly string `xml:"fileattributes_only,attr,omitempty"`
+	FileattributesOnly *string `xml:"fileattributes_only,attr,omitempty"`
 
-	FilecontentsOnly string `xml:"filecontents_only,attr,omitempty"`
+	FilecontentsOnly *string `xml:"filecontents_only,attr,omitempty"`
 
-	NoVolatileeditable string `xml:"no_volatileeditable,attr,omitempty"`
+	NoVolatileeditable *string `xml:"no_volatileeditable,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PatchBehaviors struct {
-	Supersedence string `xml:"supersedence,attr,omitempty"`
+	Supersedence *string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

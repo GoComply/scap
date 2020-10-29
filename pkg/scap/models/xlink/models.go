@@ -33,6 +33,7 @@ type Simple struct {
 }
 
 type Extended struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type TitleEltType struct {
@@ -44,7 +45,9 @@ type ResourceType struct {
 }
 
 type LocatorType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArcType struct {
+	InnerXml string `xml:",innerxml"`
 }

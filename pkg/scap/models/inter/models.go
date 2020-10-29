@@ -508,16 +508,20 @@ type OCILType struct {
 	Variables *VariablesType `xml:"variables"`
 
 	Results *ResultsType `xml:"results"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionnairesType struct {
 	Questionnaire []QuestionnaireType `xml:"questionnaire"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionnaireType struct {
 	Id string `xml:"id,attr"`
 
-	ChildOnly string `xml:"child_only,attr,omitempty"`
+	ChildOnly *string `xml:"child_only,attr,omitempty"`
 
 	Revision string `xml:"revision,attr"`
 
@@ -530,6 +534,8 @@ type QuestionnaireType struct {
 	Actions OperationType `xml:"actions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type GeneratorType struct {
@@ -544,9 +550,12 @@ type GeneratorType struct {
 	Timestamp string `xml:"timestamp"`
 
 	AdditionalData *ExtensionContainerType `xml:"additional_data"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ExtensionContainerType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type DocumentType struct {
@@ -555,10 +564,14 @@ type DocumentType struct {
 	Description []string `xml:"description"`
 
 	Notice []string `xml:"notice"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestActionsType struct {
 	TestAction []TestAction `xml:"test_action"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionTestActionType struct {
@@ -579,6 +592,8 @@ type QuestionTestActionType struct {
 	WhenError *TestActionConditionType `xml:"when_error"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type BooleanQuestionTestActionType struct {
@@ -603,6 +618,8 @@ type BooleanQuestionTestActionType struct {
 	WhenError *TestActionConditionType `xml:"when_error"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceQuestionTestActionType struct {
@@ -625,6 +642,8 @@ type ChoiceQuestionTestActionType struct {
 	WhenError *TestActionConditionType `xml:"when_error"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type NumericQuestionTestActionType struct {
@@ -645,6 +664,8 @@ type NumericQuestionTestActionType struct {
 	WhenError *TestActionConditionType `xml:"when_error"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StringQuestionTestActionType struct {
@@ -667,12 +688,15 @@ type StringQuestionTestActionType struct {
 	WhenError *TestActionConditionType `xml:"when_error"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestActionRefType struct {
 	Negate string `xml:"negate,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceTestActionConditionType struct {
@@ -683,10 +707,12 @@ type ChoiceTestActionConditionType struct {
 	Result string `xml:"result"`
 
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type EqualsTestActionConditionType struct {
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef *string `xml:"var_ref,attr,omitempty"`
 
 	Value []float64 `xml:"value"`
 
@@ -695,6 +721,8 @@ type EqualsTestActionConditionType struct {
 	Result string `xml:"result"`
 
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RangeTestActionConditionType struct {
@@ -705,6 +733,8 @@ type RangeTestActionConditionType struct {
 	Result string `xml:"result"`
 
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PatternTestActionConditionType struct {
@@ -715,18 +745,23 @@ type PatternTestActionConditionType struct {
 	Result string `xml:"result"`
 
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PatternType struct {
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef *string `xml:"var_ref,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type RangeType struct {
 	Min *RangeValueType `xml:"min"`
 
 	Max *RangeValueType `xml:"max"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestActionConditionType struct {
@@ -735,20 +770,25 @@ type TestActionConditionType struct {
 	Result string `xml:"result"`
 
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RangeValueType struct {
 	Inclusive string `xml:"inclusive,attr"`
 
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef *string `xml:"var_ref,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionsType struct {
 	Question []Question `xml:"question"`
 
 	ChoiceGroup []ChoiceGroupType `xml:"choice_group"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionTextType struct {
@@ -767,12 +807,14 @@ type QuestionType struct {
 	Instructions *InstructionsType `xml:"instructions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type BooleanQuestionType struct {
-	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
+	DefaultAnswer *string `xml:"default_answer,attr,omitempty"`
 
-	Model string `xml:"model,attr,omitempty"`
+	Model *string `xml:"model,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -783,10 +825,12 @@ type BooleanQuestionType struct {
 	Instructions *InstructionsType `xml:"instructions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceQuestionType struct {
-	DefaultAnswerRef string `xml:"default_answer_ref,attr,omitempty"`
+	DefaultAnswerRef *string `xml:"default_answer_ref,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -797,10 +841,12 @@ type ChoiceQuestionType struct {
 	Instructions *InstructionsType `xml:"instructions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type NumericQuestionType struct {
-	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
+	DefaultAnswer *string `xml:"default_answer,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -811,10 +857,12 @@ type NumericQuestionType struct {
 	Instructions *InstructionsType `xml:"instructions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StringQuestionType struct {
-	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
+	DefaultAnswer *string `xml:"default_answer,attr,omitempty"`
 
 	Id string `xml:"id,attr"`
 
@@ -825,32 +873,39 @@ type StringQuestionType struct {
 	Instructions *InstructionsType `xml:"instructions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceType struct {
 	Id string `xml:"id,attr"`
 
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef *string `xml:"var_ref,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceGroupType struct {
 	Id string `xml:"id,attr"`
 
 	Choice []ChoiceType `xml:"choice"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type InstructionsType struct {
 	Title TextType `xml:"title"`
 
 	Step []StepType `xml:"step"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ResultsType struct {
-	StartTime string `xml:"start_time,attr,omitempty"`
+	StartTime *string `xml:"start_time,attr,omitempty"`
 
-	EndTime string `xml:"end_time,attr,omitempty"`
+	EndTime *string `xml:"end_time,attr,omitempty"`
 
 	Title *TextType `xml:"title"`
 
@@ -863,18 +918,26 @@ type ResultsType struct {
 	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 
 	Targets *TargetsType `xml:"targets"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionnaireResultsType struct {
 	QuestionnaireResult []QuestionnaireResultType `xml:"questionnaire_result"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestActionResultsType struct {
 	TestActionResult []TestActionResultType `xml:"test_action_result"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionResultsType struct {
 	QuestionResult []QuestionResult `xml:"question_result"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionnaireResultType struct {
@@ -883,6 +946,8 @@ type QuestionnaireResultType struct {
 	Result string `xml:"result,attr"`
 
 	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestActionResultType struct {
@@ -891,58 +956,74 @@ type TestActionResultType struct {
 	Result string `xml:"result,attr"`
 
 	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type QuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr,omitempty"`
+	Response *string `xml:"response,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type BooleanQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr,omitempty"`
+	Response *string `xml:"response,attr,omitempty"`
 
 	Answer bool `xml:"answer"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr,omitempty"`
+	Response *string `xml:"response,attr,omitempty"`
 
 	Answer ChoiceAnswerType `xml:"answer"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type NumericQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr,omitempty"`
+	Response *string `xml:"response,attr,omitempty"`
 
 	Answer float64 `xml:"answer"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type StringQuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-	Response string `xml:"response,attr,omitempty"`
+	Response *string `xml:"response,attr,omitempty"`
 
 	Answer string `xml:"answer"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ChoiceAnswerType struct {
 	ChoiceRef string `xml:"choice_ref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactsType struct {
 	Artifact []ArtifactType `xml:"artifact"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactType struct {
 	Id string `xml:"id,attr"`
 
-	Persistent string `xml:"persistent,attr,omitempty"`
+	Persistent *string `xml:"persistent,attr,omitempty"`
 
 	Revision string `xml:"revision,attr"`
 
@@ -951,43 +1032,60 @@ type ArtifactType struct {
 	Description TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactRefsType struct {
 	ArtifactRef []ArtifactRefType `xml:"artifact_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactRefType struct {
 	Idref string `xml:"idref,attr"`
 
-	Required string `xml:"required,attr,omitempty"`
+	Required *string `xml:"required,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactResultsType struct {
 	ArtifactResult []ArtifactResultType `xml:"artifact_result"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactValueType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type EmbeddedArtifactValueType struct {
 	MimeType string `xml:"mime_type,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextArtifactValueType struct {
 	MimeType string `xml:"mime_type,attr"`
 
 	Data string `xml:"data"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type BinaryArtifactValueType struct {
 	MimeType string `xml:"mime_type,attr"`
 
 	Data string `xml:"data"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceArtifactValueType struct {
 	Reference Reference `xml:"reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ArtifactResultType struct {
@@ -1000,10 +1098,14 @@ type ArtifactResultType struct {
 	Provider string `xml:"provider"`
 
 	Submitter UserType `xml:"submitter"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TargetsType struct {
 	Target []Target `xml:"target"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type UserType struct {
@@ -1018,6 +1120,8 @@ type UserType struct {
 	Name string `xml:"name"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SystemTargetType struct {
@@ -1032,10 +1136,14 @@ type SystemTargetType struct {
 	Name string `xml:"name"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariablesType struct {
 	Variable []Variable `xml:"variable"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariableType struct {
@@ -1048,6 +1156,8 @@ type VariableType struct {
 	Description *TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ConstantVariableType struct {
@@ -1062,6 +1172,8 @@ type ConstantVariableType struct {
 	Description *TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type LocalVariableType struct {
@@ -1078,6 +1190,8 @@ type LocalVariableType struct {
 	Description *TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ExternalVariableType struct {
@@ -1090,22 +1204,30 @@ type ExternalVariableType struct {
 	Description *TextType `xml:"description"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionBaseType struct {
 	Value string `xml:"value"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionPatternType struct {
 	Pattern string `xml:"pattern,attr"`
 
 	Value string `xml:"value"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionChoiceType struct {
 	ChoiceRef string `xml:"choice_ref,attr"`
 
 	Value string `xml:"value"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionRangeType struct {
@@ -1114,20 +1236,28 @@ type SetExpressionRangeType struct {
 	Max string `xml:"max,attr"`
 
 	Value string `xml:"value"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionBooleanType struct {
 	Value string `xml:"value,attr"`
 
 	ValueElm string `xml:"value"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type VariableSetType struct {
 	Expression []Expression `xml:"expression"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SubstitutionTextType struct {
 	VarRef string `xml:"var_ref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceType struct {
@@ -1140,21 +1270,25 @@ type ReferenceType struct {
 }
 
 type StepType struct {
-	IsDone string `xml:"is_done,attr,omitempty"`
+	IsDone *string `xml:"is_done,attr,omitempty"`
 
-	IsRequired string `xml:"is_required,attr,omitempty"`
+	IsRequired *string `xml:"is_required,attr,omitempty"`
 
 	Description *TextType `xml:"description"`
 
 	Reference []ReferenceType `xml:"reference"`
 
 	Step []StepType `xml:"step"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ItemBaseType struct {
 	Revision string `xml:"revision,attr"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type NamedItemBaseType struct {
@@ -1163,6 +1297,8 @@ type NamedItemBaseType struct {
 	Name string `xml:"name"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CompoundTestActionType struct {
@@ -1177,22 +1313,29 @@ type CompoundTestActionType struct {
 	Actions OperationType `xml:"actions"`
 
 	Notes []string `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferencesType struct {
 	Reference []ReferenceType `xml:"reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type OperationType struct {
-	Operation string `xml:"operation,attr,omitempty"`
+	Operation *string `xml:"operation,attr,omitempty"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate *string `xml:"negate,attr,omitempty"`
 
 	TestActionRef []TestActionRefType `xml:"test_action_ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }

@@ -310,19 +310,19 @@ type VisdkmanagedobjectState struct {
 // XSD ComplexType declarations
 
 type Patch56Behaviors struct {
-	Supersedence string `xml:"supersedence,attr,omitempty"`
+	Supersedence *string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PatchBehaviors struct {
-	Supersedence string `xml:"supersedence,attr,omitempty"`
+	Supersedence *string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ViSdkManagedEntityBehaviors struct {
-	ManagedEntityType string `xml:"managed_entity_type,attr,omitempty"`
+	ManagedEntityType *string `xml:"managed_entity_type,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

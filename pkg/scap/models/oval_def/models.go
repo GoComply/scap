@@ -229,7 +229,7 @@ type DefinitionType struct {
 
 	Class string `xml:"class,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated *string `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -269,19 +269,19 @@ type ReferenceType struct {
 
 	RefId string `xml:"ref_id,attr"`
 
-	RefUrl string `xml:"ref_url,attr,omitempty"`
+	RefUrl *string `xml:"ref_url,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type CriteriaType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck *string `xml:"applicability_check,attr,omitempty"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator *string `xml:"operator,attr,omitempty"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate *string `xml:"negate,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment *string `xml:"comment,attr,omitempty"`
 
 	Criteria []CriteriaType `xml:"criteria"`
 
@@ -293,25 +293,25 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck *string `xml:"applicability_check,attr,omitempty"`
 
 	TestRef string `xml:"test_ref,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate *string `xml:"negate,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment *string `xml:"comment,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ExtendDefinitionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck *string `xml:"applicability_check,attr,omitempty"`
 
 	DefinitionRef string `xml:"definition_ref,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate *string `xml:"negate,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment *string `xml:"comment,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -327,15 +327,15 @@ type TestType struct {
 
 	Version string `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence *string `xml:"check_existence,attr,omitempty"`
 
 	Check string `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator *string `xml:"state_operator,attr,omitempty"`
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated *string `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -367,9 +367,9 @@ type ObjectType struct {
 
 	Version string `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment *string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated *string `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -389,11 +389,11 @@ type StateType struct {
 
 	Version string `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator *string `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment *string `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated *string `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -417,7 +417,7 @@ type VariableType struct {
 
 	Comment string `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated *string `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -434,7 +434,7 @@ type PossibleValueType struct {
 }
 
 type PossibleRestrictionType struct {
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator *string `xml:"operator,attr,omitempty"`
 
 	Hint string `xml:"hint,attr"`
 
@@ -456,7 +456,7 @@ type ValueType struct {
 }
 
 type LiteralComponentType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype *string `xml:"datatype,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
@@ -467,7 +467,7 @@ type ObjectComponentType struct {
 
 	ItemField string `xml:"item_field,attr"`
 
-	RecordField string `xml:"record_field,attr,omitempty"`
+	RecordField *string `xml:"record_field,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -519,9 +519,9 @@ type SubstringFunctionType struct {
 }
 
 type TimeDifferenceFunctionType struct {
-	Format1 string `xml:"format_1,attr,omitempty"`
+	Format1 *string `xml:"format_1,attr,omitempty"`
 
-	Format2 string `xml:"format_2,attr,omitempty"`
+	Format2 *string `xml:"format_2,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -541,7 +541,7 @@ type CountFunctionType struct {
 }
 
 type GlobToRegexFunctionType struct {
-	GlobNoescape string `xml:"glob_noescape,attr,omitempty"`
+	GlobNoescape *string `xml:"glob_noescape,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -600,25 +600,25 @@ type EntityObjectRecordType struct {
 type EntityObjectFieldType struct {
 	Name string `xml:"name,attr"`
 
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck *string `xml:"entity_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSimpleBaseType struct {
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck *string `xml:"entity_check,attr,omitempty"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence *string `xml:"check_existence,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateComplexBaseType struct {
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck *string `xml:"entity_check,attr,omitempty"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence *string `xml:"check_existence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -676,9 +676,9 @@ type EntityStateStringType struct {
 }
 
 type EntityStateRecordType struct {
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck *string `xml:"entity_check,attr,omitempty"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence *string `xml:"check_existence,attr,omitempty"`
 
 	Field []EntityStateFieldType `xml:"field"`
 
@@ -688,7 +688,7 @@ type EntityStateRecordType struct {
 type EntityStateFieldType struct {
 	Name string `xml:"name,attr"`
 
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck *string `xml:"entity_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

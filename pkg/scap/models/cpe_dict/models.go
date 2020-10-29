@@ -55,16 +55,18 @@ type GeneratorType struct {
 	SchemaVersion float64 `xml:"schema_version"`
 
 	Timestamp string `xml:"timestamp"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ItemType struct {
 	Name string `xml:"name,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated *string `xml:"deprecated,attr,omitempty"`
 
-	DeprecatedBy string `xml:"deprecated_by,attr,omitempty"`
+	DeprecatedBy *string `xml:"deprecated_by,attr,omitempty"`
 
-	DeprecationDate string `xml:"deprecation_date,attr,omitempty"`
+	DeprecationDate *string `xml:"deprecation_date,attr,omitempty"`
 
 	Title []TextType `xml:"title"`
 
@@ -73,34 +75,44 @@ type ItemType struct {
 	References *ReferencesType `xml:"references"`
 
 	Check []CheckType `xml:"check"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ListType struct {
 	Generator *GeneratorType `xml:"generator"`
 
 	CpeItem []CpeItem `xml:"cpe-item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type NotesType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Note []string `xml:"note"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferencesType struct {
 	Reference []Reference `xml:"reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckType struct {
 	System string `xml:"system,attr"`
 
-	Href string `xml:"href,attr,omitempty"`
+	Href *string `xml:"href,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }

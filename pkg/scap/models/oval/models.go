@@ -52,7 +52,7 @@ type ElementMapType struct {
 }
 
 type ElementMapItemType struct {
-	TargetNamespace string `xml:"target_namespace,attr,omitempty"`
+	TargetNamespace *string `xml:"target_namespace,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
@@ -81,14 +81,14 @@ type GeneratorType struct {
 }
 
 type SchemaVersionType struct {
-	Platform string `xml:"platform,attr,omitempty"`
+	Platform *string `xml:"platform,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type MessageType struct {
-	Level string `xml:"level,attr,omitempty"`
+	Level *string `xml:"level,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

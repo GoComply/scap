@@ -1551,13 +1551,13 @@ type ShadowStateFlag struct {
 // XSD ComplexType declarations
 
 type FileBehaviors struct {
-	MaxDepth string `xml:"max_depth,attr,omitempty"`
+	MaxDepth *string `xml:"max_depth,attr,omitempty"`
 
-	Recurse string `xml:"recurse,attr,omitempty"`
+	Recurse *string `xml:"recurse,attr,omitempty"`
 
-	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
+	RecurseDirection *string `xml:"recurse_direction,attr,omitempty"`
 
-	RecurseFileSystem string `xml:"recurse_file_system,attr,omitempty"`
+	RecurseFileSystem *string `xml:"recurse_file_system,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
