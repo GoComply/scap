@@ -50,6 +50,12 @@ type GetconfObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	ParameterName *oval_def.EntityObjectStringType `xml:"parameter_name"`
+
+	Pathname *oval_def.EntityObjectStringType `xml:"pathname"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -121,6 +127,12 @@ type NddObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Device *oval_def.EntityObjectStringType `xml:"device"`
+
+	Parameter *oval_def.EntityObjectStringType `xml:"parameter"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -191,6 +203,16 @@ type Patch53Object struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *Patch53Behaviors `xml:"behaviors"`
+
+	Swtype *oval_def.EntityObjectStringType `xml:"swtype"`
+
+	AreaPatched *oval_def.EntityObjectStringType `xml:"area_patched"`
+
+	PatchBase *oval_def.EntityObjectStringType `xml:"patch_base"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -338,6 +360,10 @@ type SwlistObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Swlist *oval_def.EntityObjectStringType `xml:"swlist"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -414,6 +440,10 @@ type TrustedObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Username *oval_def.EntityObjectStringType `xml:"username"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

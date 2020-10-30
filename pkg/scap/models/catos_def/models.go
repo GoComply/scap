@@ -50,6 +50,10 @@ type LineObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	ShowSubcommand *oval_def.EntityObjectStringType `xml:"show_subcommand"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -118,6 +122,10 @@ type ModuleObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	ModuleNumber *oval_def.EntityObjectIntType `xml:"module_number"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

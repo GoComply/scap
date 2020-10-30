@@ -78,6 +78,8 @@ type CheckFactRef struct {
 
 type PlatformSpecificationType struct {
 	Platform []Platform `xml:"platform"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PlatformBaseType struct {
@@ -86,6 +88,8 @@ type PlatformBaseType struct {
 	Remark []TextType `xml:"remark"`
 
 	LogicalTest LogicalTest `xml:"logical-test"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type PlatformType struct {
@@ -96,6 +100,8 @@ type PlatformType struct {
 	Remark []TextType `xml:"remark"`
 
 	LogicalTest LogicalTest `xml:"logical-test"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type LogicalTestType struct {
@@ -108,16 +114,22 @@ type LogicalTestType struct {
 	FactRef []FactRef `xml:"fact-ref"`
 
 	CheckFactRef []CheckFactRef `xml:"check-fact-ref"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type FactRefType struct {
 	Description string `xml:"description,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CPEFactRefType struct {
 	Name string `xml:"name,attr"`
 
 	Description string `xml:"description,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckFactRefType struct {
@@ -128,10 +140,13 @@ type CheckFactRefType struct {
 	IdRef string `xml:"id-ref,attr"`
 
 	Description string `xml:"description,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }

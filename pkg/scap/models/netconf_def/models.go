@@ -50,6 +50,10 @@ type ConfigObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`

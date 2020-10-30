@@ -50,6 +50,10 @@ type XmlConfigObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -119,6 +123,10 @@ type ShowObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Subcommand *oval_def.EntityObjectStringType `xml:"subcommand"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -187,6 +195,10 @@ type VersionObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Component *oval_def.EntityObjectStringType `xml:"component"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -270,6 +282,12 @@ type XmlShowObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Subcommand *oval_def.EntityObjectStringType `xml:"subcommand"`
+
+	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

@@ -50,6 +50,12 @@ type Patch56Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	Behaviors *Patch56Behaviors `xml:"behaviors"`
+
+	PatchName *oval_def.EntityObjectStringType `xml:"patch_name"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -126,6 +132,10 @@ type PatchObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *PatchBehaviors `xml:"behaviors"`
+
+	PatchNumber *oval_def.EntityObjectStringType `xml:"patch_number"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -262,6 +272,12 @@ type VisdkmanagedobjectObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Behaviors *ViSdkManagedEntityBehaviors `xml:"behaviors"`
+
+	Property *oval_def.EntityObjectStringType `xml:"property"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

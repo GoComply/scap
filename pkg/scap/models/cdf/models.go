@@ -456,12 +456,14 @@ type NoticeType struct {
 }
 
 type DcStatusType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type PlainTextType struct {
 	Id string `xml:"id,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceType struct {
@@ -473,15 +475,18 @@ type ReferenceType struct {
 }
 
 type SignatureType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type MetadataType struct {
+	InnerXml string `xml:",innerxml"`
 }
 
 type ParamType struct {
 	Name string `xml:"name,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type VersionType struct {
@@ -489,7 +494,8 @@ type VersionType struct {
 
 	Update string `xml:"update,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextType struct {
@@ -497,7 +503,8 @@ type TextType struct {
 
 	Override string `xml:"override,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type HtmlTextType struct {
@@ -542,24 +549,34 @@ type SubType struct {
 	Use string `xml:"use,attr,omitempty"`
 
 	Idref string `xml:"idref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type IdrefType struct {
 	Idref string `xml:"idref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type IdrefListType struct {
 	Idref string `xml:"idref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CPE2IdrefType struct {
 	Idref string `xml:"idref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type OverrideableCPE2IdrefType struct {
 	Override string `xml:"override,attr,omitempty"`
 
 	Idref string `xml:"idref,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ItemType struct {
@@ -596,6 +613,8 @@ type ItemType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SelectableItemType struct {
@@ -644,6 +663,8 @@ type SelectableItemType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type GroupType struct {
@@ -700,6 +721,8 @@ type GroupType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RuleType struct {
@@ -770,12 +793,15 @@ type RuleType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type IdentType struct {
 	System string `xml:"system,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type WarningType struct {
@@ -834,6 +860,8 @@ type FixType struct {
 
 type InstanceFixType struct {
 	Context string `xml:"context,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ComplexCheckType struct {
@@ -844,6 +872,8 @@ type ComplexCheckType struct {
 	Check []CheckType `xml:"check"`
 
 	ComplexCheck []ComplexCheckType `xml:"complex-check"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckType struct {
@@ -866,6 +896,8 @@ type CheckType struct {
 	CheckContentRef []CheckContentRefType `xml:"check-content-ref"`
 
 	CheckContent *CheckContentType `xml:"check-content"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckImportType struct {
@@ -880,12 +912,16 @@ type CheckExportType struct {
 	ValueId string `xml:"value-id,attr"`
 
 	ExportName string `xml:"export-name,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckContentRefType struct {
 	Href string `xml:"href,attr"`
 
 	Name string `xml:"name,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckContentType struct {
@@ -954,16 +990,22 @@ type ValueType struct {
 	Reference []ReferenceType `xml:"reference"`
 
 	Metadata []MetadataType `xml:"metadata"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ComplexValueType struct {
 	Item []string `xml:"item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SelComplexValueType struct {
 	Selector string `xml:"selector,attr,omitempty"`
 
 	Item []string `xml:"item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SelChoicesType struct {
@@ -974,22 +1016,28 @@ type SelChoicesType struct {
 	Choice []string `xml:"choice"`
 
 	ComplexChoice []ComplexValueType `xml:"complex-choice"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type SelStringType struct {
 	Selector string `xml:"selector,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type SelNumType struct {
 	Selector string `xml:"selector,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type UriRefType struct {
 	Uri string `xml:"uri,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileType struct {
@@ -1034,6 +1082,8 @@ type ProfileType struct {
 	RefineValue []ProfileRefineValueType `xml:"refine-value"`
 
 	RefineRule []ProfileRefineRuleType `xml:"refine-rule"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileSelectType struct {
@@ -1042,18 +1092,23 @@ type ProfileSelectType struct {
 	Selected string `xml:"selected,attr"`
 
 	Remark []TextType `xml:"remark"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileSetValueType struct {
 	Idref string `xml:"idref,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileSetComplexValueType struct {
 	Idref string `xml:"idref,attr"`
 
 	Item []string `xml:"item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileRefineValueType struct {
@@ -1064,6 +1119,8 @@ type ProfileRefineValueType struct {
 	Operator string `xml:"operator,attr,omitempty"`
 
 	Remark []TextType `xml:"remark"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ProfileRefineRuleType struct {
@@ -1078,6 +1135,8 @@ type ProfileRefineRuleType struct {
 	Role string `xml:"role,attr,omitempty"`
 
 	Remark []TextType `xml:"remark"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TestResultType struct {
@@ -1128,12 +1187,16 @@ type TestResultType struct {
 	SetValue []ProfileSetValueType `xml:"set-value"`
 
 	SetComplexValue []ProfileSetComplexValueType `xml:"set-complex-value"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type BenchmarkReferenceType struct {
 	Href string `xml:"href,attr"`
 
 	Id string `xml:"id,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ScoreType struct {
@@ -1141,11 +1204,14 @@ type ScoreType struct {
 
 	Maximum string `xml:"maximum,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type TargetFactsType struct {
 	Fact []FactType `xml:"fact"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TargetIdRefType struct {
@@ -1154,6 +1220,8 @@ type TargetIdRefType struct {
 	Href string `xml:"href,attr"`
 
 	Name string `xml:"name,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type IdentityType struct {
@@ -1161,7 +1229,8 @@ type IdentityType struct {
 
 	Privileged string `xml:"privileged,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type FactType struct {
@@ -1169,7 +1238,8 @@ type FactType struct {
 
 	Type string `xml:"type,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type TailoringReferenceType struct {
@@ -1180,6 +1250,8 @@ type TailoringReferenceType struct {
 	Version string `xml:"version,attr"`
 
 	Time string `xml:"time,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RuleResultType struct {
@@ -1212,6 +1284,8 @@ type RuleResultType struct {
 	Check []CheckType `xml:"check"`
 
 	ComplexCheck *ComplexCheckType `xml:"complex-check"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type InstanceResultType struct {
@@ -1219,7 +1293,8 @@ type InstanceResultType struct {
 
 	ParentContext string `xml:"parentContext,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type OverrideType struct {
@@ -1232,12 +1307,15 @@ type OverrideType struct {
 	NewResult string `xml:"new-result"`
 
 	Remark TextType `xml:"remark"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type MessageType struct {
 	Severity string `xml:"severity,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type TailoringType struct {
@@ -1258,6 +1336,8 @@ type TailoringType struct {
 	Profile []Profile `xml:"Profile"`
 
 	Signature *SignatureType `xml:"signature"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TailoringBenchmarkReferenceType struct {
@@ -1266,10 +1346,13 @@ type TailoringBenchmarkReferenceType struct {
 	Href string `xml:"href,attr"`
 
 	Id string `xml:"id,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TailoringVersionType struct {
 	Time string `xml:"time,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }

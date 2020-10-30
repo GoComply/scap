@@ -95,8 +95,12 @@ type ComponentRef struct {
 
 type ContentSourceType struct {
 	Href string `xml:"href,attr"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type RefListType struct {
 	ComponentRef []ComponentRef `xml:"component-ref"`
+
+	InnerXml string `xml:",innerxml"`
 }

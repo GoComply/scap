@@ -50,6 +50,12 @@ type AppmanagerObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	PackageName *oval_def.EntityObjectStringType `xml:"package_name"`
+
+	SigningCertificate *oval_def.EntityObjectBinaryType `xml:"signing_certificate"`
+
+	Filter []oval_def.Filter `xml:"filter"`
+
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
 	Notes *oval.Notes `xml:"notes"`
@@ -864,6 +870,10 @@ type WifinetworkObject struct {
 	Deprecated string `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
+
+	Ssid *oval_def.EntityObjectStringType `xml:"ssid"`
+
+	Filter []oval_def.Filter `xml:"filter"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 

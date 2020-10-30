@@ -55,6 +55,8 @@ type GeneratorType struct {
 	SchemaVersion float64 `xml:"schema_version"`
 
 	Timestamp string `xml:"timestamp"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ItemType struct {
@@ -73,28 +75,37 @@ type ItemType struct {
 	References *ReferencesType `xml:"references"`
 
 	Check []CheckType `xml:"check"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ListType struct {
 	Generator *GeneratorType `xml:"generator"`
 
 	CpeItem []CpeItem `xml:"cpe-item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type TextType struct {
 	XmlLang string `xml:"lang,attr"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 type NotesType struct {
 	XmlLang string `xml:"lang,attr"`
 
 	Note []string `xml:"note"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type ReferencesType struct {
 	Reference []Reference `xml:"reference"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 type CheckType struct {
@@ -102,5 +113,6 @@ type CheckType struct {
 
 	Href string `xml:"href,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
