@@ -160,6 +160,8 @@ type TrustedItem struct {
 // Element
 type SwlistItemVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

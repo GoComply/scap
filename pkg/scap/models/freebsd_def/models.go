@@ -93,6 +93,8 @@ type PortinfoState struct {
 // Element
 type PortinfoStateVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

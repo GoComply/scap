@@ -1481,71 +1481,99 @@ type XinetdState struct {
 // Element
 type FileStateGroupId struct {
 	XMLName xml.Name `xml:group_id`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type FileStateUserId struct {
 	XMLName xml.Name `xml:user_id`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type FileStateATime struct {
 	XMLName xml.Name `xml:a_time`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type FileStateCTime struct {
 	XMLName xml.Name `xml:c_time`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type FileStateMTime struct {
 	XMLName xml.Name `xml:m_time`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type PasswordStateUserId struct {
 	XMLName xml.Name `xml:user_id`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type PasswordStateGroupId struct {
 	XMLName xml.Name `xml:group_id`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateChgLst struct {
 	XMLName xml.Name `xml:chg_lst`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateChgAllow struct {
 	XMLName xml.Name `xml:chg_allow`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateChgReq struct {
 	XMLName xml.Name `xml:chg_req`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateExpWarn struct {
 	XMLName xml.Name `xml:exp_warn`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateExpInact struct {
 	XMLName xml.Name `xml:exp_inact`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateExpDate struct {
 	XMLName xml.Name `xml:exp_date`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ShadowStateFlag struct {
 	XMLName xml.Name `xml:flag`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

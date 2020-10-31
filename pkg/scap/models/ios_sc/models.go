@@ -365,36 +365,50 @@ type VersionItem struct {
 // Element
 type InterfaceItemIpDirectedBroadcastCommand struct {
 	XMLName xml.Name `xml:ip_directed_broadcast_command`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemProxyArpCommand struct {
 	XMLName xml.Name `xml:proxy_arp_command`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemShutdownCommand struct {
 	XMLName xml.Name `xml:shutdown_command`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemSwitchportNativeVlan struct {
 	XMLName xml.Name `xml:switchport_native_vlan`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemSwitchportAccessVlan struct {
 	XMLName xml.Name `xml:switchport_access_vlan`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RouterItemOspfAuthenticationArea struct {
 	XMLName xml.Name `xml:ospf_authentication_area`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RoutingprotocolauthintfItemOspfArea struct {
 	XMLName xml.Name `xml:ospf_area`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

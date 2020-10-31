@@ -547,6 +547,16 @@ type GlobToRegexFunctionType struct {
 }
 
 type EntitySimpleBaseType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
+	Operation string `xml:"operation,attr,omitempty"`
+
+	Mask string `xml:"mask,attr,omitempty"`
+
+	VarRef string `xml:"var_ref,attr,omitempty"`
+
+	VarCheck string `xml:"var_check,attr,omitempty"`
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
@@ -556,38 +566,56 @@ type EntityComplexBaseType struct {
 }
 
 type EntityObjectIPAddressType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIPAddressStringType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectAnySimpleType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectBinaryType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectBoolType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectFloatType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIntType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectStringType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectVersionType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -602,6 +630,16 @@ type EntityObjectFieldType struct {
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
+	Datatype string `xml:"datatype,attr,omitempty"`
+
+	Operation string `xml:"operation,attr,omitempty"`
+
+	Mask string `xml:"mask,attr,omitempty"`
+
+	VarRef string `xml:"var_ref,attr,omitempty"`
+
+	VarCheck string `xml:"var_check,attr,omitempty"`
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
@@ -610,6 +648,16 @@ type EntityStateSimpleBaseType struct {
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
+
+	Operation string `xml:"operation,attr,omitempty"`
+
+	Mask string `xml:"mask,attr,omitempty"`
+
+	VarRef string `xml:"var_ref,attr,omitempty"`
+
+	VarCheck string `xml:"var_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
@@ -624,54 +672,80 @@ type EntityStateComplexBaseType struct {
 }
 
 type EntityStateIPAddressType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIPAddressStringType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAnySimpleType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateBinaryType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateBoolType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFloatType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIntType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEVRStringType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateDebianEVRStringType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateVersionType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFileSetRevisionType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIOSVersionType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateStringType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -689,6 +763,16 @@ type EntityStateFieldType struct {
 	Name string `xml:"name,attr"`
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
+
+	Operation string `xml:"operation,attr,omitempty"`
+
+	Mask string `xml:"mask,attr,omitempty"`
+
+	VarRef string `xml:"var_ref,attr,omitempty"`
+
+	VarCheck string `xml:"var_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

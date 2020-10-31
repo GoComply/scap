@@ -534,6 +534,8 @@ type TrustedState struct {
 // Element
 type SwlistStateVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

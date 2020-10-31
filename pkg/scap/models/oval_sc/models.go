@@ -122,6 +122,12 @@ type ItemType struct {
 }
 
 type EntityItemSimpleBaseType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
+	Mask string `xml:"mask,attr,omitempty"`
+
+	Status string `xml:"status,attr,omitempty"`
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
@@ -131,34 +137,50 @@ type EntityItemComplexBaseType struct {
 }
 
 type EntityItemIPAddressType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIPAddressStringType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAnySimpleType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemBinaryType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemBoolType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFloatType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIntType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemStringType struct {
+	Datatype string `xml:"datatype,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
@@ -171,26 +193,42 @@ type EntityItemRecordType struct {
 type EntityItemFieldType struct {
 	Name string `xml:"name,attr"`
 
+	Datatype string `xml:"datatype,attr,omitempty"`
+
+	Mask string `xml:"mask,attr,omitempty"`
+
+	Status string `xml:"status,attr,omitempty"`
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemVersionType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFilesetRevisionType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIOSVersionType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEVRStringType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemDebianEVRStringType struct {
+	Datatype string `xml:"datatype,attr"`
+
 	InnerXml string `xml:",innerxml"`
 }

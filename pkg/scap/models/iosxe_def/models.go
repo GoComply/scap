@@ -1148,21 +1148,29 @@ type SnmpviewState struct {
 // Element
 type InterfaceStateSwitchportNativeVlan struct {
 	XMLName xml.Name `xml:switchport_native_vlan`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type InterfaceStateSwitchportAccessVlan struct {
 	XMLName xml.Name `xml:switchport_access_vlan`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RouterStateOspfAuthenticationArea struct {
 	XMLName xml.Name `xml:ospf_authentication_area`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RoutingprotocolauthintfStateOspfArea struct {
 	XMLName xml.Name `xml:ospf_area`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

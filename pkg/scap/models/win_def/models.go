@@ -4696,16 +4696,22 @@ type WuaupdatesearcherState struct {
 // Element
 type FileStateProductVersion struct {
 	XMLName xml.Name `xml:product_version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ProcessStatePriority struct {
 	XMLName xml.Name `xml:priority`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type Process58StatePriority struct {
 	XMLName xml.Name `xml:priority`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

@@ -411,71 +411,99 @@ type SystemdunitpropertyItem struct {
 // Element
 type DpkginfoItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type DpkginfoItemRelease struct {
 	XMLName xml.Name `xml:release`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type DpkginfoItemVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type DpkginfoItemEvr struct {
 	XMLName xml.Name `xml:evr`
+
+	Datatype string `xml:"datatype,attr"`
 }
 
 // Element
 type RpminfoItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpminfoItemRelease struct {
 	XMLName xml.Name `xml:release`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpminfoItemVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpmverifyfileItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpmverifyfileItemVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpmverifyfileItemRelease struct {
 	XMLName xml.Name `xml:release`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpmverifypackageItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpmverifypackageItemVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type RpmverifypackageItemRelease struct {
 	XMLName xml.Name `xml:release`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type SlackwarepkginfoItemVersion struct {
 	XMLName xml.Name `xml:version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

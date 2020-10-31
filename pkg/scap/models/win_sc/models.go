@@ -1565,11 +1565,15 @@ type WuaupdatesearcherItem struct {
 // Element
 type FileItemProductVersion struct {
 	XMLName xml.Name `xml:product_version`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // Element
 type ProcessItemPriority struct {
 	XMLName xml.Name `xml:priority`
+
+	Datatype string `xml:"datatype,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
