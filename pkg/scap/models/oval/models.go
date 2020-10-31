@@ -238,10 +238,10 @@ const OperationEnumerationSupersetOf OperationEnumeration = "superset of"
 
 type OperatorEnumeration string
 
-const OperatorEnumerationAND OperatorEnumeration = "AND"
+const OperatorEnumerationAnd OperatorEnumeration = "AND"
 
-const OperatorEnumerationONE OperatorEnumeration = "ONE"
+const OperatorEnumerationOne OperatorEnumeration = "ONE"
 
-const OperatorEnumerationOR OperatorEnumeration = "OR"
+const OperatorEnumerationOr OperatorEnumeration = "OR"
 
-const OperatorEnumerationXOR OperatorEnumeration = "XOR"
+const OperatorEnumerationXor OperatorEnumeration = "XOR"

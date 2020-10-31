@@ -808,8 +808,8 @@ const FilterActionEnumerationInclude FilterActionEnumeration = "include"
 
 type SetOperatorEnumeration string
 
-const SetOperatorEnumerationCOMPLEMENT SetOperatorEnumeration = "COMPLEMENT"
+const SetOperatorEnumerationComplement SetOperatorEnumeration = "COMPLEMENT"
 
-const SetOperatorEnumerationINTERSECTION SetOperatorEnumeration = "INTERSECTION"
+const SetOperatorEnumerationIntersection SetOperatorEnumeration = "INTERSECTION"
 
-const SetOperatorEnumerationUNION SetOperatorEnumeration = "UNION"
+const SetOperatorEnumerationUnion SetOperatorEnumeration = "UNION"
