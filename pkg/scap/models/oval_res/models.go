@@ -225,3 +225,25 @@ type TestedVariableType struct {
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type ContentEnumeration string
+
+const ContentEnumerationThin ContentEnumeration = "thin"
+
+const ContentEnumerationFull ContentEnumeration = "full"
+
+type ResultEnumeration string
+
+const ResultEnumerationTrue ResultEnumeration = "true"
+
+const ResultEnumerationFalse ResultEnumeration = "false"
+
+const ResultEnumerationUnknown ResultEnumeration = "unknown"
+
+const ResultEnumerationError ResultEnumeration = "error"
+
+const ResultEnumerationNotEvaluated ResultEnumeration = "not evaluated"
+
+const ResultEnumerationNotApplicable ResultEnumeration = "not applicable"

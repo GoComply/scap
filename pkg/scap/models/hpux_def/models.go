@@ -545,3 +545,5 @@ type Patch53Behaviors struct {
 
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

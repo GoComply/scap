@@ -600,3 +600,5 @@ type EntityItemEncryptMethodType struct {
 type EntityItemInterfaceType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

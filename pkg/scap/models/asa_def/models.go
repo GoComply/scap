@@ -927,3 +927,5 @@ type EntityStateSNMPAuthStringType struct {
 type EntityStateSNMPPrivStringType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

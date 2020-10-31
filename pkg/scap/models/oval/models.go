@@ -99,3 +99,149 @@ type NotesType struct {
 
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type CheckEnumeration string
+
+const CheckEnumerationAll CheckEnumeration = "all"
+
+const CheckEnumerationAtLeastOne CheckEnumeration = "at least one"
+
+const CheckEnumerationNoneExist CheckEnumeration = "none exist"
+
+const CheckEnumerationNoneSatisfy CheckEnumeration = "none satisfy"
+
+const CheckEnumerationOnlyOne CheckEnumeration = "only one"
+
+type ClassEnumeration string
+
+const ClassEnumerationCompliance ClassEnumeration = "compliance"
+
+const ClassEnumerationInventory ClassEnumeration = "inventory"
+
+const ClassEnumerationMiscellaneous ClassEnumeration = "miscellaneous"
+
+const ClassEnumerationPatch ClassEnumeration = "patch"
+
+const ClassEnumerationVulnerability ClassEnumeration = "vulnerability"
+
+type SimpleDatatypeEnumeration string
+
+const SimpleDatatypeEnumerationBinary SimpleDatatypeEnumeration = "binary"
+
+const SimpleDatatypeEnumerationBoolean SimpleDatatypeEnumeration = "boolean"
+
+const SimpleDatatypeEnumerationEvrString SimpleDatatypeEnumeration = "evr_string"
+
+const SimpleDatatypeEnumerationDebianEvrString SimpleDatatypeEnumeration = "debian_evr_string"
+
+const SimpleDatatypeEnumerationFilesetRevision SimpleDatatypeEnumeration = "fileset_revision"
+
+const SimpleDatatypeEnumerationFloat SimpleDatatypeEnumeration = "float"
+
+const SimpleDatatypeEnumerationIosVersion SimpleDatatypeEnumeration = "ios_version"
+
+const SimpleDatatypeEnumerationInt SimpleDatatypeEnumeration = "int"
+
+const SimpleDatatypeEnumerationIpv4Address SimpleDatatypeEnumeration = "ipv4_address"
+
+const SimpleDatatypeEnumerationIpv6Address SimpleDatatypeEnumeration = "ipv6_address"
+
+const SimpleDatatypeEnumerationString SimpleDatatypeEnumeration = "string"
+
+const SimpleDatatypeEnumerationVersion SimpleDatatypeEnumeration = "version"
+
+type ComplexDatatypeEnumeration string
+
+const ComplexDatatypeEnumerationRecord ComplexDatatypeEnumeration = "record"
+
+type ExistenceEnumeration string
+
+const ExistenceEnumerationAllExist ExistenceEnumeration = "all_exist"
+
+const ExistenceEnumerationAnyExist ExistenceEnumeration = "any_exist"
+
+const ExistenceEnumerationAtLeastOneExists ExistenceEnumeration = "at_least_one_exists"
+
+const ExistenceEnumerationNoneExist ExistenceEnumeration = "none_exist"
+
+const ExistenceEnumerationOnlyOneExists ExistenceEnumeration = "only_one_exists"
+
+type FamilyEnumeration string
+
+const FamilyEnumerationAndroid FamilyEnumeration = "android"
+
+const FamilyEnumerationAsa FamilyEnumeration = "asa"
+
+const FamilyEnumerationAppleIos FamilyEnumeration = "apple_ios"
+
+const FamilyEnumerationCatos FamilyEnumeration = "catos"
+
+const FamilyEnumerationIos FamilyEnumeration = "ios"
+
+const FamilyEnumerationIosxe FamilyEnumeration = "iosxe"
+
+const FamilyEnumerationJunos FamilyEnumeration = "junos"
+
+const FamilyEnumerationMacos FamilyEnumeration = "macos"
+
+const FamilyEnumerationPixos FamilyEnumeration = "pixos"
+
+const FamilyEnumerationUndefined FamilyEnumeration = "undefined"
+
+const FamilyEnumerationUnix FamilyEnumeration = "unix"
+
+const FamilyEnumerationVmwareInfrastructure FamilyEnumeration = "vmware_infrastructure"
+
+const FamilyEnumerationWindows FamilyEnumeration = "windows"
+
+type MessageLevelEnumeration string
+
+const MessageLevelEnumerationDebug MessageLevelEnumeration = "debug"
+
+const MessageLevelEnumerationError MessageLevelEnumeration = "error"
+
+const MessageLevelEnumerationFatal MessageLevelEnumeration = "fatal"
+
+const MessageLevelEnumerationInfo MessageLevelEnumeration = "info"
+
+const MessageLevelEnumerationWarning MessageLevelEnumeration = "warning"
+
+type OperationEnumeration string
+
+const OperationEnumerationEquals OperationEnumeration = "equals"
+
+const OperationEnumerationNotEqual OperationEnumeration = "not equal"
+
+const OperationEnumerationCaseInsensitiveEquals OperationEnumeration = "case insensitive equals"
+
+const OperationEnumerationCaseInsensitiveNotEqual OperationEnumeration = "case insensitive not equal"
+
+const OperationEnumerationGreaterThan OperationEnumeration = "greater than"
+
+const OperationEnumerationLessThan OperationEnumeration = "less than"
+
+const OperationEnumerationGreaterThanOrEqual OperationEnumeration = "greater than or equal"
+
+const OperationEnumerationLessThanOrEqual OperationEnumeration = "less than or equal"
+
+const OperationEnumerationBitwiseAnd OperationEnumeration = "bitwise and"
+
+const OperationEnumerationBitwiseOr OperationEnumeration = "bitwise or"
+
+const OperationEnumerationPatternMatch OperationEnumeration = "pattern match"
+
+const OperationEnumerationSubsetOf OperationEnumeration = "subset of"
+
+const OperationEnumerationSupersetOf OperationEnumeration = "superset of"
+
+type OperatorEnumeration string
+
+const OperatorEnumerationAND OperatorEnumeration = "AND"
+
+const OperatorEnumerationONE OperatorEnumeration = "ONE"
+
+const OperatorEnumerationOR OperatorEnumeration = "OR"
+
+const OperatorEnumerationXOR OperatorEnumeration = "XOR"

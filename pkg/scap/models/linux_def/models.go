@@ -1498,3 +1498,5 @@ type EntityStateRpmVerifyResultType struct {
 type EntityStateProtocolType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

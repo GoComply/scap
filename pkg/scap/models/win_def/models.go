@@ -5061,3 +5061,5 @@ type EntityObjectUserRightType struct {
 type EntityStateUserRightType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

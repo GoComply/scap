@@ -39,3 +39,5 @@ type PortinfoItemVersion struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

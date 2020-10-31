@@ -78,3 +78,5 @@ type VersionItem struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

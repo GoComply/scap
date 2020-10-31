@@ -334,3 +334,5 @@ type EntityStateClassificationType struct {
 type EntityStateSupportLevelType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

@@ -165,3 +165,5 @@ type SwlistItemVersion struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

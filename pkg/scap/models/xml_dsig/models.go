@@ -460,3 +460,5 @@ type RSAKeyValueType struct {
 
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

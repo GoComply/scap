@@ -1230,3 +1230,5 @@ type EntityStateAccessListUseType struct {
 type EntityStateAccessListInterfaceDirectionType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

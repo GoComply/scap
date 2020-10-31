@@ -232,3 +232,29 @@ type EntityItemDebianEVRStringType struct {
 
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type FlagEnumeration string
+
+const FlagEnumerationError FlagEnumeration = "error"
+
+const FlagEnumerationComplete FlagEnumeration = "complete"
+
+const FlagEnumerationIncomplete FlagEnumeration = "incomplete"
+
+const FlagEnumerationDoesNotExist FlagEnumeration = "does not exist"
+
+const FlagEnumerationNotCollected FlagEnumeration = "not collected"
+
+const FlagEnumerationNotApplicable FlagEnumeration = "not applicable"
+
+type StatusEnumeration string
+
+const StatusEnumerationError StatusEnumeration = "error"
+
+const StatusEnumerationExists StatusEnumeration = "exists"
+
+const StatusEnumerationDoesNotExist StatusEnumeration = "does not exist"
+
+const StatusEnumerationNotCollected StatusEnumeration = "not collected"

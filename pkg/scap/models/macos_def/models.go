@@ -1655,3 +1655,5 @@ type EntityStatePermissionCompareType struct {
 type EntityStatePlistTypeType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

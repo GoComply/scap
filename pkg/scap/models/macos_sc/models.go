@@ -517,3 +517,5 @@ type EntityItemPermissionCompareType struct {
 type EntityItemPlistTypeType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

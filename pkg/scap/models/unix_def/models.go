@@ -1621,3 +1621,5 @@ type EntityStateEncryptMethodType struct {
 type EntityStateInterfaceType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

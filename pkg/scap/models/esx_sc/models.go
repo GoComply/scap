@@ -72,3 +72,5 @@ type EntityItemClassificationType struct {
 type EntityItemSupportLevelType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

@@ -1265,3 +1265,5 @@ type EntityStateLdaptypeType struct {
 type EntityStateWindowsViewType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

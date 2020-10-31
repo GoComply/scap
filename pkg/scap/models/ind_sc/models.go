@@ -302,3 +302,5 @@ type EntityItemLdaptypeType struct {
 type EntityItemWindowsViewType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

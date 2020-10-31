@@ -481,3 +481,5 @@ type EntityItemPolicyFeatureStateType struct {
 type EntityItemPolicyRoleType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

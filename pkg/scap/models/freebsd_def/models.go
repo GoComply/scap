@@ -98,3 +98,5 @@ type PortinfoStateVersion struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

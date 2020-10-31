@@ -1456,3 +1456,5 @@ type EntityStateTrainIdentifierType struct {
 type EntityStateTrunkEncapType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

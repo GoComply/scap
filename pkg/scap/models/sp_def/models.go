@@ -1424,3 +1424,5 @@ type EntityStatePolicyFeatureStateType struct {
 type EntityStateUrlZoneType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

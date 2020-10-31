@@ -83,3 +83,5 @@ type ConfigState struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

@@ -352,3 +352,5 @@ type EntityItemV12NEnvType struct {
 type EntityItemLDOMRoleType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

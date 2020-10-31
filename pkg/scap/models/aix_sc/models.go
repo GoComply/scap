@@ -106,3 +106,5 @@ type EntityItemFixInstallationStatusType struct {
 type EntityItemInterimFixStateType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

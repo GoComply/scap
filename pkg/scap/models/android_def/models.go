@@ -1031,3 +1031,5 @@ type EntityStateWifiPairwiseCipherType struct {
 type EntityStateWifiProtocolType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

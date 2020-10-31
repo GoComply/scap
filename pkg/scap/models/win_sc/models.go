@@ -1673,3 +1673,5 @@ type EntityItemWindowsViewType struct {
 type EntityItemUserRightType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

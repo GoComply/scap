@@ -777,3 +777,39 @@ type EntityStateFieldType struct {
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type ArithmeticEnumeration string
+
+const ArithmeticEnumerationAdd ArithmeticEnumeration = "add"
+
+const ArithmeticEnumerationMultiply ArithmeticEnumeration = "multiply"
+
+type DateTimeFormatEnumeration string
+
+const DateTimeFormatEnumerationYearMonthDay DateTimeFormatEnumeration = "year_month_day"
+
+const DateTimeFormatEnumerationMonthDayYear DateTimeFormatEnumeration = "month_day_year"
+
+const DateTimeFormatEnumerationDayMonthYear DateTimeFormatEnumeration = "day_month_year"
+
+const DateTimeFormatEnumerationWinFiletime DateTimeFormatEnumeration = "win_filetime"
+
+const DateTimeFormatEnumerationSecondsSinceEpoch DateTimeFormatEnumeration = "seconds_since_epoch"
+
+const DateTimeFormatEnumerationCimDatetime DateTimeFormatEnumeration = "cim_datetime"
+
+type FilterActionEnumeration string
+
+const FilterActionEnumerationExclude FilterActionEnumeration = "exclude"
+
+const FilterActionEnumerationInclude FilterActionEnumeration = "include"
+
+type SetOperatorEnumeration string
+
+const SetOperatorEnumerationCOMPLEMENT SetOperatorEnumeration = "COMPLEMENT"
+
+const SetOperatorEnumerationINTERSECTION SetOperatorEnumeration = "INTERSECTION"
+
+const SetOperatorEnumerationUNION SetOperatorEnumeration = "UNION"

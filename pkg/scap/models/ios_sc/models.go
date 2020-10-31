@@ -460,3 +460,5 @@ type EntityItemSwitchportModeType struct {
 type EntityItemTrunkEncapType struct {
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
