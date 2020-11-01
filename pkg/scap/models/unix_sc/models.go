@@ -12,9 +12,9 @@ import (
 type DnscacheItem struct {
 	XMLName xml.Name `xml:dnscache_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
@@ -29,9 +29,9 @@ type DnscacheItem struct {
 type FileItem struct {
 	XMLName xml.Name `xml:file_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -86,9 +86,9 @@ type FileItem struct {
 type FileextendedattributeItem struct {
 	XMLName xml.Name `xml:fileextendedattribute_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -107,9 +107,9 @@ type FileextendedattributeItem struct {
 type GconfItem struct {
 	XMLName xml.Name `xml:gconf_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -134,9 +134,9 @@ type GconfItem struct {
 type InetdItem struct {
 	XMLName xml.Name `xml:inetd_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -159,9 +159,9 @@ type InetdItem struct {
 type InterfaceItem struct {
 	XMLName xml.Name `xml:interface_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -184,9 +184,9 @@ type InterfaceItem struct {
 type PasswordItem struct {
 	XMLName xml.Name `xml:password_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -211,9 +211,9 @@ type PasswordItem struct {
 type ProcessItem struct {
 	XMLName xml.Name `xml:process_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Command *oval_sc.EntityItemStringType `xml:"command"`
 
@@ -242,9 +242,9 @@ type ProcessItem struct {
 type Process58Item struct {
 	XMLName xml.Name `xml:process58_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
@@ -283,9 +283,9 @@ type Process58Item struct {
 type RoutingtableItem struct {
 	XMLName xml.Name `xml:routingtable_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Destination *oval_sc.EntityItemIPAddressType `xml:"destination"`
 
@@ -302,9 +302,9 @@ type RoutingtableItem struct {
 type RunlevelItem struct {
 	XMLName xml.Name `xml:runlevel_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
@@ -321,9 +321,9 @@ type RunlevelItem struct {
 type SccsItem struct {
 	XMLName xml.Name `xml:sccs_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -352,9 +352,9 @@ type SccsItem struct {
 type ShadowItem struct {
 	XMLName xml.Name `xml:shadow_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -383,9 +383,9 @@ type ShadowItem struct {
 type SymlinkItem struct {
 	XMLName xml.Name `xml:symlink_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -398,9 +398,9 @@ type SymlinkItem struct {
 type SysctlItem struct {
 	XMLName xml.Name `xml:sysctl_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -413,9 +413,9 @@ type SysctlItem struct {
 type UnameItem struct {
 	XMLName xml.Name `xml:uname_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MachineClass *oval_sc.EntityItemStringType `xml:"machine_class"`
 
@@ -436,9 +436,9 @@ type UnameItem struct {
 type XinetdItem struct {
 	XMLName xml.Name `xml:xinetd_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -473,131 +473,235 @@ type XinetdItem struct {
 type FileItemGroupId struct {
 	XMLName xml.Name `xml:group_id`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type FileItemUserId struct {
 	XMLName xml.Name `xml:user_id`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type FileItemATime struct {
 	XMLName xml.Name `xml:a_time`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type FileItemCTime struct {
 	XMLName xml.Name `xml:c_time`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type FileItemMTime struct {
 	XMLName xml.Name `xml:m_time`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type PasswordItemUserId struct {
 	XMLName xml.Name `xml:user_id`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type PasswordItemGroupId struct {
 	XMLName xml.Name `xml:group_id`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemChgLst struct {
 	XMLName xml.Name `xml:chg_lst`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemChgAllow struct {
 	XMLName xml.Name `xml:chg_allow`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemChgReq struct {
 	XMLName xml.Name `xml:chg_req`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemExpWarn struct {
 	XMLName xml.Name `xml:exp_warn`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemExpInact struct {
 	XMLName xml.Name `xml:exp_inact`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemExpDate struct {
 	XMLName xml.Name `xml:exp_date`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type ShadowItemFlag struct {
 	XMLName xml.Name `xml:flag`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
 type EntityItemCapabilityType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEndpointType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemGconfTypeType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRoutingTableFlagsType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemXinetdTypeStatusType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemWaitStatusType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEncryptMethodType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemInterfaceType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 

@@ -12,9 +12,9 @@ import (
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
 
@@ -37,9 +37,9 @@ type PatchItem struct {
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Release *oval_sc.EntityItemVersionType `xml:"release"`
 
@@ -52,9 +52,9 @@ type VersionItem struct {
 type VisdkmanagedobjectItem struct {
 	XMLName xml.Name `xml:visdkmanagedobject_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 
@@ -66,10 +66,22 @@ type VisdkmanagedobjectItem struct {
 // XSD ComplexType declarations
 
 type EntityItemClassificationType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSupportLevelType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 

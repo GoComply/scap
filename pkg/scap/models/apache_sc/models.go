@@ -12,9 +12,9 @@ import (
 type HttpdItem struct {
 	XMLName xml.Name `xml:httpd_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 

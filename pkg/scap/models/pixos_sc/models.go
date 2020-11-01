@@ -12,9 +12,9 @@ import (
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -27,9 +27,9 @@ type LineItem struct {
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	PixRelease *oval_sc.EntityItemStringType `xml:"pix_release"`
 

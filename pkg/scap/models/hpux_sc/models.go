@@ -12,9 +12,9 @@ import (
 type GetconfItem struct {
 	XMLName xml.Name `xml:getconf_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
@@ -29,9 +29,9 @@ type GetconfItem struct {
 type NddItem struct {
 	XMLName xml.Name `xml:ndd_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -46,9 +46,9 @@ type NddItem struct {
 type PatchItem struct {
 	XMLName xml.Name `xml:patch_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
@@ -65,9 +65,9 @@ type PatchItem struct {
 type SwlistItem struct {
 	XMLName xml.Name `xml:swlist_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
@@ -88,9 +88,9 @@ type SwlistItem struct {
 type TrustedItem struct {
 	XMLName xml.Name `xml:trusted_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -161,7 +161,11 @@ type TrustedItem struct {
 type SwlistItemVersion struct {
 	XMLName xml.Name `xml:version`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

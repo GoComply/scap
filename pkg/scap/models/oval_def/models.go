@@ -38,13 +38,13 @@ type Notes struct {
 type Definition struct {
 	XMLName xml.Name `xml:definition`
 
-	Id string `xml:"id,attr"`
+	Id oval.DefinitionIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Class string `xml:"class,attr"`
+	Class oval.ClassEnumeration `xml:"class,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -59,19 +59,19 @@ type Definition struct {
 type Test struct {
 	XMLName xml.Name `xml:test`
 
-	Id string `xml:"id,attr"`
+	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -82,13 +82,13 @@ type Test struct {
 type Object struct {
 	XMLName xml.Name `xml:object`
 
-	Id string `xml:"id,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -99,11 +99,11 @@ type Object struct {
 type Set struct {
 	XMLName xml.Name `xml:set`
 
-	SetOperator string `xml:"set_operator,attr,omitempty"`
+	SetOperator SetOperatorEnumeration `xml:"set_operator,attr,omitempty"`
 
 	Set []Set `xml:"set"`
 
-	ObjectReference string `xml:"object_reference"`
+	ObjectReference []string `xml:"object_reference"`
 
 	Filter []Filter `xml:"filter"`
 }
@@ -121,15 +121,15 @@ type Filter struct {
 type State struct {
 	XMLName xml.Name `xml:state`
 
-	Id string `xml:"id,attr"`
+	Id StateIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -140,15 +140,15 @@ type State struct {
 type Variable struct {
 	XMLName xml.Name `xml:variable`
 
-	Id string `xml:"id,attr"`
+	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -159,15 +159,15 @@ type Variable struct {
 type ExternalVariable struct {
 	XMLName xml.Name `xml:external_variable`
 
-	Id string `xml:"id,attr"`
+	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -178,15 +178,15 @@ type ExternalVariable struct {
 type ConstantVariable struct {
 	XMLName xml.Name `xml:constant_variable`
 
-	Id string `xml:"id,attr"`
+	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Value []ValueType `xml:"value"`
 
@@ -199,15 +199,15 @@ type ConstantVariable struct {
 type LocalVariable struct {
 	XMLName xml.Name `xml:local_variable`
 
-	Id string `xml:"id,attr"`
+	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -223,13 +223,13 @@ type DefinitionsType struct {
 }
 
 type DefinitionType struct {
-	Id string `xml:"id,attr"`
+	Id oval.DefinitionIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Class string `xml:"class,attr"`
+	Class oval.ClassEnumeration `xml:"class,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -255,7 +255,7 @@ type MetadataType struct {
 }
 
 type AffectedType struct {
-	Family string `xml:"family,attr"`
+	Family oval.FamilyEnumeration `xml:"family,attr"`
 
 	Platform []string `xml:"platform"`
 
@@ -275,13 +275,13 @@ type ReferenceType struct {
 }
 
 type CriteriaType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate bool `xml:"negate,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
 	Criteria []CriteriaType `xml:"criteria"`
 
@@ -293,25 +293,25 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	TestRef string `xml:"test_ref,attr"`
+	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate bool `xml:"negate,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ExtendDefinitionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	DefinitionRef string `xml:"definition_ref,attr"`
+	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate bool `xml:"negate,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -323,19 +323,19 @@ type TestsType struct {
 }
 
 type TestType struct {
-	Id string `xml:"id,attr"`
+	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -345,13 +345,13 @@ type TestType struct {
 }
 
 type ObjectRefType struct {
-	ObjectRef string `xml:"object_ref,attr"`
+	ObjectRef oval.ObjectIDPattern `xml:"object_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type StateRefType struct {
-	StateRef string `xml:"state_ref,attr"`
+	StateRef StateIDPattern `xml:"state_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -363,13 +363,13 @@ type ObjectsType struct {
 }
 
 type ObjectType struct {
-	Id string `xml:"id,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -385,15 +385,15 @@ type StatesType struct {
 }
 
 type StateType struct {
-	Id string `xml:"id,attr"`
+	Id StateIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -409,15 +409,15 @@ type VariablesType struct {
 }
 
 type VariableType struct {
-	Id string `xml:"id,attr"`
+	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Signature *xml_dsig.Signature `xml:"Signature"`
 
@@ -434,7 +434,7 @@ type PossibleValueType struct {
 }
 
 type PossibleRestrictionType struct {
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
 	Hint string `xml:"hint,attr"`
 
@@ -463,23 +463,23 @@ type LiteralComponentType struct {
 }
 
 type ObjectComponentType struct {
-	ObjectRef string `xml:"object_ref,attr"`
+	ObjectRef oval.ObjectIDPattern `xml:"object_ref,attr"`
 
-	ItemField string `xml:"item_field,attr"`
+	ItemField oval.NonEmptyStringType `xml:"item_field,attr"`
 
-	RecordField string `xml:"record_field,attr,omitempty"`
+	RecordField oval.NonEmptyStringType `xml:"record_field,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type VariableComponentType struct {
-	VarRef string `xml:"var_ref,attr"`
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ArithmeticFunctionType struct {
-	ArithmeticOperation string `xml:"arithmetic_operation,attr"`
+	ArithmeticOperation ArithmeticEnumeration `xml:"arithmetic_operation,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -511,17 +511,17 @@ type SplitFunctionType struct {
 }
 
 type SubstringFunctionType struct {
-	SubstringStart string `xml:"substring_start,attr"`
+	SubstringStart int `xml:"substring_start,attr"`
 
-	SubstringLength string `xml:"substring_length,attr"`
+	SubstringLength int `xml:"substring_length,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TimeDifferenceFunctionType struct {
-	Format1 string `xml:"format_1,attr,omitempty"`
+	Format1 DateTimeFormatEnumeration `xml:"format_1,attr,omitempty"`
 
-	Format2 string `xml:"format_2,attr,omitempty"`
+	Format2 DateTimeFormatEnumeration `xml:"format_2,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -541,21 +541,21 @@ type CountFunctionType struct {
 }
 
 type GlobToRegexFunctionType struct {
-	GlobNoescape string `xml:"glob_noescape,attr,omitempty"`
+	GlobNoescape bool `xml:"glob_noescape,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntitySimpleBaseType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
-	Operation string `xml:"operation,attr,omitempty"`
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
-	Mask string `xml:"mask,attr,omitempty"`
+	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
-	VarCheck string `xml:"var_check,attr,omitempty"`
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
@@ -566,55 +566,127 @@ type EntityComplexBaseType struct {
 }
 
 type EntityObjectIPAddressType struct {
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIPAddressStringType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectAnySimpleType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectBinaryType struct {
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectBoolType struct {
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectFloatType struct {
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIntType struct {
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectStringType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectVersionType struct {
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -630,15 +702,15 @@ type EntityObjectFieldType struct {
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
-	Operation string `xml:"operation,attr,omitempty"`
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
-	Mask string `xml:"mask,attr,omitempty"`
+	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
-	VarCheck string `xml:"var_check,attr,omitempty"`
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
@@ -649,110 +721,266 @@ type EntityStateSimpleBaseType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
-	Operation string `xml:"operation,attr,omitempty"`
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
-	Mask string `xml:"mask,attr,omitempty"`
+	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
-	VarCheck string `xml:"var_check,attr,omitempty"`
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateComplexBaseType struct {
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck oval.CheckEnumeration `xml:"entity_check,attr,omitempty"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIPAddressType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIPAddressStringType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAnySimpleType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateBinaryType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateBoolType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFloatType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIntType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateEVRStringType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateDebianEVRStringType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateVersionType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateFileSetRevisionType struct {
-	Datatype string `xml:"datatype,attr"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateIOSVersionType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateStringType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateRecordType struct {
-	EntityCheck string `xml:"entity_check,attr,omitempty"`
+	EntityCheck oval.CheckEnumeration `xml:"entity_check,attr,omitempty"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
 	Field []EntityStateFieldType `xml:"field"`
 
@@ -764,15 +992,15 @@ type EntityStateFieldType struct {
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
-	Operation string `xml:"operation,attr,omitempty"`
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
-	Mask string `xml:"mask,attr,omitempty"`
+	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef string `xml:"var_ref,attr,omitempty"`
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
-	VarCheck string `xml:"var_check,attr,omitempty"`
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

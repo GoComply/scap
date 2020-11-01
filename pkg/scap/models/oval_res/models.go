@@ -82,9 +82,9 @@ type ClassDirectivesType struct {
 }
 
 type DirectiveType struct {
-	Reported string `xml:"reported,attr"`
+	Reported bool `xml:"reported,attr"`
 
-	Content string `xml:"content,attr,omitempty"`
+	Content ContentEnumeration `xml:"content,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -112,15 +112,15 @@ type DefinitionsType struct {
 }
 
 type DefinitionType struct {
-	DefinitionId string `xml:"definition_id,attr"`
+	DefinitionId oval.DefinitionIDPattern `xml:"definition_id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Class string `xml:"class,attr,omitempty"`
+	Class oval.ClassEnumeration `xml:"class,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:"message"`
 
@@ -130,13 +130,13 @@ type DefinitionType struct {
 }
 
 type CriteriaType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	Operator string `xml:"operator,attr"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate bool `xml:"negate,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Criteria []CriteriaType `xml:"criteria"`
 
@@ -148,33 +148,33 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	TestRef string `xml:"test_ref,attr"`
+	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate bool `xml:"negate,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Result ResultEnumeration `xml:"result,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ExtendDefinitionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	DefinitionRef string `xml:"definition_ref,attr"`
+	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Negate bool `xml:"negate,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Result ResultEnumeration `xml:"result,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -186,19 +186,19 @@ type TestsType struct {
 }
 
 type TestType struct {
-	TestId string `xml:"test_id,attr"`
+	TestId oval.TestIDPattern `xml:"test_id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:"message"`
 
@@ -210,9 +210,9 @@ type TestType struct {
 }
 
 type TestedItemType struct {
-	ItemId string `xml:"item_id,attr"`
+	ItemId oval.ItemIDPattern `xml:"item_id,attr"`
 
-	Result string `xml:"result,attr"`
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:"message"`
 

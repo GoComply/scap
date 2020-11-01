@@ -12,9 +12,9 @@ import (
 type ApparmorstatusItem struct {
 	XMLName xml.Name `xml:apparmorstatus_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	LoadedProfilesCount *oval_sc.EntityItemIntType `xml:"loaded_profiles_count"`
 
@@ -37,9 +37,9 @@ type ApparmorstatusItem struct {
 type DpkginfoItem struct {
 	XMLName xml.Name `xml:dpkginfo_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -60,9 +60,9 @@ type DpkginfoItem struct {
 type IflistenersItem struct {
 	XMLName xml.Name `xml:iflisteners_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
 
@@ -83,9 +83,9 @@ type IflistenersItem struct {
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:inetlisteningserver_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -114,9 +114,9 @@ type InetlisteningserverItem struct {
 type PartitionItem struct {
 	XMLName xml.Name `xml:partition_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MountPoint *oval_sc.EntityItemStringType `xml:"mount_point"`
 
@@ -145,9 +145,9 @@ type PartitionItem struct {
 type RpminfoItem struct {
 	XMLName xml.Name `xml:rpminfo_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -174,9 +174,9 @@ type RpminfoItem struct {
 type RpmverifyItem struct {
 	XMLName xml.Name `xml:rpmverify_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -217,9 +217,9 @@ type RpmverifyItem struct {
 type RpmverifyfileItem struct {
 	XMLName xml.Name `xml:rpmverifyfile_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -272,9 +272,9 @@ type RpmverifyfileItem struct {
 type RpmverifypackageItem struct {
 	XMLName xml.Name `xml:rpmverifypackage_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -303,9 +303,9 @@ type RpmverifypackageItem struct {
 type SelinuxbooleanItem struct {
 	XMLName xml.Name `xml:selinuxboolean_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -320,9 +320,9 @@ type SelinuxbooleanItem struct {
 type SelinuxsecuritycontextItem struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -361,9 +361,9 @@ type SelinuxsecuritycontextItem struct {
 type SlackwarepkginfoItem struct {
 	XMLName xml.Name `xml:slackwarepkginfo_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -380,9 +380,9 @@ type SlackwarepkginfoItem struct {
 type SystemdunitdependencyItem struct {
 	XMLName xml.Name `xml:systemdunitdependency_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
@@ -395,9 +395,9 @@ type SystemdunitdependencyItem struct {
 type SystemdunitpropertyItem struct {
 	XMLName xml.Name `xml:systemdunitproperty_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
@@ -412,107 +412,175 @@ type SystemdunitpropertyItem struct {
 type DpkginfoItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type DpkginfoItemRelease struct {
 	XMLName xml.Name `xml:release`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type DpkginfoItemVersion struct {
 	XMLName xml.Name `xml:version`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type DpkginfoItemEvr struct {
 	XMLName xml.Name `xml:evr`
 
-	Datatype string `xml:"datatype,attr"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpminfoItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpminfoItemRelease struct {
 	XMLName xml.Name `xml:release`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpminfoItemVersion struct {
 	XMLName xml.Name `xml:version`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpmverifyfileItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpmverifyfileItemVersion struct {
 	XMLName xml.Name `xml:version`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpmverifyfileItemRelease struct {
 	XMLName xml.Name `xml:release`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpmverifypackageItemEpoch struct {
 	XMLName xml.Name `xml:epoch`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpmverifypackageItemVersion struct {
 	XMLName xml.Name `xml:version`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RpmverifypackageItemRelease struct {
 	XMLName xml.Name `xml:release`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type SlackwarepkginfoItemVersion struct {
 	XMLName xml.Name `xml:version`
 
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
 type EntityItemRpmVerifyResultType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemProtocolType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 

@@ -462,3 +462,11 @@ type RSAKeyValueType struct {
 }
 
 // XSD SimpleType declarations
+
+type CryptoBinary string
+
+type DigestValueType string
+
+type X509SerialNumberType string
+
+type HMACOutputLengthType string

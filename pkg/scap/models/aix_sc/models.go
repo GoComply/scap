@@ -12,9 +12,9 @@ import (
 type InterimFixItem struct {
 	XMLName xml.Name `xml:interim_fix_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
 
@@ -31,9 +31,9 @@ type InterimFixItem struct {
 type FilesetItem struct {
 	XMLName xml.Name `xml:fileset_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
 
@@ -50,9 +50,9 @@ type FilesetItem struct {
 type FixItem struct {
 	XMLName xml.Name `xml:fix_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
 
@@ -69,9 +69,9 @@ type FixItem struct {
 type NoItem struct {
 	XMLName xml.Name `xml:no_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
 
@@ -84,9 +84,9 @@ type NoItem struct {
 type OslevelItem struct {
 	XMLName xml.Name `xml:oslevel_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 
@@ -96,14 +96,32 @@ type OslevelItem struct {
 // XSD ComplexType declarations
 
 type EntityItemFilesetStateType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFixInstallationStatusType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemInterimFixStateType struct {
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 

@@ -156,6 +156,8 @@ type ComplexDatatypeEnumeration string
 
 const ComplexDatatypeEnumerationRecord ComplexDatatypeEnumeration = "record"
 
+type DatatypeEnumeration string
+
 type ExistenceEnumeration string
 
 const ExistenceEnumerationAllExist ExistenceEnumeration = "all_exist"
@@ -245,3 +247,21 @@ const OperatorEnumerationOne OperatorEnumeration = "ONE"
 const OperatorEnumerationOr OperatorEnumeration = "OR"
 
 const OperatorEnumerationXor OperatorEnumeration = "XOR"
+
+type DefinitionIDPattern string
+
+type ObjectIDPattern string
+
+type StateIDPattern string
+
+type TestIDPattern string
+
+type VariableIDPattern string
+
+type ItemIDPattern string
+
+type SchemaVersionPattern string
+
+type EmptyStringType string
+
+type NonEmptyStringType string

@@ -12,9 +12,9 @@ import (
 type LineItem struct {
 	XMLName xml.Name `xml:line_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -27,9 +27,9 @@ type LineItem struct {
 type ModuleItem struct {
 	XMLName xml.Name `xml:module_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ModuleNumber *oval_sc.EntityItemIntType `xml:"module_number"`
 
@@ -58,9 +58,9 @@ type ModuleItem struct {
 type VersionItem struct {
 	XMLName xml.Name `xml:version_item`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	SwitchSeries *oval_sc.EntityItemStringType `xml:"switch_series"`
 
