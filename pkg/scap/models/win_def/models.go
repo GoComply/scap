@@ -4753,6 +4753,8 @@ type Process58StatePriority struct {
 // XSD ComplexType declarations
 
 type AccesstokenBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup bool `xml:"resolve_group,attr,omitempty"`
@@ -4761,6 +4763,8 @@ type AccesstokenBehaviors struct {
 }
 
 type FileBehaviors struct {
+	XMLName xml.Name
+
 	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
 	Recurse string `xml:"recurse,attr,omitempty"`
@@ -4775,6 +4779,8 @@ type FileBehaviors struct {
 }
 
 type FileAuditPermissions53Behaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4793,6 +4799,8 @@ type FileAuditPermissions53Behaviors struct {
 }
 
 type FileAuditPermissionsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4811,6 +4819,8 @@ type FileAuditPermissionsBehaviors struct {
 }
 
 type FileEffectiveRights53Behaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4829,6 +4839,8 @@ type FileEffectiveRights53Behaviors struct {
 }
 
 type FileEffectiveRightsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4847,6 +4859,8 @@ type FileEffectiveRightsBehaviors struct {
 }
 
 type NTUserBehaviors struct {
+	XMLName xml.Name
+
 	IncludeDefault bool `xml:"include_default,attr,omitempty"`
 
 	MaxDepth string `xml:"max_depth,attr,omitempty"`
@@ -4859,6 +4873,8 @@ type NTUserBehaviors struct {
 }
 
 type PrinterEffectiveRightsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup bool `xml:"resolve_group,attr,omitempty"`
@@ -4867,6 +4883,8 @@ type PrinterEffectiveRightsBehaviors struct {
 }
 
 type RegistryBehaviors struct {
+	XMLName xml.Name
+
 	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
 	RecurseDirection string `xml:"recurse_direction,attr,omitempty"`
@@ -4877,6 +4895,8 @@ type RegistryBehaviors struct {
 }
 
 type RegkeyAuditPermissions53Behaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4891,6 +4911,8 @@ type RegkeyAuditPermissions53Behaviors struct {
 }
 
 type RegkeyAuditPermissionsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4905,6 +4927,8 @@ type RegkeyAuditPermissionsBehaviors struct {
 }
 
 type RegkeyEffectiveRights53Behaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4919,6 +4943,8 @@ type RegkeyEffectiveRights53Behaviors struct {
 }
 
 type RegkeyEffectiveRightsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup string `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup string `xml:"resolve_group,attr,omitempty"`
@@ -4933,6 +4959,8 @@ type RegkeyEffectiveRightsBehaviors struct {
 }
 
 type ServiceEffectiveRightsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup bool `xml:"resolve_group,attr,omitempty"`
@@ -4941,18 +4969,24 @@ type ServiceEffectiveRightsBehaviors struct {
 }
 
 type SharedResourceAuditedPermissionsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SharedResourceEffectiveRightsBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SidBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup bool `xml:"resolve_group,attr,omitempty"`
@@ -4961,6 +4995,8 @@ type SidBehaviors struct {
 }
 
 type SidSidBehaviors struct {
+	XMLName xml.Name
+
 	IncludeGroup bool `xml:"include_group,attr,omitempty"`
 
 	ResolveGroup bool `xml:"resolve_group,attr,omitempty"`
@@ -4969,12 +5005,16 @@ type SidSidBehaviors struct {
 }
 
 type WuaUpdateSearcherBehaviors struct {
+	XMLName xml.Name
+
 	IncludeSupersededUpdates bool `xml:"include_superseded_updates,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateAddrTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -4993,6 +5033,8 @@ type EntityStateAddrTypeType struct {
 }
 
 type EntityStateAdstypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5011,6 +5053,8 @@ type EntityStateAdstypeType struct {
 }
 
 type EntityStateAuditType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5029,6 +5073,8 @@ type EntityStateAuditType struct {
 }
 
 type EntityStateDriveTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5047,6 +5093,8 @@ type EntityStateDriveTypeType struct {
 }
 
 type EntityStateInterfaceTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5065,6 +5113,8 @@ type EntityStateInterfaceTypeType struct {
 }
 
 type EntityStateFileTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5083,6 +5133,8 @@ type EntityStateFileTypeType struct {
 }
 
 type EntityStateFileAttributeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5101,6 +5153,8 @@ type EntityStateFileAttributeType struct {
 }
 
 type EntityObjectNamingContextType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5115,6 +5169,8 @@ type EntityObjectNamingContextType struct {
 }
 
 type EntityStateNamingContextType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5133,6 +5189,8 @@ type EntityStateNamingContextType struct {
 }
 
 type EntityStateNTUserAccountTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5151,6 +5209,8 @@ type EntityStateNTUserAccountTypeType struct {
 }
 
 type EntityStatePeTargetMachineType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5169,6 +5229,8 @@ type EntityStatePeTargetMachineType struct {
 }
 
 type EntityStatePeSubsystemType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5187,6 +5249,8 @@ type EntityStatePeSubsystemType struct {
 }
 
 type EntityObjectProtocolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5201,6 +5265,8 @@ type EntityObjectProtocolType struct {
 }
 
 type EntityStateProtocolType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5219,6 +5285,8 @@ type EntityStateProtocolType struct {
 }
 
 type EntityObjectRegistryHiveType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5233,6 +5301,8 @@ type EntityObjectRegistryHiveType struct {
 }
 
 type EntityStateRegistryHiveType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5251,6 +5321,8 @@ type EntityStateRegistryHiveType struct {
 }
 
 type EntityStateRegistryTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5269,6 +5341,8 @@ type EntityStateRegistryTypeType struct {
 }
 
 type EntityStateServiceControlsAcceptedType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5287,6 +5361,8 @@ type EntityStateServiceControlsAcceptedType struct {
 }
 
 type EntityStateServiceCurrentStateType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5305,6 +5381,8 @@ type EntityStateServiceCurrentStateType struct {
 }
 
 type EntityStateServiceStartTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5323,6 +5401,8 @@ type EntityStateServiceStartTypeType struct {
 }
 
 type EntityStateServiceTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5341,6 +5421,8 @@ type EntityStateServiceTypeType struct {
 }
 
 type EntityStateSharedResourceTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5359,6 +5441,8 @@ type EntityStateSharedResourceTypeType struct {
 }
 
 type EntityObjectSystemMetricIndexType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5373,6 +5457,8 @@ type EntityObjectSystemMetricIndexType struct {
 }
 
 type EntityStateSystemMetricIndexType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5391,6 +5477,8 @@ type EntityStateSystemMetricIndexType struct {
 }
 
 type EntityObjectGUIDType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5405,6 +5493,8 @@ type EntityObjectGUIDType struct {
 }
 
 type EntityStateGUIDType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5423,6 +5513,8 @@ type EntityStateGUIDType struct {
 }
 
 type EntityObjectCmdletVerbType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5437,6 +5529,8 @@ type EntityObjectCmdletVerbType struct {
 }
 
 type EntityStateCmdletVerbType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5455,6 +5549,8 @@ type EntityStateCmdletVerbType struct {
 }
 
 type EntityStateWindowsViewType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -5473,6 +5569,8 @@ type EntityStateWindowsViewType struct {
 }
 
 type EntityObjectUserRightType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -5487,6 +5585,8 @@ type EntityObjectUserRightType struct {
 }
 
 type EntityStateUserRightType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

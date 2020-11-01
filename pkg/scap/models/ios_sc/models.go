@@ -442,6 +442,8 @@ type RoutingprotocolauthintfItemOspfArea struct {
 // XSD ComplexType declarations
 
 type EntityItemAccessListInterfaceDirectionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -452,6 +454,8 @@ type EntityItemAccessListInterfaceDirectionType struct {
 }
 
 type EntityItemAccessListIPVersionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -462,6 +466,8 @@ type EntityItemAccessListIPVersionType struct {
 }
 
 type EntityItemAccessListUseType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -472,6 +478,8 @@ type EntityItemAccessListUseType struct {
 }
 
 type EntityItemRoutingAuthTypeStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -482,6 +490,8 @@ type EntityItemRoutingAuthTypeStringType struct {
 }
 
 type EntityItemRoutingProtocolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -492,6 +502,8 @@ type EntityItemRoutingProtocolType struct {
 }
 
 type EntityItemSNMPVersionStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -502,6 +514,8 @@ type EntityItemSNMPVersionStringType struct {
 }
 
 type EntityItemSNMPSecLevelStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -512,6 +526,8 @@ type EntityItemSNMPSecLevelStringType struct {
 }
 
 type EntityItemSNMPModeStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -522,6 +538,8 @@ type EntityItemSNMPModeStringType struct {
 }
 
 type EntityItemSNMPAuthStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -532,6 +550,8 @@ type EntityItemSNMPAuthStringType struct {
 }
 
 type EntityItemSNMPPrivStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -542,6 +562,8 @@ type EntityItemSNMPPrivStringType struct {
 }
 
 type EntityItemSwitchportModeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -552,6 +574,8 @@ type EntityItemSwitchportModeType struct {
 }
 
 type EntityItemTrunkEncapType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

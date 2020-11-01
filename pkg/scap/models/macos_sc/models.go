@@ -507,6 +507,8 @@ type SystemsetupItem struct {
 // XSD ComplexType declarations
 
 type EntityItemDataTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -517,6 +519,8 @@ type EntityItemDataTypeType struct {
 }
 
 type EntityItemPermissionCompareType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -527,6 +531,8 @@ type EntityItemPermissionCompareType struct {
 }
 
 type EntityItemPlistTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

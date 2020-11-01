@@ -330,6 +330,8 @@ type VirtualizationinfoItem struct {
 // XSD ComplexType declarations
 
 type EntityItemClientUUIDType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -340,6 +342,8 @@ type EntityItemClientUUIDType struct {
 }
 
 type EntityItemPermissionCompareType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -350,6 +354,8 @@ type EntityItemPermissionCompareType struct {
 }
 
 type EntityItemPublisherTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -360,6 +366,8 @@ type EntityItemPublisherTypeType struct {
 }
 
 type EntityItemSmfServiceStateType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -370,6 +378,8 @@ type EntityItemSmfServiceStateType struct {
 }
 
 type EntityItemV12NEnvType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -380,6 +390,8 @@ type EntityItemV12NEnvType struct {
 }
 
 type EntityItemLDOMRoleType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

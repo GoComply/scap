@@ -322,6 +322,8 @@ type XmlShowState struct {
 // XSD ComplexType declarations
 
 type EntityStateJunosReleaseTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

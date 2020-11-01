@@ -565,6 +565,8 @@ type SlackwarepkginfoItemVersion struct {
 // XSD ComplexType declarations
 
 type EntityItemRpmVerifyResultType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -575,6 +577,8 @@ type EntityItemRpmVerifyResultType struct {
 }
 
 type EntityItemProtocolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

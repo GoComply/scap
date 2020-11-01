@@ -1255,6 +1255,8 @@ type VirtualizationinfoState struct {
 // XSD ComplexType declarations
 
 type PackageCheckBehaviors struct {
+	XMLName xml.Name
+
 	FileattributesOnly bool `xml:"fileattributes_only,attr,omitempty"`
 
 	FilecontentsOnly bool `xml:"filecontents_only,attr,omitempty"`
@@ -1265,12 +1267,16 @@ type PackageCheckBehaviors struct {
 }
 
 type PatchBehaviors struct {
+	XMLName xml.Name
+
 	Supersedence string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectPublisherTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1285,6 +1291,8 @@ type EntityObjectPublisherTypeType struct {
 }
 
 type EntityStateClientUUIDType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1303,6 +1311,8 @@ type EntityStateClientUUIDType struct {
 }
 
 type EntityStatePermissionCompareType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1321,6 +1331,8 @@ type EntityStatePermissionCompareType struct {
 }
 
 type EntityStatePublisherTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1339,6 +1351,8 @@ type EntityStatePublisherTypeType struct {
 }
 
 type EntityStateSmfServiceStateType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1357,6 +1371,8 @@ type EntityStateSmfServiceStateType struct {
 }
 
 type EntityStateV12NEnvType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1375,6 +1391,8 @@ type EntityStateV12NEnvType struct {
 }
 
 type EntityStateLDOMRoleType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

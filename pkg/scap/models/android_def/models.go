@@ -993,6 +993,8 @@ type TelephonyState struct {
 // XSD ComplexType declarations
 
 type EntityStateEncryptionStatusType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1011,6 +1013,8 @@ type EntityStateEncryptionStatusType struct {
 }
 
 type EntityStateKeyguardDisabledFeaturesType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1029,6 +1033,8 @@ type EntityStateKeyguardDisabledFeaturesType struct {
 }
 
 type EntityStateNetworkType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1047,6 +1053,8 @@ type EntityStateNetworkType struct {
 }
 
 type EntityStatePasswordQualityType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1065,6 +1073,8 @@ type EntityStatePasswordQualityType struct {
 }
 
 type EntityStateWifiAuthAlgorithmType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1083,6 +1093,8 @@ type EntityStateWifiAuthAlgorithmType struct {
 }
 
 type EntityStateWifiCurrentStatusType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1101,6 +1113,8 @@ type EntityStateWifiCurrentStatusType struct {
 }
 
 type EntityStateWifiGroupCipherType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1119,6 +1133,8 @@ type EntityStateWifiGroupCipherType struct {
 }
 
 type EntityStateWifiKeyMgmtType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1137,6 +1153,8 @@ type EntityStateWifiKeyMgmtType struct {
 }
 
 type EntityStateWifiPairwiseCipherType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1155,6 +1173,8 @@ type EntityStateWifiPairwiseCipherType struct {
 }
 
 type EntityStateWifiProtocolType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

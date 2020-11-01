@@ -40,6 +40,8 @@ type Notes struct {
 // XSD ComplexType declarations
 
 type ElementMapType struct {
+	XMLName xml.Name
+
 	Test ElementMapItemType `xml:"test"`
 
 	Object *ElementMapItemType `xml:"object"`
@@ -52,6 +54,8 @@ type ElementMapType struct {
 }
 
 type ElementMapItemType struct {
+	XMLName xml.Name
+
 	TargetNamespace string `xml:"target_namespace,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
@@ -59,6 +63,8 @@ type ElementMapItemType struct {
 }
 
 type DeprecatedInfoType struct {
+	XMLName xml.Name
+
 	Version string `xml:"version"`
 
 	Reason string `xml:"reason"`
@@ -69,6 +75,8 @@ type DeprecatedInfoType struct {
 }
 
 type GeneratorType struct {
+	XMLName xml.Name
+
 	ProductName string `xml:"product_name"`
 
 	ProductVersion string `xml:"product_version"`
@@ -81,6 +89,8 @@ type GeneratorType struct {
 }
 
 type SchemaVersionType struct {
+	XMLName xml.Name
+
 	Platform string `xml:"platform,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
@@ -88,6 +98,8 @@ type SchemaVersionType struct {
 }
 
 type MessageType struct {
+	XMLName xml.Name
+
 	Level MessageLevelEnumeration `xml:"level,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
@@ -95,6 +107,8 @@ type MessageType struct {
 }
 
 type NotesType struct {
+	XMLName xml.Name
+
 	Note []string `xml:"note"`
 
 	InnerXml string `xml:",innerxml"`

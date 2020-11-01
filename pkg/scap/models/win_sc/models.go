@@ -1587,6 +1587,8 @@ type ProcessItemPriority struct {
 // XSD ComplexType declarations
 
 type EntityItemAddrTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1597,6 +1599,8 @@ type EntityItemAddrTypeType struct {
 }
 
 type EntityItemAdstypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1607,6 +1611,8 @@ type EntityItemAdstypeType struct {
 }
 
 type EntityItemAuditType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1617,6 +1623,8 @@ type EntityItemAuditType struct {
 }
 
 type EntityItemDriveTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1627,6 +1635,8 @@ type EntityItemDriveTypeType struct {
 }
 
 type EntityItemFileTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1637,6 +1647,8 @@ type EntityItemFileTypeType struct {
 }
 
 type EntityItemFileAttributeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1647,6 +1659,8 @@ type EntityItemFileAttributeType struct {
 }
 
 type EntityItemInterfaceTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1657,6 +1671,8 @@ type EntityItemInterfaceTypeType struct {
 }
 
 type EntityItemNamingContextType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1667,6 +1683,8 @@ type EntityItemNamingContextType struct {
 }
 
 type EntityItemNTUserAccountTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1677,6 +1695,8 @@ type EntityItemNTUserAccountTypeType struct {
 }
 
 type EntityItemPeTargetMachineType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1687,6 +1707,8 @@ type EntityItemPeTargetMachineType struct {
 }
 
 type EntityItemPeSubsystemType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1697,6 +1719,8 @@ type EntityItemPeSubsystemType struct {
 }
 
 type EntityItemProtocolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1707,6 +1731,8 @@ type EntityItemProtocolType struct {
 }
 
 type EntityItemRegistryHiveType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1717,6 +1743,8 @@ type EntityItemRegistryHiveType struct {
 }
 
 type EntityItemRegistryTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1727,6 +1755,8 @@ type EntityItemRegistryTypeType struct {
 }
 
 type EntityItemServiceControlsAcceptedType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1737,6 +1767,8 @@ type EntityItemServiceControlsAcceptedType struct {
 }
 
 type EntityItemServiceCurrentStateType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1747,6 +1779,8 @@ type EntityItemServiceCurrentStateType struct {
 }
 
 type EntityItemServiceStartTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1757,6 +1791,8 @@ type EntityItemServiceStartTypeType struct {
 }
 
 type EntityItemServiceTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1767,6 +1803,8 @@ type EntityItemServiceTypeType struct {
 }
 
 type EntityItemSharedResourceTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1777,6 +1815,8 @@ type EntityItemSharedResourceTypeType struct {
 }
 
 type EntityItemSystemMetricIndexType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1787,6 +1827,8 @@ type EntityItemSystemMetricIndexType struct {
 }
 
 type EntityItemGUIDType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1797,6 +1839,8 @@ type EntityItemGUIDType struct {
 }
 
 type EntityItemCmdletVerbType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1807,6 +1851,8 @@ type EntityItemCmdletVerbType struct {
 }
 
 type EntityItemWindowsViewType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -1817,6 +1863,8 @@ type EntityItemWindowsViewType struct {
 }
 
 type EntityItemUserRightType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

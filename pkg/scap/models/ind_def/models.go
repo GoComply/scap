@@ -1191,12 +1191,16 @@ type YamlfilecontentState struct {
 // XSD ComplexType declarations
 
 type LdapBehaviors struct {
+	XMLName xml.Name
+
 	Scope string `xml:"scope,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type Textfilecontent54Behaviors struct {
+	XMLName xml.Name
+
 	IgnoreCase string `xml:"ignore_case,attr,omitempty"`
 
 	Multiline string `xml:"multiline,attr,omitempty"`
@@ -1217,6 +1221,8 @@ type Textfilecontent54Behaviors struct {
 }
 
 type FileBehaviors struct {
+	XMLName xml.Name
+
 	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
 	Recurse string `xml:"recurse,attr,omitempty"`
@@ -1231,6 +1237,8 @@ type FileBehaviors struct {
 }
 
 type EntityObjectEngineType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1245,6 +1253,8 @@ type EntityObjectEngineType struct {
 }
 
 type EntityStateEngineType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1263,6 +1273,8 @@ type EntityStateEngineType struct {
 }
 
 type EntityStateFamilyType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1281,6 +1293,8 @@ type EntityStateFamilyType struct {
 }
 
 type EntityObjectHashTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1295,6 +1309,8 @@ type EntityObjectHashTypeType struct {
 }
 
 type EntityStateHashTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1313,6 +1329,8 @@ type EntityStateHashTypeType struct {
 }
 
 type EntityObjectVariableRefType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1327,6 +1345,8 @@ type EntityObjectVariableRefType struct {
 }
 
 type EntityStateVariableRefType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1345,6 +1365,8 @@ type EntityStateVariableRefType struct {
 }
 
 type EntityStateLdaptypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1363,6 +1385,8 @@ type EntityStateLdaptypeType struct {
 }
 
 type EntityStateWindowsViewType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

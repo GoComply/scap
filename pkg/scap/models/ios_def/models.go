@@ -1482,6 +1482,8 @@ type RoutingprotocolauthintfStateOspfArea struct {
 // XSD ComplexType declarations
 
 type EntityObjectAccessListIPVersionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1496,6 +1498,8 @@ type EntityObjectAccessListIPVersionType struct {
 }
 
 type EntityObjectRoutingProtocolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1510,6 +1514,8 @@ type EntityObjectRoutingProtocolType struct {
 }
 
 type EntityStateAccessListInterfaceDirectionType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1528,6 +1534,8 @@ type EntityStateAccessListInterfaceDirectionType struct {
 }
 
 type EntityStateAccessListIPVersionType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1546,6 +1554,8 @@ type EntityStateAccessListIPVersionType struct {
 }
 
 type EntityStateAccessListUseType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1564,6 +1574,8 @@ type EntityStateAccessListUseType struct {
 }
 
 type EntityStateRoutingAuthTypeStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1582,6 +1594,8 @@ type EntityStateRoutingAuthTypeStringType struct {
 }
 
 type EntityStateRoutingProtocolType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1600,6 +1614,8 @@ type EntityStateRoutingProtocolType struct {
 }
 
 type EntityStateSNMPVersionStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1618,6 +1634,8 @@ type EntityStateSNMPVersionStringType struct {
 }
 
 type EntityStateSNMPSecLevelStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1636,6 +1654,8 @@ type EntityStateSNMPSecLevelStringType struct {
 }
 
 type EntityStateSNMPModeStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1654,6 +1674,8 @@ type EntityStateSNMPModeStringType struct {
 }
 
 type EntityStateSNMPAuthStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1672,6 +1694,8 @@ type EntityStateSNMPAuthStringType struct {
 }
 
 type EntityStateSNMPPrivStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1690,6 +1714,8 @@ type EntityStateSNMPPrivStringType struct {
 }
 
 type EntityStateSwitchportModeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1708,6 +1734,8 @@ type EntityStateSwitchportModeType struct {
 }
 
 type EntityStateTrainIdentifierType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1726,6 +1754,8 @@ type EntityStateTrainIdentifierType struct {
 }
 
 type EntityStateTrunkEncapType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

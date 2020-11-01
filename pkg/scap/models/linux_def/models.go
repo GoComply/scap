@@ -1616,12 +1616,16 @@ type SlackwarepkginfoStateVersion struct {
 // XSD ComplexType declarations
 
 type RpmInfoBehaviors struct {
+	XMLName xml.Name
+
 	Filepaths bool `xml:"filepaths,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RpmVerifyBehaviors struct {
+	XMLName xml.Name
+
 	Nodeps bool `xml:"nodeps,attr,omitempty"`
 
 	Nodigest bool `xml:"nodigest,attr,omitempty"`
@@ -1656,6 +1660,8 @@ type RpmVerifyBehaviors struct {
 }
 
 type RpmVerifyFileBehaviors struct {
+	XMLName xml.Name
+
 	Nolinkto bool `xml:"nolinkto,attr,omitempty"`
 
 	Nomd5 bool `xml:"nomd5,attr,omitempty"`
@@ -1684,6 +1690,8 @@ type RpmVerifyFileBehaviors struct {
 }
 
 type RpmVerifyPackageBehaviors struct {
+	XMLName xml.Name
+
 	Nodeps bool `xml:"nodeps,attr,omitempty"`
 
 	Nodigest bool `xml:"nodigest,attr,omitempty"`
@@ -1696,6 +1704,8 @@ type RpmVerifyPackageBehaviors struct {
 }
 
 type FileBehaviors struct {
+	XMLName xml.Name
+
 	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
 	Recurse string `xml:"recurse,attr,omitempty"`
@@ -1708,6 +1718,8 @@ type FileBehaviors struct {
 }
 
 type EntityStateRpmVerifyResultType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1726,6 +1738,8 @@ type EntityStateRpmVerifyResultType struct {
 }
 
 type EntityStateProtocolType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

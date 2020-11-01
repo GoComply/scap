@@ -217,12 +217,16 @@ type LocalVariable struct {
 // XSD ComplexType declarations
 
 type DefinitionsType struct {
+	XMLName xml.Name
+
 	Definition []Definition `xml:"definition"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type DefinitionType struct {
+	XMLName xml.Name
+
 	Id oval.DefinitionIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -243,6 +247,8 @@ type DefinitionType struct {
 }
 
 type MetadataType struct {
+	XMLName xml.Name
+
 	Title string `xml:"title"`
 
 	Affected []AffectedType `xml:"affected"`
@@ -255,6 +261,8 @@ type MetadataType struct {
 }
 
 type AffectedType struct {
+	XMLName xml.Name
+
 	Family oval.FamilyEnumeration `xml:"family,attr"`
 
 	Platform []string `xml:"platform"`
@@ -265,6 +273,8 @@ type AffectedType struct {
 }
 
 type ReferenceType struct {
+	XMLName xml.Name
+
 	Source string `xml:"source,attr"`
 
 	RefId string `xml:"ref_id,attr"`
@@ -275,6 +285,8 @@ type ReferenceType struct {
 }
 
 type CriteriaType struct {
+	XMLName xml.Name
+
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
@@ -293,6 +305,8 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
+	XMLName xml.Name
+
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
 	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
@@ -305,6 +319,8 @@ type CriterionType struct {
 }
 
 type ExtendDefinitionType struct {
+	XMLName xml.Name
+
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
 	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
@@ -317,12 +333,16 @@ type ExtendDefinitionType struct {
 }
 
 type TestsType struct {
+	XMLName xml.Name
+
 	Test []Test `xml:"test"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TestType struct {
+	XMLName xml.Name
+
 	Id oval.TestIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -345,24 +365,32 @@ type TestType struct {
 }
 
 type ObjectRefType struct {
+	XMLName xml.Name
+
 	ObjectRef oval.ObjectIDPattern `xml:"object_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type StateRefType struct {
+	XMLName xml.Name
+
 	StateRef oval.StateIDPattern `xml:"state_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectsType struct {
+	XMLName xml.Name
+
 	Object []Object `xml:"object"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectType struct {
+	XMLName xml.Name
+
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -379,12 +407,16 @@ type ObjectType struct {
 }
 
 type StatesType struct {
+	XMLName xml.Name
+
 	State []State `xml:"state"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type StateType struct {
+	XMLName xml.Name
+
 	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -403,12 +435,16 @@ type StateType struct {
 }
 
 type VariablesType struct {
+	XMLName xml.Name
+
 	Variable []Variable `xml:"variable"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type VariableType struct {
+	XMLName xml.Name
+
 	Id oval.VariableIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -427,6 +463,8 @@ type VariableType struct {
 }
 
 type PossibleValueType struct {
+	XMLName xml.Name
+
 	Hint string `xml:"hint,attr"`
 
 	Text     string `xml:",chardata"`
@@ -434,6 +472,8 @@ type PossibleValueType struct {
 }
 
 type PossibleRestrictionType struct {
+	XMLName xml.Name
+
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
 	Hint string `xml:"hint,attr"`
@@ -444,6 +484,8 @@ type PossibleRestrictionType struct {
 }
 
 type RestrictionType struct {
+	XMLName xml.Name
+
 	Operation oval.OperationEnumeration `xml:"operation,attr"`
 
 	Text     string `xml:",chardata"`
@@ -451,11 +493,15 @@ type RestrictionType struct {
 }
 
 type ValueType struct {
+	XMLName xml.Name
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type LiteralComponentType struct {
+	XMLName xml.Name
+
 	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
@@ -463,6 +509,8 @@ type LiteralComponentType struct {
 }
 
 type ObjectComponentType struct {
+	XMLName xml.Name
+
 	ObjectRef oval.ObjectIDPattern `xml:"object_ref,attr"`
 
 	ItemField oval.NonEmptyStringType `xml:"item_field,attr"`
@@ -473,44 +521,60 @@ type ObjectComponentType struct {
 }
 
 type VariableComponentType struct {
+	XMLName xml.Name
+
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ArithmeticFunctionType struct {
+	XMLName xml.Name
+
 	ArithmeticOperation ArithmeticEnumeration `xml:"arithmetic_operation,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type BeginFunctionType struct {
+	XMLName xml.Name
+
 	Character string `xml:"character,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ConcatFunctionType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EndFunctionType struct {
+	XMLName xml.Name
+
 	Character string `xml:"character,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EscapeRegexFunctionType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type SplitFunctionType struct {
+	XMLName xml.Name
+
 	Delimiter string `xml:"delimiter,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SubstringFunctionType struct {
+	XMLName xml.Name
+
 	SubstringStart int `xml:"substring_start,attr"`
 
 	SubstringLength int `xml:"substring_length,attr"`
@@ -519,6 +583,8 @@ type SubstringFunctionType struct {
 }
 
 type TimeDifferenceFunctionType struct {
+	XMLName xml.Name
+
 	Format1 DateTimeFormatEnumeration `xml:"format_1,attr,omitempty"`
 
 	Format2 DateTimeFormatEnumeration `xml:"format_2,attr,omitempty"`
@@ -527,26 +593,36 @@ type TimeDifferenceFunctionType struct {
 }
 
 type RegexCaptureFunctionType struct {
+	XMLName xml.Name
+
 	Pattern string `xml:"pattern,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type UniqueFunctionType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type CountFunctionType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type GlobToRegexFunctionType struct {
+	XMLName xml.Name
+
 	GlobNoescape bool `xml:"glob_noescape,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntitySimpleBaseType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -562,10 +638,14 @@ type EntitySimpleBaseType struct {
 }
 
 type EntityComplexBaseType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectIPAddressType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -580,6 +660,8 @@ type EntityObjectIPAddressType struct {
 }
 
 type EntityObjectIPAddressStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -594,6 +676,8 @@ type EntityObjectIPAddressStringType struct {
 }
 
 type EntityObjectAnySimpleType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -608,6 +692,8 @@ type EntityObjectAnySimpleType struct {
 }
 
 type EntityObjectBinaryType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -622,6 +708,8 @@ type EntityObjectBinaryType struct {
 }
 
 type EntityObjectBoolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -636,6 +724,8 @@ type EntityObjectBoolType struct {
 }
 
 type EntityObjectFloatType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -650,6 +740,8 @@ type EntityObjectFloatType struct {
 }
 
 type EntityObjectIntType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -664,6 +756,8 @@ type EntityObjectIntType struct {
 }
 
 type EntityObjectStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -678,6 +772,8 @@ type EntityObjectStringType struct {
 }
 
 type EntityObjectVersionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -692,12 +788,16 @@ type EntityObjectVersionType struct {
 }
 
 type EntityObjectRecordType struct {
+	XMLName xml.Name
+
 	Field []EntityObjectFieldType `xml:"field"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityObjectFieldType struct {
+	XMLName xml.Name
+
 	Name string `xml:"name,attr"`
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
@@ -717,6 +817,8 @@ type EntityObjectFieldType struct {
 }
 
 type EntityStateSimpleBaseType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -736,6 +838,8 @@ type EntityStateSimpleBaseType struct {
 }
 
 type EntityStateComplexBaseType struct {
+	XMLName xml.Name
+
 	EntityCheck oval.CheckEnumeration `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
@@ -744,6 +848,8 @@ type EntityStateComplexBaseType struct {
 }
 
 type EntityStateIPAddressType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -762,6 +868,8 @@ type EntityStateIPAddressType struct {
 }
 
 type EntityStateIPAddressStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -780,6 +888,8 @@ type EntityStateIPAddressStringType struct {
 }
 
 type EntityStateAnySimpleType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -798,6 +908,8 @@ type EntityStateAnySimpleType struct {
 }
 
 type EntityStateBinaryType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -816,6 +928,8 @@ type EntityStateBinaryType struct {
 }
 
 type EntityStateBoolType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -834,6 +948,8 @@ type EntityStateBoolType struct {
 }
 
 type EntityStateFloatType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -852,6 +968,8 @@ type EntityStateFloatType struct {
 }
 
 type EntityStateIntType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -870,6 +988,8 @@ type EntityStateIntType struct {
 }
 
 type EntityStateEVRStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -888,6 +1008,8 @@ type EntityStateEVRStringType struct {
 }
 
 type EntityStateDebianEVRStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -906,6 +1028,8 @@ type EntityStateDebianEVRStringType struct {
 }
 
 type EntityStateVersionType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -924,6 +1048,8 @@ type EntityStateVersionType struct {
 }
 
 type EntityStateFileSetRevisionType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -942,6 +1068,8 @@ type EntityStateFileSetRevisionType struct {
 }
 
 type EntityStateIOSVersionType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -960,6 +1088,8 @@ type EntityStateIOSVersionType struct {
 }
 
 type EntityStateStringType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -978,6 +1108,8 @@ type EntityStateStringType struct {
 }
 
 type EntityStateRecordType struct {
+	XMLName xml.Name
+
 	EntityCheck oval.CheckEnumeration `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
@@ -988,6 +1120,8 @@ type EntityStateRecordType struct {
 }
 
 type EntityStateFieldType struct {
+	XMLName xml.Name
+
 	Name string `xml:"name,attr"`
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`

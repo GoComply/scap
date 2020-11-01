@@ -280,6 +280,8 @@ type YamlfilecontentItem struct {
 // XSD ComplexType declarations
 
 type EntityItemEngineType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -290,6 +292,8 @@ type EntityItemEngineType struct {
 }
 
 type EntityItemFamilyType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -300,6 +304,8 @@ type EntityItemFamilyType struct {
 }
 
 type EntityItemHashTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -310,6 +316,8 @@ type EntityItemHashTypeType struct {
 }
 
 type EntityItemVariableRefType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -320,6 +328,8 @@ type EntityItemVariableRefType struct {
 }
 
 type EntityItemLdaptypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -330,6 +340,8 @@ type EntityItemLdaptypeType struct {
 }
 
 type EntityItemWindowsViewType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

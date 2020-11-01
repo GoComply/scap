@@ -1402,6 +1402,8 @@ type SppolicyState struct {
 // XSD ComplexType declarations
 
 type EntityObjectUrlZoneType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1416,6 +1418,8 @@ type EntityObjectUrlZoneType struct {
 }
 
 type EntityStateEventSeverityType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1434,6 +1438,8 @@ type EntityStateEventSeverityType struct {
 }
 
 type EntityStateTraceSeverityType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1452,6 +1458,8 @@ type EntityStateTraceSeverityType struct {
 }
 
 type EntityStatePolicyRoleType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1470,6 +1478,8 @@ type EntityStatePolicyRoleType struct {
 }
 
 type EntityStatePolicyFeatureStateType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1488,6 +1498,8 @@ type EntityStatePolicyFeatureStateType struct {
 }
 
 type EntityStateUrlZoneType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

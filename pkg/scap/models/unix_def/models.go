@@ -1747,6 +1747,8 @@ type ShadowStateFlag struct {
 // XSD ComplexType declarations
 
 type FileBehaviors struct {
+	XMLName xml.Name
+
 	MaxDepth string `xml:"max_depth,attr,omitempty"`
 
 	Recurse string `xml:"recurse,attr,omitempty"`
@@ -1759,6 +1761,8 @@ type FileBehaviors struct {
 }
 
 type EntityStateCapabilityType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1777,6 +1781,8 @@ type EntityStateCapabilityType struct {
 }
 
 type EntityStateEndpointType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1795,6 +1801,8 @@ type EntityStateEndpointType struct {
 }
 
 type EntityStateGconfTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1813,6 +1821,8 @@ type EntityStateGconfTypeType struct {
 }
 
 type EntityStateRoutingTableFlagsType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1831,6 +1841,8 @@ type EntityStateRoutingTableFlagsType struct {
 }
 
 type EntityStateXinetdTypeStatusType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1849,6 +1861,8 @@ type EntityStateXinetdTypeStatusType struct {
 }
 
 type EntityStateWaitStatusType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1867,6 +1881,8 @@ type EntityStateWaitStatusType struct {
 }
 
 type EntityStateEncryptMethodType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1885,6 +1901,8 @@ type EntityStateEncryptMethodType struct {
 }
 
 type EntityStateInterfaceType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

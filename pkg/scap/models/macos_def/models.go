@@ -1641,6 +1641,8 @@ type SystemsetupState struct {
 // XSD ComplexType declarations
 
 type EntityObjectDataTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1655,6 +1657,8 @@ type EntityObjectDataTypeType struct {
 }
 
 type EntityStateDataTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
@@ -1669,6 +1673,8 @@ type EntityStateDataTypeType struct {
 }
 
 type EntityStatePermissionCompareType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -1687,6 +1693,8 @@ type EntityStatePermissionCompareType struct {
 }
 
 type EntityStatePlistTypeType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

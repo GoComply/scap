@@ -381,6 +381,8 @@ type OslevelState struct {
 // XSD ComplexType declarations
 
 type EntityStateFilesetStateType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -399,6 +401,8 @@ type EntityStateFilesetStateType struct {
 }
 
 type EntityStateFixInstallationStatusType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -417,6 +421,8 @@ type EntityStateFixInstallationStatusType struct {
 }
 
 type EntityStateInterimFixStateType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`

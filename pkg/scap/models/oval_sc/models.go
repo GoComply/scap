@@ -37,6 +37,8 @@ type Item struct {
 // XSD ComplexType declarations
 
 type SystemInfoType struct {
+	XMLName xml.Name
+
 	OsName string `xml:"os_name"`
 
 	OsVersion string `xml:"os_version"`
@@ -51,12 +53,16 @@ type SystemInfoType struct {
 }
 
 type InterfacesType struct {
+	XMLName xml.Name
+
 	Interface []InterfaceType `xml:"interface"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type InterfaceType struct {
+	XMLName xml.Name
+
 	InterfaceName string `xml:"interface_name"`
 
 	IpAddress string `xml:"ip_address"`
@@ -67,12 +73,16 @@ type InterfaceType struct {
 }
 
 type CollectedObjectsType struct {
+	XMLName xml.Name
+
 	Object []ObjectType `xml:"object"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectType struct {
+	XMLName xml.Name
+
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -93,6 +103,8 @@ type ObjectType struct {
 }
 
 type VariableValueType struct {
+	XMLName xml.Name
+
 	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
 
 	Text     string `xml:",chardata"`
@@ -100,18 +112,24 @@ type VariableValueType struct {
 }
 
 type ReferenceType struct {
+	XMLName xml.Name
+
 	ItemRef oval.ItemIDPattern `xml:"item_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SystemDataType struct {
+	XMLName xml.Name
+
 	Item []Item `xml:"item"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ItemType struct {
+	XMLName xml.Name
+
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
 	Status StatusEnumeration `xml:"status,attr,omitempty"`
@@ -122,6 +140,8 @@ type ItemType struct {
 }
 
 type EntityItemSimpleBaseType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -133,10 +153,14 @@ type EntityItemSimpleBaseType struct {
 }
 
 type EntityItemComplexBaseType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIPAddressType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -147,6 +171,8 @@ type EntityItemIPAddressType struct {
 }
 
 type EntityItemIPAddressStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -157,6 +183,8 @@ type EntityItemIPAddressStringType struct {
 }
 
 type EntityItemAnySimpleType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -167,6 +195,8 @@ type EntityItemAnySimpleType struct {
 }
 
 type EntityItemBinaryType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -177,6 +207,8 @@ type EntityItemBinaryType struct {
 }
 
 type EntityItemBoolType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -187,6 +219,8 @@ type EntityItemBoolType struct {
 }
 
 type EntityItemFloatType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -197,6 +231,8 @@ type EntityItemFloatType struct {
 }
 
 type EntityItemIntType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -207,6 +243,8 @@ type EntityItemIntType struct {
 }
 
 type EntityItemStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -217,12 +255,16 @@ type EntityItemStringType struct {
 }
 
 type EntityItemRecordType struct {
+	XMLName xml.Name
+
 	Field []EntityItemFieldType `xml:"field"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFieldType struct {
+	XMLName xml.Name
+
 	Name string `xml:"name,attr"`
 
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
@@ -236,6 +278,8 @@ type EntityItemFieldType struct {
 }
 
 type EntityItemVersionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -246,6 +290,8 @@ type EntityItemVersionType struct {
 }
 
 type EntityItemFilesetRevisionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -256,6 +302,8 @@ type EntityItemFilesetRevisionType struct {
 }
 
 type EntityItemIOSVersionType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -266,6 +314,8 @@ type EntityItemIOSVersionType struct {
 }
 
 type EntityItemEVRStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -276,6 +326,8 @@ type EntityItemEVRStringType struct {
 }
 
 type EntityItemDebianEVRStringType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

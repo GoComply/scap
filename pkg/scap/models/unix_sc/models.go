@@ -626,6 +626,8 @@ type ShadowItemFlag struct {
 // XSD ComplexType declarations
 
 type EntityItemCapabilityType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -636,6 +638,8 @@ type EntityItemCapabilityType struct {
 }
 
 type EntityItemEndpointType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -646,6 +650,8 @@ type EntityItemEndpointType struct {
 }
 
 type EntityItemGconfTypeType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -656,6 +662,8 @@ type EntityItemGconfTypeType struct {
 }
 
 type EntityItemRoutingTableFlagsType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -666,6 +674,8 @@ type EntityItemRoutingTableFlagsType struct {
 }
 
 type EntityItemXinetdTypeStatusType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -676,6 +686,8 @@ type EntityItemXinetdTypeStatusType struct {
 }
 
 type EntityItemWaitStatusType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -686,6 +698,8 @@ type EntityItemWaitStatusType struct {
 }
 
 type EntityItemEncryptMethodType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -696,6 +710,8 @@ type EntityItemEncryptMethodType struct {
 }
 
 type EntityItemInterfaceType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

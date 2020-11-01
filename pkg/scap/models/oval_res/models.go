@@ -30,6 +30,8 @@ type OvalResults struct {
 // XSD ComplexType declarations
 
 type DirectivesType struct {
+	XMLName xml.Name
+
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
 	DefinitionFalse DirectiveType `xml:"definition_false"`
@@ -46,6 +48,8 @@ type DirectivesType struct {
 }
 
 type DefaultDirectivesType struct {
+	XMLName xml.Name
+
 	IncludeSourceDefinitions bool `xml:"include_source_definitions,attr,omitempty"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
@@ -64,6 +68,8 @@ type DefaultDirectivesType struct {
 }
 
 type ClassDirectivesType struct {
+	XMLName xml.Name
+
 	Class oval.ClassEnumeration `xml:"class,attr"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
@@ -82,6 +88,8 @@ type ClassDirectivesType struct {
 }
 
 type DirectiveType struct {
+	XMLName xml.Name
+
 	Reported bool `xml:"reported,attr"`
 
 	Content ContentEnumeration `xml:"content,attr,omitempty"`
@@ -90,12 +98,16 @@ type DirectiveType struct {
 }
 
 type ResultsType struct {
+	XMLName xml.Name
+
 	System []SystemType `xml:"system"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SystemType struct {
+	XMLName xml.Name
+
 	Definitions *DefinitionsType `xml:"definitions"`
 
 	Tests *TestsType `xml:"tests"`
@@ -106,12 +118,16 @@ type SystemType struct {
 }
 
 type DefinitionsType struct {
+	XMLName xml.Name
+
 	Definition []DefinitionType `xml:"definition"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type DefinitionType struct {
+	XMLName xml.Name
+
 	DefinitionId oval.DefinitionIDPattern `xml:"definition_id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -130,6 +146,8 @@ type DefinitionType struct {
 }
 
 type CriteriaType struct {
+	XMLName xml.Name
+
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr"`
@@ -148,6 +166,8 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
+	XMLName xml.Name
+
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
 	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
@@ -164,6 +184,8 @@ type CriterionType struct {
 }
 
 type ExtendDefinitionType struct {
+	XMLName xml.Name
+
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
 	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
@@ -180,12 +202,16 @@ type ExtendDefinitionType struct {
 }
 
 type TestsType struct {
+	XMLName xml.Name
+
 	Test []TestType `xml:"test"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TestType struct {
+	XMLName xml.Name
+
 	TestId oval.TestIDPattern `xml:"test_id,attr"`
 
 	Version int `xml:"version,attr"`
@@ -210,6 +236,8 @@ type TestType struct {
 }
 
 type TestedItemType struct {
+	XMLName xml.Name
+
 	ItemId oval.ItemIDPattern `xml:"item_id,attr"`
 
 	Result ResultEnumeration `xml:"result,attr"`
@@ -220,6 +248,8 @@ type TestedItemType struct {
 }
 
 type TestedVariableType struct {
+	XMLName xml.Name
+
 	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
 
 	Text     string `xml:",chardata"`

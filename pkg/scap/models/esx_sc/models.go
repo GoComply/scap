@@ -66,6 +66,8 @@ type VisdkmanagedobjectItem struct {
 // XSD ComplexType declarations
 
 type EntityItemClassificationType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -76,6 +78,8 @@ type EntityItemClassificationType struct {
 }
 
 type EntityItemSupportLevelType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

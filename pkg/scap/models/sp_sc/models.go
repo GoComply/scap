@@ -463,6 +463,8 @@ type SppolicyItem struct {
 // XSD ComplexType declarations
 
 type EntityItemUrlZoneType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -473,6 +475,8 @@ type EntityItemUrlZoneType struct {
 }
 
 type EntityItemEventSeverityType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -483,6 +487,8 @@ type EntityItemEventSeverityType struct {
 }
 
 type EntityItemTraceSeverityType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -493,6 +499,8 @@ type EntityItemTraceSeverityType struct {
 }
 
 type EntityItemPolicyFeatureStateType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -503,6 +511,8 @@ type EntityItemPolicyFeatureStateType struct {
 }
 
 type EntityItemPolicyRoleType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

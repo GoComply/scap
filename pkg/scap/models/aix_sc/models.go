@@ -96,6 +96,8 @@ type OslevelItem struct {
 // XSD ComplexType declarations
 
 type EntityItemFilesetStateType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -106,6 +108,8 @@ type EntityItemFilesetStateType struct {
 }
 
 type EntityItemFixInstallationStatusType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`
@@ -116,6 +120,8 @@ type EntityItemFixInstallationStatusType struct {
 }
 
 type EntityItemInterimFixStateType struct {
+	XMLName xml.Name
+
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Mask bool `xml:"mask,attr,omitempty"`

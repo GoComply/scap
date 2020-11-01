@@ -310,24 +310,32 @@ type VisdkmanagedobjectState struct {
 // XSD ComplexType declarations
 
 type Patch56Behaviors struct {
+	XMLName xml.Name
+
 	Supersedence string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PatchBehaviors struct {
+	XMLName xml.Name
+
 	Supersedence string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ViSdkManagedEntityBehaviors struct {
+	XMLName xml.Name
+
 	ManagedEntityType string `xml:"managed_entity_type,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateClassificationType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
@@ -346,6 +354,8 @@ type EntityStateClassificationType struct {
 }
 
 type EntityStateSupportLevelType struct {
+	XMLName xml.Name
+
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
