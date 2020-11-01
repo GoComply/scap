@@ -46,7 +46,7 @@ type DirectivesType struct {
 }
 
 type DefaultDirectivesType struct {
-	IncludeSourceDefinitions string `xml:"include_source_definitions,attr,omitempty"`
+	IncludeSourceDefinitions bool `xml:"include_source_definitions,attr,omitempty"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
@@ -64,7 +64,7 @@ type DefaultDirectivesType struct {
 }
 
 type ClassDirectivesType struct {
-	Class string `xml:"class,attr"`
+	Class oval.ClassEnumeration `xml:"class,attr"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
@@ -220,7 +220,7 @@ type TestedItemType struct {
 }
 
 type TestedVariableType struct {
-	VariableId string `xml:"variable_id,attr"`
+	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

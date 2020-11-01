@@ -57,7 +57,7 @@ type HttpdObject struct {
 type HttpdState struct {
 	XMLName xml.Name `xml:httpd_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

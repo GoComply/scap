@@ -93,7 +93,7 @@ type ObjectType struct {
 }
 
 type VariableValueType struct {
-	VariableId string `xml:"variable_id,attr"`
+	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

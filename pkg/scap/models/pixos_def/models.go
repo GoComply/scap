@@ -63,7 +63,7 @@ type LineObject struct {
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -130,7 +130,7 @@ type VersionObject struct {
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

@@ -63,7 +63,7 @@ type SpwebapplicationObject struct {
 type SpwebapplicationState struct {
 	XMLName xml.Name `xml:spwebapplication_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -236,7 +236,7 @@ type SpgroupObject struct {
 type SpgroupState struct {
 	XMLName xml.Name `xml:spgroup_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -317,7 +317,7 @@ type SpwebObject struct {
 type SpwebState struct {
 	XMLName xml.Name `xml:spweb_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -396,7 +396,7 @@ type SplistObject struct {
 type SplistState struct {
 	XMLName xml.Name `xml:splist_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -475,7 +475,7 @@ type SpantivirussettingsObject struct {
 type SpantivirussettingsState struct {
 	XMLName xml.Name `xml:spantivirussettings_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -564,7 +564,7 @@ type SpsiteadministrationObject struct {
 type SpsiteadministrationState struct {
 	XMLName xml.Name `xml:spsiteadministration_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -639,7 +639,7 @@ type SpsiteObject struct {
 type SpsiteState struct {
 	XMLName xml.Name `xml:spsite_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -714,7 +714,7 @@ type SpcrawlruleObject struct {
 type SpcrawlruleState struct {
 	XMLName xml.Name `xml:spcrawlrule_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -799,7 +799,7 @@ type SpjobdefinitionObject struct {
 type SpjobdefinitionState struct {
 	XMLName xml.Name `xml:spjobdefinition_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -880,7 +880,7 @@ type Spjobdefinition510Object struct {
 type Spjobdefinition510State struct {
 	XMLName xml.Name `xml:spjobdefinition510_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -961,7 +961,7 @@ type BestbetObject struct {
 type BestbetState struct {
 	XMLName xml.Name `xml:bestbet_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1040,7 +1040,7 @@ type InfopolicycollObject struct {
 type InfopolicycollState struct {
 	XMLName xml.Name `xml:infopolicycoll_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1119,7 +1119,7 @@ type SpdiagnosticsserviceObject struct {
 type SpdiagnosticsserviceState struct {
 	XMLName xml.Name `xml:spdiagnosticsservice_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1202,7 +1202,7 @@ type SpdiagnosticslevelObject struct {
 type SpdiagnosticslevelState struct {
 	XMLName xml.Name `xml:spdiagnosticslevel_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1283,7 +1283,7 @@ type SppolicyfeatureObject struct {
 type SppolicyfeatureState struct {
 	XMLName xml.Name `xml:sppolicyfeature_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1372,7 +1372,7 @@ type SppolicyObject struct {
 type SppolicyState struct {
 	XMLName xml.Name `xml:sppolicy_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

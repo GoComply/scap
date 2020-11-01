@@ -65,7 +65,7 @@ type FacetObject struct {
 type FacetState struct {
 	XMLName xml.Name `xml:facet_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -142,7 +142,7 @@ type ImageObject struct {
 type ImageState struct {
 	XMLName xml.Name `xml:image_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -211,7 +211,7 @@ type IsainfoObject struct {
 type IsainfoState struct {
 	XMLName xml.Name `xml:isainfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -288,7 +288,7 @@ type NddObject struct {
 type NddState struct {
 	XMLName xml.Name `xml:ndd_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -365,7 +365,7 @@ type PackageObject struct {
 type PackageState struct {
 	XMLName xml.Name `xml:package_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -452,7 +452,7 @@ type Package511Object struct {
 type Package511State struct {
 	XMLName xml.Name `xml:package511_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -533,7 +533,7 @@ type PackageavoidlistObject struct {
 type PackageavoidlistState struct {
 	XMLName xml.Name `xml:packageavoidlist_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -608,7 +608,7 @@ type PackagecheckObject struct {
 type PackagecheckState struct {
 	XMLName xml.Name `xml:packagecheck_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -699,7 +699,7 @@ type PackagefreezelistObject struct {
 type PackagefreezelistState struct {
 	XMLName xml.Name `xml:packagefreezelist_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -774,7 +774,7 @@ type PackagepublisherObject struct {
 type PackagepublisherState struct {
 	XMLName xml.Name `xml:packagepublisher_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -917,7 +917,7 @@ type PatchObject struct {
 type PatchState struct {
 	XMLName xml.Name `xml:patch_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -990,7 +990,7 @@ type SmfObject struct {
 type SmfState struct {
 	XMLName xml.Name `xml:smf_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1077,7 +1077,7 @@ type SmfpropertyObject struct {
 type SmfpropertyState struct {
 	XMLName xml.Name `xml:smfproperty_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1158,7 +1158,7 @@ type VariantObject struct {
 type VariantState struct {
 	XMLName xml.Name `xml:variant_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1227,7 +1227,7 @@ type VirtualizationinfoObject struct {
 type VirtualizationinfoState struct {
 	XMLName xml.Name `xml:virtualizationinfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

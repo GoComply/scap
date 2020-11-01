@@ -88,7 +88,7 @@ type SchemaVersionType struct {
 }
 
 type MessageType struct {
-	Level string `xml:"level,attr,omitempty"`
+	Level MessageLevelEnumeration `xml:"level,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

@@ -65,7 +65,7 @@ type AclObject struct {
 type AclState struct {
 	XMLName xml.Name `xml:acl_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -148,7 +148,7 @@ type BgpneighborObject struct {
 type BgpneighborState struct {
 	XMLName xml.Name `xml:bgpneighbor_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -221,7 +221,7 @@ type GlobalObject struct {
 type GlobalState struct {
 	XMLName xml.Name `xml:global_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -292,7 +292,7 @@ type InterfaceObject struct {
 type InterfaceState struct {
 	XMLName xml.Name `xml:interface_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -403,7 +403,7 @@ type LineObject struct {
 type LineState struct {
 	XMLName xml.Name `xml:line_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -478,7 +478,7 @@ type RouterObject struct {
 type RouterState struct {
 	XMLName xml.Name `xml:router_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -561,7 +561,7 @@ type RoutingprotocolauthintfObject struct {
 type RoutingprotocolauthintfState struct {
 	XMLName xml.Name `xml:routingprotocolauthintf_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -642,7 +642,7 @@ type SectionObject struct {
 type SectionState struct {
 	XMLName xml.Name `xml:section_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -711,7 +711,7 @@ type SnmpObject struct {
 type SnmpState struct {
 	XMLName xml.Name `xml:snmp_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -784,7 +784,7 @@ type SnmpcommunityObject struct {
 type SnmpcommunityState struct {
 	XMLName xml.Name `xml:snmpcommunity_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -863,7 +863,7 @@ type SnmpgroupObject struct {
 type SnmpgroupState struct {
 	XMLName xml.Name `xml:snmpgroup_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -948,7 +948,7 @@ type SnmphostObject struct {
 type SnmphostState struct {
 	XMLName xml.Name `xml:snmphost_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1027,7 +1027,7 @@ type SnmpuserObject struct {
 type SnmpuserState struct {
 	XMLName xml.Name `xml:snmpuser_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1110,7 +1110,7 @@ type SnmpviewObject struct {
 type SnmpviewState struct {
 	XMLName xml.Name `xml:snmpview_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1179,7 +1179,7 @@ type TclshObject struct {
 type TclshState struct {
 	XMLName xml.Name `xml:tclsh_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1244,7 +1244,7 @@ type Version55Object struct {
 type Version55State struct {
 	XMLName xml.Name `xml:version55_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1323,7 +1323,7 @@ type VersionObject struct {
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

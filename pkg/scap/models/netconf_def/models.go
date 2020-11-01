@@ -63,7 +63,7 @@ type ConfigObject struct {
 type ConfigState struct {
 	XMLName xml.Name `xml:config_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

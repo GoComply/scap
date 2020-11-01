@@ -63,7 +63,7 @@ type InterimFixObject struct {
 type InterimFixState struct {
 	XMLName xml.Name `xml:interim_fix_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -140,7 +140,7 @@ type FilesetObject struct {
 type FilesetState struct {
 	XMLName xml.Name `xml:fileset_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -217,7 +217,7 @@ type FixObject struct {
 type FixState struct {
 	XMLName xml.Name `xml:fix_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -294,7 +294,7 @@ type NoObject struct {
 type NoState struct {
 	XMLName xml.Name `xml:no_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -361,7 +361,7 @@ type OslevelObject struct {
 type OslevelState struct {
 	XMLName xml.Name `xml:oslevel_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

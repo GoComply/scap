@@ -65,7 +65,7 @@ type AppmanagerObject struct {
 type AppmanagerState struct {
 	XMLName xml.Name `xml:appmanager_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -154,7 +154,7 @@ type BluetoothObject struct {
 type BluetoothState struct {
 	XMLName xml.Name `xml:bluetooth_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -221,7 +221,7 @@ type CameraObject struct {
 type CameraState struct {
 	XMLName xml.Name `xml:camera_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -286,7 +286,7 @@ type CertificateObject struct {
 type CertificateState struct {
 	XMLName xml.Name `xml:certificate_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -351,7 +351,7 @@ type DevicesettingsObject struct {
 type DevicesettingsState struct {
 	XMLName xml.Name `xml:devicesettings_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -428,7 +428,7 @@ type EncryptionObject struct {
 type EncryptionState struct {
 	XMLName xml.Name `xml:encryption_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -495,7 +495,7 @@ type LocationserviceObject struct {
 type LocationserviceState struct {
 	XMLName xml.Name `xml:locationservice_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -562,7 +562,7 @@ type NetworkObject struct {
 type NetworkState struct {
 	XMLName xml.Name `xml:network_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -629,7 +629,7 @@ type PasswordObject struct {
 type PasswordState struct {
 	XMLName xml.Name `xml:password_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -724,7 +724,7 @@ type SystemdetailsObject struct {
 type SystemdetailsState struct {
 	XMLName xml.Name `xml:systemdetails_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -811,7 +811,7 @@ type WifiObject struct {
 type WifiState struct {
 	XMLName xml.Name `xml:wifi_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -884,7 +884,7 @@ type WifinetworkObject struct {
 type WifinetworkState struct {
 	XMLName xml.Name `xml:wifinetwork_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -969,7 +969,7 @@ type TelephonyObject struct {
 type TelephonyState struct {
 	XMLName xml.Name `xml:telephony_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

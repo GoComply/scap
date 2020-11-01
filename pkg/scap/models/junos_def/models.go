@@ -63,7 +63,7 @@ type XmlConfigObject struct {
 type XmlConfigState struct {
 	XMLName xml.Name `xml:xml_config_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -136,7 +136,7 @@ type ShowObject struct {
 type ShowState struct {
 	XMLName xml.Name `xml:show_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -209,7 +209,7 @@ type VersionObject struct {
 type VersionState struct {
 	XMLName xml.Name `xml:version_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -298,7 +298,7 @@ type XmlShowObject struct {
 type XmlShowState struct {
 	XMLName xml.Name `xml:xml_show_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

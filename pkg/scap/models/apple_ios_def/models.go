@@ -57,7 +57,7 @@ type GlobalrestrictionsObject struct {
 type GlobalrestrictionsState struct {
 	XMLName xml.Name `xml:globalrestrictions_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -200,7 +200,7 @@ type PasscodepolicyObject struct {
 type PasscodepolicyState struct {
 	XMLName xml.Name `xml:passcodepolicy_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -291,7 +291,7 @@ type ProfileObject struct {
 type ProfileState struct {
 	XMLName xml.Name `xml:profile_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

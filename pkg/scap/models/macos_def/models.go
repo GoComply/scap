@@ -63,7 +63,7 @@ type AccountinfoObject struct {
 type AccountinfoState struct {
 	XMLName xml.Name `xml:accountinfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -148,7 +148,7 @@ type AuthorizationdbObject struct {
 type AuthorizationdbState struct {
 	XMLName xml.Name `xml:authorizationdb_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -225,7 +225,7 @@ type CorestorageObject struct {
 type CorestorageState struct {
 	XMLName xml.Name `xml:corestorage_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -302,7 +302,7 @@ type DiskutilObject struct {
 type DiskutilState struct {
 	XMLName xml.Name `xml:diskutil_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -405,7 +405,7 @@ type GatekeeperObject struct {
 type GatekeeperState struct {
 	XMLName xml.Name `xml:gatekeeper_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -478,7 +478,7 @@ type InetlisteningserversObject struct {
 type InetlisteningserversState struct {
 	XMLName xml.Name `xml:inetlisteningservers_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -571,7 +571,7 @@ type Inetlisteningserver510Object struct {
 type Inetlisteningserver510State struct {
 	XMLName xml.Name `xml:inetlisteningserver510_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -660,7 +660,7 @@ type KeychainObject struct {
 type KeychainState struct {
 	XMLName xml.Name `xml:keychain_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -735,7 +735,7 @@ type LaunchdObject struct {
 type LaunchdState struct {
 	XMLName xml.Name `xml:launchd_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -810,7 +810,7 @@ type NvramObject struct {
 type NvramState struct {
 	XMLName xml.Name `xml:nvram_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -887,7 +887,7 @@ type PlistObject struct {
 type PlistState struct {
 	XMLName xml.Name `xml:plist_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -974,7 +974,7 @@ type Plist510Object struct {
 type Plist510State struct {
 	XMLName xml.Name `xml:plist510_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1059,7 +1059,7 @@ type Plist511Object struct {
 type Plist511State struct {
 	XMLName xml.Name `xml:plist511_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1140,7 +1140,7 @@ type PwpolicyObject struct {
 type PwpolicyState struct {
 	XMLName xml.Name `xml:pwpolicy_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1233,7 +1233,7 @@ type Pwpolicy59Object struct {
 type Pwpolicy59State struct {
 	XMLName xml.Name `xml:pwpolicy59_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1346,7 +1346,7 @@ type RlimitObject struct {
 type RlimitState struct {
 	XMLName xml.Name `xml:rlimit_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1445,7 +1445,7 @@ type SoftwareupdateObject struct {
 type SoftwareupdateState struct {
 	XMLName xml.Name `xml:softwareupdate_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1520,7 +1520,7 @@ type SystemprofilerObject struct {
 type SystemprofilerState struct {
 	XMLName xml.Name `xml:systemprofiler_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1589,7 +1589,7 @@ type SystemsetupObject struct {
 type SystemsetupState struct {
 	XMLName xml.Name `xml:systemsetup_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

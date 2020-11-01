@@ -112,7 +112,7 @@ type Set struct {
 type Filter struct {
 	XMLName xml.Name `xml:filter`
 
-	Action string `xml:"action,attr,omitempty"`
+	Action FilterActionEnumeration `xml:"action,attr,omitempty"`
 
 	Text string `xml:",chardata"`
 }
@@ -121,7 +121,7 @@ type Filter struct {
 type State struct {
 	XMLName xml.Name `xml:state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -351,7 +351,7 @@ type ObjectRefType struct {
 }
 
 type StateRefType struct {
-	StateRef StateIDPattern `xml:"state_ref,attr"`
+	StateRef oval.StateIDPattern `xml:"state_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -385,7 +385,7 @@ type StatesType struct {
 }
 
 type StateType struct {
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -444,7 +444,7 @@ type PossibleRestrictionType struct {
 }
 
 type RestrictionType struct {
-	Operation string `xml:"operation,attr"`
+	Operation oval.OperationEnumeration `xml:"operation,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
@@ -456,7 +456,7 @@ type ValueType struct {
 }
 
 type LiteralComponentType struct {
-	Datatype string `xml:"datatype,attr,omitempty"`
+	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`

@@ -63,7 +63,7 @@ type PortinfoObject struct {
 type PortinfoState struct {
 	XMLName xml.Name `xml:portinfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

@@ -57,7 +57,7 @@ type ApparmorstatusObject struct {
 type ApparmorstatusState struct {
 	XMLName xml.Name `xml:apparmorstatus_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -140,7 +140,7 @@ type DpkginfoObject struct {
 type DpkginfoState struct {
 	XMLName xml.Name `xml:dpkginfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -221,7 +221,7 @@ type IflistenersObject struct {
 type IflistenersState struct {
 	XMLName xml.Name `xml:iflisteners_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -306,7 +306,7 @@ type InetlisteningserversObject struct {
 type InetlisteningserversState struct {
 	XMLName xml.Name `xml:inetlisteningservers_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -395,7 +395,7 @@ type PartitionObject struct {
 type PartitionState struct {
 	XMLName xml.Name `xml:partition_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -486,7 +486,7 @@ type RpminfoObject struct {
 type RpminfoState struct {
 	XMLName xml.Name `xml:rpminfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -577,7 +577,7 @@ type RpmverifyObject struct {
 type RpmverifyState struct {
 	XMLName xml.Name `xml:rpmverify_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -690,7 +690,7 @@ type RpmverifyfileObject struct {
 type RpmverifyfileState struct {
 	XMLName xml.Name `xml:rpmverifyfile_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -813,7 +813,7 @@ type RpmverifypackageObject struct {
 type RpmverifypackageState struct {
 	XMLName xml.Name `xml:rpmverifypackage_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -902,7 +902,7 @@ type SelinuxbooleanObject struct {
 type SelinuxbooleanState struct {
 	XMLName xml.Name `xml:selinuxboolean_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -985,7 +985,7 @@ type SelinuxsecuritycontextObject struct {
 type SelinuxsecuritycontextState struct {
 	XMLName xml.Name `xml:selinuxsecuritycontext_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1084,7 +1084,7 @@ type SlackwarepkginfoObject struct {
 type SlackwarepkginfoState struct {
 	XMLName xml.Name `xml:slackwarepkginfo_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1161,7 +1161,7 @@ type SystemdunitdependencyObject struct {
 type SystemdunitdependencyState struct {
 	XMLName xml.Name `xml:systemdunitdependency_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1236,7 +1236,7 @@ type SystemdunitpropertyObject struct {
 type SystemdunitpropertyState struct {
 	XMLName xml.Name `xml:systemdunitproperty_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

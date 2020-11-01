@@ -57,7 +57,7 @@ type FamilyObject struct {
 type FamilyState struct {
 	XMLName xml.Name `xml:family_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -132,7 +132,7 @@ type FilehashObject struct {
 type FilehashState struct {
 	XMLName xml.Name `xml:filehash_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -221,7 +221,7 @@ type Filehash58Object struct {
 type Filehash58State struct {
 	XMLName xml.Name `xml:filehash58_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -300,7 +300,7 @@ type EnvironmentvariableObject struct {
 type EnvironmentvariableState struct {
 	XMLName xml.Name `xml:environmentvariable_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -375,7 +375,7 @@ type Environmentvariable58Object struct {
 type Environmentvariable58State struct {
 	XMLName xml.Name `xml:environmentvariable58_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -454,7 +454,7 @@ type LdapObject struct {
 type LdapState struct {
 	XMLName xml.Name `xml:ldap_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -541,7 +541,7 @@ type Ldap57Object struct {
 type Ldap57State struct {
 	XMLName xml.Name `xml:ldap57_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -626,7 +626,7 @@ type SqlObject struct {
 type SqlState struct {
 	XMLName xml.Name `xml:sql_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -711,7 +711,7 @@ type Sql57Object struct {
 type Sql57State struct {
 	XMLName xml.Name `xml:sql57_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -800,7 +800,7 @@ type Textfilecontent54Object struct {
 type Textfilecontent54State struct {
 	XMLName xml.Name `xml:textfilecontent54_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -889,7 +889,7 @@ type TextfilecontentObject struct {
 type TextfilecontentState struct {
 	XMLName xml.Name `xml:textfilecontent_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -991,7 +991,7 @@ type VariableObject struct {
 type VariableState struct {
 	XMLName xml.Name `xml:variable_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1072,7 +1072,7 @@ type XmlfilecontentObject struct {
 type XmlfilecontentState struct {
 	XMLName xml.Name `xml:xmlfilecontent_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -1161,7 +1161,7 @@ type YamlfilecontentObject struct {
 type YamlfilecontentState struct {
 	XMLName xml.Name `xml:yamlfilecontent_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 

@@ -65,7 +65,7 @@ type GetconfObject struct {
 type GetconfState struct {
 	XMLName xml.Name `xml:getconf_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -142,7 +142,7 @@ type NddObject struct {
 type NddState struct {
 	XMLName xml.Name `xml:ndd_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -223,7 +223,7 @@ type Patch53Object struct {
 type Patch53State struct {
 	XMLName xml.Name `xml:patch53_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -296,7 +296,7 @@ type PatchObject struct {
 type PatchState struct {
 	XMLName xml.Name `xml:patch_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -373,7 +373,7 @@ type SwlistObject struct {
 type SwlistState struct {
 	XMLName xml.Name `xml:swlist_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
@@ -454,7 +454,7 @@ type TrustedObject struct {
 type TrustedState struct {
 	XMLName xml.Name `xml:trusted_state`
 
-	Id StateIDPattern `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
 	Version int `xml:"version,attr"`
 
