@@ -119,7 +119,11 @@ type LogicalTestType struct {
 }
 
 type FactRefType struct {
+<<<<<<< HEAD
 	Description *string `xml:"description,attr,omitempty"`
+=======
+	Description string `xml:"description,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -127,7 +131,11 @@ type FactRefType struct {
 type CPEFactRefType struct {
 	Name string `xml:"name,attr"`
 
+<<<<<<< HEAD
 	Description *string `xml:"description,attr,omitempty"`
+=======
+	Description string `xml:"description,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -139,7 +147,11 @@ type CheckFactRefType struct {
 
 	IdRef string `xml:"id-ref,attr"`
 
+<<<<<<< HEAD
 	Description *string `xml:"description,attr,omitempty"`
+=======
+	Description string `xml:"description,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }

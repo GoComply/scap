@@ -859,7 +859,11 @@ type FixType struct {
 }
 
 type InstanceFixType struct {
+<<<<<<< HEAD
 	Context *string `xml:"context,attr,omitempty"`
+=======
+	Context string `xml:"context,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -1194,7 +1198,11 @@ type TestResultType struct {
 type BenchmarkReferenceType struct {
 	Href string `xml:"href,attr"`
 
+<<<<<<< HEAD
 	Id *string `xml:"id,attr,omitempty"`
+=======
+	Id string `xml:"id,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -1219,7 +1227,11 @@ type TargetIdRefType struct {
 
 	Href string `xml:"href,attr"`
 
+<<<<<<< HEAD
 	Name *string `xml:"name,attr,omitempty"`
+=======
+	Name string `xml:"name,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -1345,7 +1357,11 @@ type TailoringBenchmarkReferenceType struct {
 
 	Href string `xml:"href,attr"`
 
+<<<<<<< HEAD
 	Id *string `xml:"id,attr,omitempty"`
+=======
+	Id string `xml:"id,attr,omitempty"`
+>>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
