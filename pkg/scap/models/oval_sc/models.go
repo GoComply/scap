@@ -20,7 +20,7 @@ type OvalSystemCharacteristics struct {
 
 	SystemData *SystemDataType `xml:"system_data"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // Element
@@ -31,7 +31,7 @@ type Item struct {
 
 	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
-	Message []oval.MessageType `xml:"message"`
+	Message []oval.MessageType `xml:",any"`
 }
 
 // XSD ComplexType declarations
@@ -55,7 +55,7 @@ type SystemInfoType struct {
 type InterfacesType struct {
 	XMLName xml.Name
 
-	Interface []InterfaceType `xml:"interface"`
+	Interface []InterfaceType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -75,7 +75,7 @@ type InterfaceType struct {
 type CollectedObjectsType struct {
 	XMLName xml.Name
 
-	Object []ObjectType `xml:"object"`
+	Object []ObjectType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -122,7 +122,7 @@ type ReferenceType struct {
 type SystemDataType struct {
 	XMLName xml.Name
 
-	Item []Item `xml:"item"`
+	Item []ItemType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -134,7 +134,7 @@ type ItemType struct {
 
 	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
-	Message []oval.MessageType `xml:"message"`
+	Message []oval.MessageType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -257,7 +257,7 @@ type EntityItemStringType struct {
 type EntityItemRecordType struct {
 	XMLName xml.Name
 
-	Field []EntityItemFieldType `xml:"field"`
+	Field []EntityItemFieldType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }

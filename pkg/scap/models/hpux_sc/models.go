@@ -14,7 +14,7 @@ type GetconfItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
@@ -31,7 +31,7 @@ type NddItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -48,7 +48,7 @@ type PatchItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
@@ -67,7 +67,7 @@ type SwlistItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
@@ -90,7 +90,7 @@ type TrustedItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -165,7 +165,7 @@ type SwlistItemVersion struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations

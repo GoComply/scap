@@ -24,7 +24,7 @@ type OvalResults struct {
 
 	Results ResultsType `xml:"results"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // XSD ComplexType declarations
@@ -100,7 +100,7 @@ type DirectiveType struct {
 type ResultsType struct {
 	XMLName xml.Name
 
-	System []SystemType `xml:"system"`
+	System []SystemType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -120,7 +120,7 @@ type SystemType struct {
 type DefinitionsType struct {
 	XMLName xml.Name
 
-	Definition []DefinitionType `xml:"definition"`
+	Definition []DefinitionType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -204,7 +204,7 @@ type ExtendDefinitionType struct {
 type TestsType struct {
 	XMLName xml.Name
 
-	Test []TestType `xml:"test"`
+	Test []TestType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -242,7 +242,7 @@ type TestedItemType struct {
 
 	Result ResultEnumeration `xml:"result,attr"`
 
-	Message []oval.MessageType `xml:"message"`
+	Message []oval.MessageType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }

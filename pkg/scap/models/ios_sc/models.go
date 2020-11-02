@@ -14,7 +14,7 @@ type AclItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -39,7 +39,7 @@ type BgpneighborItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Neighbor *oval_sc.EntityItemStringType `xml:"neighbor"`
 
@@ -54,7 +54,7 @@ type GlobalItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	GlobalCommand *oval_sc.EntityItemStringType `xml:"global_command"`
 
@@ -67,7 +67,7 @@ type InterfaceItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -120,7 +120,7 @@ type LineItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -135,7 +135,7 @@ type RouterItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
@@ -158,7 +158,7 @@ type RoutingprotocolauthintfItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Interface *oval_sc.EntityItemStringType `xml:"interface"`
 
@@ -181,7 +181,7 @@ type SectionItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	SectionCommand *oval_sc.EntityItemStringType `xml:"section_command"`
 
@@ -198,7 +198,7 @@ type SnmpItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	AccessList *oval_sc.EntityItemStringType `xml:"access_list"`
 
@@ -213,7 +213,7 @@ type SnmpcommunityItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -234,7 +234,7 @@ type SnmpgroupItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -261,7 +261,7 @@ type SnmphostItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Host *oval_sc.EntityItemStringType `xml:"host"`
 
@@ -282,7 +282,7 @@ type SnmpuserItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -307,7 +307,7 @@ type SnmpviewItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -324,7 +324,7 @@ type TclshItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
 
@@ -337,7 +337,7 @@ type VersionItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MajorRelease *oval_sc.EntityItemStringType `xml:"major_release"`
 
@@ -370,7 +370,7 @@ type InterfaceItemIpDirectedBroadcastCommand struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
@@ -381,7 +381,7 @@ type InterfaceItemProxyArpCommand struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
@@ -392,7 +392,7 @@ type InterfaceItemShutdownCommand struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
@@ -403,7 +403,7 @@ type InterfaceItemSwitchportNativeVlan struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
@@ -414,7 +414,7 @@ type InterfaceItemSwitchportAccessVlan struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
@@ -425,7 +425,7 @@ type RouterItemOspfAuthenticationArea struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
@@ -436,7 +436,7 @@ type RoutingprotocolauthintfItemOspfArea struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
@@ -448,7 +448,7 @@ type EntityItemAccessListInterfaceDirectionType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -460,7 +460,7 @@ type EntityItemAccessListIPVersionType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -472,7 +472,7 @@ type EntityItemAccessListUseType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -484,7 +484,7 @@ type EntityItemRoutingAuthTypeStringType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -496,7 +496,7 @@ type EntityItemRoutingProtocolType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -508,7 +508,7 @@ type EntityItemSNMPVersionStringType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -520,7 +520,7 @@ type EntityItemSNMPSecLevelStringType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -532,7 +532,7 @@ type EntityItemSNMPModeStringType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -544,7 +544,7 @@ type EntityItemSNMPAuthStringType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -556,7 +556,7 @@ type EntityItemSNMPPrivStringType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -568,7 +568,7 @@ type EntityItemSwitchportModeType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -580,7 +580,7 @@ type EntityItemTrunkEncapType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

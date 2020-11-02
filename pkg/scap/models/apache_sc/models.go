@@ -14,7 +14,7 @@ type HttpdItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 

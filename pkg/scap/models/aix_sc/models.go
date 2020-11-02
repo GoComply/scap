@@ -14,7 +14,7 @@ type InterimFixItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
 
@@ -33,7 +33,7 @@ type FilesetItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
 
@@ -52,7 +52,7 @@ type FixItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
 
@@ -71,7 +71,7 @@ type NoItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
 
@@ -86,7 +86,7 @@ type OslevelItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 
@@ -102,7 +102,7 @@ type EntityItemFilesetStateType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -114,7 +114,7 @@ type EntityItemFixInstallationStatusType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -126,7 +126,7 @@ type EntityItemInterimFixStateType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

@@ -14,7 +14,7 @@ type SpwebapplicationItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webapplicationurl *oval_sc.EntityItemStringType `xml:"webapplicationurl"`
 
@@ -129,7 +129,7 @@ type SpgroupItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -150,7 +150,7 @@ type SpwebItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webcollectionurl *oval_sc.EntityItemStringType `xml:"webcollectionurl"`
 
@@ -171,7 +171,7 @@ type SplistItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -190,7 +190,7 @@ type SpantivirussettingsItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Spwebservicename *oval_sc.EntityItemStringType `xml:"spwebservicename"`
 
@@ -221,7 +221,7 @@ type SpsiteadministrationItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -238,7 +238,7 @@ type SpsiteItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -255,7 +255,7 @@ type SpcrawlruleItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -282,7 +282,7 @@ type SpjobdefinitionItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -303,7 +303,7 @@ type Spjobdefinition510Item struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -324,7 +324,7 @@ type BestbetItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -343,7 +343,7 @@ type InfopolicycollItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -364,7 +364,7 @@ type SpdiagnosticsserviceItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -389,7 +389,7 @@ type SpdiagnosticslevelItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -412,7 +412,7 @@ type SppolicyfeatureItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -443,7 +443,7 @@ type SppolicyItem struct {
 
 	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -469,7 +469,7 @@ type EntityItemUrlZoneType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -481,7 +481,7 @@ type EntityItemEventSeverityType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -493,7 +493,7 @@ type EntityItemTraceSeverityType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -505,7 +505,7 @@ type EntityItemPolicyFeatureStateType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -517,7 +517,7 @@ type EntityItemPolicyRoleType struct {
 
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	Status StatusEnumeration `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }

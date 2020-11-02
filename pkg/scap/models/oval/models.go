@@ -34,7 +34,7 @@ type ElementMapping struct {
 type Notes struct {
 	XMLName xml.Name `xml:notes`
 
-	Note []string `xml:"note"`
+	Note []string `xml:",any"`
 }
 
 // XSD ComplexType declarations
@@ -109,7 +109,7 @@ type MessageType struct {
 type NotesType struct {
 	XMLName xml.Name
 
-	Note []string `xml:"note"`
+	Note []string `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }

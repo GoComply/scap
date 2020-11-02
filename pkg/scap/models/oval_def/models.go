@@ -24,14 +24,14 @@ type OvalDefinitions struct {
 
 	Variables *VariablesType `xml:"variables"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // Element
 type Notes struct {
 	XMLName xml.Name `xml:notes`
 
-	Note []string `xml:"note"`
+	Note []string `xml:",any"`
 }
 
 // Element
@@ -46,11 +46,11 @@ type Definition struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Metadata MetadataType `xml:"metadata"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 
 	Criteria *CriteriaType `xml:"criteria"`
 }
@@ -73,9 +73,9 @@ type Test struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
@@ -90,9 +90,9 @@ type Object struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
@@ -131,9 +131,9 @@ type State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
@@ -150,9 +150,9 @@ type Variable struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
@@ -169,9 +169,9 @@ type ExternalVariable struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
@@ -190,9 +190,9 @@ type ConstantVariable struct {
 
 	Value []ValueType `xml:"value"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
@@ -209,9 +209,9 @@ type LocalVariable struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // XSD ComplexType declarations
@@ -219,7 +219,7 @@ type LocalVariable struct {
 type DefinitionsType struct {
 	XMLName xml.Name
 
-	Definition []Definition `xml:"definition"`
+	Definition []DefinitionType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -235,11 +235,11 @@ type DefinitionType struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Metadata MetadataType `xml:"metadata"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 
 	Criteria *CriteriaType `xml:"criteria"`
 
@@ -335,7 +335,7 @@ type ExtendDefinitionType struct {
 type TestsType struct {
 	XMLName xml.Name
 
-	Test []Test `xml:"test"`
+	Test []TestType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -357,9 +357,9 @@ type TestType struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -383,7 +383,7 @@ type StateRefType struct {
 type ObjectsType struct {
 	XMLName xml.Name
 
-	Object []Object `xml:"object"`
+	Object []ObjectType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -399,9 +399,9 @@ type ObjectType struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -409,7 +409,7 @@ type ObjectType struct {
 type StatesType struct {
 	XMLName xml.Name
 
-	State []State `xml:"state"`
+	State []StateType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -427,9 +427,9 @@ type StateType struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -437,7 +437,7 @@ type StateType struct {
 type VariablesType struct {
 	XMLName xml.Name
 
-	Variable []Variable `xml:"variable"`
+	Variable []VariableType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -455,9 +455,9 @@ type VariableType struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -790,7 +790,7 @@ type EntityObjectVersionType struct {
 type EntityObjectRecordType struct {
 	XMLName xml.Name
 
-	Field []EntityObjectFieldType `xml:"field"`
+	Field []EntityObjectFieldType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -1114,7 +1114,7 @@ type EntityStateRecordType struct {
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Field []EntityStateFieldType `xml:"field"`
+	Field []EntityStateFieldType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
