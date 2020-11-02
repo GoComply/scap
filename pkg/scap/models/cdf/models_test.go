@@ -21,8 +21,8 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	assert.Empty(t, bench.Title)
 	assert.Empty(t, bench.Description)
 	assert.Equal(t, bench.Version.Text, "2.0")
-	assert.Equal(t, bench.Version.Time, "")
-	assert.Equal(t, bench.Version.Update, "")
+	assert.Nil(t, bench.Version.Time)
+	assert.Nil(t, bench.Version.Update)
 	profiles := doc.Profile
 	assert.Equal(t, len(profiles), 1)
 	profile := profiles[0]
@@ -39,7 +39,7 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	assert.Equal(t, len(doc.Rule), 1)
 	rule := doc.Rule[0]
 	assert.Equal(t, rule.ComplexCheck.Operator, "AND")
-	assert.Equal(t, rule.ComplexCheck.Negate, "1")
+	assert.Equal(t, "1", *rule.ComplexCheck.Negate)
 	assert.Empty(t, rule.ComplexCheck.ComplexCheck)
 	checks := rule.ComplexCheck.Check
 	assert.Equal(t, len(checks), 3)

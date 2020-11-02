@@ -963,11 +963,7 @@ type TestActionResultType struct {
 type QuestionResultType struct {
 	QuestionRef string `xml:"question_ref,attr"`
 
-<<<<<<< HEAD
 	Response *string `xml:"response,attr,omitempty"`
-=======
-	Response string `xml:"response,attr,omitempty"`
->>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
@@ -1049,11 +1045,7 @@ type ArtifactRefsType struct {
 type ArtifactRefType struct {
 	Idref string `xml:"idref,attr"`
 
-<<<<<<< HEAD
 	Required *string `xml:"required,attr,omitempty"`
-=======
-	Required string `xml:"required,attr,omitempty"`
->>>>>>> gocomply/master
 
 	InnerXml string `xml:",innerxml"`
 }
