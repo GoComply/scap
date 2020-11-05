@@ -39,7 +39,7 @@ func TestSaniryXccdfParsing(t *testing.T) {
 	assert.Equal(t, len(doc.Rule), 1)
 	rule := doc.Rule[0]
 	assert.Equal(t, rule.ComplexCheck.Operator, "AND")
-	assert.Equal(t, "1", *rule.ComplexCheck.Negate)
+	assert.True(t, rule.ComplexCheck.Negate)
 	assert.Empty(t, rule.ComplexCheck.ComplexCheck)
 	checks := rule.ComplexCheck.Check
 	assert.Equal(t, len(checks), 3)

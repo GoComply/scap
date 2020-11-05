@@ -4,6 +4,7 @@ package cpe_dict
 
 import (
 	"encoding/xml"
+	"github.com/gocomply/scap/pkg/scap/models/cpe"
 )
 
 // Element
@@ -12,18 +13,18 @@ type CpeList struct {
 
 	Generator *GeneratorType `xml:"generator"`
 
-	CpeItem []CpeItem `xml:"cpe-item"`
+	CpeItem []ItemType `xml:"cpe-item"`
 }
 
 // Element
 type CpeItem struct {
 	XMLName xml.Name `xml:cpe-item`
 
-	Name string `xml:"name,attr"`
+	Name cpe.Cpe22Type `xml:"name,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	DeprecatedBy string `xml:"deprecated_by,attr,omitempty"`
+	DeprecatedBy cpe.Cpe22Type `xml:"deprecated_by,attr,omitempty"`
 
 	DeprecationDate string `xml:"deprecation_date,attr,omitempty"`
 
@@ -48,6 +49,8 @@ type Reference struct {
 // XSD ComplexType declarations
 
 type GeneratorType struct {
+	XMLName xml.Name
+
 	ProductName string `xml:"product_name"`
 
 	ProductVersion string `xml:"product_version"`
@@ -60,13 +63,15 @@ type GeneratorType struct {
 }
 
 type ItemType struct {
-	Name string `xml:"name,attr"`
+	XMLName xml.Name
 
-	Deprecated *string `xml:"deprecated,attr,omitempty"`
+	Name cpe.Cpe22Type `xml:"name,attr"`
 
-	DeprecatedBy *string `xml:"deprecated_by,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	DeprecationDate *string `xml:"deprecation_date,attr,omitempty"`
+	DeprecatedBy cpe.Cpe22Type `xml:"deprecated_by,attr,omitempty"`
+
+	DeprecationDate string `xml:"deprecation_date,attr,omitempty"`
 
 	Title []TextType `xml:"title"`
 
@@ -80,14 +85,18 @@ type ItemType struct {
 }
 
 type ListType struct {
+	XMLName xml.Name
+
 	Generator *GeneratorType `xml:"generator"`
 
-	CpeItem []CpeItem `xml:"cpe-item"`
+	CpeItem []ItemType `xml:"cpe-item"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TextType struct {
+	XMLName xml.Name
+
 	XmlLang string `xml:"lang,attr"`
 
 	Text     string `xml:",chardata"`
@@ -95,24 +104,32 @@ type TextType struct {
 }
 
 type NotesType struct {
+	XMLName xml.Name
+
 	XmlLang string `xml:"lang,attr"`
 
-	Note []string `xml:"note"`
+	Note []string `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ReferencesType struct {
-	Reference []Reference `xml:"reference"`
+	XMLName xml.Name
+
+	Reference []Reference `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type CheckType struct {
+	XMLName xml.Name
+
 	System string `xml:"system,attr"`
 
-	Href *string `xml:"href,attr,omitempty"`
+	Href string `xml:"href,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
