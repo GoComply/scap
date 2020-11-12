@@ -34,6 +34,8 @@ type PortinfoTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -57,6 +59,8 @@ type PortinfoObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -88,6 +92,8 @@ type PortinfoState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -107,6 +113,8 @@ type PortinfoStateVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

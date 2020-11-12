@@ -23,6 +23,8 @@ type GetconfItem struct {
 	Output *oval_sc.EntityItemAnySimpleType `xml:"output"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -40,6 +42,8 @@ type NddItem struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -59,6 +63,8 @@ type PatchItem struct {
 	PatchBase *oval_sc.EntityItemStringType `xml:"patch_base"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -82,6 +88,8 @@ type SwlistItem struct {
 	Vendor *oval_sc.EntityItemStringType `xml:"vendor"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -155,6 +163,8 @@ type TrustedItem struct {
 	LockFlag *oval_sc.EntityItemBoolType `xml:"lock_flag"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -166,6 +176,8 @@ type SwlistItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

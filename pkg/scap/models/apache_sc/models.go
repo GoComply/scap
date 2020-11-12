@@ -23,6 +23,8 @@ type HttpdItem struct {
 	Version *oval_sc.EntityItemVersionType `xml:"version"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

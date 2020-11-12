@@ -21,6 +21,8 @@ type LineItem struct {
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -40,6 +42,8 @@ type VersionItem struct {
 	PixBuild *oval_sc.EntityItemIntType `xml:"pix_build"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

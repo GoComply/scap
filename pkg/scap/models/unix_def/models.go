@@ -34,6 +34,8 @@ type DnscacheTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -57,6 +59,8 @@ type DnscacheObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -82,6 +86,8 @@ type DnscacheState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -109,6 +115,8 @@ type FileTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -138,6 +146,8 @@ type FileObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -203,6 +213,8 @@ type FileState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -230,6 +242,8 @@ type FileextendedattributeTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -261,6 +275,8 @@ type FileextendedattributeObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -290,6 +306,8 @@ type FileextendedattributeState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -317,6 +335,8 @@ type GconfTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -342,6 +362,8 @@ type GconfObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -377,6 +399,8 @@ type GconfState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -404,6 +428,8 @@ type InetdTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -429,6 +455,8 @@ type InetdObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -462,6 +490,8 @@ type InetdState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -489,6 +519,8 @@ type InterfaceTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -512,6 +544,8 @@ type InterfaceObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -545,6 +579,8 @@ type InterfaceState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -572,6 +608,8 @@ type PasswordTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -595,6 +633,8 @@ type PasswordObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -630,6 +670,8 @@ type PasswordState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -657,6 +699,8 @@ type ProcessTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -678,6 +722,8 @@ type ProcessObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -717,6 +763,8 @@ type ProcessState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -744,6 +792,8 @@ type Process58Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -769,6 +819,8 @@ type Process58Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -818,6 +870,8 @@ type Process58State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -845,6 +899,8 @@ type RoutingtableTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -868,6 +924,8 @@ type RoutingtableObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -895,6 +953,8 @@ type RoutingtableState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -922,6 +982,8 @@ type RunlevelTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -947,6 +1009,8 @@ type RunlevelObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -974,6 +1038,8 @@ type RunlevelState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1001,6 +1067,8 @@ type SccsTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1030,6 +1098,8 @@ type SccsObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1069,6 +1139,8 @@ type SccsState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1096,6 +1168,8 @@ type ShadowTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1119,6 +1193,8 @@ type ShadowObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1158,6 +1234,8 @@ type ShadowState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1185,6 +1263,8 @@ type SymlinkTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1208,6 +1288,8 @@ type SymlinkObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1231,6 +1313,8 @@ type SymlinkState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1258,6 +1342,8 @@ type SysctlTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1281,6 +1367,8 @@ type SysctlObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1304,6 +1392,8 @@ type SysctlState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1331,6 +1421,8 @@ type UnameTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1348,6 +1440,8 @@ type UnameObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1379,6 +1473,8 @@ type UnameState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1406,6 +1502,8 @@ type XinetdTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1431,6 +1529,8 @@ type XinetdObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1476,6 +1576,8 @@ type XinetdState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1495,6 +1597,8 @@ type FileStateGroupId struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1514,6 +1618,8 @@ type FileStateUserId struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1533,6 +1639,8 @@ type FileStateATime struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1552,6 +1660,8 @@ type FileStateCTime struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1571,6 +1681,8 @@ type FileStateMTime struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1590,6 +1702,8 @@ type PasswordStateUserId struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1609,6 +1723,8 @@ type PasswordStateGroupId struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1628,6 +1744,8 @@ type ShadowStateChgLst struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1647,6 +1765,8 @@ type ShadowStateChgAllow struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1666,6 +1786,8 @@ type ShadowStateChgReq struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1685,6 +1807,8 @@ type ShadowStateExpWarn struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1704,6 +1828,8 @@ type ShadowStateExpInact struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1723,6 +1849,8 @@ type ShadowStateExpDate struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1742,6 +1870,8 @@ type ShadowStateFlag struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

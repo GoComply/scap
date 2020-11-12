@@ -31,6 +31,8 @@ type ApparmorstatusItem struct {
 	UnconfinedProcessesWithProfilesCount *oval_sc.EntityItemIntType `xml:"unconfined_processes_with_profiles_count"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -54,6 +56,8 @@ type DpkginfoItem struct {
 	Evr *DpkginfoItemEvr `xml:"evr"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -77,6 +81,8 @@ type IflistenersItem struct {
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -108,6 +114,8 @@ type InetlisteningserverItem struct {
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -139,6 +147,8 @@ type PartitionItem struct {
 	BlockSize *oval_sc.EntityItemIntType `xml:"block_size"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -168,6 +178,8 @@ type RpminfoItem struct {
 	Filepath []oval_sc.EntityItemStringType `xml:"filepath"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -211,6 +223,8 @@ type RpmverifyItem struct {
 	ReadmeFile *oval_sc.EntityItemBoolType `xml:"readme_file"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -266,6 +280,8 @@ type RpmverifyfileItem struct {
 	ReadmeFile *oval_sc.EntityItemBoolType `xml:"readme_file"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -297,6 +313,8 @@ type RpmverifypackageItem struct {
 	SignatureCheckPassed *oval_sc.EntityItemBoolType `xml:"signature_check_passed"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -314,6 +332,8 @@ type SelinuxbooleanItem struct {
 	PendingStatus *oval_sc.EntityItemBoolType `xml:"pending_status"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -355,6 +375,8 @@ type SelinuxsecuritycontextItem struct {
 	RawhighCategory *oval_sc.EntityItemStringType `xml:"rawhigh_category"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -374,6 +396,8 @@ type SlackwarepkginfoItem struct {
 	Revision *oval_sc.EntityItemStringType `xml:"revision"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -389,6 +413,8 @@ type SystemdunitdependencyItem struct {
 	Dependency []oval_sc.EntityItemStringType `xml:"dependency"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -406,6 +432,8 @@ type SystemdunitpropertyItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -417,6 +445,8 @@ type DpkginfoItemEpoch struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -428,6 +458,8 @@ type DpkginfoItemRelease struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -439,6 +471,8 @@ type DpkginfoItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -450,6 +484,8 @@ type DpkginfoItemEvr struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -461,6 +497,8 @@ type RpminfoItemEpoch struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -472,6 +510,8 @@ type RpminfoItemRelease struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -483,6 +523,8 @@ type RpminfoItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -494,6 +536,8 @@ type RpmverifyfileItemEpoch struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -505,6 +549,8 @@ type RpmverifyfileItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -516,6 +562,8 @@ type RpmverifyfileItemRelease struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -527,6 +575,8 @@ type RpmverifypackageItemEpoch struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -538,6 +588,8 @@ type RpmverifypackageItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -549,6 +601,8 @@ type RpmverifypackageItemRelease struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -560,6 +614,8 @@ type SlackwarepkginfoItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

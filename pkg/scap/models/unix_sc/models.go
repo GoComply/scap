@@ -23,6 +23,8 @@ type DnscacheItem struct {
 	IpAddress []oval_sc.EntityItemIPAddressStringType `xml:"ip_address"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -80,6 +82,8 @@ type FileItem struct {
 	HasExtendedAcl *oval_sc.EntityItemBoolType `xml:"has_extended_acl"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -101,6 +105,8 @@ type FileextendedattributeItem struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -128,6 +134,8 @@ type GconfItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -153,6 +161,8 @@ type InetdItem struct {
 	WaitStatus *EntityItemWaitStatusType `xml:"wait_status"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -178,6 +188,8 @@ type InterfaceItem struct {
 	Flag []oval_sc.EntityItemStringType `xml:"flag"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -205,6 +217,8 @@ type PasswordItem struct {
 	LastLogin *oval_sc.EntityItemIntType `xml:"last_login"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -236,6 +250,8 @@ type ProcessItem struct {
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -277,6 +293,8 @@ type Process58Item struct {
 	SessionId *oval_sc.EntityItemIntType `xml:"session_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -296,6 +314,8 @@ type RoutingtableItem struct {
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -315,6 +335,8 @@ type RunlevelItem struct {
 	Kill *oval_sc.EntityItemBoolType `xml:"kill"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -346,6 +368,8 @@ type SccsItem struct {
 	WhatString *oval_sc.EntityItemStringType `xml:"what_string"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -377,6 +401,8 @@ type ShadowItem struct {
 	EncryptMethod *EntityItemEncryptMethodType `xml:"encrypt_method"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -392,6 +418,8 @@ type SymlinkItem struct {
 	CanonicalPath oval_sc.EntityItemStringType `xml:"canonical_path"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -407,6 +435,8 @@ type SysctlItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -430,6 +460,8 @@ type UnameItem struct {
 	ProcessorType *oval_sc.EntityItemStringType `xml:"processor_type"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -467,6 +499,8 @@ type XinetdItem struct {
 	Disabled *oval_sc.EntityItemBoolType `xml:"disabled"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -478,6 +512,8 @@ type FileItemGroupId struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -489,6 +525,8 @@ type FileItemUserId struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -500,6 +538,8 @@ type FileItemATime struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -511,6 +551,8 @@ type FileItemCTime struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -522,6 +564,8 @@ type FileItemMTime struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -533,6 +577,8 @@ type PasswordItemUserId struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -544,6 +590,8 @@ type PasswordItemGroupId struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -555,6 +603,8 @@ type ShadowItemChgLst struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -566,6 +616,8 @@ type ShadowItemChgAllow struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -577,6 +629,8 @@ type ShadowItemChgReq struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -588,6 +642,8 @@ type ShadowItemExpWarn struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -599,6 +655,8 @@ type ShadowItemExpInact struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -610,6 +668,8 @@ type ShadowItemExpDate struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -621,6 +681,8 @@ type ShadowItemFlag struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

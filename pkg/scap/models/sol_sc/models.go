@@ -23,6 +23,8 @@ type FacetItem struct {
 	Value *oval_sc.EntityItemBoolType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -40,6 +42,8 @@ type ImageItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -57,6 +61,8 @@ type IsainfoItem struct {
 	ApplicationIsa *oval_sc.EntityItemStringType `xml:"application_isa"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -76,6 +82,8 @@ type NddItem struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -99,6 +107,8 @@ type PackageItem struct {
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -128,6 +138,8 @@ type Package511Item struct {
 	UpdatesAvailable *oval_sc.EntityItemBoolType `xml:"updates_available"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -141,6 +153,8 @@ type PackageavoidlistItem struct {
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -180,6 +194,8 @@ type PackagecheckItem struct {
 	Oexec *EntityItemPermissionCompareType `xml:"oexec"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -193,6 +209,8 @@ type PackagefreezelistItem struct {
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -226,6 +244,8 @@ type PackagepublisherItem struct {
 	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -241,6 +261,8 @@ type PatchItem struct {
 	Version *oval_sc.EntityItemIntType `xml:"version"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -266,6 +288,8 @@ type SmfItem struct {
 	ExecAsUser *oval_sc.EntityItemStringType `xml:"exec_as_user"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -287,6 +311,8 @@ type SmfpropertyItem struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -304,6 +330,8 @@ type VariantItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -325,6 +353,8 @@ type VirtualizationinfoItem struct {
 	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

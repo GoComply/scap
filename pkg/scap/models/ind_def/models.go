@@ -34,6 +34,8 @@ type FamilyTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -51,6 +53,8 @@ type FamilyObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -72,6 +76,8 @@ type FamilyState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -99,6 +105,8 @@ type FilehashTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -126,6 +134,8 @@ type FilehashObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -157,6 +167,8 @@ type FilehashState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -184,6 +196,8 @@ type Filehash58Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -215,6 +229,8 @@ type Filehash58Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -246,6 +262,8 @@ type Filehash58State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -273,6 +291,8 @@ type EnvironmentvariableTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -294,6 +314,8 @@ type EnvironmentvariableObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -317,6 +339,8 @@ type EnvironmentvariableState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -344,6 +368,8 @@ type Environmentvariable58Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -369,6 +395,8 @@ type Environmentvariable58Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -394,6 +422,8 @@ type Environmentvariable58State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -421,6 +451,8 @@ type LdapTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -448,6 +480,8 @@ type LdapObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -479,6 +513,8 @@ type LdapState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -506,6 +542,8 @@ type Ldap57Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -535,6 +573,8 @@ type Ldap57Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -566,6 +606,8 @@ type Ldap57State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -593,6 +635,8 @@ type SqlTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -620,6 +664,8 @@ type SqlObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -649,6 +695,8 @@ type SqlState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -676,6 +724,8 @@ type Sql57Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -705,6 +755,8 @@ type Sql57Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -734,6 +786,8 @@ type Sql57State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -761,6 +815,8 @@ type Textfilecontent54Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -794,6 +850,8 @@ type Textfilecontent54Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -829,6 +887,8 @@ type Textfilecontent54State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -856,6 +916,8 @@ type TextfilecontentTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -883,6 +945,8 @@ type TextfilecontentObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -912,6 +976,8 @@ type TextfilecontentState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -935,6 +1001,8 @@ type UnknownTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -962,6 +1030,8 @@ type VariableTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -985,6 +1055,8 @@ type VariableObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1008,6 +1080,8 @@ type VariableState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1035,6 +1109,8 @@ type XmlfilecontentTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1066,6 +1142,8 @@ type XmlfilecontentObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1097,6 +1175,8 @@ type XmlfilecontentState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1124,6 +1204,8 @@ type YamlfilecontentTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1155,6 +1237,8 @@ type YamlfilecontentObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1186,6 +1270,8 @@ type YamlfilecontentState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

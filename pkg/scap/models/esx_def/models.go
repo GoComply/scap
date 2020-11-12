@@ -34,6 +34,8 @@ type Patch56Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -59,6 +61,8 @@ type Patch56Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -90,6 +94,8 @@ type Patch56State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -117,6 +123,8 @@ type PatchTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -140,6 +148,8 @@ type PatchObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -163,6 +173,8 @@ type PatchState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -190,6 +202,8 @@ type VersionTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -207,6 +221,8 @@ type VersionObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -230,6 +246,8 @@ type VersionState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -257,6 +275,8 @@ type VisdkmanagedobjectTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -282,6 +302,8 @@ type VisdkmanagedobjectObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -305,6 +327,8 @@ type VisdkmanagedobjectState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

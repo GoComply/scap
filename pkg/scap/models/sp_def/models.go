@@ -34,6 +34,8 @@ type SpwebapplicationTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -57,6 +59,8 @@ type SpwebapplicationObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -180,6 +184,8 @@ type SpwebapplicationState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -207,6 +213,8 @@ type SpgroupTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -230,6 +238,8 @@ type SpgroupObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -259,6 +269,8 @@ type SpgroupState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -286,6 +298,8 @@ type SpwebTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -311,6 +325,8 @@ type SpwebObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -340,6 +356,8 @@ type SpwebState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -367,6 +385,8 @@ type SplistTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -390,6 +410,8 @@ type SplistObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -417,6 +439,8 @@ type SplistState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -444,6 +468,8 @@ type SpantivirussettingsTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -469,6 +495,8 @@ type SpantivirussettingsObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -508,6 +536,8 @@ type SpantivirussettingsState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -535,6 +565,8 @@ type SpsiteadministrationTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -558,6 +590,8 @@ type SpsiteadministrationObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -583,6 +617,8 @@ type SpsiteadministrationState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -610,6 +646,8 @@ type SpsiteTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -633,6 +671,8 @@ type SpsiteObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -658,6 +698,8 @@ type SpsiteState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -685,6 +727,8 @@ type SpcrawlruleTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -708,6 +752,8 @@ type SpcrawlruleObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -743,6 +789,8 @@ type SpcrawlruleState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -770,6 +818,8 @@ type SpjobdefinitionTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -793,6 +843,8 @@ type SpjobdefinitionObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -822,6 +874,8 @@ type SpjobdefinitionState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -849,6 +903,8 @@ type Spjobdefinition510Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -874,6 +930,8 @@ type Spjobdefinition510Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -903,6 +961,8 @@ type Spjobdefinition510State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -930,6 +990,8 @@ type BestbetTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -955,6 +1017,8 @@ type BestbetObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -982,6 +1046,8 @@ type BestbetState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1009,6 +1075,8 @@ type InfopolicycollTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1034,6 +1102,8 @@ type InfopolicycollObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1063,6 +1133,8 @@ type InfopolicycollState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1090,6 +1162,8 @@ type SpdiagnosticsserviceTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1113,6 +1187,8 @@ type SpdiagnosticsserviceObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1146,6 +1222,8 @@ type SpdiagnosticsserviceState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1173,6 +1251,8 @@ type SpdiagnosticslevelTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1196,6 +1276,8 @@ type SpdiagnosticslevelObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1227,6 +1309,8 @@ type SpdiagnosticslevelState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1254,6 +1338,8 @@ type SppolicyfeatureTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1277,6 +1363,8 @@ type SppolicyfeatureObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1316,6 +1404,8 @@ type SppolicyfeatureState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1343,6 +1433,8 @@ type SppolicyTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1366,6 +1458,8 @@ type SppolicyObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1397,6 +1491,8 @@ type SppolicyState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

@@ -19,6 +19,8 @@ type FamilyItem struct {
 	Family *EntityItemFamilyType `xml:"family"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -42,6 +44,8 @@ type FilehashItem struct {
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -65,6 +69,8 @@ type Filehash58Item struct {
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -80,6 +86,8 @@ type EnvironmentvariableItem struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -97,6 +105,8 @@ type Environmentvariable58Item struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -120,6 +130,8 @@ type LdapItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -143,6 +155,8 @@ type Ldap57Item struct {
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -164,6 +178,8 @@ type SqlItem struct {
 	Result []oval_sc.EntityItemAnySimpleType `xml:"result"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -185,6 +201,8 @@ type Sql57Item struct {
 	Result []oval_sc.EntityItemRecordType `xml:"result"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -214,6 +232,8 @@ type TextfilecontentItem struct {
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -229,6 +249,8 @@ type VariableItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -252,6 +274,8 @@ type XmlfilecontentItem struct {
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -275,6 +299,8 @@ type YamlfilecontentItem struct {
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

@@ -34,6 +34,8 @@ type ApparmorstatusTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -51,6 +53,8 @@ type ApparmorstatusObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -84,6 +88,8 @@ type ApparmorstatusState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -111,6 +117,8 @@ type DpkginfoTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -134,6 +142,8 @@ type DpkginfoObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -165,6 +175,8 @@ type DpkginfoState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -192,6 +204,8 @@ type IflistenersTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -215,6 +229,8 @@ type IflistenersObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -246,6 +262,8 @@ type IflistenersState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -273,6 +291,8 @@ type InetlisteningserversTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -300,6 +320,8 @@ type InetlisteningserversObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -339,6 +361,8 @@ type InetlisteningserversState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -366,6 +390,8 @@ type PartitionTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -389,6 +415,8 @@ type PartitionObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -428,6 +456,8 @@ type PartitionState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -455,6 +485,8 @@ type RpminfoTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -480,6 +512,8 @@ type RpminfoObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -517,6 +551,8 @@ type RpminfoState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -544,6 +580,8 @@ type RpmverifyTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -571,6 +609,8 @@ type RpmverifyObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -622,6 +662,8 @@ type RpmverifyState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -649,6 +691,8 @@ type RpmverifyfileTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -684,6 +728,8 @@ type RpmverifyfileObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -747,6 +793,8 @@ type RpmverifyfileState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -774,6 +822,8 @@ type RpmverifypackageTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -807,6 +857,8 @@ type RpmverifypackageObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -846,6 +898,8 @@ type RpmverifypackageState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -873,6 +927,8 @@ type SelinuxbooleanTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -896,6 +952,8 @@ type SelinuxbooleanObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -921,6 +979,8 @@ type SelinuxbooleanState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -948,6 +1008,8 @@ type SelinuxsecuritycontextTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -979,6 +1041,8 @@ type SelinuxsecuritycontextObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1028,6 +1092,8 @@ type SelinuxsecuritycontextState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1055,6 +1121,8 @@ type SlackwarepkginfoTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1078,6 +1146,8 @@ type SlackwarepkginfoObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1105,6 +1175,8 @@ type SlackwarepkginfoState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1132,6 +1204,8 @@ type SystemdunitdependencyTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1155,6 +1229,8 @@ type SystemdunitdependencyObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1178,6 +1254,8 @@ type SystemdunitdependencyState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1205,6 +1283,8 @@ type SystemdunitpropertyTest struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1230,6 +1310,8 @@ type SystemdunitpropertyObject struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1255,6 +1337,8 @@ type SystemdunitpropertyState struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1274,6 +1358,8 @@ type DpkginfoStateEpoch struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1293,6 +1379,8 @@ type DpkginfoStateRelease struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1312,6 +1400,8 @@ type DpkginfoStateVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1331,6 +1421,8 @@ type DpkginfoStateEvr struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1350,6 +1442,8 @@ type RpminfoStateEpoch struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1369,6 +1463,8 @@ type RpminfoStateRelease struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1388,6 +1484,8 @@ type RpminfoStateVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1403,6 +1501,8 @@ type RpmverifyfileObjectEpoch struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1418,6 +1518,8 @@ type RpmverifyfileObjectVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1433,6 +1535,8 @@ type RpmverifyfileObjectRelease struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1452,6 +1556,8 @@ type RpmverifyfileStateEpoch struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1471,6 +1577,8 @@ type RpmverifyfileStateVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1490,6 +1598,8 @@ type RpmverifyfileStateRelease struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1505,6 +1615,8 @@ type RpmverifypackageObjectEpoch struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1520,6 +1632,8 @@ type RpmverifypackageObjectVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1535,6 +1649,8 @@ type RpmverifypackageObjectRelease struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1554,6 +1670,8 @@ type RpmverifypackageStateEpoch struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1573,6 +1691,8 @@ type RpmverifypackageStateVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1592,6 +1712,8 @@ type RpmverifypackageStateRelease struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -1611,6 +1733,8 @@ type SlackwarepkginfoStateVersion struct {
 	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
 
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

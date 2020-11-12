@@ -15,6 +15,8 @@ type DeprecatedInfo struct {
 	Reason string `xml:"reason"`
 
 	Comment string `xml:"comment"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -28,6 +30,8 @@ type ElementMapping struct {
 	State *ElementMapItemType `xml:"state"`
 
 	Item *ElementMapItemType `xml:"item"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -35,6 +39,8 @@ type Notes struct {
 	XMLName xml.Name `xml:notes`
 
 	Note []string `xml:",any"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

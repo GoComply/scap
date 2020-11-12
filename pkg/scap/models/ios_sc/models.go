@@ -31,6 +31,8 @@ type AclItem struct {
 	ConfigLine []oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -46,6 +48,8 @@ type BgpneighborItem struct {
 	Password *oval_sc.EntityItemStringType `xml:"password"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -59,6 +63,8 @@ type GlobalItem struct {
 	GlobalCommand *oval_sc.EntityItemStringType `xml:"global_command"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -112,6 +118,8 @@ type InterfaceItem struct {
 	SwitchportPortSecurity *oval_sc.EntityItemStringType `xml:"switchport_port_security"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -127,6 +135,8 @@ type LineItem struct {
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -150,6 +160,8 @@ type RouterItem struct {
 	RouterConfigLines *oval_sc.EntityItemStringType `xml:"router_config_lines"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -173,6 +185,8 @@ type RoutingprotocolauthintfItem struct {
 	KeyChain *oval_sc.EntityItemStringType `xml:"key_chain"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -190,6 +204,8 @@ type SectionItem struct {
 	ConfigLine []oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -205,6 +221,8 @@ type SnmpItem struct {
 	CommunityName *oval_sc.EntityItemStringType `xml:"community_name"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -226,6 +244,8 @@ type SnmpcommunityItem struct {
 	Ipv6Acl *oval_sc.EntityItemStringType `xml:"ipv6_acl"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -253,6 +273,8 @@ type SnmpgroupItem struct {
 	NotifyView *oval_sc.EntityItemStringType `xml:"notify_view"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -274,6 +296,8 @@ type SnmphostItem struct {
 	Traps *oval_sc.EntityItemStringType `xml:"traps"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -299,6 +323,8 @@ type SnmpuserItem struct {
 	Auth *EntityItemSNMPAuthStringType `xml:"auth"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -316,6 +342,8 @@ type SnmpviewItem struct {
 	Include *oval_sc.EntityItemBoolType `xml:"include"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -329,6 +357,8 @@ type TclshItem struct {
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -360,6 +390,8 @@ type VersionItem struct {
 	VersionString *oval_sc.EntityItemIOSVersionType `xml:"version_string"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -371,6 +403,8 @@ type InterfaceItemIpDirectedBroadcastCommand struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -382,6 +416,8 @@ type InterfaceItemProxyArpCommand struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -393,6 +429,8 @@ type InterfaceItemShutdownCommand struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -404,6 +442,8 @@ type InterfaceItemSwitchportNativeVlan struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -415,6 +455,8 @@ type InterfaceItemSwitchportAccessVlan struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -426,6 +468,8 @@ type RouterItemOspfAuthenticationArea struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -437,6 +481,8 @@ type RoutingprotocolauthintfItemOspfArea struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

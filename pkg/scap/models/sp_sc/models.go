@@ -121,6 +121,8 @@ type SpwebapplicationItem struct {
 	Updatepersonalwebparts *oval_sc.EntityItemBoolType `xml:"updatepersonalwebparts"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -142,6 +144,8 @@ type SpgroupItem struct {
 	Onlyallowmembersviewmembership *oval_sc.EntityItemBoolType `xml:"onlyallowmembersviewmembership"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -163,6 +167,8 @@ type SpwebItem struct {
 	Allowanonymousaccess *oval_sc.EntityItemBoolType `xml:"allowanonymousaccess"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -182,6 +188,8 @@ type SplistItem struct {
 	Nocrawl *oval_sc.EntityItemBoolType `xml:"nocrawl"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -213,6 +221,8 @@ type SpantivirussettingsItem struct {
 	Vendorupdatecount *oval_sc.EntityItemIntType `xml:"vendorupdatecount"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -230,6 +240,8 @@ type SpsiteadministrationItem struct {
 	Storagewarninglevel *oval_sc.EntityItemIntType `xml:"storagewarninglevel"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -247,6 +259,8 @@ type SpsiteItem struct {
 	Url *oval_sc.EntityItemStringType `xml:"url"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -274,6 +288,8 @@ type SpcrawlruleItem struct {
 	Accountname *oval_sc.EntityItemStringType `xml:"accountname"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -295,6 +311,8 @@ type SpjobdefinitionItem struct {
 	Title *oval_sc.EntityItemStringType `xml:"title"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -316,6 +334,8 @@ type Spjobdefinition510Item struct {
 	Title *oval_sc.EntityItemStringType `xml:"title"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -335,6 +355,8 @@ type BestbetItem struct {
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -356,6 +378,8 @@ type InfopolicycollItem struct {
 	Longdescription *oval_sc.EntityItemStringType `xml:"longdescription"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -381,6 +405,8 @@ type SpdiagnosticsserviceItem struct {
 	Typename *oval_sc.EntityItemStringType `xml:"typename"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -404,6 +430,8 @@ type SpdiagnosticslevelItem struct {
 	Traceseverity *EntityItemTraceSeverityType `xml:"traceseverity"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -435,6 +463,8 @@ type SppolicyfeatureItem struct {
 	State *EntityItemPolicyFeatureStateType `xml:"state"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -458,6 +488,8 @@ type SppolicyItem struct {
 	Policyroletype *EntityItemPolicyRoleType `xml:"policyroletype"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

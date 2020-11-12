@@ -31,6 +31,8 @@ type PatchItem struct {
 	StatusElm *oval_sc.EntityItemBoolType `xml:"status"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -46,6 +48,8 @@ type VersionItem struct {
 	Build *oval_sc.EntityItemIntType `xml:"build"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -61,6 +65,8 @@ type VisdkmanagedobjectItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

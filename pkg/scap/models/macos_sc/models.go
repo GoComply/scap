@@ -31,6 +31,8 @@ type AccountinfoItem struct {
 	LoginShell *oval_sc.EntityItemStringType `xml:"login_shell"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -48,6 +50,8 @@ type AuthorizationdbItem struct {
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -65,6 +69,8 @@ type CorestorageItem struct {
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -116,6 +122,8 @@ type DiskutilItem struct {
 	ExpectedSymlink *oval_sc.EntityItemStringType `xml:"expected_symlink"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -131,6 +139,8 @@ type GatekeeperItem struct {
 	Unlabeled []oval_sc.EntityItemStringType `xml:"unlabeled"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -162,6 +172,8 @@ type InetlisteningserverItem struct {
 	UserId *oval_sc.EntityItemStringType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -193,6 +205,8 @@ type Inetlisteningserver510Item struct {
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -210,6 +224,8 @@ type KeychainItem struct {
 	Timeout *oval_sc.EntityItemIntType `xml:"timeout"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -227,6 +243,8 @@ type LaunchdItem struct {
 	StatusElm *oval_sc.EntityItemIntType `xml:"status"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -242,6 +260,8 @@ type NvramItem struct {
 	NvramValue *oval_sc.EntityItemStringType `xml:"nvram_value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -265,6 +285,8 @@ type PlistItem struct {
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -284,6 +306,8 @@ type Plist511Item struct {
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -313,6 +337,8 @@ type PwpolicyItem struct {
 	RequiresNumeric *oval_sc.EntityItemBoolType `xml:"requiresNumeric"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -374,6 +400,8 @@ type Pwpolicy59Item struct {
 	NotGuessablePattern *oval_sc.EntityItemBoolType `xml:"notGuessablePattern"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -421,6 +449,8 @@ type RlimitItem struct {
 	MaxfilesMax oval_sc.EntityItemIntType `xml:"maxfiles_max"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -436,6 +466,8 @@ type SoftwareupdateItem struct {
 	SoftwareTitle []oval_sc.EntityItemStringType `xml:"software_title"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -453,6 +485,8 @@ type SystemprofilerItem struct {
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -502,6 +536,8 @@ type SystemsetupItem struct {
 	Kernelbootarchitecturesetting oval_sc.EntityItemStringType `xml:"kernelbootarchitecturesetting"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

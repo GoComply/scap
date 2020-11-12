@@ -25,6 +25,8 @@ type OvalResults struct {
 	Results ResultsType `xml:"results"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

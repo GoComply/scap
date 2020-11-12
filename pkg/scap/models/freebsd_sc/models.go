@@ -29,6 +29,8 @@ type PortinfoItem struct {
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -40,6 +42,8 @@ type PortinfoItemVersion struct {
 	Mask bool `xml:"mask,attr,omitempty"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

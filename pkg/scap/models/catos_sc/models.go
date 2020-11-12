@@ -21,6 +21,8 @@ type LineItem struct {
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -52,6 +54,8 @@ type ModuleItem struct {
 	FirmwareIndividualRelease *oval_sc.EntityItemIntType `xml:"firmware_individual_release"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -75,6 +79,8 @@ type VersionItem struct {
 	CatosVersionId *oval_sc.EntityItemStringType `xml:"catos_version_id"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

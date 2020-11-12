@@ -25,6 +25,8 @@ type OvalDefinitions struct {
 	Variables *VariablesType `xml:"variables"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -32,6 +34,8 @@ type Notes struct {
 	XMLName xml.Name `xml:notes`
 
 	Note []string `xml:",any"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -53,6 +57,8 @@ type Definition struct {
 	Notes *oval.NotesType `xml:"notes"`
 
 	Criteria *CriteriaType `xml:"criteria"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -76,6 +82,8 @@ type Test struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -93,6 +101,8 @@ type Object struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -106,6 +116,8 @@ type Set struct {
 	ObjectReference []string `xml:"object_reference"`
 
 	Filter []Filter `xml:"filter"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -114,7 +126,8 @@ type Filter struct {
 
 	Action FilterActionEnumeration `xml:"action,attr,omitempty"`
 
-	Text string `xml:",chardata"`
+	Text     string `xml:",chardata"`
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -134,6 +147,8 @@ type State struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -153,6 +168,8 @@ type Variable struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -172,6 +189,8 @@ type ExternalVariable struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -193,6 +212,8 @@ type ConstantVariable struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -212,6 +233,8 @@ type LocalVariable struct {
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

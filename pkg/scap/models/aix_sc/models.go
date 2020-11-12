@@ -25,6 +25,8 @@ type InterimFixItem struct {
 	State *EntityItemInterimFixStateType `xml:"state"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -44,6 +46,8 @@ type FilesetItem struct {
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -63,6 +67,8 @@ type FixItem struct {
 	InstallationStatus *EntityItemFixInstallationStatusType `xml:"installation_status"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -78,6 +84,8 @@ type NoItem struct {
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -91,6 +99,8 @@ type OslevelItem struct {
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 
 	Message []oval.MessageType `xml:"message"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations

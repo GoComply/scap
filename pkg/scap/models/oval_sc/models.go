@@ -21,6 +21,8 @@ type OvalSystemCharacteristics struct {
 	SystemData *SystemDataType `xml:"system_data"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // Element
@@ -32,6 +34,8 @@ type Item struct {
 	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Message []oval.MessageType `xml:",any"`
+
+	InnerXml string `xml:",innerxml"`
 }
 
 // XSD ComplexType declarations
