@@ -10,11 +10,11 @@ import (
 
 // Element
 type PortinfoItem struct {
-	XMLName xml.Name `xml:portinfo_item`
+	XMLName xml.Name `xml:"portinfo_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
@@ -33,7 +33,15 @@ type PortinfoItem struct {
 
 // Element
 type PortinfoItemVersion struct {
-	XMLName xml.Name `xml:version`
+	XMLName xml.Name `xml:"version"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

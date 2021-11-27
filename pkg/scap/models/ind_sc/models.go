@@ -10,11 +10,11 @@ import (
 
 // Element
 type FamilyItem struct {
-	XMLName xml.Name `xml:family_item`
+	XMLName xml.Name `xml:"family_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Family *EntityItemFamilyType `xml:"family"`
 
@@ -23,11 +23,11 @@ type FamilyItem struct {
 
 // Element
 type FilehashItem struct {
-	XMLName xml.Name `xml:filehash_item`
+	XMLName xml.Name `xml:"filehash_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -46,11 +46,11 @@ type FilehashItem struct {
 
 // Element
 type Filehash58Item struct {
-	XMLName xml.Name `xml:filehash58_item`
+	XMLName xml.Name `xml:"filehash58_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -69,11 +69,11 @@ type Filehash58Item struct {
 
 // Element
 type EnvironmentvariableItem struct {
-	XMLName xml.Name `xml:environmentvariable_item`
+	XMLName xml.Name `xml:"environmentvariable_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -84,11 +84,11 @@ type EnvironmentvariableItem struct {
 
 // Element
 type Environmentvariable58Item struct {
-	XMLName xml.Name `xml:environmentvariable58_item`
+	XMLName xml.Name `xml:"environmentvariable58_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
@@ -101,11 +101,11 @@ type Environmentvariable58Item struct {
 
 // Element
 type LdapItem struct {
-	XMLName xml.Name `xml:ldap_item`
+	XMLName xml.Name `xml:"ldap_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -124,11 +124,11 @@ type LdapItem struct {
 
 // Element
 type Ldap57Item struct {
-	XMLName xml.Name `xml:ldap57_item`
+	XMLName xml.Name `xml:"ldap57_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
@@ -147,11 +147,11 @@ type Ldap57Item struct {
 
 // Element
 type SqlItem struct {
-	XMLName xml.Name `xml:sql_item`
+	XMLName xml.Name `xml:"sql_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Engine *EntityItemEngineType `xml:"engine"`
 
@@ -168,11 +168,11 @@ type SqlItem struct {
 
 // Element
 type Sql57Item struct {
-	XMLName xml.Name `xml:sql57_item`
+	XMLName xml.Name `xml:"sql57_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Engine *EntityItemEngineType `xml:"engine"`
 
@@ -189,11 +189,11 @@ type Sql57Item struct {
 
 // Element
 type TextfilecontentItem struct {
-	XMLName xml.Name `xml:textfilecontent_item`
+	XMLName xml.Name `xml:"textfilecontent_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -218,11 +218,11 @@ type TextfilecontentItem struct {
 
 // Element
 type VariableItem struct {
-	XMLName xml.Name `xml:variable_item`
+	XMLName xml.Name `xml:"variable_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	VarRef *EntityItemVariableRefType `xml:"var_ref"`
 
@@ -233,11 +233,11 @@ type VariableItem struct {
 
 // Element
 type XmlfilecontentItem struct {
-	XMLName xml.Name `xml:xmlfilecontent_item`
+	XMLName xml.Name `xml:"xmlfilecontent_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -256,11 +256,11 @@ type XmlfilecontentItem struct {
 
 // Element
 type YamlfilecontentItem struct {
-	XMLName xml.Name `xml:yamlfilecontent_item`
+	XMLName xml.Name `xml:"yamlfilecontent_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -280,25 +280,75 @@ type YamlfilecontentItem struct {
 // XSD ComplexType declarations
 
 type EntityItemEngineType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFamilyType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemHashTypeType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemVariableRefType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemLdaptypeType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemWindowsViewType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

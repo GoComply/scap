@@ -8,46 +8,110 @@ import (
 
 // Element
 type Title struct {
-	XMLName xml.Name `xml:title`
+	XMLName xml.Name `xml:"title"`
 }
 
 // Element
 type Resource struct {
-	XMLName xml.Name `xml:resource`
+	XMLName xml.Name `xml:"resource"`
 }
 
 // Element
 type Locator struct {
-	XMLName xml.Name `xml:locator`
+	XMLName xml.Name `xml:"locator"`
 }
 
 // Element
 type Arc struct {
-	XMLName xml.Name `xml:arc`
+	XMLName xml.Name `xml:"arc"`
 }
 
 // XSD ComplexType declarations
 
 type Simple struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type Extended struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type TitleEltType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type ResourceType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type LocatorType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type ArcType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type TypeType string
+
+const TypeTypeSimple TypeType = "simple"
+
+const TypeTypeExtended TypeType = "extended"
+
+const TypeTypeTitle TypeType = "title"
+
+const TypeTypeResource TypeType = "resource"
+
+const TypeTypeLocator TypeType = "locator"
+
+const TypeTypeArc TypeType = "arc"
+
+type HrefType string
+
+type RoleType string
+
+type ArcroleType string
+
+type TitleAttrType string
+
+type ShowType string
+
+const ShowTypeNew ShowType = "new"
+
+const ShowTypeReplace ShowType = "replace"
+
+const ShowTypeEmbed ShowType = "embed"
+
+const ShowTypeOther ShowType = "other"
+
+const ShowTypeNone ShowType = "none"
+
+type ActuateType string
+
+const ActuateTypeOnload ActuateType = "onLoad"
+
+const ActuateTypeOnrequest ActuateType = "onRequest"
+
+const ActuateTypeOther ActuateType = "other"
+
+const ActuateTypeNone ActuateType = "none"
+
+type LabelType string
+
+type FromType string
+
+type ToType string

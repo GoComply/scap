@@ -10,11 +10,11 @@ import (
 
 // Element
 type GetconfItem struct {
-	XMLName xml.Name `xml:getconf_item`
+	XMLName xml.Name `xml:"getconf_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
@@ -27,11 +27,11 @@ type GetconfItem struct {
 
 // Element
 type NddItem struct {
-	XMLName xml.Name `xml:ndd_item`
+	XMLName xml.Name `xml:"ndd_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -44,11 +44,11 @@ type NddItem struct {
 
 // Element
 type PatchItem struct {
-	XMLName xml.Name `xml:patch_item`
+	XMLName xml.Name `xml:"patch_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
@@ -63,11 +63,11 @@ type PatchItem struct {
 
 // Element
 type SwlistItem struct {
-	XMLName xml.Name `xml:swlist_item`
+	XMLName xml.Name `xml:"swlist_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
@@ -86,11 +86,11 @@ type SwlistItem struct {
 
 // Element
 type TrustedItem struct {
-	XMLName xml.Name `xml:trusted_item`
+	XMLName xml.Name `xml:"trusted_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -159,7 +159,15 @@ type TrustedItem struct {
 
 // Element
 type SwlistItemVersion struct {
-	XMLName xml.Name `xml:version`
+	XMLName xml.Name `xml:"version"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

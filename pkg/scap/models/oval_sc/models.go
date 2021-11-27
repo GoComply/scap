@@ -10,7 +10,7 @@ import (
 
 // Element
 type OvalSystemCharacteristics struct {
-	XMLName xml.Name `xml:oval_system_characteristics`
+	XMLName xml.Name `xml:"oval_system_characteristics"`
 
 	Generator oval.GeneratorType `xml:"generator"`
 
@@ -20,23 +20,25 @@ type OvalSystemCharacteristics struct {
 
 	SystemData *SystemDataType `xml:"system_data"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // Element
 type Item struct {
-	XMLName xml.Name `xml:item`
+	XMLName xml.Name `xml:"item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
-	Message []oval.MessageType `xml:"message"`
+	Message []oval.MessageType `xml:",any"`
 }
 
 // XSD ComplexType declarations
 
 type SystemInfoType struct {
+	XMLName xml.Name
+
 	OsName string `xml:"os_name"`
 
 	OsVersion string `xml:"os_version"`
@@ -51,12 +53,16 @@ type SystemInfoType struct {
 }
 
 type InterfacesType struct {
-	Interface []InterfaceType `xml:"interface"`
+	XMLName xml.Name
+
+	Interface []InterfaceType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type InterfaceType struct {
+	XMLName xml.Name
+
 	InterfaceName string `xml:"interface_name"`
 
 	IpAddress string `xml:"ip_address"`
@@ -67,21 +73,25 @@ type InterfaceType struct {
 }
 
 type CollectedObjectsType struct {
-	Object []ObjectType `xml:"object"`
+	XMLName xml.Name
+
+	Object []ObjectType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ObjectType struct {
-	Id string `xml:"id,attr"`
+	XMLName xml.Name
 
-	Version string `xml:"version,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	Version int `xml:"version,attr"`
+
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
 	Comment string `xml:"comment,attr,omitempty"`
 
-	Flag string `xml:"flag,attr"`
+	Flag FlagEnumeration `xml:"flag,attr"`
 
 	Message []oval.MessageType `xml:"message"`
 
@@ -93,104 +103,262 @@ type ObjectType struct {
 }
 
 type VariableValueType struct {
-	VariableId string `xml:"variable_id,attr"`
+	XMLName xml.Name
+
+	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type ReferenceType struct {
-	ItemRef string `xml:"item_ref,attr"`
+	XMLName xml.Name
+
+	ItemRef oval.ItemIDPattern `xml:"item_ref,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SystemDataType struct {
-	Item []Item `xml:"item"`
+	XMLName xml.Name
+
+	Item []ItemType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ItemType struct {
-	Id string `xml:"id,attr"`
+	XMLName xml.Name
 
-	Status string `xml:"status,attr,omitempty"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Message []oval.MessageType `xml:"message"`
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
+	Message []oval.MessageType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSimpleBaseType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemComplexBaseType struct {
+	XMLName xml.Name
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIPAddressType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIPAddressStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAnySimpleType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemBinaryType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemBoolType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFloatType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIntType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRecordType struct {
-	Field []EntityItemFieldType `xml:"field"`
+	XMLName xml.Name
+
+	Field []EntityItemFieldType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFieldType struct {
+	XMLName xml.Name
+
 	Name string `xml:"name,attr"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemVersionType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFilesetRevisionType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemIOSVersionType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEVRStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemDebianEVRStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type FlagEnumeration string
+
+const FlagEnumerationError FlagEnumeration = "error"
+
+const FlagEnumerationComplete FlagEnumeration = "complete"
+
+const FlagEnumerationIncomplete FlagEnumeration = "incomplete"
+
+const FlagEnumerationDoesNotExist FlagEnumeration = "does not exist"
+
+const FlagEnumerationNotCollected FlagEnumeration = "not collected"
+
+const FlagEnumerationNotApplicable FlagEnumeration = "not applicable"
+
+type StatusEnumeration string
+
+const StatusEnumerationError StatusEnumeration = "error"
+
+const StatusEnumerationExists StatusEnumeration = "exists"
+
+const StatusEnumerationDoesNotExist StatusEnumeration = "does not exist"
+
+const StatusEnumerationNotCollected StatusEnumeration = "not collected"

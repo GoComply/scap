@@ -8,14 +8,14 @@ import (
 
 // Element
 type PlatformSpecification struct {
-	XMLName xml.Name `xml:platform-specification`
+	XMLName xml.Name `xml:"platform-specification"`
 
-	Platform []Platform `xml:"platform"`
+	Platform []PlatformType `xml:",any"`
 }
 
 // Element
 type Platform struct {
-	XMLName xml.Name `xml:platform`
+	XMLName xml.Name `xml:"platform"`
 
 	Id string `xml:"id,attr"`
 
@@ -23,38 +23,38 @@ type Platform struct {
 
 	Remark []TextType `xml:"remark"`
 
-	LogicalTest LogicalTest `xml:"logical-test"`
+	LogicalTest LogicalTestType `xml:"logical-test"`
 }
 
 // Element
 type PlatformConfiguration struct {
-	XMLName xml.Name `xml:platform-configuration`
+	XMLName xml.Name `xml:"platform-configuration"`
 
 	Title []TextType `xml:"title"`
 
 	Remark []TextType `xml:"remark"`
 
-	LogicalTest LogicalTest `xml:"logical-test"`
+	LogicalTest LogicalTestType `xml:"logical-test"`
 }
 
 // Element
 type LogicalTest struct {
-	XMLName xml.Name `xml:logical-test`
+	XMLName xml.Name `xml:"logical-test"`
 
-	Operator string `xml:"operator,attr"`
+	Operator OperatorEnumeration `xml:"operator,attr"`
 
-	Negate string `xml:"negate,attr"`
+	Negate bool `xml:"negate,attr"`
 
 	LogicalTest []LogicalTestType `xml:"logical-test"`
 
-	FactRef []FactRef `xml:"fact-ref"`
+	FactRef []CPEFactRefType `xml:"fact-ref"`
 
-	CheckFactRef []CheckFactRef `xml:"check-fact-ref"`
+	CheckFactRef []CheckFactRefType `xml:"check-fact-ref"`
 }
 
 // Element
 type FactRef struct {
-	XMLName xml.Name `xml:fact-ref`
+	XMLName xml.Name `xml:"fact-ref"`
 
 	Name string `xml:"name,attr"`
 
@@ -63,7 +63,7 @@ type FactRef struct {
 
 // Element
 type CheckFactRef struct {
-	XMLName xml.Name `xml:check-fact-ref`
+	XMLName xml.Name `xml:"check-fact-ref"`
 
 	System string `xml:"system,attr"`
 
@@ -77,54 +77,66 @@ type CheckFactRef struct {
 // XSD ComplexType declarations
 
 type PlatformSpecificationType struct {
-	Platform []Platform `xml:"platform"`
+	XMLName xml.Name
+
+	Platform []PlatformType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PlatformBaseType struct {
+	XMLName xml.Name
+
 	Title []TextType `xml:"title"`
 
 	Remark []TextType `xml:"remark"`
 
-	LogicalTest LogicalTest `xml:"logical-test"`
+	LogicalTest LogicalTestType `xml:"logical-test"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PlatformType struct {
+	XMLName xml.Name
+
 	Id string `xml:"id,attr"`
 
 	Title []TextType `xml:"title"`
 
 	Remark []TextType `xml:"remark"`
 
-	LogicalTest LogicalTest `xml:"logical-test"`
+	LogicalTest LogicalTestType `xml:"logical-test"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type LogicalTestType struct {
-	Operator string `xml:"operator,attr"`
+	XMLName xml.Name
 
-	Negate string `xml:"negate,attr"`
+	Operator OperatorEnumeration `xml:"operator,attr"`
+
+	Negate bool `xml:"negate,attr"`
 
 	LogicalTest []LogicalTestType `xml:"logical-test"`
 
-	FactRef []FactRef `xml:"fact-ref"`
+	FactRef []CPEFactRefType `xml:"fact-ref"`
 
-	CheckFactRef []CheckFactRef `xml:"check-fact-ref"`
+	CheckFactRef []CheckFactRefType `xml:"check-fact-ref"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type FactRefType struct {
+	XMLName xml.Name
+
 	Description string `xml:"description,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type CPEFactRefType struct {
+	XMLName xml.Name
+
 	Name string `xml:"name,attr"`
 
 	Description string `xml:"description,attr,omitempty"`
@@ -133,6 +145,8 @@ type CPEFactRefType struct {
 }
 
 type CheckFactRefType struct {
+	XMLName xml.Name
+
 	System string `xml:"system,attr"`
 
 	Href string `xml:"href,attr"`
@@ -145,8 +159,20 @@ type CheckFactRefType struct {
 }
 
 type TextType struct {
+	XMLName xml.Name
+
 	XmlLang string `xml:"lang,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type OperatorEnumeration string
+
+const OperatorEnumerationAnd OperatorEnumeration = "AND"
+
+const OperatorEnumerationOr OperatorEnumeration = "OR"
+
+type NamePattern string

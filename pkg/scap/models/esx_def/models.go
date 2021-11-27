@@ -11,42 +11,42 @@ import (
 
 // Element
 type Patch56Test struct {
-	XMLName xml.Name `xml:patch56_test`
+	XMLName xml.Name `xml:"patch56_test"`
 
-	Id string `xml:"id,attr"`
+	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type Patch56Object struct {
-	XMLName xml.Name `xml:patch56_object`
+	XMLName xml.Name `xml:"patch56_object"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -56,24 +56,24 @@ type Patch56Object struct {
 
 	Filter []oval_def.Filter `xml:"filter"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type Patch56State struct {
-	XMLName xml.Name `xml:patch56_state`
+	XMLName xml.Name `xml:"patch56_state"`
 
-	Id string `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	PatchName *oval_def.EntityStateStringType `xml:"patch_name"`
 
@@ -87,49 +87,49 @@ type Patch56State struct {
 
 	Status *oval_def.EntityStateBoolType `xml:"status"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type PatchTest struct {
-	XMLName xml.Name `xml:patch_test`
+	XMLName xml.Name `xml:"patch_test"`
 
-	Id string `xml:"id,attr"`
+	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type PatchObject struct {
-	XMLName xml.Name `xml:patch_object`
+	XMLName xml.Name `xml:"patch_object"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -137,139 +137,139 @@ type PatchObject struct {
 
 	PatchNumber *oval_def.EntityObjectStringType `xml:"patch_number"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type PatchState struct {
-	XMLName xml.Name `xml:patch_state`
+	XMLName xml.Name `xml:"patch_state"`
 
-	Id string `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	PatchNumber *oval_def.EntityStateStringType `xml:"patch_number"`
 
 	Status *oval_def.EntityStateBoolType `xml:"status"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type VersionTest struct {
-	XMLName xml.Name `xml:version_test`
+	XMLName xml.Name `xml:"version_test"`
 
-	Id string `xml:"id,attr"`
+	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type VersionObject struct {
-	XMLName xml.Name `xml:version_object`
+	XMLName xml.Name `xml:"version_object"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type VersionState struct {
-	XMLName xml.Name `xml:version_state`
+	XMLName xml.Name `xml:"version_state"`
 
-	Id string `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Release *oval_def.EntityStateVersionType `xml:"release"`
 
 	Build *oval_def.EntityStateIntType `xml:"build"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type VisdkmanagedobjectTest struct {
-	XMLName xml.Name `xml:visdkmanagedobject_test`
+	XMLName xml.Name `xml:"visdkmanagedobject_test"`
 
-	Id string `xml:"id,attr"`
+	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Object oval_def.ObjectRefType `xml:"object"`
 
 	State []oval_def.StateRefType `xml:"state"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type VisdkmanagedobjectObject struct {
-	XMLName xml.Name `xml:visdkmanagedobject_object`
+	XMLName xml.Name `xml:"visdkmanagedobject_object"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Set *oval_def.Set `xml:"set"`
 
@@ -279,58 +279,98 @@ type VisdkmanagedobjectObject struct {
 
 	Filter []oval_def.Filter `xml:"filter"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // Element
 type VisdkmanagedobjectState struct {
-	XMLName xml.Name `xml:visdkmanagedobject_state`
+	XMLName xml.Name `xml:"visdkmanagedobject_state"`
 
-	Id string `xml:"id,attr"`
+	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version string `xml:"version,attr"`
+	Version int `xml:"version,attr"`
 
-	Operator string `xml:"operator,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
-	Comment string `xml:"comment,attr,omitempty"`
+	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
-	Deprecated string `xml:"deprecated,attr,omitempty"`
+	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
 	Property *oval_def.EntityStateStringType `xml:"property"`
 
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
-	Notes *oval.Notes `xml:"notes"`
+	Notes *oval.NotesType `xml:"notes"`
 }
 
 // XSD ComplexType declarations
 
 type Patch56Behaviors struct {
+	XMLName xml.Name
+
 	Supersedence string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type PatchBehaviors struct {
+	XMLName xml.Name
+
 	Supersedence string `xml:"supersedence,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ViSdkManagedEntityBehaviors struct {
+	XMLName xml.Name
+
 	ManagedEntityType string `xml:"managed_entity_type,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateClassificationType struct {
+	XMLName xml.Name
+
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityStateSupportLevelType struct {
+	XMLName xml.Name
+
+	EntityCheck string `xml:"entity_check,attr,omitempty"`
+
+	CheckExistence string `xml:"check_existence,attr,omitempty"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+
+	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

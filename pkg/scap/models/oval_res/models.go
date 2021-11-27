@@ -12,7 +12,7 @@ import (
 
 // Element
 type OvalResults struct {
-	XMLName xml.Name `xml:oval_results`
+	XMLName xml.Name `xml:"oval_results"`
 
 	Generator oval.GeneratorType `xml:"generator"`
 
@@ -24,12 +24,14 @@ type OvalResults struct {
 
 	Results ResultsType `xml:"results"`
 
-	Signature *xml_dsig.Signature `xml:"Signature"`
+	Signature *xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // XSD ComplexType declarations
 
 type DirectivesType struct {
+	XMLName xml.Name
+
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
 	DefinitionFalse DirectiveType `xml:"definition_false"`
@@ -46,7 +48,9 @@ type DirectivesType struct {
 }
 
 type DefaultDirectivesType struct {
-	IncludeSourceDefinitions string `xml:"include_source_definitions,attr,omitempty"`
+	XMLName xml.Name
+
+	IncludeSourceDefinitions bool `xml:"include_source_definitions,attr,omitempty"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
@@ -64,7 +68,9 @@ type DefaultDirectivesType struct {
 }
 
 type ClassDirectivesType struct {
-	Class string `xml:"class,attr"`
+	XMLName xml.Name
+
+	Class oval.ClassEnumeration `xml:"class,attr"`
 
 	DefinitionTrue DirectiveType `xml:"definition_true"`
 
@@ -82,20 +88,26 @@ type ClassDirectivesType struct {
 }
 
 type DirectiveType struct {
-	Reported string `xml:"reported,attr"`
+	XMLName xml.Name
 
-	Content string `xml:"content,attr,omitempty"`
+	Reported bool `xml:"reported,attr"`
+
+	Content ContentEnumeration `xml:"content,attr,omitempty"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ResultsType struct {
-	System []SystemType `xml:"system"`
+	XMLName xml.Name
+
+	System []SystemType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type SystemType struct {
+	XMLName xml.Name
+
 	Definitions *DefinitionsType `xml:"definitions"`
 
 	Tests *TestsType `xml:"tests"`
@@ -106,21 +118,25 @@ type SystemType struct {
 }
 
 type DefinitionsType struct {
-	Definition []DefinitionType `xml:"definition"`
+	XMLName xml.Name
+
+	Definition []DefinitionType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type DefinitionType struct {
-	DefinitionId string `xml:"definition_id,attr"`
+	XMLName xml.Name
 
-	Version string `xml:"version,attr"`
+	DefinitionId oval.DefinitionIDPattern `xml:"definition_id,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	Version int `xml:"version,attr"`
 
-	Class string `xml:"class,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Class oval.ClassEnumeration `xml:"class,attr,omitempty"`
+
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:"message"`
 
@@ -130,13 +146,15 @@ type DefinitionType struct {
 }
 
 type CriteriaType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	XMLName xml.Name
 
-	Operator string `xml:"operator,attr"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	Operator oval.OperatorEnumeration `xml:"operator,attr"`
 
-	Result string `xml:"result,attr"`
+	Negate bool `xml:"negate,attr,omitempty"`
+
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Criteria []CriteriaType `xml:"criteria"`
 
@@ -148,57 +166,65 @@ type CriteriaType struct {
 }
 
 type CriterionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	XMLName xml.Name
 
-	TestRef string `xml:"test_ref,attr"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	Version string `xml:"version,attr"`
+	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	Version int `xml:"version,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Negate bool `xml:"negate,attr,omitempty"`
+
+	Result ResultEnumeration `xml:"result,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type ExtendDefinitionType struct {
-	ApplicabilityCheck string `xml:"applicability_check,attr,omitempty"`
+	XMLName xml.Name
 
-	DefinitionRef string `xml:"definition_ref,attr"`
+	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	Version string `xml:"version,attr"`
+	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	Version int `xml:"version,attr"`
 
-	Negate string `xml:"negate,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Result string `xml:"result,attr"`
+	Negate bool `xml:"negate,attr,omitempty"`
+
+	Result ResultEnumeration `xml:"result,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TestsType struct {
-	Test []TestType `xml:"test"`
+	XMLName xml.Name
+
+	Test []TestType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TestType struct {
-	TestId string `xml:"test_id,attr"`
+	XMLName xml.Name
 
-	Version string `xml:"version,attr"`
+	TestId oval.TestIDPattern `xml:"test_id,attr"`
 
-	VariableInstance string `xml:"variable_instance,attr,omitempty"`
+	Version int `xml:"version,attr"`
 
-	CheckExistence string `xml:"check_existence,attr,omitempty"`
+	VariableInstance int `xml:"variable_instance,attr,omitempty"`
 
-	Check string `xml:"check,attr"`
+	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
-	StateOperator string `xml:"state_operator,attr,omitempty"`
+	Check oval.CheckEnumeration `xml:"check,attr"`
 
-	Result string `xml:"result,attr"`
+	StateOperator oval.OperatorEnumeration `xml:"state_operator,attr,omitempty"`
+
+	Result ResultEnumeration `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:"message"`
 
@@ -210,18 +236,44 @@ type TestType struct {
 }
 
 type TestedItemType struct {
-	ItemId string `xml:"item_id,attr"`
+	XMLName xml.Name
 
-	Result string `xml:"result,attr"`
+	ItemId oval.ItemIDPattern `xml:"item_id,attr"`
 
-	Message []oval.MessageType `xml:"message"`
+	Result ResultEnumeration `xml:"result,attr"`
+
+	Message []oval.MessageType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type TestedVariableType struct {
-	VariableId string `xml:"variable_id,attr"`
+	XMLName xml.Name
+
+	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type ContentEnumeration string
+
+const ContentEnumerationThin ContentEnumeration = "thin"
+
+const ContentEnumerationFull ContentEnumeration = "full"
+
+type ResultEnumeration string
+
+const ResultEnumerationTrue ResultEnumeration = "true"
+
+const ResultEnumerationFalse ResultEnumeration = "false"
+
+const ResultEnumerationUnknown ResultEnumeration = "unknown"
+
+const ResultEnumerationError ResultEnumeration = "error"
+
+const ResultEnumerationNotEvaluated ResultEnumeration = "not evaluated"
+
+const ResultEnumerationNotApplicable ResultEnumeration = "not applicable"

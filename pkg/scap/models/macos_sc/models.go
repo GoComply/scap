@@ -10,11 +10,11 @@ import (
 
 // Element
 type AccountinfoItem struct {
-	XMLName xml.Name `xml:accountinfo_item`
+	XMLName xml.Name `xml:"accountinfo_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -35,11 +35,11 @@ type AccountinfoItem struct {
 
 // Element
 type AuthorizationdbItem struct {
-	XMLName xml.Name `xml:authorizationdb_item`
+	XMLName xml.Name `xml:"authorizationdb_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	RightName *oval_sc.EntityItemStringType `xml:"right_name"`
 
@@ -52,11 +52,11 @@ type AuthorizationdbItem struct {
 
 // Element
 type CorestorageItem struct {
-	XMLName xml.Name `xml:corestorage_item`
+	XMLName xml.Name `xml:"corestorage_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Uuid oval_sc.EntityItemStringType `xml:"uuid"`
 
@@ -69,11 +69,11 @@ type CorestorageItem struct {
 
 // Element
 type DiskutilItem struct {
-	XMLName xml.Name `xml:diskutil_item`
+	XMLName xml.Name `xml:"diskutil_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
@@ -120,11 +120,11 @@ type DiskutilItem struct {
 
 // Element
 type GatekeeperItem struct {
-	XMLName xml.Name `xml:gatekeeper_item`
+	XMLName xml.Name `xml:"gatekeeper_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Enabled oval_sc.EntityItemBoolType `xml:"enabled"`
 
@@ -135,11 +135,11 @@ type GatekeeperItem struct {
 
 // Element
 type InetlisteningserverItem struct {
-	XMLName xml.Name `xml:inetlisteningserver_item`
+	XMLName xml.Name `xml:"inetlisteningserver_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
@@ -166,11 +166,11 @@ type InetlisteningserverItem struct {
 
 // Element
 type Inetlisteningserver510Item struct {
-	XMLName xml.Name `xml:inetlisteningserver510_item`
+	XMLName xml.Name `xml:"inetlisteningserver510_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
@@ -197,11 +197,11 @@ type Inetlisteningserver510Item struct {
 
 // Element
 type KeychainItem struct {
-	XMLName xml.Name `xml:keychain_item`
+	XMLName xml.Name `xml:"keychain_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
@@ -214,11 +214,11 @@ type KeychainItem struct {
 
 // Element
 type LaunchdItem struct {
-	XMLName xml.Name `xml:launchd_item`
+	XMLName xml.Name `xml:"launchd_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Label oval_sc.EntityItemStringType `xml:"label"`
 
@@ -231,11 +231,11 @@ type LaunchdItem struct {
 
 // Element
 type NvramItem struct {
-	XMLName xml.Name `xml:nvram_item`
+	XMLName xml.Name `xml:"nvram_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	NvramVar *oval_sc.EntityItemStringType `xml:"nvram_var"`
 
@@ -246,11 +246,11 @@ type NvramItem struct {
 
 // Element
 type PlistItem struct {
-	XMLName xml.Name `xml:plist_item`
+	XMLName xml.Name `xml:"plist_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
@@ -269,11 +269,11 @@ type PlistItem struct {
 
 // Element
 type Plist511Item struct {
-	XMLName xml.Name `xml:plist511_item`
+	XMLName xml.Name `xml:"plist511_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	AppId *oval_sc.EntityItemStringType `xml:"app_id"`
 
@@ -288,11 +288,11 @@ type Plist511Item struct {
 
 // Element
 type PwpolicyItem struct {
-	XMLName xml.Name `xml:pwpolicy_item`
+	XMLName xml.Name `xml:"pwpolicy_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
@@ -317,11 +317,11 @@ type PwpolicyItem struct {
 
 // Element
 type Pwpolicy59Item struct {
-	XMLName xml.Name `xml:pwpolicy59_item`
+	XMLName xml.Name `xml:"pwpolicy59_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	TargetUser *oval_sc.EntityItemStringType `xml:"target_user"`
 
@@ -378,11 +378,11 @@ type Pwpolicy59Item struct {
 
 // Element
 type RlimitItem struct {
-	XMLName xml.Name `xml:rlimit_item`
+	XMLName xml.Name `xml:"rlimit_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	CpuCurrent oval_sc.EntityItemIntType `xml:"cpu_current"`
 
@@ -425,11 +425,11 @@ type RlimitItem struct {
 
 // Element
 type SoftwareupdateItem struct {
-	XMLName xml.Name `xml:softwareupdate_item`
+	XMLName xml.Name `xml:"softwareupdate_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Schedule oval_sc.EntityItemBoolType `xml:"schedule"`
 
@@ -440,11 +440,11 @@ type SoftwareupdateItem struct {
 
 // Element
 type SystemprofilerItem struct {
-	XMLName xml.Name `xml:systemprofiler_item`
+	XMLName xml.Name `xml:"systemprofiler_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	DataType *EntityItemDataTypeType `xml:"data_type"`
 
@@ -457,11 +457,11 @@ type SystemprofilerItem struct {
 
 // Element
 type SystemsetupItem struct {
-	XMLName xml.Name `xml:systemsetup_item`
+	XMLName xml.Name `xml:"systemsetup_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Timezone oval_sc.EntityItemStringType `xml:"timezone"`
 
@@ -507,13 +507,39 @@ type SystemsetupItem struct {
 // XSD ComplexType declarations
 
 type EntityItemDataTypeType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPermissionCompareType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPlistTypeType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

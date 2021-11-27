@@ -14,7 +14,7 @@ import (
 
 // Element
 type DataStreamCollection struct {
-	XMLName xml.Name `xml:data-stream-collection`
+	XMLName xml.Name `xml:"data-stream-collection"`
 
 	Id string `xml:"id,attr"`
 
@@ -26,12 +26,12 @@ type DataStreamCollection struct {
 
 	ExtendedComponent []ExtendedComponent `xml:"extended-component"`
 
-	Signature []xml_dsig.Signature `xml:"Signature"`
+	Signature []xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // Element
 type DataStream struct {
-	XMLName xml.Name `xml:data-stream`
+	XMLName xml.Name `xml:"data-stream"`
 
 	Id string `xml:"id,attr"`
 
@@ -52,7 +52,7 @@ type DataStream struct {
 
 // Element
 type Component struct {
-	XMLName xml.Name `xml:component`
+	XMLName xml.Name `xml:"component"`
 
 	Id string `xml:"id,attr"`
 
@@ -62,16 +62,16 @@ type Component struct {
 
 	OvalDefinitions *oval_def.OvalDefinitions `xml:"oval_definitions"`
 
-	Ocil *inter.Ocil `xml:"ocil"`
+	Ocil *inter.OCILType `xml:"ocil"`
 
-	CpeList *cpe_dict.CpeList `xml:"cpe-list"`
+	CpeList *cpe_dict.ListType `xml:"cpe-list"`
 
-	Tailoring *cdf.Tailoring `xml:"Tailoring"`
+	Tailoring *cdf.TailoringType `xml:"Tailoring"`
 }
 
 // Element
 type ExtendedComponent struct {
-	XMLName xml.Name `xml:extended-component`
+	XMLName xml.Name `xml:"extended-component"`
 
 	Id string `xml:"id,attr"`
 
@@ -80,7 +80,7 @@ type ExtendedComponent struct {
 
 // Element
 type ComponentRef struct {
-	XMLName xml.Name `xml:component-ref`
+	XMLName xml.Name `xml:"component-ref"`
 
 	Id string `xml:"id,attr"`
 
@@ -88,19 +88,45 @@ type ComponentRef struct {
 
 	XlinkHref string `xml:"href,attr"`
 
-	Catalog *er.Catalog `xml:"catalog"`
+	Catalog *er.Catalog `xml:",any"`
 }
 
 // XSD ComplexType declarations
 
 type ContentSourceType struct {
+	XMLName xml.Name
+
 	Href string `xml:"href,attr"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
 type RefListType struct {
-	ComponentRef []ComponentRef `xml:"component-ref"`
+	XMLName xml.Name
+
+	ComponentRef []ComponentRef `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations
+
+type UseCaseType string
+
+const UseCaseTypeConfiguration UseCaseType = "CONFIGURATION"
+
+const UseCaseTypeVulnerability UseCaseType = "VULNERABILITY"
+
+const UseCaseTypeInventory UseCaseType = "INVENTORY"
+
+const UseCaseTypeOther UseCaseType = "OTHER"
+
+type ScapVersionType string
+
+const ScapVersionType10 ScapVersionType = "1.0"
+
+const ScapVersionType11 ScapVersionType = "1.1"
+
+const ScapVersionType12 ScapVersionType = "1.2"
+
+const ScapVersionType13 ScapVersionType = "1.3"
