@@ -22,6 +22,8 @@ regenerate-models: gocomply_xsd2go .scap_schemas
 	gocomply_xsd2go convert \
 		--xmlns-override=http://cpe.mitre.org/language/2.0=cpe_language \
 		.scap_schemas/schemas/sds/1.3/scap-source-data-stream_1.3.xsd github.com/gocomply/scap pkg/scap/models
+	gofmt -s -w ./pkg/scap/models
+
 
 .scap_schemas:
 	git clone --depth 1 https://github.com/openscap/openscap .scap_schemas
