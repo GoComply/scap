@@ -10,11 +10,11 @@ import (
 
 // Element
 type InterimFixItem struct {
-	XMLName xml.Name `xml:interim_fix_item`
+	XMLName xml.Name `xml:"interim_fix_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Vuid *oval_sc.EntityItemStringType `xml:"vuid"`
 
@@ -29,11 +29,11 @@ type InterimFixItem struct {
 
 // Element
 type FilesetItem struct {
-	XMLName xml.Name `xml:fileset_item`
+	XMLName xml.Name `xml:"fileset_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Flstinst *oval_sc.EntityItemStringType `xml:"flstinst"`
 
@@ -48,11 +48,11 @@ type FilesetItem struct {
 
 // Element
 type FixItem struct {
-	XMLName xml.Name `xml:fix_item`
+	XMLName xml.Name `xml:"fix_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	AparNumber *oval_sc.EntityItemStringType `xml:"apar_number"`
 
@@ -67,11 +67,11 @@ type FixItem struct {
 
 // Element
 type NoItem struct {
-	XMLName xml.Name `xml:no_item`
+	XMLName xml.Name `xml:"no_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Tunable *oval_sc.EntityItemStringType `xml:"tunable"`
 
@@ -82,11 +82,11 @@ type NoItem struct {
 
 // Element
 type OslevelItem struct {
-	XMLName xml.Name `xml:oslevel_item`
+	XMLName xml.Name `xml:"oslevel_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MaintenanceLevel *oval_sc.EntityItemVersionType `xml:"maintenance_level"`
 
@@ -96,13 +96,39 @@ type OslevelItem struct {
 // XSD ComplexType declarations
 
 type EntityItemFilesetStateType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemFixInstallationStatusType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemInterimFixStateType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

@@ -9,9 +9,9 @@ func (defs *OvalDefinitions) DefinitionClasses() []DefinitionClass {
 	seen := map[string]struct{}{}
 
 	for _, def := range defs.Definitions.Definition {
-		if _, found := seen[def.Class]; !found {
+		if _, found := seen[string(def.Class)]; !found {
 			res = append(res, DefinitionClass(def.Class))
-			seen[def.Class] = struct{}{}
+			seen[string(def.Class)] = struct{}{}
 		}
 	}
 	return res

@@ -10,11 +10,11 @@ import (
 
 // Element
 type AclItem struct {
-	XMLName xml.Name `xml:acl_item`
+	XMLName xml.Name `xml:"acl_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -35,11 +35,11 @@ type AclItem struct {
 
 // Element
 type BgpneighborItem struct {
-	XMLName xml.Name `xml:bgpneighbor_item`
+	XMLName xml.Name `xml:"bgpneighbor_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Neighbor *oval_sc.EntityItemStringType `xml:"neighbor"`
 
@@ -50,11 +50,11 @@ type BgpneighborItem struct {
 
 // Element
 type GlobalItem struct {
-	XMLName xml.Name `xml:global_item`
+	XMLName xml.Name `xml:"global_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	GlobalCommand *oval_sc.EntityItemStringType `xml:"global_command"`
 
@@ -63,11 +63,11 @@ type GlobalItem struct {
 
 // Element
 type InterfaceItem struct {
-	XMLName xml.Name `xml:interface_item`
+	XMLName xml.Name `xml:"interface_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -116,11 +116,11 @@ type InterfaceItem struct {
 
 // Element
 type LineItem struct {
-	XMLName xml.Name `xml:line_item`
+	XMLName xml.Name `xml:"line_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -131,11 +131,11 @@ type LineItem struct {
 
 // Element
 type RouterItem struct {
-	XMLName xml.Name `xml:router_item`
+	XMLName xml.Name `xml:"router_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
@@ -154,11 +154,11 @@ type RouterItem struct {
 
 // Element
 type RoutingprotocolauthintfItem struct {
-	XMLName xml.Name `xml:routingprotocolauthintf_item`
+	XMLName xml.Name `xml:"routingprotocolauthintf_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Interface *oval_sc.EntityItemStringType `xml:"interface"`
 
@@ -177,11 +177,11 @@ type RoutingprotocolauthintfItem struct {
 
 // Element
 type SectionItem struct {
-	XMLName xml.Name `xml:section_item`
+	XMLName xml.Name `xml:"section_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	SectionCommand *oval_sc.EntityItemStringType `xml:"section_command"`
 
@@ -194,11 +194,11 @@ type SectionItem struct {
 
 // Element
 type SnmpItem struct {
-	XMLName xml.Name `xml:snmp_item`
+	XMLName xml.Name `xml:"snmp_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	AccessList *oval_sc.EntityItemStringType `xml:"access_list"`
 
@@ -209,11 +209,11 @@ type SnmpItem struct {
 
 // Element
 type SnmpcommunityItem struct {
-	XMLName xml.Name `xml:snmpcommunity_item`
+	XMLName xml.Name `xml:"snmpcommunity_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -230,11 +230,11 @@ type SnmpcommunityItem struct {
 
 // Element
 type SnmpgroupItem struct {
-	XMLName xml.Name `xml:snmpgroup_item`
+	XMLName xml.Name `xml:"snmpgroup_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -257,11 +257,11 @@ type SnmpgroupItem struct {
 
 // Element
 type SnmphostItem struct {
-	XMLName xml.Name `xml:snmphost_item`
+	XMLName xml.Name `xml:"snmphost_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Host *oval_sc.EntityItemStringType `xml:"host"`
 
@@ -278,11 +278,11 @@ type SnmphostItem struct {
 
 // Element
 type SnmpuserItem struct {
-	XMLName xml.Name `xml:snmpuser_item`
+	XMLName xml.Name `xml:"snmpuser_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -303,11 +303,11 @@ type SnmpuserItem struct {
 
 // Element
 type SnmpviewItem struct {
-	XMLName xml.Name `xml:snmpview_item`
+	XMLName xml.Name `xml:"snmpview_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
@@ -320,11 +320,11 @@ type SnmpviewItem struct {
 
 // Element
 type TclshItem struct {
-	XMLName xml.Name `xml:tclsh_item`
+	XMLName xml.Name `xml:"tclsh_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
 
@@ -333,11 +333,11 @@ type TclshItem struct {
 
 // Element
 type VersionItem struct {
-	XMLName xml.Name `xml:version_item`
+	XMLName xml.Name `xml:"version_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	MajorRelease *oval_sc.EntityItemStringType `xml:"major_release"`
 
@@ -364,85 +364,225 @@ type VersionItem struct {
 
 // Element
 type InterfaceItemIpDirectedBroadcastCommand struct {
-	XMLName xml.Name `xml:ip_directed_broadcast_command`
+	XMLName xml.Name `xml:"ip_directed_broadcast_command"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemProxyArpCommand struct {
-	XMLName xml.Name `xml:proxy_arp_command`
+	XMLName xml.Name `xml:"proxy_arp_command"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemShutdownCommand struct {
-	XMLName xml.Name `xml:shutdown_command`
+	XMLName xml.Name `xml:"shutdown_command"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemSwitchportNativeVlan struct {
-	XMLName xml.Name `xml:switchport_native_vlan`
+	XMLName xml.Name `xml:"switchport_native_vlan"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type InterfaceItemSwitchportAccessVlan struct {
-	XMLName xml.Name `xml:switchport_access_vlan`
+	XMLName xml.Name `xml:"switchport_access_vlan"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RouterItemOspfAuthenticationArea struct {
-	XMLName xml.Name `xml:ospf_authentication_area`
+	XMLName xml.Name `xml:"ospf_authentication_area"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // Element
 type RoutingprotocolauthintfItemOspfArea struct {
-	XMLName xml.Name `xml:ospf_area`
+	XMLName xml.Name `xml:"ospf_area"`
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
 type EntityItemAccessListInterfaceDirectionType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAccessListIPVersionType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemAccessListUseType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRoutingAuthTypeStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemRoutingProtocolType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPVersionStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPSecLevelStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPModeStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPAuthStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSNMPPrivStringType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemSwitchportModeType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemTrunkEncapType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

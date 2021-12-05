@@ -8,11 +8,11 @@ import (
 
 // Element
 type Catalog struct {
-	XMLName xml.Name `xml:catalog`
+	XMLName xml.Name `xml:"catalog"`
 
 	Id string `xml:"id,attr"`
 
-	Prefer string `xml:"prefer,attr"`
+	Prefer SystemOrPublic `xml:"prefer,attr"`
 
 	Public []Public `xml:"public"`
 
@@ -41,9 +41,9 @@ type Catalog struct {
 
 // Element
 type Public struct {
-	XMLName xml.Name `xml:public`
+	XMLName xml.Name `xml:"public"`
 
-	PublicId string `xml:"publicId,attr"`
+	PublicId PublicIdentifier `xml:"publicId,attr"`
 
 	Uri string `xml:"uri,attr"`
 
@@ -52,7 +52,7 @@ type Public struct {
 
 // Element
 type System struct {
-	XMLName xml.Name `xml:system`
+	XMLName xml.Name `xml:"system"`
 
 	SystemId string `xml:"systemId,attr"`
 
@@ -63,7 +63,7 @@ type System struct {
 
 // Element
 type Uri struct {
-	XMLName xml.Name `xml:uri`
+	XMLName xml.Name `xml:"uri"`
 
 	Name string `xml:"name,attr"`
 
@@ -74,7 +74,7 @@ type Uri struct {
 
 // Element
 type RewriteSystem struct {
-	XMLName xml.Name `xml:rewriteSystem`
+	XMLName xml.Name `xml:"rewriteSystem"`
 
 	SystemIdStartString string `xml:"systemIdStartString,attr"`
 
@@ -85,7 +85,7 @@ type RewriteSystem struct {
 
 // Element
 type RewriteURI struct {
-	XMLName xml.Name `xml:rewriteURI`
+	XMLName xml.Name `xml:"rewriteURI"`
 
 	UriStartString string `xml:"uriStartString,attr"`
 
@@ -96,7 +96,7 @@ type RewriteURI struct {
 
 // Element
 type SystemSuffix struct {
-	XMLName xml.Name `xml:systemSuffix`
+	XMLName xml.Name `xml:"systemSuffix"`
 
 	SystemIdSuffix string `xml:"systemIdSuffix,attr"`
 
@@ -107,7 +107,7 @@ type SystemSuffix struct {
 
 // Element
 type UriSuffix struct {
-	XMLName xml.Name `xml:uriSuffix`
+	XMLName xml.Name `xml:"uriSuffix"`
 
 	UriSuffix string `xml:"uriSuffix,attr"`
 
@@ -118,9 +118,9 @@ type UriSuffix struct {
 
 // Element
 type DelegatePublic struct {
-	XMLName xml.Name `xml:delegatePublic`
+	XMLName xml.Name `xml:"delegatePublic"`
 
-	PublicIdStartString string `xml:"publicIdStartString,attr"`
+	PublicIdStartString PartialPublicIdentifier `xml:"publicIdStartString,attr"`
 
 	Catalog string `xml:"catalog,attr"`
 
@@ -129,7 +129,7 @@ type DelegatePublic struct {
 
 // Element
 type DelegateSystem struct {
-	XMLName xml.Name `xml:delegateSystem`
+	XMLName xml.Name `xml:"delegateSystem"`
 
 	SystemIdStartString string `xml:"systemIdStartString,attr"`
 
@@ -140,7 +140,7 @@ type DelegateSystem struct {
 
 // Element
 type DelegateURI struct {
-	XMLName xml.Name `xml:delegateURI`
+	XMLName xml.Name `xml:"delegateURI"`
 
 	UriStartString string `xml:"uriStartString,attr"`
 
@@ -151,7 +151,7 @@ type DelegateURI struct {
 
 // Element
 type NextCatalog struct {
-	XMLName xml.Name `xml:nextCatalog`
+	XMLName xml.Name `xml:"nextCatalog"`
 
 	Catalog string `xml:"catalog,attr"`
 
@@ -160,9 +160,9 @@ type NextCatalog struct {
 
 // Element
 type Group struct {
-	XMLName xml.Name `xml:group`
+	XMLName xml.Name `xml:"group"`
 
-	Prefer string `xml:"prefer,attr"`
+	Prefer SystemOrPublic `xml:"prefer,attr"`
 
 	Id string `xml:"id,attr"`
 
@@ -190,3 +190,17 @@ type Group struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations
+
+type PubIdChars string
+
+type PublicIdentifier string
+
+type PartialPublicIdentifier string
+
+type SystemOrPublic string
+
+const SystemOrPublicSystem SystemOrPublic = "system"
+
+const SystemOrPublicPublic SystemOrPublic = "public"

@@ -10,11 +10,11 @@ import (
 
 // Element
 type SpwebapplicationItem struct {
-	XMLName xml.Name `xml:spwebapplication_item`
+	XMLName xml.Name `xml:"spwebapplication_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webapplicationurl *oval_sc.EntityItemStringType `xml:"webapplicationurl"`
 
@@ -125,11 +125,11 @@ type SpwebapplicationItem struct {
 
 // Element
 type SpgroupItem struct {
-	XMLName xml.Name `xml:spgroup_item`
+	XMLName xml.Name `xml:"spgroup_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -146,11 +146,11 @@ type SpgroupItem struct {
 
 // Element
 type SpwebItem struct {
-	XMLName xml.Name `xml:spweb_item`
+	XMLName xml.Name `xml:"spweb_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webcollectionurl *oval_sc.EntityItemStringType `xml:"webcollectionurl"`
 
@@ -167,11 +167,11 @@ type SpwebItem struct {
 
 // Element
 type SplistItem struct {
-	XMLName xml.Name `xml:splist_item`
+	XMLName xml.Name `xml:"splist_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -186,11 +186,11 @@ type SplistItem struct {
 
 // Element
 type SpantivirussettingsItem struct {
-	XMLName xml.Name `xml:spantivirussettings_item`
+	XMLName xml.Name `xml:"spantivirussettings_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Spwebservicename *oval_sc.EntityItemStringType `xml:"spwebservicename"`
 
@@ -217,11 +217,11 @@ type SpantivirussettingsItem struct {
 
 // Element
 type SpsiteadministrationItem struct {
-	XMLName xml.Name `xml:spsiteadministration_item`
+	XMLName xml.Name `xml:"spsiteadministration_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -234,11 +234,11 @@ type SpsiteadministrationItem struct {
 
 // Element
 type SpsiteItem struct {
-	XMLName xml.Name `xml:spsite_item`
+	XMLName xml.Name `xml:"spsite_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -251,11 +251,11 @@ type SpsiteItem struct {
 
 // Element
 type SpcrawlruleItem struct {
-	XMLName xml.Name `xml:spcrawlrule_item`
+	XMLName xml.Name `xml:"spcrawlrule_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
@@ -278,11 +278,11 @@ type SpcrawlruleItem struct {
 
 // Element
 type SpjobdefinitionItem struct {
-	XMLName xml.Name `xml:spjobdefinition_item`
+	XMLName xml.Name `xml:"spjobdefinition_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -299,11 +299,11 @@ type SpjobdefinitionItem struct {
 
 // Element
 type Spjobdefinition510Item struct {
-	XMLName xml.Name `xml:spjobdefinition510_item`
+	XMLName xml.Name `xml:"spjobdefinition510_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -320,11 +320,11 @@ type Spjobdefinition510Item struct {
 
 // Element
 type BestbetItem struct {
-	XMLName xml.Name `xml:bestbet_item`
+	XMLName xml.Name `xml:"bestbet_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -339,11 +339,11 @@ type BestbetItem struct {
 
 // Element
 type InfopolicycollItem struct {
-	XMLName xml.Name `xml:infopolicycoll_item`
+	XMLName xml.Name `xml:"infopolicycoll_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
@@ -360,11 +360,11 @@ type InfopolicycollItem struct {
 
 // Element
 type SpdiagnosticsserviceItem struct {
-	XMLName xml.Name `xml:spdiagnosticsservice_item`
+	XMLName xml.Name `xml:"spdiagnosticsservice_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -385,11 +385,11 @@ type SpdiagnosticsserviceItem struct {
 
 // Element
 type SpdiagnosticslevelItem struct {
-	XMLName xml.Name `xml:spdiagnosticslevel_item`
+	XMLName xml.Name `xml:"spdiagnosticslevel_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -408,11 +408,11 @@ type SpdiagnosticslevelItem struct {
 
 // Element
 type SppolicyfeatureItem struct {
-	XMLName xml.Name `xml:sppolicyfeature_item`
+	XMLName xml.Name `xml:"sppolicyfeature_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
@@ -439,11 +439,11 @@ type SppolicyfeatureItem struct {
 
 // Element
 type SppolicyItem struct {
-	XMLName xml.Name `xml:sppolicy_item`
+	XMLName xml.Name `xml:"sppolicy_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
@@ -463,21 +463,63 @@ type SppolicyItem struct {
 // XSD ComplexType declarations
 
 type EntityItemUrlZoneType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemEventSeverityType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemTraceSeverityType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPolicyFeatureStateType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
 
 type EntityItemPolicyRoleType struct {
+	XMLName xml.Name
+
+	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
+
+	Mask bool `xml:"mask,attr,omitempty"`
+
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
+
 	InnerXml string `xml:",innerxml"`
 }
+
+// XSD SimpleType declarations

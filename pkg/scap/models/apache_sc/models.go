@@ -10,11 +10,11 @@ import (
 
 // Element
 type HttpdItem struct {
-	XMLName xml.Name `xml:httpd_item`
+	XMLName xml.Name `xml:"httpd_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
@@ -26,3 +26,5 @@ type HttpdItem struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

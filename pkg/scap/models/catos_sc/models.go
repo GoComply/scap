@@ -10,11 +10,11 @@ import (
 
 // Element
 type LineItem struct {
-	XMLName xml.Name `xml:line_item`
+	XMLName xml.Name `xml:"line_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
@@ -25,11 +25,11 @@ type LineItem struct {
 
 // Element
 type ModuleItem struct {
-	XMLName xml.Name `xml:module_item`
+	XMLName xml.Name `xml:"module_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	ModuleNumber *oval_sc.EntityItemIntType `xml:"module_number"`
 
@@ -56,11 +56,11 @@ type ModuleItem struct {
 
 // Element
 type VersionItem struct {
-	XMLName xml.Name `xml:version_item`
+	XMLName xml.Name `xml:"version_item"`
 
-	Id string `xml:"id,attr"`
+	Id oval.ItemIDPattern `xml:"id,attr"`
 
-	Status string `xml:"status,attr,omitempty"`
+	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	SwitchSeries *oval_sc.EntityItemStringType `xml:"switch_series"`
 
@@ -78,3 +78,5 @@ type VersionItem struct {
 }
 
 // XSD ComplexType declarations
+
+// XSD SimpleType declarations

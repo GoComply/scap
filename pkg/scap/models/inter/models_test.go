@@ -27,7 +27,7 @@ func TestSanityOcilParsing(t *testing.T) {
 	assert.Equal(t, questionnaires[0].Actions.TestActionRef[0].Text, "ocil:ssg-accounts_user_interactive_home_directory_defined_action:testaction:1")
 
 	testActions := ocil.TestActions.TestAction
-	assert.Equal(t, len(testActions), 0)
+	assert.Equal(t, len(testActions), 1121)
 }
 
 func TestOcilScapVersion(t *testing.T) {
