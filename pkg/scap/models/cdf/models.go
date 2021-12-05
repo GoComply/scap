@@ -4,7 +4,7 @@ package cdf
 
 import (
 	"encoding/xml"
-	"github.com/gocomply/scap/pkg/scap/models/cpe"
+	"github.com/gocomply/scap/pkg/scap/models/cpe_language"
 )
 
 // Element
@@ -41,7 +41,7 @@ type Benchmark struct {
 
 	PlainText []PlainTextType `xml:"plain-text"`
 
-	PlatformSpecification *cpe.PlatformSpecificationType `xml:"platform-specification"`
+	PlatformSpecification *cpe_language.PlatformSpecificationType `xml:"platform-specification"`
 
 	Platform []CPE2IdrefType `xml:"platform"`
 
