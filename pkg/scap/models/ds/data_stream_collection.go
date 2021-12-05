@@ -16,7 +16,7 @@ func (ds *DataStreamCollection) GetComponentByRef(ref *ComponentRef) *Component 
 }
 
 func (ds *DataStreamCollection) GetComponentById(componentId string) *Component {
-	for idx, _ := range ds.Component {
+	for idx := range ds.Component {
 		comp := &ds.Component[idx]
 		if comp.Id == componentId {
 			return comp

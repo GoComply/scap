@@ -3,8 +3,8 @@ package ds_test
 import (
 	"testing"
 
-	"github.com/gocomply/scap/pkg/scap/scap_document"
 	"github.com/gocomply/scap/pkg/scap/models/oval"
+	"github.com/gocomply/scap/pkg/scap/scap_document"
 	"github.com/stretchr/testify/assert"
 )
 

@@ -2,8 +2,6 @@
 // Models for http://cpe.mitre.org/naming/2.0
 package cpe
 
-import ()
-
 // XSD ComplexType declarations
 
 // XSD SimpleType declarations

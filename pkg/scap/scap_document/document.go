@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 
 	"github.com/gocomply/scap/pkg/bz2"
 	"github.com/gocomply/scap/pkg/scap/constants"
@@ -99,11 +100,10 @@ func ReadDocument(r io.Reader) (*Document, error) {
 			}
 		}
 	}
-	return nil, fmt.Errorf("Could not parse input file")
 }
 
-func ReadDocumentFromFile(filepath string) (*Document, error) {
-	reader, err := os.Open(filepath)
+func ReadDocumentFromFile(filePath string) (*Document, error) {
+	reader, err := os.Open(filepath.Clean(filePath))
 	if err != nil {
 		return nil, err
 	}
