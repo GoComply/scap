@@ -99,7 +99,6 @@ func ReadDocument(r io.Reader) (*Document, error) {
 			}
 		}
 	}
-	return nil, fmt.Errorf("Could not parse input file")
 }
 
 func ReadDocumentFromFile(filepath string) (*Document, error) {
