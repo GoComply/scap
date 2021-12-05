@@ -4,6 +4,7 @@ import (
 	"testing"
 
 	"github.com/gocomply/scap/pkg/scap/scap_document"
+	"github.com/gocomply/scap/pkg/scap/models/oval"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -70,5 +71,5 @@ func expectSanityDS(t *testing.T, doc *scap_document.Document) {
 	assert.Equal(t, ovalDef.Generator.ProductName, "Text Editors")
 	definitions := ovalDef.Definitions.Definition
 	assert.Equal(t, len(definitions), 1)
-	assert.Equal(t, definitions[0].Id, "oval:moc.elpmaxe.www:def:1")
+	assert.Equal(t, definitions[0].Id, oval.DefinitionIDPattern("oval:moc.elpmaxe.www:def:1"))
 }
