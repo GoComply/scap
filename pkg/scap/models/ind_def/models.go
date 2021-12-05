@@ -1148,6 +1148,8 @@ type YamlfilecontentObject struct {
 
 	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
 
+	Content *oval_def.EntityObjectStringType `xml:"content"`
+
 	Path *oval_def.EntityObjectStringType `xml:"path"`
 
 	Filename *oval_def.EntityObjectStringType `xml:"filename"`
@@ -1176,6 +1178,8 @@ type YamlfilecontentState struct {
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
 	Filename *oval_def.EntityStateStringType `xml:"filename"`
+
+	Content *oval_def.EntityStateStringType `xml:"content"`
 
 	Yamlpath *oval_def.EntityStateStringType `xml:"yamlpath"`
 

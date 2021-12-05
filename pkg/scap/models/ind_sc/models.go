@@ -268,6 +268,8 @@ type YamlfilecontentItem struct {
 
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	Content *oval_sc.EntityItemStringType `xml:"content"`
+
 	Yamlpath *oval_sc.EntityItemStringType `xml:"yamlpath"`
 
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
