@@ -40,7 +40,7 @@ type Definition struct {
 
 	Id oval.DefinitionIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Class oval.ClassEnumeration `xml:"class,attr"`
 
@@ -61,7 +61,7 @@ type Test struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -84,7 +84,7 @@ type Object struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -123,7 +123,7 @@ type State struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -142,7 +142,7 @@ type Variable struct {
 
 	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
@@ -161,7 +161,7 @@ type ExternalVariable struct {
 
 	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
@@ -180,7 +180,7 @@ type ConstantVariable struct {
 
 	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
@@ -201,7 +201,7 @@ type LocalVariable struct {
 
 	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 
@@ -229,7 +229,7 @@ type DefinitionType struct {
 
 	Id oval.DefinitionIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Class oval.ClassEnumeration `xml:"class,attr"`
 
@@ -345,7 +345,7 @@ type TestType struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -393,7 +393,7 @@ type ObjectType struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -419,7 +419,7 @@ type StateType struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -447,7 +447,7 @@ type VariableType struct {
 
 	Id oval.VariableIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Datatype oval.SimpleDatatypeEnumeration `xml:"datatype,attr"`
 

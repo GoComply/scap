@@ -31,7 +31,7 @@ type Ocil struct {
 type TestAction struct {
 	XMLName xml.Name `xml:"test_action"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Notes []string `xml:",any"`
 }
@@ -44,7 +44,7 @@ type QuestionTestAction struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -67,7 +67,7 @@ type BooleanQuestionTestAction struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	WhenTrue TestActionConditionType `xml:"when_true"`
 
@@ -94,7 +94,7 @@ type ChoiceQuestionTestAction struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
@@ -119,7 +119,7 @@ type NumericQuestionTestAction struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -142,7 +142,7 @@ type StringQuestionTestAction struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
@@ -165,7 +165,7 @@ type Question struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -184,7 +184,7 @@ type BooleanQuestion struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -201,7 +201,7 @@ type ChoiceQuestion struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -218,7 +218,7 @@ type NumericQuestion struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -235,7 +235,7 @@ type StringQuestion struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -252,7 +252,7 @@ type Variable struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Description *TextType `xml:"description"`
 
@@ -267,7 +267,7 @@ type ConstantVariable struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Value string `xml:"value"`
 
@@ -286,7 +286,7 @@ type LocalVariable struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Set string `xml:"set"`
 
@@ -303,7 +303,7 @@ type ExternalVariable struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Description *TextType `xml:"description"`
 
@@ -314,7 +314,7 @@ type ExternalVariable struct {
 type Target struct {
 	XMLName xml.Name `xml:"target"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Name string `xml:"name"`
 
@@ -325,7 +325,7 @@ type Target struct {
 type User struct {
 	XMLName xml.Name `xml:"user"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Organization []string `xml:"organization"`
 
@@ -342,7 +342,7 @@ type User struct {
 type System struct {
 	XMLName xml.Name `xml:"system"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Organization string `xml:"organization"`
 
@@ -529,7 +529,7 @@ type QuestionnaireType struct {
 
 	ChildOnly string `xml:"child_only,attr,omitempty"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -595,7 +595,7 @@ type QuestionTestActionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -619,7 +619,7 @@ type BooleanQuestionTestActionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	WhenTrue TestActionConditionType `xml:"when_true"`
 
@@ -647,7 +647,7 @@ type ChoiceQuestionTestActionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
@@ -673,7 +673,7 @@ type NumericQuestionTestActionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
@@ -697,7 +697,7 @@ type StringQuestionTestActionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
@@ -848,7 +848,7 @@ type QuestionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -868,7 +868,7 @@ type BooleanQuestionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -886,7 +886,7 @@ type ChoiceQuestionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -904,7 +904,7 @@ type NumericQuestionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -922,7 +922,7 @@ type StringQuestionType struct {
 
 	Id string `xml:"id,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	QuestionText []QuestionTextType `xml:"question_text"`
 
@@ -1115,7 +1115,7 @@ type ArtifactType struct {
 
 	Persistent string `xml:"persistent,attr,omitempty"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title TextType `xml:"title"`
 
@@ -1221,7 +1221,7 @@ type TargetsType struct {
 type UserType struct {
 	XMLName xml.Name
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Organization []string `xml:"organization"`
 
@@ -1239,7 +1239,7 @@ type UserType struct {
 type SystemTargetType struct {
 	XMLName xml.Name
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Organization string `xml:"organization"`
 
@@ -1269,7 +1269,7 @@ type VariableType struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Description *TextType `xml:"description"`
 
@@ -1285,7 +1285,7 @@ type ConstantVariableType struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Value string `xml:"value"`
 
@@ -1305,7 +1305,7 @@ type LocalVariableType struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Set string `xml:"set"`
 
@@ -1323,7 +1323,7 @@ type ExternalVariableType struct {
 
 	Datatype string `xml:"datatype,attr"`
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Description *TextType `xml:"description"`
 
@@ -1428,7 +1428,7 @@ type StepType struct {
 type ItemBaseType struct {
 	XMLName xml.Name
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Notes []string `xml:",any"`
 
@@ -1438,7 +1438,7 @@ type ItemBaseType struct {
 type NamedItemBaseType struct {
 	XMLName xml.Name
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Name string `xml:"name"`
 
@@ -1450,7 +1450,7 @@ type NamedItemBaseType struct {
 type CompoundTestActionType struct {
 	XMLName xml.Name
 
-	Revision int `xml:"revision,attr"`
+	Revision uint64 `xml:"revision,attr"`
 
 	Title *TextType `xml:"title"`
 
