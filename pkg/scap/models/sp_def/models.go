@@ -15,7 +15,7 @@ type SpwebapplicationTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -42,7 +42,7 @@ type SpwebapplicationObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -65,7 +65,7 @@ type SpwebapplicationState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -188,7 +188,7 @@ type SpgroupTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -215,7 +215,7 @@ type SpgroupObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -238,7 +238,7 @@ type SpgroupState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -267,7 +267,7 @@ type SpwebTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -294,7 +294,7 @@ type SpwebObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -319,7 +319,7 @@ type SpwebState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -348,7 +348,7 @@ type SplistTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -375,7 +375,7 @@ type SplistObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -398,7 +398,7 @@ type SplistState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -425,7 +425,7 @@ type SpantivirussettingsTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -452,7 +452,7 @@ type SpantivirussettingsObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -477,7 +477,7 @@ type SpantivirussettingsState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -516,7 +516,7 @@ type SpsiteadministrationTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -543,7 +543,7 @@ type SpsiteadministrationObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -566,7 +566,7 @@ type SpsiteadministrationState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -591,7 +591,7 @@ type SpsiteTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -618,7 +618,7 @@ type SpsiteObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -641,7 +641,7 @@ type SpsiteState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -666,7 +666,7 @@ type SpcrawlruleTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -693,7 +693,7 @@ type SpcrawlruleObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -716,7 +716,7 @@ type SpcrawlruleState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -751,7 +751,7 @@ type SpjobdefinitionTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -778,7 +778,7 @@ type SpjobdefinitionObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -801,7 +801,7 @@ type SpjobdefinitionState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -830,7 +830,7 @@ type Spjobdefinition510Test struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -857,7 +857,7 @@ type Spjobdefinition510Object struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -882,7 +882,7 @@ type Spjobdefinition510State struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -911,7 +911,7 @@ type BestbetTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -938,7 +938,7 @@ type BestbetObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -963,7 +963,7 @@ type BestbetState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -990,7 +990,7 @@ type InfopolicycollTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -1017,7 +1017,7 @@ type InfopolicycollObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -1042,7 +1042,7 @@ type InfopolicycollState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -1071,7 +1071,7 @@ type SpdiagnosticsserviceTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -1098,7 +1098,7 @@ type SpdiagnosticsserviceObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -1121,7 +1121,7 @@ type SpdiagnosticsserviceState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -1154,7 +1154,7 @@ type SpdiagnosticslevelTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -1181,7 +1181,7 @@ type SpdiagnosticslevelObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -1204,7 +1204,7 @@ type SpdiagnosticslevelState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -1235,7 +1235,7 @@ type SppolicyfeatureTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -1262,7 +1262,7 @@ type SppolicyfeatureObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -1285,7 +1285,7 @@ type SppolicyfeatureState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 
@@ -1324,7 +1324,7 @@ type SppolicyTest struct {
 
 	Id oval.TestIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
@@ -1351,7 +1351,7 @@ type SppolicyObject struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Comment oval.NonEmptyStringType `xml:"comment,attr,omitempty"`
 
@@ -1374,7 +1374,7 @@ type SppolicyState struct {
 
 	Id oval.StateIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
 	Operator oval.OperatorEnumeration `xml:"operator,attr,omitempty"`
 

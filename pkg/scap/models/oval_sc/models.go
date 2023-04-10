@@ -85,9 +85,9 @@ type ObjectType struct {
 
 	Id oval.ObjectIDPattern `xml:"id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
-	VariableInstance int `xml:"variable_instance,attr,omitempty"`
+	VariableInstance uint64 `xml:"variable_instance,attr,omitempty"`
 
 	Comment string `xml:"comment,attr,omitempty"`
 

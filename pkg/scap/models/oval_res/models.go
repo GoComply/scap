@@ -130,9 +130,9 @@ type DefinitionType struct {
 
 	DefinitionId oval.DefinitionIDPattern `xml:"definition_id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
-	VariableInstance int `xml:"variable_instance,attr,omitempty"`
+	VariableInstance uint64 `xml:"variable_instance,attr,omitempty"`
 
 	Class oval.ClassEnumeration `xml:"class,attr,omitempty"`
 
@@ -172,9 +172,9 @@ type CriterionType struct {
 
 	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
-	VariableInstance int `xml:"variable_instance,attr,omitempty"`
+	VariableInstance uint64 `xml:"variable_instance,attr,omitempty"`
 
 	Negate bool `xml:"negate,attr,omitempty"`
 
@@ -190,9 +190,9 @@ type ExtendDefinitionType struct {
 
 	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
-	VariableInstance int `xml:"variable_instance,attr,omitempty"`
+	VariableInstance uint64 `xml:"variable_instance,attr,omitempty"`
 
 	Negate bool `xml:"negate,attr,omitempty"`
 
@@ -214,9 +214,9 @@ type TestType struct {
 
 	TestId oval.TestIDPattern `xml:"test_id,attr"`
 
-	Version int `xml:"version,attr"`
+	Version uint64 `xml:"version,attr"`
 
-	VariableInstance int `xml:"variable_instance,attr,omitempty"`
+	VariableInstance uint64 `xml:"variable_instance,attr,omitempty"`
 
 	CheckExistence oval.ExistenceEnumeration `xml:"check_existence,attr,omitempty"`
 
