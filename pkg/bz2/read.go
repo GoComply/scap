@@ -4,11 +4,10 @@ import (
 	"bytes"
 	"compress/bzip2"
 	"io"
-	"io/ioutil"
 )
 
 func Decompress(in io.Reader) (io.Reader, bool, error) {
-	data, err := ioutil.ReadAll(in)
+	data, err := io.ReadAll(in)
 	if err != nil {
 		return nil, false, err
 	}
