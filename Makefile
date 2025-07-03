@@ -9,7 +9,7 @@ test:
 .PHONY: gocomply_xsd2go vendor
 gocomply_xsd2go:
 ifeq ("$(wildcard $(GOPATH)/bin/gocomply_xsd2go)","")
-	go get -u -v github.com/gocomply/xsd2go/cli/gocomply_xsd2go
+	go install github.com/gocomply/xsd2go/cli/gocomply_xsd2go@latest
 endif
 
 regenerate-models: gocomply_xsd2go .scap_schemas
