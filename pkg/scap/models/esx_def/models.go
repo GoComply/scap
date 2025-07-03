@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the VMware ESX server specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// Patch56Test: The patch56_test reveals the installation status of a specific patch or patches in VMware ESX Server. This information can be retrieved by the "esxupdate query" command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a patch56_object and the optional state element referencing a patch56_state specifies the metadata to check.
 type Patch56Test struct {
 	XMLName xml.Name `xml:"patch56_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type Patch56Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Patch56Object: The patch56_object element is used by a patch56_test to define those objects to be evaluated against a specified state. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Patch56Object struct {
 	XMLName xml.Name `xml:"patch56_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -52,6 +54,7 @@ type Patch56Object struct {
 
 	Behaviors *Patch56Behaviors `xml:"behaviors"`
 
+	// PatchName: The patch name entity indetifies a specific patch or set of patches to be checked on the system. For example: ESX-200603 or ESX350-200904401-BG. The value of this entity should correspond to the values returned under the "name" column of the "esxupdate query" command.
 	PatchName *oval_def.EntityObjectStringType `xml:"patch_name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -61,11 +64,11 @@ type Patch56Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Patch56State: The patch56_state element defines the different information that can be used to evaluate the specified VMware ESX Serer patch. Please refer to the individual elements in the schema for more details about what each represents.
 type Patch56State struct {
 	XMLName xml.Name `xml:"patch56_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -75,16 +78,22 @@ type Patch56State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// PatchName: The patch_name entity indetifies the name of a patch to test for. For example: ESX-200603 or ESX350-200904401-BG. The value of this entity should correspond to the values returned under the "name" column of the "esxupdate query" command.
 	PatchName *oval_def.EntityStateStringType `xml:"patch_name"`
 
+	// KnowledgeBaseId: The knowledge_base_id entity specifies a given knowledge base article identifier number. This entity is valid for ESX versions 3.0.2 and earlier. It is comprised of the numerical string at the end of the patch name. For example, the patch ESX-200603 would have a knowledge base identifier of 200603.
 	KnowledgeBaseId *oval_def.EntityStateIntType `xml:"knowledge_base_id"`
 
+	// BundleId: The bundle_id entity specifies a unique ID for the patch. This entity is valid for ESX version 3.0.3 and version 3.5 and is comprised of the year and month the bundle was released and a 3-digit unique ID. It is in the format YYYYMM###. For example, the first patch released in January 2008 might have a BundleID of 200801001.
 	BundleId *oval_def.EntityStateIntType `xml:"bundle_id"`
 
+	// Classification: The classification entity specifies the type of patch. It can be one of: B - bug, U - update, S - security, or R - roll-up. This entity is valid for ESX version 3.0.3 and later.
 	Classification *EntityStateClassificationType `xml:"classification"`
 
+	// SupportLevel: The support_level entity specifies a support level to test for. If can be one of: G - GA patch, H - hot patch, D - debugging patch, or C - custom patch. This entity is valid for ESX version 3.0.3 and later.
 	SupportLevel *EntityStateSupportLevelType `xml:"support_level"`
 
+	// Status: The status entity specifies an installation status of a patch to test for. A value of 'true' is used to signify that a given patch is intalled.
 	Status *oval_def.EntityStateBoolType `xml:"status"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -92,11 +101,11 @@ type Patch56State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchTest: The patch test reveals the installation status of a specific patch in the VMware ESX server. This information can be retrieved by the "esxupdate query | grep ESX-xxxxxxx" command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a patch_object and the optional state element specifies the metadata to check.
 type PatchTest struct {
 	XMLName xml.Name `xml:"patch_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -119,11 +128,11 @@ type PatchTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchObject: The patch_object element is used by a patch test to define those objects to be evaluated based on a specified state. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PatchObject struct {
 	XMLName xml.Name `xml:"patch_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -135,6 +144,7 @@ type PatchObject struct {
 
 	Behaviors *PatchBehaviors `xml:"behaviors"`
 
+	// PatchNumber: The patch_number entity identifies the patch to be checked. Many of the security bulletins for VMWARE ESX Server contain non-numerical characters in the patch number, therefore this entity has a datatype of string.
 	PatchNumber *oval_def.EntityObjectStringType `xml:"patch_number"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -142,11 +152,11 @@ type PatchObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchState: The patch_state element defines the information about a specific patch. The patch_number element identifies this patch, and the status element reveals the installation status of this patch in the VMware ESX server. For instance, after the "esxupdate query | grep ESX-2559638" command is run, the result is either a string similar to "ESX-2559638 15:27:17 04/05/07 Update info rpm for ESX 3.0.1." or empty.
 type PatchState struct {
 	XMLName xml.Name `xml:"patch_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -156,8 +166,10 @@ type PatchState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// PatchNumber: This is the patch number of a specific patch which will be checked in current VMware ESX server. Many of the security bulletins for VMWARE ESX Server contain non-numerical characters in the patch nubmer, therefore this entity has a datatype of string.
 	PatchNumber *oval_def.EntityStateStringType `xml:"patch_number"`
 
+	// Status: This is the installation status of a specific patch in current VMware ESX server.
 	Status *oval_def.EntityStateBoolType `xml:"status"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -165,11 +177,11 @@ type PatchState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionTest: The version test reveals information about the release and build version of the VMware ESX server. This information can be retrieved by the "vmware -v" command or by checking the /proc/vmware/version file. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the metadata to check.
 type VersionTest struct {
 	XMLName xml.Name `xml:"version_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -192,11 +204,11 @@ type VersionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionObject: The version_object element is used by a version test to define those objects to be evaluated based on a specified state. There is actually only one object relating to version and this is the ESX server as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check version will reference the same version_object which is basically an empty object element.
 type VersionObject struct {
 	XMLName xml.Name `xml:"version_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -209,11 +221,11 @@ type VersionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionState: The version_state element defines the information about the release and build version. The release and build elements specify the release and build information of the VMware ESX server respectively. For instance, if the output of "vmware -v" command is "VMware ESX Server 3.0.1 build-39823", then release is equal to "3.0.1" and build is equal to "39823".
 type VersionState struct {
 	XMLName xml.Name `xml:"version_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -223,8 +235,10 @@ type VersionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Release: This is the release version of current VMware ESX server.
 	Release *oval_def.EntityStateVersionType `xml:"release"`
 
+	// Build: This is the build version of current VMware ESX server.
 	Build *oval_def.EntityStateIntType `xml:"build"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -232,11 +246,11 @@ type VersionState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VisdkmanagedobjectTest: The visdkmanagedobject_test is used to check information about Managed Objects in the VMware Infrastructure. This test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a visdkmanagedobject _object and the optional state element specifies the metadata to check.
 type VisdkmanagedobjectTest struct {
 	XMLName xml.Name `xml:"visdkmanagedobject_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -259,11 +273,11 @@ type VisdkmanagedobjectTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VisdkmanagedobjectObject: The visdkmanagedobject_object element is used by the visdkmanagedobject_test to define those objects to be evaluated based on a specified state.
 type VisdkmanagedobjectObject struct {
 	XMLName xml.Name `xml:"visdkmanagedobject_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -275,6 +289,7 @@ type VisdkmanagedobjectObject struct {
 
 	Behaviors *ViSdkManagedEntityBehaviors `xml:"behaviors"`
 
+	// Property: The property entity holds a string that represents the object path path and name of a particular setting for the Managed Entity. In the VMware Infrastructure SDK, property names are case-sensitive and thus case must be correct relative to the properties in the SDK. For example, a Virtual Machine might have ethernet0.connectionType of 'bridged'.
 	Property *oval_def.EntityObjectStringType `xml:"property"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -284,11 +299,11 @@ type VisdkmanagedobjectObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VisdkmanagedobjectState: The visdkmanagedobject_state elements enumerates the different properties a Managed Entity might have. Managed Entities have the same object structure. However, fields within that object structure will be blank (null) if they do not apply to that Managed Entity.
 type VisdkmanagedobjectState struct {
 	XMLName xml.Name `xml:"visdkmanagedobject_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -298,8 +313,10 @@ type VisdkmanagedobjectState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Property: The property entity holds a string that represents the object path and name of a particular setting for the Managed Entity. In the VMware Infrastructure SDK, property names are case-sensitive and thus case must be correct relative to the properties in the SDK. For example, a Virtual Machine might have ethernet0.connectionType of 'bridged'.
 	Property *oval_def.EntityStateStringType `xml:"property"`
 
+	// Value: The value entity holds a string that represents a value that's associated with the specified setting for the Managed Entity. Some properties will return an array of values. In such cases consider each value individually and then make final evaluation based on the entity_check attribute.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -309,30 +326,31 @@ type VisdkmanagedobjectState struct {
 
 // XSD ComplexType declarations
 
+// Patch56Behaviors: The Patch56Behaviors complex type defines a number of behaviors that allow a more detailed definition of the patch56_object being specified. Note that using these behaviors may result in some unique results. For example, a double negative type condition might be created where an object entity says include everything except a specific item, but a behavior is used that might then add that item back in.
 type Patch56Behaviors struct {
 	XMLName xml.Name
 
+	// Supersedence: 'supersedence' specifies that the object should also match any superseding patches to the one being specified. In other words, if set to True the resulting object set would be the original patch specified plus any superseding patches. The default value is 'false' meaning the object should only match the specified patch.
 	Supersedence string `xml:"supersedence,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// PatchBehaviors: The PatchBehaviors complex type defines a number of behaviors that allow a more detailed definition of the patch_object being specified. Note that using these behaviors may result in some unique results. For example, a double negative type condition might be created where an object entity says include everything except a specific item, but a behavior is used that might then add that item back in.
 type PatchBehaviors struct {
 	XMLName xml.Name
 
+	// Supersedence: 'supersedence' specifies that the object should also match any superseding patches to the one being specified. In other words, if set to True the resulting object set would be the original patch specified plus any superseding patches. The default value is 'false' meaning the object should only match the specified patch.
 	Supersedence string `xml:"supersedence,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ViSdkManagedEntityBehaviors: The ViSdkManagedEntityBehaviors complex type defines a number of behaviors that allow a more detailed definition of the visdkmanagedobject_object being specified. Note that using these behaviors is *highly* encouraged because enumerating all Managed Objects in an inventory hierarchy could cause performance problems. Interpreters should enumerate only the entities specified by the behavior prior to set/filter logic and evaluation.
 type ViSdkManagedEntityBehaviors struct {
 	XMLName xml.Name
 
+	// ManagedEntityType: The 'managed_entity_type' defines the type of managed object from which the property and value should be collected.
 	ManagedEntityType string `xml:"managed_entity_type,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateClassificationType: The EntityStateClassificationType complex type restricts a string value to a specific set of values that describe the classification of a given ESX Server patch. The empty string is also allowed to support an empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateClassificationType struct {
 	XMLName xml.Name
 
@@ -340,19 +358,23 @@ type EntityStateClassificationType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateSupportLevelType: The EntityStateSupportLevelType complex type restricts a string value to a specific set of values that describe the support level of a given ESX Server patch. The empty string is also allowed to support an empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateSupportLevelType struct {
 	XMLName xml.Name
 
@@ -360,17 +382,20 @@ type EntityStateSupportLevelType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

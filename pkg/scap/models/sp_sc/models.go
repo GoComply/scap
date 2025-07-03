@@ -8,240 +8,322 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the SharePoint specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core System Characteristic Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core System Characteristic Schema is not outlined here.
+
+// SpwebapplicationItem: This spwebapplication item stores information for security related features and permissions related to each web application. See the defintion of the SPWebApplication class in the SharePoint object model documentation.
 type SpwebapplicationItem struct {
 	XMLName xml.Name `xml:"spwebapplication_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Webapplicationurl: A string the represents the url that identifies the web application.
 	Webapplicationurl *oval_sc.EntityItemStringType `xml:"webapplicationurl"`
 
+	// Allowparttopartcommunication: A boolean that represents if a user can create connections between Web Parts.
 	Allowparttopartcommunication *oval_sc.EntityItemBoolType `xml:"allowparttopartcommunication"`
 
+	// Allowaccesstowebpartcatalog: A boolean that represents if a user can create connections to Online Web Part Galleries.
 	Allowaccesstowebpartcatalog *oval_sc.EntityItemBoolType `xml:"allowaccesstowebpartcatalog"`
 
+	// Blockedfileextention: A single blockedfileextention for the application. An applicaiton may have zero or more blocked file extensions.
 	Blockedfileextention []oval_sc.EntityItemStringType `xml:"blockedfileextention"`
 
+	// Defaultquotatemplate: A string the represents the default quota template for the web application.
 	Defaultquotatemplate *oval_sc.EntityItemStringType `xml:"defaultquotatemplate"`
 
+	// Externalworkflowparticipantsenabled: A boolean that represents if a user is allowed to participate in workflow by sending them a copy of the document.
 	Externalworkflowparticipantsenabled *oval_sc.EntityItemBoolType `xml:"externalworkflowparticipantsenabled"`
 
+	// Recyclebinenabled: A boolean that represents if the recycle bin is enabled or disabled.
 	Recyclebinenabled *oval_sc.EntityItemBoolType `xml:"recyclebinenabled"`
 
+	// Automaticallydeleteunusedsitecollections: A boolean that represents if the site can be automatically deleted.
 	Automaticallydeleteunusedsitecollections *oval_sc.EntityItemBoolType `xml:"automaticallydeleteunusedsitecollections"`
 
+	// Selfservicesitecreationenabled: A boolean that represents if a self service site can be created.
 	Selfservicesitecreationenabled *oval_sc.EntityItemBoolType `xml:"selfservicesitecreationenabled"`
 
+	// Secondstagerecyclebinquota: Size of the second stage recycle bin quota.
 	Secondstagerecyclebinquota *oval_sc.EntityItemIntType `xml:"secondstagerecyclebinquota"`
 
+	// Recyclebinretentionperiod: The recyclebinretentionperiod is the retention period for the recyle bin.
 	Recyclebinretentionperiod *oval_sc.EntityItemIntType `xml:"recyclebinretentionperiod"`
 
+	// Outboundmailserverinstance: The string name of the outboundmailserver.
 	Outboundmailserverinstance *oval_sc.EntityItemStringType `xml:"outboundmailserverinstance"`
 
+	// Outboundmailsenderaddress: The from address that is used when sending email.
 	Outboundmailsenderaddress *oval_sc.EntityItemStringType `xml:"outboundmailsenderaddress"`
 
+	// Outboundmailreplytoaddress: The reply to address that is used when sending email.
 	Outboundmailreplytoaddress *oval_sc.EntityItemStringType `xml:"outboundmailreplytoaddress"`
 
+	// Secvalexpires: A boolean that represents if a security validation can expire.
 	Secvalexpires *oval_sc.EntityItemBoolType `xml:"secvalexpires"`
 
+	// Timeout: The timeout is the amount of time before security validation expires in seconds.
 	Timeout *oval_sc.EntityItemIntType `xml:"timeout"`
 
+	// Isadministrationwebapplication: A boolean that specifies whether the current web application is the Central Administration web application.
 	Isadministrationwebapplication *oval_sc.EntityItemBoolType `xml:"isadministrationwebapplication"`
 
+	// Applicationpoolname: A string that represents the application pool name.
 	Applicationpoolname *oval_sc.EntityItemStringType `xml:"applicationpoolname"`
 
+	// Applicationpoolusername: A string that represents the application pool username.
 	Applicationpoolusername *oval_sc.EntityItemStringType `xml:"applicationpoolusername"`
 
+	// Openitems: A boolean that represents if the permission to view the source of documents with server-side file handlers is available to the Web application.
 	Openitems *oval_sc.EntityItemBoolType `xml:"openitems"`
 
+	// Addlistitems: A boolean that represents if the permission to add items to lists, add documents to document libraries, and add Web discussion comments to the Web application.
 	Addlistitems *oval_sc.EntityItemBoolType `xml:"addlistitems"`
 
+	// Approveitems: A boolean that represents if the permission to approve a minor version of a list item or document is available to the Web application.
 	Approveitems *oval_sc.EntityItemBoolType `xml:"approveitems"`
 
+	// Deletelistitems: A boolean that represents if the permission to delete items from a list, documents from a document library, and Web discussion comments in documents is available to the Web application.
 	Deletelistitems *oval_sc.EntityItemBoolType `xml:"deletelistitems"`
 
+	// Deleteversions: A boolean that represents if the permission to delete past versions of a list item or document is available to the Web application.
 	Deleteversions *oval_sc.EntityItemBoolType `xml:"deleteversions"`
 
+	// Editlistitems: A boolean that represents if edit items in lists, edit documents in document libraries, edit Web discussion comments in documents, and customize Web Part Pages in document libraries is available to the Web application.
 	Editlistitems *oval_sc.EntityItemBoolType `xml:"editlistitems"`
 
+	// Managelists: A boolean that represents if the permission to create and delete lists, add or remove columns in a list, and add or remove public views of a list is available to the Web application.
 	Managelists *oval_sc.EntityItemBoolType `xml:"managelists"`
 
+	// Viewversions: A boolean that represents if the permission to view past versions of a list item or document is available to the Web application.
 	Viewversions *oval_sc.EntityItemBoolType `xml:"viewversions"`
 
+	// Viewlistitems: A boolean that represents if the permission to view items in lists, documents in document libraries, and view Web discussion commentsis available to the Web application.
 	Viewlistitems *oval_sc.EntityItemBoolType `xml:"viewlistitems"`
 
+	// Cancelcheckout: A boolean that represents if the permission to discard or check in a document which is checked out to another user is available to the Web application.
 	Cancelcheckout *oval_sc.EntityItemBoolType `xml:"cancelcheckout"`
 
+	// Createalerts: A boolean that represents if the permission to Create e-mail alerts is available to the Web application.
 	Createalerts *oval_sc.EntityItemBoolType `xml:"createalerts"`
 
+	// Viewformpages: A boolean that represents if the permission to view forms, views, and application pages, and enumerate lists is available to the Web application.
 	Viewformpages *oval_sc.EntityItemBoolType `xml:"viewformpages"`
 
+	// Viewpages: A boolean that represents if the permission to view pages in a Web site is available to the Web application.
 	Viewpages *oval_sc.EntityItemBoolType `xml:"viewpages"`
 
 	Addandcustomizepages *oval_sc.EntityItemBoolType `xml:"addandcustomizepages"`
 
+	// Applystylesheets: A boolean that represents if the permission to Apply a style sheet (.css file) to the Web site is available to the Web application.
 	Applystylesheets *oval_sc.EntityItemBoolType `xml:"applystylesheets"`
 
+	// Applythemeandborder: A boolean that represents if the permission to apply a theme or borders to the entire Web site is available to the Web application.
 	Applythemeandborder *oval_sc.EntityItemBoolType `xml:"applythemeandborder"`
 
+	// Browsedirectories: A boolean that represents if the permission to enumerate files and folders in a Web site using Microsoft Office SharePoint Designer and WebDAV interfaces is available to the Web application.
 	Browsedirectories *oval_sc.EntityItemBoolType `xml:"browsedirectories"`
 
+	// Browseuserinfo: A boolean that represents if the permission to view information about users of the Web site is available to the Web application.
 	Browseuserinfo *oval_sc.EntityItemBoolType `xml:"browseuserinfo"`
 
+	// Creategroups: A boolean that represents if the permission to create a group of users that can be used anywhere within the site collection is available to the Web application.
 	Creategroups *oval_sc.EntityItemBoolType `xml:"creategroups"`
 
+	// Createsscsite: A boolean that represents if the permission to create a Web site using Self-Service Site Creation is available to the Web application.
 	Createsscsite *oval_sc.EntityItemBoolType `xml:"createsscsite"`
 
+	// Editmyuserinfo: A boolean that represents if the permission to allows a user to change his or her user information, such as adding a picture is available to the Web application.
 	Editmyuserinfo *oval_sc.EntityItemBoolType `xml:"editmyuserinfo"`
 
+	// Enumeratepermissions: A boolean that represents if the permission to enumerate permissions on the Web site, list, folder, document, or list itemis is available to the Web application.
 	Enumeratepermissions *oval_sc.EntityItemBoolType `xml:"enumeratepermissions"`
 
+	// Managealerts: A boolean that represents if the permission to manage alerts for all users of the Web site is available for the Web application.
 	Managealerts *oval_sc.EntityItemBoolType `xml:"managealerts"`
 
+	// Managepermissions: A boolean that represents if the permission to create and change permission levels on the Web site and assign permissions to users and groups is available to the Web application.
 	Managepermissions *oval_sc.EntityItemBoolType `xml:"managepermissions"`
 
+	// Managesubwebs: A boolean that represents if the permission to create subsites such as team sites, Meeting Workspace sites, and Document Workspace sites is available to the Web application.
 	Managesubwebs *oval_sc.EntityItemBoolType `xml:"managesubwebs"`
 
+	// Manageweb: A boolean that represents if the permission to perform all administration tasks for the Web site as well as manage content is available to the Web application.
 	Manageweb *oval_sc.EntityItemBoolType `xml:"manageweb"`
 
+	// Open: A boolean that represents if the permission to allow users to open a Web site, list, or folder to access items inside that containeris available to the Web application.
 	Open *oval_sc.EntityItemBoolType `xml:"open"`
 
+	// Useclientintegration: A boolean that represents if the permission to use features that launch client applications; otherwise, users must work on documents locally and upload changesis is available to the Web application.
 	Useclientintegration *oval_sc.EntityItemBoolType `xml:"useclientintegration"`
 
+	// Useremoteapis: A boolean that represents if the permission to use SOAP, WebDAV, or Microsoft Office SharePoint Designer interfaces to access the Web siteis available to the Web application.
 	Useremoteapis *oval_sc.EntityItemBoolType `xml:"useremoteapis"`
 
+	// Viewusagedata: A boolean that represents if the permission to view reports on Web site usage in documents is available to the Web application.
 	Viewusagedata *oval_sc.EntityItemBoolType `xml:"viewusagedata"`
 
+	// Managepersonalviews: A boolean that represents if the permission to Create, change, and delete personal views of lists is available to the Web application.
 	Managepersonalviews *oval_sc.EntityItemBoolType `xml:"managepersonalviews"`
 
+	// Adddelprivatewebparts: A boolean that represents if the permission to add or remove personal Web Parts on a Web Part Page is available to the Web application.
 	Adddelprivatewebparts *oval_sc.EntityItemBoolType `xml:"adddelprivatewebparts"`
 
+	// Updatepersonalwebparts: A boolean that represents if the permission to update Web Parts to display personalized informationis available to the Web application.
 	Updatepersonalwebparts *oval_sc.EntityItemBoolType `xml:"updatepersonalwebparts"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpgroupItem: This spgroup item stores information for security related features related to site groups
 type SpgroupItem struct {
 	XMLName xml.Name `xml:"spgroup_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Sitecollectionurl: A string the represents the url that identifies the site collection.
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
+	// Gname: A string the represents the name of a group in a site collection.
 	Gname *oval_sc.EntityItemStringType `xml:"gname"`
 
+	// Autoacceptrequesttojoinleave: A boolean that represents if sites can automatically accepts requests.
 	Autoacceptrequesttojoinleave *oval_sc.EntityItemBoolType `xml:"autoacceptrequesttojoinleave"`
 
+	// Allowmemberseditmembership: A boolean that represents if owners other than the group owner can edit the membership of groups.
 	Allowmemberseditmembership *oval_sc.EntityItemBoolType `xml:"allowmemberseditmembership"`
 
+	// Onlyallowmembersviewmembership: A boolean that represents if owners other than the group owner can edit the membership of groups.
 	Onlyallowmembersviewmembership *oval_sc.EntityItemBoolType `xml:"onlyallowmembersviewmembership"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpwebItem: This spweb item stores information for security related features related to site collections.
 type SpwebItem struct {
 	XMLName xml.Name `xml:"spweb_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Webcollectionurl: A string that specifies a web site (the SPWeb object).
 	Webcollectionurl *oval_sc.EntityItemStringType `xml:"webcollectionurl"`
 
+	// Sitecollectionurl: A string that specifies a site collection.
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
+	// Secondarysitecolladmin: A string the represents the secondarysitecolladmin.
 	Secondarysitecolladmin *oval_sc.EntityItemStringType `xml:"secondarysitecolladmin"`
 
+	// Secondsitecolladminenabled: A boolean that represents if the secondsitecolladmin is enabled.
 	Secondsitecolladminenabled *oval_sc.EntityItemBoolType `xml:"secondsitecolladminenabled"`
 
+	// Allowanonymousaccess: A boolean that represents if a anonymous access is allowed to the web site.
 	Allowanonymousaccess *oval_sc.EntityItemBoolType `xml:"allowanonymousaccess"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SplistItem: An SPList represents a list of content on a Sharepoint web site. It consists of items or rows and columns or fields that contain data.
 type SplistItem struct {
 	XMLName xml.Name `xml:"splist_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Spsiteurl: The url that identifies the website.
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
+	// Irmenabled: The irmenabled attribute tests to see if documents that leave the Sharepoint environment are protected.
 	Irmenabled *oval_sc.EntityItemBoolType `xml:"irmenabled"`
 
+	// Enableversioning: The enableversioning attribute specifies whether backup copies of files should be created and managed in the Sharepoint system.
 	Enableversioning *oval_sc.EntityItemBoolType `xml:"enableversioning"`
 
+	// Nocrawl: The nocrawl attribute indicates that this site should not be among those crawled and indexed.
 	Nocrawl *oval_sc.EntityItemBoolType `xml:"nocrawl"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpantivirussettingsItem: An SPAntivirusSettings Item represents the set of antivirus-related security settings on a Sharepoint server.
 type SpantivirussettingsItem struct {
 	XMLName xml.Name `xml:"spantivirussettings_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Spwebservicename: The name of the SP Web Service for which to retrieve the antivirus settings or * for all web services. The default value is * which checks all SP Web services
 	Spwebservicename *oval_sc.EntityItemStringType `xml:"spwebservicename"`
 
+	// Spfarmname: The Farm in which the SP Web Service resides.
 	Spfarmname *oval_sc.EntityItemStringType `xml:"spfarmname"`
 
+	// Allowdownload: Specifies whether SharePoint users can download documents that are found to be infected.
 	Allowdownload *oval_sc.EntityItemBoolType `xml:"allowdownload"`
 
+	// Cleaningenabled: Specifies whether or not the virus scanner should attempt to cure infected files.
 	Cleaningenabled *oval_sc.EntityItemBoolType `xml:"cleaningenabled"`
 
+	// Downloadscanenabled: Specifies whether files are scanned when they are downloaded.
 	Downloadscanenabled *oval_sc.EntityItemBoolType `xml:"downloadscanenabled"`
 
+	// Numberofthreads: Specifies the number of threads that the virus scanner may use to perform virus scans.
 	Numberofthreads *oval_sc.EntityItemIntType `xml:"numberofthreads"`
 
+	// Skipsearchcrawl: Specifies whether to skip document virus scanning during a search crawl.
 	Skipsearchcrawl *oval_sc.EntityItemBoolType `xml:"skipsearchcrawl"`
 
+	// Timeout: The amount of time before the virus scanner times out in seconds.
 	Timeout *oval_sc.EntityItemIntType `xml:"timeout"`
 
+	// Uploadscanenabled: Specifies whether files are scanned for viruses when they are uploaded.
 	Uploadscanenabled *oval_sc.EntityItemBoolType `xml:"uploadscanenabled"`
 
+	// Vendorupdatecount: The current increment of the number of times the vendor has been updated.
 	Vendorupdatecount *oval_sc.EntityItemIntType `xml:"vendorupdatecount"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpsiteadministrationItem: This spsiteadministration item stores information for security related features and permissions related to each top-level web sites. See the defintion of the SPSiteAdministration class in the SharePoint object model documentation.
 type SpsiteadministrationItem struct {
 	XMLName xml.Name `xml:"spsiteadministration_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Sitecollectionurl: A string the represents the url that identifies the sitecollection application.
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
+	// Storagemaxlevel: The storagemaxlevel is the maximum storage allowed for the site.
 	Storagemaxlevel *oval_sc.EntityItemIntType `xml:"storagemaxlevel"`
 
+	// Storagewarninglevel: When the storagewarninglevel is reached a site collection receive advance notice before available storage is expended.
 	Storagewarninglevel *oval_sc.EntityItemIntType `xml:"storagewarninglevel"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpsiteItem: This spsite item stores information for security related features for sites. See the defintion of the SPSite class in the SharePoint object model documentation.
 type SpsiteItem struct {
 	XMLName xml.Name `xml:"spsite_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Sitecollectionurl: A string the represents the url that identifies the sitecollection application.
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
+	// Quotaname: The string that represents the name of the quota for a specific site collection.
 	Quotaname *oval_sc.EntityItemStringType `xml:"quotaname"`
 
 	Url *oval_sc.EntityItemStringType `xml:"url"`
@@ -249,212 +331,268 @@ type SpsiteItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpcrawlruleItem: The spcrawlrule_item specifies rules that the SharePoint system follows when it crawls the content of sites stored within it.
 type SpcrawlruleItem struct {
 	XMLName xml.Name `xml:"spcrawlrule_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Spsiteurl: A URL that represents the resource (eg. sites, documents,etc.) on which the crawlrule tests should be run or * if the check should be run on all sites/documents on the server.
 	Spsiteurl *oval_sc.EntityItemStringType `xml:"spsiteurl"`
 
+	// Crawlashttp: Specifies whether the crawler should crawl content from a hierarchical content source, such as HTTP content.
 	Crawlashttp *oval_sc.EntityItemBoolType `xml:"crawlashttp"`
 
+	// Enabled: Specifies whether a particular crawl rule is enabled.
 	Enabled *oval_sc.EntityItemBoolType `xml:"enabled"`
 
+	// Followcomplexurls: Specifies whether the indexer should crawl websites that contain the question mark (?) character.
 	Followcomplexurls *oval_sc.EntityItemBoolType `xml:"followcomplexurls"`
 
+	// Path: The path to which a particular crawl rule applies.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Priority: The priority setting for a particular crawl rule.
 	Priority *oval_sc.EntityItemIntType `xml:"priority"`
 
+	// Suppressindexing: Specifies whether the crawler should exclude the content of items that this rule applies to from the content index.
 	Suppressindexing *oval_sc.EntityItemBoolType `xml:"suppressindexing"`
 
+	// Accountname: A string containing the account name for the crawl rule.
 	Accountname *oval_sc.EntityItemStringType `xml:"accountname"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpjobdefinitionItem: This represents the set of Job Definitions that are scheduled to run on each SharePoint Web Application
 type SpjobdefinitionItem struct {
 	XMLName xml.Name `xml:"spjobdefinition_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Webappuri: The URI that represents the web application for which the IIS Settings should be checked.
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
+	// Displayname: The name of the job as displayed in the SharePoint Central Administration site.
 	Displayname *oval_sc.EntityItemStringType `xml:"displayname"`
 
+	// Isdisabled: Determines whether or not the job definition is enabled.
 	Isdisabled *oval_sc.EntityItemBoolType `xml:"isdisabled"`
 
+	// Retry: Determines whether the job definition should be retried if it ends abnormally.
 	Retry *oval_sc.EntityItemBoolType `xml:"retry"`
 
+	// Title: The title of a job as displayed in the SharePoint Central Administration site.
 	Title *oval_sc.EntityItemStringType `xml:"title"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Spjobdefinition510Item: This represents the set of Job Definitions that are scheduled to run on each SharePoint Web Application
 type Spjobdefinition510Item struct {
 	XMLName xml.Name `xml:"spjobdefinition510_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Webappuri: The URI that represents the web application for which the IIS Settings should be checked.
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
+	// Displayname: The name of the job as displayed in the SharePoint Central Administration site.
 	Displayname *oval_sc.EntityItemStringType `xml:"displayname"`
 
+	// Isdisabled: Determines whether or not the job definition is enabled.
 	Isdisabled *oval_sc.EntityItemBoolType `xml:"isdisabled"`
 
+	// Retry: Determines whether the job definition should be retried if it ends abnormally.
 	Retry *oval_sc.EntityItemBoolType `xml:"retry"`
 
+	// Title: The title of a job as displayed in the SharePoint Central Administration site.
 	Title *oval_sc.EntityItemStringType `xml:"title"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// BestbetItem: This represents the set of Best Bets for a site collection.
 type BestbetItem struct {
 	XMLName xml.Name `xml:"bestbet_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Sitecollectionurl: The sitecollectionurl represents the URL for the site.
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
+	// Bestbeturl: The bestbeturl represents the URL for the best bet.
 	Bestbeturl *oval_sc.EntityItemStringType `xml:"bestbeturl"`
 
+	// Title: The title of the Best Bet.
 	Title *oval_sc.EntityItemStringType `xml:"title"`
 
+	// Description: The description of the Best Bet.
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// InfopolicycollItem: This represents the set of Information Policies for a site collection.
 type InfopolicycollItem struct {
 	XMLName xml.Name `xml:"infopolicycoll_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Sitecollectionurl: The sitecollectionurl represents the URL for the site.
 	Sitecollectionurl *oval_sc.EntityItemStringType `xml:"sitecollectionurl"`
 
+	// IdElm: The id of the sitecollection poilicy.
 	IdElm *oval_sc.EntityItemStringType `xml:"id"`
 
+	// Name: The name of the sitecollection poilicy.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Description: The description of the Information Policy.
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
+	// Longdescription: The long description of an Information Policy.
 	Longdescription *oval_sc.EntityItemStringType `xml:"longdescription"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpdiagnosticsserviceItem: This represents the set of diagnostic capabilities for Windows Sharepoint Services.
 type SpdiagnosticsserviceItem struct {
 	XMLName xml.Name `xml:"spdiagnosticsservice_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Farmname: The farm whose diagnostic capabilities should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
+	// Displayname: The name of the diagnostic service as shown in the Sharepoint Central Administration site.
 	Displayname *oval_sc.EntityItemStringType `xml:"displayname"`
 
+	// Logcutinterval: The number of minutes to capture events to a single log file. This value lies in the range 0 to 1440. The default value is 30.
 	Logcutinterval *oval_sc.EntityItemIntType `xml:"logcutinterval"`
 
+	// Loglocation: The path to the file system directory where log files are created and stored.
 	Loglocation *oval_sc.EntityItemStringType `xml:"loglocation"`
 
+	// Logstokeep: The value that indicates the number of log files to create. This lies in the range 0 to 1024 with a default of 96.
 	Logstokeep *oval_sc.EntityItemIntType `xml:"logstokeep"`
 
+	// Required: The required property specifies whether an instance of the spdiagnosticsservice must be running on the farm.
 	Required *oval_sc.EntityItemBoolType `xml:"required"`
 
+	// Typename: The friendly name for the service as displayed in the Central Administration and in logs. This should be "Windows Sharepoint Diagnostics Service" by default.
 	Typename *oval_sc.EntityItemStringType `xml:"typename"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SpdiagnosticslevelItem: The diagnostics level associated with a particular instance of a diagnostics service on a Sharepoint farm.
 type SpdiagnosticslevelItem struct {
 	XMLName xml.Name `xml:"spdiagnosticslevel_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Farmname: The farm whose diagnostics levels should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
+	// Eventseverity: The event severity setting for a particular diagnostic level category.
 	Eventseverity *EntityItemEventSeverityType `xml:"eventseverity"`
 
+	// Hidden: Specifies whether the trace log category is hidden in the Windows Sharepoint Services Central Administration interface.
 	Hidden *oval_sc.EntityItemBoolType `xml:"hidden"`
 
+	// Levelid: A string that represents the ID of the trace log category. This is its English language name.
 	Levelid *oval_sc.EntityItemStringType `xml:"levelid"`
 
+	// Levelname: The name of the trace log category. This represents the localized name for the category.
 	Levelname *oval_sc.EntityItemStringType `xml:"levelname"`
 
+	// Traceseverity: The trace severity setting for a particular diagnostic level category.
 	Traceseverity *EntityItemTraceSeverityType `xml:"traceseverity"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SppolicyfeatureItem: This represents a policy feature that is installed on the Sharepoint server farm.
 type SppolicyfeatureItem struct {
 	XMLName xml.Name `xml:"sppolicyfeature_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Farmname: The farm whose policy features should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_sc.EntityItemStringType `xml:"farmname"`
 
+	// Configpage: The URL to a web control used to edit policy instance-level settings.
 	Configpage *oval_sc.EntityItemStringType `xml:"configpage"`
 
+	// Defaultcustomdata: The default values for any policy instance-level settings for a policy feature.
 	Defaultcustomdata *oval_sc.EntityItemStringType `xml:"defaultcustomdata"`
 
+	// Description: The short description of the policy feature and of the service it provides.
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
+	// Globalconfigpage: The URL to a web control used to edit server farm-level settings for this policy feature.
 	Globalconfigpage *oval_sc.EntityItemStringType `xml:"globalconfigpage"`
 
+	// Globalcustomdata: The default settings for any server farm-level settings for this policy feature.
 	Globalcustomdata *oval_sc.EntityItemStringType `xml:"globalcustomdata"`
 
+	// Group: The policy feature group to which a policy feature belongs.
 	Group *oval_sc.EntityItemStringType `xml:"group"`
 
+	// Name: The name to display in the Microsoft Office Sharepoint Server 2007 interface for an information policy feature.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Publisher: The name of the creator of the policy feature as it is displayed in the Microsoft Office Sharepoint Server 2007 user interface.
 	Publisher *oval_sc.EntityItemStringType `xml:"publisher"`
 
+	// State: Specifies whether the policy feature is hidden or visible.
 	State *EntityItemPolicyFeatureStateType `xml:"state"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SppolicyItem: This represents a policy on the Sharepoint system.
 type SppolicyItem struct {
 	XMLName xml.Name `xml:"sppolicy_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Webappuri: The URI that represents the web application for which policies should be checked.
 	Webappuri *oval_sc.EntityItemStringType `xml:"webappuri"`
 
+	// Urlzone: The zone for which policies should be checked.
 	Urlzone *EntityItemUrlZoneType `xml:"urlzone"`
 
+	// Displayname: The user or group display name for a policy. This defaults to the user name if the display name cannot be resolved through Active Directory.
 	Displayname *oval_sc.EntityItemStringType `xml:"displayname"`
 
+	// Issystemuser: Specifies whether the user identified by a particular policy is visible only as a System account within the Windows Sharepoint Services user interface.
 	Issystemuser *oval_sc.EntityItemBoolType `xml:"issystemuser"`
 
+	// Username: The user name of the user or group that is associated with policy.
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
+	// Policyroletype: The policy role type to apply globally in a Sharepoint web application to a user or group.
 	Policyroletype *EntityItemPolicyRoleType `xml:"policyroletype"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -462,64 +600,74 @@ type SppolicyItem struct {
 
 // XSD ComplexType declarations
 
+// EntityItemUrlZoneType: The EntityItemUrlZoneType restricts a string value to a set of values that describe the different IIS Url Zones. The empty string is also allowed to support empty element associated with error conditions.
 type EntityItemUrlZoneType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemEventSeverityType: The EntityItemEventSeverityType restricts a string value to a set of values that describe the different states that can be configured for a diagnostics level event severity level property of the diagnostics service.
 type EntityItemEventSeverityType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemTraceSeverityType: The EntityItemTraceSeverityType restricts a string value to a set of values that describe the different states that can be configured for a diagnostics level trace severity level property of the diagnostics service.
 type EntityItemTraceSeverityType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPolicyFeatureStateType: The EntityItemPolicyFeatureStateType restricts a string value to a set of values that describe the different states that can be configured for a policy feature.
 type EntityItemPolicyFeatureStateType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPolicyRoleType: The EntityItemPolicyRoleType restricts a string value to a set of values that describe the different Policy settings for Access Control that are available for users.
 type EntityItemPolicyRoleType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

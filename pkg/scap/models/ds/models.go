@@ -12,12 +12,14 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// DataStreamCollection: Holds a collection of data streams and components.
 type DataStreamCollection struct {
 	XMLName xml.Name `xml:"data-stream-collection"`
 
+	// Id: This MUST be a globally unique ID.
 	Id string `xml:"id,attr"`
 
+	// SchematronVersion: The version of the requirements Schematron ruleset to which the instance conforms.
 	SchematronVersion string `xml:"schematron-version,attr"`
 
 	DataStream []DataStream `xml:"data-stream"`
@@ -26,62 +28,76 @@ type DataStreamCollection struct {
 
 	ExtendedComponent []ExtendedComponent `xml:"extended-component"`
 
+	// Signature: A digital signature of a data stream.
 	Signature []xml_dsig.SignatureType `xml:"Signature"`
 }
 
-// Element
+// DataStream: An SCAP data stream containing pointers to all of the components composing the data stream.
 type DataStream struct {
 	XMLName xml.Name `xml:"data-stream"`
 
+	// Id: This MUST be a globally unique ID.
 	Id string `xml:"id,attr"`
 
+	// UseCase: The SCAP capability being expressed by this data stream. The type is expressed to allow for future use of this schema while indicating the currently acceptable values.
 	UseCase string `xml:"use-case,attr"`
 
+	// ScapVersion: The version of SCAP expressed by this data stream. The type is expressed to allow for future use of this schema while indicating the currently acceptable values.
 	ScapVersion string `xml:"scap-version,attr"`
 
+	// Timestamp: The time when the data stream was created or last modified.
 	Timestamp string `xml:"timestamp,attr"`
 
+	// Dictionaries: Holds pointers to dictionary components.
 	Dictionaries *RefListType `xml:"dictionaries"`
 
+	// Checklists: Holds pointers to checklist components.
 	Checklists *RefListType `xml:"checklists"`
 
+	// Checks: Holds pointers to check components.
 	Checks RefListType `xml:"checks"`
 
+	// ExtendedComponents: Holds pointers to non-standard SCAP components captured as extended-component elements.
 	ExtendedComponents *RefListType `xml:"extended-components"`
 }
 
-// Element
+// Component: A component that is used by an SCAP data stream.
 type Component struct {
 	XMLName xml.Name `xml:"component"`
 
+	// Id: This MUST be a globally unique ID.
 	Id string `xml:"id,attr"`
 
+	// Timestamp: The time when the component was created or last modified.
 	Timestamp string `xml:"timestamp,attr"`
 
 	Benchmark *cdf.Benchmark `xml:"Benchmark"`
 
 	OvalDefinitions *oval_def.OvalDefinitions `xml:"oval_definitions"`
 
-	Ocil *inter.OCILType `xml:"ocil"`
+	Ocil *inter.Ociltype `xml:"ocil"`
 
 	CpeList *cpe_dict.ListType `xml:"cpe-list"`
 
 	Tailoring *cdf.TailoringType `xml:"Tailoring"`
 }
 
-// Element
+// ExtendedComponent: A component that holds non-standard SCAP content.
 type ExtendedComponent struct {
 	XMLName xml.Name `xml:"extended-component"`
 
+	// Id: This MUST be a globally unique ID.
 	Id string `xml:"id,attr"`
 
+	// Timestamp: The time when the component was created or last modified.
 	Timestamp string `xml:"timestamp,attr"`
 }
 
-// Element
+// ComponentRef: An XLink element that points to a component.
 type ComponentRef struct {
 	XMLName xml.Name `xml:"component-ref"`
 
+	// Id: This MUST be a globally unique ID.
 	Id string `xml:"id,attr"`
 
 	XlinkType string `xml:"type,attr"`
@@ -97,16 +113,12 @@ type ContentSourceType struct {
 	XMLName xml.Name
 
 	Href string `xml:"href,attr"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type RefListType struct {
 	XMLName xml.Name
 
 	ComponentRef []ComponentRef `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

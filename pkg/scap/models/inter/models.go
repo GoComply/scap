@@ -6,1504 +6,1856 @@ import (
 	"encoding/xml"
 )
 
-// Element
+// The Open Checklist Interactive Language (OCIL) is a language to express a set of questions to be presented and procedures to interpret responses to these questions for the purpose of developing security checklists. Although its intended domain of use is IT security, its generic nature allows for other applications. For instance, it could be used for authoring research surveys, academic course exams, and instructional walkthroughs. It can also be used to harvest information from previous data collection efforts.
+
+// Ocil: The ocil element is the root XML element of an OCIL document. It contains information about one or more questionnaires. It may also contain results elements to store prior responses.
 type Ocil struct {
 	XMLName xml.Name `xml:"ocil"`
 
+	// Generator: The generator element contains information related to the generation of the file. Specifically, a generator contains information about the application used to create the file, when it was created, and the schema to use to validate it.
 	Generator GeneratorType `xml:"generator"`
 
+	// Document: This element contains document-level information, including title, descriptions, and notices.
 	Document *DocumentType `xml:"document"`
 
+	// Questionnaires: The questionnaires element contains all the questionnaire constructs defined within the document.
 	Questionnaires QuestionnairesType `xml:"questionnaires"`
 
+	// TestActions: The test_actions element contains all the boolean, choice, string, and numeric test actions defined within the document.
 	TestActions TestActionsType `xml:"test_actions"`
 
+	// Questions: The questions element contains all the boolean, choice, string, and numeric questions, and any other supporting elements (e.g. choice group) defined within the document.
 	Questions QuestionsType `xml:"questions"`
 
+	// Artifacts: The artifacts element contains all the artifact constructs to be retrieved (as necessary) during evaluation.
 	Artifacts *ArtifactsType `xml:"artifacts"`
 
+	// Variables: The variables element contains all the constant, local, and external variables available to be used within the document.
 	Variables *VariablesType `xml:"variables"`
 
+	// Results: The results element contains the results of an evaluation of the OCIL file. This includes records of all questionnaire results, question results, and test_action results.
 	Results *ResultsType `xml:"results"`
 }
 
-// Element
+// TestAction: This is a common base element for the question_test_action element.
 type TestAction struct {
 	XMLName xml.Name `xml:"test_action"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:",any"`
 }
 
-// Element
+// QuestionTestAction: The question_test_action element contains a reference to a single question along with a set of handlers that indicate how processing should proceed based on the answer provided. This element is abstract and is implemented in a document as a boolean_question_test_action, choice_question_test_action, numeric_question_test_action, or string_question_test_action. The type of question_test_action must match the type of question referenced (e.g. a boolean_question_test_action MUST reference a boolean_question.)
 type QuestionTestAction struct {
 	XMLName xml.Name `xml:"question_test_action"`
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// BooleanQuestionTestAction: A boolean_question_test_action element references a boolean_question and includes handlers for TRUE (YES) or FALSE (NO) responses.
 type BooleanQuestionTestAction struct {
 	XMLName xml.Name `xml:"boolean_question_test_action"`
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// WhenTrue: The element when_true specifies the action to do when the answer is true.
 	WhenTrue TestActionConditionType `xml:"when_true"`
 
+	// WhenFalse: The element when_false specifies the action to do when the answer is false.
 	WhenFalse TestActionConditionType `xml:"when_false"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// ChoiceQuestionTestAction: A choice_question_test_action element references a choice_question and includes handlers for the various choices set out in the choice_question.
 type ChoiceQuestionTestAction struct {
 	XMLName xml.Name `xml:"choice_question_test_action"`
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// WhenChoice: Specifies the action to perform when the indicated choice is selected.
 	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// NumericQuestionTestAction: A numeric_question_test_action element references a numeric_question and includes handlers that indicate actions to perform based on whether the response matches a particular value or falls within a particular range.
 type NumericQuestionTestAction struct {
 	XMLName xml.Name `xml:"numeric_question_test_action"`
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// StringQuestionTestAction: A string_question_test_action element references a string_question and includes handlers that indicate actions to perform based on whether the response matches a given regular expression.
 type StringQuestionTestAction struct {
 	XMLName xml.Name `xml:"string_question_test_action"`
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// WhenPattern: This element holds information on what to do when the answer matches a specified regular expression pattern.
 	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// Question: A question element contains information for one question that needs to be answered. It can be a boolean_question, choice_question, numeric_question, or string_question depending on the set of acceptable answers.
 type Question struct {
 	XMLName xml.Name `xml:"question"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// BooleanQuestion: A boolean_question is a type of question element with valid responses of either {TRUE, FALSE} or {YES, NO}.
 type BooleanQuestion struct {
 	XMLName xml.Name `xml:"boolean_question"`
 
+	// DefaultAnswer: The default_answer attribute specifies the default value of the boolean_question. Its value may be set to true or false.
 	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
+	// Model: The model attribute specifies whether the response should be from the set {True, False} or the set {YES, NO}. If the value of this attribute is not set, then it defaults to MODEL_YES_NO (i.e. response can either be YES or NO).
 	Model string `xml:"model,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// ChoiceQuestion: A choice_question is a type of question element with one or more acceptable answers specified by the author. One of these specified answers will be given as the response. Acceptable answers are specified either explicitly using the choice element or implicitly using the choice_group_ref element to reference a choice_group element. Choices are presented in the order in which they are provided. All the choices in a choice_group are inserted in the order in which they appear within the choice_group.
 type ChoiceQuestion struct {
 	XMLName xml.Name `xml:"choice_question"`
 
+	// DefaultAnswerRef: The default_answer_ref specifies the choice id of the default answer to the question.
 	DefaultAnswerRef string `xml:"default_answer_ref,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// NumericQuestion: A numeric_question is a type of question element that requires a numeric answer. Acceptable values may be positive or negative and may include decimals.
 type NumericQuestion struct {
 	XMLName xml.Name `xml:"numeric_question"`
 
+	// DefaultAnswer: An optional default value may be specified as the answer.
 	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// StringQuestion: A string_question is a type of question element that requires a string answer.
 type StringQuestion struct {
 	XMLName xml.Name `xml:"string_question"`
 
+	// DefaultAnswer: An optional default value may be specified as the answer.
 	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// Variable: A variable element holds information defined by the author, an answer value, or values from external sources.
 type Variable struct {
 	XMLName xml.Name `xml:"variable"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// ConstantVariable: A constant_variable element holds a value defined by the author of the document.
 type ConstantVariable struct {
 	XMLName xml.Name `xml:"constant_variable"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Value: The value element holds the data stored on the variable.
 	Value string `xml:"value"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// LocalVariable: A local_variable element holds a value defined during evaluation. It will try to match and set the value based on the answer to a question.
 type LocalVariable struct {
 	XMLName xml.Name `xml:"local_variable"`
 
+	// QuestionRef: The question_ref attribute holds the unique identifier of the question in which the variable is linked.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Set: The set element contains information describing how to compute the value to be stored on the variable. It holds the patterns, choice_refs, range or boolean values to be matched with the answer to the linked question; and the appropriate value to be stored on the variable based on the match.
 	Set string `xml:"set"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// ExternalVariable: An external_variable element is a variable defined elsewhere (an external source).
 type ExternalVariable struct {
 	XMLName xml.Name `xml:"external_variable"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// Target: A target element describes the user, system, or role that applies to all questionnaires in scope. For instance, specifying that user Joe Smith should complete this document; applies to system with ip address of 123.45.67.89; applies to all systems functioning as (role) web servers; or all (role) administrators should complete this document.
 type Target struct {
 	XMLName xml.Name `xml:"target"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Name: The name element holds the name of a target (system or user).
 	Name string `xml:"name"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// User: A user element contains information about a target user such as name, organization, position, email, and role.
 type User struct {
 	XMLName xml.Name `xml:"user"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Organization: The organization element specifies the company or institution that the user belongs to.
 	Organization []string `xml:"organization"`
 
+	// Position: The position element holds the job title or the position of the user within his/her organization.
 	Position []string `xml:"position"`
 
+	// Email: The email element holds the email address where the user can be contacted.
 	Email []string `xml:"email"`
 
+	// Name: The name element holds the name of a target (system or user).
 	Name string `xml:"name"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// System: The system element contains information about the organization it belongs to, a set of ip addresses of computers/networks included in the system, description about it, and the roles it performs.
 type System struct {
 	XMLName xml.Name `xml:"system"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Organization: The organization element specifies what company or institution the system belongs to.
 	Organization string `xml:"organization"`
 
+	// Ipaddress: The ipaddress element holds the ip address of a target computer/network.
 	Ipaddress []string `xml:"ipaddress"`
 
+	// Description: The description element holds information on what the target system is about.
 	Description *TextType `xml:"description"`
 
+	// Name: The name element holds the name of a target (system or user).
 	Name string `xml:"name"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
 }
 
-// Element
+// QuestionResult: A question_result element contains result information associated with a specific question. The specific type of question_result (boolean_question_result, choice_question_result, etc.) depends on the type of the associated question (boolean_question, choice_question, etc.)
 type QuestionResult struct {
 	XMLName xml.Name `xml:"question_result"`
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 }
 
-// Element
+// BooleanQuestionResult: A boolean_question_result element contains a reference to a boolean_question, the response, and whether the question was successfully posed.
 type BooleanQuestionResult struct {
 	XMLName xml.Name `xml:"boolean_question_result"`
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The value of the answer to the boolean_question. It could either be TRUE or FALSE.
 	Answer bool `xml:",any"`
 }
 
-// Element
+// ChoiceQuestionResult: A choice_question_result element contains a reference to a choice_question, the response, and whether the question was successfully posed.
 type ChoiceQuestionResult struct {
 	XMLName xml.Name `xml:"choice_question_result"`
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The answer element contains a choice_ref attribute that identifies the selected choice.
 	Answer ChoiceAnswerType `xml:",any"`
 }
 
-// Element
+// NumericQuestionResult: A numeric_question_result element contains a reference to a numeric_question, the number provided in response, and whether the question was successfully posed.
 type NumericQuestionResult struct {
 	XMLName xml.Name `xml:"numeric_question_result"`
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The decimal value of the answer to a numeric_question.
 	Answer float64 `xml:",any"`
 }
 
-// Element
+// StringQuestionResult: A string_question_result element contains a reference to a string_question, the string provided in response, and whether the question was successfully posed.
 type StringQuestionResult struct {
 	XMLName xml.Name `xml:"string_question_result"`
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The string value of the answer to a string_question.
 	Answer string `xml:",any"`
 }
 
-// Element
+// ArtifactValue: The artifact_value element contains either a piece of artifact data itself or a pointer to it.
 type ArtifactValue struct {
 	XMLName xml.Name `xml:"artifact_value"`
 }
 
-// Element
+// TextArtifactValue: The text_artifact_value element contains an artifact that was provided as a text file or a block of text.
 type TextArtifactValue struct {
 	XMLName xml.Name `xml:"text_artifact_value"`
 
+	// MimeType: The MIME type of the embedded content. Since the list of MIME types are continually expanding, this schema does not make an attempt to constrain the allowed values.
 	MimeType string `xml:"mime_type,attr"`
 
+	// Data: The data element contains the text of an artifact that was provided as a text file or a block of text.
 	Data string `xml:",any"`
 }
 
-// Element
+// BinaryArtifactValue: The binary_artifact_value element contains an artifact that was provided as a binary file.
 type BinaryArtifactValue struct {
 	XMLName xml.Name `xml:"binary_artifact_value"`
 
+	// MimeType: The MIME type of the embedded content. Since the list of MIME types are continually expanding, this schema does not make an attempt to constrain the allowed values.
 	MimeType string `xml:"mime_type,attr"`
 
+	// Data: The data element contains a binary file, which was provided as an artifact.
 	Data string `xml:",any"`
 }
 
-// Element
+// ReferenceArtifactValue: The reference_artifact_value element contains a reference to the location of an artifact.
 type ReferenceArtifactValue struct {
 	XMLName xml.Name `xml:"reference_artifact_value"`
 
+	// Reference: The reference element contains a URI, which is a pointer to the location of an artifact.
 	Reference Reference `xml:",any"`
 }
 
-// Element
+// Expression: The expression element provides a substitution for a variety of expressions that can be used to compute a variable value.
 type Expression struct {
 	XMLName xml.Name `xml:"expression"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
 }
 
-// Element
+// WhenPattern: The when_pattern element type defines criteria for evaluating the result of a numeric or string question result based on a pattern. If the pattern matches, the expression must evaluate to TRUE.
 type WhenPattern struct {
 	XMLName xml.Name `xml:"when_pattern"`
 
+	// Pattern: The pattern attribute is a string representation of the pattern to be matched.
 	Pattern string `xml:"pattern,attr"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
 }
 
-// Element
+// WhenChoice: The when_choice element type defines criteria for evaluating the result of a choice question result based on the answer selected. If the choice_ref matches identifier of the selected choice, the expression must evaluate to TRUE.
 type WhenChoice struct {
 	XMLName xml.Name `xml:"when_choice"`
 
-	ChoiceRef ChoiceIDPattern `xml:"choice_ref,attr"`
+	// ChoiceRef: The choice_ref attribute is a reference to the choice associated with the question.
+	ChoiceRef ChoiceIdpattern `xml:"choice_ref,attr"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
 }
 
-// Element
+// WhenRange: The when_range element type defines criteria for evaluating the result of a numeric question result based on the answer selected. If the answer is within the range (inclusive), the expression must evaluate to TRUE.
 type WhenRange struct {
 	XMLName xml.Name `xml:"when_range"`
 
+	// Min: The minimum decimal value of the range (inclusive).
 	Min float64 `xml:"min,attr"`
 
+	// Max: The maximum decimal value of the range (inclusive).
 	Max float64 `xml:"max,attr"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
 }
 
-// Element
+// WhenBoolean: The when_boolean element type defines criteria for evaluating the result of a boolean question result based on the answer selected. If the answer matches, the expression must evaluate to TRUE.
 type WhenBoolean struct {
 	XMLName xml.Name `xml:"when_boolean"`
 
+	// Value: The boolean value to match.
 	Value bool `xml:"value,attr"`
 
+	// ValueElm: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	ValueElm string `xml:",any"`
 }
 
-// Element
+// Reference: The reference element contains a URI, which is a pointer to the location of an artifact.
 type Reference struct {
 	XMLName xml.Name `xml:"reference"`
 
+	// Href: The href attribute specifies a URI provided by the user.
 	Href string `xml:"href,attr"`
 }
 
 // XSD ComplexType declarations
 
-type OCILType struct {
+// Ociltype: The OCILType represents the primary content model for the OCIL.
+type Ociltype struct {
 	XMLName xml.Name
 
+	// Generator: The generator element contains information related to the generation of the file. Specifically, a generator contains information about the application used to create the file, when it was created, and the schema to use to validate it.
 	Generator GeneratorType `xml:"generator"`
 
+	// Document: This element contains document-level information, including title, descriptions, and notices.
 	Document *DocumentType `xml:"document"`
 
+	// Questionnaires: The questionnaires element contains all the questionnaire constructs defined within the document.
 	Questionnaires QuestionnairesType `xml:"questionnaires"`
 
+	// TestActions: The test_actions element contains all the boolean, choice, string, and numeric test actions defined within the document.
 	TestActions TestActionsType `xml:"test_actions"`
 
+	// Questions: The questions element contains all the boolean, choice, string, and numeric questions, and any other supporting elements (e.g. choice group) defined within the document.
 	Questions QuestionsType `xml:"questions"`
 
+	// Artifacts: The artifacts element contains all the artifact constructs to be retrieved (as necessary) during evaluation.
 	Artifacts *ArtifactsType `xml:"artifacts"`
 
+	// Variables: The variables element contains all the constant, local, and external variables available to be used within the document.
 	Variables *VariablesType `xml:"variables"`
 
+	// Results: The results element contains the results of an evaluation of the OCIL file. This includes records of all questionnaire results, question results, and test_action results.
 	Results *ResultsType `xml:"results"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionnairesType: The QuestionnairesType type defines a container for a set of questionnaire elements.
 type QuestionnairesType struct {
 	XMLName xml.Name
 
+	// Questionnaire: A questionnaire contains a set of questions that determines compliance with a check. Each questionnaire returns a value based on the responses to the various questions that it references. Each questionnaire acting as top-level should represent a single compliance check, such as might be referenced by an XCCDF Rule.
 	Questionnaire []QuestionnaireType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionnaireType: The QuestionnaireType type defines a structure that represents a specific question or set of questions that evaluate to a single result. A questionnaire may contain multiple test_actions. test_actions may be nested and aggregated through an acceptable operation to produce the result of a check.
 type QuestionnaireType struct {
 	XMLName xml.Name
 
+	// Id: Each questionnaire is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// ChildOnly: This attribute specifies whether or not this questionnaire should only appear as a child of another questionnaire. All questionnaires must be defined within the body of the ocil element and, by default, interpreters might simply grab all questionnaires and evaluate them. However, questionnaires can reference other questionnaires through a test_action_ref. If an author references a questionnaire in this way, they may not wish that the questionnaire be evaluated except as a child of another questionnaire. By setting the child_only attribute to true, the author is indicating that the given questionnaire should not be a "top-level" questionnaire but should instead only be evaluated as the child of another questionnaire.
 	ChildOnly string `xml:"child_only,attr,omitempty"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element contains a descriptive heading for the set of test_actions.
 	Title *TextType `xml:"title"`
 
+	// Description: The description element holds information describing the set of test_actions.
 	Description *TextType `xml:"description"`
 
+	// References: The references element holds one or more reference elements. Examples could include references to other standards, including but not limited to CVE, CCE, or CPE.
 	References *ReferencesType `xml:"references"`
 
+	// Actions: The actions element holds one or more test_action elements along with the operators used to combine them into a single result.
 	Actions OperationType `xml:"actions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// GeneratorType: The GeneratorType type defines an element that is used to hold information about when a particular OCIL document was generated, what version of the schema was used, what tool was used to generate the document, and what version of the tool was used.
 type GeneratorType struct {
 	XMLName xml.Name
 
+	// ProductName: The product_name element specifies the name of the application used to generate the file.
 	ProductName string `xml:"product_name"`
 
+	// ProductVersion: The product_version element specifies the version of the application used to generate the file.
 	ProductVersion string `xml:"product_version"`
 
+	// Author: The author element identifies one of the authors of this document.
 	Author []UserType `xml:"author"`
 
+	// SchemaVersion: The schema_version element specifies the version of the OCIL schema that the document has been written in and that should be used for validation.
 	SchemaVersion float64 `xml:"schema_version"`
 
+	// Timestamp: The timestamp element specifies when the particular OCIL document was generated. The format for the timestamp is yyyy-mm-ddThh:mm:ss.
 	Timestamp string `xml:"timestamp"`
 
+	// AdditionalData: The additional_data element can be used to contain metadata extensions about the generator used to create the OCIL document instance.
 	AdditionalData *ExtensionContainerType `xml:"additional_data"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type ExtensionContainerType struct {
 	XMLName xml.Name
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// DocumentType: The DocumentType type describes structures used to provide document-level information, including title, descriptions, and notices.
 type DocumentType struct {
 	XMLName xml.Name
 
+	// Title: The title element provides a title for this document.
 	Title string `xml:"title"`
 
+	// Description: Each description element contains part of an overall description for the entire document. (Note that questionnaires contain their own description for questionnaire specific descriptions.)
 	Description []string `xml:"description"`
 
+	// Notice: Each notice element contains a notice or warning to the user of this document.
 	Notice []string `xml:"notice"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestActionsType: The TestActionsType type defines a container for a set of test action elements.
 type TestActionsType struct {
 	XMLName xml.Name
 
+	// TestAction: The test_action element contains information about what action to take based on the answer to a referenced question element within a questionnaire. It can be a compound_test_action, boolean_question_test_action, choice_question_test_action, numeric_question_test_action, or string_question_test_action.
 	TestAction []ItemBaseType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionTestActionType: The QuestionTestActionType type defines structures that are used to hold handlers for non-standard results (UNKNOWN, NOT_TESTED, NOT_APPLICABLE, and ERROR) received from a referenced question. All children of question_test_action extend this type.
 type QuestionTestActionType struct {
 	XMLName xml.Name
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// BooleanQuestionTestActionType: The BooleanQuestionTestActionType type defines a structure that references a boolean_question and includes handlers for TRUE (YES) or FALSE (NO) responses.
 type BooleanQuestionTestActionType struct {
 	XMLName xml.Name
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// WhenTrue: The element when_true specifies the action to do when the answer is true.
 	WhenTrue TestActionConditionType `xml:"when_true"`
 
+	// WhenFalse: The element when_false specifies the action to do when the answer is false.
 	WhenFalse TestActionConditionType `xml:"when_false"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ChoiceQuestionTestActionType: The ChoiceQuestionTestActionType type defines a structure that references a choice_question and includes handlers for the various choices set out in the choice_question.
 type ChoiceQuestionTestActionType struct {
 	XMLName xml.Name
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// WhenChoice: Specifies the action to perform when the indicated choice is selected.
 	WhenChoice []ChoiceTestActionConditionType `xml:"when_choice"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// NumericQuestionTestActionType: The NumericQuestionTestActionType type defines a structure that references a numeric_question and includes handlers that indicate actions to perform based on whether the response matches a particular value or falls within a particular range.
 type NumericQuestionTestActionType struct {
 	XMLName xml.Name
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// StringQuestionTestActionType: The StringQuestionTestActionType type defines a structure that references a string_question and includes handlers that indicate actions to perform based on whether the response matches a given regular expression.
 type StringQuestionTestActionType struct {
 	XMLName xml.Name
 
+	// QuestionRef: The question_ref attribute contains the id value of a question element.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// WhenPattern: This element holds information on what to do when the answer matches a specified regular expression pattern.
 	WhenPattern []PatternTestActionConditionType `xml:"when_pattern"`
 
+	// Title: The title element contains a descriptive heading for this set of handlers.
 	Title *TextType `xml:"title"`
 
+	// WhenUnknown: The when_unknown element contains processing instructions for when the received result is UNKNOWN.
 	WhenUnknown *TestActionConditionType `xml:"when_unknown"`
 
+	// WhenNotTested: The when_not_tested element contains processing instructions for when the received result is NOT_TESTED.
 	WhenNotTested *TestActionConditionType `xml:"when_not_tested"`
 
+	// WhenNotApplicable: The when_not_applicable element contains processing instructions for when the received result is NOT_APPLICABLE.
 	WhenNotApplicable *TestActionConditionType `xml:"when_not_applicable"`
 
+	// WhenError: The when_error element contains processing instructions for when the received result is ERROR.
 	WhenError *TestActionConditionType `xml:"when_error"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestActionRefType: The TestActionRefType type defines a structure that holds a reference (id) to a test_action or questionnaire.
 type TestActionRefType struct {
 	XMLName xml.Name
 
+	// Negate: The negate attribute can be used to specify whether to toggle the result from PASS to FAIL, and vice versa. A result other than PASS or FAIL (e.g. ERROR, NOT_TESTED) will be unchanged by a negate operation.
 	Negate bool `xml:"negate,attr"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// ChoiceTestActionConditionType: The ChoiceTestActionConditionType type defines a structure that specifies the action to take in a choice_test_action when a particular choice is selected in response to a choice_question.
 type ChoiceTestActionConditionType struct {
 	XMLName xml.Name
 
-	ChoiceRef []ChoiceIDPattern `xml:"choice_ref"`
+	// ChoiceRef: The choice_ref element specifies the id of a choice.
+	ChoiceRef []ChoiceIdpattern `xml:"choice_ref"`
 
+	// ArtifactRefs: The artifact_refs element contains all the artifacts that must be requested when a question, test_action, or questionnaire has been evaluated.
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
+	// Result: This element indicates that a final value (i.e. PASS, FAIL, ERROR, UNKNOWN, NOT_TESTED, NOT_APPLICABLE) should be returned if the encapsulating handler is invoked.
 	Result *ResultType `xml:"result"`
 
+	// TestActionRef: This element indicates that a new test_action should be processed if the encapsulating handler is invoked.
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EqualsTestActionConditionType: The EqualsTestActionConditionType defines a structure that specifies the action to take in a numeric_test_action when a particular value is given in response to a numeric_question.
 type EqualsTestActionConditionType struct {
 	XMLName xml.Name
 
-	VarRef VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	VarRef VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// Value: Each value holds what is to be matched.
 	Value []float64 `xml:"value"`
 
+	// ArtifactRefs: The artifact_refs element contains all the artifacts that must be requested when a question, test_action, or questionnaire has been evaluated.
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
+	// Result: This element indicates that a final value (i.e. PASS, FAIL, ERROR, UNKNOWN, NOT_TESTED, NOT_APPLICABLE) should be returned if the encapsulating handler is invoked.
 	Result *ResultType `xml:"result"`
 
+	// TestActionRef: This element indicates that a new test_action should be processed if the encapsulating handler is invoked.
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// RangeTestActionConditionType: The RangeTestActionConditionType type defines a structure that specifies the action to take in a numeric_test_action when a value given in response to a numeric_question falls within the indicated range.
 type RangeTestActionConditionType struct {
 	XMLName xml.Name
 
+	// Range: Each range element holds a single numeric range.
 	Range []RangeType `xml:"range"`
 
+	// ArtifactRefs: The artifact_refs element contains all the artifacts that must be requested when a question, test_action, or questionnaire has been evaluated.
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
+	// Result: This element indicates that a final value (i.e. PASS, FAIL, ERROR, UNKNOWN, NOT_TESTED, NOT_APPLICABLE) should be returned if the encapsulating handler is invoked.
 	Result *ResultType `xml:"result"`
 
+	// TestActionRef: This element indicates that a new test_action should be processed if the encapsulating handler is invoked.
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// PatternTestActionConditionType: The PatternTestActionConditionType type defines a structure that specifies the action to take in a string_test_action when a string given in response to a string_question matches the given regular expression.
 type PatternTestActionConditionType struct {
 	XMLName xml.Name
 
+	// Pattern: Each pattern element holds a regular expression against which the response string is to be compared.
 	Pattern []PatternType `xml:"pattern"`
 
+	// ArtifactRefs: The artifact_refs element contains all the artifacts that must be requested when a question, test_action, or questionnaire has been evaluated.
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
+	// Result: This element indicates that a final value (i.e. PASS, FAIL, ERROR, UNKNOWN, NOT_TESTED, NOT_APPLICABLE) should be returned if the encapsulating handler is invoked.
 	Result *ResultType `xml:"result"`
 
+	// TestActionRef: This element indicates that a new test_action should be processed if the encapsulating handler is invoked.
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// PatternType: The PatternType type defines a structure that specifies a regular expression against which a string will be compared.
 type PatternType struct {
 	XMLName xml.Name
 
-	VarRef VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	VarRef VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// RangeType: The RangeType type defines a structure that specifies a range against which a numeric response is to be compared.
 type RangeType struct {
 	XMLName xml.Name
 
+	// Min: The min element contains a minimum value for the range.
 	Min *RangeValueType `xml:"min"`
 
+	// Max: The max element contains a maximum value for teh range.
 	Max *RangeValueType `xml:"max"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestActionConditionType: The TestActionConditionType complex type specifies processing instructions - either produce a result or move on to another test. The TestActionConditionType is extended by all handlers ("when_...") in test_actions.
 type TestActionConditionType struct {
 	XMLName xml.Name
 
+	// ArtifactRefs: The artifact_refs element contains all the artifacts that must be requested when a question, test_action, or questionnaire has been evaluated.
 	ArtifactRefs *ArtifactRefsType `xml:"artifact_refs"`
 
+	// Result: This element indicates that a final value (i.e. PASS, FAIL, ERROR, UNKNOWN, NOT_TESTED, NOT_APPLICABLE) should be returned if the encapsulating handler is invoked.
 	Result *ResultType `xml:"result"`
 
+	// TestActionRef: This element indicates that a new test_action should be processed if the encapsulating handler is invoked.
 	TestActionRef *TestActionRefType `xml:"test_action_ref"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// RangeValueType: Defines a specific bound in a range.
 type RangeValueType struct {
 	XMLName xml.Name
 
+	// Inclusive: The inclusive attribute specifies whether the value should be in the specified range. The default is true, indicating it is included.
 	Inclusive bool `xml:"inclusive,attr"`
 
-	VarRef VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: A reference to a variable to use as the value.
+	VarRef VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// QuestionsType: The QuestionsType type defines structures containing a set of QuestionType and ChoiceGroupType elements.
 type QuestionsType struct {
 	XMLName xml.Name
 
+	// Question: The question element contains information for a single question to be answered. Based on the data type of acceptable answers to the question, it can be a boolean_question, choice_question, numeric_question, or string_question.
 	Question []QuestionType `xml:"question"`
 
+	// ChoiceGroup: Holds choice groups which represent possible sets of choices for choice_questions. Choice_groups may be reused across multiple choice_questions.
 	ChoiceGroup []ChoiceGroupType `xml:"choice_group"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionTextType: The QuestionTextType complex type defines a structure to hold the text and variables that comprise a question's text.
 type QuestionTextType struct {
 	XMLName xml.Name
 
+	// Sub: Allow the inclusion of arbitrary text contained within a variable.
 	Sub []SubstitutionTextType `xml:",any"`
 
 	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionType: The QuestionType complex type defines a structure to describe a question and any instructions to help in determining an answer.
 type QuestionType struct {
 	XMLName xml.Name
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// BooleanQuestionType: The BooleanQuestionType type defines a question with valid responses of either {TRUE, FALSE} or {YES, NO}.
 type BooleanQuestionType struct {
 	XMLName xml.Name
 
+	// DefaultAnswer: The default_answer attribute specifies the default value of the boolean_question. Its value may be set to true or false.
 	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
+	// Model: The model attribute specifies whether the response should be from the set {True, False} or the set {YES, NO}. If the value of this attribute is not set, then it defaults to MODEL_YES_NO (i.e. response can either be YES or NO).
 	Model string `xml:"model,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ChoiceQuestionType: The ChoiceQuestionType type defines a question with one or more acceptable answers specified by the author. The response will be one of these specified answers. Acceptable answers are specified either explicitly using the choice element or implicitly using the choice_group_ref element to reference a choice_group element. Choices are presented in the order in which they are provided. All the choices in a choice_group are inserted in the order in which they appear within the choice_group.
 type ChoiceQuestionType struct {
 	XMLName xml.Name
 
+	// DefaultAnswerRef: The default_answer_ref specifies the choice id of the default answer to the question.
 	DefaultAnswerRef string `xml:"default_answer_ref,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// NumericQuestionType: The NumericQuestionType type defines a question that requires a numeric answer. Acceptable values may be positive or negative and may include decimals.
 type NumericQuestionType struct {
 	XMLName xml.Name
 
+	// DefaultAnswer: An optional default value may be specified as the answer.
 	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// StringQuestionType: The StringQuestionType type defines a question that requires a string answer.
 type StringQuestionType struct {
 	XMLName xml.Name
 
+	// DefaultAnswer: An optional default value may be specified as the answer.
 	DefaultAnswer string `xml:"default_answer,attr,omitempty"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// QuestionText: The question_text element provides the text of the question to pose.
 	QuestionText []QuestionTextType `xml:"question_text"`
 
+	// Instructions: An optional instructions element may be included to hold additional instructions to assist the user in determining the answer to the question.
 	Instructions *InstructionsType `xml:"instructions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ChoiceType: The ChoiceType type defines structures that hold information about one acceptable answer to a choice_question.
 type ChoiceType struct {
 	XMLName xml.Name
 
-	Id ChoiceIDPattern `xml:"id,attr"`
+	// Id: All choices are tagged with a unique identifier that may be referenced by a choice_test_action referencing the encapsulating choice_question.
+	Id ChoiceIdpattern `xml:"id,attr"`
 
-	VarRef VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	VarRef VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// ChoiceGroupType: The ChoiceGroupType type defines a group of choices that may then be reused in multiple choice_question elements. For example, a document may include multiple choice_questions with the options of "Good", "Fair", or "Poor". By defining these choices in a single choice_group, the author would not need to list them out explicitly in every choice_question.
 type ChoiceGroupType struct {
 	XMLName xml.Name
 
-	Id ChoiceGroupIDPattern `xml:"id,attr"`
+	// Id: Holds the id of this choice group. This id is referenced within choice_question elements to include the choices contained in a group.
+	Id ChoiceGroupIdpattern `xml:"id,attr"`
 
+	// Choice: Holds the information associated with one of the possible responses for a choice_question.
 	Choice []ChoiceType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// InstructionsType: The InstructionsType type defines a series of steps intended to guide the user in answering a question.
 type InstructionsType struct {
 	XMLName xml.Name
 
+	// Title: The title element contains a descriptive heading for the instructions.
 	Title TextType `xml:"title"`
 
+	// Step: Each step element contains a single step within the instructions.
 	Step []StepType `xml:"step"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ResultsType: The ResultsType type defines structures containing results from questionnaires, test actions, questions, artifacts, and metadata about the start/end time of evaluation, any targets, and a short caption or title.
 type ResultsType struct {
 	XMLName xml.Name
 
+	// StartTime: The start_time attribute is an optional attribute that specifies when the evaluation of this OCIL file started.
 	StartTime string `xml:"start_time,attr,omitempty"`
 
+	// EndTime: The end_time attribute is an optional attribute that specifies when the evaluation of this OCIL file ended.
 	EndTime string `xml:"end_time,attr,omitempty"`
 
+	// Title: The title element contains a descriptive heading or caption describing the result set.
 	Title *TextType `xml:"title"`
 
+	// QuestionnaireResults: The questionnare_results element contains computed results of all the evaluated questionnaires.
 	QuestionnaireResults *QuestionnaireResultsType `xml:"questionnaire_results"`
 
+	// TestActionResults: The test_action_results element contains computed results of all the evaluated test_action types.
 	TestActionResults *TestActionResultsType `xml:"test_action_results"`
 
+	// QuestionResults: The question_results element contains computed results of all evaluated question types.
 	QuestionResults *QuestionResultsType `xml:"question_results"`
 
+	// ArtifactResults: The artifact_results element contains all artifacts that have been retrieved during evaluation. Scope is the entire document.
 	ArtifactResults *ArtifactResultsType `xml:"artifact_results"`
 
+	// Targets: The targets element contains all the actual target users, systems, and roles for which the OCIL document has been applied.
 	Targets *TargetsType `xml:"targets"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionnaireResultsType: The QuestionnaireResultsType type defines structures containing computed results of all the evaluated questionnaires.
 type QuestionnaireResultsType struct {
 	XMLName xml.Name
 
+	// QuestionnaireResult: The questionnaire_result element contains information about the result of a particular questionnaire.
 	QuestionnaireResult []QuestionnaireResultType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestActionResultsType: The TestActionResultsType type defines structures containing computed results of all the evaluated test action types.
 type TestActionResultsType struct {
 	XMLName xml.Name
 
+	// TestActionResult: The test_action_result element contains the result of a test_action evaluation. One of these elements will appear for each test_action evaluated.
 	TestActionResult []TestActionResultType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionResultsType: The QuestionResultsType type defines structures containing computed results of all evaluated question types.
 type QuestionResultsType struct {
 	XMLName xml.Name
 
+	// QuestionResult: A question_result element contains result information associated with a specific question. The specific type of question_result (boolean_question_result, choice_question_result, etc.) depends on the type of the associated question (boolean_question, choice_question, etc.)
 	QuestionResult []QuestionResultType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionnaireResultType: The QuestionnaireResultType type defines structures containing the computed result, associated artifacts and targets of a particular questionnaire.
 type QuestionnaireResultType struct {
 	XMLName xml.Name
 
-	QuestionnaireRef QuestionnaireIDPattern `xml:"questionnaire_ref,attr"`
+	// QuestionnaireRef: The questionnaire_ref attribute identifies a particular questionnaire using its id.
+	QuestionnaireRef QuestionnaireIdpattern `xml:"questionnaire_ref,attr"`
 
+	// Result: The result attribute holds the result of evaluating the specified questionnaire.
 	Result ResultType `xml:"result,attr"`
 
+	// ArtifactResults: The artifact_results element contains a set of retrieved artifacts.
 	ArtifactResults *ArtifactResultsType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestActionResultType: The TestActionResultType type defines structures containing all computed results of a TestActionType. One of these elements will appear for each test_action evaluated.
 type TestActionResultType struct {
 	XMLName xml.Name
 
+	// TestActionRef: The test_action_ref attribute identifies a specific test_action using its id.
 	TestActionRef TestActionRefValuePattern `xml:"test_action_ref,attr"`
 
+	// Result: The result attribute holds the result of evaluating the specified test_action specified.
 	Result ResultType `xml:"result,attr"`
 
+	// ArtifactResults: The artifact_results element contains a set of retrieved artifacts.
 	ArtifactResults *ArtifactResultsType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// QuestionResultType: The QuestionResultType complex type defines structures that hold information about a question and the response to it.
 type QuestionResultType struct {
 	XMLName xml.Name
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// BooleanQuestionResultType: The BooleanQuestionResultType type defines structures containing a reference to a boolean_question, the response, and whether the question was successfully posed.
 type BooleanQuestionResultType struct {
 	XMLName xml.Name
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The value of the answer to the boolean_question. It could either be TRUE or FALSE.
 	Answer bool `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ChoiceQuestionResultType: The ChoiceQuestionResultType type defines structures containing a reference to a choice_question, the response, and whether the question was successfully posed.
 type ChoiceQuestionResultType struct {
 	XMLName xml.Name
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The answer element contains a choice_ref attribute that identifies the selected choice.
 	Answer ChoiceAnswerType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// NumericQuestionResultType: The NumericQuestionResultType type defines structures containing a reference to a numeric_question, the provided response, and whether the question was successfully posed.
 type NumericQuestionResultType struct {
 	XMLName xml.Name
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The decimal value of the answer to a numeric_question.
 	Answer float64 `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// StringQuestionResultType: The StringQuestionResultType type defines structures containing a reference to a string_question, the string provided in response, and whether the question was successfully posed.
 type StringQuestionResultType struct {
 	XMLName xml.Name
 
-	QuestionRef QuestionIDPattern `xml:"question_ref,attr"`
+	// QuestionRef: The question_ref attribute contains the id of a question.
+	QuestionRef QuestionIdpattern `xml:"question_ref,attr"`
 
+	// Response: The response attribute classifies the response. If the answer to the question is standard, the response is set to ANSWERED (the default). If, however, the answer is exceptional (UNKNOWN, NOT_APPLICABLE, etc.) then this attribute will be set to the corresponding exceptional result.
 	Response UserResponseType `xml:"response,attr,omitempty"`
 
+	// Answer: The string value of the answer to a string_question.
 	Answer string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ChoiceAnswerType: The ChoiceAnswerType type defines structures containing a choice_ref attribute that identifies the selected choice.
 type ChoiceAnswerType struct {
 	XMLName xml.Name
 
-	ChoiceRef ChoiceIDPattern `xml:"choice_ref,attr"`
-
-	InnerXml string `xml:",innerxml"`
+	// ChoiceRef: The choice_ref attribute specifies the id of the selected choice.
+	ChoiceRef ChoiceIdpattern `xml:"choice_ref,attr"`
 }
 
+// ArtifactsType: The ArtifactsType type defines structures containing a set of artifact elements.
 type ArtifactsType struct {
 	XMLName xml.Name
 
+	// Artifact: An artifact element holds information about an artifact, which is evidence supporting an answer. Examples include a file or submitted text.
 	Artifact []ArtifactType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ArtifactType: The ArtifactType type defines structures containing information about an artifact such as title, description, persistence, and if it's required to complete an answer to a question.
 type ArtifactType struct {
 	XMLName xml.Name
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Persistent: The persistent attribute specifies whether the artifact is time sensitive or not. If the value is true, then a snapshot or a copy must be kept. Otherwise, a pointer to the location of the artifact is enough. The default value is true.
 	Persistent string `xml:"persistent,attr,omitempty"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element holds a short summary or a caption about the artifact.
 	Title TextType `xml:"title"`
 
+	// Description: The description element holds information that describes what the artifact is about.
 	Description TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ArtifactRefsType: The ArtifactRefsType type defines a collection of artifact references that may be collected as part of a questionnaire assessment.
 type ArtifactRefsType struct {
 	XMLName xml.Name
 
+	// ArtifactRef: A single reference to an artifact.
 	ArtifactRef []ArtifactRefType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ArtifactRefType: The ArtifactRefType type defines a single artifact reference that may be collected as part of a questionnaire assessment.
 type ArtifactRefType struct {
 	XMLName xml.Name
 
-	Idref ArtifactIDPattern `xml:"idref,attr"`
+	// Idref: The identifier of a referenced artifact.
+	Idref ArtifactIdpattern `xml:"idref,attr"`
 
+	// Required: The required element specifies whether the artifact must be included or not. If true, then it must be included. The questionnaire is not considered complete without it. Otherwise, it is desired but not necessary.
 	Required bool `xml:"required,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ArtifactResultsType: The ArtifactResultsType type defines structures containing a set of artifact_result elements.
 type ArtifactResultsType struct {
 	XMLName xml.Name
 
+	// ArtifactResult: The artifact_result element contains an artifact, its value, who submitted it, and who provided it.
 	ArtifactResult []ArtifactResultType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ArtifactValueType: The ArtifactValueType type defines structures containing either the artifact data itself or a pointer to it.
 type ArtifactValueType struct {
 	XMLName xml.Name
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EmbeddedArtifactValueType: The base data structure that holds artifact values that are embedded into the results model.
 type EmbeddedArtifactValueType struct {
 	XMLName xml.Name
 
+	// MimeType: The MIME type of the embedded content. Since the list of MIME types are continually expanding, this schema does not make an attempt to constrain the allowed values.
 	MimeType string `xml:"mime_type,attr"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TextArtifactValueType: The data model that holds text-based artifacts.
 type TextArtifactValueType struct {
 	XMLName xml.Name
 
+	// MimeType: The MIME type of the embedded content. Since the list of MIME types are continually expanding, this schema does not make an attempt to constrain the allowed values.
 	MimeType string `xml:"mime_type,attr"`
 
+	// Data: The data element contains the text of an artifact that was provided as a text file or a block of text.
 	Data string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// BinaryArtifactValueType: The data model that holds binary data-based artifacts.
 type BinaryArtifactValueType struct {
 	XMLName xml.Name
 
+	// MimeType: The MIME type of the embedded content. Since the list of MIME types are continually expanding, this schema does not make an attempt to constrain the allowed values.
 	MimeType string `xml:"mime_type,attr"`
 
+	// Data: The data element contains a binary file, which was provided as an artifact.
 	Data string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ReferenceArtifactValueType: The data model that references external artifacts.
 type ReferenceArtifactValueType struct {
 	XMLName xml.Name
 
+	// Reference: The reference element contains a URI, which is a pointer to the location of an artifact.
 	Reference Reference `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ArtifactResultType: The ArtifactResultType type defines structures containing information about the submitted artifact, its value, who provided and submitted it, and when it was submitted.
 type ArtifactResultType struct {
 	XMLName xml.Name
 
-	ArtifactRef ArtifactIDPattern `xml:"artifact_ref,attr"`
+	// ArtifactRef: The artifact_ref holds the unique identifier of the artifact object that describes what the artifact is about, the type of data it holds, and other metadata.
+	ArtifactRef ArtifactIdpattern `xml:"artifact_ref,attr"`
 
+	// Timestamp: The timestamp attribute holds the date and time when the artifact was collected.
 	Timestamp string `xml:"timestamp,attr"`
 
+	// ArtifactValue: The artifact_value element contains either the artifact data itself or a pointer to it.
 	ArtifactValue ArtifactValueType `xml:"artifact_value"`
 
+	// Provider: The provider element contains information about the user or system that provided the artifact.
 	Provider ProviderValuePattern `xml:"provider"`
 
+	// Submitter: The submitter element contains information about the user who submitted the artifact.
 	Submitter UserType `xml:"submitter"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TargetsType: The TargetsType type defines structures containing a set of target elements.
 type TargetsType struct {
 	XMLName xml.Name
 
+	// Target: A target element describes the user, system, or role that applies to all questionnaires in scope. For instance, specifying that user Joe Smith should complete this document; applies to system with ip address of 123.45.67.89; applies to all systems functioning as (role) web servers; or all (role) administrators should complete this document.
 	Target []NamedItemBaseType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// UserType: The UserType type defines structures containing information about a user such as name, organization, position, email, and role.
 type UserType struct {
 	XMLName xml.Name
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Organization: The organization element specifies the company or institution that the user belongs to.
 	Organization []string `xml:"organization"`
 
+	// Position: The position element holds the job title or the position of the user within his/her organization.
 	Position []string `xml:"position"`
 
+	// Email: The email element holds the email address where the user can be contacted.
 	Email []string `xml:"email"`
 
+	// Name: The name element holds the name of a target (system or user).
 	Name string `xml:"name"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// SystemTargetType: The SystemTargetType type defines structures containing information about the organization it belongs to, a set of ip addresses of computers/networks included in the system, descrioption about it, and the roles it performs.
 type SystemTargetType struct {
 	XMLName xml.Name
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Organization: The organization element specifies what company or institution the system belongs to.
 	Organization string `xml:"organization"`
 
+	// Ipaddress: The ipaddress element holds the ip address of a target computer/network.
 	Ipaddress []string `xml:"ipaddress"`
 
+	// Description: The description element holds information on what the target system is about.
 	Description *TextType `xml:"description"`
 
+	// Name: The name element holds the name of a target (system or user).
 	Name string `xml:"name"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// VariablesType: The VariablesType type defines structures containing a set of variables.
 type VariablesType struct {
 	XMLName xml.Name
 
+	// Variable: A variable element holds a value defined by the author, a value based on a question's answer, or a value from an external source.
 	Variable []VariableType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// VariableType: The VariableType type defines structures used to hold a single value.
 type VariableType struct {
 	XMLName xml.Name
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ConstantVariableType: The ConstantVariableType type defines structures containing a value defined by the author of the document.
 type ConstantVariableType struct {
 	XMLName xml.Name
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Value: The value element holds the data stored on the variable.
 	Value string `xml:"value"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// LocalVariableType: The LocalVariableType type defines structures containing a value determined during evaluation. The value is determined based on the answer to the linked question. If one or more set elements are present, the value is computed based on those set elements. The value stored in the first set element that produces a match pattern is used. If none of the set elements have a pattern that matches the response, then an error result is generated. If no set element is provided, the value used will be the same as the answer, with a few exceptions. The mappings are listed below. 1) If the question is a boolean question and the variable data type is NUMERIC, then the value based on the answer must be 1 for true and 0 for false. 2) If the question is a boolean question and the variable data type is TEXT, then the value is determined by the question's model as follows: a) MODEL_YES_NO: the value must be yes if true or no if false. b) MODEL_TRUE_FALSE: the value must be true if true or false if false. 3) If the question is a choice question, the variable data type must be TEXT and the value must be set to the text value of the choice. 4) If the question is a numeric question, the variable data type must be NUMERIC and the value must be set to the value of the answer. 5) If the question is a string question, the variable data type must be TEXT and the value must be set to the value of the answer.
 type LocalVariableType struct {
 	XMLName xml.Name
 
+	// QuestionRef: The question_ref attribute holds the unique identifier of the question in which the variable is linked.
 	QuestionRef string `xml:"question_ref,attr"`
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Set: The set element contains information describing how to compute the value to be stored on the variable. It holds the patterns, choice_refs, range or boolean values to be matched with the answer to the linked question; and the appropriate value to be stored on the variable based on the match.
 	Set string `xml:"set"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ExternalVariableType: The ExternalVariableType type defines structures containing a value defined elsewhere or some external source.
 type ExternalVariableType struct {
 	XMLName xml.Name
 
+	// Id: Each item is required to have a unique identifier that conforms to the definition of NCName in the Recommendation "Namespaces in XML 1.0", i.e., all XML 1.0 names that do not contain colons.
 	Id string `xml:"id,attr"`
 
+	// Datatype: The datatype attribute specifies how to treat the variable's value. It can be TEXT or NUMERIC.
 	Datatype string `xml:"datatype,attr"`
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Description: The description element holds information that describes the value stored on the variable.
 	Description *TextType `xml:"description"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// SetExpressionBaseType: The SetExpressionBaseType type is the base type of all set expressions. It defines the value to use if the expression evaluates to TRUE.
 type SetExpressionBaseType struct {
 	XMLName xml.Name
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionPatternType struct {
 	XMLName xml.Name
 
+	// Pattern: The pattern attribute is a string representation of the pattern to be matched.
 	Pattern string `xml:"pattern,attr"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionChoiceType struct {
 	XMLName xml.Name
 
-	ChoiceRef ChoiceIDPattern `xml:"choice_ref,attr"`
+	// ChoiceRef: The choice_ref attribute is a reference to the choice associated with the question.
+	ChoiceRef ChoiceIdpattern `xml:"choice_ref,attr"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionRangeType struct {
 	XMLName xml.Name
 
+	// Min: The minimum decimal value of the range (inclusive).
 	Min float64 `xml:"min,attr"`
 
+	// Max: The maximum decimal value of the range (inclusive).
 	Max float64 `xml:"max,attr"`
 
+	// Value: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	Value string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type SetExpressionBooleanType struct {
 	XMLName xml.Name
 
+	// Value: The boolean value to match.
 	Value bool `xml:"value,attr"`
 
+	// ValueElm: The value element contains the data to be stored on the variable if the expression evaluates to TRUE.
 	ValueElm string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// VariableSetType: The VariableSetType type defines structures containing information describing how to compute a variable value. It holds the patterns, choice_refs, range, or boolean values to be matched; and the appropriate value to be stored on the variable based on the match.
 type VariableSetType struct {
 	XMLName xml.Name
 
+	// Expression: The expression element provides a substitution for a variety of expressions that can be used to compute a variable value. Each expression must be evaluated in order until one expression matches. The computed value of the set is the value of first expression that matches.
 	Expression []SetExpressionBaseType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// SubstitutionTextType: A type that is used to represent text from a variable that may be inserted into a text string within this model.
 type SubstitutionTextType struct {
 	XMLName xml.Name
 
-	VarRef VariableIDPattern `xml:"var_ref,attr"`
-
-	InnerXml string `xml:",innerxml"`
+	VarRef VariableIdpattern `xml:"var_ref,attr"`
 }
 
+// ReferenceType: The ReferenceType complex type defines structures used to hold information about an external reference given its URI and description.
 type ReferenceType struct {
 	XMLName xml.Name
 
+	// Href: The href attribute holds the URI of an external reference. This may be the namespace associated with the information in the body or a web URL containing relevant information.
 	Href string `xml:"href,attr"`
 
+	// XmlLang: This attribute specifies the language in which to interpret the information.
 	XmlLang string `xml:"lang,attr"`
 
 	Text     string `xml:",chardata"`
 	InnerXml string `xml:",innerxml"`
 }
 
+// StepType: The StepType complex type defines structures that describe one step (out of possibly multiple steps) that a user should take to respond to a question. The steps would appear as part of the question's instructions element.
 type StepType struct {
 	XMLName xml.Name
 
+	// IsDone: The is_done attribute indicates whether this step has been done. The value is true when it is done. Otherwise, it is false. It is an optional attribute that defaults to false.
 	IsDone bool `xml:"is_done,attr,omitempty"`
 
+	// IsRequired: The is_required attribute indicates whether a step is required or not. If it is not, then it can be skipped. It is an optional attribute that defaults to true.
 	IsRequired bool `xml:"is_required,attr,omitempty"`
 
+	// Description: The description element contains information about this step.
 	Description *TextType `xml:"description"`
 
+	// Reference: The reference element contains information about any external references related to this step.
 	Reference []ReferenceType `xml:"reference"`
 
+	// Step: The step element contains a substep for this step.
 	Step []StepType `xml:"step"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ItemBaseType: The ItemBaseType complex type defines structures allowing a set of notes to be included. This type is inherited by many of the elements in the OCIL language.
 type ItemBaseType struct {
 	XMLName xml.Name
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// NamedItemBaseType: The NamedItemBaseType complex type defines structures allowing a set of notes and the name of a target (system or user) to be included.
 type NamedItemBaseType struct {
 	XMLName xml.Name
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Name: The name element holds the name of a target (system or user).
 	Name string `xml:"name"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// CompoundTestActionType: The CompoundTestActionType type describes the structures used to combine multiple test_action elements into a single result.
 type CompoundTestActionType struct {
 	XMLName xml.Name
 
+	// Revision: The specific refision of this item. This attribute is optional to support compatability with existing content. By default the revision is '0' meaning that it is the initial revision. It is assumed that subsequent revisions will increment this value by 1.
 	Revision uint64 `xml:"revision,attr"`
 
+	// Title: The title element contains a descriptive heading for the set of test_actions.
 	Title *TextType `xml:"title"`
 
+	// Description: The description element holds information describing the set of test_actions.
 	Description *TextType `xml:"description"`
 
+	// References: The references element holds one or more reference elements. Examples could include references to other standards, including but not limited to CVE, CCE, or CPE.
 	References *ReferencesType `xml:"references"`
 
+	// Actions: The actions element holds one or more test_action elements along with the operators used to combine them into a single result.
 	Actions OperationType `xml:"actions"`
 
+	// Notes: An optional set of notes to describe additional information.
 	Notes []string `xml:"notes"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ReferencesType: The ReferencesType complex type contains a set of references.
 type ReferencesType struct {
 	XMLName xml.Name
 
+	// Reference: The reference element contains information about any external references. Examples could include references to other standards such as CVE, CCE, or CPE.
 	Reference []ReferenceType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// OperationType: The OperationType type defines structures that hold a set of test_actions and provide instructions as to how to aggregate their individual results into a single result.
 type OperationType struct {
 	XMLName xml.Name
 
+	// Operation: The operation attribute describes how to aggregate the results of a set of test_actions. Its value defaults to the Boolean operator "AND".
 	Operation OperatorType `xml:"operation,attr,omitempty"`
 
+	// Negate: The negate attribute can be used to specify whether to toggle the result from PASS to FAIL, and vice versa. A result other than PASS or FAIL (e.g. ERROR, NOT_TESTED) will be unchanged by a negate operation.
 	Negate bool `xml:"negate,attr,omitempty"`
 
+	// TestActionRef: The test_action_ref element holds the identifier of a test_action element. At least one test_action_ref must be included.
 	TestActionRef []TestActionRefType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TextType: The TextType complex type defines an element that holds basic string information.
 type TextType struct {
 	XMLName xml.Name
 
+	// XmlLang: This attribute specifies the language in which to interpret the information.
 	XmlLang string `xml:"lang,attr"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
 // XSD SimpleType declarations
 
+// BooleanQuestionModelType: The BooleanQuestionModelType type provides the acceptable models (i.e. set of acceptable responses) for a boolean_question.
 type BooleanQuestionModelType string
 
 const BooleanQuestionModelTypeModelYesNo BooleanQuestionModelType = "MODEL_YES_NO"
 
 const BooleanQuestionModelTypeModelTrueFalse BooleanQuestionModelType = "MODEL_TRUE_FALSE"
 
+// ResultType: The ResultType simple type defines acceptable result values for questionnaires and test_actions.
 type ResultType string
 
+// ExceptionalResultType: The ExceptionalResultType type defines possible exceptional results of a question.
 type ExceptionalResultType string
 
 const ExceptionalResultTypeUnknown ExceptionalResultType = "UNKNOWN"
@@ -1514,34 +1866,46 @@ const ExceptionalResultTypeNotTested ExceptionalResultType = "NOT_TESTED"
 
 const ExceptionalResultTypeNotApplicable ExceptionalResultType = "NOT_APPLICABLE"
 
+// UserResponseType: The UserResponseType type defines structures containing the type of response. The question could have been answered or an exceptional condition may have occurred.
 type UserResponseType string
 
+// VariableDataType: The VariableDataType simple type defines how a variable data value should be treated or used.
 type VariableDataType string
 
 const VariableDataTypeText VariableDataType = "TEXT"
 
 const VariableDataTypeNumeric VariableDataType = "NUMERIC"
 
+// OperatorType: The OperatorType simple type provides a list of possible operator values that operate on a set of test_action elements.
 type OperatorType string
 
 const OperatorTypeAnd OperatorType = "AND"
 
 const OperatorTypeOr OperatorType = "OR"
 
+// TestActionRefValuePattern: A test_action_ref may refer to either a test_action or a questionnaire. This type represents the union of these two ID patterns.
 type TestActionRefValuePattern string
 
-type QuestionnaireIDPattern string
+// QuestionnaireIdpattern: ID values for questionnaires must match this pattern. Each ID must be unique within an OCIL document.
+type QuestionnaireIdpattern string
 
-type QuestionTestActionIDPattern string
+// QuestionTestActionIdpattern: ID values for test_actions must match this pattern. Each ID must be unique within an OCIL document.
+type QuestionTestActionIdpattern string
 
-type QuestionIDPattern string
+// QuestionIdpattern: ID values for questions must match this pattern. Each ID must be unique within an OCIL document.
+type QuestionIdpattern string
 
-type ChoiceIDPattern string
+// ChoiceIdpattern: ID values for choices in choice_questions must match this pattern. Each ID must be unique within an OCIL document.
+type ChoiceIdpattern string
 
-type ChoiceGroupIDPattern string
+// ChoiceGroupIdpattern: ID values for choice_group references in choice_questions must match this pattern. Each ID must be unique within an OCIL document.
+type ChoiceGroupIdpattern string
 
-type VariableIDPattern string
+// VariableIdpattern: ID values for variable references must match this pattern. Each ID must be unique within an OCIL document.
+type VariableIdpattern string
 
-type ArtifactIDPattern string
+// ArtifactIdpattern: ID values for artifact references must match this pattern. Each ID must be unique within an OCIL document.
+type ArtifactIdpattern string
 
+// ProviderValuePattern: Provider for artifacts may be a user or a system. This type represents the union of these two ID patterns.
 type ProviderValuePattern string

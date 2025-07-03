@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the NETCONF (RFC 6241) protocol-specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here
+
+// ConfigTest: The config_test is used to check the properties of the XML output from a GET-CONFIG command, for the running configuration. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a config_object and the optional state element specifies the data to check.
 type ConfigTest struct {
 	XMLName xml.Name `xml:"config_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type ConfigTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ConfigObject: The config_object element is used by a config_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type ConfigObject struct {
 	XMLName xml.Name `xml:"config_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type ConfigObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at. Any valid Xpath 1.0 statement is usable with one exception, at most one field may be identified in the Xpath. This is because the value_of element in the data section is only designed to work against a single field. The only valid operator for xpath is equals since there is an infinite number of possible xpaths and determinining all those that do not equal a given xpath would be impossible.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type ConfigObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ConfigState: The config_state element defines the different information that can be used to evaluate the result of a specific config xpath evaluation. This includes the xpath used and the value of this xpath.
 type ConfigState struct {
 	XMLName xml.Name `xml:"config_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,8 +76,10 @@ type ConfigState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`

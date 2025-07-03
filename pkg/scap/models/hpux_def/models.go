@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the HP-UX specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// GetconfTest: From /usr/bin/getconf. See getconf manpage for specific fields
 type GetconfTest struct {
 	XMLName xml.Name `xml:"getconf_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -40,7 +42,7 @@ type GetconfTest struct {
 type GetconfObject struct {
 	XMLName xml.Name `xml:"getconf_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,8 +52,10 @@ type GetconfObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// ParameterName: This is the parameter name to check.
 	ParameterName *oval_def.EntityObjectStringType `xml:"parameter_name"`
 
+	// Pathname: This is the pathname to check. Note that pathname is optional in the getconf call. A nil pathname ( empty wth attribute xsi:nil='true') in OVAL should be interpreted as if it was not supplied to the getconf call.
 	Pathname *oval_def.EntityObjectStringType `xml:"pathname"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -65,7 +69,7 @@ type GetconfObject struct {
 type GetconfState struct {
 	XMLName xml.Name `xml:"getconf_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -75,10 +79,13 @@ type GetconfState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// ParameterName: This is the parameter name to check
 	ParameterName *oval_def.EntityStateStringType `xml:"parameter_name"`
 
+	// Pathname: This is the pathname to check. Note that pathname is optional in the getconf call. A nil pathname in OVAL should be interpreted as if it was not supplied to the getconf call.
 	Pathname *oval_def.EntityStateStringType `xml:"pathname"`
 
+	// Output: The output produced by the getconf command.
 	Output *oval_def.EntityStateAnySimpleType `xml:"output"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -86,11 +93,11 @@ type GetconfState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NddTest: From /usr/bin/ndd. See ndd manpage for specific fields
 type NddTest struct {
 	XMLName xml.Name `xml:"ndd_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -117,7 +124,7 @@ type NddTest struct {
 type NddObject struct {
 	XMLName xml.Name `xml:"ndd_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -127,8 +134,10 @@ type NddObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Device: The name of the device to examine.
 	Device *oval_def.EntityObjectStringType `xml:"device"`
 
+	// Parameter: The name of the parameter, For example, ip_forwarding.
 	Parameter *oval_def.EntityObjectStringType `xml:"parameter"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -142,7 +151,7 @@ type NddObject struct {
 type NddState struct {
 	XMLName xml.Name `xml:"ndd_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -152,10 +161,13 @@ type NddState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Device: The name of the device to examine.
 	Device *oval_def.EntityStateStringType `xml:"device"`
 
+	// Parameter: The name of the parameter, For example, ip_forwarding.
 	Parameter *oval_def.EntityStateStringType `xml:"parameter"`
 
+	// Value: The value of the named parameter.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -163,11 +175,11 @@ type NddState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Patch53Test: From /usr/sbin/swlist -l patch PHxx_yyyyy. See swlist manpage for specific fields
 type Patch53Test struct {
 	XMLName xml.Name `xml:"patch53_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -194,7 +206,7 @@ type Patch53Test struct {
 type Patch53Object struct {
 	XMLName xml.Name `xml:"patch53_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -206,10 +218,13 @@ type Patch53Object struct {
 
 	Behaviors *Patch53Behaviors `xml:"behaviors"`
 
+	// Swtype: HP-UX patch names begin with 'PH'
 	Swtype *oval_def.EntityObjectStringType `xml:"swtype"`
 
+	// AreaPatched: The third and fourth characters in HP-UX patch names indicate the area of software being patched. CO - General HP-UX commands KL - Kernel patches NE - Network specific patches SS - All other subsystems (X11, starbase, etc.)
 	AreaPatched *oval_def.EntityObjectStringType `xml:"area_patched"`
 
+	// PatchBase: The sixth through tenth characters in HP-UX patch names represent a unique numeric identifier for the patch
 	PatchBase *oval_def.EntityObjectStringType `xml:"patch_base"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -223,7 +238,7 @@ type Patch53Object struct {
 type Patch53State struct {
 	XMLName xml.Name `xml:"patch53_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -233,10 +248,13 @@ type Patch53State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Swtype: HP-UX patch names begin with 'PH'
 	Swtype *oval_def.EntityStateStringType `xml:"swtype"`
 
+	// AreaPatched: The third and fourth characters in HP-UX patch names indicate the area of software being patched. CO - General HP-UX commands KL - Kernel patches NE - Network specific patches SS - All other subsystems (X11, starbase, etc.)
 	AreaPatched *oval_def.EntityStateStringType `xml:"area_patched"`
 
+	// PatchBase: The sixth through tenth characters in HP-UX patch names represent a unique numeric identifier for the patch
 	PatchBase *oval_def.EntityStateStringType `xml:"patch_base"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -244,11 +262,11 @@ type Patch53State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchTest: From /usr/sbin/swlist -l patch PHxx_yyyyy. See swlist manpage for specific fields
 type PatchTest struct {
 	XMLName xml.Name `xml:"patch_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -275,7 +293,7 @@ type PatchTest struct {
 type PatchObject struct {
 	XMLName xml.Name `xml:"patch_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -285,6 +303,7 @@ type PatchObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// PatchName: This is the patch name to check.
 	PatchName *oval_def.EntityObjectStringType `xml:"patch_name"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -296,7 +315,7 @@ type PatchObject struct {
 type PatchState struct {
 	XMLName xml.Name `xml:"patch_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -306,12 +325,16 @@ type PatchState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// PatchName: This is the patch name to check
 	PatchName *oval_def.EntityStateStringType `xml:"patch_name"`
 
+	// Swtype: HP-UX patch names begin with 'PH'
 	Swtype *oval_def.EntityStateStringType `xml:"swtype"`
 
+	// AreaPatched: The third and fourth characters in HP-UX patch names indicate the area of software being patched. CO - General HP-UX commands KL - Kernel patches NE - Network specific patches SS - All other subsystems (X11, starbase, etc.)
 	AreaPatched *oval_def.EntityStateStringType `xml:"area_patched"`
 
+	// PatchBase: The sixth through tenth characters in HP-UX patch names represent a unique numeric identifier for the patch
 	PatchBase *oval_def.EntityStateStringType `xml:"patch_base"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -319,11 +342,11 @@ type PatchState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SwlistTest: Output of /usr/sbin/swlist command. Note: A quick way to check for the installation of a specific fileset is to use the command 'swlist -a version -l fileset filesetname'. See manpage for swlist for explanation of additional command options.
 type SwlistTest struct {
 	XMLName xml.Name `xml:"swlist_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -350,7 +373,7 @@ type SwlistTest struct {
 type SwlistObject struct {
 	XMLName xml.Name `xml:"swlist_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -360,6 +383,7 @@ type SwlistObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Swlist: This is the name of the bundle or fileset to check.
 	Swlist *oval_def.EntityObjectStringType `xml:"swlist"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -373,7 +397,7 @@ type SwlistObject struct {
 type SwlistState struct {
 	XMLName xml.Name `xml:"swlist_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -383,6 +407,7 @@ type SwlistState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Swlist: This is the name of the bundle or fileset to check.
 	Swlist *oval_def.EntityStateStringType `xml:"swlist"`
 
 	Bundle *oval_def.EntityStateStringType `xml:"bundle"`
@@ -400,11 +425,11 @@ type SwlistState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// TrustedTest: This test allows for analysis of account settings in trusted HP-UX installations
 type TrustedTest struct {
 	XMLName xml.Name `xml:"trusted_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -431,7 +456,7 @@ type TrustedTest struct {
 type TrustedObject struct {
 	XMLName xml.Name `xml:"trusted_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -441,6 +466,7 @@ type TrustedObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Username: This is the name of the user being checked.
 	Username *oval_def.EntityObjectStringType `xml:"username"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -454,7 +480,7 @@ type TrustedObject struct {
 type TrustedState struct {
 	XMLName xml.Name `xml:"trusted_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -464,66 +490,96 @@ type TrustedState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Username: This is the name of the user being checked
 	Username *oval_def.EntityStateStringType `xml:"username"`
 
+	// Uid: The user's ID
 	Uid *oval_def.EntityStateIntType `xml:"uid"`
 
+	// Password: This is the encrypted version of the user's password
 	Password *oval_def.EntityStateStringType `xml:"password"`
 
+	// AccountOwner: The Account owner for pseudo-users
 	AccountOwner *oval_def.EntityStateIntType `xml:"account_owner"`
 
+	// BootAuth: Boot authorization
 	BootAuth *oval_def.EntityStateStringType `xml:"boot_auth"`
 
+	// AuditId: getprpwaid uses the audit ID rather than the UID
 	AuditId *oval_def.EntityStateStringType `xml:"audit_id"`
 
 	AuditFlag *oval_def.EntityStateStringType `xml:"audit_flag"`
 
+	// PwChangeMin: Minimum time between password changes
 	PwChangeMin *oval_def.EntityStateStringType `xml:"pw_change_min"`
 
+	// PwMaxSize: Maximum password length in characters
 	PwMaxSize *oval_def.EntityStateIntType `xml:"pw_max_size"`
 
+	// PwExpiration: Password expiration time in seconds
 	PwExpiration *oval_def.EntityStateIntType `xml:"pw_expiration"`
 
+	// PwLife: Trusted lifetime, after which the account is locked
 	PwLife *oval_def.EntityStateStringType `xml:"pw_life"`
 
+	// PwChangeS: Time of last successful password change
 	PwChangeS *oval_def.EntityStateStringType `xml:"pw_change_s"`
 
+	// PwChangeU: Time of last unsuccessful password change
 	PwChangeU *oval_def.EntityStateStringType `xml:"pw_change_u"`
 
+	// AcctExpire: Absolute account lifetime in seconds
 	AcctExpire *oval_def.EntityStateIntType `xml:"acct_expire"`
 
+	// MaxLlogin: Maximum time allowed between logins before the account is locked
 	MaxLlogin *oval_def.EntityStateStringType `xml:"max_llogin"`
 
+	// ExpWarning: The time in seconds before expiration when a warning will appear
 	ExpWarning *oval_def.EntityStateIntType `xml:"exp_warning"`
 
+	// UsrChgPw: Who can change this user's password
 	UsrChgPw *oval_def.EntityStateStringType `xml:"usr_chg_pw"`
 
+	// GenPw: Allows user to use system-generated passwords
 	GenPw *oval_def.EntityStateStringType `xml:"gen_pw"`
 
+	// PwRestrict: Whether a triviality check is performed on user-generated passwords
 	PwRestrict *oval_def.EntityStateStringType `xml:"pw_restrict"`
 
+	// PwNull: Determines if null passwords are allowed for this account
 	PwNull *oval_def.EntityStateStringType `xml:"pw_null"`
 
+	// PwGenChar: Allows password generator to use random printable ASCII characters
 	PwGenChar *oval_def.EntityStateStringType `xml:"pw_gen_char"`
 
+	// PwGenLet: Allows password generator to use random letters
 	PwGenLet *oval_def.EntityStateStringType `xml:"pw_gen_let"`
 
+	// LoginTime: Specifies the times when the user may login to this account
 	LoginTime *oval_def.EntityStateStringType `xml:"login_time"`
 
+	// PwChanger: The user ID of the user who last changed the password on the user's account, if it was not the account owner
 	PwChanger *oval_def.EntityStateIntType `xml:"pw_changer"`
 
+	// LoginTimeS: The time of the last successful login using this account
 	LoginTimeS *oval_def.EntityStateStringType `xml:"login_time_s"`
 
+	// LoginTimeU: The time of the last unsuccessful login using this account
 	LoginTimeU *oval_def.EntityStateStringType `xml:"login_time_u"`
 
+	// LoginTtyS: The terminal or remote host associated with the last successful login to the account
 	LoginTtyS *oval_def.EntityStateStringType `xml:"login_tty_s"`
 
+	// LoginTtyU: The terminal or remote hosts associated with the last unsuccessful login to the account
 	LoginTtyU *oval_def.EntityStateStringType `xml:"login_tty_u"`
 
+	// NumULogins: The number of unsuccessful login attempts since that last successful login
 	NumULogins *oval_def.EntityStateIntType `xml:"num_u_logins"`
 
+	// MaxULogins: The maximum number of unsuccessful login attempts before the account is locked
 	MaxULogins *oval_def.EntityStateIntType `xml:"max_u_logins"`
 
+	// LockFlag: Indicates whether the administrative lock on the account is set
 	LockFlag *oval_def.EntityStateBoolType `xml:"lock_flag"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -539,25 +595,30 @@ type SwlistStateVersion struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
+// Patch53Behaviors: The Patch53Behaviors complex type defines a number of behaviors that allow a more detailed definition of the patch53_object being specified. Note that using these behaviors may result in some unique results. For example, a double negative type condition might be created where an object entity says include everything except a specific item, but a behavior is used that might then add that item back in.
 type Patch53Behaviors struct {
 	XMLName xml.Name
 
+	// Supersedence: 'supersedence' specifies that the object should also match any superseding patches to the one being specified. In other words, if set to True the resulting object set would be the original patch specified plus any superseding patches. The default value is 'false' meaning the object should only match the specified patch.
 	Supersedence string `xml:"supersedence,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

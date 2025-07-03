@@ -8,81 +8,96 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Solaris specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// FacetItem: This item stores the facet properties and values of an IPS system image.
 type FacetItem struct {
 	XMLName xml.Name `xml:"facet_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Path: Specifies the path to the Solaris IPS image.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Name: Specifies the name of the facet property associated with an IPS image.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Value: Specifies the value of the facet property associated with an IPS image.
 	Value *oval_sc.EntityItemBoolType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// ImageItem: This item stores system state information associated with an IPS image on a Solaris system.
 type ImageItem struct {
 	XMLName xml.Name `xml:"image_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Path: The path to the Solaris IPS image.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Name: The name of the property associated with the Solaris IPS image.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Value: The value of a property that is associated with a Solaris IPS image.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// IsainfoItem: Information about the instruction set architectures. This information can be retrieved by the isainfo command.
 type IsainfoItem struct {
 	XMLName xml.Name `xml:"isainfo_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Bits: This is the number of bits in the address space of the native instruction set (isainfo -b).
 	Bits *oval_sc.EntityItemIntType `xml:"bits"`
 
+	// KernelIsa: This is the name of the instruction set used by kernel components (isainfo -k).
 	KernelIsa *oval_sc.EntityItemStringType `xml:"kernel_isa"`
 
+	// ApplicationIsa: This is the name of the instruction set used by portable applications (isainfo -n).
 	ApplicationIsa *oval_sc.EntityItemStringType `xml:"application_isa"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// NddItem: This item represents data collected by the ndd command.
 type NddItem struct {
 	XMLName xml.Name `xml:"ndd_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Device: The name of the device for which the parameter was collected.
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
+	// Instance: The instance of the device to examine. Certain devices may have multiple instances on a system. If multiple instances exist, this entity should be populated with its respective instance value. If only a single instance exists, this entity should not be collected.
 	Instance *oval_sc.EntityItemIntType `xml:"instance"`
 
+	// Parameter: The name of a parameter for example, ip_forwarding
 	Parameter *oval_sc.EntityItemStringType `xml:"parameter"`
 
+	// Value: The observed value of the named parameter.
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PackageItem: The package_item holds information about installed SVR4 packages. Output of /usr/bin/pkginfo. See pkginfo(1).
 type PackageItem struct {
 	XMLName xml.Name `xml:"package_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
@@ -101,227 +116,285 @@ type PackageItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Package511Item: This item stores system state information associated with IPS packages installed on a Solaris system.
 type Package511Item struct {
 	XMLName xml.Name `xml:"package511_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Publisher: The person, group of persons, or organization that is the source of the package. The publisher should be expressed without leading "pkg:" or "//" components.
 	Publisher *oval_sc.EntityItemStringType `xml:"publisher"`
 
+	// Name: The full hierarchical name of the package which is separated by forward slash characters. The full name should be expressed without leading "pkg:/" or "/" components.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Version: The version of the package which consists of the component version, build version, and branch version.
 	Version *oval_sc.EntityItemVersionType `xml:"version"`
 
+	// Timestamp: The timestamp when the package was published in the ISO-8601 basic format (YYYYMMDDTHHMMSSZ).
 	Timestamp *oval_sc.EntityItemStringType `xml:"timestamp"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the package which uniquely identifies the package on the system.
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
+	// Summary: A summary of what the package provides.
 	Summary *oval_sc.EntityItemStringType `xml:"summary"`
 
+	// Description: A description of what the package provides.
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
+	// Category: The category of the package.
 	Category *oval_sc.EntityItemStringType `xml:"category"`
 
+	// UpdatesAvailable: A boolean value indicating whether or not updates are available for this package.
 	UpdatesAvailable *oval_sc.EntityItemBoolType `xml:"updates_available"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PackageavoidlistItem: This item stores the FMRI associated with associated with IPS packages that have been flagged as to be avoided from installation on a Solaris system.
 type PackageavoidlistItem struct {
 	XMLName xml.Name `xml:"packageavoidlist_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the package which uniquely identifies the package on the system.
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PackagecheckItem: The packagecheck_item holds verification information about an individual file that is part of an installed SVR4 package. Each packagecheck_item contains a package designation, filepath, whether the checksum differs, whether the size differs, whether the modfication time differs, and how the actual permissions differ from the expected permissions. For more information, see pkgchk(1M). It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type PackagecheckItem struct {
 	XMLName xml.Name `xml:"packagecheck_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Pkginst: The pkginst entity is a string that represents a package designation by its instance. An instance can be the package abbreviation or a specific instance (for example, inst.1 or inst.2).
 	Pkginst *oval_sc.EntityItemStringType `xml:"pkginst"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory in the specified package..
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// ChecksumDiffers: Has the file's checksum changed? A value of true indicates that the file's checksum has changed. A value of false indicates that the file's checksum has not changed.
 	ChecksumDiffers *oval_sc.EntityItemBoolType `xml:"checksum_differs"`
 
+	// SizeDiffers: Has the file's size changed? A value of true indicates that the file's size has changed. A value of false indicates that the file's size has not changed.
 	SizeDiffers *oval_sc.EntityItemBoolType `xml:"size_differs"`
 
+	// MtimeDiffers: Has the file's modified time changed? A value of true indicates that the file's modified time has changed. A value of false indicates that the file's modified time has not changed.
 	MtimeDiffers *oval_sc.EntityItemBoolType `xml:"mtime_differs"`
 
+	// Uread: Has the actual user read permission changed from the expected user read permission?
 	Uread *EntityItemPermissionCompareType `xml:"uread"`
 
+	// Uwrite: Has the actual user write permission changed from the expected user write permission?
 	Uwrite *EntityItemPermissionCompareType `xml:"uwrite"`
 
+	// Uexec: Has the actual user exec permission changed from the expected user exec permission?
 	Uexec *EntityItemPermissionCompareType `xml:"uexec"`
 
+	// Gread: Has the actual group read permission changed from the expected group read permission?
 	Gread *EntityItemPermissionCompareType `xml:"gread"`
 
+	// Gwrite: Has the actual group write permission changed from the expected group write permission?
 	Gwrite *EntityItemPermissionCompareType `xml:"gwrite"`
 
+	// Gexec: Has the actual group exec permission changed from the expected group exec permission?
 	Gexec *EntityItemPermissionCompareType `xml:"gexec"`
 
+	// Oread: Has the actual others read permission changed from the expected others read permission?
 	Oread *EntityItemPermissionCompareType `xml:"oread"`
 
+	// Owrite: Has the actual others read permission changed from the expected others read permission?
 	Owrite *EntityItemPermissionCompareType `xml:"owrite"`
 
+	// Oexec: Has the actual others read permission changed from the expected others read permission?
 	Oexec *EntityItemPermissionCompareType `xml:"oexec"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PackagefreezelistItem: This item stores the FMRI associated with associated with IPS packages that have been frozen at a particular version.
 type PackagefreezelistItem struct {
 	XMLName xml.Name `xml:"packagefreezelist_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the package which uniquely identifies the package on the system.
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PackagepublisherItem: This item stores system state information associated with IPS package publishers on a Solaris system.
 type PackagepublisherItem struct {
 	XMLName xml.Name `xml:"packagepublisher_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: The name of the IPS package publisher.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Type: The type of the IPS package publisher.
 	Type *EntityItemPublisherTypeType `xml:"type"`
 
+	// OriginUri: The origin URI of the IPS package publisher.
 	OriginUri *oval_sc.EntityItemStringType `xml:"origin_uri"`
 
+	// Alias: The alias of the IPS package publisher.
 	Alias *oval_sc.EntityItemStringType `xml:"alias"`
 
+	// SslKey: The Secure Socket Layer (SSL) key registered by a client for publishers using client-side SSL authentication.
 	SslKey *oval_sc.EntityItemStringType `xml:"ssl_key"`
 
+	// SslCert: The Secure Socket Layer (SSL) certificate registered by a client for publishers using client-side SSL authentication.
 	SslCert *oval_sc.EntityItemStringType `xml:"ssl_cert"`
 
-	ClientUuid *EntityItemClientUUIDType `xml:"client_uuid"`
+	// ClientUuid: The universally unique identifier (UUID) that identifies the image to its publisher.
+	ClientUuid *EntityItemClientUuidtype `xml:"client_uuid"`
 
+	// CatalogUpdated: The last time that the IPS package publisher's catalog was updated in seconds since the Unix epoch. The Unix epoch is the time 00:00:00 UTC on January 1, 1970.
 	CatalogUpdated *oval_sc.EntityItemIntType `xml:"catalog_updated"`
 
+	// Enabled: Specifies whether or not the publisher is enabled.
 	Enabled *oval_sc.EntityItemBoolType `xml:"enabled"`
 
+	// Order: Specifies where in the search order the IPS package publisher is listed. The first publisher in the search order will have a value of '1'.
 	Order *oval_sc.EntityItemIntType `xml:"order"`
 
+	// Properties: The properties associated with an IPS package publisher.
 	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PatchItem: Patches for SVR4 packages are identified by unique alphanumeric strings, with the patch base code first, a hyphen, and a number that represents the patch revision number. The information can be obtained using /usr/bin/showrev -p. Please see showrev(1M).
 type PatchItem struct {
 	XMLName xml.Name `xml:"patch_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Base: The base entity reresents a patch base code found before the hyphen.
 	Base *oval_sc.EntityItemIntType `xml:"base"`
 
+	// Version: The version entity represents a patch version number found after the hyphen.
 	Version *oval_sc.EntityItemIntType `xml:"version"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SmfItem: The smf_item is used to hold information related to service management facility controlled services
 type SmfItem struct {
 	XMLName xml.Name `xml:"smf_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Fmri: The FMRI (Fault Managed Resource Identifier) entity holds the identifier associated with a service. Services managed by SMF are assigned FMRI URIs prefixed with the scheme name "svc". FMRIs used by SMF can be expressed in three ways: first as an absolute path including a location path such as "localhost" (eg svc://localhost/system/system-log:default), second as a path relative to the local machine (eg svc:/system/system-log:default), and third as simply the service identifier with the string prefixes implied (eg system/system-log:default). For OVAL, the absolute path version (first choice) should be used.
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
+	// ServiceName: The service_name entity is usually an abbreviated form of the FMRI. In the example svc://localhost/system/system-log:default, the name would be system-log.
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
+	// ServiceState: The service_state entity describes the state that the service is in. Each service instance is always in a well-defined state based on its dependencies, the results of the execution of its methods, and its potential receipt of events from the contracts filesystem. The service_state values are UNINITIALIZED, OFFLINE, ONLINE, DEGRADED, MAINTENANCE, DISABLED, and LEGACY-RUN.
 	ServiceState *EntityItemSmfServiceStateType `xml:"service_state"`
 
+	// Protocol: The protocol entity describes the protocol supported by the service.
 	Protocol []oval_sc.EntityItemStringType `xml:"protocol"`
 
+	// ServerExecutable: The entity server_executable is a string representing the listening daemon on the server side. An example being 'svcprop ftp' which might show 'inetd/start/exec astring /usr/sbin/in.ftpd\ -a'
 	ServerExecutable *oval_sc.EntityItemStringType `xml:"server_executable"`
 
+	// ServerArguements: The server_arguments entity describes the parameters that are passed to the service.
 	ServerArguements *oval_sc.EntityItemStringType `xml:"server_arguements"`
 
+	// ExecAsUser: The exec_as_user entity is a string pulled from svcprop in the following format: inetd_start/user astring root
 	ExecAsUser *oval_sc.EntityItemStringType `xml:"exec_as_user"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SmfpropertyItem: This item stores the properties and values of an SMF service.
 type SmfpropertyItem struct {
 	XMLName xml.Name `xml:"smfproperty_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Service: Specifies the SMF service on the system. This is the service category and name separated by a forward slash ("/").
 	Service *oval_sc.EntityItemStringType `xml:"service"`
 
+	// Instance: Specifies the instance of an SMF service which represents a specific configuration of a service.
 	Instance *oval_sc.EntityItemStringType `xml:"instance"`
 
+	// Property: The name of the property associated with an SMF service. This is the property category and name separated by a forward slash ("/").
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the SMF service which uniquely identifies the service on the system.
 	Fmri *oval_sc.EntityItemStringType `xml:"fmri"`
 
+	// Value: Specifies the value of the property associated with an SMF service.
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VariantItem: This item stores the variant properties and values of the specified IPS system image.
 type VariantItem struct {
 	XMLName xml.Name `xml:"variant_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Path: Specifies the path to the Solaris IPS image.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Name: Specifies the name of the variant property associated with an IPS image.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Value: Specifies the value of the variant property associated with an IPS image.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VirtualizationinfoItem: This item stores the information associated with the current virtualization environment this instance of Solaris is running on and is capable of supporting.
 type VirtualizationinfoItem struct {
 	XMLName xml.Name `xml:"virtualizationinfo_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Current: The name of the current environment. This information could be collected using the libv12n library or by executing the 'virtinfo -c current list -H -o name' command.
 	Current *oval_sc.EntityItemStringType `xml:"current"`
 
-	Supported []EntityItemV12NEnvType `xml:"supported"`
+	// Supported: The list of virtualization environments that this node supports as children. This information could be collected using the libv12n library or by executing the 'virtinfo -c supported list -H -o name' command.
+	Supported []EntityItemV12NenvType `xml:"supported"`
 
-	Parent *EntityItemV12NEnvType `xml:"parent"`
+	// Parent: The parent environment of the current environment. This information could be collected using libv12n library or by executing the 'virtinfo -c parent list -H -o name' command.
+	Parent *EntityItemV12NenvType `xml:"parent"`
 
-	LdomRole []EntityItemLDOMRoleType `xml:"ldom-role"`
+	// LdomRole: The logical domain roles associated with the current environment. This information could be collected using libv12n library.
+	LdomRole []EntityItemLdomroleType `xml:"ldom-role"`
 
+	// Properties: The properties associated with the current environment. This information could be collected using libv12n library.
 	Properties *oval_sc.EntityItemRecordType `xml:"properties"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -329,76 +402,88 @@ type VirtualizationinfoItem struct {
 
 // XSD ComplexType declarations
 
-type EntityItemClientUUIDType struct {
+// EntityItemClientUuidtype: The EntityItemClientUUIDType restricts a string value to a representation of a client UUID, used to identify an image to its IPS package publisher. The empty string is also allowed to support empty element associated with error conditions.
+type EntityItemClientUuidtype struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPermissionCompareType: The EntityItemPermissionCompareType complex type restricts a string value to more, less, or same which specifies if an actual permission is different than the expected permission (more or less restrictive) or if the permission is the same. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemPermissionCompareType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPublisherTypeType: The EntityItemPublisherTypeType complex type restricts a string value to three values: archive, mirror, or origin that specifies how the publisher distributes their packages. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemPublisherTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemSmfServiceStateType: The EntityItemSmfServiceStateType defines the different values that are valid for the service_state entity of a smf_item. The empty string is also allowed as a valid value to support empty emlements associated with error conditions.
 type EntityItemSmfServiceStateType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemV12NEnvType struct {
+// EntityItemV12NenvType: The EntityItemV12NEnvypeType complex type restricts a string value to a specific set of values that describe the virtalization environment. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemV12NenvType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemLDOMRoleType struct {
+// EntityItemLdomroleType: The EntityItemLDOMRoleType complex type restricts a string value to a specific set of roles for the current virtualization environment. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemLdomroleType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

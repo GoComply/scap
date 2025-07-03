@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the IOS specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// AclTest: The acl test is used to check the properties of specific output lines from an ACL configuration.
 type AclTest struct {
 	XMLName xml.Name `xml:"acl_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type AclTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AclObject: The acl_object element is used by an acl test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type AclObject struct {
 	XMLName xml.Name `xml:"acl_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,9 +52,11 @@ type AclObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Name: The name of the ACL.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
-	IpVersion *EntityObjectAccessListIPVersionType `xml:"ip_version"`
+	// IpVersion: The IP version of the ACL.
+	IpVersion *EntityObjectAccessListIpversionType `xml:"ip_version"`
 
 	Filter []oval_def.Filter `xml:"filter"`
 
@@ -61,11 +65,11 @@ type AclObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AclState: The acl_state element defines the different information that can be used to evaluate the result of a specific ACL configuration. This includes the name of ths ACL and the corresponding config lines. Please refer to the individual elements in the schema for more details about what each represents.
 type AclState struct {
 	XMLName xml.Name `xml:"acl_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -75,18 +79,25 @@ type AclState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Name: The name of the ACL.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
-	IpVersion *EntityStateAccessListIPVersionType `xml:"ip_version"`
+	// IpVersion: The IP version of the ACL.
+	IpVersion *EntityStateAccessListIpversionType `xml:"ip_version"`
 
+	// Use: The feature where the ACL is used.
 	Use *EntityStateAccessListUseType `xml:"use"`
 
+	// UsedIn: The name of where the ACL is used. For example if use is 'INTERFACE', use_in will be the name of the interface.
 	UsedIn *oval_def.EntityStateStringType `xml:"used_in"`
 
+	// InterfaceDirection: The direction the ACL is applied on an interface.
 	InterfaceDirection *EntityStateAccessListInterfaceDirectionType `xml:"interface_direction"`
 
+	// AclConfigLines: The value returned with all config lines of the ACL.
 	AclConfigLines *oval_def.EntityStateStringType `xml:"acl_config_lines"`
 
+	// ConfigLine: The value returned with one ACL config line at a time.
 	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -94,11 +105,11 @@ type AclState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// BgpneighborTest: The bgpneighbor test is used to check the bgp neighbpr properties of bgp instances instances in IOS.
 type BgpneighborTest struct {
 	XMLName xml.Name `xml:"bgpneighbor_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -121,11 +132,11 @@ type BgpneighborTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// BgpneighborObject: The bgpneighbor_object element is used by a bgpneighbor test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type BgpneighborObject struct {
 	XMLName xml.Name `xml:"bgpneighbor_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -135,6 +146,7 @@ type BgpneighborObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Neighbor: The bgp neighbor.
 	Neighbor *oval_def.EntityObjectStringType `xml:"neighbor"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -144,11 +156,11 @@ type BgpneighborObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// BgpneighborState: The bgpneighbor_state element defines the different information that can be used to evaluate the result of a bgp neighbor configuration. This includes the neighbor and the password option, if configured. Please refer to the individual elements in the schema for more details about what each represents.
 type BgpneighborState struct {
 	XMLName xml.Name `xml:"bgpneighbor_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -158,8 +170,10 @@ type BgpneighborState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Neighbor: The bgp neighbor.
 	Neighbor *oval_def.EntityStateStringType `xml:"neighbor"`
 
+	// Password: The bgp authentication password, if configured. If Encryption type is configured it should be included in the password string. For example '0 cisco123'.
 	Password *oval_def.EntityStateStringType `xml:"password"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -167,11 +181,11 @@ type BgpneighborState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GlobalTest: The global test is used to check for the existence of a particular line in the ios config file under the global context. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a global_object and the optional state element specifies the data to check.
 type GlobalTest struct {
 	XMLName xml.Name `xml:"global_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -194,11 +208,11 @@ type GlobalTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GlobalObject: The global_object element is used by a global test to define the object to be evaluated. For the most part this object checks for existence and is used without a state comparision. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type GlobalObject struct {
 	XMLName xml.Name `xml:"global_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -208,6 +222,7 @@ type GlobalObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// GlobalCommand: The global_command entity identifies a specific line in the ios config file under the global context.
 	GlobalCommand *oval_def.EntityObjectStringType `xml:"global_command"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -217,11 +232,11 @@ type GlobalObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GlobalState: The global_state element defines the different information that can be found in the ios config file under the global context. Please refer to the individual elements in the schema for more details about what each represents.
 type GlobalState struct {
 	XMLName xml.Name `xml:"global_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -231,6 +246,7 @@ type GlobalState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// GlobalCommand: The global_command entity identifies a specific line in the ios config file under the global context.
 	GlobalCommand *oval_def.EntityStateStringType `xml:"global_command"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -238,11 +254,11 @@ type GlobalState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InterfaceTest: The interface test is used to check for the existence of a particular interface on the Cisco IOS device. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a interface_object and the optional state element specifies the data to check.
 type InterfaceTest struct {
 	XMLName xml.Name `xml:"interface_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -265,11 +281,11 @@ type InterfaceTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InterfaceObject: The interface_object element is used by an interface_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type InterfaceObject struct {
 	XMLName xml.Name `xml:"interface_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -288,11 +304,11 @@ type InterfaceObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InterfaceState: The interface_state element defines the different information that can be used to evaluate the result of a specific IOS interface. This includes the name, status, and address information about the interface. Please refer to the individual elements in the schema for more details about what each represents.
 type InterfaceState struct {
 	XMLName xml.Name `xml:"interface_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -304,44 +320,63 @@ type InterfaceState struct {
 
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// InterfaceStateIpDirectedBroadcastCommand: Directed broadcast command enabled on the interface. The default is false.
 	IpDirectedBroadcastCommand *InterfaceStateIpDirectedBroadcastCommand `xml:"ip_directed_broadcast_command"`
 
 	NoIpDirectedBroadcastCommand *oval_def.EntityStateStringType `xml:"no_ip_directed_broadcast_command"`
 
+	// InterfaceStateProxyArpCommand: Element that is true if the proxy_arp command is enabled on the interface. The default is true.
 	ProxyArpCommand *InterfaceStateProxyArpCommand `xml:"proxy_arp_command"`
 
+	// InterfaceStateShutdownCommand: Element that is true if the interface is shut down. The default is false.
 	ShutdownCommand *InterfaceStateShutdownCommand `xml:"shutdown_command"`
 
+	// HardwareAddr: The interface hardware (MAC) address.
 	HardwareAddr *oval_def.EntityStateStringType `xml:"hardware_addr"`
 
-	Ipv4Address *oval_def.EntityStateIPAddressStringType `xml:"ipv4_address"`
+	// Ipv4Address: The interface IPv4 address and mask. This element should only allow 'ipv4_address' of the oval:SimpleDatatypeEnumeration.
+	Ipv4Address *oval_def.EntityStateIpaddressStringType `xml:"ipv4_address"`
 
-	Ipv6Address *oval_def.EntityStateIPAddressStringType `xml:"ipv6_address"`
+	// Ipv6Address: The interface IPv6 address and mask. This element should only allow 'ipv6_address' of the oval:SimpleDatatypeEnumeration.
+	Ipv6Address *oval_def.EntityStateIpaddressStringType `xml:"ipv6_address"`
 
+	// Ipv4AccessList: The ingress or egress IPv4 ACL name applied on the interface.
 	Ipv4AccessList *oval_def.EntityStateStringType `xml:"ipv4_access_list"`
 
+	// Ipv6AccessList: The ingress or egress IPv6 ACL name applied on the interface.
 	Ipv6AccessList *oval_def.EntityStateStringType `xml:"ipv6_access_list"`
 
+	// CryptoMap: The crypto map name applied to the interface.
 	CryptoMap *oval_def.EntityStateStringType `xml:"crypto_map"`
 
+	// Ipv4UrpfCommand: The IPv4 uRPF command under the interface.
 	Ipv4UrpfCommand *oval_def.EntityStateStringType `xml:"ipv4_urpf_command"`
 
+	// Ipv6UrpfCommand: The IPv6 uRPF command under the interface.
 	Ipv6UrpfCommand *oval_def.EntityStateStringType `xml:"ipv6_urpf_command"`
 
+	// UrpfCommand: The uRPF command under the interface.
 	UrpfCommand *oval_def.EntityStateStringType `xml:"urpf_command"`
 
+	// SwitchportTrunkEncapsulation: The switchport trunk encapsulation option configured on the interface (if applicable).
 	SwitchportTrunkEncapsulation *EntityStateTrunkEncapType `xml:"switchport_trunk_encapsulation"`
 
+	// SwitchportMode: The switchport mode option configured on the interface (if applicable).
 	SwitchportMode *EntityStateSwitchportModeType `xml:"switchport_mode"`
 
+	// InterfaceStateSwitchportNativeVlan: The trunk native vlan configured on the interface (if applicable).
 	SwitchportNativeVlan *InterfaceStateSwitchportNativeVlan `xml:"switchport_native_vlan"`
 
+	// InterfaceStateSwitchportAccessVlan: The access vlan configured on the interface (if applicable).
 	SwitchportAccessVlan *InterfaceStateSwitchportAccessVlan `xml:"switchport_access_vlan"`
 
+	// SwitchportTrunkedVlans: The vlans that are trunked configured on the interface (if applicable).
 	SwitchportTrunkedVlans *oval_def.EntityStateStringType `xml:"switchport_trunked_vlans"`
 
+	// SwitchportPrunedVlans: The vlans that are pruned from the trunk (if applicable).
 	SwitchportPrunedVlans *oval_def.EntityStateStringType `xml:"switchport_pruned_vlans"`
 
+	// SwitchportPortSecurity: The switchport port-security commands configured on the interface (if applicable).
 	SwitchportPortSecurity *oval_def.EntityStateStringType `xml:"switchport_port_security"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -349,11 +384,11 @@ type InterfaceState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineTest: The line test is used to check the properties of specific output lines from a SHOW command, such as show running-config. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a line_object and the optional state element specifies the data to check.
 type LineTest struct {
 	XMLName xml.Name `xml:"line_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -376,11 +411,11 @@ type LineTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineObject: The line_object element is used by a line test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type LineObject struct {
 	XMLName xml.Name `xml:"line_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -390,6 +425,7 @@ type LineObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// ShowSubcommand: The name of a SHOW sub-command.
 	ShowSubcommand *oval_def.EntityObjectStringType `xml:"show_subcommand"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -399,11 +435,11 @@ type LineObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineState: The line_state element defines the different information that can be used to evaluate the result of a specific SHOW sub-command. This includes the name of ths sub-command and the corresponding config line. Please refer to the individual elements in the schema for more details about what each represents.
 type LineState struct {
 	XMLName xml.Name `xml:"line_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -413,8 +449,10 @@ type LineState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// ShowSubcommand: The name of the SHOW sub-command.
 	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
 
+	// ConfigLine: The value returned from by the specified SHOW sub-command.
 	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -422,11 +460,11 @@ type LineState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RouterTest: The router test is used to check the properties of specific output lines from a router configurated instance in IOS.
 type RouterTest struct {
 	XMLName xml.Name `xml:"router_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -449,11 +487,11 @@ type RouterTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RouterObject: The router_object element is used by a router test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type RouterObject struct {
 	XMLName xml.Name `xml:"router_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -463,8 +501,10 @@ type RouterObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Protocol: The routing protocol of the router instance.
 	Protocol *EntityObjectRoutingProtocolType `xml:"protocol"`
 
+	// IdElm: The IOS router id.
 	IdElm *oval_def.EntityObjectIntType `xml:"id"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -474,11 +514,11 @@ type RouterObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RouterState: The router_state element defines the different information that can be used to evaluate the result of a specific router command. This includes the protocol of the router instance, the id, the networks, bgp neighbor, ospf authentication area commands and the corresponding config lines. Please refer to the individual elements in the schema for more details about what each represents.
 type RouterState struct {
 	XMLName xml.Name `xml:"router_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -488,16 +528,22 @@ type RouterState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Protocol: The routing protocol of the router instance. If there are more than one router configurations, for example ospf instances, different objects should be created for each.
 	Protocol EntityStateRoutingProtocolType `xml:"protocol"`
 
+	// IdElm: The IOS router id
 	IdElm *oval_def.EntityStateIntType `xml:"id"`
 
+	// Network: The subnet in the network command of the router instance. The area can be included in the string for OSPF.
 	Network *oval_def.EntityStateStringType `xml:"network"`
 
+	// BgpNeighbor: The BGP neighbors, if applicable.
 	BgpNeighbor *oval_def.EntityStateStringType `xml:"bgp_neighbor"`
 
+	// RouterStateOspfAuthenticationArea: The OSPF area that is authenticated, if applicable.
 	OspfAuthenticationArea *RouterStateOspfAuthenticationArea `xml:"ospf_authentication_area"`
 
+	// RouterConfigLines: The value returned with all config lines of the router instance.
 	RouterConfigLines *oval_def.EntityStateStringType `xml:"router_config_lines"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -505,11 +551,11 @@ type RouterState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RoutingprotocolauthintfTest: The routing protocol authentication interface test is used to check the properties of routing protocol authentication configured under interfaces in IOS.
 type RoutingprotocolauthintfTest struct {
 	XMLName xml.Name `xml:"routingprotocolauthintf_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -532,11 +578,11 @@ type RoutingprotocolauthintfTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RoutingprotocolauthintfObject: The routingprotocolauthintf_object element is used by a routingprotocolauthintf test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type RoutingprotocolauthintfObject struct {
 	XMLName xml.Name `xml:"routingprotocolauthintf_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -546,8 +592,10 @@ type RoutingprotocolauthintfObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Interface: The interface name.
 	Interface *oval_def.EntityObjectStringType `xml:"interface"`
 
+	// Protocol: The routing protocol.
 	Protocol *EntityObjectRoutingProtocolType `xml:"protocol"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -557,11 +605,11 @@ type RoutingprotocolauthintfObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RoutingprotocolauthintfState: The routingprotocolauthintf_state element defines the different information that can be used to evaluate the result of a specific routing protocol interface authentication configurations. This includes the interface, the protocol, the id, the authentication type, the ospf area, the key chain command and the corresponding config lines. Please refer to the individual elements in the schema for more details about what each represents.
 type RoutingprotocolauthintfState struct {
 	XMLName xml.Name `xml:"routingprotocolauthintf_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -571,16 +619,22 @@ type RoutingprotocolauthintfState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Interface: The interface name.
 	Interface *oval_def.EntityStateStringType `xml:"interface"`
 
+	// Protocol: The routing protocol.
 	Protocol *EntityStateRoutingProtocolType `xml:"protocol"`
 
+	// IdElm: The routing protocol id, if applicable.
 	IdElm *oval_def.EntityStateIntType `xml:"id"`
 
+	// AuthType: The routing protocol authentication type.
 	AuthType *EntityStateRoutingAuthTypeStringType `xml:"auth_type"`
 
+	// RoutingprotocolauthintfStateOspfArea: The OSPF area that is authenticated, if applicable.
 	OspfArea *RoutingprotocolauthintfStateOspfArea `xml:"ospf_area"`
 
+	// KeyChain: The name of the key chain, if applicable.
 	KeyChain *oval_def.EntityStateStringType `xml:"key_chain"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -588,11 +642,11 @@ type RoutingprotocolauthintfState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SectionTest: The section test is used to check the properties of specific output lines from a configuration section.
 type SectionTest struct {
 	XMLName xml.Name `xml:"section_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -615,11 +669,11 @@ type SectionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SectionObject: The section_object element is used by a section test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SectionObject struct {
 	XMLName xml.Name `xml:"section_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -629,6 +683,7 @@ type SectionObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// SectionCommand: The name of a section command.
 	SectionCommand *oval_def.EntityObjectStringType `xml:"section_command"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -638,11 +693,11 @@ type SectionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SectionState: The section_state element defines the different information that can be used to evaluate the result of a specific section command. This includes the name of ths section_command and the corresponding config lines. Please refer to the individual elements in the schema for more details about what each represents.
 type SectionState struct {
 	XMLName xml.Name `xml:"section_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -652,10 +707,13 @@ type SectionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// SectionCommand: The name of the section command.
 	SectionCommand *oval_def.EntityStateStringType `xml:"section_command"`
 
+	// SectionConfigLines: The value returned with all config lines of the section.
 	SectionConfigLines *oval_def.EntityStateStringType `xml:"section_config_lines"`
 
+	// ConfigLine: The value returned with one config line of the section at a time.
 	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -663,11 +721,11 @@ type SectionState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpTest: Tests if lines under the global context associated with snmp that have a specifiec access list or community name.
 type SnmpTest struct {
 	XMLName xml.Name `xml:"snmp_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -690,11 +748,11 @@ type SnmpTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpObject: The snmp_object element is used by a snmp test to define those objects to evaluated based on a specified state. There is actually only one object relating to snmp and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check snmp will reference the same snmp_object which is basically an empty object element.
 type SnmpObject struct {
 	XMLName xml.Name `xml:"snmp_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -711,7 +769,7 @@ type SnmpObject struct {
 type SnmpState struct {
 	XMLName xml.Name `xml:"snmp_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -730,11 +788,11 @@ type SnmpState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpcommunityTest: The snmpcommunity test is used to check the properties of specific output lines from an SNMP configuration.
 type SnmpcommunityTest struct {
 	XMLName xml.Name `xml:"snmpcommunity_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -757,11 +815,11 @@ type SnmpcommunityTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpcommunityObject: The snmpcommunity_object element is used by an snmpcommunity test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SnmpcommunityObject struct {
 	XMLName xml.Name `xml:"snmpcommunity_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -771,6 +829,7 @@ type SnmpcommunityObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Name: The SNMP community name.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -780,11 +839,11 @@ type SnmpcommunityObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpcommunityState: The snmpcommunity_state element defines the different information that can be used to evaluate the result of a specific 'snmp community' IOS command. This includes the community name and the corresponding options. Please refer to the individual elements in the schema for more details about what each represents.
 type SnmpcommunityState struct {
 	XMLName xml.Name `xml:"snmpcommunity_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -794,14 +853,19 @@ type SnmpcommunityState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Name: The SNMP community name.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// View: The view that restricts the OIDs of this community.
 	View *oval_def.EntityStateStringType `xml:"view"`
 
-	Mode *EntityStateSNMPModeStringType `xml:"mode"`
+	// Mode: The read-write privileges of the community.
+	Mode *EntityStateSnmpmodeStringType `xml:"mode"`
 
+	// Ipv4Acl: The IPv4 ACL name applied to the community.
 	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
 
+	// Ipv6Acl: The IPv6 ACL name applied to the community.
 	Ipv6Acl *oval_def.EntityStateStringType `xml:"ipv6_acl"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -809,11 +873,11 @@ type SnmpcommunityState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpgroupTest: The snmpgroup test is used to check the properties of specific output lines from an SNMP group configuration.
 type SnmpgroupTest struct {
 	XMLName xml.Name `xml:"snmpgroup_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -836,11 +900,11 @@ type SnmpgroupTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpgroupObject: The snmpgroup_object element is used by an snmpgroup test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SnmpgroupObject struct {
 	XMLName xml.Name `xml:"snmpgroup_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -850,6 +914,7 @@ type SnmpgroupObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Name: The SNMP group name.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -859,11 +924,11 @@ type SnmpgroupObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpgroupState: The snmpgroup_state element defines the different information that can be used to evaluate the result of a specific 'snmp-server group' IOS command. This includes the user name and the corresponding options. Please refer to the individual elements in the schema for more details about what each represents.
 type SnmpgroupState struct {
 	XMLName xml.Name `xml:"snmpgroup_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -873,20 +938,28 @@ type SnmpgroupState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Name: The SNMP group name.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
-	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
+	// VersionElm: The SNMP version of the group.
+	VersionElm *EntityStateSnmpversionStringType `xml:"version"`
 
-	Snmpv3SecLevel *EntityStateSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
+	// Snmpv3SecLevel: The SNMPv3 security configured for the group.
+	Snmpv3SecLevel *EntityStateSnmpsecLevelStringType `xml:"snmpv3_sec_level"`
 
+	// Ipv4Acl: The IPv4 ACL name applied to the group.
 	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
 
+	// Ipv6Acl: The IPv6 ACL name applied to the group.
 	Ipv6Acl *oval_def.EntityStateStringType `xml:"ipv6_acl"`
 
+	// ReadView: The SNMP read view applied to the group.
 	ReadView *oval_def.EntityStateStringType `xml:"read_view"`
 
+	// WriteView: The SNMP write view applied to the group.
 	WriteView *oval_def.EntityStateStringType `xml:"write_view"`
 
+	// NotifyView: The SNMP notify view applied to the group.
 	NotifyView *oval_def.EntityStateStringType `xml:"notify_view"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -894,11 +967,11 @@ type SnmpgroupState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmphostTest: The snmphost test is used to check the properties of specific output lines from an SNMP configuration.
 type SnmphostTest struct {
 	XMLName xml.Name `xml:"snmphost_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -921,11 +994,11 @@ type SnmphostTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmphostObject: The snmphost_object element is used by an snmphost test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SnmphostObject struct {
 	XMLName xml.Name `xml:"snmphost_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -935,6 +1008,7 @@ type SnmphostObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Host: The SNMP host address or hostname.
 	Host *oval_def.EntityObjectStringType `xml:"host"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -944,11 +1018,11 @@ type SnmphostObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmphostState: The snmphost_state element defines the different information that can be used to evaluate the result of a specific 'snmp host' IOS command. This includes the host and the corresponding options. Please refer to the individual elements in the schema for more details about what each represents.
 type SnmphostState struct {
 	XMLName xml.Name `xml:"snmphost_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -958,14 +1032,19 @@ type SnmphostState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Host: The SNMP host address or hostname.
 	Host *oval_def.EntityStateStringType `xml:"host"`
 
+	// CommunityOrUser: The community string or SNMPv3 user configured for the host.
 	CommunityOrUser *oval_def.EntityStateStringType `xml:"community_or_user"`
 
-	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
+	// VersionElm: The SNMP version.
+	VersionElm *EntityStateSnmpversionStringType `xml:"version"`
 
-	Snmpv3SecLevel *EntityStateSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
+	// Snmpv3SecLevel: The SNMPv3 security configured for the host.
+	Snmpv3SecLevel *EntityStateSnmpsecLevelStringType `xml:"snmpv3_sec_level"`
 
+	// Traps: The SNMP traps configured.
 	Traps *oval_def.EntityStateStringType `xml:"traps"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -973,11 +1052,11 @@ type SnmphostState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpuserTest: The snmpuser test is used to check the properties of specific output lines from an SNMP user configuration.
 type SnmpuserTest struct {
 	XMLName xml.Name `xml:"snmpuser_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1000,11 +1079,11 @@ type SnmpuserTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpuserObject: The snmpuser_object element is used by an snmpuser test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SnmpuserObject struct {
 	XMLName xml.Name `xml:"snmpuser_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1014,6 +1093,7 @@ type SnmpuserObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Name: The SNMP user name.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1023,11 +1103,11 @@ type SnmpuserObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpuserState: The snmpuser_state element defines the different information that can be used to evaluate the result of a specific 'show snmp user' IOS command. This includes the user name and the corresponding options. Please refer to the individual elements in the schema for more details about what each represents.
 type SnmpuserState struct {
 	XMLName xml.Name `xml:"snmpuser_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1037,30 +1117,37 @@ type SnmpuserState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Name: The SNMP user name.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Group: The SNMP group the user belongs to.
 	Group *oval_def.EntityStateStringType `xml:"group"`
 
-	VersionElm *EntityStateSNMPVersionStringType `xml:"version"`
+	// VersionElm: The SNMP version of the user.
+	VersionElm *EntityStateSnmpversionStringType `xml:"version"`
 
+	// Ipv4Acl: The IPv4 ACL name applied to the user.
 	Ipv4Acl *oval_def.EntityStateStringType `xml:"ipv4_acl"`
 
+	// Ipv6Acl: The IPv6 ACL name applied to the user.
 	Ipv6Acl *oval_def.EntityStateStringType `xml:"ipv6_acl"`
 
-	Priv *EntityStateSNMPPrivStringType `xml:"priv"`
+	// Priv: The SNMP encryption type for the user (for SNMPv3).
+	Priv *EntityStateSnmpprivStringType `xml:"priv"`
 
-	Auth *EntityStateSNMPAuthStringType `xml:"auth"`
+	// Auth: The SNMP authentication type for the user (for SNMPv3).
+	Auth *EntityStateSnmpauthStringType `xml:"auth"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpviewTest: The snmpview test is used to check the properties of specific output lines from an SNMP view configuration.
 type SnmpviewTest struct {
 	XMLName xml.Name `xml:"snmpview_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1083,11 +1170,11 @@ type SnmpviewTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpviewObject: The snmpview_object element is used by an snmpview test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SnmpviewObject struct {
 	XMLName xml.Name `xml:"snmpview_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1097,6 +1184,7 @@ type SnmpviewObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Name: The SNMP view name.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1106,11 +1194,11 @@ type SnmpviewObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SnmpviewState: The snmpview_state element defines the different information that can be used to evaluate the result of a specific 'snmp-server view' IOS command. This includes the view name and the corresponding options. Please refer to the individual elements in the schema for more details about what each represents.
 type SnmpviewState struct {
 	XMLName xml.Name `xml:"snmpview_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1120,10 +1208,13 @@ type SnmpviewState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Name: The SNMP view name.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// MibFamily: The SNMP MIB family of the view.
 	MibFamily *oval_def.EntityStateStringType `xml:"mib_family"`
 
+	// Include: It is true if the included option is used in the view.
 	Include *oval_def.EntityStateBoolType `xml:"include"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1131,11 +1222,11 @@ type SnmpviewState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// TclshTest: The tclsh test is used to check tclsh information of the IOS operating system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a tclsh_object and the optional state element specifies the data to check.
 type TclshTest struct {
 	XMLName xml.Name `xml:"tclsh_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1158,11 +1249,11 @@ type TclshTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// TclshObject: The tclsh_object element is used by a tclsh test to define those objects to evaluated based on a specified state. There is actually only one object relating to tchlsh and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check tclsh will reference the same tclsh_object which is basically an empty object element.
 type TclshObject struct {
 	XMLName xml.Name `xml:"tclsh_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1175,11 +1266,11 @@ type TclshObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// TclshState: The tclsh_state element defines information about TCLSH. This includes the available entity which describes whether TCLSH is available on the system. Please refer to the individual elements in the schema for more details about what each represents.
 type TclshState struct {
 	XMLName xml.Name `xml:"tclsh_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1189,6 +1280,7 @@ type TclshState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Available: This boolean entity describes whether TCLSH is available on the system. A value of true means that TCLSH is available.
 	Available *oval_def.EntityStateBoolType `xml:"available"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1196,11 +1288,11 @@ type TclshState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Version55Test: The version55_test is used to check the version of the IOS operating system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the data to check.
 type Version55Test struct {
 	XMLName xml.Name `xml:"version55_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1223,11 +1315,11 @@ type Version55Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Version55Object: The version55_object element is used by a version55_test to define the different version information associated with an IOS system. There is actually only one object relating to version and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check version will reference the same version55_object which is basically an empty object element.
 type Version55Object struct {
 	XMLName xml.Name `xml:"version55_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1240,11 +1332,11 @@ type Version55Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Version55State: The version55_state element defines the version information held within a Cisco IOS Train. A Cisco IOS train is a vehicle for delivering releases that evolve from a common code base.
 type Version55State struct {
 	XMLName xml.Name `xml:"version55_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1254,32 +1346,40 @@ type Version55State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// MajorVersion: The major_version entity is used to check the major version piece of the version string. The value is an integer and in the example 12.4(9)T0a the major version is '12'.
 	MajorVersion *oval_def.EntityStateIntType `xml:"major_version"`
 
+	// MinorVersion: The minor_version entity is used to check the minor version piece of the version string. The value is an integer and in the example 12.4(9)T0a the minor version is '4'.
 	MinorVersion *oval_def.EntityStateIntType `xml:"minor_version"`
 
+	// Release: The release entity is used to check the release piece of the version string. The value is an integer and in the example 12.4(9)T0a the release is '9'.
 	Release *oval_def.EntityStateIntType `xml:"release"`
 
+	// TrainIdentifier: The train_identifier entity is used to check the type of train represented in the version string. The value is a string and in the example 12.4(9)T0a the train identifier is 'T'. The following explaination from Wikipedia should help explain the different train identifiers. Cisco IOS releases are split into several "trains", each containing a different set of features. Trains more or less map onto distinct markets or groups of customers that Cisco is targeting. The 'mainline' train is designed to be the most stable release the company can offer, and its feature set never expands during its lifetime. Updates are released only to address bugs in the product. The previous technology train becomes the source for the current mainline train--for example, the 12.1T train becomes the basis for the 12.2 mainline. Therefore, to determine the features available in a particular mainline release, look at the previous T train release. The 'T' (Technology) train, gets new features and bug fixes throughout its life, and is therefore less stable than the mainline. (In releases prior to Cisco IOS Release 12.0, the P train served as the Technology train.) The 'S' (Service Provider) train, runs only on the company's core router products and is heavily customized for Service Provider customers. The 'E' (Enterprise) train, is customized for implementation in enterprise environments. The 'B' (broadband) train, support internet based broadband features. The 'XA', 'Xb' ... (special functionality) train, needs to be documented. There are other trains from time to time, designed for specific needs -- for example, the 12.0AA train contained new code required for Cisco's AS5800 product.
 	TrainIdentifier *oval_def.EntityStateStringType `xml:"train_identifier"`
 
+	// Rebuild: The rebuild entity is used to check the rebuild piece of the version string. The value is an integer and in the example 12.4(9)T0a the rebuild is '0'. Often a rebuild is compiled to fix a single specific problem or vulnerability for a given IOS version. For example, 12.1(8)E14 is a Rebuild, the 14 denoting the 14th rebuild of 12.1(8)E. Rebuilds are produced to either quickly repair a defect, or to satisfy customers who do not want to upgrade to a later major revision because they may be running critical infrastructure on their devices, and hence prefer to minimise change and risk.
 	Rebuild *oval_def.EntityStateIntType `xml:"rebuild"`
 
+	// Subrebuild: The subrebuild entity is used to check the subrebuild piece of the version string. The value is a string and in the example 12.4(9)T0a the subrebuild is 'a'.
 	Subrebuild *oval_def.EntityStateStringType `xml:"subrebuild"`
 
+	// MainlineRebuild: The mainline_rebuild entity is used to check the mainline rebuild piece of the version string. The mainline rebuild is just a regular rebuild release against the mainline operating system release (e.g. the branch of development that would typically be called "the trunk" that isn't associated with a train). Since there is no train identifier to stick the rebuild release after, they stick a alphabetic character inside the parens holding the maintenance release number. For example, 12.4(5b) is the second rebuild of the 12.4(5) maintenance release.
 	MainlineRebuild *oval_def.EntityStateStringType `xml:"mainline_rebuild"`
 
-	VersionString *oval_def.EntityStateIOSVersionType `xml:"version_string"`
+	// VersionString: The version_string entity is used to check the raw string output of a 'show version' command.
+	VersionString *oval_def.EntityStateIosversionType `xml:"version_string"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionTest: The version test is used to check the version of the IOS operating system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the data to check.
 type VersionTest struct {
 	XMLName xml.Name `xml:"version_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1302,11 +1402,11 @@ type VersionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionObject: The version_object element is used by a version test to define the different version information associated with an IOS system. There is actually only one object relating to version and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check version will reference the same version_object which is basically an empty object element.
 type VersionObject struct {
 	XMLName xml.Name `xml:"version_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1319,11 +1419,11 @@ type VersionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionState: The version_state element defines the version information held within a Cisco IOS Train. A Cisco IOS train is a vehicle for delivering releases that evolve from a common code base.
 type VersionState struct {
 	XMLName xml.Name `xml:"version_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1333,20 +1433,24 @@ type VersionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// MajorRelease: The major_release is a combination of train and rebuild information and is used by Cisco advisories to identify major releases.
 	MajorRelease *oval_def.EntityStateStringType `xml:"major_release"`
 
+	// TrainNumber: The train number is the dotted version that starts a version string. For example the version string 12.2(3)T has a train number of 12.2.
 	TrainNumber *oval_def.EntityStateStringType `xml:"train_number"`
 
+	// TrainIdentifier: The train identifier is the type of Train. For example the version string 12.2(3)T has a train identifier of T. Please see the EntityStateVersionTrainIdentifierType for more information about the different train identifiers.
 	TrainIdentifier *EntityStateTrainIdentifierType `xml:"train_identifier"`
 
-	VersionString *oval_def.EntityStateIOSVersionType `xml:"version_string"`
+	// VersionString: The version is the raw string output of a 'show version' command.
+	VersionString *oval_def.EntityStateIosversionType `xml:"version_string"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InterfaceStateIpDirectedBroadcastCommand: Directed broadcast command enabled on the interface. The default is false.
 type InterfaceStateIpDirectedBroadcastCommand struct {
 	XMLName xml.Name `xml:"ip_directed_broadcast_command"`
 
@@ -1354,18 +1458,23 @@ type InterfaceStateIpDirectedBroadcastCommand struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
-// Element
+// InterfaceStateProxyArpCommand: Element that is true if the proxy_arp command is enabled on the interface. The default is true.
 type InterfaceStateProxyArpCommand struct {
 	XMLName xml.Name `xml:"proxy_arp_command"`
 
@@ -1373,18 +1482,23 @@ type InterfaceStateProxyArpCommand struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
-// Element
+// InterfaceStateShutdownCommand: Element that is true if the interface is shut down. The default is false.
 type InterfaceStateShutdownCommand struct {
 	XMLName xml.Name `xml:"shutdown_command"`
 
@@ -1392,18 +1506,23 @@ type InterfaceStateShutdownCommand struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
-// Element
+// InterfaceStateSwitchportNativeVlan: The trunk native vlan configured on the interface (if applicable).
 type InterfaceStateSwitchportNativeVlan struct {
 	XMLName xml.Name `xml:"switchport_native_vlan"`
 
@@ -1411,18 +1530,23 @@ type InterfaceStateSwitchportNativeVlan struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
-// Element
+// InterfaceStateSwitchportAccessVlan: The access vlan configured on the interface (if applicable).
 type InterfaceStateSwitchportAccessVlan struct {
 	XMLName xml.Name `xml:"switchport_access_vlan"`
 
@@ -1430,18 +1554,23 @@ type InterfaceStateSwitchportAccessVlan struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
-// Element
+// RouterStateOspfAuthenticationArea: The OSPF area that is authenticated, if applicable.
 type RouterStateOspfAuthenticationArea struct {
 	XMLName xml.Name `xml:"ospf_authentication_area"`
 
@@ -1449,18 +1578,23 @@ type RouterStateOspfAuthenticationArea struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
-// Element
+// RoutingprotocolauthintfStateOspfArea: The OSPF area that is authenticated, if applicable.
 type RoutingprotocolauthintfStateOspfArea struct {
 	XMLName xml.Name `xml:"ospf_area"`
 
@@ -1468,51 +1602,65 @@ type RoutingprotocolauthintfStateOspfArea struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
-type EntityObjectAccessListIPVersionType struct {
+// EntityObjectAccessListIpversionType: The EntityObjectAccessListIPVersionType complex type restricts a string value to a specific set of values: IPV4, IPV6. These values describe if an ACL is for IPv4 or IPv6 in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityObjectAccessListIpversionType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityObjectRoutingProtocolType: The EntityObjectRoutingProtocolType complex type restricts a string value to a specific set of values: EIGRP, OSPF, BGP, RIP, RIPV2, ISIS. These values describe the routing protocol used in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityObjectRoutingProtocolType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateAccessListInterfaceDirectionType: The EntityStateAccessListInterfaceDirectionType complex type restricts a string value to a specific set of values: IN, OUT. These values describe the inbound or outbound ACL direction on an interface in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateAccessListInterfaceDirectionType struct {
 	XMLName xml.Name
 
@@ -1520,39 +1668,47 @@ type EntityStateAccessListInterfaceDirectionType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateAccessListIPVersionType struct {
+// EntityStateAccessListIpversionType: The EntityStateRoutingProtocolType complex type restricts a string value to a specific set of values: IPV4, IPV6. These values describe if an ACL is for IPv4 or IPv6 in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateAccessListIpversionType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateAccessListUseType: The EntityStateAccessListUseType complex type restricts a string value to a specific set of values: INTERFACE, CRYPTO_MAP_MATCH, CLASS_MAP_MATCH, ROUTE_MAP_MATCH, IGMP_FILTER, VTY. These values describe the ACL use in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateAccessListUseType struct {
 	XMLName xml.Name
 
@@ -1560,19 +1716,23 @@ type EntityStateAccessListUseType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateRoutingAuthTypeStringType: The EntityStateRoutingAuthTypeStringType complex type restricts a string value to a specific set of values: CLEARTEXT, MESSAGE_DIGEST. These values describe the routing protocol authentication types used in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateRoutingAuthTypeStringType struct {
 	XMLName xml.Name
 
@@ -1580,19 +1740,23 @@ type EntityStateRoutingAuthTypeStringType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateRoutingProtocolType: The EntityStateRoutingProtocolType complex type restricts a string value to a specific set of values: EIGRP, OSPF, BGP, RIP, RIPV2, ISIS. These values describe the routing protocol used in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateRoutingProtocolType struct {
 	XMLName xml.Name
 
@@ -1600,119 +1764,143 @@ type EntityStateRoutingProtocolType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateSNMPVersionStringType struct {
+// EntityStateSnmpversionStringType: The EntityStateSNMPVersionStringType complex type restricts a string value to a specific set of values: 1, 2c, 3. These values describe the SNMP version in a Cisco IOS configuration. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateSnmpversionStringType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateSNMPSecLevelStringType struct {
+// EntityStateSnmpsecLevelStringType: The EntityStateSNMPVersionStringType complex type restricts a string value to a specific set of values: PRIV, AUTH, NO_AUTH. These values describe the SNMP security level (encryption, Authentication, None) in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateSnmpsecLevelStringType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateSNMPModeStringType struct {
+// EntityStateSnmpmodeStringType: The EntityStateSNMPModeStringType complex type restricts a string value to a specific set of values: RO, RW. These values describe the SNMP mode (read-only, read-write) in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateSnmpmodeStringType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateSNMPAuthStringType struct {
+// EntityStateSnmpauthStringType: The EntityStateSNMPAuthStringType complex type restricts a string value to a specific set of values: MD5, SHA. These values describe the authentication algorithm in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateSnmpauthStringType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateSNMPPrivStringType struct {
+// EntityStateSnmpprivStringType: The EntityStateSNMPPrivStringType complex type restricts a string value to a specific set of values: DES, 3DES, AES. These values describe the encryption algorithm in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateSnmpprivStringType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateSwitchportModeType: The EntityObjectRoutingProtocolType complex type restricts a string value to a specific set of values: DYNAMIC, TRUNK, ACCESS. These values describe the interface switchport mode types in IOS. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateSwitchportModeType struct {
 	XMLName xml.Name
 
@@ -1720,19 +1908,23 @@ type EntityStateSwitchportModeType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateTrainIdentifierType: The EntityStateTrainIdentifierType complex type restricts a string value to a specific set of values. These values describe the possible types of trains in a Cisco IOS release. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateTrainIdentifierType struct {
 	XMLName xml.Name
 
@@ -1740,19 +1932,23 @@ type EntityStateTrainIdentifierType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateTrunkEncapType: The EntityStateTrunkEncapType complex type restricts a string value to a specific set of values: DOT1Q, ISL, NEGOTIATE. These values describe the interface trunk encapsulation types on an interfaces in IOS. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateTrunkEncapType struct {
 	XMLName xml.Name
 
@@ -1760,17 +1956,20 @@ type EntityStateTrunkEncapType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

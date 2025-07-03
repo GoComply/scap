@@ -8,26 +8,30 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Cisco PIX (Private Internet Exchange) specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// LineItem: Stores the properties of specific lines in the PIX config file.
 type LineItem struct {
 	XMLName xml.Name `xml:"line_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ShowSubcommand: The name of the SHOW sub-command.
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
+	// ConfigLine: The value returned from by the specified SHOW sub-command.
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VersionItem: Stores results from SHOW VERSION command.
 type VersionItem struct {
 	XMLName xml.Name `xml:"version_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 

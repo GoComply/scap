@@ -6,7 +6,9 @@ import (
 	"encoding/xml"
 )
 
-// Element
+// This XML Schema defines the CPE Applicability Language. An individual CPE Name addresses a single part of an actual system. To identify more complex platform types, there needs to be a way to combine different CPE Names using logical operators. For example, there may be a need to identify a platform with a particular operating system AND a certain application. The CPE Applicability Language exists to satisfy this need, enabling the CPE Name for the operating system to be combined with the CPE Name for the application. For more information, consult the CPE Applicability Language Specification document.
+
+// PlatformSpecification: This element is the root element of a CPE Applicability Language XML document and therefore acts as a container for child platform definitions.
 type PlatformSpecification struct {
 	XMLName xml.Name `xml:"platform-specification"`
 
@@ -17,12 +19,16 @@ type PlatformSpecification struct {
 type Platform struct {
 	XMLName xml.Name `xml:"platform"`
 
+	// Id: A locally unique name for the platform. There is no defined format for this id; however, it must be unique within the containing CPE Applicability Language document.
 	Id string `xml:"id,attr"`
 
+	// Title: A human-readable title for a platform. To support uses intended for multiple languages, the title element supports the ‘xml:lang’ attribute. At most one title element can appear for each language.
 	Title []TextType `xml:"title"`
 
+	// Remark: An additional description. To support uses intended for multiple languages, the remark element supports the ‘xml:lang’ attribute. There can be multiple remarks for a single language.
 	Remark []TextType `xml:"remark"`
 
+	// LogicalTest: Definition of test using logical operators (AND, OR, negate).
 	LogicalTest LogicalTestType `xml:"logical-test"`
 }
 
@@ -30,10 +36,13 @@ type Platform struct {
 type PlatformConfiguration struct {
 	XMLName xml.Name `xml:"platform-configuration"`
 
+	// Title: A human-readable title for a platform. To support uses intended for multiple languages, the title element supports the ‘xml:lang’ attribute. At most one title element can appear for each language.
 	Title []TextType `xml:"title"`
 
+	// Remark: An additional description. To support uses intended for multiple languages, the remark element supports the ‘xml:lang’ attribute. There can be multiple remarks for a single language.
 	Remark []TextType `xml:"remark"`
 
+	// LogicalTest: Definition of test using logical operators (AND, OR, negate).
 	LogicalTest LogicalTestType `xml:"logical-test"`
 }
 
@@ -41,14 +50,19 @@ type PlatformConfiguration struct {
 type LogicalTest struct {
 	XMLName xml.Name `xml:"logical-test"`
 
+	// Operator: The operator applied to the results of evaluating the fact-ref, check-fact-ref, and logical-test elements. The permitted operators are "AND" and "OR".
 	Operator OperatorEnumeration `xml:"operator,attr"`
 
+	// Negate: Whether the result of applying the operator should be negated. Possible values are "TRUE" and "FALSE". This does not apply if the initial result is ERROR.
 	Negate bool `xml:"negate,attr"`
 
+	// LogicalTest: Definition of complex logical test using AND, OR, and/or negate operators. Evaluates to a TRUE, FALSE, or ERROR result.
 	LogicalTest []LogicalTestType `xml:"logical-test"`
 
-	FactRef []CPEFactRefType `xml:"fact-ref"`
+	// FactRef: A reference to a bound form of a WFN; the reference always evaluates to a boolean result. The bound name contained within a fact-ref is meant to describe a possible set of products and is not meant to identify a unique product class.
+	FactRef []CpefactRefType `xml:"fact-ref"`
 
+	// CheckFactRef: A reference to a check that always evaluates to TRUE, FALSE, or ERROR. Examples of types of checks are OVAL and OCIL checks.
 	CheckFactRef []CheckFactRefType `xml:"check-fact-ref"`
 }
 
@@ -80,70 +94,74 @@ type PlatformSpecificationType struct {
 	XMLName xml.Name
 
 	Platform []PlatformType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// PlatformBaseType: The description or qualifications of a particular IT platform type. The platform is defined by the logical-test child element.
 type PlatformBaseType struct {
 	XMLName xml.Name
 
+	// Title: A human-readable title for a platform. To support uses intended for multiple languages, the title element supports the ‘xml:lang’ attribute. At most one title element can appear for each language.
 	Title []TextType `xml:"title"`
 
+	// Remark: An additional description. To support uses intended for multiple languages, the remark element supports the ‘xml:lang’ attribute. There can be multiple remarks for a single language.
 	Remark []TextType `xml:"remark"`
 
+	// LogicalTest: Definition of test using logical operators (AND, OR, negate).
 	LogicalTest LogicalTestType `xml:"logical-test"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type PlatformType struct {
 	XMLName xml.Name
 
+	// Id: A locally unique name for the platform. There is no defined format for this id; however, it must be unique within the containing CPE Applicability Language document.
 	Id string `xml:"id,attr"`
 
+	// Title: A human-readable title for a platform. To support uses intended for multiple languages, the title element supports the ‘xml:lang’ attribute. At most one title element can appear for each language.
 	Title []TextType `xml:"title"`
 
+	// Remark: An additional description. To support uses intended for multiple languages, the remark element supports the ‘xml:lang’ attribute. There can be multiple remarks for a single language.
 	Remark []TextType `xml:"remark"`
 
+	// LogicalTest: Definition of test using logical operators (AND, OR, negate).
 	LogicalTest LogicalTestType `xml:"logical-test"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// LogicalTestType: The logical-test element appears as a child of a platform element, and may also be nested to create more complex logical tests. The content consists of one or more elements: fact-ref, check-fact-ref, and logical-test children are permitted. The operator to be applied, and optional negation of the test, are given as attributes.
 type LogicalTestType struct {
 	XMLName xml.Name
 
+	// Operator: The operator applied to the results of evaluating the fact-ref, check-fact-ref, and logical-test elements. The permitted operators are "AND" and "OR".
 	Operator OperatorEnumeration `xml:"operator,attr"`
 
+	// Negate: Whether the result of applying the operator should be negated. Possible values are "TRUE" and "FALSE". This does not apply if the initial result is ERROR.
 	Negate bool `xml:"negate,attr"`
 
+	// LogicalTest: Definition of complex logical test using AND, OR, and/or negate operators. Evaluates to a TRUE, FALSE, or ERROR result.
 	LogicalTest []LogicalTestType `xml:"logical-test"`
 
-	FactRef []CPEFactRefType `xml:"fact-ref"`
+	// FactRef: A reference to a bound form of a WFN; the reference always evaluates to a boolean result. The bound name contained within a fact-ref is meant to describe a possible set of products and is not meant to identify a unique product class.
+	FactRef []CpefactRefType `xml:"fact-ref"`
 
+	// CheckFactRef: A reference to a check that always evaluates to TRUE, FALSE, or ERROR. Examples of types of checks are OVAL and OCIL checks.
 	CheckFactRef []CheckFactRefType `xml:"check-fact-ref"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type FactRefType struct {
 	XMLName xml.Name
 
 	Description string `xml:"description,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type CPEFactRefType struct {
+// CpefactRefType: A reference to a CPE Name that always evaluates to a Boolean result.
+type CpefactRefType struct {
 	XMLName xml.Name
 
 	Name string `xml:"name,attr"`
 
 	Description string `xml:"description,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// CheckFactRefType: A reference to a check that always evaluates to a TRUE, FALSE, or ERROR result.
 type CheckFactRefType struct {
 	XMLName xml.Name
 
@@ -154,21 +172,20 @@ type CheckFactRefType struct {
 	IdRef string `xml:"id-ref,attr"`
 
 	Description string `xml:"description,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TextType: This type allows the xml:lang attribute to associate a specific language with an element's string content.
 type TextType struct {
 	XMLName xml.Name
 
 	XmlLang string `xml:"lang,attr"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
 // XSD SimpleType declarations
 
+// OperatorEnumeration: The OperatorEnumeration simple type defines acceptable operators. Each operator defines how to evaluate multiple arguments.
 type OperatorEnumeration string
 
 const OperatorEnumerationAnd OperatorEnumeration = "AND"

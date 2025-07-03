@@ -8,51 +8,62 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the IOS specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core System Characteristic Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core System Characteristic Schema is not outlined here.
+
+// AclItem: Stores command that are part of a IOS configuration section. For example all configuration lines under an interface. It should not store configurations for configs that already have a separate item. For example BGP has a router item and should not also be stored in a acl_item.
 type AclItem struct {
 	XMLName xml.Name `xml:"acl_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: Element with the name of the ACL.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
-	IpVersion *EntityItemAccessListIPVersionType `xml:"ip_version"`
+	// IpVersion: Element with the IP version of the ACL.
+	IpVersion *EntityItemAccessListIpversionType `xml:"ip_version"`
 
+	// Use: Element with the feature where the ACL is used. If the same ACL is applied in more than one feature (i.e interface and crypto map), multiple items needs to be created.
 	Use *EntityItemAccessListUseType `xml:"use"`
 
+	// UsedIn: Element with the name of where the ACL is used. For example if use is 'INTERFACE', use_in will be the name of the interface. If the same ACL is applied in more than one feature (i.e interface and crypto map), multiple items needs to be created.
 	UsedIn *oval_sc.EntityItemStringType `xml:"used_in"`
 
+	// InterfaceDirection: Element with the direction the ACL is applied on an interface.
 	InterfaceDirection *EntityItemAccessListInterfaceDirectionType `xml:"interface_direction"`
 
+	// AclConfigLines: Element with the value returned with all config lines of the ACL.
 	AclConfigLines *oval_sc.EntityItemStringType `xml:"acl_config_lines"`
 
+	// ConfigLine: Element with the value returned with one ACL config line at a time.
 	ConfigLine []oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// BgpneighborItem: Stores information about bgp neighbors configured in bgp instances.
 type BgpneighborItem struct {
 	XMLName xml.Name `xml:"bgpneighbor_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Neighbor: Element with the bgp neighbor.
 	Neighbor *oval_sc.EntityItemStringType `xml:"neighbor"`
 
+	// Password: Element with the bgp authentication password, if configured. If Encryption type is configured it should be included in the password string. For example '0 cisco123'.
 	Password *oval_sc.EntityItemStringType `xml:"password"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// GlobalItem: Sotres information about the existence of a particular line in the ios config file under the global context.
 type GlobalItem struct {
 	XMLName xml.Name `xml:"global_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
@@ -61,142 +72,179 @@ type GlobalItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// InterfaceItem: The interface_item represents an IOS interface and its configuration options.
 type InterfaceItem struct {
 	XMLName xml.Name `xml:"interface_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: Element with the interface name.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// InterfaceItemIpDirectedBroadcastCommand: Element that is true if the directed broadcast command is enabled on the interface. The default is false.
 	IpDirectedBroadcastCommand *InterfaceItemIpDirectedBroadcastCommand `xml:"ip_directed_broadcast_command"`
 
 	NoIpDirectedBroadcastCommand *oval_sc.EntityItemStringType `xml:"no_ip_directed_broadcast_command"`
 
+	// InterfaceItemProxyArpCommand: Element that is true if the proxy_arp command is enabled on the interface. The default is true.
 	ProxyArpCommand *InterfaceItemProxyArpCommand `xml:"proxy_arp_command"`
 
+	// InterfaceItemShutdownCommand: Element that is true if the interface is shut down. The default is false.
 	ShutdownCommand *InterfaceItemShutdownCommand `xml:"shutdown_command"`
 
+	// HardwareAddr: Element with the interface hardware (MAC) address.
 	HardwareAddr *oval_sc.EntityItemStringType `xml:"hardware_addr"`
 
-	Ipv4Address *oval_sc.EntityItemIPAddressStringType `xml:"ipv4_address"`
+	// Ipv4Address: Element with the interface IPv4 address and mask. This element should only allow 'ipv4_address' of the oval:SimpleDatatypeEnumeration.
+	Ipv4Address *oval_sc.EntityItemIpaddressStringType `xml:"ipv4_address"`
 
-	Ipv6Address []oval_sc.EntityItemIPAddressStringType `xml:"ipv6_address"`
+	// Ipv6Address: Element with the interface IPv6 address and mask. This element should only allow 'ipv6_address' of the oval:SimpleDatatypeEnumeration.
+	Ipv6Address []oval_sc.EntityItemIpaddressStringType `xml:"ipv6_address"`
 
+	// Ipv4AccessList: Element with the ingress or egress IPv4 ACL name applied on the interface.
 	Ipv4AccessList []oval_sc.EntityItemStringType `xml:"ipv4_access_list"`
 
+	// Ipv6AccessList: Element with the ingress or egress IPv6 ACL name applied on the interface.
 	Ipv6AccessList []oval_sc.EntityItemStringType `xml:"ipv6_access_list"`
 
+	// CryptoMap: Element with the crypto map name applied to the interface.
 	CryptoMap *oval_sc.EntityItemStringType `xml:"crypto_map"`
 
+	// Ipv4UrpfCommand: Element with the uRPF command for IPv4 under the interface.
 	Ipv4UrpfCommand *oval_sc.EntityItemStringType `xml:"ipv4_urpf_command"`
 
+	// Ipv6UrpfCommand: Element with the uRPF command for IPv6 under the interface.
 	Ipv6UrpfCommand *oval_sc.EntityItemStringType `xml:"ipv6_urpf_command"`
 
+	// UrpfCommand: Element with the uRPF command under the interface.
 	UrpfCommand *oval_sc.EntityItemStringType `xml:"urpf_command"`
 
+	// SwitchportTrunkEncapsulation: Element with the switchport trunk encapsulation option configured on the interface (if applicable).
 	SwitchportTrunkEncapsulation *EntityItemTrunkEncapType `xml:"switchport_trunk_encapsulation"`
 
+	// SwitchportMode: Element with the switchport mode option configured on the interface (if applicable).
 	SwitchportMode *EntityItemSwitchportModeType `xml:"switchport_mode"`
 
+	// InterfaceItemSwitchportNativeVlan: Element with the trunk native vlan configured on the interface (if applicable).
 	SwitchportNativeVlan *InterfaceItemSwitchportNativeVlan `xml:"switchport_native_vlan"`
 
+	// InterfaceItemSwitchportAccessVlan: Element with the access vlan configured on the interface (if applicable).
 	SwitchportAccessVlan *InterfaceItemSwitchportAccessVlan `xml:"switchport_access_vlan"`
 
+	// SwitchportTrunkedVlans: Element with the vlans that are trunked configured on the interface (if applicable).
 	SwitchportTrunkedVlans *oval_sc.EntityItemStringType `xml:"switchport_trunked_vlans"`
 
+	// SwitchportPrunedVlans: Element with the vlans that are pruned from the trunk (if applicable).
 	SwitchportPrunedVlans *oval_sc.EntityItemStringType `xml:"switchport_pruned_vlans"`
 
+	// SwitchportPortSecurity: Element with the switchport port-security commands configured on the interface (if applicable).
 	SwitchportPortSecurity *oval_sc.EntityItemStringType `xml:"switchport_port_security"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// LineItem: Stores the properties of specific lines in the ios config file.
 type LineItem struct {
 	XMLName xml.Name `xml:"line_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ShowSubcommand: The name of the SHOW sub-command.
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
+	// ConfigLine: The value returned from by the specified SHOW sub-command.
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RouterItem: Stores commands that are part of a IOS 'router' command configuration. For example 'router bgp 123'.
 type RouterItem struct {
 	XMLName xml.Name `xml:"router_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Protocol: Element with the routing protocol.
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
+	// IdElm: Element with the IOS router id.
 	IdElm *oval_sc.EntityItemIntType `xml:"id"`
 
+	// Network: Element with the subnet in the network command of the router instance. The area can be included in the string for OSPF.
 	Network []oval_sc.EntityItemStringType `xml:"network"`
 
+	// BgpNeighbor: Element with the BGP neighbors, if applicable.
 	BgpNeighbor []oval_sc.EntityItemStringType `xml:"bgp_neighbor"`
 
+	// RouterItemOspfAuthenticationArea: Element with the OSPF area that is authenticated, if applicable.
 	OspfAuthenticationArea []RouterItemOspfAuthenticationArea `xml:"ospf_authentication_area"`
 
+	// RouterConfigLines: Element with all config lines of the router.
 	RouterConfigLines *oval_sc.EntityItemStringType `xml:"router_config_lines"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RoutingprotocolauthintfItem: Stores information for routing protocol authentication configured under specific interfaces.
 type RoutingprotocolauthintfItem struct {
 	XMLName xml.Name `xml:"routingprotocolauthintf_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Interface: Element with the interface.
 	Interface *oval_sc.EntityItemStringType `xml:"interface"`
 
+	// Protocol: Element with the routing protocol.
 	Protocol *EntityItemRoutingProtocolType `xml:"protocol"`
 
+	// IdElm: Element with the routing protocol id.
 	IdElm *oval_sc.EntityItemIntType `xml:"id"`
 
+	// AuthType: Element with the routing protocol authentication type.
 	AuthType *EntityItemRoutingAuthTypeStringType `xml:"auth_type"`
 
+	// RoutingprotocolauthintfItemOspfArea: Element with the OSPF area that is authenticated, if applicable.
 	OspfArea *RoutingprotocolauthintfItemOspfArea `xml:"ospf_area"`
 
+	// KeyChain: Element with the name of the key chain, if applicable.
 	KeyChain *oval_sc.EntityItemStringType `xml:"key_chain"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SectionItem: Stores command that are part of a IOS configuration section. For example all configuration lines under an interface. It should not store configurations for configs that already have a separate item. For example BGP has a router item and should not also be stored in a section_item.
 type SectionItem struct {
 	XMLName xml.Name `xml:"section_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// SectionCommand: The name of the section command.
 	SectionCommand *oval_sc.EntityItemStringType `xml:"section_command"`
 
+	// SectionConfigLines: Element with all config lines of the section.
 	SectionConfigLines *oval_sc.EntityItemStringType `xml:"section_config_lines"`
 
+	// ConfigLine: Element with one config line of the section at a time.
 	ConfigLine []oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SnmpItem: Stores results from collecting lines under the global context associated with snmp.
 type SnmpItem struct {
 	XMLName xml.Name `xml:"snmp_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
@@ -207,382 +255,466 @@ type SnmpItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SnmpcommunityItem: Stores information about an SNMP community configuration in IOS. That information includes the community name, the view (if it applies) name, the read-write mode and the ACLs names applied.
 type SnmpcommunityItem struct {
 	XMLName xml.Name `xml:"snmpcommunity_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: Element with the SNMP community name.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// View: Element with the view that restricts the OIDs of this community.
 	View *oval_sc.EntityItemStringType `xml:"view"`
 
-	Mode *EntityItemSNMPModeStringType `xml:"mode"`
+	// Mode: Element with the read-write privileges of the community.
+	Mode *EntityItemSnmpmodeStringType `xml:"mode"`
 
+	// Ipv4Acl: Element with the IPv4 ACL name applied to the community.
 	Ipv4Acl *oval_sc.EntityItemStringType `xml:"ipv4_acl"`
 
+	// Ipv6Acl: Element with the IPv6 ACL name applied to the community.
 	Ipv6Acl *oval_sc.EntityItemStringType `xml:"ipv6_acl"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SnmpgroupItem: Stores information about an SNMP group configuration in IOS. That information includes the group name, the SNMP version, the IPv4 or IPv6 ACL it is applied toand the read, write and/or notify views applied to the group.
 type SnmpgroupItem struct {
 	XMLName xml.Name `xml:"snmpgroup_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: Element with the SNMP group name.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
-	Version *EntityItemSNMPVersionStringType `xml:"version"`
+	// Version: Element with the SNMP version of the group.
+	Version *EntityItemSnmpversionStringType `xml:"version"`
 
-	Snmpv3SecLevel *EntityItemSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
+	// Snmpv3SecLevel: Element with the SNMPv3 security configure for the group.
+	Snmpv3SecLevel *EntityItemSnmpsecLevelStringType `xml:"snmpv3_sec_level"`
 
+	// Ipv4Acl: Element with the IPv4 ACL name applied to the group.
 	Ipv4Acl *oval_sc.EntityItemStringType `xml:"ipv4_acl"`
 
+	// Ipv6Acl: Element with the IPv6 ACL name applied to the group.
 	Ipv6Acl *oval_sc.EntityItemStringType `xml:"ipv6_acl"`
 
+	// ReadView: Element with the SNMP read view applied to the group.
 	ReadView *oval_sc.EntityItemStringType `xml:"read_view"`
 
+	// WriteView: Element with the SNMP write view applied to the group.
 	WriteView *oval_sc.EntityItemStringType `xml:"write_view"`
 
+	// NotifyView: Element with the SNMP notify view applied to the group.
 	NotifyView *oval_sc.EntityItemStringType `xml:"notify_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SnmphostItem: Stores information about the SNMP host configuration in IOS. That information includes the host, the community or user strings, the SNMP version, the snmp security (if the SNMP version is SNMPv3) and the SNMP traps.
 type SnmphostItem struct {
 	XMLName xml.Name `xml:"snmphost_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Host: Element with the SNMP host address or hostname.
 	Host *oval_sc.EntityItemStringType `xml:"host"`
 
+	// CommunityOrUser: Element with the community string or SNMPv3 user configured for the host.
 	CommunityOrUser *oval_sc.EntityItemStringType `xml:"community_or_user"`
 
-	Version *EntityItemSNMPVersionStringType `xml:"version"`
+	// Version: Element with the SNMP version.
+	Version *EntityItemSnmpversionStringType `xml:"version"`
 
-	Snmpv3SecLevel *EntityItemSNMPSecLevelStringType `xml:"snmpv3_sec_level"`
+	// Snmpv3SecLevel: Element with the SNMPv3 security configure for the host.
+	Snmpv3SecLevel *EntityItemSnmpsecLevelStringType `xml:"snmpv3_sec_level"`
 
+	// Traps: Element with the SNMP traps configured.
 	Traps *oval_sc.EntityItemStringType `xml:"traps"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SnmpuserItem: Stores information about an SNMP user configuration in IOS. That information includes the user name, the SNMP group he belongs to, the SNMP version, the IPv4 or IPv6 ACL it is applied to, the Security Level and the Authentication type that apply to the user (for SNMPv3).
 type SnmpuserItem struct {
 	XMLName xml.Name `xml:"snmpuser_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: Element with the SNMP user name.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Group: Element with the SNMP group the user belongs to.
 	Group *oval_sc.EntityItemStringType `xml:"group"`
 
-	Version *EntityItemSNMPVersionStringType `xml:"version"`
+	// Version: Element with the SNMP version of the user.
+	Version *EntityItemSnmpversionStringType `xml:"version"`
 
+	// Ipv4Acl: Element with the IPv4 ACL name applied to the user.
 	Ipv4Acl *oval_sc.EntityItemStringType `xml:"ipv4_acl"`
 
+	// Ipv6Acl: Element with the IPv6 ACL name applied to the user.
 	Ipv6Acl *oval_sc.EntityItemStringType `xml:"ipv6_acl"`
 
-	Priv *EntityItemSNMPPrivStringType `xml:"priv"`
+	// Priv: Element with the SNMP encryption type for the user (for SNMPv3).
+	Priv *EntityItemSnmpprivStringType `xml:"priv"`
 
-	Auth *EntityItemSNMPAuthStringType `xml:"auth"`
+	// Auth: Element with the SNMP authentication type for the user (for SNMPv3).
+	Auth *EntityItemSnmpauthStringType `xml:"auth"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SnmpviewItem: Stores information about an SNMP view configuration in IOS. That information includes the view name, the mib_family that the view uses and the included or excluded option of the mib family in the view.
 type SnmpviewItem struct {
 	XMLName xml.Name `xml:"snmpview_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: Element with the SNMP view name.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// MibFamily: Element with the SNMP MIB family of the view.
 	MibFamily *oval_sc.EntityItemStringType `xml:"mib_family"`
 
+	// Include: Element that is true if the included option is used in the view.
 	Include *oval_sc.EntityItemBoolType `xml:"include"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// TclshItem: The tclsh item holds information about the availability of tcl on the IOS operating system. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type TclshItem struct {
 	XMLName xml.Name `xml:"tclsh_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Available: This boolean entity describes whether TCLSH is available on the system. A value of true means that TCLSH is available. Per Cisco documentation, the accepted way to see if the device supports tcl functionality is to enter the tcl shell. If the attempt results in a tcl prompt then the device supports tclsh and has it enabled.
 	Available *oval_sc.EntityItemBoolType `xml:"available"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VersionItem: The version_item holds information about the version of the IOS operating system. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type VersionItem struct {
 	XMLName xml.Name `xml:"version_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// MajorRelease: The major_release is a combination of train and rebuild information and is used by Cisco advisories to identify major releases.
 	MajorRelease *oval_sc.EntityItemStringType `xml:"major_release"`
 
+	// TrainNumber: The train number is the dotted version that starts a version string. For example the version string 12.2(3)T has a train number of 12.2.
 	TrainNumber *oval_sc.EntityItemStringType `xml:"train_number"`
 
+	// MajorVersion: The major_version entity specifies the major version piece of the version string. The value is an integer and in the example 12.4(9)T0a the major version is '12'.
 	MajorVersion *oval_sc.EntityItemIntType `xml:"major_version"`
 
+	// MinorVersion: The minor_version entity specifies the minor version piece of the version string. The value is an integer and in the example 12.4(9)T0a the minor version is '4'.
 	MinorVersion *oval_sc.EntityItemIntType `xml:"minor_version"`
 
+	// Release: The release entity specifies the release piece of the version string. The value is an integer and in the example 12.4(9)T0a the release is '9'.
 	Release *oval_sc.EntityItemIntType `xml:"release"`
 
+	// TrainIdentifier: The train identifier is the type of Train. For example the version string 12.2(3)T has a train identifier of T. Please see the EntityItemTrainIdentifierType for more information about the different train identifiers.
 	TrainIdentifier *oval_sc.EntityItemStringType `xml:"train_identifier"`
 
+	// Rebuild: The rebuild entity specifies the rebuild piece of the version string The value is an integer and in the example 12.4(9)T0a the rebuild is '0'. Often a rebuild is compiled to fix a single specific problem or vulnerability for a given IOS version. For example, 12.1(8)E14 is a Rebuild, the 14 denoting the 14th rebuild of 12.1(8)E. Rebuilds are produced to either quickly repair a defect, or to satisfy customers who do not want to upgrade to a later major revision because they may be running critical infrastructure on their devices, and hence prefer to minimise change and risk.
 	Rebuild *oval_sc.EntityItemIntType `xml:"rebuild"`
 
+	// Subrebuild: The subrebuild entity specifies the subrebuild piece of the version string. The value is a string and in the example 12.4(9)T0a the subrebuild is 'a'.
 	Subrebuild *oval_sc.EntityItemStringType `xml:"subrebuild"`
 
+	// MainlineRebuild: The mainline_rebuild entity specifies the mainline rebuild piece of the version string. The mainline rebuild is just a regular rebuild release against the mainline operating system release (e.g. the branch of development that would typically be called "the trunk" that isn't associated with a train). Since there is no train identifier to stick the rebuild release after, they stick a alphabetic character inside the parens holding the maintenance release number. For example, 12.4(5b) is the second rebuild of the 12.4(5) maintenance release.
 	MainlineRebuild *oval_sc.EntityItemStringType `xml:"mainline_rebuild"`
 
-	VersionString *oval_sc.EntityItemIOSVersionType `xml:"version_string"`
+	// VersionString: The version entity holds the raw string output of a 'show version' command.
+	VersionString *oval_sc.EntityItemIosversionType `xml:"version_string"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// InterfaceItemIpDirectedBroadcastCommand: Element that is true if the directed broadcast command is enabled on the interface. The default is false.
 type InterfaceItemIpDirectedBroadcastCommand struct {
 	XMLName xml.Name `xml:"ip_directed_broadcast_command"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// InterfaceItemProxyArpCommand: Element that is true if the proxy_arp command is enabled on the interface. The default is true.
 type InterfaceItemProxyArpCommand struct {
 	XMLName xml.Name `xml:"proxy_arp_command"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// InterfaceItemShutdownCommand: Element that is true if the interface is shut down. The default is false.
 type InterfaceItemShutdownCommand struct {
 	XMLName xml.Name `xml:"shutdown_command"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// InterfaceItemSwitchportNativeVlan: Element with the trunk native vlan configured on the interface (if applicable).
 type InterfaceItemSwitchportNativeVlan struct {
 	XMLName xml.Name `xml:"switchport_native_vlan"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// InterfaceItemSwitchportAccessVlan: Element with the access vlan configured on the interface (if applicable).
 type InterfaceItemSwitchportAccessVlan struct {
 	XMLName xml.Name `xml:"switchport_access_vlan"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RouterItemOspfAuthenticationArea: Element with the OSPF area that is authenticated, if applicable.
 type RouterItemOspfAuthenticationArea struct {
 	XMLName xml.Name `xml:"ospf_authentication_area"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RoutingprotocolauthintfItemOspfArea: Element with the OSPF area that is authenticated, if applicable.
 type RoutingprotocolauthintfItemOspfArea struct {
 	XMLName xml.Name `xml:"ospf_area"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
+// EntityItemAccessListInterfaceDirectionType: The EntityItemAccessListInterfaceDirectionType complex type restricts a string value to a specific set of values: IN, OUT. These values describe the inbound or outbound ACL direction on an interface in a Cisco IOS configuration. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemAccessListInterfaceDirectionType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemAccessListIPVersionType struct {
+// EntityItemAccessListIpversionType: The EntityItemRoutingProtocolType complex type restricts a string value to a specific set of values: IPV4, IPV6. These values describe if an ACL is for IPv4 or IPv6 in a Cisco IOS configuration. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemAccessListIpversionType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemAccessListUseType: The EntityItemAccessListUseType complex type restricts a string value to a specific set of values: INTERFACE, CRYPTO_MAP_MATCH, CLASS_MAP_MATCH, ROUTE_MAP_MATCH, IGMP_FILTER, VTY. These values describe the ACL use in a Cisco IOS configuration. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemAccessListUseType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemRoutingAuthTypeStringType: The EntityItemRoutingAuthTypeStringType complex type restricts a string value to a specific set of values: CLEARTEXT, MESSAGE_DIGEST. These values describe the routing protocol authentication types used in a Cisco IOS configuration. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemRoutingAuthTypeStringType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemRoutingProtocolType: The EntityItemRoutingProtocolType complex type restricts a string value to a specific set of values: EIGRP, OSPF, BGP, RIP, RIPV2, ISIS. These values describe the routing protocol used in a Cisco IOS configuration. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemRoutingProtocolType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemSNMPVersionStringType struct {
+// EntityItemSnmpversionStringType: The EntityItemSNMPVersionStringType complex type restricts a string value to a specific set of values: 1, 2c, 3. These values describe the SNMP version in a Cisco IOS configuration. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemSnmpversionStringType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemSNMPSecLevelStringType struct {
+// EntityItemSnmpsecLevelStringType: The EntityItemSNMPVersionStringType complex type restricts a string value to a specific set of values: PRIV, AUTH, NO_AUTH. These values describe the SNMP security level (encryption, Authentication, None) in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemSnmpsecLevelStringType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemSNMPModeStringType struct {
+// EntityItemSnmpmodeStringType: The EntityItemSNMPModeStringType complex type restricts a string value to a specific set of values: RO, RW. These values describe the SNMP mode (read-only, read-write) in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemSnmpmodeStringType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemSNMPAuthStringType struct {
+// EntityItemSnmpauthStringType: The EntityItemSNMPAuthStringType complex type restricts a string value to a specific set of values: MD5, SHA. These values describe the authentication algorithm in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemSnmpauthStringType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemSNMPPrivStringType struct {
+// EntityItemSnmpprivStringType: The EntityItemSNMPPrivStringType complex type restricts a string value to a specific set of values: DES, 3DES, AES. These values describe the encryption algorithm in a Cisco IOS SNMPv3 related configurations. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemSnmpprivStringType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemSwitchportModeType: The EntityItemRoutingProtocolType complex type restricts a string value to a specific set of values: DYNAMIC, TRUNK, ACCESS. These values describe the interface switchport mode types in IOS. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemSwitchportModeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemTrunkEncapType: The EntityItemTrunkEncapType complex type restricts a string value to a specific set of values: DOT1Q, ISL, NEGOTIATE. These values describe the interface trunk encapsulation types on an interfaces in IOS. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemTrunkEncapType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

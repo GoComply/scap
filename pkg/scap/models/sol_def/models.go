@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Solaris specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// FacetTest: The facet_test is used to check the facets associated with the specified Image Packaging System image. Facets are properties that control whether or not optional components from a package are installed on a system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an facet_object and the optional state elements reference a facet_state and specifies the data to check.
 type FacetTest struct {
 	XMLName xml.Name `xml:"facet_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type FacetTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FacetObject: The facet_object element is used by a facet test to define the image facet items to be evaluated based on the specified states. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type FacetObject struct {
 	XMLName xml.Name `xml:"facet_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,8 +52,10 @@ type FacetObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Path: The path to the Solaris IPS image.
 	Path *oval_def.EntityObjectStringType `xml:"path"`
 
+	// Name: The name of the facet property associated with an IPS image.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -61,11 +65,11 @@ type FacetObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FacetState: The facet_state specifies the various facet properties associated with an IPS image.
 type FacetState struct {
 	XMLName xml.Name `xml:"facet_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -75,10 +79,13 @@ type FacetState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Path: Specifies the path to the Solaris IPS image.
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
+	// Name: Specifies the name of the facet property associated with an IPS image.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Value: Specifies the value of the facet property associated with an IPS image.
 	Value *oval_def.EntityStateBoolType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -86,11 +93,11 @@ type FacetState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ImageTest: The image_test provides support for checking the metadata of IPS images on Solaris systems. The test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a image_object and the optional state elements reference image_states that specify the metadata to check about a set of images.
 type ImageTest struct {
 	XMLName xml.Name `xml:"image_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -113,11 +120,11 @@ type ImageTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ImageObject: The image_object element is used by a image_test to identify the set of images to check on a system. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type ImageObject struct {
 	XMLName xml.Name `xml:"image_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -127,8 +134,10 @@ type ImageObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Path: The path to the Solaris IPS image.
 	Path *oval_def.EntityObjectStringType `xml:"path"`
 
+	// Name: The name of the property associated with the Solaris IPS image.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -138,11 +147,11 @@ type ImageObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ImageState: The image_state element defines the different system state information that can be used to check the metadata associated with the specified IPS image on a Solaris system.
 type ImageState struct {
 	XMLName xml.Name `xml:"image_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -152,10 +161,13 @@ type ImageState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Path: The path to the Solaris IPS image.
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
+	// Name: The name of the property associated with the Solaris IPS image.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Value: The value of a property that is associated with a Solaris IPS image.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -163,11 +175,11 @@ type ImageState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// IsainfoTest: The isainfo test reveals information about the instruction set architectures. This information can be retrieved by the isainfo command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an isainfo_object and the optional state element specifies the metadata to check.
 type IsainfoTest struct {
 	XMLName xml.Name `xml:"isainfo_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -190,11 +202,11 @@ type IsainfoTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// IsainfoObject: The isainfo_object element is used by an isainfo test to define those objects to evaluated based on a specified state. There is actually only one object relating to isainfo and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check isainfo will reference the same isainfo_object which is basically an empty object element.
 type IsainfoObject struct {
 	XMLName xml.Name `xml:"isainfo_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -207,11 +219,11 @@ type IsainfoObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// IsainfoState: The isainfo_state element defines the information about the instruction set architectures. Please refer to the individual elements in the schema for more details about what each represents.
 type IsainfoState struct {
 	XMLName xml.Name `xml:"isainfo_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -221,10 +233,13 @@ type IsainfoState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Bits: This is the number of bits in the address space of the native instruction set (isainfo -b).
 	Bits *oval_def.EntityStateIntType `xml:"bits"`
 
+	// KernelIsa: This is the name of the instruction set used by kernel components (isainfo -k).
 	KernelIsa *oval_def.EntityStateStringType `xml:"kernel_isa"`
 
+	// ApplicationIsa: This is the name of the instruction set used by portable applications (isainfo -n).
 	ApplicationIsa *oval_def.EntityStateStringType `xml:"application_isa"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -232,11 +247,11 @@ type IsainfoState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NddTest: From /usr/bin/ndd. See ndd manpage for specific fields
 type NddTest struct {
 	XMLName xml.Name `xml:"ndd_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -263,7 +278,7 @@ type NddTest struct {
 type NddObject struct {
 	XMLName xml.Name `xml:"ndd_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -273,8 +288,10 @@ type NddObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Device: The name of the device to examine. If multiple instances of this device exist on the system, an item for each instance will be collected.
 	Device *oval_def.EntityObjectStringType `xml:"device"`
 
+	// Parameter: The name of the parameter, For example, ip_forwarding.
 	Parameter *oval_def.EntityObjectStringType `xml:"parameter"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -288,7 +305,7 @@ type NddObject struct {
 type NddState struct {
 	XMLName xml.Name `xml:"ndd_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -298,12 +315,16 @@ type NddState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Device: The name of the device to examine.
 	Device *oval_def.EntityStateStringType `xml:"device"`
 
+	// Instance: The instance of the device to examine. Certain devices may have multiple instances on a system. If multiple instances exist, an item for each instance will be collected and will have this entity populated with its respective instance value. If only a single instance exists, this entity will not be collected.
 	Instance *oval_def.EntityStateIntType `xml:"instance"`
 
+	// Parameter: The name of the parameter, For example, ip_forwarding.
 	Parameter *oval_def.EntityStateStringType `xml:"parameter"`
 
+	// Value: The value of the named parameter.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -311,11 +332,11 @@ type NddState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackageTest: The package test is used to check information associated with different SVR4 packages installed on the system. Image Packaging System (IPS) packages are not supported by this test. The information used by this test is modeled after the /usr/bin/pkginfo command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an package_object and the optional state element specifies the information to check.
 type PackageTest struct {
 	XMLName xml.Name `xml:"package_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -338,11 +359,11 @@ type PackageTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackageObject: The package_object element is used by a package test to define the SVR4 packages to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PackageObject struct {
 	XMLName xml.Name `xml:"package_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -352,6 +373,7 @@ type PackageObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Pkginst: The pkginst entity is a string that represents a package designation by its instance. An instance can be the package abbreviation or a specific instance (for example, inst.1 or inst.2).
 	Pkginst *oval_def.EntityObjectStringType `xml:"pkginst"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -361,11 +383,11 @@ type PackageObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackageState: The package_state element defines the different information associated with SVR4 packages installed on the system. Please refer to the individual elements in the schema for more details about what each represents.
 type PackageState struct {
 	XMLName xml.Name `xml:"package_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -375,16 +397,22 @@ type PackageState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Pkginst: The pkginst entity is a string that represents a package designation by its instance. An instance can be the package abbreviation or a specific instance (for example, inst.1 or inst.2).
 	Pkginst *oval_def.EntityStateStringType `xml:"pkginst"`
 
+	// Name: The name entity is a text string that specifies a full package name.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Category: The category entity is a string in the form of a comma-separated list of categories under which a package may be displayed. Note that a package must at least belong to the system or application category. Categories are case-insensitive and may contain only alphanumerics. Each category is limited in length to 16 characters.
 	Category *oval_def.EntityStateStringType `xml:"category"`
 
+	// VersionElm: The version entity is a text string that specifies the current version associated with the software package. The maximum length is 256 ASCII characters and the first character cannot be a left parenthesis. Current Solaris software practice is to assign this parameter monotonically increasing Dewey decimal values of the form: major_revision.minor_revision[.micro_revision] where all the revision fields are integers. The versioning fields can be extended to an arbitrary string of numbers in Dewey-decimal format, if necessary.
 	VersionElm *oval_def.EntityStateStringType `xml:"version"`
 
+	// Vendor: The vendor entity is a string used to identify the vendor that holds the software copyright (maximum length of 256 ASCII characters).
 	Vendor *oval_def.EntityStateStringType `xml:"vendor"`
 
+	// Description: The description entity is a string that represents a more in-depth description of a package.
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -392,11 +420,11 @@ type PackageState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Package511Test: The package511_test provides support for checking the metadata of packages installed using the Solaris Image Packaging System. The test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a package511_object and the optional state elements reference package511_states that specify the metadata to check about a set of packages.
 type Package511Test struct {
 	XMLName xml.Name `xml:"package511_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -419,11 +447,11 @@ type Package511Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Package511Object: The package511_object element is used by a package511_test to identify the set of packages to check on a system. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Package511Object struct {
 	XMLName xml.Name `xml:"package511_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -433,12 +461,16 @@ type Package511Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Publisher: The person, group of persons, or organization that is the source of the package. The publisher should be expressed without leading "pkg:" or "//" components.
 	Publisher *oval_def.EntityObjectStringType `xml:"publisher"`
 
+	// Name: The full hierarchical name of the package which is separated by forward slash characters. The full name should be expressed without leading "pkg:/" or "/" components.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
+	// VersionElm: The version of the package which consists of the component version, build version, and branch version.
 	VersionElm *oval_def.EntityObjectVersionType `xml:"version"`
 
+	// Timestamp: The timestamp when the package was published in the ISO-8601 basic format (YYYYMMDDTHHMMSSZ).
 	Timestamp *oval_def.EntityObjectStringType `xml:"timestamp"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -448,11 +480,11 @@ type Package511Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Package511State: The package511_state element defines the different system state information that can be used to check the metadata associated with the specified IPS packages on a Solaris system.
 type Package511State struct {
 	XMLName xml.Name `xml:"package511_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -462,22 +494,31 @@ type Package511State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Publisher: The person, group of persons, or organization that is the source of the package. The publisher should be expressed without leading "pkg:" or "//" components.
 	Publisher *oval_def.EntityStateStringType `xml:"publisher"`
 
+	// Name: The full hierarchical name of the package which is separated by forward slash characters. The full name should be expressed without leading "pkg:/" or "/" components.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// VersionElm: The version of the package which consists of the component version, build version, and branch version.
 	VersionElm *oval_def.EntityStateVersionType `xml:"version"`
 
+	// Timestamp: The timestamp when the package was published in the ISO-8601 basic format (YYYYMMDDTHHMMSSZ).
 	Timestamp *oval_def.EntityStateStringType `xml:"timestamp"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the package which uniquely identifies the package on the system.
 	Fmri *oval_def.EntityStateStringType `xml:"fmri"`
 
+	// Summary: A summary of what the package provides.
 	Summary *oval_def.EntityStateStringType `xml:"summary"`
 
+	// Description: A description of what the package provides.
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
+	// Category: The category of the package.
 	Category *oval_def.EntityStateStringType `xml:"category"`
 
+	// UpdatesAvailable: A boolean value indicating whether or not updates are available for this package.
 	UpdatesAvailable *oval_def.EntityStateBoolType `xml:"updates_available"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -485,11 +526,11 @@ type Package511State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackageavoidlistTest: The packageavoidlist_test provides support for checking the metadata of IPS packages that have been flagged as needing to avoid from installation on a Solaris system. The test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a packageavoidlist_object and the optional state elements reference packageavoidlist_states that specify the metadata to check about a set of packages that have been flagged as to be avoided on a Solaris system.
 type PackageavoidlistTest struct {
 	XMLName xml.Name `xml:"packageavoidlist_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -512,11 +553,11 @@ type PackageavoidlistTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackageavoidlistObject: The packageavoidlist_object element is used by a packageavoidlist_test to identify the set of IPS packages that have been flagged as to be avoided from installation on a Solaris system. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PackageavoidlistObject struct {
 	XMLName xml.Name `xml:"packageavoidlist_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -529,11 +570,11 @@ type PackageavoidlistObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackageavoidlistState: The packageavoidlist_state element defines the different system state information that can be used to evaluate the specified IPS packages that have been flagged as to be avoided from installation on a Solaris system.
 type PackageavoidlistState struct {
 	XMLName xml.Name `xml:"packageavoidlist_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -543,6 +584,7 @@ type PackageavoidlistState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the package which uniquely identifies the package on the system.
 	Fmri *oval_def.EntityStateStringType `xml:"fmri"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -550,11 +592,11 @@ type PackageavoidlistState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagecheckTest: The packagecheck_test is used to verify the integrity of an installed Solaris SVR4 package. Image Packaging System (IPS) packages are not supported by this test. The information used by this test is modeled after the pkgchk command. For more information, see pkgchk(1M). It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a packagecheck_object and the optional packagecheck_state element specifies the data to check.
 type PackagecheckTest struct {
 	XMLName xml.Name `xml:"packagecheck_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -577,11 +619,11 @@ type PackagecheckTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagecheckObject: The packagecheck_object element is used by a packagecheck_test to define the SVR4 packages to be verified. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PackagecheckObject struct {
 	XMLName xml.Name `xml:"packagecheck_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -593,8 +635,10 @@ type PackagecheckObject struct {
 
 	Behaviors *PackageCheckBehaviors `xml:"behaviors"`
 
+	// Pkginst: The pkginst entity is a string that represents a package designation by its instance. An instance can be the package abbreviation or a specific instance (for example, inst.1 or inst.2).
 	Pkginst *oval_def.EntityObjectStringType `xml:"pkginst"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory in the specified package.
 	Filepath oval_def.EntityObjectStringType `xml:"filepath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -604,11 +648,11 @@ type PackagecheckObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagecheckState: The package_state element defines the different verification information associated with SVR4 packages installed on the system. Please refer to the individual elements in the schema for more details about what each represents.
 type PackagecheckState struct {
 	XMLName xml.Name `xml:"packagecheck_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -618,32 +662,46 @@ type PackagecheckState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Pkginst: The pkginst entity is a string that represents a package designation by its instance. An instance can be the package abbreviation or a specific instance (for example, inst.1 or inst.2).
 	Pkginst *oval_def.EntityStateStringType `xml:"pkginst"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory in the specified package.
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
+	// ChecksumDiffers: Has the file's checksum changed? A value of true indicates that the file's checksum has changed. A value of false indicates that the file's checksum has not changed.
 	ChecksumDiffers *oval_def.EntityStateBoolType `xml:"checksum_differs"`
 
+	// SizeDiffers: Has the file's size changed? A value of true indicates that the file's size has changed. A value of false indicates that the file's size has not changed.
 	SizeDiffers *oval_def.EntityStateBoolType `xml:"size_differs"`
 
+	// MtimeDiffers: Has the file's modified time changed? A value of true indicates that the file's modified time has changed. A value of false indicates that the file's modified time has not changed.
 	MtimeDiffers *oval_def.EntityStateBoolType `xml:"mtime_differs"`
 
+	// Uread: Has the actual user read permission changed from the expected user read permission?
 	Uread *EntityStatePermissionCompareType `xml:"uread"`
 
+	// Uwrite: Has the actual user write permission changed from the expected user write permission?
 	Uwrite *EntityStatePermissionCompareType `xml:"uwrite"`
 
+	// Uexec: Has the actual user exec permission changed from the expected user exec permission?
 	Uexec *EntityStatePermissionCompareType `xml:"uexec"`
 
+	// Gread: Has the actual group read permission changed from the expected group read permission?
 	Gread *EntityStatePermissionCompareType `xml:"gread"`
 
+	// Gwrite: Has the actual group write permission changed from the expected group write permission?
 	Gwrite *EntityStatePermissionCompareType `xml:"gwrite"`
 
+	// Gexec: Has the actual group exec permission changed from the expected group exec permission?
 	Gexec *EntityStatePermissionCompareType `xml:"gexec"`
 
+	// Oread: Has the actual others read permission changed from the expected others read permission?
 	Oread *EntityStatePermissionCompareType `xml:"oread"`
 
+	// Owrite: Has the actual others read permission changed from the expected others read permission?
 	Owrite *EntityStatePermissionCompareType `xml:"owrite"`
 
+	// Oexec: Has the actual others read permission changed from the expected others read permission?
 	Oexec *EntityStatePermissionCompareType `xml:"oexec"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -651,11 +709,11 @@ type PackagecheckState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagefreezelistTest: The packagefreezelist_test provides support for checking the metadata of IPS packages that have been frozen at a particular version. The test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a packagefreezelist_object and the optional state elements reference packagefreezelist_states that specify the metadata to check about a set of packages.
 type PackagefreezelistTest struct {
 	XMLName xml.Name `xml:"packagefreezelist_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -678,11 +736,11 @@ type PackagefreezelistTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagefreezelistObject: The packagefreezelist_object element is used by a packagefreezelist_test to identify the set of IPS packages that have been frozen at a particular version on a system. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PackagefreezelistObject struct {
 	XMLName xml.Name `xml:"packagefreezelist_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -695,11 +753,11 @@ type PackagefreezelistObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagefreezelistState: The packagefreezelist_state element defines the different system state information that can be used to evaluate the specified IPS packages on a Solaris system that have been frozen at a particular version.
 type PackagefreezelistState struct {
 	XMLName xml.Name `xml:"packagefreezelist_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -709,6 +767,7 @@ type PackagefreezelistState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the package which uniquely identifies the package on the system.
 	Fmri *oval_def.EntityStateStringType `xml:"fmri"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -716,11 +775,11 @@ type PackagefreezelistState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagepublisherTest: The packagepublisher_test provides support for checking the metadata of package publishers on a Solaris system. The test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a packagepublisher_object and the optional state elements reference packagepublisher_states that specify the metadata to check about a set of package publishers on a Solaris system.
 type PackagepublisherTest struct {
 	XMLName xml.Name `xml:"packagepublisher_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -743,11 +802,11 @@ type PackagepublisherTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagepublisherObject: The packagepublisher_object element is used by a packagepublisher_test to identify the set of package publishers to check on a Solaris system. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PackagepublisherObject struct {
 	XMLName xml.Name `xml:"packagepublisher_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -757,10 +816,13 @@ type PackagepublisherObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Name: The name of the IPS package publisher.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
+	// Type: The type of the IPS package publisher.
 	Type *EntityObjectPublisherTypeType `xml:"type"`
 
+	// OriginUri: The origin URI of the IPS package publisher.
 	OriginUri *oval_def.EntityObjectStringType `xml:"origin_uri"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -770,11 +832,11 @@ type PackagepublisherObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PackagepublisherState: The packagepublisher_state element defines the different system information that can be used to evaluate the specified package publishers.
 type PackagepublisherState struct {
 	XMLName xml.Name `xml:"packagepublisher_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -784,26 +846,37 @@ type PackagepublisherState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Name: The name of the IPS package publisher.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Type: The type of the IPS package publisher.
 	Type *EntityStatePublisherTypeType `xml:"type"`
 
+	// OriginUri: The origin URI of the IPS package publisher.
 	OriginUri *oval_def.EntityStateStringType `xml:"origin_uri"`
 
+	// Alias: The alias of the IPS package publisher.
 	Alias *oval_def.EntityStateStringType `xml:"alias"`
 
+	// SslKey: The Secure Socket Layer (SSL) key registered by a client for publishers using client-side SSL authentication.
 	SslKey *oval_def.EntityStateStringType `xml:"ssl_key"`
 
+	// SslCert: The Secure Socket Layer (SSL) certificate registered by a client for publishers using client-side SSL authentication.
 	SslCert *oval_def.EntityStateStringType `xml:"ssl_cert"`
 
-	ClientUuid *EntityStateClientUUIDType `xml:"client_uuid"`
+	// ClientUuid: The universally unique identifier (UUID) that identifies the image to its IPS package publisher.
+	ClientUuid *EntityStateClientUuidtype `xml:"client_uuid"`
 
+	// CatalogUpdated: The last time that the IPS package publisher's catalog was updated in seconds since the Unix epoch. The Unix epoch is the time 00:00:00 UTC on January 1, 1970.
 	CatalogUpdated *oval_def.EntityStateIntType `xml:"catalog_updated"`
 
+	// Enabled: Specifies whether or not the IPS package publisher is enabled.
 	Enabled *oval_def.EntityStateBoolType `xml:"enabled"`
 
+	// Order: Specifies where in the search order the IPS package publisher is listed. The first publisher in the search order will have a value of '1'.
 	Order *oval_def.EntityStateIntType `xml:"order"`
 
+	// Properties: The properties associated with the IPS package publisher.
 	Properties *oval_def.EntityStateRecordType `xml:"properties"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -811,11 +884,11 @@ type PackagepublisherState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Patch54Test: The patch test is used to check information associated with different patches for SVR4 packages installed on the system. Image Packaging System (IPS) packages do not support patches and are not supported by this test. The information being tested is based off the /usr/bin/showrev -p command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an inetd_object and the optional state element specifies the information to check.
 type Patch54Test struct {
 	XMLName xml.Name `xml:"patch54_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -838,11 +911,11 @@ type Patch54Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchTest: The patch test is used to check information associated with different patches installed on the system. The information being tested is based off the /usr/bin/showrev -p command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an inetd_object and the optional state element specifies the information to check.
 type PatchTest struct {
 	XMLName xml.Name `xml:"patch_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -865,11 +938,11 @@ type PatchTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Patch54Object: The patch54_object element is used by a patch test to define the specific patch to be evaluated. Patches are identified by unique alphanumeric strings, with the patch base code first, a hyphen, and a number that represents the patch revision number. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Patch54Object struct {
 	XMLName xml.Name `xml:"patch54_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -881,8 +954,10 @@ type Patch54Object struct {
 
 	Behaviors *PatchBehaviors `xml:"behaviors"`
 
+	// Base: The base entity represents a patch base code found before the hyphen.
 	Base *oval_def.EntityObjectIntType `xml:"base"`
 
+	// VersionElm: The version entity represents a patch version number found after the hyphen.
 	VersionElm *oval_def.EntityObjectIntType `xml:"version"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -892,11 +967,11 @@ type Patch54Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchObject: The patch_object element is used by a patch test to define the specific patch to be evaluated. Patches are identified by unique alphanumeric strings, with the patch base code first, a hyphen, and a number that represents the patch revision number. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PatchObject struct {
 	XMLName xml.Name `xml:"patch_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -906,6 +981,7 @@ type PatchObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Base: The base entity reresents a patch base code found before the hyphen.
 	Base *oval_def.EntityObjectIntType `xml:"base"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -913,11 +989,11 @@ type PatchObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PatchState: The patch_state element defines the different information associated with a specific patch for an SVR4 package installed on the system. Patches are identified by unique alphanumeric strings, with the patch base code first, a hyphen, and a number that represents the patch revision number. Please refer to the individual elements in the schema for more details about what each represents.
 type PatchState struct {
 	XMLName xml.Name `xml:"patch_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -927,8 +1003,10 @@ type PatchState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Base: The base entity reresents a patch base code found before the hyphen.
 	Base *oval_def.EntityStateIntType `xml:"base"`
 
+	// VersionElm: The version entity represents a patch version number found after the hyphen.
 	VersionElm *oval_def.EntityStateIntType `xml:"version"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -936,11 +1014,11 @@ type PatchState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SmfTest: The smf_test is used to check service management facility controlled services including traditional unix rc level start/kill scrips and inetd daemon services. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a smf_object and the optional state element specifies the information to check.
 type SmfTest struct {
 	XMLName xml.Name `xml:"smf_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -963,11 +1041,11 @@ type SmfTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SmfObject: The smf_object element is used by a smf_test to define the specific service instance to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SmfObject struct {
 	XMLName xml.Name `xml:"smf_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -977,6 +1055,7 @@ type SmfObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Fmri: The FMRI (Fault Managed Resource Identifier) entity is used to identify system objects for which advanced fault and resource management capabilities are provided. Services managed by SMF are assigned FMRI URIs prefixed with the scheme name "svc". FMRIs used by SMF can be expressed in three ways: first as an absolute path including a location path such as "localhost" (eg svc://localhost/system/system-log:default), second as a path relative to the local machine (eg svc:/system/system-log:default), and third as simply the service identifier with the string prefixes implied (eg system/system-log:default). For OVAL, the absolute path version (first choice) should be used.
 	Fmri *oval_def.EntityObjectStringType `xml:"fmri"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -986,11 +1065,11 @@ type SmfObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SmfState: The smf_state element defines the different information associated with a specific smf controlled service. Please refer to the individual elements in the schema for more details about what each represents.
 type SmfState struct {
 	XMLName xml.Name `xml:"smf_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1000,18 +1079,25 @@ type SmfState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Fmri: The FMRI (Fault Managed Resource Identifier) entity describes a possible identifier associated with a service. Services managed by SMF are assigned FMRI URIs prefixed with the scheme name "svc". FMRIs used by SMF can be expressed in three ways: first as an absolute path including a location path such as "localhost" (eg svc://localhost/system/system-log:default), second as a path relative to the local machine (eg svc:/system/system-log:default), and third as simply the service identifier with the string prefixes implied (eg system/system-log:default). For OVAL, the absolute path version (first choice) should be used.
 	Fmri *oval_def.EntityStateStringType `xml:"fmri"`
 
+	// ServiceName: The service_name entity is usually an abbreviated form of the FMRI. In the example svc://localhost/system/system-log:default, the name would be system-log.
 	ServiceName *oval_def.EntityStateStringType `xml:"service_name"`
 
+	// ServiceState: The service_state entity describes a possible state that the service may be in. Each service instance is always in a well-defined state based on its dependencies, the results of the execution of its methods, and its potential receipt of events from the contracts filesystem. The service_state values are UNINITIALIZED, OFFLINE, ONLINE, DEGRADED, MAINTENANCE, DISABLED, and LEGACY-RUN.
 	ServiceState *EntityStateSmfServiceStateType `xml:"service_state"`
 
+	// Protocol: The protocol entity describes a possible protocol supported by the service.
 	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
 
+	// ServerExecutable: The entity server_executable is a string representing the listening daemon on the server side. An example being 'svcprop ftp' which might show 'inetd/start/exec astring /usr/sbin/in.ftpd\ -a'
 	ServerExecutable *oval_def.EntityStateStringType `xml:"server_executable"`
 
+	// ServerArguements: The server_arguments entity describes possible parameters that are passed to the service.
 	ServerArguements *oval_def.EntityStateStringType `xml:"server_arguements"`
 
+	// ExecAsUser: The exec_as_user entity is a string pulled from svcprop in the following format: inetd_start/user astring root
 	ExecAsUser *oval_def.EntityStateStringType `xml:"exec_as_user"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1019,11 +1105,11 @@ type SmfState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SmfpropertyTest: The smfproperty_test is used to check the value of properties associated with SMF services. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an smfproperty_object and the optional state elements reference a smfproperty_state and specifies the data to check.
 type SmfpropertyTest struct {
 	XMLName xml.Name `xml:"smfproperty_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1046,11 +1132,11 @@ type SmfpropertyTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SmfpropertyObject: The smfproperty_object element is used by a SMF property test to define the SMF property items to be evaluated based on the specified states. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SmfpropertyObject struct {
 	XMLName xml.Name `xml:"smfproperty_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1060,10 +1146,13 @@ type SmfpropertyObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Service: Specifies the SMF service on the system. This is the service category and name separated by a forward slash ("/").
 	Service *oval_def.EntityObjectStringType `xml:"service"`
 
+	// Instance: The instance of an SMF service which represents a specific configuration of a service.
 	Instance *oval_def.EntityObjectStringType `xml:"instance"`
 
+	// Property: The name of the property associated with an SMF service. This is the property category and name separated by a forward slash ("/").
 	Property *oval_def.EntityObjectStringType `xml:"property"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1073,11 +1162,11 @@ type SmfpropertyObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SmfpropertyState: The smfproperty_state specifies the values of properties associated with SMF services.
 type SmfpropertyState struct {
 	XMLName xml.Name `xml:"smfproperty_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1087,14 +1176,19 @@ type SmfpropertyState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Service: Specifies the SMF service on the system. This is the service category and name separated by a forward slash ("/").
 	Service *oval_def.EntityStateStringType `xml:"service"`
 
+	// Instance: Specifies the instance of an SMF service which represents a specific configuration of a service.
 	Instance *oval_def.EntityStateStringType `xml:"instance"`
 
+	// Property: Specifies the name of the property associated with an SMF service. This is the property category and name separated by a forward slash ("/").
 	Property *oval_def.EntityStateStringType `xml:"property"`
 
+	// Fmri: The Fault Management Resource Identifier (FMRI) of the SMF service which uniquely identifies the service on the system.
 	Fmri *oval_def.EntityStateStringType `xml:"fmri"`
 
+	// Value: Specifies the value of the property associated with an SMF service.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1102,11 +1196,11 @@ type SmfpropertyState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VariantTest: The variant_test is used to check the variants associated with the current Image Packaging System image. Variants are properties that control whether or not mutually exclusive components from a package are installed on a system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an variant_object and the optional state elements reference a variant_state and specifies the data to check.
 type VariantTest struct {
 	XMLName xml.Name `xml:"variant_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1129,11 +1223,11 @@ type VariantTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VariantObject: The variant_object element is used by a variant test to define the image variant items to be evaluated based on the specified states. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type VariantObject struct {
 	XMLName xml.Name `xml:"variant_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1143,8 +1237,10 @@ type VariantObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Path: The path to the Solaris IPS image.
 	Path *oval_def.EntityObjectStringType `xml:"path"`
 
+	// Name: The name of the variant property associated with an IPS image.
 	Name *oval_def.EntityObjectStringType `xml:"name"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1154,11 +1250,11 @@ type VariantObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VariantState: The variant_state specifies the various variant properties associated with the specified IPS image.
 type VariantState struct {
 	XMLName xml.Name `xml:"variant_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1168,10 +1264,13 @@ type VariantState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Path: Specifies the path to the Solaris IPS image.
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
+	// Name: Specifies the name of the variant property associated with an IPS image.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Value: Specifies the value of the variant property associated with an IPS image.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1179,11 +1278,11 @@ type VariantState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VirtualizationinfoTest: The virtualizationinfo_test provides support for checking the metadata associated with the current virtualization environment this instance of Solaris is running on. The test extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a virtualizationinfo_object and the optional state elements reference virtualizationinfo_states that specify the metadata to check the current virtualization environment.
 type VirtualizationinfoTest struct {
 	XMLName xml.Name `xml:"virtualizationinfo_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1206,11 +1305,11 @@ type VirtualizationinfoTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VirtualizationinfoObject: The virtualizationinfo_object element is used by a virtualizationinfo_test to identify the current virtualization environment this instance of Solaris is running on. Given that this object only retrieves the current virtualization environment for the system, there are no child entities to specify in the object.
 type VirtualizationinfoObject struct {
 	XMLName xml.Name `xml:"virtualizationinfo_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1223,11 +1322,11 @@ type VirtualizationinfoObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VirtualizationinfoState: The virtualizationinfo_state element defines the different information that can be used to evaluate the current virtualization environment this instance of Solaris is running on.
 type VirtualizationinfoState struct {
 	XMLName xml.Name `xml:"virtualizationinfo_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1237,14 +1336,19 @@ type VirtualizationinfoState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Current: The name of the current environment.
 	Current *oval_def.EntityStateStringType `xml:"current"`
 
-	Supported *EntityStateV12NEnvType `xml:"supported"`
+	// Supported: The list of virtualization environments that this node supports as children.
+	Supported *EntityStateV12NenvType `xml:"supported"`
 
-	Parent *EntityStateV12NEnvType `xml:"parent"`
+	// Parent: The parent environment of the current environment.
+	Parent *EntityStateV12NenvType `xml:"parent"`
 
-	LdomRole *EntityStateLDOMRoleType `xml:"ldom-role"`
+	// LdomRole: The logical domain roles associated with the current environment.
+	LdomRole *EntityStateLdomroleType `xml:"ldom-role"`
 
+	// Properties: The properties associated with the current environment.
 	Properties *oval_def.EntityStateRecordType `xml:"properties"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1254,62 +1358,73 @@ type VirtualizationinfoState struct {
 
 // XSD ComplexType declarations
 
+// PackageCheckBehaviors: The PackageCheckBehaviors complex type defines a set of behaviors that for controlling how installed SVR4 packages are checked. These behaviors align with the options of the pkgchk command (specifically '-a', '-c', and '-n').
 type PackageCheckBehaviors struct {
 	XMLName xml.Name
 
+	// FileattributesOnly: 'fileattributes_only' when true this behavior means only check the file attributes and do not check file contents. When false, both file attributes and contents will be checked. This aligns with the pkgchk option '-a'.
 	FileattributesOnly bool `xml:"fileattributes_only,attr,omitempty"`
 
+	// FilecontentsOnly: 'filecontents_only' when true this behavior means only check the file contents and do not check file attributes. When false, both file attributes and contents will be checked. This aligns with the pkgchk option '-c'.
 	FilecontentsOnly bool `xml:"filecontents_only,attr,omitempty"`
 
+	// NoVolatileeditable: 'no_volatileeditable' when true this behavior means do not check volatile or editable files' contents. When false, volatile and editable files' contents will be checked. This aligns with the pkgchk option '-n'.
 	NoVolatileeditable bool `xml:"no_volatileeditable,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// PatchBehaviors: The PatchBehaviors complex type defines a number of behaviors that allow a more detailed definition of the patch_object being specified. Note that using these behaviors may result in some unique results. For example, a double negative type condition might be created where an object entity says include everything except a specific item, but a behavior is used that might then add that item back in.
 type PatchBehaviors struct {
 	XMLName xml.Name
 
+	// Supersedence: 'supersedence' specifies that the object should also match any superseding patches to the one being specified. In Solaris, a patch can be superseded in two ways. The first way is implicitly when a new revision of a patch is released (e.g. patch 12345-02 supersedes patch 12345-01). The second way is explicitly where a new patch contains the complete functionality of another patch. If set to 'true', the resulting object set would be the original patch specified plus any superseding patches. The default value is 'false' meaning the object should only match the specified patch.
 	Supersedence string `xml:"supersedence,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityObjectPublisherTypeType: The EntityObjectPublisherTypeType complex type restricts a string value to three values: archive, mirror, or origin that specifies how the publisher distributes their packages. The empty string is also allowed to support empty elements associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityObjectPublisherTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateClientUUIDType struct {
+// EntityStateClientUuidtype: The EntityStateClientUUIDType restricts a string value to a representation of a client UUID, used to identify an image to its IPS package publisher. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the specified pattern restriction.
+type EntityStateClientUuidtype struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStatePermissionCompareType: The EntityStatePermissionCompareType complex type restricts a string value to more, less, or same which specifies if an actual permission is different than the expected permission (more or less restrictive) or if the permission is the same. The empty string is also allowed to support empty elements associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStatePermissionCompareType struct {
 	XMLName xml.Name
 
@@ -1317,19 +1432,23 @@ type EntityStatePermissionCompareType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStatePublisherTypeType: The EntityStatePublisherTypeType complex type restricts a string value to three values: archive, mirror, or origin that specifies how the publisher distributes their packages. The empty string is also allowed to support empty elements associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStatePublisherTypeType struct {
 	XMLName xml.Name
 
@@ -1337,19 +1456,23 @@ type EntityStatePublisherTypeType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateSmfServiceStateType: The EntityStateSmfServiceStateType complex type defines the different values that are valid for the service_state entity of a smf_state. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the type entity.
 type EntityStateSmfServiceStateType struct {
 	XMLName xml.Name
 
@@ -1357,57 +1480,68 @@ type EntityStateSmfServiceStateType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateV12NEnvType struct {
+// EntityStateV12NenvType: The EntityStateV12NEnvType complex type restricts a string value to a specific set of values that describe the virtalization environment. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateV12NenvType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityStateLDOMRoleType struct {
+// EntityStateLdomroleType: The EntityStateLDOMRoleType complex type restricts a string value to a specific set of roles for the current virtualization environment. The empty string is also allowed to support empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
+type EntityStateLdomroleType struct {
 	XMLName xml.Name
 
 	EntityCheck string `xml:"entity_check,attr,omitempty"`
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

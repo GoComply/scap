@@ -8,289 +8,364 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the MacOS specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// AccountinfoItem: This item stores sser account information (username, uid, gid, etc.).
 type AccountinfoItem struct {
 	XMLName xml.Name `xml:"accountinfo_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Username: The user associated with the information collected.
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
+	// Password: Obfuscated (*****) or encrypted password for this user.
 	Password *oval_sc.EntityItemStringType `xml:"password"`
 
+	// Uid: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. This element represents the owner of the file.
 	Uid *oval_sc.EntityItemIntType `xml:"uid"`
 
+	// Gid: Group ID of this account.
 	Gid *oval_sc.EntityItemIntType `xml:"gid"`
 
+	// Realname: User's real name, aka gecos field of /etc/passwd.
 	Realname *oval_sc.EntityItemStringType `xml:"realname"`
 
+	// HomeDir: The home directory for this user account.
 	HomeDir *oval_sc.EntityItemStringType `xml:"home_dir"`
 
+	// LoginShell: The login shell for this user account.
 	LoginShell *oval_sc.EntityItemStringType `xml:"login_shell"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// AuthorizationdbItem: This item stores results from checking the contents of an authorizationdb right.
 type AuthorizationdbItem struct {
 	XMLName xml.Name `xml:"authorizationdb_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// RightName: Specifies the right_name in which the item is specified.
 	RightName *oval_sc.EntityItemStringType `xml:"right_name"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found. How this is used is entirely controlled by operator attributes.
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// CorestorageItem: This item stores results from checking the contents of the CoreStorage XML plist information.
 type CorestorageItem struct {
 	XMLName xml.Name `xml:"corestorage_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Uuid: Specifies the UUID of the volume about which the plist information was retrieved.
 	Uuid oval_sc.EntityItemStringType `xml:"uuid"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found. How this is used is entirely controlled by operator attributes.
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// DiskutilItem: The diskutil_item holds verification information about an individual disk on a Mac OS system. Each diskutil_item contains a device, filepath, and details on how the actual permissions, ownerships and link targets differ from the expected values. For more information, see diskutil(8) or repair_packages(8). It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type DiskutilItem struct {
 	XMLName xml.Name `xml:"diskutil_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Device: The device entity is a string that represents the disk on a Mac OS system to verify. Please see diskutil(8) for instructions on how to specify the device.
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory on the specified device.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Uread: Has the actual user read permission changed from the expected user read permission?
 	Uread *EntityItemPermissionCompareType `xml:"uread"`
 
+	// Uwrite: Has the actual user write permission changed from the expected user write permission?
 	Uwrite *EntityItemPermissionCompareType `xml:"uwrite"`
 
+	// Uexec: Has the actual user exec permission changed from the expected user exec permission?
 	Uexec *EntityItemPermissionCompareType `xml:"uexec"`
 
+	// Gread: Has the actual group read permission changed from the expected group read permission?
 	Gread *EntityItemPermissionCompareType `xml:"gread"`
 
+	// Gwrite: Has the actual group write permission changed from the expected group write permission?
 	Gwrite *EntityItemPermissionCompareType `xml:"gwrite"`
 
+	// Gexec: Has the actual group exec permission changed from the expected group exec permission?
 	Gexec *EntityItemPermissionCompareType `xml:"gexec"`
 
+	// Oread: Has the actual others read permission changed from the expected others read permission?
 	Oread *EntityItemPermissionCompareType `xml:"oread"`
 
+	// Owrite: Has the actual others write permission changed from the expected others write permission?
 	Owrite *EntityItemPermissionCompareType `xml:"owrite"`
 
+	// Oexec: Has the actual others exec permission changed from the expected others exec permission?
 	Oexec *EntityItemPermissionCompareType `xml:"oexec"`
 
+	// UserDiffers: Has the actual user changed from the expected user?
 	UserDiffers *oval_sc.EntityItemBoolType `xml:"user_differs"`
 
+	// ActualUser: The actual user of the file/directory.
 	ActualUser *oval_sc.EntityItemIntType `xml:"actual_user"`
 
+	// ExpectedUser: The expected user of the file/directory.
 	ExpectedUser *oval_sc.EntityItemIntType `xml:"expected_user"`
 
+	// GroupDiffers: Has the actual group changed from the expected group?
 	GroupDiffers *oval_sc.EntityItemBoolType `xml:"group_differs"`
 
+	// ActualGroup: The actual group of the file/directory.
 	ActualGroup *oval_sc.EntityItemIntType `xml:"actual_group"`
 
+	// ExpectedGroup: The expected group of the file/directory.
 	ExpectedGroup *oval_sc.EntityItemIntType `xml:"expected_group"`
 
+	// SymlinkDiffers: Has the actual symlink changed from the expected symlink?
 	SymlinkDiffers *oval_sc.EntityItemBoolType `xml:"symlink_differs"`
 
+	// ActualSymlink: The actual symlink of the file/directory.
 	ActualSymlink *oval_sc.EntityItemStringType `xml:"actual_symlink"`
 
+	// ExpectedSymlink: The expected symlink of the file/directory.
 	ExpectedSymlink *oval_sc.EntityItemStringType `xml:"expected_symlink"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// GatekeeperItem: This item stores results from checking the settings of the Gatekeeper.
 type GatekeeperItem struct {
 	XMLName xml.Name `xml:"gatekeeper_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Enabled: The status of Gatekeeper assessments.
 	Enabled oval_sc.EntityItemBoolType `xml:"enabled"`
 
+	// Unlabeled: The path to an unsigned application folder to which Gatekeeper has granted execute permission.
 	Unlabeled []oval_sc.EntityItemStringType `xml:"unlabeled"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// InetlisteningserverItem: An inet listening server item stores the results of checking for network servers currently active on a system.
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:"inetlisteningserver_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ProgramName: This is the name of the communicating program.
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
-	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This is the IP address of the network interface on which the program listens. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_sc.EntityItemIpaddressStringType `xml:"local_address"`
 
+	// LocalFullAddress: This is the IP address and network port on which the program listens, equivalent to local_address:local_port. Note that the IP address can be IPv4 or IPv6.
 	LocalFullAddress *oval_sc.EntityItemStringType `xml:"local_full_address"`
 
+	// LocalPort: This is the TCP or UDP port on which the program listens. Note that this is not a list -- if a program listens on multiple ports, or on a combination of TCP and UDP, each will have its own entry in the table data stored by this item.
 	LocalPort *oval_sc.EntityItemIntType `xml:"local_port"`
 
-	ForeignAddress *oval_sc.EntityItemIPAddressStringType `xml:"foreign_address"`
+	// ForeignAddress: This is the IP address with which the program is communicating, or with which it will communicate, in the case of a listening server. Note that the IP address can be IPv4 or IPv6.
+	ForeignAddress *oval_sc.EntityItemIpaddressStringType `xml:"foreign_address"`
 
+	// ForeignFullAddress: This is the IP address and network port to which the program is communicating or will accept communications from, equivalent to foreign_address:foreign_port. Note that the IP address can be IPv4 or IPv6.
 	ForeignFullAddress *oval_sc.EntityItemStringType `xml:"foreign_full_address"`
 
+	// ForeignPort: This is the TCP or UDP port to which the program communicates. In the case of a listening program accepting new connections, this is usually '0'.
 	ForeignPort *oval_sc.EntityItemStringType `xml:"foreign_port"`
 
+	// Pid: This is the process ID of the process. The process in question is that of the program communicating on the network.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// Protocol: This is the transport-layer protocol, in lowercase: tcp or udp.
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
+	// UserId: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. It represents the owner, and thus privilege level, of the specified program.
 	UserId *oval_sc.EntityItemStringType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Inetlisteningserver510Item: An inet listening server item stores the results of checking for network servers currently active on a system.
 type Inetlisteningserver510Item struct {
 	XMLName xml.Name `xml:"inetlisteningserver510_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Protocol: This is the transport-layer protocol, in lowercase: tcp or udp.
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
-	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This is the IP address of the network interface on which the program listens. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_sc.EntityItemIpaddressStringType `xml:"local_address"`
 
+	// LocalPort: This is the TCP or UDP port on which the program listens. Note that this is not a list -- if a program listens on multiple ports, or on a combination of TCP and UDP, each will have its own entry in the table data stored by this item.
 	LocalPort *oval_sc.EntityItemIntType `xml:"local_port"`
 
+	// LocalFullAddress: This is the IP address and network port on which the program listens, equivalent to local_address:local_port. Note that the IP address can be IPv4 or IPv6.
 	LocalFullAddress *oval_sc.EntityItemStringType `xml:"local_full_address"`
 
+	// ProgramName: This is the name of the communicating program.
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
-	ForeignAddress *oval_sc.EntityItemIPAddressStringType `xml:"foreign_address"`
+	// ForeignAddress: This is the IP address with which the program is communicating, or with which it will communicate, in the case of a listening server. Note that the IP address can be IPv4 or IPv6.
+	ForeignAddress *oval_sc.EntityItemIpaddressStringType `xml:"foreign_address"`
 
+	// ForeignPort: This is the TCP or UDP port to which the program communicates. In the case of a listening program accepting new connections, this is usually '0'.
 	ForeignPort *oval_sc.EntityItemIntType `xml:"foreign_port"`
 
+	// ForeignFullAddress: This is the IP address and network port to which the program is communicating or will accept communications from, equivalent to foreign_address:foreign_port. Note that the IP address can be IPv4 or IPv6.
 	ForeignFullAddress *oval_sc.EntityItemStringType `xml:"foreign_full_address"`
 
+	// Pid: This is the process ID of the process. The process in question is that of the program communicating on the network.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// UserId: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. It represents the owner, and thus privilege level, of the specified program.
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// KeychainItem: This item stores results from checking the settings of a keychain.
 type KeychainItem struct {
 	XMLName xml.Name `xml:"keychain_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: Specifies the filepath of the keychain.
 	Filepath oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// LockOnSleep: Specifies the whether the keychain is configured to lock on sleep.
 	LockOnSleep *oval_sc.EntityItemBoolType `xml:"lock_on_sleep"`
 
+	// Timeout: The inactivity timeout (in seconds) for the keychain, or 0 if there is no timeout.
 	Timeout *oval_sc.EntityItemIntType `xml:"timeout"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// LaunchdItem: This item stores results from checking a launchd-controlled daemon/agent.
 type LaunchdItem struct {
 	XMLName xml.Name `xml:"launchd_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Label: Specifies the name of the agent/daemon.
 	Label oval_sc.EntityItemStringType `xml:"label"`
 
+	// Pid: Specifies the process ID of the daemon (if any).
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// StatusElm: Specifies the last exit code of the daemon (if any), or if $lt; 0, indicates the negative of the signal that interrupted processing. For example, a value of -15 would indicate that the job was terminated via a SIGTERM.
 	StatusElm *oval_sc.EntityItemIntType `xml:"status"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// NvramItem: Output of 'nvram -p'
 type NvramItem struct {
 	XMLName xml.Name `xml:"nvram_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// NvramVar: A nvram variabl.
 	NvramVar *oval_sc.EntityItemStringType `xml:"nvram_var"`
 
+	// NvramValue: This is the value of the associated nvram variable.
 	NvramValue *oval_sc.EntityItemStringType `xml:"nvram_value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PlistItem: The plist_item holds information about an individual property list preference key found on a system. Each plist_item contains a preference key, application identifier or filepath, type, as well as the preference key's value. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type PlistItem struct {
 	XMLName xml.Name `xml:"plist_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Key: The preference key to check.
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_sc.EntityItemStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. ~/Library/Preferences/com.apple.Safari.plist).
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Instance: The instance of the preference key found in the plist. The first instance of a matching preference key is given the instance value of 1, the second instance of a matching preference key is given the instance value of 2, and so on. Instance values must be assigned using a depth-first approach. Note that the main purpose of this entity is to provide uniqueness for the different plist_items that result from multiple instances of a given preference key in the same plist file.
 	Instance *oval_sc.EntityItemIntType `xml:"instance"`
 
+	// Type: The type of the preference key.
 	Type *EntityItemPlistTypeType `xml:"type"`
 
+	// Value: The value of the preference key.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Plist511Item: The plist511_item stores results from checking the contents of the XML representation of a plist file. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type Plist511Item struct {
 	XMLName xml.Name `xml:"plist511_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_sc.EntityItemStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. /Library/Preferences/com.apple.TimeMachine.plist).
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Xpath: Specifies an XPath 1.0 expression to evaluate against the XML representation of the plist file specified by the filename or app_id entity. This XPath 1.0 expression must evaluate to a list of zero or more text values which will be accessible in OVAL via instances of the value_of entity. Any results from evaluating the XPath 1.0 expression other than a list of text strings (e.g., a nodes set) is considered an error. The intention is that the text values be drawn from instances of a single, uniquely named element or attribute. However, an OVAL interpreter is not required to verify this, so the author should define the XPath expression carefully. Note that "equals" is the only valid operator for the xpath entity.
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found. How this is used is entirely controlled by operator attributes.
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PwpolicyItem: Output of 'pwpolicy -getpolicy'. Please see the 'pwpolicy' man page for additional information.
 type PwpolicyItem struct {
 	XMLName xml.Name `xml:"pwpolicy_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
@@ -300,75 +375,105 @@ type PwpolicyItem struct {
 
 	DirectoryNode *oval_sc.EntityItemStringType `xml:"directory_node"`
 
+	// MaxChars: Maximum number of characters allowed in a password.
 	MaxChars *oval_sc.EntityItemIntType `xml:"maxChars"`
 
+	// MaxFailedLoginAttempts: Maximum number of failed logins before the account is locked.
 	MaxFailedLoginAttempts *oval_sc.EntityItemIntType `xml:"maxFailedLoginAttempts"`
 
+	// MinChars: Minimum number of characters allowed in a password.
 	MinChars *oval_sc.EntityItemIntType `xml:"minChars"`
 
+	// PasswordCannotBeName: Defines if the password is allowed to be the same as the username or not.
 	PasswordCannotBeName *oval_sc.EntityItemBoolType `xml:"passwordCannotBeName"`
 
+	// RequiresAlpha: Defines if the password must contain an alphabetical character or not.
 	RequiresAlpha *oval_sc.EntityItemBoolType `xml:"requiresAlpha"`
 
+	// RequiresNumeric: Defines if the password must contain an numeric character or not.
 	RequiresNumeric *oval_sc.EntityItemBoolType `xml:"requiresNumeric"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Pwpolicy59Item: The pwpolicy59_item holds the password policy information for a particular user specified by the target_user element. Please see the 'pwpolicy' man page for additional information.
 type Pwpolicy59Item struct {
 	XMLName xml.Name `xml:"pwpolicy59_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// TargetUser: The target_user element specifies the user whose password policy information was collected. If xsi:nil="true", the item specifies the global policy.
 	TargetUser *oval_sc.EntityItemStringType `xml:"target_user"`
 
+	// Username: The username element specifies the username of the authenticator.
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
+	// Userpass: The userpass element specifies the password of the authenticator as specified by the username element.
 	Userpass *oval_sc.EntityItemStringType `xml:"userpass"`
 
+	// DirectoryNode: The directory_node element specifies the directory node that the password policy information was collected from.
 	DirectoryNode *oval_sc.EntityItemStringType `xml:"directory_node"`
 
+	// MaxChars: Maximum number of characters allowed in a password.
 	MaxChars *oval_sc.EntityItemIntType `xml:"maxChars"`
 
+	// MaxFailedLoginAttempts: Maximum number of failed logins before the account is locked.
 	MaxFailedLoginAttempts *oval_sc.EntityItemIntType `xml:"maxFailedLoginAttempts"`
 
+	// MinChars: Minimum number of characters allowed in a password.
 	MinChars *oval_sc.EntityItemIntType `xml:"minChars"`
 
+	// PasswordCannotBeName: Defines if the password is allowed to be the same as the username or not.
 	PasswordCannotBeName *oval_sc.EntityItemBoolType `xml:"passwordCannotBeName"`
 
+	// RequiresAlpha: Defines if the password must contain an alphabetical character or not.
 	RequiresAlpha *oval_sc.EntityItemBoolType `xml:"requiresAlpha"`
 
+	// RequiresNumeric: Defines if the password must contain an numeric character or not.
 	RequiresNumeric *oval_sc.EntityItemBoolType `xml:"requiresNumeric"`
 
+	// MaxMinutesUntilChangePassword: Maximum number of minutes until the password must be changed.
 	MaxMinutesUntilChangePassword *oval_sc.EntityItemIntType `xml:"maxMinutesUntilChangePassword"`
 
+	// MinMinutesUntilChangePassword: Minimum number of minutes between password changes.
 	MinMinutesUntilChangePassword *oval_sc.EntityItemIntType `xml:"minMinutesUntilChangePassword"`
 
+	// RequiresMixedCase: Defines if the password must contain upper and lower case characters or not.
 	RequiresMixedCase *oval_sc.EntityItemBoolType `xml:"requiresMixedCase"`
 
+	// RequiresSymbol: Defines if the password must contain a symbol character or not.
 	RequiresSymbol *oval_sc.EntityItemBoolType `xml:"requiresSymbol"`
 
+	// MinutesUntilFailedLoginReset: Number of minutes after login has been disabled due to too many failed login attempts to wait before reenabling login.
 	MinutesUntilFailedLoginReset *oval_sc.EntityItemIntType `xml:"minutesUntilFailedLoginReset"`
 
+	// UsingHistory: 0 = user can reuse the current pass-word, 1 = user cannot reuse the current password, 2-15 = user cannot reuse the last n passwords.
 	UsingHistory *oval_sc.EntityItemIntType `xml:"usingHistory"`
 
+	// CanModifyPasswordforSelf: If true, the user can change the password.
 	CanModifyPasswordforSelf *oval_sc.EntityItemBoolType `xml:"canModifyPasswordforSelf"`
 
+	// UsingExpirationDate: If true, user is required to change password on the date in expirationDateGMT
 	UsingExpirationDate *oval_sc.EntityItemBoolType `xml:"usingExpirationDate"`
 
+	// UsingHardExpirationDate: If true, user's account is disabled on the date in hardExpireDateGMT
 	UsingHardExpirationDate *oval_sc.EntityItemBoolType `xml:"usingHardExpirationDate"`
 
-	ExpirationDateGMT *oval_sc.EntityItemStringType `xml:"expirationDateGMT"`
+	// ExpirationDateGmt: Date for the password to expire, format is: mm/dd/yyyy. NOTE: The pwpolicy command returns the year as a two digit value, but OVAL uses four digit years; the pwpolicy value is converted to an OVAL compatible value.
+	ExpirationDateGmt *oval_sc.EntityItemStringType `xml:"expirationDateGMT"`
 
-	HardExpireDateGMT *oval_sc.EntityItemStringType `xml:"hardExpireDateGMT"`
+	// HardExpireDateGmt: Date for the user's account to be disabled, format is: mm/dd/yyyy. NOTE: The pwpolicy command returns the year as a two digit value, but OVAL uses four digit years; the pwpolicy value is converted to an OVAL compatible value.
+	HardExpireDateGmt *oval_sc.EntityItemStringType `xml:"hardExpireDateGMT"`
 
+	// MaxMinutesUntilDisabled: User's account is disabled after this interval
 	MaxMinutesUntilDisabled *oval_sc.EntityItemIntType `xml:"maxMinutesUntilDisabled"`
 
+	// MaxMinutesOfNonUse: User's account is disabled if it is not accessed by this interval
 	MaxMinutesOfNonUse *oval_sc.EntityItemIntType `xml:"maxMinutesOfNonUse"`
 
+	// NewPasswordRequired: If true, the user will be prompted for a new password at the next authentication.
 	NewPasswordRequired *oval_sc.EntityItemBoolType `xml:"newPasswordRequired"`
 
 	NotGuessablePattern *oval_sc.EntityItemBoolType `xml:"notGuessablePattern"`
@@ -376,129 +481,171 @@ type Pwpolicy59Item struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RlimitItem: The rlimit_item contains information about the resource limits for launchd.
 type RlimitItem struct {
 	XMLName xml.Name `xml:"rlimit_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// CpuCurrent: The maximum amount of cpu time (in seconds) to be used by each process.
 	CpuCurrent oval_sc.EntityItemIntType `xml:"cpu_current"`
 
+	// CpuMax: cpu hard limit.
 	CpuMax oval_sc.EntityItemIntType `xml:"cpu_max"`
 
+	// FilesizeCurrent: The largest size (in bytes) file that may be created.
 	FilesizeCurrent oval_sc.EntityItemIntType `xml:"filesize_current"`
 
+	// FilesizeMax: filesize hard limit.
 	FilesizeMax oval_sc.EntityItemIntType `xml:"filesize_max"`
 
+	// DataCurrent: The maximum size (in bytes) of the data segment for a process; this defines how far a program may extend its break with the sbrk(2) system call.
 	DataCurrent oval_sc.EntityItemIntType `xml:"data_current"`
 
+	// DataMax: data hard limit.
 	DataMax oval_sc.EntityItemIntType `xml:"data_max"`
 
+	// StackCurrent: The maximum size (in bytes) of the stack segment for a process; this defines how far a program's stack segment may be extended. Stack extension is performed automatically by the system.
 	StackCurrent oval_sc.EntityItemIntType `xml:"stack_current"`
 
+	// StackMax: stack hard limit.
 	StackMax oval_sc.EntityItemIntType `xml:"stack_max"`
 
+	// CoreCurrent: The largest size (in bytes) core file that may be created.
 	CoreCurrent oval_sc.EntityItemIntType `xml:"core_current"`
 
+	// CoreMax: core hard limit.
 	CoreMax oval_sc.EntityItemIntType `xml:"core_max"`
 
+	// RssCurrent: The maximum size (in bytes) to which a process's resident set size may grow. This imposes a limit on the amount of physical memory to be given to a process; if memory is tight, the system will prefer to take memory from processes that are exceeding their declared resident set size.
 	RssCurrent oval_sc.EntityItemIntType `xml:"rss_current"`
 
+	// RssMax: rss hard limit.
 	RssMax oval_sc.EntityItemIntType `xml:"rss_max"`
 
+	// MemlockCurrent: The maximum size (in bytes) which a process may lock into memory using the mlock(2) function.
 	MemlockCurrent oval_sc.EntityItemIntType `xml:"memlock_current"`
 
+	// MemlockMax: memlock hard limit.
 	MemlockMax oval_sc.EntityItemIntType `xml:"memlock_max"`
 
+	// MaxprocCurrent: The maximum number of simultaneous processes for this user id.
 	MaxprocCurrent oval_sc.EntityItemIntType `xml:"maxproc_current"`
 
+	// MaxprocMax: maxproc hard limit.
 	MaxprocMax oval_sc.EntityItemIntType `xml:"maxproc_max"`
 
+	// MaxfilesCurrent: The maximum number of open files for this process.
 	MaxfilesCurrent oval_sc.EntityItemIntType `xml:"maxfiles_current"`
 
+	// MaxfilesMax: maxfiles hard limit.
 	MaxfilesMax oval_sc.EntityItemIntType `xml:"maxfiles_max"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SoftwareupdateItem: This item represents automatic software update information.
 type SoftwareupdateItem struct {
 	XMLName xml.Name `xml:"softwareupdate_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Schedule: Specifies whether automatic checking is enabled (true).
 	Schedule oval_sc.EntityItemBoolType `xml:"schedule"`
 
+	// SoftwareTitle: Specifies the title string for an available (not installed) software update.
 	SoftwareTitle []oval_sc.EntityItemStringType `xml:"software_title"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SystemprofilerItem: This item stores results from performing an XPATH query on the XML result of a systemprofiler data type query.
 type SystemprofilerItem struct {
 	XMLName xml.Name `xml:"systemprofiler_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// DataType: Specifies the data type that was used in collection.
 	DataType *EntityItemDataTypeType `xml:"data_type"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found. How this is used is entirely controlled by operator attributes.
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SystemsetupItem: This item represents system setup information.
 type SystemsetupItem struct {
 	XMLName xml.Name `xml:"systemsetup_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Timezone: Specifies the name of the current time zone.
 	Timezone oval_sc.EntityItemStringType `xml:"timezone"`
 
+	// Usingnetworktime: Specifies wither the machine is using network time.
 	Usingnetworktime oval_sc.EntityItemBoolType `xml:"usingnetworktime"`
 
+	// Networktimeserver: Specifies the network time server.
 	Networktimeserver *oval_sc.EntityItemStringType `xml:"networktimeserver"`
 
+	// Computersleep: Specifies the computer sleep inactivity timer, or 0 for never.
 	Computersleep oval_sc.EntityItemIntType `xml:"computersleep"`
 
+	// Displaysleep: Specifies the display sleep inactivity timer, or 0 for never.
 	Displaysleep oval_sc.EntityItemIntType `xml:"displaysleep"`
 
+	// Harddisksleep: Specifies the hard disk sleep inactivity timer, or 0 for never.
 	Harddisksleep oval_sc.EntityItemIntType `xml:"harddisksleep"`
 
+	// Wakeonmodem: Specifies whether the computer will wake up if the modem is accessed.
 	Wakeonmodem oval_sc.EntityItemBoolType `xml:"wakeonmodem"`
 
+	// Wakeonnetworkaccess: Specifies whether the computer will wake up if the network is accessed.
 	Wakeonnetworkaccess oval_sc.EntityItemBoolType `xml:"wakeonnetworkaccess"`
 
+	// Restartfreeze: Specifies whether the computer will restart after freezing.
 	Restartfreeze oval_sc.EntityItemBoolType `xml:"restartfreeze"`
 
+	// Restartpowerfailure: Specifies whether the computer will restart after a power failure.
 	Restartpowerfailure oval_sc.EntityItemBoolType `xml:"restartpowerfailure"`
 
+	// Allowpowerbuttontosleepcomputer: Specifies whether the power button can be used to cause the computer to sleep.
 	Allowpowerbuttontosleepcomputer oval_sc.EntityItemBoolType `xml:"allowpowerbuttontosleepcomputer"`
 
+	// Remotelogin: Specifies whether remote logins are allowed.
 	Remotelogin oval_sc.EntityItemBoolType `xml:"remotelogin"`
 
+	// Remoteappleevents: Specifies whether remote Apple events are enabled.
 	Remoteappleevents *oval_sc.EntityItemBoolType `xml:"remoteappleevents"`
 
+	// Computername: Specifies the computer's name.
 	Computername oval_sc.EntityItemStringType `xml:"computername"`
 
+	// Localsubnetname: Specifies the name of the local subnet.
 	Localsubnetname oval_sc.EntityItemStringType `xml:"localsubnetname"`
 
+	// Startupdisk: Specifies the startup disks.
 	Startupdisk oval_sc.EntityItemStringType `xml:"startupdisk"`
 
+	// Waitforstartupafterpowerfailure: Specifies the number of seconds the computer waits to start up after a power failure.
 	Waitforstartupafterpowerfailure oval_sc.EntityItemIntType `xml:"waitforstartupafterpowerfailure"`
 
+	// Disablekeyboardwhenenclosurelockisengaged: Specifies whether the keyboard is locked when the closure lock is engaged.
 	Disablekeyboardwhenenclosurelockisengaged oval_sc.EntityItemBoolType `xml:"disablekeyboardwhenenclosurelockisengaged"`
 
+	// Kernelbootarchitecturesetting: Specifies the kernel boot architecture setting.
 	Kernelbootarchitecturesetting oval_sc.EntityItemStringType `xml:"kernelbootarchitecturesetting"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -506,40 +653,46 @@ type SystemsetupItem struct {
 
 // XSD ComplexType declarations
 
+// EntityItemDataTypeType: The EntityItemDataTypeType complex type defines the different values that are valid for the data_type entity of a system_profiler item. These values describe the system_profiler XML data to be retrieved. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the index entity. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values. Please note that the values identified are for the data_type entity and are not valid values for the datatype attribute.
 type EntityItemDataTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPermissionCompareType: The EntityItemPermissionCompareType complex type restricts a string value to more, less, or same which specifies if an actual permission is different than the expected permission (more or less restrictive) or if the permission is the same. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemPermissionCompareType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPlistTypeType: The EntityItemPlistTypeType complex type restricts a string value to the seven values CFString, CFNumber, CFBoolean, CFDate, CFData, CFArray, and CFDictionary that specify the type of the value associated with a property list preference key. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemPlistTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

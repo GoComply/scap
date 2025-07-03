@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Cisco CatOS specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here
+
+// LineTest: The line_test is used to check the properties of specific output lines from a SHOW command, such as show running-config. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a line_object and the optional state element specifies the data to check.
 type LineTest struct {
 	XMLName xml.Name `xml:"line_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type LineTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineObject: The line_object element is used by a line_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type LineObject struct {
 	XMLName xml.Name `xml:"line_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type LineObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// ShowSubcommand: The name of a SHOW sub-command.
 	ShowSubcommand *oval_def.EntityObjectStringType `xml:"show_subcommand"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type LineObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineState: The line_state element defines the different information that can be used to evaluate the result of a specific SHOW sub-command. This includes the name of ths sub-command and the corresponding config line. Please refer to the individual elements in the schema for more details about what each represents.
 type LineState struct {
 	XMLName xml.Name `xml:"line_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,8 +76,10 @@ type LineState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// ShowSubcommand: The name of the SHOW sub-command.
 	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
 
+	// ConfigLine: The value returned from by the specified SHOW sub-command.
 	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -82,11 +87,11 @@ type LineState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ModuleTest: The module test reveals module information in Cisco Catalyst switches. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a module_object and the optional state element specifies the metadata to check.
 type ModuleTest struct {
 	XMLName xml.Name `xml:"module_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -109,11 +114,11 @@ type ModuleTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ModuleObject: The module_object element is used by a module test to specify the module to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions schema.
 type ModuleObject struct {
 	XMLName xml.Name `xml:"module_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -123,6 +128,7 @@ type ModuleObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// ModuleNumber: A number that identifies the a specific module.
 	ModuleNumber *oval_def.EntityObjectIntType `xml:"module_number"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -132,11 +138,11 @@ type ModuleObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ModuleState: The module_state element defines the module information held within a Cisco Catalyst switch. The module_number, type, and model element specifies the number, type and model of the module respectively. The software_major_release, software_individual_release and software_version_id elements specify the software version information of the module. For instance, if the software version is 8.5(4c)GLX, then software_major_release is 8.5GLX, software_individual_release is 4 and software_version_id is c. Similarly, the hardware_major_release, hardware_individual_release, firmware_major_release and firmware_individual_release elements reveal the hardware and firmware version information of the module.
 type ModuleState struct {
 	XMLName xml.Name `xml:"module_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -146,24 +152,34 @@ type ModuleState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// ModuleNumber: A number that identifies the a specific module.
 	ModuleNumber *oval_def.EntityStateIntType `xml:"module_number"`
 
+	// Type: The type of module.
 	Type *oval_def.EntityStateStringType `xml:"type"`
 
+	// Model: The model of a module.
 	Model *oval_def.EntityStateStringType `xml:"model"`
 
+	// SoftwareMajorRelease: The major relase of the software of a module to check for.
 	SoftwareMajorRelease *oval_def.EntityStateVersionType `xml:"software_major_release"`
 
+	// SoftwareIndividualRelease: The individual release of the software of the module to check for.
 	SoftwareIndividualRelease *oval_def.EntityStateIntType `xml:"software_individual_release"`
 
+	// SoftwareVersionId: The vesion id of the software of a module to check for.
 	SoftwareVersionId *oval_def.EntityStateStringType `xml:"software_version_id"`
 
+	// HardwareMajorRelease: The hardware major release of a module to check for.
 	HardwareMajorRelease *oval_def.EntityStateVersionType `xml:"hardware_major_release"`
 
+	// HardwareIndividualRelease: The hardware individual release of a module to check for.
 	HardwareIndividualRelease *oval_def.EntityStateIntType `xml:"hardware_individual_release"`
 
+	// FirmwareMajorRelease: The major release of the firmware of a module to check for.
 	FirmwareMajorRelease *oval_def.EntityStateVersionType `xml:"firmware_major_release"`
 
+	// FirmwareIndividualRelease: The individual release of the firmware of a module to check for.
 	FirmwareIndividualRelease *oval_def.EntityStateIntType `xml:"firmware_individual_release"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -171,11 +187,11 @@ type ModuleState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Version55Test: The version55_test is used to check the version of the Cisco CatOS operating system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the data to check.
 type Version55Test struct {
 	XMLName xml.Name `xml:"version55_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -198,11 +214,11 @@ type Version55Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Version55Object: The version55_object element is used by a version55_test to define the different version information associated with a Cisco CatOS system. There is actually only one object relating to version and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check version will reference the same version5_object which is basically an empty object element.
 type Version55Object struct {
 	XMLName xml.Name `xml:"version55_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -215,11 +231,11 @@ type Version55Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Version55State: The version55_state element defines the version information held within a Cisco CatOS software release. The switch_series element specifies the Catalyst switch series. The image_name element specifies the name of the CatOS image. The catos_release element specifies the software version information of the module.
 type Version55State struct {
 	XMLName xml.Name `xml:"version55_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -229,10 +245,13 @@ type Version55State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// SwitchSeries: The switch_series entity defines a target Catalyst switch series to check for. Each version of CatOS traditionally has target a specific Catalyst series of switches.
 	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
 
+	// ImageName: The image_name entity defines a name of a CatOS image to check for.
 	ImageName *oval_def.EntityStateStringType `xml:"image_name"`
 
+	// CatosRelease: The catos_release entity defines a release version of CatOS to check for.
 	CatosRelease *oval_def.EntityStateVersionType `xml:"catos_release"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -240,11 +259,11 @@ type Version55State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionTest: The version test is used to check the version of the Cisco CatOS operating system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the data to check.
 type VersionTest struct {
 	XMLName xml.Name `xml:"version_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -267,11 +286,11 @@ type VersionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionObject: The version_object element is used by a version test to define the different version information associated with a Cisco CatOS system. There is actually only one object relating to version and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check version will reference the same version_object which is basically an empty object element.
 type VersionObject struct {
 	XMLName xml.Name `xml:"version_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -284,11 +303,11 @@ type VersionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionState: The version_state element defines the version information held within a Cisco CatOS software release. The swtich_series element specifies the Catalyst switch series. The image_name element specifies the name of the CatOS image. The catos_major_release, catos_individual_release and catos_version_id elements specify the software version information of the module. For instance, if the CatOS version is 8.5(4c)GLX, then catos_major_release is 8.5GLX, catos_individual_release is 4 and catos_version_id is c.
 type VersionState struct {
 	XMLName xml.Name `xml:"version_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -298,14 +317,19 @@ type VersionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// SwitchSeries: A Catalyst switch series to check for.
 	SwitchSeries *oval_def.EntityStateStringType `xml:"switch_series"`
 
+	// ImageName: The name of a CatOS image to check for.
 	ImageName *oval_def.EntityStateStringType `xml:"image_name"`
 
+	// CatosMajorRelease: The major release of CatOS to check for.
 	CatosMajorRelease *oval_def.EntityStateVersionType `xml:"catos_major_release"`
 
+	// CatosIndividualRelease: The individual release of CatOS to check for.
 	CatosIndividualRelease *oval_def.EntityStateIntType `xml:"catos_individual_release"`
 
+	// CatosVersionId: The version id of Cat OS to check for.
 	CatosVersionId *oval_def.EntityStateStringType `xml:"catos_version_id"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`

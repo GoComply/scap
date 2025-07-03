@@ -8,584 +8,755 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Linux specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core System Characteristic Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core System Characteristic Schema is not outlined here.
+
+// ApparmorstatusItem: The AppArmor Status Item displays various information about the current AppArmor policy. This item maps the counts of profiles and processes as per the results of the "apparmor_status" or "aa-status" command. Each item extends the standard ItemType as defined in the oval-system-characteristics-schema and one should refer to the ItemType description for more information.
 type ApparmorstatusItem struct {
 	XMLName xml.Name `xml:"apparmorstatus_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// LoadedProfilesCount: Displays the number of loaded profiles
 	LoadedProfilesCount *oval_sc.EntityItemIntType `xml:"loaded_profiles_count"`
 
+	// EnforceModeProfilesCount: Displays the number of profiles in enforce mode
 	EnforceModeProfilesCount *oval_sc.EntityItemIntType `xml:"enforce_mode_profiles_count"`
 
+	// ComplainModeProfilesCount: Displays the number of profiles in complain mode
 	ComplainModeProfilesCount *oval_sc.EntityItemIntType `xml:"complain_mode_profiles_count"`
 
+	// ProcessesWithProfilesCount: Displays the number of processes which have profiles defined
 	ProcessesWithProfilesCount *oval_sc.EntityItemIntType `xml:"processes_with_profiles_count"`
 
+	// EnforceModeProcessesCount: Displays the number of processes in enforce mode
 	EnforceModeProcessesCount *oval_sc.EntityItemIntType `xml:"enforce_mode_processes_count"`
 
+	// ComplainModeProcessesCount: Displays the number of processes in complain mode
 	ComplainModeProcessesCount *oval_sc.EntityItemIntType `xml:"complain_mode_processes_count"`
 
+	// UnconfinedProcessesWithProfilesCount: Displays the number of processes which are unconfined but have a profile defined
 	UnconfinedProcessesWithProfilesCount *oval_sc.EntityItemIntType `xml:"unconfined_processes_with_profiles_count"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// DpkginfoItem: This item stores DPKG package info.
 type DpkginfoItem struct {
 	XMLName xml.Name `xml:"dpkginfo_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This is the pakage name to check.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Arch: This is the architecture for which the DPKG was built, like : i386, ppc, sparc, noarch.
 	Arch *oval_sc.EntityItemStringType `xml:"arch"`
 
+	// DpkginfoItemEpoch: This is the epoch number of the DPKG. For a null epoch (or '(none)' as returned by dpkg) the string '(none)' should be used.
 	Epoch *DpkginfoItemEpoch `xml:"epoch"`
 
+	// DpkginfoItemRelease: This is the release number of the build.
 	Release *DpkginfoItemRelease `xml:"release"`
 
+	// DpkginfoItemVersion: This is the version number of the build, changed by the vendor/builder.
 	Version *DpkginfoItemVersion `xml:"version"`
 
+	// DpkginfoItemEvr: This type represents the epoch, upstream_version, and debian_revision fields, for a Debian package, as a single version string. It has the form "EPOCH:UPSTREAM_VERSION-DEBIAN_REVISION". Note that a null epoch (or '(none)' as returned by dpkg) is equivalent to '0' and would hence have the form 0:UPSTREAM_VERSION-DEBIAN_REVISION.
 	Evr *DpkginfoItemEvr `xml:"evr"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// IflistenersItem: An iflisteners_item stores the results of checking for applications that are bound to an interface on the system. Only applications that are bound to an ethernet interface should be collected.
 type IflistenersItem struct {
 	XMLName xml.Name `xml:"iflisteners_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// InterfaceName: This is the name of the interface (eth0, eth1, fw0, etc.).
 	InterfaceName *oval_sc.EntityItemStringType `xml:"interface_name"`
 
+	// Protocol: This is the physical layer protocol used by the AF_PACKET socket.
 	Protocol *EntityItemProtocolType `xml:"protocol"`
 
+	// HwAddress: This is the hardware address associated with the interface.
 	HwAddress *oval_sc.EntityItemStringType `xml:"hw_address"`
 
+	// ProgramName: This is the name of the communicating program.
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
+	// Pid: This is the process ID of the process. The process in question is that of the program communicating on the network.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// UserId: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. It represents the owner, and thus privilege level, of the specified program.
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// InetlisteningserverItem: An inet listening server item stores the results of checking for network servers currently active on a system. It holds information pertaining to a specific protocol-address-port combination.
 type InetlisteningserverItem struct {
 	XMLName xml.Name `xml:"inetlisteningserver_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Protocol: This is the transport-layer protocol, in lowercase: tcp or udp.
 	Protocol *oval_sc.EntityItemStringType `xml:"protocol"`
 
-	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This is the IP address associated with the inet listening server. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_sc.EntityItemIpaddressStringType `xml:"local_address"`
 
+	// LocalPort: This is the TCP or UDP port on which the program listens.
 	LocalPort *oval_sc.EntityItemIntType `xml:"local_port"`
 
+	// LocalFullAddress: This is the IP address and network port on which the program listens, equivalent to local_address:local_port. Note that the IP address can be IPv4 or IPv6.
 	LocalFullAddress *oval_sc.EntityItemStringType `xml:"local_full_address"`
 
+	// ProgramName: This is the name of the communicating program.
 	ProgramName *oval_sc.EntityItemStringType `xml:"program_name"`
 
-	ForeignAddress *oval_sc.EntityItemIPAddressStringType `xml:"foreign_address"`
+	// ForeignAddress: This is the IP address with which the program is communicating, or with which it will communicate, in the case of a listening server. Note that the IP address can be IPv4 or IPv6.
+	ForeignAddress *oval_sc.EntityItemIpaddressStringType `xml:"foreign_address"`
 
+	// ForeignPort: This is the TCP or UDP port to which the program communicates. In the case of a listening program accepting new connections, this value will be 0.
 	ForeignPort *oval_sc.EntityItemIntType `xml:"foreign_port"`
 
+	// ForeignFullAddress: This is the IP address and network port to which the program is communicating or will accept communications from, equivalent to foreign_address:foreign_port. Note that the IP address can be IPv4 or IPv6.
 	ForeignFullAddress *oval_sc.EntityItemStringType `xml:"foreign_full_address"`
 
+	// Pid: This is the process ID of the process. The process in question is that of the program communicating on the network.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// UserId: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. It represents the owner, and thus privilege level, of the specified program.
 	UserId *oval_sc.EntityItemIntType `xml:"user_id"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PartitionItem: The partition_item stores information about a partition on the local system.
 type PartitionItem struct {
 	XMLName xml.Name `xml:"partition_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// MountPoint: The mount_point element contains a string that represents the mount point of a partition on the local system.
 	MountPoint *oval_sc.EntityItemStringType `xml:"mount_point"`
 
+	// Device: The device element contains a string that represents the name of the device.
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
+	// Uuid: The uuid element contains a string that represents the universally unique identifier associated with a partition.
 	Uuid *oval_sc.EntityItemStringType `xml:"uuid"`
 
+	// FsType: The fs_type element contains a string that represents the type of filesystem on a partition.
 	FsType *oval_sc.EntityItemStringType `xml:"fs_type"`
 
+	// MountOptions: The mount_options element contains a string that represents a mount option associated with a partition on the local system.
 	MountOptions []oval_sc.EntityItemStringType `xml:"mount_options"`
 
+	// TotalSpace: The total_space element contains an integer that represents the total number of physical blocks on a partition.
 	TotalSpace *oval_sc.EntityItemIntType `xml:"total_space"`
 
+	// SpaceUsed: The space_used element contains an integer that represents the number of physical blocks used on a partition.
 	SpaceUsed *oval_sc.EntityItemIntType `xml:"space_used"`
 
+	// SpaceLeft: The space_left element contains an integer that represents the number of physical blocks left on a partition available to be used by privileged users.
 	SpaceLeft *oval_sc.EntityItemIntType `xml:"space_left"`
 
+	// SpaceLeftForUnprivilegedUsers: The space_left_for_unprivileged_users element contains an integer that represents the number of physical blocks remaining on a partition that are available to be used by unprivileged users.
 	SpaceLeftForUnprivilegedUsers *oval_sc.EntityItemIntType `xml:"space_left_for_unprivileged_users"`
 
+	// BlockSize: The block_size element contains an integer representing the actual byte size of each physical block on the partition's block device. This is the same block size used to compute the total_space, space_used, and space_left.
 	BlockSize *oval_sc.EntityItemIntType `xml:"block_size"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RpminfoItem: This item stores rpm info.
 type RpminfoItem struct {
 	XMLName xml.Name `xml:"rpminfo_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This is the pakage name to check.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Arch: This is the architecture for which the RPM was built, like : i386, ppc, sparc, noarch. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be i686.
 	Arch *oval_sc.EntityItemStringType `xml:"arch"`
 
+	// RpminfoItemEpoch: This is the epoch number of the RPM, this is used as a kludge for version-release comparisons where the vendor has done some kind of re-numbering or version forking. For a null epoch (or '(none)' as returned by rpm) the string '(none)' should be used. This number is not revealed by a normal query of the RPM's information -- you must use a formatted rpm query command to gather this data from the command line, like so. For an already-installed RPM: rpm -q --qf '%{EPOCH}\n' installed_rpm For an RPM file that has not been installed: rpm -qp --qf '%{EPOCH}\n' rpm_file
 	Epoch *RpminfoItemEpoch `xml:"epoch"`
 
+	// RpminfoItemRelease: This is the release number of the build.
 	Release *RpminfoItemRelease `xml:"release"`
 
+	// RpminfoItemVersion: This is the version number of the build, changed by the vendor/builder. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be 2.0.40.
 	Version *RpminfoItemVersion `xml:"version"`
 
-	Evr *oval_sc.EntityItemEVRStringType `xml:"evr"`
+	// Evr: This represents the epoch, version, and release fields as a single version string. It has the form "EPOCH:VERSION-RELEASE". Note that a null epoch (or '(none)' as returned by rpm) is equivalent to '0' and would hence have the form 0:VERSION-RELEASE.
+	Evr *oval_sc.EntityItemEvrstringType `xml:"evr"`
 
+	// SignatureKeyid: This field contains the PGP key ID that the RPM issuer (generally the original operating system vendor) uses to sign the key. PGP is used to verify the authenticity and integrity of the RPM being considered. Software packages and patches are signed cryptographically to allow administrators to allay concerns that the distribution mechanism has been compromised, whether that mechanism is web site, FTP server, or even a mirror controlled by a hostile party. OVAL uses this field most of all to confirm that the package installed on the system is that shipped by the vendor, since comparing package version numbers against patch announcements is only programmatically valid if the installed package is known to contain the patched code.
 	SignatureKeyid *oval_sc.EntityItemStringType `xml:"signature_keyid"`
 
+	// ExtendedName: This represents the name, epoch, version, release, and architecture fields as a single version string. It has the form "NAME-EPOCH:VERSION-RELEASE.ARCHITECTURE". Note that a null epoch (or '(none)' as returned by rpm) is equivalent to '0' and would hence have the form NAME-0:VERSION-RELEASE.ARCHITECTURE. The 'gpg-pubkey' virtual package on RedHat and CentOS should use the string '(none)' for the architecture to construct the extended_name.
 	ExtendedName *oval_sc.EntityItemStringType `xml:"extended_name"`
 
+	// Filepath: This field contains the absolute path of a file or directory included in the rpm.
 	Filepath []oval_sc.EntityItemStringType `xml:"filepath"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RpmverifyItem: This item stores rpm verification results similar to what is produced by the rpm -V command.
 type RpmverifyItem struct {
 	XMLName xml.Name `xml:"rpmverify_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This is the package name to check.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory in the specified package.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// SizeDiffers: The size_differs entity aligns with the first character ('S' flag) in the character string in the output generated by running rpm –V on a specific file.
 	SizeDiffers *EntityItemRpmVerifyResultType `xml:"size_differs"`
 
+	// ModeDiffers: The mode_differs entity aligns with the second character ('M' flag) in the character string in the output generated by running rpm –V on a specific file.
 	ModeDiffers *EntityItemRpmVerifyResultType `xml:"mode_differs"`
 
+	// Md5Differs: The md5_differs entity aligns with the third character ('5' flag) in the character string in the output generated by running rpm –V on a specific file.
 	Md5Differs *EntityItemRpmVerifyResultType `xml:"md5_differs"`
 
+	// DeviceDiffers: The device_differs entity aligns with the fourth character ('D' flag) in the character string in the output generated by running rpm –V on a specific file.
 	DeviceDiffers *EntityItemRpmVerifyResultType `xml:"device_differs"`
 
+	// LinkMismatch: The link_mismatch entity aligns with the fifth character ('L' flag) in the character string in the output generated by running rpm –V on a specific file.
 	LinkMismatch *EntityItemRpmVerifyResultType `xml:"link_mismatch"`
 
+	// OwnershipDiffers: The ownership_differs entity aligns with the sixth character ('U' flag) in the character string in the output generated by running rpm –V on a specific file.
 	OwnershipDiffers *EntityItemRpmVerifyResultType `xml:"ownership_differs"`
 
+	// GroupDiffers: The group_differs entity aligns with the seventh character ('U' flag) in the character string in the output generated by running rpm –V on a specific file.
 	GroupDiffers *EntityItemRpmVerifyResultType `xml:"group_differs"`
 
+	// MtimeDiffers: The mtime_differs entity aligns with the eighth character ('T' flag) in the character string in the output generated by running rpm –V on a specific file.
 	MtimeDiffers *EntityItemRpmVerifyResultType `xml:"mtime_differs"`
 
+	// CapabilitiesDiffer: The size_differs entity aligns with the ninth character ('P' flag) in the character string in the output generated by running rpm –V on a specific file.
 	CapabilitiesDiffer *EntityItemRpmVerifyResultType `xml:"capabilities_differ"`
 
+	// ConfigurationFile: The configuration_file entity represents the configuration file attribute marker that may be present on a file.
 	ConfigurationFile *oval_sc.EntityItemBoolType `xml:"configuration_file"`
 
+	// DocumentationFile: The documentation_file entity represents the documenation file attribute marker that may be present on a file.
 	DocumentationFile *oval_sc.EntityItemBoolType `xml:"documentation_file"`
 
+	// GhostFile: The ghost_file entity represents the ghost file attribute marker that may be present on a file.
 	GhostFile *oval_sc.EntityItemBoolType `xml:"ghost_file"`
 
+	// LicenseFile: The license_file entity represents the license file attribute marker that may be present on a file.
 	LicenseFile *oval_sc.EntityItemBoolType `xml:"license_file"`
 
+	// ReadmeFile: The readme_file entity represents the readme file attribute marker that may be present on a file.
 	ReadmeFile *oval_sc.EntityItemBoolType `xml:"readme_file"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RpmverifyfileItem: This item stores the verification results of the individual files in an rpm similar to what is produced by the rpm -V command.
 type RpmverifyfileItem struct {
 	XMLName xml.Name `xml:"rpmverifyfile_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This is the package name to check.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// RpmverifyfileItemEpoch: This is the epoch number of the RPM, this is used as a kludge for version-release comparisons where the vendor has done some kind of re-numbering or version forking. For a null epoch (or '(none)' as returned by rpm) the string '(none)' should be used.. This number is not revealed by a normal query of the RPM's information -- you must use a formatted rpm query command to gather this data from the command line, like so. For an already-installed RPM: rpm -q --qf '%{EPOCH}\n' installed_rpm For an RPM file that has not been installed: rpm -qp --qf '%{EPOCH}\n' rpm_file
 	Epoch *RpmverifyfileItemEpoch `xml:"epoch"`
 
+	// RpmverifyfileItemVersion: This is the version number of the build. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be 2.0.40.
 	Version *RpmverifyfileItemVersion `xml:"version"`
 
+	// RpmverifyfileItemRelease: This is the release number of the build, changed by the vendor/builder.
 	Release *RpmverifyfileItemRelease `xml:"release"`
 
+	// Arch: This is the architecture for which the RPM was built, like : i386, ppc, sparc, noarch. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be i686.
 	Arch *oval_sc.EntityItemStringType `xml:"arch"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory in the specified package.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// ExtendedName: This represents the name, epoch, version, release, and architecture fields as a single version string. It has the form "NAME-EPOCH:VERSION-RELEASE.ARCHITECTURE". Note that a null epoch (or '(none)' as returned by rpm) is equivalent to '0' and would hence have the form NAME-0:VERSION-RELEASE.ARCHITECTURE.
 	ExtendedName *oval_sc.EntityItemStringType `xml:"extended_name"`
 
+	// SizeDiffers: The size_differs entity aligns with the first character ('S' flag) in the character string in the output generated by running rpm –V on a specific file.
 	SizeDiffers *EntityItemRpmVerifyResultType `xml:"size_differs"`
 
+	// ModeDiffers: The mode_differs entity aligns with the second character ('M' flag) in the character string in the output generated by running rpm –V on a specific file.
 	ModeDiffers *EntityItemRpmVerifyResultType `xml:"mode_differs"`
 
+	// Md5Differs: The md5_differs entity aligns with the third character ('5' flag) in the character string in the output generated by running rpm –V on a specific file.
 	Md5Differs *EntityItemRpmVerifyResultType `xml:"md5_differs"`
 
+	// FiledigestDiffers: The filedigest_differs entity aligns with the third character ('5' flag) in the character string in the output generated by running rpm –V on a specific file. This replaces the md5_differs entity due to naming changes for verification and reporting options.
 	FiledigestDiffers *EntityItemRpmVerifyResultType `xml:"filedigest_differs"`
 
+	// DeviceDiffers: The device_differs entity aligns with the fourth character ('D' flag) in the character string in the output generated by running rpm –V on a specific file.
 	DeviceDiffers *EntityItemRpmVerifyResultType `xml:"device_differs"`
 
+	// LinkMismatch: The link_mismatch entity aligns with the fifth character ('L' flag) in the character string in the output generated by running rpm –V on a specific file.
 	LinkMismatch *EntityItemRpmVerifyResultType `xml:"link_mismatch"`
 
+	// OwnershipDiffers: The ownership_differs entity aligns with the sixth character ('U' flag) in the character string in the output generated by running rpm –V on a specific file.
 	OwnershipDiffers *EntityItemRpmVerifyResultType `xml:"ownership_differs"`
 
+	// GroupDiffers: The group_differs entity aligns with the seventh character ('U' flag) in the character string in the output generated by running rpm –V on a specific file.
 	GroupDiffers *EntityItemRpmVerifyResultType `xml:"group_differs"`
 
+	// MtimeDiffers: The mtime_differs entity aligns with the eighth character ('T' flag) in the character string in the output generated by running rpm –V on a specific file.
 	MtimeDiffers *EntityItemRpmVerifyResultType `xml:"mtime_differs"`
 
+	// CapabilitiesDiffer: The size_differs entity aligns with the ninth character ('P' flag) in the character string in the output generated by running rpm –V on a specific file.
 	CapabilitiesDiffer *EntityItemRpmVerifyResultType `xml:"capabilities_differ"`
 
+	// ConfigurationFile: The configuration_file entity represents the configuration file attribute marker that may be present on a file.
 	ConfigurationFile *oval_sc.EntityItemBoolType `xml:"configuration_file"`
 
+	// DocumentationFile: The documentation_file entity represents the documenation file attribute marker that may be present on a file.
 	DocumentationFile *oval_sc.EntityItemBoolType `xml:"documentation_file"`
 
+	// GhostFile: The ghost_file entity represents the ghost file attribute marker that may be present on a file.
 	GhostFile *oval_sc.EntityItemBoolType `xml:"ghost_file"`
 
+	// LicenseFile: The license_file entity represents the license file attribute marker that may be present on a file.
 	LicenseFile *oval_sc.EntityItemBoolType `xml:"license_file"`
 
+	// ReadmeFile: The readme_file entity represents the readme file attribute marker that may be present on a file.
 	ReadmeFile *oval_sc.EntityItemBoolType `xml:"readme_file"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RpmverifypackageItem: This item stores the rpm verification results of an rpm similar to what is produced by the rpm -V command.
 type RpmverifypackageItem struct {
 	XMLName xml.Name `xml:"rpmverifypackage_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This is the package name to check.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// RpmverifypackageItemEpoch: This is the epoch number of the RPM, this is used as a kludge for version-release comparisons where the vendor has done some kind of re-numbering or version forking. For a null epoch (or '(none)' as returned by rpm) the string '(none)' should be used.. This number is not revealed by a normal query of the RPM's information -- you must use a formatted rpm query command to gather this data from the command line, like so. For an already-installed RPM: rpm -q --qf '%{EPOCH}\n' installed_rpm For an RPM file that has not been installed: rpm -qp --qf '%{EPOCH}\n' rpm_file
 	Epoch *RpmverifypackageItemEpoch `xml:"epoch"`
 
+	// RpmverifypackageItemVersion: This is the version number of the build. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be 2.0.40.
 	Version *RpmverifypackageItemVersion `xml:"version"`
 
+	// RpmverifypackageItemRelease: This is the release number of the build, changed by the vendor/builder.
 	Release *RpmverifypackageItemRelease `xml:"release"`
 
+	// Arch: This is the architecture for which the RPM was built, like : i386, ppc, sparc, noarch. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be i686.
 	Arch *oval_sc.EntityItemStringType `xml:"arch"`
 
+	// ExtendedName: This represents the name, epoch, version, release, and architecture fields as a single version string. It has the form "NAME-EPOCH:VERSION-RELEASE.ARCHITECTURE". Note that a null epoch (or '(none)' as returned by rpm) is equivalent to '0' and would hence have the form NAME-0:VERSION-RELEASE.ARCHITECTURE.
 	ExtendedName *oval_sc.EntityItemStringType `xml:"extended_name"`
 
+	// DependencyCheckPassed: The dependency_check_passed entity indicates whether or not the dependency check passed. If the dependency check is not performed, due to the 'nodeps' behavior, this entity must not be collected.
 	DependencyCheckPassed *oval_sc.EntityItemBoolType `xml:"dependency_check_passed"`
 
+	// DigestCheckPassed: The digest_check_passed entity indicates whether or not the verification of the package or header digests passed. If the digest check is not performed, due to the 'nodigest' behavior, this entity must not be collected.
 	DigestCheckPassed *oval_sc.EntityItemBoolType `xml:"digest_check_passed"`
 
+	// VerificationScriptSuccessful: The verification_script_successful entity indicates whether or not the verification script executed successfully. If the verification script is not executed, due to the 'noscripts' behavior, this entity must not be collected.
 	VerificationScriptSuccessful *oval_sc.EntityItemBoolType `xml:"verification_script_successful"`
 
+	// SignatureCheckPassed: The signature_check_passed entity indicates whether or not the verification of the package or header signatures passed. If the signature check is not performed, due to the 'nosignature' behavior, this entity must not be collected.
 	SignatureCheckPassed *oval_sc.EntityItemBoolType `xml:"signature_check_passed"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SelinuxbooleanItem: This item describes the current and pending status of a SELinux boolean. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type SelinuxbooleanItem struct {
 	XMLName xml.Name `xml:"selinuxboolean_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: The name of the SELinux boolean.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// CurrentStatus: The current_status entity indicates current state of the specified SELinux boolean.
 	CurrentStatus *oval_sc.EntityItemBoolType `xml:"current_status"`
 
+	// PendingStatus: The pending_status entity indicates the pending state of the specified SELinux boolean.
 	PendingStatus *oval_sc.EntityItemBoolType `xml:"pending_status"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SelinuxsecuritycontextItem: This item describes the SELinux security context of a file or process on the local system. This item follows the SELinux security context structure: user:role:type:low_sensitivity[:low_category]- high_sensitivity [:high_category]. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type SelinuxsecuritycontextItem struct {
 	XMLName xml.Name `xml:"selinuxsecuritycontext_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The name of the file. If the xsi:nil attribute is set to true, then the item being represented is the higher directory represented by the path entity.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// Pid: This is the process ID of the process.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// User: The user element specifies the SELinux user that either created the file or started the process.
 	User *oval_sc.EntityItemStringType `xml:"user"`
 
+	// Role: The role element specifies the types that a process may transition to (domain transitions). Note that this entity is not relevant for files and will always have a value of object_r.
 	Role *oval_sc.EntityItemStringType `xml:"role"`
 
+	// Type: The type element specifies the domain in which the file is accessible or the domain in which a process executes.
 	Type *oval_sc.EntityItemStringType `xml:"type"`
 
+	// LowSensitivity: The low_sensitivity element specifies the current sensitivity of a file or process.
 	LowSensitivity *oval_sc.EntityItemStringType `xml:"low_sensitivity"`
 
+	// LowCategory: The low_category element specifies the set of categories associated with the low sensitivity.
 	LowCategory *oval_sc.EntityItemStringType `xml:"low_category"`
 
+	// HighSensitivity: The high_sensitivity element specifies the maximum range for a file or the clearance for a process.
 	HighSensitivity *oval_sc.EntityItemStringType `xml:"high_sensitivity"`
 
+	// HighCategory: The high_category element specifies the set of categories associated with the high sensitivity.
 	HighCategory *oval_sc.EntityItemStringType `xml:"high_category"`
 
+	// RawlowSensitivity: The rawlow_sensitivity element specifies the current sensitivity of a file or process but in its raw context.
 	RawlowSensitivity *oval_sc.EntityItemStringType `xml:"rawlow_sensitivity"`
 
+	// RawlowCategory: The rawlow_category element specifies the set of categories associated with the low sensitivity but in its raw context.
 	RawlowCategory *oval_sc.EntityItemStringType `xml:"rawlow_category"`
 
+	// RawhighSensitivity: The rawhigh_sensitivity element specifies the maximum range for a file or the clearance for a process but in its raw context.
 	RawhighSensitivity *oval_sc.EntityItemStringType `xml:"rawhigh_sensitivity"`
 
+	// RawhighCategory: The rawhigh_category element specifies the set of categories associated with the high sensitivity but in its raw context.
 	RawhighCategory *oval_sc.EntityItemStringType `xml:"rawhigh_category"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SlackwarepkginfoItem: This item describes info related to Slackware packages. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type SlackwarepkginfoItem struct {
 	XMLName xml.Name `xml:"slackwarepkginfo_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This is the pakage name to check.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// SlackwarepkginfoItemVersion: This is the version number of the pakage.
 	Version *SlackwarepkginfoItemVersion `xml:"version"`
 
+	// Architecture: This is the architecture the package is designed for.
 	Architecture *oval_sc.EntityItemStringType `xml:"architecture"`
 
+	// Revision: This is the revision of the package.
 	Revision *oval_sc.EntityItemStringType `xml:"revision"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SystemdunitdependencyItem: This item stores the dependencies of the systemd unit. Please refer to the individual elements in the schema for more details about what each represents.
 type SystemdunitdependencyItem struct {
 	XMLName xml.Name `xml:"systemdunitdependency_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Unit: The unit entity refers to the full systemd unit name, which has a form of "$name.$type". For example "cupsd.service". This name is usually also the filename of the unit configuration file located in the /etc/systemd/ and /usr/lib/systemd/ directories.
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
+	// Dependency: The dependency entity refers to the name of a unit that was confirmed to be a dependency of the given unit.
 	Dependency []oval_sc.EntityItemStringType `xml:"dependency"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SystemdunitpropertyItem: This item stores the properties and values of a systemd unit.
 type SystemdunitpropertyItem struct {
 	XMLName xml.Name `xml:"systemdunitproperty_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Unit: The unit entity refers to the full systemd unit name, which has a form of "$name.$type". For example "cupsd.service". This name is usually also the filename of the unit configuration file located in the /etc/systemd/ and /usr/lib/systemd/ directories.
 	Unit *oval_sc.EntityItemStringType `xml:"unit"`
 
+	// Property: The name of the property associated with a systemd unit.
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 
+	// Value: The value of the property associated with a systemd unit. Exactly one value shall be used for all property types except dbus arrays - each array element shall be represented by one value.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// DpkginfoItemEpoch: This is the epoch number of the DPKG. For a null epoch (or '(none)' as returned by dpkg) the string '(none)' should be used.
 type DpkginfoItemEpoch struct {
 	XMLName xml.Name `xml:"epoch"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// DpkginfoItemRelease: This is the release number of the build.
 type DpkginfoItemRelease struct {
 	XMLName xml.Name `xml:"release"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// DpkginfoItemVersion: This is the version number of the build, changed by the vendor/builder.
 type DpkginfoItemVersion struct {
 	XMLName xml.Name `xml:"version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// DpkginfoItemEvr: This type represents the epoch, upstream_version, and debian_revision fields, for a Debian package, as a single version string. It has the form "EPOCH:UPSTREAM_VERSION-DEBIAN_REVISION". Note that a null epoch (or '(none)' as returned by dpkg) is equivalent to '0' and would hence have the form 0:UPSTREAM_VERSION-DEBIAN_REVISION.
 type DpkginfoItemEvr struct {
 	XMLName xml.Name `xml:"evr"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpminfoItemEpoch: This is the epoch number of the RPM, this is used as a kludge for version-release comparisons where the vendor has done some kind of re-numbering or version forking. For a null epoch (or '(none)' as returned by rpm) the string '(none)' should be used. This number is not revealed by a normal query of the RPM's information -- you must use a formatted rpm query command to gather this data from the command line, like so. For an already-installed RPM: rpm -q --qf '%{EPOCH}\n' installed_rpm For an RPM file that has not been installed: rpm -qp --qf '%{EPOCH}\n' rpm_file
 type RpminfoItemEpoch struct {
 	XMLName xml.Name `xml:"epoch"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpminfoItemRelease: This is the release number of the build.
 type RpminfoItemRelease struct {
 	XMLName xml.Name `xml:"release"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpminfoItemVersion: This is the version number of the build, changed by the vendor/builder. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be 2.0.40.
 type RpminfoItemVersion struct {
 	XMLName xml.Name `xml:"version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpmverifyfileItemEpoch: This is the epoch number of the RPM, this is used as a kludge for version-release comparisons where the vendor has done some kind of re-numbering or version forking. For a null epoch (or '(none)' as returned by rpm) the string '(none)' should be used.. This number is not revealed by a normal query of the RPM's information -- you must use a formatted rpm query command to gather this data from the command line, like so. For an already-installed RPM: rpm -q --qf '%{EPOCH}\n' installed_rpm For an RPM file that has not been installed: rpm -qp --qf '%{EPOCH}\n' rpm_file
 type RpmverifyfileItemEpoch struct {
 	XMLName xml.Name `xml:"epoch"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpmverifyfileItemVersion: This is the version number of the build. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be 2.0.40.
 type RpmverifyfileItemVersion struct {
 	XMLName xml.Name `xml:"version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpmverifyfileItemRelease: This is the release number of the build, changed by the vendor/builder.
 type RpmverifyfileItemRelease struct {
 	XMLName xml.Name `xml:"release"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpmverifypackageItemEpoch: This is the epoch number of the RPM, this is used as a kludge for version-release comparisons where the vendor has done some kind of re-numbering or version forking. For a null epoch (or '(none)' as returned by rpm) the string '(none)' should be used.. This number is not revealed by a normal query of the RPM's information -- you must use a formatted rpm query command to gather this data from the command line, like so. For an already-installed RPM: rpm -q --qf '%{EPOCH}\n' installed_rpm For an RPM file that has not been installed: rpm -qp --qf '%{EPOCH}\n' rpm_file
 type RpmverifypackageItemEpoch struct {
 	XMLName xml.Name `xml:"epoch"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpmverifypackageItemVersion: This is the version number of the build. In the case of an apache rpm named httpd-2.0.40-21.11.4.i686.rpm, this value would be 2.0.40.
 type RpmverifypackageItemVersion struct {
 	XMLName xml.Name `xml:"version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// RpmverifypackageItemRelease: This is the release number of the build, changed by the vendor/builder.
 type RpmverifypackageItemRelease struct {
 	XMLName xml.Name `xml:"release"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// SlackwarepkginfoItemVersion: This is the version number of the pakage.
 type SlackwarepkginfoItemVersion struct {
 	XMLName xml.Name `xml:"version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
+// EntityItemRpmVerifyResultType: The EntityItemRpmVerifyResultType complex type restricts a string value to the set of possible outcomes of checking an attribute of a file included in an RPM against the actual value of that attribute in the RPM database. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemRpmVerifyResultType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemProtocolType: The EntityStateProtocolType complex type restricts a string value to the set of physical layer protocols used by AF_PACKET sockets. The empty string is also allowed to support the empty element associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityItemProtocolType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

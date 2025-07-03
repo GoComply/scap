@@ -10,25 +10,34 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the core schema for encoding Open Vulnerability and Assessment Language (OVAL) Results. Each of the elements, types, and attributes that make up the Core Results Schema are described in detail and should provide the information necessary to understand what each object represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between these objects is not outlined here.
+
+// OvalResults: The oval_results element is the root of an OVAL Results Document. Its purpose is to bind together the four major sections of a results document - generator, directives, oval_definitions, and results - which are the children of the root element. It must contain exactly one generator section, one directives section, and one results section.
 type OvalResults struct {
 	XMLName xml.Name `xml:"oval_results"`
 
+	// Generator: The required generator section provides information about when the results document was compiled and under what version.
 	Generator oval.GeneratorType `xml:"generator"`
 
+	// Directives: The required directives section presents flags describing what information has been included in the results document. This element represents the default set of directives. These directives apply to all classes of definitions for which there is not a class specific set of directives.
 	Directives DefaultDirectivesType `xml:"directives"`
 
+	// ClassDirectives: The optional class_directives section presents flags describing what information has been included in the results document for a specific OVAL Definition class. The directives for a particlar class override the default directives. Using OVAL Results class_directives, an OVAL Results document dealing with vulnerabilities might by default include only minimal information and then include full details for all vulnerability definitions that evaluated to true.
 	ClassDirectives []ClassDirectivesType `xml:"class_directives"`
 
+	// OvalDefinitions: The oval_definitions section is optional and dependent on the include_source_definitions attribute of the directives element. Its purpose is to provide an exact copy of the definitions evaluated for the results document.
 	OvalDefinitions *oval_def.OvalDefinitions `xml:"oval_definitions"`
 
+	// Results: The required results section holds all the results of the evaluated definitions.
 	Results ResultsType `xml:"results"`
 
+	// Signature: The optional Signature element allows an XML Signature as defined by the W3C to be attached to the document. This allows authentication and data integrity to be provided to the user. Enveloped signatures are supported. More information about the official W3C Recommendation regarding XML digital signatures can be found at http://www.w3.org/TR/xmldsig-core/.
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
 }
 
 // XSD ComplexType declarations
 
+// DirectivesType: The DirectivesType complex type presents a set of flags that describe what information has been included in the results document. There are six possible results (true, false, unknown, error, not evaluated, and not applicable) for the evaluation of an OVAL Definition. The directives state which of these results are being reported in the results document.
 type DirectivesType struct {
 	XMLName xml.Name
 
@@ -43,10 +52,9 @@ type DirectivesType struct {
 	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
 	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// DefaultDirectivesType: The DefaultDirectivesType complex type presents the default set of flags that describe what information has been included in the results document. See the definition of the oval-res:DirectivesType for more information.
 type DefaultDirectivesType struct {
 	XMLName xml.Name
 
@@ -63,10 +71,9 @@ type DefaultDirectivesType struct {
 	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
 	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ClassDirectivesType: The ClassDirectivesType complex type presents a set of flags that describe what information has been included in the results document for a specific OVAL Definition class. See the definition of the oval-res:DirectivesType for more information.
 type ClassDirectivesType struct {
 	XMLName xml.Name
 
@@ -83,28 +90,25 @@ type ClassDirectivesType struct {
 	DefinitionNotEvaluated DirectiveType `xml:"definition_not_evaluated"`
 
 	DefinitionNotApplicable DirectiveType `xml:"definition_not_applicable"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// DirectiveType: An individual directive element determines whether or not a specific type of result is included in the results document. The required reported attribute controls this by providing a true or false for the specific directive. The optional content attribute controls how much information about the specific result is provided. For example, thin content would only be the id of the definition and the result, while a full content set would be the definition id with the result along with results for all the individual tests and extended definitions. Please refer to the oval-res:ContentEnumeration for details about the different content options.
 type DirectiveType struct {
 	XMLName xml.Name
 
 	Reported bool `xml:"reported,attr"`
 
 	Content ContentEnumeration `xml:"content,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ResultsType: The ResultsType complex type is a container for one or more system elements. Each system element defines the results associated with an individual system. Please refer to the description of SystemType for more information about an individual system element.
 type ResultsType struct {
 	XMLName xml.Name
 
 	System []SystemType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// SystemType: The SystemType complex type holds the evaluation results of the definitions and tests, as well as a copy of the OVAL System Characteristics used to perform the evaluation. The definitions section holds the results of the definitions and the tests section holds the results of the tests. The oval_system_characteristics section is a copy of the System Characteristics document used to perform the evaluation of the OVAL Definitions.
 type SystemType struct {
 	XMLName xml.Name
 
@@ -113,22 +117,20 @@ type SystemType struct {
 	Tests *TestsType `xml:"tests"`
 
 	OvalSystemCharacteristics oval_sc.OvalSystemCharacteristics `xml:"oval_system_characteristics"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// DefinitionsType: The DefinitionsType complex type is a container for one or more definition elements. Each definition element holds the result of the evaluation of an OVAL Definition. Please refer to the description of DefinitionType for more information about an individual definition element.
 type DefinitionsType struct {
 	XMLName xml.Name
 
 	Definition []DefinitionType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// DefinitionType: The DefinitionType complex type holds the result of the evaluation of an OVAL Definition. The message element holds an error message or some other string that the analysis engine wishes to pass along. In addition, the optional criteria element provides the results of the individual pieces of the criteria. Please refer to the description of the CriteriaType for more information.
 type DefinitionType struct {
 	XMLName xml.Name
 
-	DefinitionId oval.DefinitionIDPattern `xml:"definition_id,attr"`
+	DefinitionId oval.DefinitionIdpattern `xml:"definition_id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -141,10 +143,9 @@ type DefinitionType struct {
 	Message []oval.MessageType `xml:"message"`
 
 	Criteria *CriteriaType `xml:"criteria"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// CriteriaType: The CriteriaType complex type describes the high level container for all the tests and represents the meat of the definition. Each criteria can contain other criteria elements in a recursive structure allowing complex logical trees to be constructed. Each referenced test is represented by a criterion element. Please refer to the description of the CriterionType for more information about and individual criterion element. The optional extend_definition element allows existing definitions to be included in the criteria. Refer to the description of the ExtendDefinitionType for more information.
 type CriteriaType struct {
 	XMLName xml.Name
 
@@ -161,16 +162,15 @@ type CriteriaType struct {
 	Criterion []CriterionType `xml:"criterion"`
 
 	ExtendDefinition []ExtendDefinitionType `xml:"extend_definition"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// CriterionType: The CriterionType complex type identifies a specific test that is included in the definition's criteria.
 type CriterionType struct {
 	XMLName xml.Name
 
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	TestRef oval.TestIDPattern `xml:"test_ref,attr"`
+	TestRef oval.TestIdpattern `xml:"test_ref,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -179,16 +179,15 @@ type CriterionType struct {
 	Negate bool `xml:"negate,attr,omitempty"`
 
 	Result ResultEnumeration `xml:"result,attr"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ExtendDefinitionType: The ExtendDefinitionType complex type identifies a specific definition that has been extended by the criteria.
 type ExtendDefinitionType struct {
 	XMLName xml.Name
 
 	ApplicabilityCheck bool `xml:"applicability_check,attr,omitempty"`
 
-	DefinitionRef oval.DefinitionIDPattern `xml:"definition_ref,attr"`
+	DefinitionRef oval.DefinitionIdpattern `xml:"definition_ref,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -197,22 +196,20 @@ type ExtendDefinitionType struct {
 	Negate bool `xml:"negate,attr,omitempty"`
 
 	Result ResultEnumeration `xml:"result,attr"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestsType: The TestsType complex type is a container for one or more test elements. Each test element holds the result of the evaluation of an OVAL Test. Please refer to the description of TestType for more information about an individual test element.
 type TestsType struct {
 	XMLName xml.Name
 
 	Test []TestType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestType: The TestType complex type provides a reference to every item that matched the object section of the original test as well as providing an overall test result based on those items. The optional message element holds an error message or some other string that the analysis engine wishes to pass along. The optional tested_variable elements hold the value of each variable used by the test during evaluation. This includes the values used in both OVAL Objects and OVAL States. If a variable represents a collection of values, then multiple tested_variable elements would exist with the same variable_id attribute. Please refer to the description of oval-res:TestedVariableType for more information.
 type TestType struct {
 	XMLName xml.Name
 
-	TestId oval.TestIDPattern `xml:"test_id,attr"`
+	TestId oval.TestIdpattern `xml:"test_id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -231,39 +228,38 @@ type TestType struct {
 	TestedItem []TestedItemType `xml:"tested_item"`
 
 	TestedVariable []TestedVariableType `xml:"tested_variable"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestedItemType: The TestedItemType complex type holds a reference to a system characteristic item that matched the object specified in a test. Details of the item can be found in the oval_system_characteristics section of the OVAL Results document by using the required item_id. The optional message element holds an error message or some other message that the analysis engine wishes to pass along. The required result attribute holds the result of the evaluation of the individual item as it relates to the state specified by the test. If the test did not include a state reference then the result attribute will be set to 'not evaluated'. Please refer to the description of the ResultEnumeration for details about the different result values.
 type TestedItemType struct {
 	XMLName xml.Name
 
-	ItemId oval.ItemIDPattern `xml:"item_id,attr"`
+	ItemId oval.ItemIdpattern `xml:"item_id,attr"`
 
 	Result ResultEnumeration `xml:"result,attr"`
 
 	Message []oval.MessageType `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TestedVariableType: The TestedVariableType complex type holds the value of a variable used during the evaluation of a test. Of special importance are the values of any external variables used since these values are not captured in either the definition or system characteristic documents. If a variable is represented by a collection of values, then multiple elements of TestedVariableType, each with the same variable_id attribute, would exist. The required variable_id attribute is the unique id of the variable that was used.
 type TestedVariableType struct {
 	XMLName xml.Name
 
-	VariableId oval.VariableIDPattern `xml:"variable_id,attr"`
+	VariableId oval.VariableIdpattern `xml:"variable_id,attr"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
 // XSD SimpleType declarations
 
+// ContentEnumeration: The ContentEnumeration defines the valid values for the directives controlling the amount of expected depth found in the results document. Each directive specified at the top of an OVAL Results document defines how much information should be included in the document for each of the different result types. The amount of content that is expected with each value is defined by Schematron statements embedded throughout the OVAL Results Schema. Currently, the enumeration defines two values: thin and full. Please refer to the documentation of each individual value of this enumeration for more information about what each means.
 type ContentEnumeration string
 
 const ContentEnumerationThin ContentEnumeration = "thin"
 
 const ContentEnumerationFull ContentEnumeration = "full"
 
+// ResultEnumeration: The ResultEnumeration defines the acceptable result values for the DefinitionType, CriteriaType, CriterionType, ExtendDefinitionType, TestType, and TestedItemType constructs.
 type ResultEnumeration string
 
 const ResultEnumerationTrue ResultEnumeration = "true"

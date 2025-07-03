@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the AIX specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// InterimFixTest: The interim fix test is used to check information associated with different interim or emergency fixes installed on the system. The information being tested is based off the emgr -l -u VUID command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an interim_fix_object and the optional state element specifies the information to check.
 type InterimFixTest struct {
 	XMLName xml.Name `xml:"interim_fix_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type InterimFixTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InterimFixObject: The interim_fix_object element is used by a interim_fix_test to define the specific fix to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type InterimFixObject struct {
 	XMLName xml.Name `xml:"interim_fix_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type InterimFixObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Vuid: Virtually Unique ID. A combination of time and cpuid, this ID can be used to differentiate fixes that are otherwise identical.
 	Vuid *oval_def.EntityObjectStringType `xml:"vuid"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type InterimFixObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InterimFixState: The interim_fix_state element defines the different information associated with a specific interim fix installed on the system. Please refer to the individual elements in the schema for more details about what each represents.
 type InterimFixState struct {
 	XMLName xml.Name `xml:"interim_fix_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,12 +76,16 @@ type InterimFixState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Vuid: Virtually Unique ID. A combination of time and cpuid, this ID can be used to differentiate fixes that are otherwise identical.
 	Vuid *oval_def.EntityStateStringType `xml:"vuid"`
 
+	// Label: Each efix that is installed on a given system has a unique efix label.
 	Label *oval_def.EntityStateStringType `xml:"label"`
 
+	// Abstract: Describes the efix package.
 	Abstract *oval_def.EntityStateStringType `xml:"abstract"`
 
+	// State: The the emergency fix state.
 	State *EntityStateInterimFixStateType `xml:"state"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -86,11 +93,11 @@ type InterimFixState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FilesetTest: The fileset_test is used to check information associated with different filesets installed on the system. The information used by this test is modeled after the /usr/bin/lslpp -l command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an inetd_object and the optional state element specifies the information to check.
 type FilesetTest struct {
 	XMLName xml.Name `xml:"fileset_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -113,11 +120,11 @@ type FilesetTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FilesetObject: The fileset_object element is used by a fileset_test to define the fileset to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type FilesetObject struct {
 	XMLName xml.Name `xml:"fileset_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -127,6 +134,7 @@ type FilesetObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Flstinst: The flstinst entity represents the fileset name we want to check. For example, if we want to check the status of the fileset 'bos.rte', we can use fileset test and the flstinst entity will be 'bos.rte' or 'bot.*' or etc.
 	Flstinst *oval_def.EntityObjectStringType `xml:"flstinst"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -136,11 +144,11 @@ type FilesetObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FilesetState: The fileset_state element defines the different information associated with filesets installed on the system. Please refer to the individual elements in the schema for more details about what each represents.
 type FilesetState struct {
 	XMLName xml.Name `xml:"fileset_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -150,12 +158,16 @@ type FilesetState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Flstinst: Represents the name of a fileset.
 	Flstinst *oval_def.EntityStateStringType `xml:"flstinst"`
 
+	// Level: Maintenance level (also known as version in Solaris or Linux) of a fileset. For example, "5.3.0.10" is the level for 'bos.txt.tfs' fileset in one AIX machine.
 	Level *oval_def.EntityStateVersionType `xml:"level"`
 
+	// State: This gives the state of a fileset. The state can be 'APPLIED', 'APPLYING','BROKEN', 'COMMITTED', 'EFIX LOCKED', 'OBSOLETE', 'COMMITTING','REJECTING'. See the manpage of the 'lslpp' command more information.
 	State *EntityStateFilesetStateType `xml:"state"`
 
+	// Description: Short description of a fileset.
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -163,11 +175,11 @@ type FilesetState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FixTest: The fix test is used to check information associated with different fixes installed on the system. The information being tested is based off the /usr/sbin/instfix -iavk command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an fix_object and the optional state element specifies the information to check.
 type FixTest struct {
 	XMLName xml.Name `xml:"fix_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -190,11 +202,11 @@ type FixTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FixObject: The fix_object element is used by a fix test to define the specific fix to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type FixObject struct {
 	XMLName xml.Name `xml:"fix_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -204,6 +216,7 @@ type FixObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// AparNumber: APAR is the short for 'Authorized Program Analysis Report'. APAR identifies and describes a software product defect. An APAR number can obtain a PTF (Program Temporary Fix) for the defect, if a PTF is available. An example of an apar_number is 'IY78751', it includes two alphabetic characters and a 5-digit integer.
 	AparNumber *oval_def.EntityObjectStringType `xml:"apar_number"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -213,11 +226,11 @@ type FixObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// FixState: The fix_state element defines the different information associated with a specific fix installed on the system. Please refer to the individual elements in the schema for more details about what each represents.
 type FixState struct {
 	XMLName xml.Name `xml:"fix_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -227,12 +240,16 @@ type FixState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// AparNumber: APAR is the short for 'Authorized Program Analysis Report'. APAR identifies and describes a software product defect. An APAR number can obtain a PTF (Program Temporary Fix) for the defect, if a PTF is available. An example of an apar_number is 'IY78751', it includes two alphabetic characters and a 5-digit integer.
 	AparNumber *oval_def.EntityStateStringType `xml:"apar_number"`
 
+	// Abstract: The abstract of an APAR. For instance, 'LL syas rXct are available even when not susea' is the abstract of APAR 'IY78751'.
 	Abstract *oval_def.EntityStateStringType `xml:"abstract"`
 
+	// Symptom: The symptom text related to an APAR. For example, the symptom text for 'IY75211' is 'Daylight savings change for year 2007 and beyond'.
 	Symptom *oval_def.EntityStateStringType `xml:"symptom"`
 
+	// InstallationStatus: The installation status of files associated with the APAR. This cannot be got from the output of the instfix command directly. The last line of the output is 'All filesets for XXXXXXX were found', or 'Not all filesets for XXXXXXX were found' or 'No filesets which have fixes for XXXXXXX are currently installed.'. These can be translated to the correct value as defined by the EntityStateFixInstallationStatusType.
 	InstallationStatus *EntityStateFixInstallationStatusType `xml:"installation_status"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -240,11 +257,11 @@ type FixState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NoTest: The no test is used to check information related to the /usr/sbin/no command and the parameters it manages. The no command sets or displays current or next boot values for network tuning parameters. The information being tested is based off the /usr/sbin/no -o command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a no_object and the optional state element specifies the value to check for.
 type NoTest struct {
 	XMLName xml.Name `xml:"no_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -267,11 +284,11 @@ type NoTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NoObject: The no_object element is used by a no_test to define the specific parameter to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type NoObject struct {
 	XMLName xml.Name `xml:"no_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -281,6 +298,7 @@ type NoObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Tunable: The tunable entity holds the name of the tunable parameter to be queried by the /usr/sbin/no command. Examples include ip_forwarding and tcp_keepalive_interval.
 	Tunable *oval_def.EntityObjectStringType `xml:"tunable"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -290,11 +308,11 @@ type NoObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NoState: The no_state element defines the different information associated with a specific call to /usr/sbin/no. Please refer to the individual elements in the schema for more details about what each represents.
 type NoState struct {
 	XMLName xml.Name `xml:"no_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -304,8 +322,10 @@ type NoState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Tunable: The tunable entity is used to check the name of the tunable parameter that was used by the /usr/sbin/no command. Examples include ip_forwarding and tcp_keepalive_interval.
 	Tunable *oval_def.EntityStateStringType `xml:"tunable"`
 
+	// Value: The value entity defines the value to check against the tunable parameter being examined.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -313,11 +333,11 @@ type NoState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// OslevelTest: The oslevel test reveals information about the release and maintenance level of AIX operating system. This information can be retrieved by the /usr/bin/oslevel -r command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an oslevel_object and the optional state element specifies the metadata to check.
 type OslevelTest struct {
 	XMLName xml.Name `xml:"oslevel_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -340,11 +360,11 @@ type OslevelTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// OslevelObject: The oslevel_object element is used by an oslevel test to define those objects to be evaluated based on a specified state. There is actually only one object relating to oslevel and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check oslevel will reference the same oslevel_object which is basically an empty object element.
 type OslevelObject struct {
 	XMLName xml.Name `xml:"oslevel_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -357,11 +377,11 @@ type OslevelObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// OslevelState: The oslevel_state element defines the information about maintenance level (system version). Please refer to the individual elements in the schema for more details about what each represents.
 type OslevelState struct {
 	XMLName xml.Name `xml:"oslevel_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -371,6 +391,7 @@ type OslevelState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// MaintenanceLevel: This is the maintenance level (system version) of current AIX operating system.
 	MaintenanceLevel oval_def.EntityStateVersionType `xml:"maintenance_level"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -380,6 +401,7 @@ type OslevelState struct {
 
 // XSD ComplexType declarations
 
+// EntityStateFilesetStateType: The EntityStateFilesetStateType complex type defines the different values that are valid for the state entity of a fileset state. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the state entity. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateFilesetStateType struct {
 	XMLName xml.Name
 
@@ -387,19 +409,23 @@ type EntityStateFilesetStateType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateFixInstallationStatusType: The EntityStateFixInstallationStatusType complex type defines the different values that are valid for the installation_status entity of a fix_state state. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the installation_status entity. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateFixInstallationStatusType struct {
 	XMLName xml.Name
 
@@ -407,19 +433,23 @@ type EntityStateFixInstallationStatusType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateInterimFixStateType: The EntityStateInterimFixStateType complex type defines the different values that are valid for the state entity of a interim_fix_state state. Please refer to the AIX documentation of Emergency Fix States. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the state entity. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStateInterimFixStateType struct {
 	XMLName xml.Name
 
@@ -427,17 +457,20 @@ type EntityStateInterimFixStateType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

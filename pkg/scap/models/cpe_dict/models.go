@@ -7,7 +7,9 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/cpe"
 )
 
-// Element
+// This is an XML Schema for the CPE Dictionary. It is used to transfer a collection of official CPE Names along with any necessary supporting information (title, references, automated check, etc.) For more information, consult the CPE Specification document.
+
+// CpeList: The cpe-list element acts as a top-level container for CPE Name items. Each individual item must be unique. Please refer to the description of ListType for additional information about the structure of this element.
 type CpeList struct {
 	XMLName xml.Name `xml:"cpe-list"`
 
@@ -16,7 +18,7 @@ type CpeList struct {
 	CpeItem []ItemType `xml:"cpe-item"`
 }
 
-// Element
+// CpeItem: The cpe-item element denotes a single CPE Name. Please refer to the description of ItemType for additional information about the structure of this element.
 type CpeItem struct {
 	XMLName xml.Name `xml:"cpe-item"`
 
@@ -48,20 +50,24 @@ type Reference struct {
 
 // XSD ComplexType declarations
 
+// GeneratorType: The GeneratorType complex type defines an element that is used to hold information about when a particular document was compiled, what version of the schema was used, what tool compiled the document, and what version of that tool was used. Additional generator information is also allowed although it is not part of the official schema. Individual organizations can place generator information that they feel is important and it will be skipped during the validation. All that this schema really cares about is that the stated generator information is there.
 type GeneratorType struct {
 	XMLName xml.Name
 
+	// ProductName: The optional product_name element specifies the name of the application used to generate the file.
 	ProductName string `xml:"product_name"`
 
+	// ProductVersion: The optional product_version element specifies the version of the application used to generate the file.
 	ProductVersion string `xml:"product_version"`
 
+	// SchemaVersion: The required schema_version element specifies the version of the schema that the document has been written against and that should be used for validation.
 	SchemaVersion float64 `xml:"schema_version"`
 
+	// Timestamp: The required timestamp element specifies when the particular document was compiled. The format for the timestamp is yyyy-mm-ddThh:mm:ss. Note that the timestamp element does not specify when an item in the document was created or modified but rather when the actual XML document that contains the items was created. For example, a document might pull a bunch of existing items together, each of which was created at some point in the past. The timestamp in this case would be when this combined document was created.
 	Timestamp string `xml:"timestamp"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ItemType: The ItemType complex type defines an element that represents a single CPE Name. The required name attribute is a URI which must be a unique key and should follow the URI structure outlined in the CPE Specification. The optional title element is used to provide a human-readable title for the platform. To support uses intended for multiple languages, this element supports the ‘xml:lang’ attribute. At most one title element can appear for each language. The notes element holds optional descriptive material. Multiple notes elements are allowed, but only one per language should be used. Note that the language associated with the notes element applies to all child note elements. The optional references element holds external info references. The optional check element is used to call out an OVAL Definition that can confirm or reject an IT system as an instance of the named platform. Additional elements not part of the CPE namespace are allowed and are just skipped by validation. In essence, a dictionary file can contain additional information that a user can choose to use or not, but this information is not required to be used or understood.
 type ItemType struct {
 	XMLName xml.Name
 
@@ -80,47 +86,43 @@ type ItemType struct {
 	References *ReferencesType `xml:"references"`
 
 	Check []CheckType `xml:"check"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ListType: The ListType complex type defines an element that is used to hold a collection of individual items. The required generator section provides information about when the definition file was compiled and under what version. Additional elements not part of the CPE namespace are allowed and are just skipped by validation. In essence, a dictionary file can contain additional information that a user can choose to use or not, but this information is not required to be used or understood.
 type ListType struct {
 	XMLName xml.Name
 
 	Generator *GeneratorType `xml:"generator"`
 
 	CpeItem []ItemType `xml:"cpe-item"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// TextType: The TextType complex type allows the xml:lang attribute to associate a specific language with an element's string content.
 type TextType struct {
 	XMLName xml.Name
 
 	XmlLang string `xml:"lang,attr"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// NotesType: The NotesType complex type defines an element that consists of one or more child note elements. It is assumed that each of these note elements is representative of the same language as defined by their parent.
 type NotesType struct {
 	XMLName xml.Name
 
 	XmlLang string `xml:"lang,attr"`
 
 	Note []string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ReferencesType: The ReferencesType complex type defines an element used to hold a collection of individual references. Each reference consists of a piece of text (intended to be human-readable) and a URI (intended to be a URL, and point to a real resource) and is used to point to extra descriptive material, for example a supplier's web site or platform documentation.
 type ReferencesType struct {
 	XMLName xml.Name
 
 	Reference []Reference `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// CheckType: The CheckType complex type is used to define an element to hold information about an individual check. It includes a checking system specification URI, string content, and an optional external file reference. The checking system specification should be the URI for a particular version of OVAL or a related system testing language, and the content will be an identifier of a test written in that language. The external file reference could be used to point to the file in which the content test identifier is defined.
 type CheckType struct {
 	XMLName xml.Name
 
@@ -128,8 +130,7 @@ type CheckType struct {
 
 	Href string `xml:"href,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
 // XSD SimpleType declarations

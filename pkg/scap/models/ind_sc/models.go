@@ -8,272 +8,338 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// This document outlines the items of the OVAL System Characteristics XML schema that are independent of any specific family or platform. Each iten is an extention of a basic System Characteristics item defined in the core System Characteristics XML schema.
+
+// FamilyItem: This element stores high level system OS type, otherwise known as the family.
 type FamilyItem struct {
 	XMLName xml.Name `xml:"family_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Family: This element describes the high level system OS type, otherwise known as the family.
 	Family *EntityItemFamilyType `xml:"family"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// FilehashItem: This element stores the different hash values associated with a specific file.
 type FilehashItem struct {
 	XMLName xml.Name `xml:"filehash_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The name of the file.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// Md5: The md5 hash of the file
 	Md5 *oval_sc.EntityItemStringType `xml:"md5"`
 
+	// Sha1: The sha1 hash of the file
 	Sha1 *oval_sc.EntityItemStringType `xml:"sha1"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set. This entity only applies to 64-bit Microsoft Windows operating systems.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Filehash58Item: This element stores a hash value associated with a specific file.
 type Filehash58Item struct {
 	XMLName xml.Name `xml:"filehash58_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The name of the file.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// HashType: Identifier for the hash algorithm used to calculate the hash.
 	HashType *EntityItemHashTypeType `xml:"hash_type"`
 
+	// Hash: The result of applying the hash algorithm to the file.
 	Hash *oval_sc.EntityItemStringType `xml:"hash"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set. This entity only applies to 64-bit Microsoft Windows operating systems.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// EnvironmentvariableItem: This item stores information about environment variables and their values.
 type EnvironmentvariableItem struct {
 	XMLName xml.Name `xml:"environmentvariable_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This element describes the name of an environment variable.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Value: The actual value of the specified environment variable.
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Environmentvariable58Item: This item stores information about an environment variable, the process ID of the process from which it was retrieved, and its corresponding value.
 type Environmentvariable58Item struct {
 	XMLName xml.Name `xml:"environmentvariable58_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Pid: The process ID of the process from which the environment variable was retrieved.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// Name: This element describes the name of an environment variable.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Value: The actual value of the specified environment variable.
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// LdapItem: This element holds information about specific entries in the LDAP directory. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type LdapItem struct {
 	XMLName xml.Name `xml:"ldap_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Suffix: Each object in an LDAP directory exists under a certain suffix (also known as a naming context). A suffix is defined as a single object in the Directory Information Tree (DIT) with every object in the tree subordinate to it.
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
+	// RelativeDn: The relative_dn field is used to uniquely identify an item inside the specified suffix. It contains all of the parts of the item's distinguished name except those outlined by the suffix. If the xsi:nil attribute is set to true, then the item being represented is the higher level suffix.
 	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
 
+	// Attribute: Specifies a named value contained by the object.
 	Attribute *oval_sc.EntityItemStringType `xml:"attribute"`
 
+	// ObjectClass: The name of the class of which the object is an instance.
 	ObjectClass *oval_sc.EntityItemStringType `xml:"object_class"`
 
+	// Ldaptype: Specifies the type of information that the specified attribute represents.
 	Ldaptype *EntityItemLdaptypeType `xml:"ldaptype"`
 
+	// Value: The actual value of the specified LDAP attribute.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Ldap57Item: This element holds information about specific entries in the LDAP directory. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type Ldap57Item struct {
 	XMLName xml.Name `xml:"ldap57_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Suffix: Each object in an LDAP directory exists under a certain suffix (also known as a naming context). A suffix is defined as a single object in the Directory Information Tree (DIT) with every object in the tree subordinate to it.
 	Suffix *oval_sc.EntityItemStringType `xml:"suffix"`
 
+	// RelativeDn: The relative_dn field is used to uniquely identify an item inside the specified suffix. It contains all of the parts of the item's distinguished name except those outlined by the suffix. If the xsi:nil attribute is set to true, then the item being represented is the higher level suffix.
 	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
 
+	// Attribute: Specifies a named value contained by the object.
 	Attribute *oval_sc.EntityItemStringType `xml:"attribute"`
 
+	// ObjectClass: The name of the class of which the object is an instance.
 	ObjectClass *oval_sc.EntityItemStringType `xml:"object_class"`
 
+	// Ldaptype: Specifies the type of information that the specified attribute represents.
 	Ldaptype *EntityItemLdaptypeType `xml:"ldaptype"`
 
+	// Value: The actual value of the specified LDAP attribute. Note that while an LDAP attribute can contain structured data where it is necessary to collect multiple related fields that can be described by the 'record' datatype, it is not always the case. It also is possible that an LDAP attribute can contain only a single value or an array of values. In these cases, there is not a name to uniquely identify the corresponding field(s) which is a requirement for fields in the 'record' datatype. As a result, the name of the LDAP attribute will be used to uniquely identify the field(s) and satisfy this requirement. If the LDAP attribute contains a single value, the 'record' will have a single field identified by the name of the LDAP attribute. If the LDAP attribute contains an array of values, the 'record' will have multiple fields all identified by the name of the LDAP attribute.
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SqlItem: The sql_item outlines information collected from a database via an SQL query.
 type SqlItem struct {
 	XMLName xml.Name `xml:"sql_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Engine: The engine entity identifies the specific database engine used to connect to the database.
 	Engine *EntityItemEngineType `xml:"engine"`
 
+	// Version: The version entity identifies the version of the database engine used to connect to the database.
 	Version *oval_sc.EntityItemStringType `xml:"version"`
 
+	// ConnectionString: The connection_string entity defines connection parameters used to connect to the specific database.
 	ConnectionString *oval_sc.EntityItemStringType `xml:"connection_string"`
 
+	// Sql: The sql entity holds the specific query used to identify the object(s) in the database.
 	Sql *oval_sc.EntityItemStringType `xml:"sql"`
 
+	// Result: The result entity specifies the result(s) of the given SQL query against the database.
 	Result []oval_sc.EntityItemAnySimpleType `xml:"result"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Sql57Item: The sql57_item outlines information collected from a database via an SQL query.
 type Sql57Item struct {
 	XMLName xml.Name `xml:"sql57_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Engine: The engine entity identifies the specific database engine used to connect to the database.
 	Engine *EntityItemEngineType `xml:"engine"`
 
+	// Version: The version entity identifies the version of the database engine used to connect to the database.
 	Version *oval_sc.EntityItemStringType `xml:"version"`
 
+	// ConnectionString: The connection_string entity defines connection parameters used to connect to the specific database.
 	ConnectionString *oval_sc.EntityItemStringType `xml:"connection_string"`
 
+	// Sql: The sql entity holds the specific query used to identify the object(s) in the database.
 	Sql *oval_sc.EntityItemStringType `xml:"sql"`
 
+	// Result: The result entity holds the results of the specified SQL statement.
 	Result []oval_sc.EntityItemRecordType `xml:"result"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// TextfilecontentItem: The textfilecontent_item looks at the contents of a text file (aka a configuration file) by looking at individual lines.
 type TextfilecontentItem struct {
 	XMLName xml.Name `xml:"textfilecontent_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The filename entity specifies the name of the file (without the path) that is being represented.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// Pattern: The pattern entity represents a regular expression that is used to define a block of text. Subexpression notation (parenthesis) is used to call out a value(s) to test against. For example, the pattern abc(.*)xyz would look for a block of text in the file that starts with abc and ends with xyz, with the subexpression being all the characters that exist inbetween. Note that if the pattern can match more than one block of text starting at the same point, then it matches the longest. Subexpressions also match the longest possible substrings, subject to the constraint that the whole match be as long as possible, with subexpressions starting earlier in the pattern taking priority over ones starting later.
 	Pattern *oval_sc.EntityItemStringType `xml:"pattern"`
 
+	// Instance: The instance entity calls out which match of the pattern is being represented by this item. The first match is given an instance value of 1, the second match is given an instance value of 2, and so on. The main purpose of this entity is too provide uniqueness for different textfilecontent_items that results from multiple matches of a given pattern against the same file.
 	Instance *oval_sc.EntityItemIntType `xml:"instance"`
 
+	// Line: The line element represents a line in the file and is represented using a regular expression.
 	Line *oval_sc.EntityItemStringType `xml:"line"`
 
+	// Text: The text entity represents the block of text that matched the specified pattern.
 	Text *oval_sc.EntityItemAnySimpleType `xml:"text"`
 
+	// Subexpression: The subexpression entity represents the value of a subexpression in the specified pattern. If multiple subexpressions are specified in the pattern, then multiple entities are presented. Note that the textfilecontent_state in the definition schema only allows a single subexpression entity. This means that the test will check that all (or at least one, none, etc.) the subexpressions pass the same check. This means that the order of multiple subexpression entities in the item does not matter.
 	Subexpression []oval_sc.EntityItemAnySimpleType `xml:"subexpression"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set. This entity only applies to 64-bit Microsoft Windows operating systems.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VariableItem: This item stores information about OVAL Variables and their values.
 type VariableItem struct {
 	XMLName xml.Name `xml:"variable_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// VarRef: The id of the variable.
 	VarRef *EntityItemVariableRefType `xml:"var_ref"`
 
+	// Value: The value of the variable. If a variable represents and array of values, then multiple value elements should exist.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// XmlfilecontentItem: This item stores results from checking the contents of an xml file.
 type XmlfilecontentItem struct {
 	XMLName xml.Name `xml:"xmlfilecontent_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The filename element specifies the name of the file.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// Xpath: Specifies an XPath 1.0 expression to evaluate against the XML file specified by the filename entity. This XPath 1.0 expression must evaluate to a list of zero or more text values which will be accessible in OVAL via instances of the value_of entity. Any results from evaluating the XPath 1.0 expression other than a list of text strings (e.g., a nodes set) is considered an error. The intention is that the text values be drawn from instances of a single, uniquely named element or attribute. However, an OVAL interpreter is not required to verify this, so the author should define the XPath expression carefully. Note that "equals" is the only valid operator for the xpath entity.
 	Xpath *oval_sc.EntityItemStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found. How this is used is entirely controlled by operator attributes.
 	ValueOf []oval_sc.EntityItemAnySimpleType `xml:"value_of"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set. This entity only applies to 64-bit Microsoft Windows operating systems.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// YamlfilecontentItem: This item stores results from checking the contents of an YAML file.
 type YamlfilecontentItem struct {
 	XMLName xml.Name `xml:"yamlfilecontent_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The filename element specifies the name of the file.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// Content: The content element specifies the YAML document body.
 	Content *oval_sc.EntityItemStringType `xml:"content"`
 
+	// Yamlpath: Specifies an YAML Path expression to evaluate against the YAML file specified by the filename entity.
 	Yamlpath *oval_sc.EntityItemStringType `xml:"yamlpath"`
 
+	// Value: The value entity holds the target(s) of the specified YAML Path. A single scalar value or a list of scalar values (where there is no key to associate) would have the name attribute of the field element set to '#'. Due to the limitation of the record type field names could not contain uppercase letters, they will be converted to the lowercase and escaped using the '^' symbol (the '^' symbol would be escaped as well). For example 'myCamelCase^Key' would be collected as 'my^camel^case^^^key'.
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set. This entity only applies to 64-bit Microsoft Windows operating systems.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -281,76 +347,88 @@ type YamlfilecontentItem struct {
 
 // XSD ComplexType declarations
 
+// EntityItemEngineType: The EntityItemEngineType complex type defines a string entity value that is restricted to an enumeration. Each valid entry in the enumeration is a valid database engine.
 type EntityItemEngineType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemFamilyType: The EntityItemFamilyType complex type defines a string entity value that is restricted to a set of enumerations. Each valid enumeration is a high-level family of system operating system.
 type EntityItemFamilyType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemHashTypeType: The EntityItemHashTypeType complex type restricts a string value to a specific set of values that specify the different hash algorithms that are supported. The empty string is also allowed to support empty elements associated with variable references.
 type EntityItemHashTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemVariableRefType: The EntityItemVariableRefType complex type defines a string item entity that has a valid OVAL variable id as the value.
 type EntityItemVariableRefType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemLdaptypeType: The EntityItemLdaptypeType complex type restricts a string value to a specific set of values that specify the different types of information that an ldap attribute can represent. The empty string value is permitted here to allow for detailed error reporting.
 type EntityItemLdaptypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemWindowsViewType: The EntityItemWindowsViewType restricts a string value to a specific set of values: 32-bit and 64-bit. These values describe the different values possible for the windows view behavior.
 type EntityItemWindowsViewType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

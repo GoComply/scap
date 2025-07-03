@@ -8,56 +8,69 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the VMware ESX server specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// PatchItem: Installation information about a specific patch in the VMware ESX server. This information can be retrieved by the "esxupdate query | grep ESX-xxxxxxx" command.
 type PatchItem struct {
 	XMLName xml.Name `xml:"patch_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// PatchNumber: This is the patch number which identifies the patch being checked in current VMware ESX server. Many of the security bulletins for VMWARE ESX Server contain non-numerical characters in the patch number, therefore this entity has a datatype of string.
 	PatchNumber *oval_sc.EntityItemStringType `xml:"patch_number"`
 
+	// PatchName: The patch_name entity indetifies the name of the patch. For example: ESX-200603 or ESX350-200904401-BG. The value of this entity should correspond to the values returned under the "name" column of the "esxupdate query" command.
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
+	// KnowledgeBaseId: The knowledge_base_id entity specifies the knowledge base article identifier number associated with a given patch from ESX versions 3.0.2 and earlier. It is comprised of the numerical string at the end of the patch name. For example, the patch ESX-200603 would have a knowledge base identifier of 200603. For patches from ESX version 3.0.3 and later, the patch name uses a different format and does not include the knowledge base id. This entity should be marked with a status of 'does not exist' in those cases.
 	KnowledgeBaseId *oval_sc.EntityItemIntType `xml:"knowledge_base_id"`
 
+	// BundleId: The bundle_id entity specifies the unique ID for the patch. Note that for version 3.0.3 and version 3.5 this is comprised of the year and month the bundle was released and a 3-digit unique ID. It is in the format YYYYMM###. For example, the first patch released in January 2008 might have a BundleID of 200801001. For patches from ESX version 3.0.2 and earlier, this entity should be marked with a status of 'does not exist' since patch name has a different format and doesn't include a bundle id.
 	BundleId *oval_sc.EntityItemIntType `xml:"bundle_id"`
 
+	// Classification: The classification entity specifies the type of patch. It can be one of: B - bug, U - update, S - security, or R - roll-up. For patches from ESX version 3.0.2 and earlier, this entity should be marked with a status of 'does not exist' since patch name has a different format and doesn't include a classification.
 	Classification *EntityItemClassificationType `xml:"classification"`
 
+	// SupportLevel: The support_level entity specifies the support level of the patch. If can be one of: G - GA patch, H - hot patch, D - debugging patch, or C - custom patch. For patches from ESX version 3.0.2 and earlier, this entity should be marked with a status of 'does not exist' since patch name has a different format and doesn't include a support level.
 	SupportLevel *EntityItemSupportLevelType `xml:"support_level"`
 
+	// StatusElm: This is the installtaion status of the specific patch.
 	StatusElm *oval_sc.EntityItemBoolType `xml:"status"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VersionItem: Information about the release and build version of VMware ESX server. This information can be retrieved by the "vmware -v" command or by checking the /proc/vmware/version file.
 type VersionItem struct {
 	XMLName xml.Name `xml:"version_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Release: This is the release of current VMware ESX server.
 	Release *oval_sc.EntityItemVersionType `xml:"release"`
 
+	// Build: This is the build version of current VMware ESX server.
 	Build *oval_sc.EntityItemIntType `xml:"build"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VisdkmanagedobjectItem: The visdkmanagedobject_item is used to represent information about Managed Objects in the VMware Infrastructure.
 type VisdkmanagedobjectItem struct {
 	XMLName xml.Name `xml:"visdkmanagedobject_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Property: The property entity holds a string that represents the object path and name of a particular setting for the Managed Entity. In the VMware Infrastructure SDK, property names are case-sensitive and thus case must be correct relative to the properties in the SDK. For example, a Virtual Machine might have ethernet0.connectionType of 'bridged'.
 	Property *oval_sc.EntityItemStringType `xml:"property"`
 
+	// Value: The value entity holds a string that represents a value that's associated with the specified setting for the Managed Entity. Some properties will return an array of values. In such cases consider each value individually and then make final evaluation based on the entity_check attribute.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -65,28 +78,32 @@ type VisdkmanagedobjectItem struct {
 
 // XSD ComplexType declarations
 
+// EntityItemClassificationType: The EntityItemClassificationType complex type restricts a string value to a specific set of values that describe the classification of a given ESX Server patch. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemClassificationType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemSupportLevelType: The EntityItemSupportLevelType complex type restricts a string value to a specific set of values that describe the support level of a given ESX Server patch. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemSupportLevelType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

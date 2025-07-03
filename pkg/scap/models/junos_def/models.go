@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
+// The following is a description of the elements, types, and attributes that compose the Junos-specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
 // Element
 type XmlConfigTest struct {
 	XMLName xml.Name `xml:"xml_config_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type XmlConfigTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// XmlConfigObject: The xml_config_object element is used by an XML config test to define the object to be evaluated. For the most part this object checks for existence and is used without a state comparision. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type XmlConfigObject struct {
 	XMLName xml.Name `xml:"xml_config_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type XmlConfigObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Xpath: An XPATH 1.0 expression that should be evaluated against the XML configuration file. Any valid XPATH 1.0 statement is usable with one exception, at most one field may be identified in the XPATH. This is because the value_of element in the data section is only designed to work against a single field. The only valid operator for xpath is equals since there is an infinite number of possible xpaths and determinining all those that do not equal a given xpath would be impossible.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type XmlConfigObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// XmlConfigState: The xml_config_state element defines the different information that can be used to evaluate the result of an XPATH query against the XML configuration file. Please refer to the individual elements in the schema for more details about what each represents.
 type XmlConfigState struct {
 	XMLName xml.Name `xml:"xml_config_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,8 +76,10 @@ type XmlConfigState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Xpath: An XPATH 1.0 expression that was evaluated against the XML config file.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The result of the evaluation of the XPATH expression against the XML config file.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -82,11 +87,11 @@ type XmlConfigState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ShowTest: The show test is used to check the properties of specific output lines from a SHOW command, such as "show configuration". It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a show_object and the optional state element specifies the data to check.
 type ShowTest struct {
 	XMLName xml.Name `xml:"show_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -109,11 +114,11 @@ type ShowTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ShowObject: The show_object element is used by a show test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type ShowObject struct {
 	XMLName xml.Name `xml:"show_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -123,6 +128,7 @@ type ShowObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Subcommand: The name of a SHOW sub-command to be tested.
 	Subcommand *oval_def.EntityObjectStringType `xml:"subcommand"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -132,11 +138,11 @@ type ShowObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ShowState: The show_state element defines the different information that can be used to evaluate the result of a specific SHOW sub-command. This includes the name of the sub-command and the corresponding config output. Please refer to the individual elements in the schema for more details about what each represents.
 type ShowState struct {
 	XMLName xml.Name `xml:"show_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -146,8 +152,10 @@ type ShowState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Subcommand: The name of the SHOW sub-command.
 	Subcommand *oval_def.EntityStateStringType `xml:"subcommand"`
 
+	// Value: The value returned from by the specified SHOW sub-command. This may consist of multiple lines of information, whose raw form will be captured by the item.
 	Value *oval_def.EntityStateStringType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -155,11 +163,11 @@ type ShowState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionTest: The version_test is used to check the version of components of the JunOS operating system. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the data to check.
 type VersionTest struct {
 	XMLName xml.Name `xml:"version_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -182,11 +190,11 @@ type VersionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionObject: The version_object element is used by a version_test to define the different version information associated with a JunOS system.
 type VersionObject struct {
 	XMLName xml.Name `xml:"version_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -196,6 +204,7 @@ type VersionObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Component: The name of the JunOS component whose version should be retrieved.
 	Component *oval_def.EntityObjectStringType `xml:"component"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -205,11 +214,11 @@ type VersionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionState: The version_state element defines the version information held by a JunOS component.
 type VersionState struct {
 	XMLName xml.Name `xml:"version_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -219,22 +228,31 @@ type VersionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Component: The name of the JunOS component whose version should be retrieved.
 	Component *oval_def.EntityStateStringType `xml:"component"`
 
+	// RawValue: The raw release version string for the component, e.g., 12.2R6.1 or 12.1X44-D10.4.
 	RawValue *oval_def.EntityStateStringType `xml:"raw_value"`
 
+	// Major: The part of the release version of the component corresponding to the year in which the release occurred. For example, the major value for 12.2R6.1 would be '12'.
 	Major *oval_def.EntityStateIntType `xml:"major"`
 
+	// Minor: The part of the release version of the component corresponding to the quarter in which the release occurred. For example, the minor value for 12.2R6.1 would be '2'.
 	Minor *oval_def.EntityStateIntType `xml:"minor"`
 
+	// Type: The release type embedded in the version of the component. For example, the type value for 12.2R6.1 is 'R'.
 	Type *EntityStateJunosReleaseTypeType `xml:"type"`
 
+	// Build: The build number of the component's version. For example, the revision for 12.2R6.1 has a build number of '6'; 12.1X44-D10.4 has a build number of '44'.
 	Build *oval_def.EntityStateIntType `xml:"build"`
 
+	// MaintenanceRelease: A maintenance_release value can appear in an R-type service release or an X-type release (where it takes the value of the D-number). For example, version 14.2R3-S4.5 has a maintenance_release of '4'. For version 10.4S4.2, the maintenance_release entity would have a status of 'does not exist'. For version 12.1X44-D10.4, the maintenance_release entity value would be '10'.
 	MaintenanceRelease *oval_def.EntityStateIntType `xml:"maintenance_release"`
 
+	// Spin: The spin number of the component. For example, 12.2R6.1 has a spin value of '1'; 12.1X44-D10.4 has a spin value of '4'.
 	Spin *oval_def.EntityStateIntType `xml:"spin"`
 
+	// BuildDate: The build date of the component, specified in milliseconds since the Epoch (midnight, January 1, 1970 GMT).
 	BuildDate *oval_def.EntityStateIntType `xml:"build_date"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -242,11 +260,11 @@ type VersionState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// XmlShowTest: The XML show test is used to check the properties of specific output from an XML SHOW command, such as "show configuration | display xml". It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a xml_show_object and the optional state element specifies the data to check.
 type XmlShowTest struct {
 	XMLName xml.Name `xml:"xml_show_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -269,11 +287,11 @@ type XmlShowTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// XmlShowObject: The xml_show_object element is used by an XML show test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type XmlShowObject struct {
 	XMLName xml.Name `xml:"xml_show_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -283,8 +301,10 @@ type XmlShowObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Subcommand: The name of a SHOW sub-command to be tested.
 	Subcommand *oval_def.EntityObjectStringType `xml:"subcommand"`
 
+	// Xpath: An XPATH 1.0 expression that should be evaluated against the XML data resulting from the XML show subcommand. Any valid XPATH 1.0 statement is usable with one exception, at most one field may be identified in the XPATH. This is because the value_of element in the data section is only designed to work against a single field. The only valid operator for xpath is equals since there is an infinite number of possible xpaths and determinining all those that do not equal a given xpath would be impossible.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -294,11 +314,11 @@ type XmlShowObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// XmlShowState: The xml_show_state element defines the different information that can be used to evaluate the result of a specific XML SHOW sub-command. This includes the name of the sub-command, the XPATH and the corresponding XPATH query result. Please refer to the individual elements in the schema for more details about what each represents.
 type XmlShowState struct {
 	XMLName xml.Name `xml:"xml_show_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -308,10 +328,13 @@ type XmlShowState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Subcommand: The name of a SHOW sub-command to be tested.
 	Subcommand *oval_def.EntityStateStringType `xml:"subcommand"`
 
+	// Xpath: An XPATH 1.0 expression that should be evaluated against the XML data resulting from the XML show subcommand.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The result of the evaluation of the XPATH expression against the XML data returned from the XML show subcommand.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -321,6 +344,7 @@ type XmlShowState struct {
 
 // XSD ComplexType declarations
 
+// EntityStateJunosReleaseTypeType: The EntityStateJunosReleaseTypeType complex type defines the different values that are valid for the release_type entity of a system_metric state. These values describe the release type specified in the raw version string.
 type EntityStateJunosReleaseTypeType struct {
 	XMLName xml.Name
 
@@ -328,17 +352,20 @@ type EntityStateJunosReleaseTypeType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

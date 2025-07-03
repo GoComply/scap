@@ -8,909 +8,1244 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Windows specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core System Characteristic Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core System Characteristic Schema is not outlined here.
+
+// AccesstokenItem: The access token item holds information about the individual privileges and rights associated with a specific access token. It is important to note that these privileges are specific to certain versions of Windows. As a result, the documentation for that version of Windows should be consulted for more information. Each privilege and right in the data section accepts a boolean value signifying whether the privilege is granted or not. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type AccesstokenItem struct {
 	XMLName xml.Name `xml:"accesstoken_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// SecurityPrinciple: Security principles include users or groups with either local or domain accounts, and computer accounts created when a computer joins a domain. In Windows, security principles are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. User rights and permissions to access objects such as Active Directory objects, files, and registry settings are assigned to security principles. In a domain environment, security principles should be identified in the form: "domain\trustee name". For local security principles use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	SecurityPrinciple *oval_sc.EntityItemStringType `xml:"security_principle"`
 
+	// Seassignprimarytokenprivilege: If this privilege is enabled, it allows a parent process to replace the access token that is associated with a child process.
 	Seassignprimarytokenprivilege *oval_sc.EntityItemBoolType `xml:"seassignprimarytokenprivilege"`
 
+	// Seauditprivilege: If this privilege is enabled, it allows a process to generate audit records in the security log. The security log can be used to trace unauthorized system access.
 	Seauditprivilege *oval_sc.EntityItemBoolType `xml:"seauditprivilege"`
 
+	// Sebackupprivilege: If this privilege is enabled, it allows the user to circumvent file and directory permissions to back up the system. The privilege is selected only when an application attempts access by using the NTFS backup application programming interface (API). Otherwise, normal file and directory permissions apply.
 	Sebackupprivilege *oval_sc.EntityItemBoolType `xml:"sebackupprivilege"`
 
+	// Sechangenotifyprivilege: If this privilege is enabled, it allows the user to pass through folders to which the user otherwise has no access while navigating an object path in the NTFS file system or in the registry. This privilege does not allow the user to list the contents of a folder; it allows the user only to traverse its directories.
 	Sechangenotifyprivilege *oval_sc.EntityItemBoolType `xml:"sechangenotifyprivilege"`
 
+	// Secreateglobalprivilege: If this privilege is enabled, it allows the user to create named file mapping objects in the global namespace during Terminal Services sessions.
 	Secreateglobalprivilege *oval_sc.EntityItemBoolType `xml:"secreateglobalprivilege"`
 
+	// Secreatepagefileprivilege: If this privilege is enabled, it allows the user to create and change the size of a pagefile.
 	Secreatepagefileprivilege *oval_sc.EntityItemBoolType `xml:"secreatepagefileprivilege"`
 
+	// Secreatepermanentprivilege: If this privilege is enabled, it allows a process to create a directory object in the object manager. It is useful to kernel-mode components that extend the object namespace. Components that are running in kernel mode have this privilege inherently.
 	Secreatepermanentprivilege *oval_sc.EntityItemBoolType `xml:"secreatepermanentprivilege"`
 
+	// Secreatesymboliclinkprivilege: If this privilege is enabled, it allows a user create a symbolic link.
 	Secreatesymboliclinkprivilege *oval_sc.EntityItemBoolType `xml:"secreatesymboliclinkprivilege"`
 
+	// Secreatetokenprivilege: If this privilege is enabled, it allows a process to create an access token by calling NtCreateToken() or other token-creating APIs.
 	Secreatetokenprivilege *oval_sc.EntityItemBoolType `xml:"secreatetokenprivilege"`
 
+	// Sedebugprivilege: If this privilege is enabled, it allows the user to attach a debugger to any process. It provides access to sensitive and critical operating system components.
 	Sedebugprivilege *oval_sc.EntityItemBoolType `xml:"sedebugprivilege"`
 
+	// Seenabledelegationprivilege: If this privilege is enabled, it allows the user to change the Trusted for Delegation setting on a user or computer object in Active Directory. The user or computer that is granted this privilege must also have write access to the account control flags on the object.
 	Seenabledelegationprivilege *oval_sc.EntityItemBoolType `xml:"seenabledelegationprivilege"`
 
+	// Seimpersonateprivilege: If this privilege is enabled, it allows the user to impersonate a client after authentication.
 	Seimpersonateprivilege *oval_sc.EntityItemBoolType `xml:"seimpersonateprivilege"`
 
+	// Seincreasebasepriorityprivilege: If this privilege is enabled, it allows a user to increase the base priority class of a process.
 	Seincreasebasepriorityprivilege *oval_sc.EntityItemBoolType `xml:"seincreasebasepriorityprivilege"`
 
+	// Seincreasequotaprivilege: If this privilege is enabled, it allows a process that has access to a second process to increase the processor quota assigned to the second process.
 	Seincreasequotaprivilege *oval_sc.EntityItemBoolType `xml:"seincreasequotaprivilege"`
 
+	// Seincreaseworkingsetprivilege: If this privilege is enabled, it allows a user to increase a process working set.
 	Seincreaseworkingsetprivilege *oval_sc.EntityItemBoolType `xml:"seincreaseworkingsetprivilege"`
 
+	// Seloaddriverprivilege: If this privilege is enabled, it allows a user to install and remove drivers for Plug and Play devices.
 	Seloaddriverprivilege *oval_sc.EntityItemBoolType `xml:"seloaddriverprivilege"`
 
+	// Selockmemoryprivilege: If this privilege is enabled, it allows a process to keep data in physical memory, which prevents the system from paging the data to virtual memory on disk.
 	Selockmemoryprivilege *oval_sc.EntityItemBoolType `xml:"selockmemoryprivilege"`
 
+	// Semachineaccountprivilege: If this privilege is enabled, it allows the user to add a computer to a specific domain.
 	Semachineaccountprivilege *oval_sc.EntityItemBoolType `xml:"semachineaccountprivilege"`
 
+	// Semanagevolumeprivilege: If this privilege is enabled, it allows a non-administrative or remote user to manage volumes or disks.
 	Semanagevolumeprivilege *oval_sc.EntityItemBoolType `xml:"semanagevolumeprivilege"`
 
+	// Seprofilesingleprocessprivilege: If this privilege is enabled, it allows a user to sample the performance of an application process.
 	Seprofilesingleprocessprivilege *oval_sc.EntityItemBoolType `xml:"seprofilesingleprocessprivilege"`
 
+	// Serelabelprivilege: If this privilege is enabled, it allows a user to modify an object label.
 	Serelabelprivilege *oval_sc.EntityItemBoolType `xml:"serelabelprivilege"`
 
+	// Seremoteshutdownprivilege: If this privilege is enabled, it allows a user to shut down a computer from a remote location on the network.
 	Seremoteshutdownprivilege *oval_sc.EntityItemBoolType `xml:"seremoteshutdownprivilege"`
 
+	// Serestoreprivilege: If this privilege is enabled, it allows a user to circumvent file and directory permissions when restoring backed-up files and directories and to set any valid security principle as the owner of an object.
 	Serestoreprivilege *oval_sc.EntityItemBoolType `xml:"serestoreprivilege"`
 
+	// Sesecurityprivilege: If this privilege is enabled, it allows a user to specify object access auditing options for individual resources such as files, Active Directory objects, and registry keys. A user who has this privilege can also view and clear the security log from Event Viewer.
 	Sesecurityprivilege *oval_sc.EntityItemBoolType `xml:"sesecurityprivilege"`
 
+	// Seshutdownprivilege: If this privilege is enabled, it allows a user to shut down the local computer.
 	Seshutdownprivilege *oval_sc.EntityItemBoolType `xml:"seshutdownprivilege"`
 
+	// Sesyncagentprivilege: If this privilege is enabled, it allows a process to read all objects and properties in the directory, regardless of the protection on the objects and properties. It is required in order to use Lightweight Directory Access Protocol (LDAP) directory synchronization (Dirsync) services.
 	Sesyncagentprivilege *oval_sc.EntityItemBoolType `xml:"sesyncagentprivilege"`
 
+	// Sesystemenvironmentprivilege: If this privilege is enabled, it allows modification of system environment variables either by a process through an API or by a user through System Properties.
 	Sesystemenvironmentprivilege *oval_sc.EntityItemBoolType `xml:"sesystemenvironmentprivilege"`
 
+	// Sesystemprofileprivilege: If this privilege is enabled, it allows a user to sample the performance of system processes.
 	Sesystemprofileprivilege *oval_sc.EntityItemBoolType `xml:"sesystemprofileprivilege"`
 
+	// Sesystemtimeprivilege: If this privilege is enabled, it allows the user to adjust the time on the computer's internal clock. It is not required to change the time zone or other display characteristics of the system time.
 	Sesystemtimeprivilege *oval_sc.EntityItemBoolType `xml:"sesystemtimeprivilege"`
 
+	// Setakeownershipprivilege: If this privilege is enabled, it allows a user to take ownership of any securable object in the system, including Active Directory objects, NTFS files and folders, printers, registry keys, services, processes, and threads.
 	Setakeownershipprivilege *oval_sc.EntityItemBoolType `xml:"setakeownershipprivilege"`
 
+	// Setcbprivilege: If this privilege is enabled, it allows a process to assume the identity of any user and thus gain access to the resources that the user is authorized to access.
 	Setcbprivilege *oval_sc.EntityItemBoolType `xml:"setcbprivilege"`
 
+	// Setimezoneprivilege: If this privilege is enabled, it allows a user to change the time zone.
 	Setimezoneprivilege *oval_sc.EntityItemBoolType `xml:"setimezoneprivilege"`
 
+	// Seundockprivilege: If this privilege is enabled, it allows the user of a portable computer to undock the computer by clicking Eject PC on the Start menu.
 	Seundockprivilege *oval_sc.EntityItemBoolType `xml:"seundockprivilege"`
 
+	// Seunsolicitedinputprivilege: If this privilege is enabled, it allows the user to read unsolicited data from a terminal device.
 	Seunsolicitedinputprivilege *oval_sc.EntityItemBoolType `xml:"seunsolicitedinputprivilege"`
 
+	// Sebatchlogonright: If an account is assigned this right, it can log on using the batch logon type.
 	Sebatchlogonright *oval_sc.EntityItemBoolType `xml:"sebatchlogonright"`
 
+	// Seinteractivelogonright: If an account is assigned this right, it can log on using the interactive logon type.
 	Seinteractivelogonright *oval_sc.EntityItemBoolType `xml:"seinteractivelogonright"`
 
+	// Senetworklogonright: If an account is assigned this right, it can log on using the network logon type.
 	Senetworklogonright *oval_sc.EntityItemBoolType `xml:"senetworklogonright"`
 
+	// Seremoteinteractivelogonright: If an account is assigned this right, it can log on to the computer by using a Remote Desktop connection.
 	Seremoteinteractivelogonright *oval_sc.EntityItemBoolType `xml:"seremoteinteractivelogonright"`
 
+	// Seservicelogonright: If an account is assigned this right, it can log on using the service logon type.
 	Seservicelogonright *oval_sc.EntityItemBoolType `xml:"seservicelogonright"`
 
+	// SedenybatchLogonright: If an account is assigned this right, it is explicitly denied the ability to log on using the batch logon type.
 	SedenybatchLogonright *oval_sc.EntityItemBoolType `xml:"sedenybatchLogonright"`
 
+	// Sedenyinteractivelogonright: If an account is assigned this right, it is explicitly denied the ability to log on using the interactive logon type.
 	Sedenyinteractivelogonright *oval_sc.EntityItemBoolType `xml:"sedenyinteractivelogonright"`
 
+	// Sedenynetworklogonright: If an account is assigned this right, it is explicitly denied the ability to log on using the network logon type.
 	Sedenynetworklogonright *oval_sc.EntityItemBoolType `xml:"sedenynetworklogonright"`
 
+	// SedenyremoteInteractivelogonright: If an account is assigned this right, it is explicitly denied the ability to log on through Terminal Services.
 	SedenyremoteInteractivelogonright *oval_sc.EntityItemBoolType `xml:"sedenyremoteInteractivelogonright"`
 
+	// Sedenyservicelogonright: If an account is assigned this right, it is explicitly denied the ability to log on using the service logon type.
 	Sedenyservicelogonright *oval_sc.EntityItemBoolType `xml:"sedenyservicelogonright"`
 
+	// Setrustedcredmanaccessnameright: If an account is assigned this right, it can access the Credential Manager as a trusted caller.
 	Setrustedcredmanaccessnameright *oval_sc.EntityItemBoolType `xml:"setrustedcredmanaccessnameright"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// ActivedirectoryItem: The active directory item holds information about specific entries in the Windows Active Directory. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type ActivedirectoryItem struct {
 	XMLName xml.Name `xml:"activedirectory_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// NamingContext: Each object in active directory exists under a certain naming context (also known as a partition). A naming context is defined as a single object in the Directory Information Tree (DIT) along with every object in the tree subordinate to it. There are three default naming contexts in Active Directory: domain, configuration, and schema.
 	NamingContext *EntityItemNamingContextType `xml:"naming_context"`
 
+	// RelativeDn: The relative_dn field is used to uniquely identify an object inside the specified naming context. It contains all the parts of the objects distinguished name except those outlined by the naming context. If the xsi:nil attribute is set to true, then the item being represented is the higher level naming context.
 	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
 
+	// Attribute: Specifies a named value contained by the object.
 	Attribute *oval_sc.EntityItemStringType `xml:"attribute"`
 
+	// ObjectClass: The name of the class of which the object is an instance.
 	ObjectClass *oval_sc.EntityItemStringType `xml:"object_class"`
 
+	// Adstype: Specifies the type of information that the specified attribute represents.
 	Adstype *EntityItemAdstypeType `xml:"adstype"`
 
+	// Value: The actual value of the specified active directory attribute.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Activedirectory57Item: The activedirectory57_item holds information about specific entries in the Windows Active Directory. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type Activedirectory57Item struct {
 	XMLName xml.Name `xml:"activedirectory57_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// NamingContext: Each object in active directory exists under a certain naming context (also known as a partition). A naming context is defined as a single object in the Directory Information Tree (DIT) along with every object in the tree subordinate to it. There are three default naming contexts in Active Directory: domain, configuration, and schema.
 	NamingContext *EntityItemNamingContextType `xml:"naming_context"`
 
+	// RelativeDn: The relative_dn field is used to uniquely identify an object inside the specified naming context. It contains all the parts of the objects distinguished name except those outlined by the naming context. If the xsi:nil attribute is set to true, then the item being represented is the higher level naming context.
 	RelativeDn *oval_sc.EntityItemStringType `xml:"relative_dn"`
 
+	// Attribute: Specifies a named value contained by the object.
 	Attribute *oval_sc.EntityItemStringType `xml:"attribute"`
 
+	// ObjectClass: The name of the class of which the object is an instance.
 	ObjectClass *oval_sc.EntityItemStringType `xml:"object_class"`
 
+	// Adstype: Specifies the type of information that the specified attribute represents.
 	Adstype *EntityItemAdstypeType `xml:"adstype"`
 
+	// Value: The actual value of the specified Active Directory attribute. Note that while an Active Directory attribute can contain structured data where it is necessary to collect multiple related fields that can be described by the 'record' datatype, it is not always the case. It also is possible that an Active Directory attribute can contain only a single value or an array of values. In these cases, there is not a name to uniquely identify the corresponding field(s) which is a requirement for fields in the 'record' datatype. As a result, the name of the Active Directory attribute will be used to uniquely identify the field(s) and satisfy this requirement. If the Active Directory attribute contains a single value, the 'record' will have a single field identified by the name of the Active Directory attribute. If the Active Directory attribute contains an array of values, the 'record' will have multiple fields all identified by the name of the Active Directory attribute
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// AuditeventpolicyItem: The auditeventpolicy item enumerates the different types of events the system should audit. The defined values are found in window's POLICY_AUDIT_EVENT_TYPE enumeration and accessed through the LsaQueryInformationPolicy when the InformationClass parameters are set to PolicyAuditEventsInformation. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type AuditeventpolicyItem struct {
 	XMLName xml.Name `xml:"auditeventpolicy_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// AccountLogon: Audit attempts to log on to or log off of the system. Also, audit attempts to make a network connection.
 	AccountLogon *EntityItemAuditType `xml:"account_logon"`
 
+	// AccountManagement: Audit attempts to create, delete, or change user or group accounts. Also, audit password changes.
 	AccountManagement *EntityItemAuditType `xml:"account_management"`
 
+	// DetailedTracking: Audit specific events, such as program activation, some forms of handle duplication, indirect access to an object, and process exit.
 	DetailedTracking *EntityItemAuditType `xml:"detailed_tracking"`
 
+	// DirectoryServiceAccess: Audit attempts to access the directory service.
 	DirectoryServiceAccess *EntityItemAuditType `xml:"directory_service_access"`
 
+	// Logon: Audit attempts to log on to or log off of the system. Also, audit attempts to make a network connection.
 	Logon *EntityItemAuditType `xml:"logon"`
 
+	// ObjectAccess: Audit attempts to access securable objects, such as files.
 	ObjectAccess *EntityItemAuditType `xml:"object_access"`
 
+	// PolicyChange: Audit attempts to change Policy object rules.
 	PolicyChange *EntityItemAuditType `xml:"policy_change"`
 
+	// PrivilegeUse: Audit attempts to use privileges.
 	PrivilegeUse *EntityItemAuditType `xml:"privilege_use"`
 
+	// System: Audit attempts to shut down or restart the computer. Also, audit events that affect system security or the security log.
 	System *EntityItemAuditType `xml:"system"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// AuditeventpolicysubcategoriesItem: The auditeventpolicysubcategories_item is used to hold information about the audit event policy settings on a Windows system. These settings are used to specify which system and network events are monitored. For example, if the credential_validation element has a value of AUDIT_FAILURE, it means that the system is configured to log all unsuccessful attempts to validate a user account on a system. It is important to note that these audit event policy settings are specific to certain versions of Windows. As a result, the documentation for that version of Windows should be consulted for more information on each setting. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type AuditeventpolicysubcategoriesItem struct {
 	XMLName xml.Name `xml:"auditeventpolicysubcategories_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// CredentialValidation: Audit the events produced during the validation of a user's logon credentials. This state corresponds with the following GUID specified in ntsecapi.h: 0cce923f-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Logon: Audit Credential Validation
 	CredentialValidation *EntityItemAuditType `xml:"credential_validation"`
 
+	// KerberosAuthenticationService: Audit the events produced by Kerberos authentication ticket-granting requests. This state corresponds with the following GUID specified in ntsecapi.h: 0CCE9242-69AE-11D9-BED3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Logon: Audit Kerboros Authentication Service
 	KerberosAuthenticationService *EntityItemAuditType `xml:"kerberos_authentication_service"`
 
+	// KerberosServiceTicketOperations: Audit the events produced by Kerberos service ticket requests. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9240-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Logon: Audit Kerberos Service Ticket Operations
 	KerberosServiceTicketOperations *EntityItemAuditType `xml:"kerberos_service_ticket_operations"`
 
+	// KerberosTicketEvents: Audit the events produced during the validation of Kerberos tickets provided for a user account logon request.
 	KerberosTicketEvents *EntityItemAuditType `xml:"kerberos_ticket_events"`
 
+	// OtherAccountLogonEvents: Audit the events produced by changes to user accounts that are not covered by other events in the Account Logon category. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9241-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Logon: Audit Other Account Logon Events
 	OtherAccountLogonEvents *EntityItemAuditType `xml:"other_account_logon_events"`
 
+	// ApplicationGroupManagement: Audit the events produced by changes to application groups. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9239-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Management: Audit Application Group Management
 	ApplicationGroupManagement *EntityItemAuditType `xml:"application_group_management"`
 
+	// ComputerAccountManagement: Audit the events produced by changes to computer accounts. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9236-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Management: Audit Computer Account Management
 	ComputerAccountManagement *EntityItemAuditType `xml:"computer_account_management"`
 
+	// DistributionGroupManagement: Audit the events produced by changes to distribution groups. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9238-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Management: Audit Distribution Account Management
 	DistributionGroupManagement *EntityItemAuditType `xml:"distribution_group_management"`
 
+	// OtherAccountManagementEvents: Audit the events produced by other user account changes that are not covered by other events in the Account Management category. This state corresponds with the following GUID specified in ntsecapi.h: 0cce923a-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Management: Audit Other Account Management Events
 	OtherAccountManagementEvents *EntityItemAuditType `xml:"other_account_management_events"`
 
+	// SecurityGroupManagement: Audit the events produced by changes to security groups. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9237-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Management: Audit Security Group Management
 	SecurityGroupManagement *EntityItemAuditType `xml:"security_group_management"`
 
+	// UserAccountManagement: Audit the events produced by changes to user accounts. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9235-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Account Management: Audit User Account Management
 	UserAccountManagement *EntityItemAuditType `xml:"user_account_management"`
 
+	// DpapiActivity: Audit the events produced when requests are made to the Data Protection application interface. This state corresponds with the following GUID specified in ntsecapi.h: 0cce922d-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Detailed Tracking: Audit DPAPI Activity
 	DpapiActivity *EntityItemAuditType `xml:"dpapi_activity"`
 
+	// ProcessCreation: Audit the events produced when a process is created or starts. This state corresponds with the following GUID specified in ntsecapi.h: 0cce922b-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Detailed Tracking: Audit Process Creation
 	ProcessCreation *EntityItemAuditType `xml:"process_creation"`
 
+	// ProcessTermination: Audit the events produced when a process ends. This state corresponds with the following GUID specified in ntsecapi.h: 0cce922c-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Detailed Tracking: Audit Process Termination
 	ProcessTermination *EntityItemAuditType `xml:"process_termination"`
 
+	// RpcEvents: Audit the events produced by inbound remote procedure call connections. This state corresponds with the following GUID specified in ntsecapi.h: 0cce922e-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Detailed Tracking: Audit RPC Events
 	RpcEvents *EntityItemAuditType `xml:"rpc_events"`
 
+	// DirectoryServiceAccess: Audit the events produced when a Active Directory Domain Services object is accessed. This state corresponds with the following GUID specified in ntsecapi.h: 0cce923b-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: DS Access: Audit Directory Service Access
 	DirectoryServiceAccess *EntityItemAuditType `xml:"directory_service_access"`
 
+	// DirectoryServiceChanges: Audit the events produced when changes are made to Active Directory Domain Services objects. This state corresponds with the following GUID specified in ntsecapi.h: 0cce923c-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: DS Access: Audit Directory Service Changes
 	DirectoryServiceChanges *EntityItemAuditType `xml:"directory_service_changes"`
 
+	// DirectoryServiceReplication: Audit the events produced when two Active Directory Domain Services domain controllers are replicated. This state corresponds with the following GUID specified in ntsecapi.h: 0cce923d-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: DS Access: Audit Directory Service Access
 	DirectoryServiceReplication *EntityItemAuditType `xml:"directory_service_replication"`
 
+	// DetailedDirectoryServiceReplication: Audit the events produced by detailed Active Directory Domain Services replication between domain controllers. This state corresponds with the following GUID specified in ntsecapi.h: 0cce923e-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: DS Access: Audit Detailed Directory Service Replication
 	DetailedDirectoryServiceReplication *EntityItemAuditType `xml:"detailed_directory_service_replication"`
 
+	// AccountLockout: Audit the events produced by a failed attempt to log onto a locked out account. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9217-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit Account Lockout
 	AccountLockout *EntityItemAuditType `xml:"account_lockout"`
 
+	// IpsecExtendedMode: Audit the events produced by Internet Key Exchange and Authenticated Internet protocol during Extended Mode negotiations. This state corresponds with the following GUID specified in ntsecapi.h: 0cce921a-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit IPsec Extended Mode
 	IpsecExtendedMode *EntityItemAuditType `xml:"ipsec_extended_mode"`
 
+	// IpsecMainMode: Audit the events produced by Internet Key Exchange and Authenticated Internet protocol during Main Mode negotiations. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9218-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logof/Logoff: Audit IPsec Main Mode
 	IpsecMainMode *EntityItemAuditType `xml:"ipsec_main_mode"`
 
+	// IpsecQuickMode: Audit the events produced by Internet Key Exchange and Authenticated Internet protocol during Quick Mode negotiations. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9219-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit IPsec Quick Mode
 	IpsecQuickMode *EntityItemAuditType `xml:"ipsec_quick_mode"`
 
+	// Logoff: Audit the events produced by closing a logon session. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9216-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit Logoff
 	Logoff *EntityItemAuditType `xml:"logoff"`
 
+	// Logon: Audit the events produced by attempts to log onto a user account. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9215-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit Logon
 	Logon *EntityItemAuditType `xml:"logon"`
 
+	// NetworkPolicyServer: Audit the events produced by RADIUS and Network Access Protection user access requests. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9243-69ae-11d9-bed3-505054503030.This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit Network Policy Server
 	NetworkPolicyServer *EntityItemAuditType `xml:"network_policy_server"`
 
+	// OtherLogonLogoffEvents: Audit the events produced by other logon/logoff based events that are not covered in the Logon/Logoff category. This state corresponds with the following GUID specified in ntsecapi.h: 0cce921c-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit Other Logon/Logoff Events
 	OtherLogonLogoffEvents *EntityItemAuditType `xml:"other_logon_logoff_events"`
 
+	// SpecialLogon: Audit the events produced by special logons. This state corresponds with the following GUID specified in ntsecapi.h: 0cce921b-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit Special Logon
 	SpecialLogon *EntityItemAuditType `xml:"special_logon"`
 
+	// LogonClaims: Audit user and device claims information in the user's logon token. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9247-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Logon/Logoff: Audit User / Device Claims
 	LogonClaims *EntityItemAuditType `xml:"logon_claims"`
 
+	// ApplicationGenerated: Audit the events produced by applications that use the Windows Auditing API. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9222-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Application Generated
 	ApplicationGenerated *EntityItemAuditType `xml:"application_generated"`
 
+	// CertificationServices: Audit the events produced by operations on Active Directory Certificate Services. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9221-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Certification Services
 	CertificationServices *EntityItemAuditType `xml:"certification_services"`
 
+	// DetailedFileShare: Audit the events produced by attempts to access files and folders on a shared folder. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9244-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Detailed File Share
 	DetailedFileShare *EntityItemAuditType `xml:"detailed_file_share"`
 
+	// FileShare: Audit the events produced by attempts to access a shared folder. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9224-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit File Share
 	FileShare *EntityItemAuditType `xml:"file_share"`
 
+	// FileSystem: Audit the events produced user attempts to access file system objects. This state corresponds with the following GUID specified in ntsecapi.h: 0cce921d-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit File System
 	FileSystem *EntityItemAuditType `xml:"file_system"`
 
+	// FilteringPlatformConnection: Audit the events produced by connections that are allowed or blocked by Windows Filtering Platform. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9226-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Filtering Platform Connection
 	FilteringPlatformConnection *EntityItemAuditType `xml:"filtering_platform_connection"`
 
+	// FilteringPlatformPacketDrop: Audit the events produced by packets that are dropped by Windows Filtering Platform. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9225-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Filtering Platform Packet Drop
 	FilteringPlatformPacketDrop *EntityItemAuditType `xml:"filtering_platform_packet_drop"`
 
+	// HandleManipulation: Audit the events produced when a handle is opened or closed. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9223-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Handle Manipulation
 	HandleManipulation *EntityItemAuditType `xml:"handle_manipulation"`
 
+	// KernelObject: Audit the events produced by attempts to access the system kernel. This state corresponds with the following GUID specified in ntsecapi.h: 0cce921f-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Kernel Object
 	KernelObject *EntityItemAuditType `xml:"kernel_object"`
 
+	// OtherObjectAccessEvents: Audit the events produced by the management of Task Scheduler jobs or COM+ objects. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9227-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Other Object Access Events
 	OtherObjectAccessEvents *EntityItemAuditType `xml:"other_object_access_events"`
 
+	// Registry: Audit the events produced by attempts to access registry objects. This state corresponds with the following GUID specified in ntsecapi.h: 0cce921e-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Registry
 	Registry *EntityItemAuditType `xml:"registry"`
 
+	// Sam: Audit the events produced by attempts to access Security Accounts Manager objects. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9220-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit SAM
 	Sam *EntityItemAuditType `xml:"sam"`
 
+	// RemovableStorage: Audit events that indicate file object access attemps to removable storage. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9245-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Audit Removable Storage
 	RemovableStorage *EntityItemAuditType `xml:"removable_storage"`
 
+	// CentralAccessPolicyStaging: Audit events that indicate permission granted or denied by a proposed policy differs from the current central access policy on an object. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9246-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Object Access: Central Access Policy Staging
 	CentralAccessPolicyStaging *EntityItemAuditType `xml:"central_access_policy_staging"`
 
+	// AuditPolicyChange: Audit the events produced by changes in security audit policy settings. This state corresponds with the following GUID specified in ntsecapi.h: 0cce922f-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Policy Change: Audit Audit Policy Change
 	AuditPolicyChange *EntityItemAuditType `xml:"audit_policy_change"`
 
+	// AuthenticationPolicyChange: Audit the events produced by changes to the authentication policy. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9230-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Policy Change: Audit Authentication Policy Change
 	AuthenticationPolicyChange *EntityItemAuditType `xml:"authentication_policy_change"`
 
+	// AuthorizationPolicyChange: Audit the events produced by changes to the authorization policy. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9231-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Policy Change: Audit Authorization Policy Change
 	AuthorizationPolicyChange *EntityItemAuditType `xml:"authorization_policy_change"`
 
+	// FilteringPlatformPolicyChange: Audit the events produced by changes to the Windows Filtering Platform. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9233-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Policy Change: Audit Filtering Platform Policy Change
 	FilteringPlatformPolicyChange *EntityItemAuditType `xml:"filtering_platform_policy_change"`
 
+	// MpssvcRuleLevelPolicyChange: Audit the events produced by changes to policy rules used by the Windows Firewall. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9232-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Policy Change: Audit MPSSVC Rule-Level Policy Change
 	MpssvcRuleLevelPolicyChange *EntityItemAuditType `xml:"mpssvc_rule_level_policy_change"`
 
+	// OtherPolicyChangeEvents: Audit the events produced by other security policy changes that are not covered other events in the Policy Change category. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9234-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Policy Change: Audit Other Policy Change Events
 	OtherPolicyChangeEvents *EntityItemAuditType `xml:"other_policy_change_events"`
 
+	// NonSensitivePrivilegeUse: Audit the events produced by the use of non-sensitive privileges. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9229-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Privilege Use: Audit Non Sensitive Privilege Use
 	NonSensitivePrivilegeUse *EntityItemAuditType `xml:"non_sensitive_privilege_use"`
 
+	// OtherPrivilegeUseEvents: This is currently not used and has been reserved by Microsoft for use in the future. This state corresponds with the following GUID specified in ntsecapi.h: 0cce922a-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Privilege Use: Audit Other Privilege Use Events
 	OtherPrivilegeUseEvents *EntityItemAuditType `xml:"other_privilege_use_events"`
 
+	// SensitivePrivilegeUse: Audit the events produced by the use of sensitive privileges. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9228-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: Privilege Use: Audit Sensitive Privilege Use
 	SensitivePrivilegeUse *EntityItemAuditType `xml:"sensitive_privilege_use"`
 
+	// IpsecDriver: Audit the events produced by the IPsec filter driver. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9213-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: System: Audit IPsec Driver
 	IpsecDriver *EntityItemAuditType `xml:"ipsec_driver"`
 
+	// OtherSystemEvents: Audit the events produced by the startup and shutdown, security policy processing, and cryptography key file and migration operations of the Windows Firewall. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9214-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: System: Audit Other System Events
 	OtherSystemEvents *EntityItemAuditType `xml:"other_system_events"`
 
+	// SecurityStateChange: Audit the events produced by changes in the security state. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9210-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: System: Audit Security State Change
 	SecurityStateChange *EntityItemAuditType `xml:"security_state_change"`
 
+	// SecuritySystemExtension: Audit the events produced by the security system extensions or services. This state corresponds with the following GUID specified in ntsecapi.h: cce9211-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: System: Audit Security System Extension
 	SecuritySystemExtension *EntityItemAuditType `xml:"security_system_extension"`
 
+	// SystemIntegrity: Audit the events that indicate that the integrity security subsystem has been violated. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9212-69ae-11d9-bed3-505054503030. This state corresponds with the following Advanced Audit Policy: System: Audit System Integrity
 	SystemIntegrity *EntityItemAuditType `xml:"system_integrity"`
 
+	// GroupMembership: This subcategory audits the group membership of a token for an associated log on. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9249-69ae-11d9-bed3-505054503030.
 	GroupMembership *EntityItemAuditType `xml:"group_membership"`
 
+	// PnpActivity: This subcategory audits events generated by plug and play (PNP). This state corresponds with the following GUID specified in ntsecapi.h: 0cce9248-69ae-11d9-bed3-505054503030.
 	PnpActivity *EntityItemAuditType `xml:"pnp_activity"`
 
+	// UserDeviceClaims: This subcategory audits the user and device claims that are present in the token of an associated logon. This state corresponds with the following GUID specified in ntsecapi.h: 0cce9247-69ae-11d9-bed3-505054503030.
 	UserDeviceClaims *EntityItemAuditType `xml:"user_device_claims"`
 
+	// AuditDetailedtrackingTokenrightadjusted: This subcategory audits when token privileges are enabled or disabled for a specific account’s token. This state corresponds with the following GUID specified in ntsecapi.h: 0cce924a-69ae-11d9-bed3-505054503030.
 	AuditDetailedtrackingTokenrightadjusted *EntityItemAuditType `xml:"audit_detailedtracking_tokenrightadjusted"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// CmdletItem: The cmdlet_item represents a PowerShell cmdlet, the parameters supplied to it, and the value it returned.
 type CmdletItem struct {
 	XMLName xml.Name `xml:"cmdlet_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ModuleName: The name of the module that contains the cmdlet.
 	ModuleName *oval_sc.EntityItemStringType `xml:"module_name"`
 
-	ModuleId *EntityItemGUIDType `xml:"module_id"`
+	// ModuleId: The globally unique identifier for the module.
+	ModuleId *EntityItemGuidtype `xml:"module_id"`
 
+	// ModuleVersion: The version of the module that contains the cmdlet in the form of MAJOR.MINOR.
 	ModuleVersion *oval_sc.EntityItemVersionType `xml:"module_version"`
 
+	// Verb: The cmdlet verb.
 	Verb *EntityItemCmdletVerbType `xml:"verb"`
 
+	// Noun: The cmdlet noun.
 	Noun *oval_sc.EntityItemStringType `xml:"noun"`
 
+	// Parameters: A list of properties (name and value pairs) as input to invoke the cmdlet.
 	Parameters *oval_sc.EntityItemRecordType `xml:"parameters"`
 
+	// Select: A list of fields (name and value pairs) used as input to the Select-Object cmdlet to select specific output properties.
 	Select *oval_sc.EntityItemRecordType `xml:"select"`
 
+	// Value: The expected value represented as a set of fields (name and value pairs).
 	Value []oval_sc.EntityItemRecordType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// DnscacheItem: The dnscache_item stores information retrieved from the DNS cache about a domain name, its time to live, and its corresponding IP addresses.
 type DnscacheItem struct {
 	XMLName xml.Name `xml:"dnscache_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// DomainName: The domain_name element contains a string that represents a domain name that was collected from the DNS cache on the local system.
 	DomainName *oval_sc.EntityItemStringType `xml:"domain_name"`
 
+	// Ttl: The ttl element contains an integer that represents the time to live in seconds of the DNS cache entry.
 	Ttl *oval_sc.EntityItemIntType `xml:"ttl"`
 
-	IpAddress []oval_sc.EntityItemIPAddressStringType `xml:"ip_address"`
+	// IpAddress: The ip_address element contains a string that represents an IP address associated with the specified domain name. Note that the IP address can be IPv4 or IPv6.
+	IpAddress []oval_sc.EntityItemIpaddressStringType `xml:"ip_address"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// FileItem: This element describes file metadata. The time information can be retrieved by the _stst function. Development_class and other version information (company, internal name, language, original_filename, product_name, product_version) can be retrieved using the VerQueryValue function.
 type FileItem struct {
 	XMLName xml.Name `xml:"file_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: Specifies the directory component of the absolute path to a file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The name of the file. If the xsi:nil attribute is set to true, then the item being represented is the higher directory represented by the path entity. The other items associated with this item would then reflect the values associated with the directory.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// Owner: A string that contains the name of the owner. The name should be specified in the DOMAIN\username format.
 	Owner *oval_sc.EntityItemStringType `xml:"owner"`
 
+	// Size: Size of the file in bytes.
 	Size *oval_sc.EntityItemIntType `xml:"size"`
 
+	// ATime: Time of last access of file. Valid on NTFS but not on FAT formatted disk drives. The string should represent the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).
 	ATime *oval_sc.EntityItemIntType `xml:"a_time"`
 
+	// CTime: Time of creation of file. Valid on NTFS but not on FAT formatted disk drives. The string should represent the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).
 	CTime *oval_sc.EntityItemIntType `xml:"c_time"`
 
+	// MTime: Time of last modification of file. The string should represent the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).
 	MTime *oval_sc.EntityItemIntType `xml:"m_time"`
 
+	// MsChecksum: The checksum of the file as supplied by Microsoft's MapFileAndCheckSum function.
 	MsChecksum *oval_sc.EntityItemStringType `xml:"ms_checksum"`
 
+	// Version: The version of the file.
 	Version *oval_sc.EntityItemVersionType `xml:"version"`
 
+	// Type: The type child element marks whether the file item describes a named pipe, standard file, etc. These types are the return values for GetFileType. For directories, this element must have a status of 'does not exist'.
 	Type *EntityItemFileTypeType `xml:"type"`
 
+	// Attribute: The attribute child elements denote the Windows file attributes associated with the file. These types are the return values for GetFileAttributes.
 	Attribute []EntityItemFileAttributeType `xml:"attribute"`
 
+	// DevelopmentClass: The development_class element allows the distinction to be made between the GDR development environment and the QFE development environment. This field holds the text found in front of the mmmmmm-nnnn version, for example srv03_gdr.
 	DevelopmentClass *oval_sc.EntityItemStringType `xml:"development_class"`
 
+	// Company: This entity defines the company name held within the version-information structure.
 	Company *oval_sc.EntityItemStringType `xml:"company"`
 
+	// InternalName: This entity defines the internal name held within the version-information structure.
 	InternalName *oval_sc.EntityItemStringType `xml:"internal_name"`
 
+	// Language: This entity defines the language held within the version-information structure.
 	Language *oval_sc.EntityItemStringType `xml:"language"`
 
+	// OriginalFilename: This entity defines the original filename held within the version-information structure.
 	OriginalFilename *oval_sc.EntityItemStringType `xml:"original_filename"`
 
+	// ProductName: This entity defines the product name held within the version-information structure.
 	ProductName *oval_sc.EntityItemStringType `xml:"product_name"`
 
+	// FileItemProductVersion: This entity defines the product version held within the version-information structure. This may not necessarily be a string compatible with the OVAL version datatype, in which case the string datatype should be used.
 	ProductVersion *FileItemProductVersion `xml:"product_version"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// FileauditedpermissionsItem: This item stores the audited access rights of a file that a system access control list (SACL) structure grants to a specified trustee. The trustee's audited access rights are determined checking all access control entries (ACEs) in the SACL. For help with this test see the GetAuditedPermissionsFromAcl() api.
 type FileauditedpermissionsItem struct {
 	XMLName xml.Name `xml:"fileauditedpermissions_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: Specifies the absolute path to a file on the machine from which the DACL was retrieved. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: This element specifies the directory component of the absolute path to a file on the machine from which the DACL was retrieved.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The name of the file. If the xsi:nil attribute is set to true, then the item being represented is the higher directory represented by the path entity. The other items associated with this item would then reflect the values associated with the directory.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// TrusteeSid: The trustee_sid entity specifies the SID that associated a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// TrusteeName: This element specifies the trustee name associated with this particular SACL. A trustee can be a user, group, or program (such as a Windows service). In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *EntityItemAuditType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *EntityItemAuditType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *EntityItemAuditType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *EntityItemAuditType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *EntityItemAuditType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *EntityItemAuditType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *EntityItemAuditType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *EntityItemAuditType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *EntityItemAuditType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *EntityItemAuditType `xml:"generic_all"`
 
+	// FileReadData: Grants the right to read data from the file.
 	FileReadData *EntityItemAuditType `xml:"file_read_data"`
 
+	// FileWriteData: Grants the right to write data to the file.
 	FileWriteData *EntityItemAuditType `xml:"file_write_data"`
 
+	// FileAppendData: Grants the right to append data to the file.
 	FileAppendData *EntityItemAuditType `xml:"file_append_data"`
 
+	// FileReadEa: Grants the right to read extended attributes.
 	FileReadEa *EntityItemAuditType `xml:"file_read_ea"`
 
+	// FileWriteEa: Grants the right to write extended attributes.
 	FileWriteEa *EntityItemAuditType `xml:"file_write_ea"`
 
+	// FileExecute: Grants the right to execute a file.
 	FileExecute *EntityItemAuditType `xml:"file_execute"`
 
+	// FileDeleteChild: Right to delete a directory and all the files it contains (its children), even if the files are read-only.
 	FileDeleteChild *EntityItemAuditType `xml:"file_delete_child"`
 
+	// FileReadAttributes: Grants the right to read file attributes.
 	FileReadAttributes *EntityItemAuditType `xml:"file_read_attributes"`
 
+	// FileWriteAttributes: Grants the right to change file attributes.
 	FileWriteAttributes *EntityItemAuditType `xml:"file_write_attributes"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// FileeffectiverightsItem: This item stores the effective rights of a file that a discretionary access control list (DACL) structure grants to a specified trustee. The trustee's effective rights are determined checking all access-allowed and access-denied access control entries (ACEs) in the DACL. For help with this test see the GetEffectiveRightsFromAcl() api.
 type FileeffectiverightsItem struct {
 	XMLName xml.Name `xml:"fileeffectiverights_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: Specifies the absolute path to a file on the machine from which the DACL was retrieved. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: This element specifies the absolute path to a file on the machine from which the DACL was retrieved.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The name of the file. If the xsi:nil attribute is set to true, then the item being represented is the higher directory represented by the path entity. The other items associated with this item would then reflect the values associated with the directory.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// TrusteeSid: The trustee_sid entity specifies the SID that associated a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// TrusteeName: This element specifies the trustee name associated with this particular DACL. A trustee can be a user, group, or program (such as a Windows service). In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *oval_sc.EntityItemBoolType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *oval_sc.EntityItemBoolType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *oval_sc.EntityItemBoolType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *oval_sc.EntityItemBoolType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *oval_sc.EntityItemBoolType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *oval_sc.EntityItemBoolType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *oval_sc.EntityItemBoolType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *oval_sc.EntityItemBoolType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *oval_sc.EntityItemBoolType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *oval_sc.EntityItemBoolType `xml:"generic_all"`
 
+	// FileReadData: Grants the right to read data from the file
 	FileReadData *oval_sc.EntityItemBoolType `xml:"file_read_data"`
 
+	// FileWriteData: Grants the right to write data to the file.
 	FileWriteData *oval_sc.EntityItemBoolType `xml:"file_write_data"`
 
+	// FileAppendData: Grants the right to append data to the file.
 	FileAppendData *oval_sc.EntityItemBoolType `xml:"file_append_data"`
 
+	// FileReadEa: Grants the right to read extended attributes.
 	FileReadEa *oval_sc.EntityItemBoolType `xml:"file_read_ea"`
 
+	// FileWriteEa: Grants the right to write extended attributes.
 	FileWriteEa *oval_sc.EntityItemBoolType `xml:"file_write_ea"`
 
+	// FileExecute: Grants the right to execute a file.
 	FileExecute *oval_sc.EntityItemBoolType `xml:"file_execute"`
 
+	// FileDeleteChild: Right to delete a directory and all the files it contains (its children), even if the files are read-only.
 	FileDeleteChild *oval_sc.EntityItemBoolType `xml:"file_delete_child"`
 
+	// FileReadAttributes: Grants the right to read file attributes.
 	FileReadAttributes *oval_sc.EntityItemBoolType `xml:"file_read_attributes"`
 
+	// FileWriteAttributes: Grants the right to change file attributes.
 	FileWriteAttributes *oval_sc.EntityItemBoolType `xml:"file_write_attributes"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// GroupItem: The Windows group_item allows the different users and subgroups, that directly belong to specific groups (identified by name), to be collected. The collected subgroups will not be resolved to find indirect user or subgroup members. If the subgroups need to be resolved, it should be done using the sid_object. Note that the user and subgroup elements can appear an unlimited number of times. If a user is not found in the specified group, a single user element should exist with a status of 'does not exist'. If there is an error determining the users of a group, a single user element should exist with a status of 'error'. If a subgroup is not found in the specified group, a single subgroup element should exist with a status of 'does not exist'. If there is an error determining the subgroups of a group, a single subgroup element should exist with a status of 'error'.
 type GroupItem struct {
 	XMLName xml.Name `xml:"group_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Group: A string the represents the name of a particular group. In Windows, group names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, groups should be identified in the form: "domain\group name". For local groups use: "computer name\group name". For built-in accounts on the system, use the group name without a domain.
 	Group *oval_sc.EntityItemStringType `xml:"group"`
 
+	// User: A string that represents the name of a particular user. In Windows, user names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, users should be identified in the form: "domain\user name". For local users use: "computer name\user name". For built-in accounts on the system, use the user name without a domain.
 	User []oval_sc.EntityItemStringType `xml:"user"`
 
+	// Subgroup: A string that represents the name of a particular subgroup in the specified group. In Windows, group names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, the subgroups should be identified in the form: "domain\group name". In a local environment, the subgroups should be identified in the form: "computer name\group name". If the subgroups are built-in groups, the subgroups should be identified in the form: "group name" without a domain component.
 	Subgroup []oval_sc.EntityItemStringType `xml:"subgroup"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// GroupSidItem: The Windows group_sid_item allows the different users and subgroups, that directly belong to specific groups (identified by SID), to be collected. The collected subgroups will not be resolved to find indirect user or subgroup members. If the subgroups need to be resolved, it should be done using the sid_sid_object. Note that the user and subgroup elements can appear an unlimited number of times. If a user is not found in the specified group, a single user element should exist with a status of 'does not exist'. If there is an error determining the users of a group, a single user element should exist with a status of 'error'. If a subgroup is not found in the specified group, a single subgroup element should exist with a status of 'does not exist'. If there is an error determining the subgroups of a group, a single subgroup element should exist with a status of 'error'.
 type GroupSidItem struct {
 	XMLName xml.Name `xml:"group_sid_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// GroupSid: A string the represents the SID of a particular group.
 	GroupSid *oval_sc.EntityItemStringType `xml:"group_sid"`
 
+	// UserSid: A string that represents the SID of a particular user. If the specified group has more than one user as a member, then multiple user_sid entities should exist. If the specified group does not contain a single user, then a single user_sid entity should exist with a status of 'does not exist'. If there is an error determining the userss that are members of the group, then a single user_sid entity should be included with a status of 'error'.
 	UserSid []oval_sc.EntityItemStringType `xml:"user_sid"`
 
+	// SubgroupSid: A string that represents the SID of a particular subgroup. If the specified group has more than one subgroup as a member, then multiple subgroup_sid entities should exist. If the specified group does not contain a single subgroup, a single subgroup_sid entity should exist with a status of 'does not exist'. If there is an error determining the subgroups that are members of the group, then a single subgroup_sid entity should be included with a status of 'error'.
 	SubgroupSid []oval_sc.EntityItemStringType `xml:"subgroup_sid"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// InterfaceItem: Enumerate various attributes about the interfaces on a system.
 type InterfaceItem struct {
 	XMLName xml.Name `xml:"interface_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This element specifies the name of an interface.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Index: This element specifies index that identifies the interface.
 	Index *oval_sc.EntityItemIntType `xml:"index"`
 
+	// Type: This element specifies the type of interface which is limited to certain set of values.
 	Type *EntityItemInterfaceTypeType `xml:"type"`
 
+	// HardwareAddr: This element specifies the hardware or MAC address of the physical network card. MAC addresses should be formatted according to the IEEE 802-2001 standard which states that a MAC address is a sequence of six octet values, separated by hyphens, where each octet is represented by two hexadecimal digits. Uppercase letters should also be used to represent the hexadecimal digits A through F.
 	HardwareAddr *oval_sc.EntityItemStringType `xml:"hardware_addr"`
 
-	InetAddr *oval_sc.EntityItemIPAddressStringType `xml:"inet_addr"`
+	// InetAddr: This element specifies the IP address of the specific interface. Note that the IP address can be IPv4 or IPv6. If the IP address is an IPv6 address, this entity should be expressed as an IPv6 address prefix using CIDR notation and the netmask entity should not be collected.
+	InetAddr *oval_sc.EntityItemIpaddressStringType `xml:"inet_addr"`
 
-	BroadcastAddr *oval_sc.EntityItemIPAddressStringType `xml:"broadcast_addr"`
+	// BroadcastAddr: This element specifies the broadcast address. A broadcast address is typically the IP address with the host portion set to either all zeros or all ones. Note that the IP address can be IPv4 or IPv6.
+	BroadcastAddr *oval_sc.EntityItemIpaddressStringType `xml:"broadcast_addr"`
 
-	Netmask *oval_sc.EntityItemIPAddressStringType `xml:"netmask"`
+	// Netmask: This element specifies the subnet mask for the IP address. Note that if the inet_addr entity contains an IPv6 address prefix, this entity should not be collected.
+	Netmask *oval_sc.EntityItemIpaddressStringType `xml:"netmask"`
 
+	// AddrType: This element specifies the address type or state of a specific interface. Each interface can be associated with more than one value meaning the addr_type element can occur multiple times.
 	AddrType []EntityItemAddrTypeType `xml:"addr_type"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// JunctionItem: The junction_item element identifies the result generated for a junction_object.
 type JunctionItem struct {
 	XMLName xml.Name `xml:"junction_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Path: Specifies the path to the subject junction, specified by the junction_object.
 	Path oval_sc.EntityItemStringType `xml:"path"`
 
+	// CanonicalPath: Specifies the canonical path for the target of the Windows junction specified by the path.
 	CanonicalPath oval_sc.EntityItemStringType `xml:"canonical_path"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// LicenseItem: The license_item element stores the different information that can be found in the Windows license registry value. Please refer to the individual elements in the schema for more details about what each represents.
 type LicenseItem struct {
 	XMLName xml.Name `xml:"license_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Name: This element describes the name of a license entry.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Type: Specifies the type of data stored by the license entry. Valid values are REG_BINARY, REG_DWORD and REG_SZ. Please refer to the EntityItemRegistryTypeType for more information about the different possible types.
 	Type *EntityItemRegistryTypeType `xml:"type"`
 
+	// Value: The value entity holds the actual value of the specified license entry. The representation of the value as well as the associated datatype attribute depends on type of data stored in the license entry. If the specified license entry is of type REG_BINARY, then the datatype attribute should be set to 'binary' and the data represented by the value entity should follow the xsd:hexBinary form. (each binary octet is encoded as two hex digits) If the registry key is of type REG_DWORD, then the datatype attribute should be set to 'int' and the value entity should represent the data as an integer. If the specified registry key is of type REG_SZ, then the datatype should be 'string' and the value entity should be a copy of the string.
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// LockoutpolicyItem: The lockoutpolicy item enumerates various attributes associated with lockout information for users and global groups in the security database.
 type LockoutpolicyItem struct {
 	XMLName xml.Name `xml:"lockoutpolicy_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ForceLogoff: Specifies, in seconds (from a DWORD), the amount of time between the end of the valid logon time and the time when the user is forced to log off the network. A value of TIMEQ_FOREVER (max DWORD value, 4294967295) indicates that the user is never forced to log off. A value of zero indicates that the user will be forced to log off immediately when the valid logon time expires. See the USER_MODALS_INFO_0 structure returned by a call to NetUserModalsGet().
 	ForceLogoff *oval_sc.EntityItemIntType `xml:"force_logoff"`
 
+	// LockoutDuration: Specifies, in seconds, how long a locked account remains locked before it is automatically unlocked. See the USER_MODALS_INFO_3 structure returned by a call to NetUserModalsGet().
 	LockoutDuration *oval_sc.EntityItemIntType `xml:"lockout_duration"`
 
+	// LockoutObservationWindow: Specifies the maximum time, in seconds, that can elapse between any two failed logon attempts before lockout occurs. See the USER_MODALS_INFO_3 structure returned by a call to NetUserModalsGet().
 	LockoutObservationWindow *oval_sc.EntityItemIntType `xml:"lockout_observation_window"`
 
+	// LockoutThreshold: Specifies the number of invalid password authentications that can occur before an account is marked "locked out." See the USER_MODALS_INFO_3 structure returned by a call to NetUserModalsGet().
 	LockoutThreshold *oval_sc.EntityItemIntType `xml:"lockout_threshold"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// MetabaseItem: This item gathers information from the specified metabase keys.
 type MetabaseItem struct {
 	XMLName xml.Name `xml:"metabase_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Key: This element describes a metabase key to be gathered.
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
+	// IdElm: The id element specifies a particular object under the metabase key. If the xsi:nil attribute is set to true, then the item being represented is the higher level metabase key. Using xsi:nil here will result in a status of 'not collected' for the other entities associated with this item since these entities are not associated with a key by itself.
 	IdElm *oval_sc.EntityItemIntType `xml:"id"`
 
+	// Name: This element describes the name of the specified metabase object.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// UserType: The user_type element is an unsigned 32-bit integer (DWORD) that specifies the user type of the data. See the METADATA_RECORD structure.
 	UserType *oval_sc.EntityItemStringType `xml:"user_type"`
 
+	// DataType: The data_type element identifies the type of data in the metabase entry. See the METADATA_RECORD structure.
 	DataType *oval_sc.EntityItemStringType `xml:"data_type"`
 
+	// Data: The actual data of the named item under the specified metabase key. If the specified metabase key is of type multi string, then multiple value elements should exist to describe the array of strings.
 	Data []oval_sc.EntityItemAnySimpleType `xml:"data"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// NtuserItem: The windows ntuser_item specifies information that can be collected from a particular ntuser.dat file.
 type NtuserItem struct {
 	XMLName xml.Name `xml:"ntuser_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Key: This element describes a registry key normally found in the HKCU hive to be tested.
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
+	// Name: This element describes the name of a registry key. If the xsi:nil attribute is set to true, then the item being represented is the higher level key. Using xsi:nil here will result in a status of 'does not exist' for the type, and value entities since these entities are not associated with a key by itself.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// Sid: This element holds a string that represents the SID of a particular user.
 	Sid *oval_sc.EntityItemStringType `xml:"sid"`
 
+	// Username: The username entity holds a string that represents the name of a particular user. In Windows, user names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, users should be identified in the form: "domain\user name". For local users use: "computer name\user name".
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
-	AccountType *EntityItemNTUserAccountTypeType `xml:"account_type"`
+	// AccountType: The account_type element describes if the user account is a local account or domain account.
+	AccountType *EntityItemNtuserAccountTypeType `xml:"account_type"`
 
+	// LoggedOn: The logged_on element describes if the user account is currently logged on to the computer.
 	LoggedOn *oval_sc.EntityItemBoolType `xml:"logged_on"`
 
+	// Enabled: The enabled element describes if the user account is enabled or disabled.
 	Enabled *oval_sc.EntityItemBoolType `xml:"enabled"`
 
+	// DateModified: Time of last modification of file. The string should represent the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC).
 	DateModified *oval_sc.EntityItemIntType `xml:"date_modified"`
 
+	// DaysSinceModified: The number of days since the ntuser.dat file was last modified. The value should be rounded up to the next whole integer.
 	DaysSinceModified *oval_sc.EntityItemIntType `xml:"days_since_modified"`
 
+	// Filepath: This element describes the filepath of the ntuser.dat file.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// LastWriteTime: The last time that the key or any of its value entries was modified. The value of this entity represents the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC). Last write time can be queried on a hive, key, or name. When collecting only information about a registry hive the last write time will be the time the hive or any of its entiries was written to. When collecting only information about a registry hive and key the last write time will be the time the key or any of its entiries was written to. When collecting only information about a registry name the last write time will be the time the name was written to. See the RegQueryInfoKey function lpftLastWriteTime.
 	LastWriteTime *oval_sc.EntityItemIntType `xml:"last_write_time"`
 
+	// Type: Specifies the type of data stored by the registry key. Please refer to the EntityItemRegistryTypeType for more information about the different possible types.
 	Type *EntityItemRegistryTypeType `xml:"type"`
 
+	// Value: The value entity holds the actual value of the specified registry key. The representation of the value as well as the associated datatype attribute depends on type of data stored in the registry key. If the specified registry key is of type REG_BINARY, then the datatype attribute should be set to 'binary' and the data represented by the value entity should follow the xsd:hexBinary form. (each binary octet is encoded as two hex digits) If the registry key is of type REG_DWORD or REG_QWORD, then the datatype attribute should be set to 'int' and the value entity should represent the data as an integer. If the specified registry key is of type REG_EXPAND_SZ, then the datatype attribute should be set to 'string' and the pre-expanded string should be represented by the value entity. If the specified registry key is of type REG_MULTI_SZ, then multiple value entities should exist to describe the array of strings, with each value element holds a single string. In the end, there should be the same number of value entities as there are strings in the reg_multi_sz array. If the specified registry key is of type REG_SZ, then the datatype should be 'string' and the value entity should be a copy of the string.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PasswordpolicyItem: Specific policy items associated with passwords. It is important to note that these policies are specific to certain versions of Windows. As a result, the documentation for that version of Windows should be consulted for more information. Information is stored in the SAM or Active Directory but is encrypted or hidden so the registry_item and activedirectory_item are of no use. If this can be figured out, then the password_policy item is not needed.
 type PasswordpolicyItem struct {
 	XMLName xml.Name `xml:"passwordpolicy_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// MaxPasswdAge: Specifies, in seconds (from a DWORD), the maximum allowable password age. A value of TIMEQ_FOREVER (max DWORD value, 4294967295) indicates that the password never expires. The minimum valid value for this element is ONE_DAY (86400). See the USER_MODALS_INFO_0 structure returned by a call to NetUserModalsGet().
 	MaxPasswdAge *oval_sc.EntityItemIntType `xml:"max_passwd_age"`
 
+	// MinPasswdAge: Specifies the minimum number of seconds that can elapse between the time a password changes and when it can be changed again. A value of zero indicates that no delay is required between password updates.
 	MinPasswdAge *oval_sc.EntityItemIntType `xml:"min_passwd_age"`
 
+	// MinPasswdLen: Specifies the minimum allowable password length. Valid values for this element are zero through PWLEN.
 	MinPasswdLen *oval_sc.EntityItemIntType `xml:"min_passwd_len"`
 
+	// PasswordHistLen: Specifies the length of password history maintained. A new password cannot match any of the previous usrmod0_password_hist_len passwords. Valid values for this element are zero through DEF_MAX_PWHIST.
 	PasswordHistLen *oval_sc.EntityItemIntType `xml:"password_hist_len"`
 
+	// PasswordComplexity: A boolean value that signifies whether passwords must meet the complexity requirements put forth by the operating system.
 	PasswordComplexity *oval_sc.EntityItemBoolType `xml:"password_complexity"`
 
+	// ReversibleEncryption: Determines whether or not passwords are stored using reversible encryption.
 	ReversibleEncryption *oval_sc.EntityItemBoolType `xml:"reversible_encryption"`
 
+	// AnonymousNameLookup: Determines whether or not an anonymous user may query the local LSA policy.
 	AnonymousNameLookup *oval_sc.EntityItemBoolType `xml:"anonymous_name_lookup"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PeheaderItem: The peheader_item describes the metadata associated with a PE file header. For more information, please see the documentation for the IMAGE_FILE_HEADER and IMAGE_OPTIONAL_HEADER structures.
 type PeheaderItem struct {
 	XMLName xml.Name `xml:"peheader_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Filepath: The filepath element specifies the absolute path for a PE file on the machine. A directory cannot be specified as a filepath.
 	Filepath *oval_sc.EntityItemStringType `xml:"filepath"`
 
+	// Path: The path element specifies the directory component of the absolute path to a PE file on the machine.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Filename: The filename element specifies the name of a PE file to evaluate.
 	Filename *oval_sc.EntityItemStringType `xml:"filename"`
 
+	// HeaderSignature: The header_signature entity is the signature of the header.
 	HeaderSignature *oval_sc.EntityItemStringType `xml:"header_signature"`
 
+	// TargetMachineType: The target_machine_type entity is an unsigned 16-bit integer (WORD) that specifies the target architecture that the file is intended for.
 	TargetMachineType *EntityItemPeTargetMachineType `xml:"target_machine_type"`
 
+	// NumberOfSections: The number_of_sections entity is an unsigned 16-bit integer (WORD) that specifies the number of sections in the file.
 	NumberOfSections *oval_sc.EntityItemIntType `xml:"number_of_sections"`
 
+	// TimeDateStamp: The time_date_stamp entity is an unsigned 32-bit integer (DWORD) that specifies the time that the linker produced the file. The value is represented as the number of seconds since January 1, 1970, 00:00:00.
 	TimeDateStamp *oval_sc.EntityItemIntType `xml:"time_date_stamp"`
 
+	// PointerToSymbolTable: The pointer_to_symbol_table entity is an unsigned 32-bit integer (DWORD) that specifies the file offset of the COFF symbol table.
 	PointerToSymbolTable *oval_sc.EntityItemIntType `xml:"pointer_to_symbol_table"`
 
+	// NumberOfSymbols: The number_of_symbols entity is an unsigned 32-bit integer (DWORD) that specifies the number of symbols in the COFF symbol table.
 	NumberOfSymbols *oval_sc.EntityItemIntType `xml:"number_of_symbols"`
 
+	// SizeOfOptionalHeader: The size_of_optional_header entity is an unsigned 32-bit integer (DWORD) that specifies the size of an optional header in bytes.
 	SizeOfOptionalHeader *oval_sc.EntityItemIntType `xml:"size_of_optional_header"`
 
+	// ImageFileRelocsStripped: The image_file_relocs_stripped entity is a boolean value that specifies if the relocation information is stripped from the file.
 	ImageFileRelocsStripped *oval_sc.EntityItemBoolType `xml:"image_file_relocs_stripped"`
 
+	// ImageFileExecutableImage: The image_file_executable_image entity is a boolean value that specifies if the file is executable.
 	ImageFileExecutableImage *oval_sc.EntityItemBoolType `xml:"image_file_executable_image"`
 
+	// ImageFileLineNumsStripped: The image_file_line_nums_stripped entity is a boolean value that specifies if the line numbers are stripped from the file.
 	ImageFileLineNumsStripped *oval_sc.EntityItemBoolType `xml:"image_file_line_nums_stripped"`
 
+	// ImageFileLocalSymsStripped: The image_file_local_syms_stripped entity is a boolean value that specifies if the local symbols are stripped from the file.
 	ImageFileLocalSymsStripped *oval_sc.EntityItemBoolType `xml:"image_file_local_syms_stripped"`
 
+	// ImageFileAggresiveWsTrim: The image_file_aggressive_ws_trim entity is a boolean value that specifies that the working set should be aggressively trimmed.
 	ImageFileAggresiveWsTrim *oval_sc.EntityItemBoolType `xml:"image_file_aggresive_ws_trim"`
 
+	// ImageFileLargeAddressAware: The image_file_large_address_aware entity is a boolean value that specifies that the application can handle addresses larger than 2GB.
 	ImageFileLargeAddressAware *oval_sc.EntityItemBoolType `xml:"image_file_large_address_aware"`
 
+	// ImageFile16BitMachine: The image_file_16bit_machine entity is a boolean value that specifies that the computer supports 16-bit words.
 	ImageFile16BitMachine *oval_sc.EntityItemBoolType `xml:"image_file_16bit_machine"`
 
+	// ImageFileBytesReversedLo: The image_file_bytes_reversed_lo entity is a boolean value that specifies that the bytes of the word are reversed.
 	ImageFileBytesReversedLo *oval_sc.EntityItemBoolType `xml:"image_file_bytes_reversed_lo"`
 
+	// ImageFile32BitMachine: The image_file_32bit_machine entity is a boolean value that specifies that the computer supports 32-bit words.
 	ImageFile32BitMachine *oval_sc.EntityItemBoolType `xml:"image_file_32bit_machine"`
 
+	// ImageFileDebugStripped: The image_file_debug_stripped entity is a boolean value that specifies that the debugging information is stored separately in a .dbg file.
 	ImageFileDebugStripped *oval_sc.EntityItemBoolType `xml:"image_file_debug_stripped"`
 
+	// ImageFileRemovableRunFromSwap: The image_file_removable_run_from_swap entity is a boolean value that specifies that the image is on removable media, copy and run from the swap file.
 	ImageFileRemovableRunFromSwap *oval_sc.EntityItemBoolType `xml:"image_file_removable_run_from_swap"`
 
+	// ImageFileSystem: The image_file_system entity is a boolean value that specifies that the image is a system file.
 	ImageFileSystem *oval_sc.EntityItemBoolType `xml:"image_file_system"`
 
+	// ImageFileDll: The image_file_dll entity is a boolean value that specifies that the image is a DLL.
 	ImageFileDll *oval_sc.EntityItemBoolType `xml:"image_file_dll"`
 
+	// ImageFileUpSystemOnly: The image_file_up_system_only entity is a boolean value that specifies that the file should only be run on a uniprocessor computer.
 	ImageFileUpSystemOnly *oval_sc.EntityItemBoolType `xml:"image_file_up_system_only"`
 
+	// ImageFileBytesReveresedHi: The image_file_bytes_reversed_hi entity is a boolean value that specifies that the bytes of the word are reversed.
 	ImageFileBytesReveresedHi *oval_sc.EntityItemBoolType `xml:"image_file_bytes_reveresed_hi"`
 
+	// MagicNumber: The magic_number entity is an unsigned 16-bit integer (WORD) that specifies the state of the image file.
 	MagicNumber *oval_sc.EntityItemIntType `xml:"magic_number"`
 
+	// MajorLinkerVersion: The major_linker_version entity is a BYTE that specifies the major version of the linker that produced the file.
 	MajorLinkerVersion *oval_sc.EntityItemIntType `xml:"major_linker_version"`
 
+	// MinorLinkerVersion: The minor_linker_version entity is a BYTE that specifies the minor version of the linker that produced the file.
 	MinorLinkerVersion *oval_sc.EntityItemIntType `xml:"minor_linker_version"`
 
+	// SizeOfCode: The size_of_code entity is an unsigned 32-bit integer (DWORD) that specifies the total size of all of the code sections.
 	SizeOfCode *oval_sc.EntityItemIntType `xml:"size_of_code"`
 
+	// SizeOfInitializedData: The size_of_initialized_data entity is an unsigned 32-bit integer (DWORD) that specifies the total size of all of the sections that are composed of initialized data.
 	SizeOfInitializedData *oval_sc.EntityItemIntType `xml:"size_of_initialized_data"`
 
+	// SizeOfUninitializedData: The size_of_uninitialized_data entity is an unsigned 32-bit integer (DWORD) that specifies the total size of all of the sections that are composed of uninitialized data.
 	SizeOfUninitializedData *oval_sc.EntityItemIntType `xml:"size_of_uninitialized_data"`
 
+	// AddressOfEntryPoint: The address_of_entry_point entity is an unsigned 32-bit integer (DWORD) that specifies the address where the loader will begin execution.
 	AddressOfEntryPoint *oval_sc.EntityItemIntType `xml:"address_of_entry_point"`
 
+	// BaseOfCode: The base_of_code entity is an unsigned 32-bit integer (DWORD) that specifies the relative virtual address where the file's code section begins.
 	BaseOfCode *oval_sc.EntityItemIntType `xml:"base_of_code"`
 
+	// BaseOfData: The base_of_data entity is an unsigned 32-bit integer (DWORD) that specifies the relative virtual address where the file's data section begins.
 	BaseOfData *oval_sc.EntityItemIntType `xml:"base_of_data"`
 
+	// ImageBaseAddress: The image_base_address entity is an unsigned 32-bit integer (DWORD) that specifies the preferred address fo the first byte of the image when it is loaded into memory.
 	ImageBaseAddress *oval_sc.EntityItemIntType `xml:"image_base_address"`
 
+	// SectionAlignment: The section_alignment entity is an unsigned 32-bit integer (DWORD) that specifies the alignment of the sections loaded into memory.
 	SectionAlignment *oval_sc.EntityItemIntType `xml:"section_alignment"`
 
+	// FileAlignment: The file_alignment entity is an unsigned 32-bit integer (DWORD) that specifies the alignment of the raw data of sections in the image file.
 	FileAlignment *oval_sc.EntityItemIntType `xml:"file_alignment"`
 
+	// MajorOperatingSystemVersion: The major_operating_system_version entity is an unsigned 16-bit integer (WORD) that specifies the major version of the operating system required to use this executable.
 	MajorOperatingSystemVersion *oval_sc.EntityItemIntType `xml:"major_operating_system_version"`
 
+	// MinorOperatingSystemVersion: The minor_operating_system_version entity is an unsigned 16-bit integer (WORD) that specifies the minor version of the operating system required to use this executable.
 	MinorOperatingSystemVersion *oval_sc.EntityItemIntType `xml:"minor_operating_system_version"`
 
+	// MajorImageVersion: The major_image_version entity is an unsigned 16-bit integer (WORD) that specifies the major version number of the image.
 	MajorImageVersion *oval_sc.EntityItemIntType `xml:"major_image_version"`
 
+	// MinorImageVersion: The minor_image_version entity is an unsigned 32-bit integer (DWORD) that specifies the minor version number of the image.
 	MinorImageVersion *oval_sc.EntityItemIntType `xml:"minor_image_version"`
 
+	// MajorSubsystemVersion: The major_subsystem_version entity is an unsigned 16-bit integer (WORD) that specifies the major version of the subsystem required to run the executable.
 	MajorSubsystemVersion *oval_sc.EntityItemIntType `xml:"major_subsystem_version"`
 
+	// MinorSusbsystemVersion: The minor_subsystem_version entity is an unsigned 16-bit integer (WORD) that specifies the minor version of the subsystem required to run the executable.
 	MinorSusbsystemVersion *oval_sc.EntityItemIntType `xml:"minor_susbsystem_version"`
 
+	// SizeOfImage: The size_of_image entity is an unsigned 32-bit integer (DWORD) that specifies the total size of the image including all of the headers.
 	SizeOfImage *oval_sc.EntityItemIntType `xml:"size_of_image"`
 
+	// SizeOfHeaders: The size_of_headers entity is an unsigned 32-bit integer (DWORD) that specifies the total combined size of the MS-DOS stub, PE header, and the section headers.
 	SizeOfHeaders *oval_sc.EntityItemIntType `xml:"size_of_headers"`
 
+	// Checksum: The checksum entity is an unsigned 32-bit integer (DWORD) that specifies the checksum of the image file.
 	Checksum *oval_sc.EntityItemIntType `xml:"checksum"`
 
+	// Subsystem: The subsystem entity is an unsigned 32-bit integer (DWORD) that specifies the type of subsystem that the executable uses for its user interface.
 	Subsystem *EntityItemPeSubsystemType `xml:"subsystem"`
 
+	// DllCharacteristics: The dll_characteristics entity is an unsigned 32-bit integer (DWORD) that specifies the set of flags indicating the circumstances under which a DLL's initialization function will be called..
 	DllCharacteristics []oval_sc.EntityItemIntType `xml:"dll_characteristics"`
 
+	// SizeOfStackReserve: The time_date_stamp entity is an unsigned 32-bit integer (DWORD) that specifies the number of bytes to reserve for the stack.
 	SizeOfStackReserve *oval_sc.EntityItemIntType `xml:"size_of_stack_reserve"`
 
+	// SizeOfStackCommit: The time_date_stamp entity is an unsigned 32-bit integer (DWORD) that specifies the number of bytes to commit for the stack.
 	SizeOfStackCommit *oval_sc.EntityItemIntType `xml:"size_of_stack_commit"`
 
+	// SizeOfHeapReserve: The time_date_stamp entity is an unsigned 32-bit integer (DWORD) that specifies the number of bytes to reserve for the local heap.
 	SizeOfHeapReserve *oval_sc.EntityItemIntType `xml:"size_of_heap_reserve"`
 
+	// SizeOfHeapCommit: The time_date_stamp entity is an unsigned 32-bit integer (DWORD) that specifies the number of bytes to commit for the local heap.
 	SizeOfHeapCommit *oval_sc.EntityItemIntType `xml:"size_of_heap_commit"`
 
+	// LoaderFlags: The loader_flags entity is an unsigned 32-bit integer (DWORD) that specifies the loader flags of the header.
 	LoaderFlags *oval_sc.EntityItemIntType `xml:"loader_flags"`
 
+	// NumberOfRvaAndSizes: The number_of_rva_and_sizes entity is an unsigned 32-bit integer (DWORD) that specifies the number of directory entries in the remainder of the optional header.
 	NumberOfRvaAndSizes *oval_sc.EntityItemIntType `xml:"number_of_rva_and_sizes"`
 
+	// RealNumberOfDirectoryEntries: The real_number_of_directory_entries entity is the real number of data directory entries in the remainder of the optional header calculated by enumerating the directory entries.
 	RealNumberOfDirectoryEntries *oval_sc.EntityItemIntType `xml:"real_number_of_directory_entries"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PortItem: Information about open listening ports.
 type PortItem struct {
 	XMLName xml.Name `xml:"port_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
-	LocalAddress *oval_sc.EntityItemIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This element specifies the local IP address the listening port is bound to. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_sc.EntityItemIpaddressStringType `xml:"local_address"`
 
+	// LocalPort: This element specifies the number assigned to the local listening port.
 	LocalPort *oval_sc.EntityItemIntType `xml:"local_port"`
 
+	// Protocol: This element specifies the type of listening port. It is restricted to either TCP or UDP.
 	Protocol *EntityItemProtocolType `xml:"protocol"`
 
+	// Pid: The id given to the process that is associated with the specified listening port.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
-	ForeignAddress *oval_sc.EntityItemIPAddressStringType `xml:"foreign_address"`
+	// ForeignAddress: This is the IP address with which the program is communicating, or with which it will communicate, in the case of a listening server. Note that the IP address can be IPv4 or IPv6.
+	ForeignAddress *oval_sc.EntityItemIpaddressStringType `xml:"foreign_address"`
 
+	// ForeignPort: This is the TCP or UDP port to which the program communicates.
 	ForeignPort *oval_sc.EntityItemStringType `xml:"foreign_port"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PrintereffectiverightsItem: This item stores the effective rights of a printer that a discretionary access control list (DACL) structure grants to a specified trustee. The trustee's effective rights are determined checking all access-allowed and access-denied access control entries (ACEs) in the DACL. For help with this test see the GetEffectiveRightsFromAcl() api.
 type PrintereffectiverightsItem struct {
 	XMLName xml.Name `xml:"printereffectiverights_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// PrinterName: The printer_name enitity specifies the name of the printer.
 	PrinterName *oval_sc.EntityItemStringType `xml:"printer_name"`
 
+	// TrusteeSid: The trustee_sid entity specifies the SID that associated a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *oval_sc.EntityItemBoolType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *oval_sc.EntityItemBoolType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *oval_sc.EntityItemBoolType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *oval_sc.EntityItemBoolType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *oval_sc.EntityItemBoolType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *oval_sc.EntityItemBoolType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *oval_sc.EntityItemBoolType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *oval_sc.EntityItemBoolType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *oval_sc.EntityItemBoolType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *oval_sc.EntityItemBoolType `xml:"generic_all"`
 
 	PrinterAccessAdminister *oval_sc.EntityItemBoolType `xml:"printer_access_administer"`
@@ -924,98 +1259,130 @@ type PrintereffectiverightsItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// ProcessItem: Information about running processes.
 type ProcessItem struct {
 	XMLName xml.Name `xml:"process_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// CommandLine: The command_line entity is the string used to start the process. This includes any parameters that are part of the command line.
 	CommandLine *oval_sc.EntityItemStringType `xml:"command_line"`
 
+	// Pid: The id given to the process that is created for a specified command line.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// Ppid: The id given to the parent of the process that is created for the specified command line
 	Ppid *oval_sc.EntityItemIntType `xml:"ppid"`
 
+	// ProcessItemPriority: The base priority of the process. The priority value range is from 0 to 31.
 	Priority *ProcessItemPriority `xml:"priority"`
 
+	// ImagePath: The image_path entity represents the name of the executable file for the process.
 	ImagePath *oval_sc.EntityItemStringType `xml:"image_path"`
 
+	// CurrentDir: The current_dir entity represents the current path to the executable file for the process.
 	CurrentDir *oval_sc.EntityItemStringType `xml:"current_dir"`
 
+	// CreationTime: The creation_time entity represents the creation time of the process. The value of this entity represents the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC). See the GetProcessTimes function lpCreationTime.
 	CreationTime *oval_sc.EntityItemIntType `xml:"creation_time"`
 
+	// DepEnabled: The dep_enabled entity represents whether or not data execution prevention (DEP) is enabled. See the GetProcessDEPPolicy function lpFlags.
 	DepEnabled *oval_sc.EntityItemBoolType `xml:"dep_enabled"`
 
+	// PrimaryWindowText: The primary_window_text entity represents the title of the primary window of the process. See the GetWindowText function.
 	PrimaryWindowText *oval_sc.EntityItemStringType `xml:"primary_window_text"`
 
+	// Name: The name of the process.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RegistryItem: The windows registry item specifies information that can be collected about a particular registry key.
 type RegistryItem struct {
 	XMLName xml.Name `xml:"registry_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Hive: The hive that the registry key belongs to.
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
+	// Key: This element describes a registry key to be gathered. Note that the hive portion of the string should not be included, as this data can be found under the hive element. If the xsi:nil attribute is set to true, then the item being represented is the higher level hive or lower level name. Using xsi:nil here will result in a status of 'not collected' for this entity since the item is specific to a hive or name.
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
+	// Name: This element describes the name of a registry key. If the xsi:nil attribute is set to true, then the item being represented is the higher level key or hive. Using xsi:nil here will result in a status of 'not collected' since the item is specific to a key or hive.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// LastWriteTime: The last time that the key or any of its value entries were modified. The value of this entity represents the FILETIME structure which is a 64-bit value representing the number of 100-nanosecond intervals since January 1, 1601 (UTC). Last write time can be queried on any key, with hives being classified as a type of key. When collecting only information about a registry hive or key the last write time will be the time the key or any of its entries were modified. When collecting only information about a registry name the last write time will be the time the containing key was modified. Thus when collecting information about a registry name, the last write time does not correlate directly to the specified name. See the RegQueryInfoKey function lpftLastWriteTime.
 	LastWriteTime *oval_sc.EntityItemIntType `xml:"last_write_time"`
 
+	// Type: Specifies the type of data stored by the registry key. Please refer to the EntityItemRegistryTypeType for more information about the different possible types.
 	Type *EntityItemRegistryTypeType `xml:"type"`
 
+	// Value: The value entity holds the actual value of the specified registry key. The representation of the value as well as the associated datatype attribute depends on type of data stored in the registry key. If the value being tested is of type REG_BINARY, then the datatype attribute should be set to 'binary' and the data represented by the value entity should follow the xsd:hexBinary form. (each binary octet is encoded as two hex digits) If the value being tested is of type REG_DWORD, REG_QWORD, REG_DWORD_LITTLE_ENDIAN, REG_DWORD_BIG_ENDIAN, or REG_QWORD_LITTLE_ENDIAN then the datatype attribute should be set to 'int' and the value entity should represent the data as an unsigned integer. DWORD and QWORD values represnt unsigned 32-bit and 64-bit integers, respectively. If the value being tested is of type REG_EXPAND_SZ, then the datatype attribute should be set to 'string' and the pre-expanded string should be represented by the value entity. If the value being tested is of type REG_MULTI_SZ, then only a single string (one of the multiple strings) should be tested using the value entity with the datatype attribute set to 'string'. In order to test multiple values, multiple OVAL registry tests or multiple states should be combined. Reg_multi_sz values, with no values, should be given a status of "does not exist". If the specified registry key is of type REG_SZ, then the datatype should be 'string' and the value entity should be a copy of the string. If the value being tested is of type REG_LINK, then the datatype attribute should be set to 'string' and the null-terminated Unicode string should be represented by the value entity.
 	Value []oval_sc.EntityItemAnySimpleType `xml:"value"`
 
+	// ExpandedValue: For registry values of type REG_EXPAND_SZ, this entity contains the expanded value. Otherwise, it should not exist.
 	ExpandedValue *oval_sc.EntityItemAnySimpleType `xml:"expanded_value"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RegkeyauditedpermissionsItem: This item stores the audited access rights of a registry key that a system access control list (SACL) structure grants to a specified trustee. The trustee's audited access rights are determined checking all access control entries (ACEs) in the SACL. For help with this test see the GetAuditedPermissionsFromAcl() api.
 type RegkeyauditedpermissionsItem struct {
 	XMLName xml.Name `xml:"regkeyauditedpermissions_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Hive: This element specifies the hive of a registry key on the machine from which the SACL was retrieved.
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
+	// Key: This element specifies a registry key on the machine from which the SACL was retrieved. Note that the hive portion of the string should not be inclueded, as this data should be found under the hive element.
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
+	// TrusteeSid: The security identifier (SID) of the specified trustee name.
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// TrusteeName: This element specifies the trustee name associated with this particular DACL. A trustee can be a user, group, or program (such as a Windows service). In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *EntityItemAuditType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *EntityItemAuditType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *EntityItemAuditType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *EntityItemAuditType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *EntityItemAuditType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *EntityItemAuditType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *EntityItemAuditType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *EntityItemAuditType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *EntityItemAuditType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *EntityItemAuditType `xml:"generic_all"`
 
 	KeyQueryValue *EntityItemAuditType `xml:"key_query_value"`
@@ -1036,45 +1403,60 @@ type RegkeyauditedpermissionsItem struct {
 
 	KeyWow64Res *EntityItemAuditType `xml:"key_wow64_res"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// RegkeyeffectiverightsItem: This item stores the effective rights of a registry key that a discretionary access control list (DACL) structure grants to a specified trustee. The trustee's effective rights are determined checking all access-allowed and access-denied access control entries (ACEs) in the DACL. For help with this test see the GetEffectiveRightsFromAcl() api.
 type RegkeyeffectiverightsItem struct {
 	XMLName xml.Name `xml:"regkeyeffectiverights_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Hive: The hive that the registry key belongs to.
 	Hive *EntityItemRegistryHiveType `xml:"hive"`
 
+	// Key: This element describes a registry key to be gathered. Note that the hive portion of the string should not be inclueded, as this data can be found under the hive element. If the xsi:nil attribute is set to true, then the item being represented is the higher level hive.
 	Key *oval_sc.EntityItemStringType `xml:"key"`
 
+	// TrusteeSid: The trustee_sid entity specifies the SID that associated a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// TrusteeName: This element specifies the trustee name associated with this particular DACL. A trustee can be a user, group, or program (such as a Windows service). In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *oval_sc.EntityItemBoolType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *oval_sc.EntityItemBoolType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *oval_sc.EntityItemBoolType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *oval_sc.EntityItemBoolType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *oval_sc.EntityItemBoolType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *oval_sc.EntityItemBoolType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *oval_sc.EntityItemBoolType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *oval_sc.EntityItemBoolType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *oval_sc.EntityItemBoolType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *oval_sc.EntityItemBoolType `xml:"generic_all"`
 
 	KeyQueryValue *oval_sc.EntityItemBoolType `xml:"key_query_value"`
@@ -1095,88 +1477,119 @@ type RegkeyeffectiverightsItem struct {
 
 	KeyWow64Res *oval_sc.EntityItemBoolType `xml:"key_wow64_res"`
 
+	// WindowsView: The windows view value from which this OVAL Item was collected. This is used to indicate from which view (32-bit or 64-bit), the associated Item was collected. A value of '32_bit' indicates the Item was collected from the 32-bit view. A value of '64-bit' indicates the Item was collected from the 64-bit view. Omitting this entity removes any assertion about which view the Item was collected from, and therefore it is strongly suggested that this entity be set.
 	WindowsView *EntityItemWindowsViewType `xml:"windows_view"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// ServiceItem: This item stores information about Windows services that are present on the system.
 type ServiceItem struct {
 	XMLName xml.Name `xml:"service_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ServiceName: The service_name element specifies the name of the service as specified in the Service Control Manager (SCM) database.
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
+	// DisplayName: The display_name element specifies the name of the service as specified in tools such as Control Panel->Administrative Tools->Services.
 	DisplayName *oval_sc.EntityItemStringType `xml:"display_name"`
 
+	// Description: The description element specifies the description of the service.
 	Description *oval_sc.EntityItemStringType `xml:"description"`
 
+	// ServiceType: The service_type element specifies the type of the service.
 	ServiceType []EntityItemServiceTypeType `xml:"service_type"`
 
+	// StartType: The start_type element specifies when the service should be started.
 	StartType *EntityItemServiceStartTypeType `xml:"start_type"`
 
+	// CurrentState: The current_state element specifies the current state of the service.
 	CurrentState *EntityItemServiceCurrentStateType `xml:"current_state"`
 
+	// ControlsAccepted: The controls_accepted element specifies the control codes that a service will accept and process.
 	ControlsAccepted []EntityItemServiceControlsAcceptedType `xml:"controls_accepted"`
 
+	// StartName: The start_name element specifies the account under which the process should run.
 	StartName *oval_sc.EntityItemStringType `xml:"start_name"`
 
+	// Path: The path element specifies the path to the binary of the service.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// Pid: The pid element specifies the process ID of the service.
 	Pid *oval_sc.EntityItemIntType `xml:"pid"`
 
+	// ServiceFlag: The service_flag element specifies if the service is in a system process that must always run (1) or if the service is in a non-system process or is not running (0). If the service is not running, the pid will be 0. Otherwise, the pid will be non-zero.
 	ServiceFlag *oval_sc.EntityItemBoolType `xml:"service_flag"`
 
+	// Dependencies: The dependencies element specifies the dependencies of this service on other services.
 	Dependencies []oval_sc.EntityItemStringType `xml:"dependencies"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// ServiceeffectiverightsItem: This item stores the effective rights of a service that a discretionary access control list (DACL) structure grants to a specified trustee. The trustee's effective rights are determined by checking all access-allowed and access-denied access control entries (ACEs) in the DACL. For help with this test see the GetEffectiveRightsFromAcl() api.
 type ServiceeffectiverightsItem struct {
 	XMLName xml.Name `xml:"serviceeffectiverights_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ServiceName: The service_name element specifies a service on the machine from which to retrieve the DACL. Note that the service_name element should contain the actual name of the service and not its display name that is found in Control Panel->Administrative Tools->Services. For example, if you wanted to check the effective rights of the Automatic Updates service you would specify 'wuauserv' for the service_name element not 'Automatic Updates'.
 	ServiceName *oval_sc.EntityItemStringType `xml:"service_name"`
 
+	// TrusteeSid: The trustee_sid element specifies the SID that is associated with a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// StandardDelete: This permission is required to call the DeleteService function to delete the service.
 	StandardDelete *oval_sc.EntityItemBoolType `xml:"standard_delete"`
 
+	// StandardReadControl: This permission is required to call the QueryServiceObjectSecurity function to query the security descriptor of the service object.
 	StandardReadControl *oval_sc.EntityItemBoolType `xml:"standard_read_control"`
 
+	// StandardWriteDac: This permission is required to call the SetServiceObjectSecurity function to modify the Dacl member of the service object's security descriptor.
 	StandardWriteDac *oval_sc.EntityItemBoolType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: This permission is required to call the SetServiceObjectSecurity function to modify the Owner and Group members of the service object's security descriptor.
 	StandardWriteOwner *oval_sc.EntityItemBoolType `xml:"standard_write_owner"`
 
+	// GenericRead: Read access (STANDARD_RIGHTS_READ, SERVICE_QUERY_CONFIG, SERVICE_QUERY_STATUS, SERVICE_INTERROGATE, SERVICE_ENUMERATE_DEPENDENTS).
 	GenericRead *oval_sc.EntityItemBoolType `xml:"generic_read"`
 
+	// GenericWrite: Write access (STANDARD_RIGHTS_WRITE, SERVICE_CHANGE_CONFIG).
 	GenericWrite *oval_sc.EntityItemBoolType `xml:"generic_write"`
 
+	// GenericExecute: Execute access (STANDARD_RIGHTS_EXECUTE, SERVICE_START, SERVICE_STOP, SERVICE_PAUSE_CONTINUE, SERVICE_USER_DEFINED_CONTROL).
 	GenericExecute *oval_sc.EntityItemBoolType `xml:"generic_execute"`
 
+	// ServiceQueryConf: This permission is required to call the QueryServiceConfig and QueryServiceConfig2 functions to query the service configuration.
 	ServiceQueryConf *oval_sc.EntityItemBoolType `xml:"service_query_conf"`
 
+	// ServiceChangeConf: This permission is required to call the ChangeServiceConfig or ChangeServiceConfig2 function to change the service configuration.
 	ServiceChangeConf *oval_sc.EntityItemBoolType `xml:"service_change_conf"`
 
+	// ServiceQueryStat: This permission is required to call the QueryServiceStatusEx function to ask the service control manager about the status of the service.
 	ServiceQueryStat *oval_sc.EntityItemBoolType `xml:"service_query_stat"`
 
+	// ServiceEnumDependents: This permission is required to call the EnumDependentServices function to enumerate all the services dependent on the service.
 	ServiceEnumDependents *oval_sc.EntityItemBoolType `xml:"service_enum_dependents"`
 
+	// ServiceStart: This permission is required to call the StartService function to start the service.
 	ServiceStart *oval_sc.EntityItemBoolType `xml:"service_start"`
 
+	// ServiceStop: This permission is required to call the ControlService function to stop the service.
 	ServiceStop *oval_sc.EntityItemBoolType `xml:"service_stop"`
 
+	// ServicePause: This permission is required to call the ControlService function to pause or continue the service.
 	ServicePause *oval_sc.EntityItemBoolType `xml:"service_pause"`
 
+	// ServiceInterrogate: This permission is required to call the ControlService function to ask the service to report its status immediately.
 	ServiceInterrogate *oval_sc.EntityItemBoolType `xml:"service_interrogate"`
 
+	// ServiceUserDefined: This permission is required to call the ControlService function to specify a user-defined control code.
 	ServiceUserDefined *oval_sc.EntityItemBoolType `xml:"service_user_defined"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -1186,104 +1599,141 @@ type ServiceeffectiverightsItem struct {
 type SharedresourceItem struct {
 	XMLName xml.Name `xml:"sharedresource_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Netname: The share name of the resource.
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
+	// SharedType: The type of the shared resource.
 	SharedType *EntityItemSharedResourceTypeType `xml:"shared_type"`
 
+	// MaxUses: The maximum number of concurrent connections that the shared resource can accommodate.
 	MaxUses *oval_sc.EntityItemIntType `xml:"max_uses"`
 
+	// CurrentUses: The number of current connections to the shared resource.
 	CurrentUses *oval_sc.EntityItemIntType `xml:"current_uses"`
 
+	// LocalPath: The local path for the shared resource.
 	LocalPath *oval_sc.EntityItemStringType `xml:"local_path"`
 
+	// AccessReadPermission: Permission to read data from a resource and, by default, to execute the resource.
 	AccessReadPermission *oval_sc.EntityItemBoolType `xml:"access_read_permission"`
 
+	// AccessWritePermission: Permission to write data to the resource.
 	AccessWritePermission *oval_sc.EntityItemBoolType `xml:"access_write_permission"`
 
+	// AccessCreatePermission: Permission to create an instance of the resource (such as a file); data can be written to the resource as the resource is created.
 	AccessCreatePermission *oval_sc.EntityItemBoolType `xml:"access_create_permission"`
 
+	// AccessExecPermission: Permission to execute the resource.
 	AccessExecPermission *oval_sc.EntityItemBoolType `xml:"access_exec_permission"`
 
+	// AccessDeletePermission: Permission to delete the resource.
 	AccessDeletePermission *oval_sc.EntityItemBoolType `xml:"access_delete_permission"`
 
+	// AccessAtribPermission: Permission to modify the resource's attributes (such as the date and time when a file was last modified).
 	AccessAtribPermission *oval_sc.EntityItemBoolType `xml:"access_atrib_permission"`
 
+	// AccessPermPermission: Permission to modify the permissions (read, write, create, execute, and delete) assigned to a resource for a user or application.
 	AccessPermPermission *oval_sc.EntityItemBoolType `xml:"access_perm_permission"`
 
+	// AccessAllPermission: Permission to read, write, create, execute, and delete resources, and to modify their attributes and permissions.
 	AccessAllPermission *oval_sc.EntityItemBoolType `xml:"access_all_permission"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SharedresourceauditedpermissionsItem: This item stores the audited access rights of a shared resource that a system access control list (SACL) structure grants to a specified trustee. The trustee's audited access rights are determined checking all access control entries (ACEs) in the SACL.
 type SharedresourceauditedpermissionsItem struct {
 	XMLName xml.Name `xml:"sharedresourceauditedpermissions_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Netname: The netname entity specifies the name associated with a particular shared resource.
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
+	// TrusteeSid: The trustee_sid entity specifies the SID that associated a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *EntityItemAuditType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *EntityItemAuditType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *EntityItemAuditType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *EntityItemAuditType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *EntityItemAuditType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *EntityItemAuditType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *EntityItemAuditType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *EntityItemAuditType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *EntityItemAuditType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *EntityItemAuditType `xml:"generic_all"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SharedresourceeffectiverightsItem: This item stores the effective rights of a shared resource that a discretionary access control list (DACL) structure grants to a specified trustee. The trustee's effective rights are determined checking all access-allowed and access-denied access control entries (ACEs) in the DACL.
 type SharedresourceeffectiverightsItem struct {
 	XMLName xml.Name `xml:"sharedresourceeffectiverights_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Netname: The netname entity specifies the name associated with a particular shared resource.
 	Netname *oval_sc.EntityItemStringType `xml:"netname"`
 
+	// TrusteeSid: The trustee_sid entity specifies the SID that associated a user, group, system, or program (such as a Windows service).
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// StandardDelete: The right to delete the object.
 	StandardDelete *oval_sc.EntityItemBoolType `xml:"standard_delete"`
 
+	// StandardReadControl: The right to read the information in the object's security descriptor, not including the information in the SACL.
 	StandardReadControl *oval_sc.EntityItemBoolType `xml:"standard_read_control"`
 
+	// StandardWriteDac: The right to modify the DACL in the object's security descriptor.
 	StandardWriteDac *oval_sc.EntityItemBoolType `xml:"standard_write_dac"`
 
+	// StandardWriteOwner: The right to change the owner in the object's security descriptor.
 	StandardWriteOwner *oval_sc.EntityItemBoolType `xml:"standard_write_owner"`
 
+	// StandardSynchronize: The right to use the object for synchronization. This enables a thread to wait until the object is in the signaled state. Some object types do not support this access right.
 	StandardSynchronize *oval_sc.EntityItemBoolType `xml:"standard_synchronize"`
 
+	// AccessSystemSecurity: Indicates access to a system access control list (SACL).
 	AccessSystemSecurity *oval_sc.EntityItemBoolType `xml:"access_system_security"`
 
+	// GenericRead: Read access.
 	GenericRead *oval_sc.EntityItemBoolType `xml:"generic_read"`
 
+	// GenericWrite: Write access.
 	GenericWrite *oval_sc.EntityItemBoolType `xml:"generic_write"`
 
+	// GenericExecute: Execute access.
 	GenericExecute *oval_sc.EntityItemBoolType `xml:"generic_execute"`
 
+	// GenericAll: Read, write, and execute access.
 	GenericAll *oval_sc.EntityItemBoolType `xml:"generic_all"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -1293,14 +1743,17 @@ type SharedresourceeffectiverightsItem struct {
 type SidItem struct {
 	XMLName xml.Name `xml:"sid_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// TrusteeName: This element specifies the trustee name associated with a particular SID. In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// TrusteeSid: The security identifier (SID) of the specified trustee name.
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// TrusteeDomain: The domain of the specified trustee name.
 	TrusteeDomain *oval_sc.EntityItemStringType `xml:"trustee_domain"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -1310,124 +1763,160 @@ type SidItem struct {
 type SidSidItem struct {
 	XMLName xml.Name `xml:"sid_sid_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// TrusteeSid: The security identifier (SID) of the specified trustee name.
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
+	// TrusteeName: This element specifies the trustee name associated with a particular SID. In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// TrusteeDomain: The domain of the specified trustee name.
 	TrusteeDomain *oval_sc.EntityItemStringType `xml:"trustee_domain"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SystemmetricItem: The system metric item stores the value of a particular Windows system metric.
 type SystemmetricItem struct {
 	XMLName xml.Name `xml:"systemmetric_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Index: This element describes the index of a system metric entry.
 	Index *EntityItemSystemMetricIndexType `xml:"index"`
 
+	// Value: The value entity holds the actual value of the specified system metric index.
 	Value *oval_sc.EntityItemIntType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// UacItem: The uac_item is used to hold information about settings related to User Access Control within Windows.
 type UacItem struct {
 	XMLName xml.Name `xml:"uac_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// AdminApprovalMode: Admin Approval Mode for the Built-in Administrator account.
 	AdminApprovalMode *oval_sc.EntityItemBoolType `xml:"admin_approval_mode"`
 
+	// ElevationPromptAdmin: Behavior of the elevation prompt for administrators in Admin Approval Mode.
 	ElevationPromptAdmin *oval_sc.EntityItemStringType `xml:"elevation_prompt_admin"`
 
+	// ElevationPromptStandard: Behavior of the elevation prompt for standard users.
 	ElevationPromptStandard *oval_sc.EntityItemStringType `xml:"elevation_prompt_standard"`
 
+	// DetectInstallations: Detect application installations and prompt for elevation.
 	DetectInstallations *oval_sc.EntityItemBoolType `xml:"detect_installations"`
 
+	// ElevateSignedExecutables: Only elevate executables that are signed and validated.
 	ElevateSignedExecutables *oval_sc.EntityItemBoolType `xml:"elevate_signed_executables"`
 
+	// ElevateUiaccess: Only elevate UIAccess applications that are installed in secure locations.
 	ElevateUiaccess *oval_sc.EntityItemBoolType `xml:"elevate_uiaccess"`
 
+	// RunAdminsAam: Run all administrators in Admin Approval Mode.
 	RunAdminsAam *oval_sc.EntityItemBoolType `xml:"run_admins_aam"`
 
+	// SecureDesktop: Switch to the secure desktop when prompting for elevation.
 	SecureDesktop *oval_sc.EntityItemBoolType `xml:"secure_desktop"`
 
+	// VirtualizeWriteFailures: Virtualize file and registry write failures to per-user locations.
 	VirtualizeWriteFailures *oval_sc.EntityItemBoolType `xml:"virtualize_write_failures"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// UserItem: The windows user_item allows the different groups (identified by name) that a user belongs to be collected.
 type UserItem struct {
 	XMLName xml.Name `xml:"user_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// User: A string the represents the name of a particular user. In Windows, user names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, users should be identified in the form: "domain\user name". For local users use: "computer_name\user_name". For built-in accounts on the system, use the user name without a domain.
 	User *oval_sc.EntityItemStringType `xml:"user"`
 
+	// Enabled: A boolean that represents whether the particular user is enabled or not.
 	Enabled *oval_sc.EntityItemBoolType `xml:"enabled"`
 
+	// Group: A string that represents the name of a particular group. In Windows, group names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, groups should be identified in the form: "domain\group name". For local groups use: "computer name\group name". For built-in accounts on the system, use the group name without a domain.
 	Group []oval_sc.EntityItemStringType `xml:"group"`
 
+	// LastLogon: The date and time when the last logon occurred. This value is stored as the number of seconds that have elapsed since 00:00:00, January 1, 1970, GMT. If the target system is a domain controller, this data is maintained separately on each backup domain controller (BDC) in the domain. To obtain an accurate value, you must query each BDC in the domain. The last logoff occurred at the time indicated by the largest retrieved value.
 	LastLogon *oval_sc.EntityItemIntType `xml:"last_logon"`
 
+	// FullName: A Unicode string that contains the full name of the user. This string can be a NULL string, or it can have any number of characters before the terminating null character.
 	FullName *oval_sc.EntityItemStringType `xml:"full_name"`
 
+	// Comment: A Unicode string that contains a comment to associate with the user account. The string can be a NULL string, or it can have any number of characters before the terminating null character.
 	Comment *oval_sc.EntityItemStringType `xml:"comment"`
 
+	// PasswordAgeDays: The number of full days that have elapsed since the password was last changed, meaning data calulated should be truncated. Ex: 89.5 days = 89, 90.01 = 90
 	PasswordAgeDays *oval_sc.EntityItemIntType `xml:"password_age_days"`
 
+	// Lockout: The account is currently locked out.
 	Lockout *oval_sc.EntityItemBoolType `xml:"lockout"`
 
+	// PasswdNotreqd: No password is required.
 	PasswdNotreqd *oval_sc.EntityItemBoolType `xml:"passwd_notreqd"`
 
+	// DontExpirePasswd: The password should never expire on the account.
 	DontExpirePasswd *oval_sc.EntityItemBoolType `xml:"dont_expire_passwd"`
 
+	// EncryptedTextPasswordAllowed: The user's password is stored under reversible encryption in the Active Directory.
 	EncryptedTextPasswordAllowed *oval_sc.EntityItemBoolType `xml:"encrypted_text_password_allowed"`
 
+	// NotDelegated: Marks the account as "sensitive"; other users cannot act as delegates of this user account.
 	NotDelegated *oval_sc.EntityItemBoolType `xml:"not_delegated"`
 
+	// UseDesKeyOnly: Restrict this principal to use only Data Encryption Standard (DES) encryption types for keys.
 	UseDesKeyOnly *oval_sc.EntityItemBoolType `xml:"use_des_key_only"`
 
+	// DontRequirePreauth: This account does not require Kerberos preauthentication for logon.
 	DontRequirePreauth *oval_sc.EntityItemBoolType `xml:"dont_require_preauth"`
 
+	// PasswordExpired: The password expiration information. Zero if the password has not expired (and nonzero if it has).
 	PasswordExpired *oval_sc.EntityItemBoolType `xml:"password_expired"`
 
+	// SmartcardRequired: Requires the user to log on to the user account with a smart card.
 	SmartcardRequired *oval_sc.EntityItemBoolType `xml:"smartcard_required"`
 
+	// TrustedForDelegation: The account is enabled for delegation. This is a security-sensitive setting; accounts with this option enabled should be tightly controlled. This setting allows a service running under the account to assume a client's identity and authenticate as that user to other remote servers on the network.
 	TrustedForDelegation *oval_sc.EntityItemBoolType `xml:"trusted_for_delegation"`
 
+	// TrustedToAuthenticateForDelegation: The account is trusted to authenticate a user outside of the Kerberos security package and delegate that user through constrained delegation. This is a security-sensitive setting; accounts with this option enabled should be tightly controlled. This setting allows a service running under the account to assert a client's identity and authenticate as that user to specifically configured services on the network. Windows 2000: This value is not supported.
 	TrustedToAuthenticateForDelegation *oval_sc.EntityItemBoolType `xml:"trusted_to_authenticate_for_delegation"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// UserSidItem: The windows user_sid_item allows the different groups (identified by SID) that a user belongs to be collected.
 type UserSidItem struct {
 	XMLName xml.Name `xml:"user_sid_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// UserSid: A string the represents the SID of a particular user.
 	UserSid *oval_sc.EntityItemStringType `xml:"user_sid"`
 
+	// Enabled: A boolean that represents whether the particular user is enabled or not.
 	Enabled *oval_sc.EntityItemBoolType `xml:"enabled"`
 
+	// GroupSid: A string that represents the SID of a particular group. If the specified user belongs to more than one group, then multiple group_sid elements should exist. If the specified user is not a member of a single group, then a single group_sid element should exist with a status of 'does not exist'. If there is an error determining the groups that the user belongs to, then a single group_sid element should be included with a status of 'error'.
 	GroupSid []oval_sc.EntityItemStringType `xml:"group_sid"`
 
+	// LastLogon: The date and time when the last logon occurred. This value is stored as the number of seconds that have elapsed since 00:00:00, January 1, 1970, GMT.
 	LastLogon *oval_sc.EntityItemIntType `xml:"last_logon"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -1437,441 +1926,531 @@ type UserSidItem struct {
 type UserrightItem struct {
 	XMLName xml.Name `xml:"userright_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Userright: The userright entity holds a string that represents the name of a particular user right/privilege.
 	Userright *EntityItemUserRightType `xml:"userright"`
 
+	// TrusteeName: The trustee_name entity is the unique name associated with the SID that has been granted the specified user right/privilege. A trustee can be a user, group, or program (such as a Windows service). In Windows, trustee names are case-insensitive. As a result, it is recommended that the case-insensitive operations are used for this entity. In a domain environment, trustee names should be identified in the form: "domain\trustee name". For local trustee names use: "computer name\trustee name". For built-in accounts on the system, use the trustee name without a domain.
 	TrusteeName *oval_sc.EntityItemStringType `xml:"trustee_name"`
 
+	// TrusteeSid: The trustee_sid entity identifies the SID that has been granted the specified user right/privilege.
 	TrusteeSid *oval_sc.EntityItemStringType `xml:"trustee_sid"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VolumeItem: The volume item enumerates various attributes about a particular volume mounted to a machine. This includes the various system flags returned by GetVolumeInformation(). It is important to note that these system flags are specific to certain versions of Windows. As a result, the documentation for that version of Windows should be consulted for more information.
 type VolumeItem struct {
 	XMLName xml.Name `xml:"volume_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Rootpath: A string that contains the root directory of the volume to be described. A trailing backslash is required. For example, you would specify \\MyServer\MyShare as "\\MyServer\MyShare\", or the C drive as "C:\".
 	Rootpath *oval_sc.EntityItemStringType `xml:"rootpath"`
 
+	// FileSystem: The type of filesystem. For example FAT or NTFS.
 	FileSystem *oval_sc.EntityItemStringType `xml:"file_system"`
 
+	// Name: The name of the volume.
 	Name *oval_sc.EntityItemStringType `xml:"name"`
 
+	// DriveType: The drive type of the volume.
 	DriveType *EntityItemDriveTypeType `xml:"drive_type"`
 
+	// VolumeMaxComponentLength: The volume_max_component_length element specifies the maximum length, in TCHARs, of a file name component that a specified file system supports. A file name component is the portion of a file name between backslashes. The value that is stored in the variable that *lpMaximumComponentLength points to is used to indicate that a specified file system supports long names. For example, for a FAT file system that supports long names, the function stores the value 255, rather than the previous 8.3 indicator. Long names can also be supported on systems that use the NTFS file system.
 	VolumeMaxComponentLength *oval_sc.EntityItemIntType `xml:"volume_max_component_length"`
 
+	// SerialNumber: The volume serial number.
 	SerialNumber *oval_sc.EntityItemIntType `xml:"serial_number"`
 
+	// FileCaseSensitiveSearch: The file system supports case-sensitive file names.
 	FileCaseSensitiveSearch *oval_sc.EntityItemBoolType `xml:"file_case_sensitive_search"`
 
+	// FileCasePreservedNames: The file system preserves the case of file names when it places a name on disk.
 	FileCasePreservedNames *oval_sc.EntityItemBoolType `xml:"file_case_preserved_names"`
 
+	// FileUnicodeOnDisk: The file system supports Unicode in file names as they appear on disk.
 	FileUnicodeOnDisk *oval_sc.EntityItemBoolType `xml:"file_unicode_on_disk"`
 
+	// FilePersistentAcls: The file system preserves and enforces ACLs. For example, NTFS preserves and enforces ACLs, and FAT does not.
 	FilePersistentAcls *oval_sc.EntityItemBoolType `xml:"file_persistent_acls"`
 
+	// FileFileCompression: The file system supports file-based compression.
 	FileFileCompression *oval_sc.EntityItemBoolType `xml:"file_file_compression"`
 
+	// FileVolumeQuotas: The file system supports disk quotas.
 	FileVolumeQuotas *oval_sc.EntityItemBoolType `xml:"file_volume_quotas"`
 
+	// FileSupportsSparseFiles: The file system supports sparse files.
 	FileSupportsSparseFiles *oval_sc.EntityItemBoolType `xml:"file_supports_sparse_files"`
 
+	// FileSupportsReparsePoints: The file system supports reparse points.
 	FileSupportsReparsePoints *oval_sc.EntityItemBoolType `xml:"file_supports_reparse_points"`
 
+	// FileSupportsRemoteStorage: The file system supports remote storage.
 	FileSupportsRemoteStorage *oval_sc.EntityItemBoolType `xml:"file_supports_remote_storage"`
 
+	// FileVolumeIsCompressed: The specified volume is a compressed volume; for example, a DoubleSpace volume.
 	FileVolumeIsCompressed *oval_sc.EntityItemBoolType `xml:"file_volume_is_compressed"`
 
+	// FileSupportsObjectIds: The file system supports object identifiers.
 	FileSupportsObjectIds *oval_sc.EntityItemBoolType `xml:"file_supports_object_ids"`
 
+	// FileSupportsEncryption: The file system supports the Encrypted File System (EFS).
 	FileSupportsEncryption *oval_sc.EntityItemBoolType `xml:"file_supports_encryption"`
 
+	// FileNamedStreams: The file system supports named streams.
 	FileNamedStreams *oval_sc.EntityItemBoolType `xml:"file_named_streams"`
 
+	// FileReadOnlyVolume: The specified volume is read-only.
 	FileReadOnlyVolume *oval_sc.EntityItemBoolType `xml:"file_read_only_volume"`
 
+	// FileSequentialWriteOnce: The file system supports one time writes in sequential order.
 	FileSequentialWriteOnce *oval_sc.EntityItemBoolType `xml:"file_sequential_write_once"`
 
+	// FileSupportsTransactions: The file system supports transaction processing.
 	FileSupportsTransactions *oval_sc.EntityItemBoolType `xml:"file_supports_transactions"`
 
+	// FileSupportsHardLinks: The file system supports direct links to other devices and partitions.
 	FileSupportsHardLinks *oval_sc.EntityItemBoolType `xml:"file_supports_hard_links"`
 
+	// FileSupportsExtendedAttributes: The file system supports extended attributes.
 	FileSupportsExtendedAttributes *oval_sc.EntityItemBoolType `xml:"file_supports_extended_attributes"`
 
+	// FileSupportsOpenByFileId: The file system supports fileID.
 	FileSupportsOpenByFileId *oval_sc.EntityItemBoolType `xml:"file_supports_open_by_file_id"`
 
+	// FileSupportsUsnJournal: The file system supports update sequence number journals.
 	FileSupportsUsnJournal *oval_sc.EntityItemBoolType `xml:"file_supports_usn_journal"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// WmiItem: The wmi_item outlines information to be checked through Microsoft's WMI interface.
 type WmiItem struct {
 	XMLName xml.Name `xml:"wmi_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Namespace: The WMI namespaces of the specific object.
 	Namespace *oval_sc.EntityItemStringType `xml:"namespace"`
 
+	// Wql: A WQL query used to identify the object(s) specified. Any valid WQL query is allowed with one exception, at most one field is allowed in the SELECT portion of the query. For example SELECT name FROM ... is valid, as is SELECT 'true' FROM ..., but SELECT name, number FROM ... is not valid. This is because the result element in the data section is only designed to work against a single field.
 	Wql *oval_sc.EntityItemStringType `xml:"wql"`
 
+	// Result: The result element specifies how to test objects in the result set of the specified WQL statement. Only one comparable field is allowed. So if the WQL statement look like 'SELECT name FROM ...', then a result element with a value of 'Fred' would test that value against the names returned by the WQL statement. If the WQL statement returns more than one instance of the specified field, then multiple result elements should exist to describe each instance.
 	Result []oval_sc.EntityItemAnySimpleType `xml:"result"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// Wmi57Item: The wmi57_item outlines information to be checked through Microsoft's WMI interface.
 type Wmi57Item struct {
 	XMLName xml.Name `xml:"wmi57_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Namespace: The WMI namespaces of the specific object.
 	Namespace *oval_sc.EntityItemStringType `xml:"namespace"`
 
+	// Wql: A WQL query used to identify the object(s) specified. Any valid WQL query is allowed with one exception, all fields must be named. For example SELECT name, age FROM ... is valid, but SELECT * FROM ... is not valid. This is because the record entity supports only named fields.
 	Wql *oval_sc.EntityItemStringType `xml:"wql"`
 
+	// Result: The result entity holds the results of the specified WQL statement.
 	Result []oval_sc.EntityItemRecordType `xml:"result"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// WuaupdatesearcherItem: The wuaupdatesearcher_item outlines information defined through the Search method of the IUpdateSearcher interface as part of Microsoft's WUA (Windows Update Agent) API. This information is related to the current patch level in a Windows environment. The test extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type WuaupdatesearcherItem struct {
 	XMLName xml.Name `xml:"wuaupdatesearcher_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
 	SearchCriteria *oval_sc.EntityItemStringType `xml:"search_criteria"`
 
+	// UpdateId: The update_id entity specifies a string that represents a revision-independent identifier of an update. This information is part of the IUpdateIdentity interface that is part of the result of the IUpdateSearcher interface's Search method. Note that multiple update identifiers can be associated with a give search criteria and thus multiple entities can exist for this item.
 	UpdateId []oval_sc.EntityItemStringType `xml:"update_id"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// FileItemProductVersion: This entity defines the product version held within the version-information structure. This may not necessarily be a string compatible with the OVAL version datatype, in which case the string datatype should be used.
 type FileItemProductVersion struct {
 	XMLName xml.Name `xml:"product_version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
-// Element
+// ProcessItemPriority: The base priority of the process. The priority value range is from 0 to 31.
 type ProcessItemPriority struct {
 	XMLName xml.Name `xml:"priority"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 
 // XSD ComplexType declarations
 
+// EntityItemAddrTypeType: The EntityItemAddrTypeType restricts a string value to a specific set of values that describe the different address types of interfaces. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemAddrTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemAdstypeType: The EntityItemAdstypeType restricts a string value to a specific set of values that describe the possible types associated with an Active Directory attribute. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemAdstypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemAuditType: The EntityItemAuditType restricts a string value to a specific set of values: AUDIT_NONE, AUDIT_SUCCESS, AUDIT_FAILURE, and AUDIT_SUCCESS_FAILURE. These values describe which audit records should be generated. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemAuditType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemDriveTypeType: The EntityItemDriveTypeType complex type defines the different values that are valid for the drive_type entity of a win-sc:volume_item. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemDriveTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemFileTypeType: The EntityItemFileTypeType restricts a string value to a specific set of values that describe the different types of files. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemFileTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemFileAttributeType: The EntityItemFileAttributeType restricts a string value to a specific set of values that describe the different Windows file attributes. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemFileAttributeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemInterfaceTypeType: The EntityItemInterfaceTypeType restricts a string value to a specific set of values that describe the different types of interfaces. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemInterfaceTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemNamingContextType: The EntityItemNamingContextType restricts a string value to a specific set of values: domain, configuration, and schema. These values describe the different naming context found withing Active Directory. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemNamingContextType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemNTUserAccountTypeType struct {
+// EntityItemNtuserAccountTypeType: The EntityItemNTUserAccountTypeType restricts a string value to a specific set of values that describe the different types of accounts. The empty string is also allowed to support empty elements associated with error conditions.
+type EntityItemNtuserAccountTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPeTargetMachineType: The EntityItemPeTargetMachineType enumeration identifies the valid machine targets that can be specified in the PE file header. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemPeTargetMachineType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemPeSubsystemType: The EntityItemPeSubsystemType enumeration identifies the valid subsystem types that can be specified in the PE file header. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemPeSubsystemType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemProtocolType: The EntityItemProtocolType restricts a string value to a specific set of values that describe the different available protocols. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemProtocolType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemRegistryHiveType: The EntityItemRegistryHiveType restricts a string value to a specific set of values that describe the different registry hives. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemRegistryHiveType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemRegistryTypeType: The EntityItemRegistryTypeType defines the different values that are valid for the type entity of a registry item. These values describe the possible types of data stored in a registry key. restricts a string value to a specific set of values that describe the different registry types. The empty string is also allowed as a valid value to support empty emlements associated with error conditions. Please note that the values identified are for the type entity and are not valid values for the datatype attribute. For information about how to encode registry data in OVAL for each of the different types, please visit the registry_item documentation.
 type EntityItemRegistryTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemServiceControlsAcceptedType: The EntityItemServiceAcceptedControlsType complex type defines the different values that are valid for the controls_accepted entity of a service. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemServiceControlsAcceptedType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemServiceCurrentStateType: The EntityItemServiceCurrentStateType complex type defines the different values that are valid for the current_state entity of a service. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemServiceCurrentStateType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemServiceStartTypeType: The EntityItemServiceStartTypeType complex type defines the different values that are valid for the start_type entity of a service. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemServiceStartTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemServiceTypeType: The EntityItemServiceTypeType complex type defines the different values that are valid for the service_type entity of a service. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemServiceTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemSharedResourceTypeType: The EntityItemSharedResourceTypeType complex type defines the different values that are valid for the type entity of a shared resource item. Note that the Windows API returns a DWORD value and OVAL uses the constant name that is normally defined for these return values. This is done to increase readability and maintainability of OVAL Definitions. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemSharedResourceTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemSystemMetricIndexType: The EntityItemSystemMetricIndexType complex type defines the different values that are valid for the index entity of a system_metric item. These values describe the system metric or configuration setting to be retrieved. The empty string is also allowed to support empty elements associated with error conditions. Please note that the values identified are for the index entity and are not valid values for the datatype attribute.
 type EntityItemSystemMetricIndexType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
-type EntityItemGUIDType struct {
+// EntityItemGuidtype: The EntityItemGUIDType restricts a string value to a representation of a GUID, used for module ID. The empty string is also allowed to support empty element associated with error conditions.
+type EntityItemGuidtype struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemCmdletVerbType: The EntityItemCmdletVerbType restricts a string value to a set of allow cmdlet verbs. The empty string is also allowed to support empty element associated with error conditions.
 type EntityItemCmdletVerbType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemWindowsViewType: The EntityItemWindowsViewType restricts a string value to a specific set of values: 32-bit and 64-bit. These values describe the different values possible for the windows view behavior.
 type EntityItemWindowsViewType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityItemUserRightType: The EntityItemUserRightType restricts a string value to a specific set of values that describe the different user rights/privileges. The empty string is also allowed to support empty elements associated with error conditions.
 type EntityItemUserRightType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

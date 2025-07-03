@@ -22,7 +22,7 @@ type Catalog struct {
 
 	RewriteSystem []RewriteSystem `xml:"rewriteSystem"`
 
-	RewriteURI []RewriteURI `xml:"rewriteURI"`
+	RewriteUri []RewriteUri `xml:"rewriteURI"`
 
 	UriSuffix []UriSuffix `xml:"uriSuffix"`
 
@@ -32,7 +32,7 @@ type Catalog struct {
 
 	DelegateSystem []DelegateSystem `xml:"delegateSystem"`
 
-	DelegateURI []DelegateURI `xml:"delegateURI"`
+	DelegateUri []DelegateUri `xml:"delegateURI"`
 
 	NextCatalog []NextCatalog `xml:"nextCatalog"`
 
@@ -84,7 +84,7 @@ type RewriteSystem struct {
 }
 
 // Element
-type RewriteURI struct {
+type RewriteUri struct {
 	XMLName xml.Name `xml:"rewriteURI"`
 
 	UriStartString string `xml:"uriStartString,attr"`
@@ -139,7 +139,7 @@ type DelegateSystem struct {
 }
 
 // Element
-type DelegateURI struct {
+type DelegateUri struct {
 	XMLName xml.Name `xml:"delegateURI"`
 
 	UriStartString string `xml:"uriStartString,attr"`
@@ -174,7 +174,7 @@ type Group struct {
 
 	RewriteSystem []RewriteSystem `xml:"rewriteSystem"`
 
-	RewriteURI []RewriteURI `xml:"rewriteURI"`
+	RewriteUri []RewriteUri `xml:"rewriteURI"`
 
 	UriSuffix []UriSuffix `xml:"uriSuffix"`
 
@@ -184,7 +184,7 @@ type Group struct {
 
 	DelegateSystem []DelegateSystem `xml:"delegateSystem"`
 
-	DelegateURI []DelegateURI `xml:"delegateURI"`
+	DelegateUri []DelegateUri `xml:"delegateURI"`
 
 	NextCatalog []NextCatalog `xml:"nextCatalog"`
 }

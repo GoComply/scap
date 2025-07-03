@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Apple iOS specific tests found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core Definition Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// GlobalrestrictionsTest: The globalrestrictions_test is used to check the status of the global restrictions in place on the device. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a globalrestrictions_object and the optional state element specifies the data to check.
 type GlobalrestrictionsTest struct {
 	XMLName xml.Name `xml:"globalrestrictions_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type GlobalrestrictionsTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GlobalrestrictionsObject: The globalrestrictions_object element is used by a global restrictions test to define those objects to be evaluated based on a specified state. Any OVAL Test written to check global restrictions status will reference the same globalrestrictions_object which is basically an empty object element.
 type GlobalrestrictionsObject struct {
 	XMLName xml.Name `xml:"globalrestrictions_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -53,11 +55,11 @@ type GlobalrestrictionsObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GlobalrestrictionsState: Information on global restrictions in place on the device
 type GlobalrestrictionsState struct {
 	XMLName xml.Name `xml:"globalrestrictions_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -67,84 +69,124 @@ type GlobalrestrictionsState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// AllowAccountModification: Optional. Supervised only. If set to false, account modification is disabled. Available only in iOS 7.0 and later.
 	AllowAccountModification *oval_def.EntityStateBoolType `xml:"allow_account_modification"`
 
+	// AllowAirdrop: Optional. Supervised only. If set to false, AirDrop is disabled. Available only in iOS 7.0 and later.
 	AllowAirdrop *oval_def.EntityStateBoolType `xml:"allow_airdrop"`
 
+	// AllowAppCellularDataModification: Optional. Supervised only. If set to false, changes to cellular data usage for apps are disabled. Available only in iOS 7.0 and later.
 	AllowAppCellularDataModification *oval_def.EntityStateBoolType `xml:"allow_app_cellular_data_modification"`
 
+	// AllowAppInstallation: Optional. When false, the App Store is disabled and its icon is removed from the Home screen. Users are unable to install or update their applications.
 	AllowAppInstallation *oval_def.EntityStateBoolType `xml:"allow_app_installation"`
 
+	// AllowAssistant: Optional. When false, disables Siri. Defaults to true.
 	AllowAssistant *oval_def.EntityStateBoolType `xml:"allow_assistant"`
 
+	// AllowAssistantUserGeneratedContent: Optional. Supervised only. When false, prevents Siri from querying user-generated content from the web. Available only in iOS 7.0 and later.
 	AllowAssistantUserGeneratedContent *oval_def.EntityStateBoolType `xml:"allow_assistant_user_generated_content"`
 
+	// AllowAssistantWhileLocked: Optional. When false, the user is unable to use Siri when the device is locked. Defaults to true. This restriction is ignored if the device does not have a passcode set. Available only in iOS 5.1 and later.
 	AllowAssistantWhileLocked *oval_def.EntityStateBoolType `xml:"allow_assistant_while_locked"`
 
+	// AllowBookstore: Optional. Supervised only. If set to false, iBookstore will be disabled. This will default to true. Available in iOS 6.0 and later.
 	AllowBookstore *oval_def.EntityStateBoolType `xml:"allow_bookstore"`
 
+	// AllowBookstoreErotica: Optional. Supervised only prior to iOS 6.1. If set to false, the user will not be able to download media from the iBookstore that has been tagged as erotica. This will default to true. Available in iOS 6.0 and later.
 	AllowBookstoreErotica *oval_def.EntityStateBoolType `xml:"allow_bookstore_erotica"`
 
+	// AllowCamera: Optional. When false, the camera is completely disabled and its icon is removed from the Home screen. Users are unable to take photographs.
 	AllowCamera *oval_def.EntityStateBoolType `xml:"allow_camera"`
 
+	// AllowCloudBackup: Optional. When false, disables backing up the device to iCloud. Available in iOS 5.0 and later.
 	AllowCloudBackup *oval_def.EntityStateBoolType `xml:"allow_cloud_backup"`
 
+	// AllowCloudDocumentSync: Optional. When false, disables document and key-value syncing to iCloud. Available in iOS 5.0 and later.
 	AllowCloudDocumentSync *oval_def.EntityStateBoolType `xml:"allow_cloud_document_sync"`
 
+	// AllowCloudKeychainSync: Optional. If false, disables keychain syncing to iCloud. Default is true. Available only in iOS 7.0 and later.
 	AllowCloudKeychainSync *oval_def.EntityStateBoolType `xml:"allow_cloud_keychain_sync"`
 
+	// AllowDiagnosticSubmission: Optional. When false, this prevents the device from automatically submitting diagnostic reports to Apple. Defaults to true. Available only in iOS 6.0 and later.
 	AllowDiagnosticSubmission *oval_def.EntityStateBoolType `xml:"allow_diagnostic_submission"`
 
+	// AllowExplicitContent: Optional. When false, explicit music or video content purchased from the iTunes Store is hidden. Explicit content is marked as such by content providers, such as record labels, when sold through the iTunes Store.
 	AllowExplicitContent *oval_def.EntityStateBoolType `xml:"allow_explicit_content"`
 
+	// AllowFindMyFriendsModification: Optional. Supervised only. If set to false, changes to Find My Friends are disabled. Available only in iOS 7.0 and later.
 	AllowFindMyFriendsModification *oval_def.EntityStateBoolType `xml:"allow_find_my_friends_modification"`
 
+	// AllowFingerprintForUnlock: Optional. If false, prevents Touch ID from unlocking a device. Available in iOS 7 and later.
 	AllowFingerprintForUnlock *oval_def.EntityStateBoolType `xml:"allow_fingerprint_for_unlock"`
 
+	// AllowGameCenter: Optional. Supervised only. When false, Game Center is disabled and its icon is removed from the Home screen. Default is true. Available only in iOS 6.0 and later.
 	AllowGameCenter *oval_def.EntityStateBoolType `xml:"allow_game_center"`
 
+	// AllowHostPairing: Supervised only. If set to false, host pairing is disabled with the exception of the supervision host. If no supervision host certificate has been configured, all pairing is disabled. Available only in iOS 7.0 and later.
 	AllowHostPairing *oval_def.EntityStateBoolType `xml:"allow_host_pairing"`
 
+	// AllowLockScreenControlCenter: Optional. If false, prevents Control Center from appearing on the Lock screen. Available in iOS 7 and later.
 	AllowLockScreenControlCenter *oval_def.EntityStateBoolType `xml:"allow_lock_screen_control_center"`
 
+	// AllowLockScreenNotificationsView: Optional. If set to false, the Notifications view in Notification Center on the lock screen is disabled. Available only in iOS 7.0 and later.
 	AllowLockScreenNotificationsView *oval_def.EntityStateBoolType `xml:"allow_lock_screen_notifications_view"`
 
+	// AllowLockScreenTodayView: Optional. If set to false, the Today view in Notification Center on the lock screen is disabled. Available only in iOS 7.0 and later.
 	AllowLockScreenTodayView *oval_def.EntityStateBoolType `xml:"allow_lock_screen_today_view"`
 
+	// AllowOpenFromManagedToUnmanaged: Optional. If false, documents in managed apps and accounts only open in other managed apps and accounts. Default is true. Available only in iOS 7.0 and later.
 	AllowOpenFromManagedToUnmanaged *oval_def.EntityStateBoolType `xml:"allow_open_from_managed_to_unmanaged"`
 
+	// AllowOpenFromUnmanagedToManaged: Optional. If set to false, documents in unmanaged apps and accounts will only open in other unmanaged apps and accounts. Default is true. Available only in iOS 7.0 and later.
 	AllowOpenFromUnmanagedToManaged *oval_def.EntityStateBoolType `xml:"allow_open_from_unmanaged_to_managed"`
 
+	// AllowOtaPkiUpdates: Optional. If false, over-the-air PKI updates are disabled. Default is true. Available only in iOS 7.0 and later.
 	AllowOtaPkiUpdates *oval_def.EntityStateBoolType `xml:"allow_ota_pki_updates"`
 
+	// AllowPassbookWhileLocked: Optional. If set to false, Passbook notifications will not be shown on the lock screen. This will default to true. Available in iOS 6.0 and later.
 	AllowPassbookWhileLocked *oval_def.EntityStateBoolType `xml:"allow_passbook_while_locked"`
 
+	// AllowPhotoStream: Optional. When false, disables Photo Stream. Available in iOS 5.0 and later.
 	AllowPhotoStream *oval_def.EntityStateBoolType `xml:"allow_photo_stream"`
 
+	// AllowSafari: Optional. When false, the Safari web browser application is disabled and its icon removed from the Home screen. This also prevents users from opening web clips.
 	AllowSafari *oval_def.EntityStateBoolType `xml:"allow_safari"`
 
+	// AllowScreenShot: Optional. When false, users are unable to save a screenshot of the display.
 	AllowScreenShot *oval_def.EntityStateBoolType `xml:"allow_screen_shot"`
 
+	// AllowSharedStream: Optional. If set to false, Shared Photo Stream will be disabled. This will default to true. Available in iOS 6.0 and later.
 	AllowSharedStream *oval_def.EntityStateBoolType `xml:"allow_shared_stream"`
 
+	// AllowUiConfigurationProfileInstallation: Optional. Supervised only. If set to false, the user is prohibited from installing configuration profiles and certificates interactively. This will default to true. Available in iOS 6.0 and later.
 	AllowUiConfigurationProfileInstallation *oval_def.EntityStateBoolType `xml:"allow_ui_configuration_profile_installation"`
 
+	// AllowUntrustedTlsPrompt: Optional. When false, automatically rejects untrusted HTTPS certificates without prompting the user. Available in iOS 5.0 and later.
 	AllowUntrustedTlsPrompt *oval_def.EntityStateBoolType `xml:"allow_untrusted_tls_prompt"`
 
+	// AllowVoiceDialing: Optional. When false, disables voice dialing.
 	AllowVoiceDialing *oval_def.EntityStateBoolType `xml:"allow_voice_dialing"`
 
+	// AllowYoutube: Optional. When false, the YouTube application is disabled and its icon is removed from the Home screen. This key is ignored in iOS 6 and later because the YouTube app is not provided.
 	AllowYoutube *oval_def.EntityStateBoolType `xml:"allow_youtube"`
 
+	// AllowItunes: Optional. When false, the iTunes Music Store is disabled and its icon is removed from the Home screen. Users cannot preview, purchase, or download content.
 	AllowItunes *oval_def.EntityStateBoolType `xml:"allow_itunes"`
 
+	// AutonomousSingleAppModePermittedAppids: Optional. If present, allows the identified apps to autonomously enter Single App Mode. Available only in iOS 7.0 and later.
 	AutonomousSingleAppModePermittedAppids *oval_def.EntityStateStringType `xml:"autonomous_single_app_mode_permitted_appids"`
 
+	// ForceEncryptedBackup: Optional. When true, encrypts all backups.
 	ForceEncryptedBackup *oval_def.EntityStateBoolType `xml:"force_encrypted_backup"`
 
+	// ForceItunesStorePasswordEntry: Optional. When true, forces user to enter their iTunes password for each transaction. Available in iOS 5.0 and later.
 	ForceItunesStorePasswordEntry *oval_def.EntityStateBoolType `xml:"force_itunes_store_password_entry"`
 
+	// ForceLimitAdTracking: Optional. If true, limits ad tracking. Default is false. Available only in iOS 7.0 and later.
 	ForceLimitAdTracking *oval_def.EntityStateBoolType `xml:"force_limit_ad_tracking"`
 
+	// SafariAllowAutoFill: Optional. When false, Safari auto-fill is disabled. Defaults to true.
 	SafariAllowAutoFill *oval_def.EntityStateBoolType `xml:"safari_allow_auto_fill"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -152,11 +194,11 @@ type GlobalrestrictionsState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PasscodepolicyTest: The passcodepolicy_test is used to check the status of the passcode policy in place on the device. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a passcodepolicy_object and the optional state element specifies the data to check.
 type PasscodepolicyTest struct {
 	XMLName xml.Name `xml:"passcodepolicy_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -179,11 +221,11 @@ type PasscodepolicyTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PasscodepolicyObject: The passcodepolicy_object element is used by a passcode policy test to define those objects to be evaluated based on a specified state. Any OVAL Test written to check passcode policy status will reference the same passcodepolicy_object which is basically an empty object element.
 type PasscodepolicyObject struct {
 	XMLName xml.Name `xml:"passcodepolicy_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -196,11 +238,11 @@ type PasscodepolicyObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PasscodepolicyState: Passcode Policy Items from public Apple Configuration Profile Reference
 type PasscodepolicyState struct {
 	XMLName xml.Name `xml:"passcodepolicy_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -210,24 +252,34 @@ type PasscodepolicyState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// AllowSimple: Optional. Default true. Determines whether a simple passcode is allowed. A simple passcode is defined as containing repeated characters, or increasing/decreasing characters (such as 123 or CBA). Setting this value to false is synonymous to setting minComplexChars to "1".
 	AllowSimple *oval_def.EntityStateBoolType `xml:"allow_simple"`
 
+	// ForcePin: Optional. Default false. Determines whether the user is forced to set a PIN. Simply setting this value (and not others) forces the user to enter a passcode, without imposing a length or quality.
 	ForcePin *oval_def.EntityStateBoolType `xml:"force_pin"`
 
+	// MaxFailedAttempts: Optional. Default 11. Allowed range [2...11]. Specifies the number of allowed failed attempts to enter the passcode at the device's lock screen. Once this number is exceeded, the device is locked and must be connected to its designated iTunes in order to be unlocked.
 	MaxFailedAttempts *oval_def.EntityStateIntType `xml:"max_failed_attempts"`
 
+	// MaxInactivity: Optional. Default Infinity. Specifies the number of minutes for which the device can be idle (without being unlocked by the user) before it gets locked by the system. Once this limit is reached, the device is locked and the passcode must be entered. In OS X, this will be translated to screensaver settings.
 	MaxInactivity *oval_def.EntityStateIntType `xml:"max_inactivity"`
 
+	// MaxPinAgeInDays: Optional. Default Infinity. Specifies the number of days for which the passcode can remain unchanged. After this number of days, the user is forced to change the passcode before the device is unlocked.
 	MaxPinAgeInDays *oval_def.EntityStateIntType `xml:"max_pin_age_in_days"`
 
+	// MinComplexChars: Optional. Default 0. Specifies the minimum number of complex characters that a passcode must contain. A "complex" character is a character other than a number or a letter.
 	MinComplexChars *oval_def.EntityStateIntType `xml:"min_complex_chars"`
 
+	// MinLength: Optional. Default 0. Specifies the minimum overall length of the passcode. This parameter is independent of the also optional minComplexChars argument.
 	MinLength *oval_def.EntityStateIntType `xml:"min_length"`
 
+	// RequireAlphanumeric: Optional. Default false. Specifies whether the user must enter alphabetic characters ("abcd"), or if numbers are sufficient.
 	RequireAlphanumeric *oval_def.EntityStateBoolType `xml:"require_alphanumeric"`
 
+	// PinHistory: Optional. When the user changes the passcode, it has to be unique within the last N entries in the history. Minimum value is 1, maximum value is 50.
 	PinHistory *oval_def.EntityStateIntType `xml:"pin_history"`
 
+	// MaxGracePeriod: Optional. The maximum grace period, in minutes, to unlock the phone without entering a passcode. Default is 0, that is no grace period, which requires a passcode immediately. In OS X, this will be translated to screensaver settings.
 	MaxGracePeriod *oval_def.EntityStateIntType `xml:"max_grace_period"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -235,11 +287,11 @@ type PasscodepolicyState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ProfileTest: The profile_test is used to check the status of the profiles in place on the device. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a profile_object and the optional state element specifies the data to check.
 type ProfileTest struct {
 	XMLName xml.Name `xml:"profile_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -262,11 +314,11 @@ type ProfileTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ProfileObject: The profile_object element is used by a profile test to define those objects to be evaluated based on a specified state. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic.
 type ProfileObject struct {
 	XMLName xml.Name `xml:"profile_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -276,8 +328,10 @@ type ProfileObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Identifier: A reverse-DNS style identifier (com.example.myprofile, for example) that identifies the profile. This string is used to determine whether a new profile should replace an existing one or should be added.
 	Identifier *oval_def.EntityObjectStringType `xml:"identifier"`
 
+	// Uuid: A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique.
 	Uuid *oval_def.EntityObjectStringType `xml:"uuid"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -287,11 +341,11 @@ type ProfileObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// ProfileState: Represents information about each configuration profile installed on the device.
 type ProfileState struct {
 	XMLName xml.Name `xml:"profile_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -301,24 +355,34 @@ type ProfileState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// HasRemovalPasscode: Optional. Set to true if there is a removal passcode.
 	HasRemovalPasscode *oval_def.EntityStateBoolType `xml:"has_removal_passcode"`
 
+	// IsEncrypted: Optional. Set to true if the profile is encrypted.
 	IsEncrypted *oval_def.EntityStateBoolType `xml:"is_encrypted"`
 
+	// Payload: Optional. Contains information about each payload inside the configuration profile.
 	Payload *oval_def.EntityStateRecordType `xml:"payload"`
 
+	// Description: Optional. A description of the profile, shown on the Detail screen for the profile.
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
+	// DisplayName: Optional. A human-readable name for the profile. This value is displayed on the Detail screen. It does not have to be unique.
 	DisplayName *oval_def.EntityStateStringType `xml:"display_name"`
 
+	// Identifier: A reverse-DNS style identifier (com.example.myprofile, for example) that identifies the profile. This string is used to determine whether a new profile should replace an existing one or should be added.
 	Identifier *oval_def.EntityStateStringType `xml:"identifier"`
 
+	// Organization: Optional. A human-readable string containing the name of the organization that provided the profile.
 	Organization *oval_def.EntityStateStringType `xml:"organization"`
 
+	// RemovalDisallowed: Optional. If present and set to true, the user cannot delete the profile (unless the profile has a removal password and the user provides it).
 	RemovalDisallowed *oval_def.EntityStateBoolType `xml:"removal_disallowed"`
 
+	// Uuid: A globally unique identifier for the payload. The actual content is unimportant, but it must be globally unique.
 	Uuid *oval_def.EntityStateStringType `xml:"uuid"`
 
+	// VersionElm: The version number of the profile format. This describes the version of the configuration profile as a whole, not of the individual profiles within it. Currently, this value should be 1.
 	VersionElm *oval_def.EntityStateIntType `xml:"version"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`

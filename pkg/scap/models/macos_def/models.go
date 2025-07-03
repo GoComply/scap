@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the MacOS specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// AccountinfoTest: User account information (username, uid, gid, etc.) See netinfo(5) for field information, niutil(1) for retrieving it. As of Mac OS 10.5, niutil(1) is no longer available, however, the same functionality can be obtained using dscl(1). Specifically, the command 'dscl . -list /Users' can be used to list all users and the command 'dscl . -read /Users/some_user passwd uid gid realname home shell' can be used to retrieve the attributes associated with an account.
 type AccountinfoTest struct {
 	XMLName xml.Name `xml:"accountinfo_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type AccountinfoTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AccountinfoObject: The accountinfo_object element is used by an accountinfo_test to define the object(s) to be evaluated. This object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type AccountinfoObject struct {
 	XMLName xml.Name `xml:"accountinfo_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type AccountinfoObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Username: Specifies the user of the account to gather information from.
 	Username *oval_def.EntityObjectStringType `xml:"username"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type AccountinfoObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AccountinfoState: The accountinfo_state element defines the different information that can be used to evaluate the specified accounts. Please refer to the individual elements in the schema for more details about what each represents.
 type AccountinfoState struct {
 	XMLName xml.Name `xml:"accountinfo_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,18 +76,25 @@ type AccountinfoState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Username: Specifies the user of the account to gather information from.
 	Username *oval_def.EntityStateStringType `xml:"username"`
 
+	// Password: Obfuscated (*****) or encrypted password for this user.
 	Password *oval_def.EntityStateStringType `xml:"password"`
 
+	// Uid: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. This element represents the owner of the file.
 	Uid *oval_def.EntityStateIntType `xml:"uid"`
 
+	// Gid: Group ID of this account.
 	Gid *oval_def.EntityStateIntType `xml:"gid"`
 
+	// Realname: User's real name, aka gecos field of /etc/passwd.
 	Realname *oval_def.EntityStateStringType `xml:"realname"`
 
+	// HomeDir: The home directory for this user account.
 	HomeDir *oval_def.EntityStateStringType `xml:"home_dir"`
 
+	// LoginShell: The login shell for this user account.
 	LoginShell *oval_def.EntityStateStringType `xml:"login_shell"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -92,11 +102,11 @@ type AccountinfoState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AuthorizationdbTest: The authorizationdb_test is used to check the properties of the plist-style XML output from the "security authorizationdb read &gt;right-name&lt;" command, for reading information about rights authorizations on MacOSX. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an authorizationdb_object and the optional state element specifies the data to check.
 type AuthorizationdbTest struct {
 	XMLName xml.Name `xml:"authorizationdb_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -119,11 +129,11 @@ type AuthorizationdbTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AuthorizationdbObject: The authorizationdb_object element is used by an authorizationdb_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type AuthorizationdbObject struct {
 	XMLName xml.Name `xml:"authorizationdb_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -133,8 +143,10 @@ type AuthorizationdbObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// RightName: Specifies the right name to be queried (read) from the authorization database.
 	RightName *oval_def.EntityObjectStringType `xml:"right_name"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at. Any valid Xpath 1.0 statement is usable with one exception, at most one field may be identified in the Xpath. This is because the value_of element in the data section is only designed to work against a single field. The only valid operator for xpath is equals since there is an infinite number of possible xpaths and determinining all those that do not equal a given xpath would be impossible.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -144,11 +156,11 @@ type AuthorizationdbObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// AuthorizationdbState: The authorizationdb_state element defines a value used to evaluate the result of a specific authorizationdb_object item.
 type AuthorizationdbState struct {
 	XMLName xml.Name `xml:"authorizationdb_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -158,10 +170,13 @@ type AuthorizationdbState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// RightName: Specifies the right_name used to create the object.
 	RightName *oval_def.EntityStateStringType `xml:"right_name"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -169,11 +184,11 @@ type AuthorizationdbState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// CorestorageTest: The corestorage_test is used to check the properties of the plist-style XML output from the "diskutil cs list -plist" command, for reading information about the CoreStorage setup on MacOSX. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an corestorage_object and the optional state element specifies the data to check.
 type CorestorageTest struct {
 	XMLName xml.Name `xml:"corestorage_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -196,11 +211,11 @@ type CorestorageTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// CorestorageObject: The corestorage_object element is used by an corestorage_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type CorestorageObject struct {
 	XMLName xml.Name `xml:"corestorage_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -210,8 +225,10 @@ type CorestorageObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Uuid: Specifies the UUID of the volume about which the plist information should be retrieved.
 	Uuid *oval_def.EntityObjectStringType `xml:"uuid"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at. Any valid Xpath 1.0 statement is usable with one exception, at most one field may be identified in the Xpath. This is because the value_of element in the data section is only designed to work against a single field. The only valid operator for xpath is equals since there is an infinite number of possible xpaths and determinining all those that do not equal a given xpath would be impossible.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -221,11 +238,11 @@ type CorestorageObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// CorestorageState: The corestorage_state element defines a value used to evaluate the result of a specific corestorage_object item.
 type CorestorageState struct {
 	XMLName xml.Name `xml:"corestorage_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -235,10 +252,13 @@ type CorestorageState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Uuid: Specifies the UUID of the volume about which the plist information was retrieved.
 	Uuid *oval_def.EntityStateStringType `xml:"uuid"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -246,11 +266,11 @@ type CorestorageState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// DiskutilTest: The diskutil_test is used to verify packages on a Mac OS system. The information used by this test is modeled after the diskutil command's verifyPermissions option. On MacOS X 10.11 and later, this option was replaced by the repair_packages command. For more information, see diskutil(8) or repair_packages(8). It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a diskutil_object and the optional diskutil_state element specifies the data to check.
 type DiskutilTest struct {
 	XMLName xml.Name `xml:"diskutil_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -273,11 +293,11 @@ type DiskutilTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// DiskutilObject: The diskutil_object element is used by a diskutil_test to define the volumes containing packages to be verified on a Mac OS system. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type DiskutilObject struct {
 	XMLName xml.Name `xml:"diskutil_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -287,8 +307,10 @@ type DiskutilObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Device: The device entity is a string that represents the name of a volume containing system packages that is mounted on a Mac OS system to verify. Please see diskutil(8) or repair_packages(8) for instructions on how to specify the volume.
 	Device *oval_def.EntityObjectStringType `xml:"device"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory in the specified package.
 	Filepath oval_def.EntityObjectStringType `xml:"filepath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -298,11 +320,11 @@ type DiskutilObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// DiskutilState: The diskutil_state element defines the different verification information associated with a disk on a Mac OS system. Please refer to the individual elements in the schema for more details about what each represents.
 type DiskutilState struct {
 	XMLName xml.Name `xml:"diskutil_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -312,44 +334,64 @@ type DiskutilState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Device: The device entity is a string that represents the volume on a Mac OS system to verify. Please see diskutil(8) or repair_packages(8) for instructions on how to specify the device.
 	Device *oval_def.EntityStateStringType `xml:"device"`
 
+	// Filepath: The filepath element specifies the absolute path for a file or directory on the specified device.
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
+	// Uread: Has the actual user read permission changed from the expected user read permission?
 	Uread *EntityStatePermissionCompareType `xml:"uread"`
 
+	// Uwrite: Has the actual user write permission changed from the expected user write permission?
 	Uwrite *EntityStatePermissionCompareType `xml:"uwrite"`
 
+	// Uexec: Has the actual user exec permission changed from the expected user exec permission?
 	Uexec *EntityStatePermissionCompareType `xml:"uexec"`
 
+	// Gread: Has the actual group read permission changed from the expected group read permission?
 	Gread *EntityStatePermissionCompareType `xml:"gread"`
 
+	// Gwrite: Has the actual group write permission changed from the expected group write permission?
 	Gwrite *EntityStatePermissionCompareType `xml:"gwrite"`
 
+	// Gexec: Has the actual group exec permission changed from the expected group exec permission?
 	Gexec *EntityStatePermissionCompareType `xml:"gexec"`
 
+	// Oread: Has the actual others read permission changed from the expected others read permission?
 	Oread *EntityStatePermissionCompareType `xml:"oread"`
 
+	// Owrite: Has the actual others write permission changed from the expected others write permission?
 	Owrite *EntityStatePermissionCompareType `xml:"owrite"`
 
+	// Oexec: Has the actual others exec permission changed from the expected others exec permission?
 	Oexec *EntityStatePermissionCompareType `xml:"oexec"`
 
+	// UserDiffers: Has the actual user changed from the expected user?
 	UserDiffers *oval_def.EntityStateBoolType `xml:"user_differs"`
 
+	// ActualUser: The actual user of the file/directory.
 	ActualUser *oval_def.EntityStateIntType `xml:"actual_user"`
 
+	// ExpectedUser: The expected user of the file/directory.
 	ExpectedUser *oval_def.EntityStateIntType `xml:"expected_user"`
 
+	// GroupDiffers: Has the actual group changed from the expected group?
 	GroupDiffers *oval_def.EntityStateBoolType `xml:"group_differs"`
 
+	// ActualGroup: The actual group of the file/directory.
 	ActualGroup *oval_def.EntityStateIntType `xml:"actual_group"`
 
+	// ExpectedGroup: The expected group of the file/directory.
 	ExpectedGroup *oval_def.EntityStateIntType `xml:"expected_group"`
 
+	// SymlinkDiffers: Has the actual symlink changed from the expected symlink?
 	SymlinkDiffers *oval_def.EntityStateBoolType `xml:"symlink_differs"`
 
+	// ActualSymlink: The actual symlink of the file/directory.
 	ActualSymlink *oval_def.EntityStateStringType `xml:"actual_symlink"`
 
+	// ExpectedSymlink: The expected symlink of the file/directory.
 	ExpectedSymlink *oval_def.EntityStateStringType `xml:"expected_symlink"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -357,11 +399,11 @@ type DiskutilState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GatekeeperTest: The gatekeeper_test is used to check the status of Gatekeeper and any unsigned applications that have been granted execute permission.
 type GatekeeperTest struct {
 	XMLName xml.Name `xml:"gatekeeper_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -384,11 +426,11 @@ type GatekeeperTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GatekeeperObject: The gatekeeper_object is a singleton used to access information about Gatekeeper.
 type GatekeeperObject struct {
 	XMLName xml.Name `xml:"gatekeeper_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -401,11 +443,11 @@ type GatekeeperObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// GatekeeperState: The gatekeeper_state element makes it possible to make assertions about Gatekeeper's operational status and unsigned applications that have been granted execute permission.
 type GatekeeperState struct {
 	XMLName xml.Name `xml:"gatekeeper_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -415,8 +457,10 @@ type GatekeeperState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Enabled: The status of Gatekeeper assessments.
 	Enabled *oval_def.EntityStateBoolType `xml:"enabled"`
 
+	// Unlabeled: The path to an unsigned application folder to which Gatekeeper has granted execute permission.
 	Unlabeled *oval_def.EntityStateStringType `xml:"unlabeled"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -424,11 +468,11 @@ type GatekeeperState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InetlisteningserversTest: This test's purpose is generally used to check if an application is listening on the network, either for a new connection or as part of an ongoing connection. This is limited to applications that are listening for connections that use the TCP or UDP protocols and have addresses represented as IPv4 or IPv6 addresses (AF_INET or AF_INET6). It is generally speaking the parsed output of running the command netstat -tuwlnpe with root privilege.
 type InetlisteningserversTest struct {
 	XMLName xml.Name `xml:"inetlisteningservers_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -451,11 +495,11 @@ type InetlisteningserversTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InetlisteningserversObject: The inetlisteningservers_object element is used by an inetlisteningserver test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type InetlisteningserversObject struct {
 	XMLName xml.Name `xml:"inetlisteningservers_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -474,11 +518,11 @@ type InetlisteningserversObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InetlisteningserversState: The inetlisteningservers_state element defines the different information that can be used to evaluate the specified inet listening server. This includes the local address, foreign address, port information, and process id. Please refer to the individual elements in the schema for more details about what each represents.
 type InetlisteningserversState struct {
 	XMLName xml.Name `xml:"inetlisteningservers_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -488,24 +532,34 @@ type InetlisteningserversState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// ProgramName: This is the name of the communicating program.
 	ProgramName *oval_def.EntityStateStringType `xml:"program_name"`
 
-	LocalAddress *oval_def.EntityStateIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This is the IP address of the network interface on which the program listens. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_def.EntityStateIpaddressStringType `xml:"local_address"`
 
+	// LocalFullAddress: This is the IP address and network port on which the program listens, equivalent to local_address:local_port. Note that the IP address can be IPv4 or IPv6.
 	LocalFullAddress *oval_def.EntityStateStringType `xml:"local_full_address"`
 
+	// LocalPort: This is the TCP or UDP port on which the program listens. Note that this is not a list -- if a program listens on multiple ports, or on a combination of TCP and UDP, each will have its own entry in the table data stored by this test.
 	LocalPort *oval_def.EntityStateIntType `xml:"local_port"`
 
-	ForeignAddress *oval_def.EntityStateIPAddressStringType `xml:"foreign_address"`
+	// ForeignAddress: This is the IP address with which the program is communicating, or with which it will communicate, in the case of a listening server. Note that the IP address can be IPv4 or IPv6.
+	ForeignAddress *oval_def.EntityStateIpaddressStringType `xml:"foreign_address"`
 
+	// ForeignFullAddress: This is the IP address and network port to which the program is communicating or will accept communications from, equivalent to foreign_address:foreign_port. Note that the IP address can be IPv4 or IPv6.
 	ForeignFullAddress *oval_def.EntityStateStringType `xml:"foreign_full_address"`
 
+	// ForeignPort: This is the TCP or UDP port to which the program communicates. In the case of a listening program accepting new connections, this is usually '0'.
 	ForeignPort *oval_def.EntityStateStringType `xml:"foreign_port"`
 
+	// Pid: This is the process ID of the process. The process in question is that of the program communicating on the network.
 	Pid *oval_def.EntityStateIntType `xml:"pid"`
 
+	// Protocol: This is the transport-layer protocol, in lowercase: tcp or udp.
 	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
 
+	// UserId: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. It represents the owner, and thus privilege level, of the specified program.
 	UserId *oval_def.EntityStateStringType `xml:"user_id"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -513,11 +567,11 @@ type InetlisteningserversState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Inetlisteningserver510Test: The inetlisteningserver510_test is used to check if an application is listening on the network, either for a new connection or as part of an ongoing connection. This is limited to applications that are listening for connections that use the TCP or UDP protocols and have addresses represented as IPv4 or IPv6 addresses (AF_INET or AF_INET6). One method for retrieving the required information is by parsing the output of the command 'lsof -i -P -n -l' with root privileges.
 type Inetlisteningserver510Test struct {
 	XMLName xml.Name `xml:"inetlisteningserver510_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -540,11 +594,11 @@ type Inetlisteningserver510Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Inetlisteningserver510Object: The inetlisteningserver510_object element is used by an inetlisteningserver510_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Inetlisteningserver510Object struct {
 	XMLName xml.Name `xml:"inetlisteningserver510_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -554,10 +608,13 @@ type Inetlisteningserver510Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Protocol: The protocol entity defines a certain transport-layer protocol, in lowercase: tcp or udp.
 	Protocol *oval_def.EntityObjectStringType `xml:"protocol"`
 
-	LocalAddress *oval_def.EntityObjectIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This is the IP address of the network interface on which an application listens. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_def.EntityObjectIpaddressStringType `xml:"local_address"`
 
+	// LocalPort: This is the TCP or UDP port on which an application would listen. Note that this is not a list -- if a program listens on multiple ports, or on a combination of TCP and UDP, each will be represented by its own object.
 	LocalPort *oval_def.EntityObjectIntType `xml:"local_port"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -567,11 +624,11 @@ type Inetlisteningserver510Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Inetlisteningserver510State: The inetlisteningserver510_state element defines the different information that can be used to evaluate the specified inet listening server. This includes the local address, foreign address, port information, and process id. Please refer to the individual elements in the schema for more details about what each represents.
 type Inetlisteningserver510State struct {
 	XMLName xml.Name `xml:"inetlisteningserver510_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -581,24 +638,34 @@ type Inetlisteningserver510State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Protocol: This is the transport-layer protocol, in lowercase: tcp or udp.
 	Protocol *oval_def.EntityStateStringType `xml:"protocol"`
 
-	LocalAddress *oval_def.EntityStateIPAddressStringType `xml:"local_address"`
+	// LocalAddress: This is the IP address of the network interface on which the program listens. Note that the IP address can be IPv4 or IPv6.
+	LocalAddress *oval_def.EntityStateIpaddressStringType `xml:"local_address"`
 
+	// LocalPort: This is the TCP or UDP port on which the program listens. Note that this is not a list -- if a program listens on multiple ports, or on a combination of TCP and UDP, each will have its own entry in the table data stored by this test.
 	LocalPort *oval_def.EntityStateIntType `xml:"local_port"`
 
+	// LocalFullAddress: This is the IP address and network port on which the program listens, equivalent to local_address:local_port. Note that the IP address can be IPv4 or IPv6.
 	LocalFullAddress *oval_def.EntityStateStringType `xml:"local_full_address"`
 
+	// ProgramName: This is the name of the communicating program.
 	ProgramName *oval_def.EntityStateStringType `xml:"program_name"`
 
-	ForeignAddress *oval_def.EntityStateIPAddressStringType `xml:"foreign_address"`
+	// ForeignAddress: This is the IP address with which the program is communicating, or with which it will communicate, in the case of a listening server. Note that the IP address can be IPv4 or IPv6.
+	ForeignAddress *oval_def.EntityStateIpaddressStringType `xml:"foreign_address"`
 
+	// ForeignPort: This is the TCP or UDP port to which the program communicates. In the case of a listening program accepting new connections, this is usually '0'.
 	ForeignPort *oval_def.EntityStateIntType `xml:"foreign_port"`
 
+	// ForeignFullAddress: This is the IP address and network port to which the program is communicating or will accept communications from, equivalent to foreign_address:foreign_port. Note that the IP address can be IPv4 or IPv6.
 	ForeignFullAddress *oval_def.EntityStateStringType `xml:"foreign_full_address"`
 
+	// Pid: This is the process ID of the process. The process in question is that of the program communicating on the network.
 	Pid *oval_def.EntityStateIntType `xml:"pid"`
 
+	// UserId: The numeric user id, or uid, is the third column of each user's entry in /etc/passwd. It represents the owner, and thus privilege level, of the specified program.
 	UserId *oval_def.EntityStateIntType `xml:"user_id"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -606,11 +673,11 @@ type Inetlisteningserver510State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// KeychainTest: The keychain_test is used to check the properties of the plist-style XML output from the "security show-keychain-info &gt;keychain&lt;" command, for reading information about keychain settings on MacOSX. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an keychain_object and the optional state element specifies the data to check.
 type KeychainTest struct {
 	XMLName xml.Name `xml:"keychain_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -633,11 +700,11 @@ type KeychainTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// KeychainObject: The keychain_object element is used by an corestorage_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type KeychainObject struct {
 	XMLName xml.Name `xml:"keychain_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -647,6 +714,7 @@ type KeychainObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Filepath: Specifies the filepath of the keychain to be queried. The default keychain for a user is normally located at ~/Library/Keychains/login.keychain.
 	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -656,11 +724,11 @@ type KeychainObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// KeychainState: The keychain_state element defines a value used to evaluate the result of a specific keychain_object item.
 type KeychainState struct {
 	XMLName xml.Name `xml:"keychain_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -670,10 +738,13 @@ type KeychainState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Filepath: Specifies the filepath of the keychain used to create the object.
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
+	// LockOnSleep: Specifies whether the keychain is configured to lock when the computer sleeps.
 	LockOnSleep *oval_def.EntityStateBoolType `xml:"lock_on_sleep"`
 
+	// Timeout: Specifies the inactivity timeout (in seconds) for the keychain, or 0 if there is no timeout.
 	Timeout *oval_def.EntityStateIntType `xml:"timeout"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -681,11 +752,11 @@ type KeychainState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LaunchdTest: The launchd_test is used to check the status of daemons/agents loaded via the launchd service. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a launchd_object and the optional state element specifies the data to check.
 type LaunchdTest struct {
 	XMLName xml.Name `xml:"launchd_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -708,11 +779,11 @@ type LaunchdTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LaunchdObject: The launchd_object element is used by a launchd_test to define the daemon/agent to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type LaunchdObject struct {
 	XMLName xml.Name `xml:"launchd_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -722,6 +793,7 @@ type LaunchdObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Label: Specifies the deamon to be queried.
 	Label *oval_def.EntityObjectStringType `xml:"label"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -731,11 +803,11 @@ type LaunchdObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LaunchdState: The launchd_state element defines a value used to evaluate the result of a specific launchd_object item.
 type LaunchdState struct {
 	XMLName xml.Name `xml:"launchd_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -745,10 +817,13 @@ type LaunchdState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Label: Specifies the name of the agent/daemon used to create the object.
 	Label *oval_def.EntityStateStringType `xml:"label"`
 
+	// Pid: Specifies the process ID of the daemon (if any).
 	Pid *oval_def.EntityStateIntType `xml:"pid"`
 
+	// Status: Specifies the last exit code of the daemon (if any), or if $lt; 0, indicates the negative of the signal that interrupted processing. For example, a value of -15 would indicate that the job was terminated via a SIGTERM.
 	Status *oval_def.EntityStateIntType `xml:"status"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -756,11 +831,11 @@ type LaunchdState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NvramTest: This test pulls data from the 'nvram -p' output.
 type NvramTest struct {
 	XMLName xml.Name `xml:"nvram_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -783,11 +858,11 @@ type NvramTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NvramObject: The nvram_object element is used by a nvram test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type NvramObject struct {
 	XMLName xml.Name `xml:"nvram_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -806,11 +881,11 @@ type NvramObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// NvramState: This test pulls data from the 'nvram -p' output.
 type NvramState struct {
 	XMLName xml.Name `xml:"nvram_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -820,8 +895,10 @@ type NvramState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// NvramVar: This specifies the nvram variable to check.
 	NvramVar *oval_def.EntityStateStringType `xml:"nvram_var"`
 
+	// NvramValue: This is the value of the associated nvram variable.
 	NvramValue *oval_def.EntityStateStringType `xml:"nvram_value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -829,11 +906,11 @@ type NvramState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PlistTest: The plist_test is used to check the value(s) associated with property list preference keys. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a plist_object and the optional plist_state element specifies the data to check.
 type PlistTest struct {
 	XMLName xml.Name `xml:"plist_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -856,11 +933,11 @@ type PlistTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PlistObject: The plist_object element is used by a plist_test to define the preference keys to collect and where to look for them. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PlistObject struct {
 	XMLName xml.Name `xml:"plist_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -870,12 +947,15 @@ type PlistObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Key: The preference key to check. If the xsi:nil attribute is set to 'true', the plist does not have any keys associated with it (i.e. it is not a CFDictionary) and the default value of the plist will be collected.
 	Key *oval_def.EntityObjectStringType `xml:"key"`
 
 	Filter []oval_def.Filter `xml:"filter"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_def.EntityObjectStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. ~/Library/Preferences/com.apple.Safari.plist). A directory cannot be specified as a filepath.
 	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -883,11 +963,11 @@ type PlistObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PlistState: The plist_state element defines the different information that can be used to evaluate the specified property list preference key. This includes the preference key, application identifier, filepath, type, as well as the preference key's value. Please refer to the individual elements in the schema for more details about what each represents.
 type PlistState struct {
 	XMLName xml.Name `xml:"plist_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -897,16 +977,22 @@ type PlistState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Key: The preference key to check.
 	Key *oval_def.EntityStateStringType `xml:"key"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_def.EntityStateStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. ~/Library/Preferences/com.apple.Safari.plist).
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
+	// Instance: The instance of the preference key found in the plist. The first instance of a matching preference key is given the instance value of 1, the second instance of a matching preference key is given the instance value of 2, and so on. Note that the main purpose of this entity is to provide uniqueness for the different plist_items that result from multiple instances of a given preference key in the same plist file.
 	Instance *oval_def.EntityStateIntType `xml:"instance"`
 
+	// Type: The type of the preference key.
 	Type *EntityStatePlistTypeType `xml:"type"`
 
+	// Value: The value of the preference key.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -914,11 +1000,11 @@ type PlistState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Plist510Test: The plist510_test is used to check the value(s) associated with property list preference keys. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a plist510_object and the optional plist510_state element specifies the data to check.
 type Plist510Test struct {
 	XMLName xml.Name `xml:"plist510_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -941,11 +1027,11 @@ type Plist510Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Plist510Object: The plist510_object element is used by a plist510_test to define the preference keys to collect and where to look for them. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Plist510Object struct {
 	XMLName xml.Name `xml:"plist510_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -955,14 +1041,18 @@ type Plist510Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Key: The preference key to check. If the xsi:nil attribute is set to 'true', the plist does not have any keys associated with it (i.e. it is not a CFDictionary) and the default value of the plist will be collected.
 	Key *oval_def.EntityObjectStringType `xml:"key"`
 
+	// Instance: The instance of the preference key found in the plist. The first instance of a matching preference key is given the instance value of 1, the second instance of a matching preference key is given the instance value of 2, and so on. Instance values must be assigned using a depth-first approach. Note that the main purpose of this entity is to provide uniqueness for the different plist_items that result from multiple instances of a given preference key in the same plist file.
 	Instance *oval_def.EntityObjectIntType `xml:"instance"`
 
 	Filter []oval_def.Filter `xml:"filter"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_def.EntityObjectStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. ~/Library/Preferences/com.apple.Safari.plist). A directory cannot be specified as a filepath.
 	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -970,11 +1060,11 @@ type Plist510Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Plist510State: The plist510_state element defines the different information that can be used to evaluate the specified property list preference key. This includes the preference key, application identifier, filepath, type, as well as the preference key's value. Please refer to the individual elements in the schema for more details about what each represents.
 type Plist510State struct {
 	XMLName xml.Name `xml:"plist510_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -984,16 +1074,22 @@ type Plist510State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Key: The preference key to check.
 	Key *oval_def.EntityStateStringType `xml:"key"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_def.EntityStateStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. ~/Library/Preferences/com.apple.Safari.plist).
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
+	// Instance: The instance of the preference key found in the plist. The first instance of a matching preference key is given the instance value of 1, the second instance of a matching preference key is given the instance value of 2, and so on. Instance values must be assigned using a depth-first approach. Note that the main purpose of this entity is to provide uniqueness for the different plist_items that result from multiple instances of a given preference key in the same plist file.
 	Instance *oval_def.EntityStateIntType `xml:"instance"`
 
+	// Type: The type of the preference key.
 	Type *EntityStatePlistTypeType `xml:"type"`
 
+	// Value: The value of the preference key.
 	Value *oval_def.EntityStateAnySimpleType `xml:"value"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1001,11 +1097,11 @@ type Plist510State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Plist511Test: The plist511_test is used to check the value(s) associated with property list preference keys. It can be used to represent any plist file in XML form (whether its native format is ASCII text, binary, or XML), permitting the use of the XPATH query language to explore its contents. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a plist511_object and the optional plist511_state element specifies the data to check.
 type Plist511Test struct {
 	XMLName xml.Name `xml:"plist511_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1028,11 +1124,11 @@ type Plist511Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Plist511Object: The plist511_object element is used by a plist511_test to define the preference keys to collect and where to look for them. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Plist511Object struct {
 	XMLName xml.Name `xml:"plist511_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1042,12 +1138,15 @@ type Plist511Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Xpath: Specifies an XPath 1.0 expression to evaluate against the XML representation of the plist file specified by the filename or app_id entity. This XPath 1.0 expression must evaluate to a list of zero or more text values which will be accessible in OVAL via instances of the value_of item entity. Any results from evaluating the XPath 1.0 expression other than a list of text strings (e.g., a nodes set) is considered an error. The intention is that the text values be drawn from instances of a single, uniquely named element or attribute. However, an OVAL interpreter is not required to verify this, so the author should define the XPath expression carefully. Note that "equals" is the only valid operator for the xpath entity.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_def.EntityObjectStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. /Library/Preferences/com.apple.TimeMachine.plist). A directory cannot be specified as a filepath.
 	Filepath *oval_def.EntityObjectStringType `xml:"filepath"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1055,11 +1154,11 @@ type Plist511Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Plist511State: The plist511_state element defines the different information that can be used to evaluate the specified property list preference key. This includes the preference key, application identifier, filepath, type, as well as the preference key's value. Please refer to the individual elements in the schema for more details about what each represents.
 type Plist511State struct {
 	XMLName xml.Name `xml:"plist511_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1069,12 +1168,16 @@ type Plist511State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// AppId: The unique application identifier that specifies the application to use when looking up the preference key (e.g. com.apple.Safari).
 	AppId *oval_def.EntityStateStringType `xml:"app_id"`
 
+	// Filepath: The absolute path to a plist file (e.g. ~/Library/Preferences/com.apple.Safari.plist).
 	Filepath *oval_def.EntityStateStringType `xml:"filepath"`
 
+	// Xpath: Specifies an XPath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The value of the preference key.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1082,11 +1185,11 @@ type Plist511State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PwpolicyTest: This test pulls data from the 'pwpolicy -getpolicy' output. The actual values get stored under /var/db/netinfo/local.nidb/ in a Store.# file. Is this test actually needed, or can the text file content test be used instead?
 type PwpolicyTest struct {
 	XMLName xml.Name `xml:"pwpolicy_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1109,11 +1212,11 @@ type PwpolicyTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// PwpolicyObject: The pwpolicy_object element is used by a pwpolicy_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type PwpolicyObject struct {
 	XMLName xml.Name `xml:"pwpolicy_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1140,7 +1243,7 @@ type PwpolicyObject struct {
 type PwpolicyState struct {
 	XMLName xml.Name `xml:"pwpolicy_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1156,16 +1259,22 @@ type PwpolicyState struct {
 
 	DirectoryNode *oval_def.EntityStateStringType `xml:"directory_node"`
 
+	// MaxChars: Maximum number of characters allowed in a password.
 	MaxChars *oval_def.EntityStateIntType `xml:"maxChars"`
 
+	// MaxFailedLoginAttempts: Maximum number of failed logins before the account is locked.
 	MaxFailedLoginAttempts *oval_def.EntityStateIntType `xml:"maxFailedLoginAttempts"`
 
+	// MinChars: Minimum number of characters allowed in a password.
 	MinChars *oval_def.EntityStateIntType `xml:"minChars"`
 
+	// PasswordCannotBeName: Defines if the password is allowed to be the same as the username or not.
 	PasswordCannotBeName *oval_def.EntityStateBoolType `xml:"passwordCannotBeName"`
 
+	// RequiresAlpha: Defines if the password must contain an alphabetical character or not.
 	RequiresAlpha *oval_def.EntityStateBoolType `xml:"requiresAlpha"`
 
+	// RequiresNumeric: Defines if the password must contain an numeric character or not.
 	RequiresNumeric *oval_def.EntityStateBoolType `xml:"requiresNumeric"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1173,11 +1282,11 @@ type PwpolicyState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Pwpolicy59Test: This test retrieves password policy data from the 'pwpolicy -getpolicy -u target_user [-a username] [-p userpass] [-n directory_node]' output where username, userpass, and directory_node are optional. Please see the 'pwpolicy' man page for additional information.
 type Pwpolicy59Test struct {
 	XMLName xml.Name `xml:"pwpolicy59_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1200,11 +1309,11 @@ type Pwpolicy59Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Pwpolicy59Object: The pwpolicy59_object element is used by a pwpolicy59_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Pwpolicy59Object struct {
 	XMLName xml.Name `xml:"pwpolicy59_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1214,12 +1323,16 @@ type Pwpolicy59Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// TargetUser: The target_user element specifies the user whose password policy information should be collected. If an operation other than equals is specified, the users on the system should be enumerated and the 'pwpolicy' command should be issued for each user that matches the target_user element. If the xsi:nil attribute is set to true, the global policy should be retrieved.
 	TargetUser *oval_def.EntityObjectStringType `xml:"target_user"`
 
+	// Username: The username element specifies the username of the authenticator. If the xsi:nil attribute is set to true, authentication to the directory node will not be performed (i.e. the '-a' and '-p' command line options will not be specified when issuing the 'pwpolicy' command) and the xsi:nil attribute of the userpass element should also be set to true.
 	Username *oval_def.EntityObjectStringType `xml:"username"`
 
+	// Userpass: The userpass element specifies the password of the authenticator as specified by the username element. If the xsi:nil attribute is set to true, authentication to the directory node will not be performed (i.e. the '-a' and '-p' command line options will not be specified when issuing the 'pwpolicy' command) and the xsi:nil attribute of the username element should also be set to true.
 	Userpass *oval_def.EntityObjectStringType `xml:"userpass"`
 
+	// DirectoryNode: The directory_node element specifies the directory node that you would like to retrieve the password policy information from. If the xsi:nil attribute is set to true, the default directory node is used (i.e. the '-n' command line option will not be specified when issuing the 'pwpolicy' command).
 	DirectoryNode *oval_def.EntityObjectStringType `xml:"directory_node"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1229,11 +1342,11 @@ type Pwpolicy59Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Pwpolicy59State: The pwpolicy59_state element defines the different information that can be used to evaluate the password policy for the target user in the specified directory node. Please refer to the individual elements in the schema for more details about what each represents.
 type Pwpolicy59State struct {
 	XMLName xml.Name `xml:"pwpolicy59_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1243,52 +1356,76 @@ type Pwpolicy59State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// TargetUser: The target_user element specifies the user whose password policy information should be collected.
 	TargetUser *oval_def.EntityStateStringType `xml:"target_user"`
 
+	// Username: The username element specifies the username of the authenticator.
 	Username *oval_def.EntityStateStringType `xml:"username"`
 
+	// Userpass: The userpass element specifies the password of the authenticator as specified by the username element.
 	Userpass *oval_def.EntityStateStringType `xml:"userpass"`
 
+	// DirectoryNode: The directory_node element specifies the directory node that you would like to retrieve the password policy information from.
 	DirectoryNode *oval_def.EntityStateStringType `xml:"directory_node"`
 
+	// MaxChars: Maximum number of characters allowed in a password.
 	MaxChars *oval_def.EntityStateIntType `xml:"maxChars"`
 
+	// MaxFailedLoginAttempts: Maximum number of failed logins before the account is locked.
 	MaxFailedLoginAttempts *oval_def.EntityStateIntType `xml:"maxFailedLoginAttempts"`
 
+	// MinChars: Minimum number of characters allowed in a password.
 	MinChars *oval_def.EntityStateIntType `xml:"minChars"`
 
+	// PasswordCannotBeName: Defines if the password is allowed to be the same as the username or not.
 	PasswordCannotBeName *oval_def.EntityStateBoolType `xml:"passwordCannotBeName"`
 
+	// RequiresAlpha: Defines if the password must contain an alphabetical character or not.
 	RequiresAlpha *oval_def.EntityStateBoolType `xml:"requiresAlpha"`
 
+	// RequiresNumeric: Defines if the password must contain an numeric character or not.
 	RequiresNumeric *oval_def.EntityStateBoolType `xml:"requiresNumeric"`
 
+	// MaxMinutesUntilChangePassword: Maximum number of minutes until the password must be changed.
 	MaxMinutesUntilChangePassword *oval_def.EntityStateIntType `xml:"maxMinutesUntilChangePassword"`
 
+	// MinMinutesUntilChangePassword: Minimum number of minutes between password changes.
 	MinMinutesUntilChangePassword *oval_def.EntityStateIntType `xml:"minMinutesUntilChangePassword"`
 
+	// RequiresMixedCase: Defines if the password must contain upper and lower case characters or not.
 	RequiresMixedCase *oval_def.EntityStateBoolType `xml:"requiresMixedCase"`
 
+	// RequiresSymbol: Defines if the password must contain a symbol character or not.
 	RequiresSymbol *oval_def.EntityStateBoolType `xml:"requiresSymbol"`
 
+	// MinutesUntilFailedLoginReset: Number of minutes after login has been disabled due to too many failed login attempts to wait before reenabling login.
 	MinutesUntilFailedLoginReset *oval_def.EntityStateIntType `xml:"minutesUntilFailedLoginReset"`
 
+	// UsingHistory: 0 = user can reuse the current pass-word, 1 = user cannot reuse the current password, 2-15 = user cannot reuse the last n passwords.
 	UsingHistory *oval_def.EntityStateIntType `xml:"usingHistory"`
 
+	// CanModifyPasswordforSelf: If true, the user can change the password.
 	CanModifyPasswordforSelf *oval_def.EntityStateBoolType `xml:"canModifyPasswordforSelf"`
 
+	// UsingExpirationDate: If true, user is required to change password on the date in expirationDateGMT
 	UsingExpirationDate *oval_def.EntityStateBoolType `xml:"usingExpirationDate"`
 
+	// UsingHardExpirationDate: If true, user's account is disabled on the date in hardExpireDateGMT
 	UsingHardExpirationDate *oval_def.EntityStateBoolType `xml:"usingHardExpirationDate"`
 
-	ExpirationDateGMT *oval_def.EntityStateStringType `xml:"expirationDateGMT"`
+	// ExpirationDateGmt: Date for the password to expire, format is: mm/dd/yyyy. NOTE: The pwpolicy command returns the year as a two digit value, but OVAL uses four digit years; the pwpolicy value is converted to an OVAL compatible value.
+	ExpirationDateGmt *oval_def.EntityStateStringType `xml:"expirationDateGMT"`
 
-	HardExpireDateGMT *oval_def.EntityStateStringType `xml:"hardExpireDateGMT"`
+	// HardExpireDateGmt: Date for the user's account to be disabled, format is: mm/dd/yyyy. NOTE: The pwpolicy command returns the year as a two digit value, but OVAL uses four digit years; the pwpolicy value is converted to an OVAL compatible value.
+	HardExpireDateGmt *oval_def.EntityStateStringType `xml:"hardExpireDateGMT"`
 
+	// MaxMinutesUntilDisabled: User's account is disabled after this interval
 	MaxMinutesUntilDisabled *oval_def.EntityStateIntType `xml:"maxMinutesUntilDisabled"`
 
+	// MaxMinutesOfNonUse: User's account is disabled if it is not accessed by this interval
 	MaxMinutesOfNonUse *oval_def.EntityStateIntType `xml:"maxMinutesOfNonUse"`
 
+	// NewPasswordRequired: If true, the user will be prompted for a new password at the next authentication.
 	NewPasswordRequired *oval_def.EntityStateBoolType `xml:"newPasswordRequired"`
 
 	NotGuessablePattern *oval_def.EntityStateBoolType `xml:"notGuessablePattern"`
@@ -1298,11 +1435,11 @@ type Pwpolicy59State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RlimitTest: The rlimit_test is used to check system resource limits for launchd. It is a singleton object. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The state element specifies the system setup elements to check.
 type RlimitTest struct {
 	XMLName xml.Name `xml:"rlimit_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1325,11 +1462,11 @@ type RlimitTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RlimitObject: The rlimit_object is a singleton used to access resource limit information.
 type RlimitObject struct {
 	XMLName xml.Name `xml:"rlimit_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1342,11 +1479,11 @@ type RlimitObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// RlimitState: The rlimit_state element makes it possible to make assertions about the resource limits for launchd.
 type RlimitState struct {
 	XMLName xml.Name `xml:"rlimit_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1356,40 +1493,58 @@ type RlimitState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// CpuCurrent: The maximum amount of cpu time (in seconds) to be used by each process.
 	CpuCurrent *oval_def.EntityStateIntType `xml:"cpu_current"`
 
+	// CpuMax: cpu hard limit.
 	CpuMax *oval_def.EntityStateIntType `xml:"cpu_max"`
 
+	// FilesizeCurrent: The largest size (in bytes) file that may be created.
 	FilesizeCurrent *oval_def.EntityStateIntType `xml:"filesize_current"`
 
+	// FilesizeMax: filesize hard limit.
 	FilesizeMax *oval_def.EntityStateIntType `xml:"filesize_max"`
 
+	// DataCurrent: The maximum size (in bytes) of the data segment for a process; this defines how far a program may extend its break with the sbrk(2) system call.
 	DataCurrent *oval_def.EntityStateIntType `xml:"data_current"`
 
+	// DataMax: data hard limit.
 	DataMax *oval_def.EntityStateIntType `xml:"data_max"`
 
+	// StackCurrent: The maximum size (in bytes) of the stack segment for a process; this defines how far a program's stack segment may be extended. Stack extension is performed automatically by the system.
 	StackCurrent *oval_def.EntityStateIntType `xml:"stack_current"`
 
+	// StackMax: stack hard limit.
 	StackMax *oval_def.EntityStateIntType `xml:"stack_max"`
 
+	// CoreCurrent: The largest size (in bytes) core file that may be created.
 	CoreCurrent *oval_def.EntityStateIntType `xml:"core_current"`
 
+	// CoreMax: core hard limit.
 	CoreMax *oval_def.EntityStateIntType `xml:"core_max"`
 
+	// RssCurrent: The maximum size (in bytes) to which a process's resident set size may grow. This imposes a limit on the amount of physical memory to be given to a process; if memory is tight, the system will prefer to take memory from processes that are exceeding their declared resident set size.
 	RssCurrent *oval_def.EntityStateIntType `xml:"rss_current"`
 
+	// RssMax: rss hard limit.
 	RssMax *oval_def.EntityStateIntType `xml:"rss_max"`
 
+	// MemlockCurrent: The maximum size (in bytes) which a process may lock into memory using the mlock(2) function.
 	MemlockCurrent *oval_def.EntityStateIntType `xml:"memlock_current"`
 
+	// MemlockMax: memlock hard limit.
 	MemlockMax *oval_def.EntityStateIntType `xml:"memlock_max"`
 
+	// MaxprocCurrent: The maximum number of simultaneous processes for this user id.
 	MaxprocCurrent *oval_def.EntityStateIntType `xml:"maxproc_current"`
 
+	// MaxprocMax: maxproc hard limit.
 	MaxprocMax *oval_def.EntityStateIntType `xml:"maxproc_max"`
 
+	// MaxfilesCurrent: The maximum number of open files for this process.
 	MaxfilesCurrent *oval_def.EntityStateIntType `xml:"maxfiles_current"`
 
+	// MaxfilesMax: maxfiles hard limit.
 	MaxfilesMax *oval_def.EntityStateIntType `xml:"maxfiles_max"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1397,11 +1552,11 @@ type RlimitState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SoftwareupdateTest: The softwareupdate_test is used to check the status of automatic software updates on MacOSX. It is a singleton object. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The state element specifies the softwareupdate elements to check.
 type SoftwareupdateTest struct {
 	XMLName xml.Name `xml:"softwareupdate_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1424,11 +1579,11 @@ type SoftwareupdateTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SoftwareupdateObject: The softwareupdate_object is a singleton used to access automatic software update information.
 type SoftwareupdateObject struct {
 	XMLName xml.Name `xml:"softwareupdate_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1441,11 +1596,11 @@ type SoftwareupdateObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SoftwareupdateState: The softwareupdate_state element makes it possible to make assertions about the state of automatic software updates.
 type SoftwareupdateState struct {
 	XMLName xml.Name `xml:"softwareupdate_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1455,8 +1610,10 @@ type SoftwareupdateState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Schedule: Specifies whether automatic checking is enabled (true).
 	Schedule *oval_def.EntityStateBoolType `xml:"schedule"`
 
+	// SoftwareTitle: Specifies the title string for an available (not installed) software update.
 	SoftwareTitle *oval_def.EntityStateStringType `xml:"software_title"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1464,11 +1621,11 @@ type SoftwareupdateState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SystemprofilerTest: The systemprofiler_test is used to check the properties of the plist-style XML output from the "system_profiler -xml &lt;data type&gt;" command, for reading information about system inventory data on MacOSX. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an systemprofiler_object and the optional state element specifies the data to check.
 type SystemprofilerTest struct {
 	XMLName xml.Name `xml:"systemprofiler_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1491,11 +1648,11 @@ type SystemprofilerTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SystemprofilerObject: The systemprofiler_object element is used by an systemprofiler_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SystemprofilerObject struct {
 	XMLName xml.Name `xml:"systemprofiler_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1505,8 +1662,10 @@ type SystemprofilerObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// DataType: The data_type entity provides the datatype value that is desired.
 	DataType *EntityObjectDataTypeType `xml:"data_type"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at. Any valid Xpath 1.0 statement is usable with one exception, at most one field may be identified in the Xpath. This is because the value_of element in the data section is only designed to work against a single field. The only valid operator for xpath is equals since there is an infinite number of possible xpaths and determinining all those that do not equal a given xpath would be impossible.
 	Xpath *oval_def.EntityObjectStringType `xml:"xpath"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1516,11 +1675,11 @@ type SystemprofilerObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SystemprofilerState: The systemprofiler_state element defines a value used to evaluate the result of a specific systemprofiler_object item.
 type SystemprofilerState struct {
 	XMLName xml.Name `xml:"systemprofiler_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1530,10 +1689,13 @@ type SystemprofilerState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// DataType: The data_type entity provides the datatype value that is desired.
 	DataType *EntityStateDataTypeType `xml:"data_type"`
 
+	// Xpath: Specifies an Xpath expression describing the text node(s) or attribute(s) to look at.
 	Xpath *oval_def.EntityStateStringType `xml:"xpath"`
 
+	// ValueOf: The value_of element checks the value(s) of the text node(s) or attribute(s) found.
 	ValueOf *oval_def.EntityStateAnySimpleType `xml:"value_of"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1541,11 +1703,11 @@ type SystemprofilerState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SystemsetupTest: The systemsetup_test is used to check systemsetup properties. It is a singleton object. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The state element specifies the system setup elements to check.
 type SystemsetupTest struct {
 	XMLName xml.Name `xml:"systemsetup_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1568,11 +1730,11 @@ type SystemsetupTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SystemsetupObject: The systemsetup_object is a singleton used to access system setup information.
 type SystemsetupObject struct {
 	XMLName xml.Name `xml:"systemsetup_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1585,11 +1747,11 @@ type SystemsetupObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SystemsetupState: The systemsetup_state element makes it possible to make assertions about system setup settings.
 type SystemsetupState struct {
 	XMLName xml.Name `xml:"systemsetup_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1599,38 +1761,55 @@ type SystemsetupState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Timezone: Specifies the name of the time zone.
 	Timezone *oval_def.EntityStateStringType `xml:"timezone"`
 
+	// Usingnetworktime: Specifies weather the machine is using network time.
 	Usingnetworktime *oval_def.EntityStateBoolType `xml:"usingnetworktime"`
 
+	// Networktimeserver: Specifies the network time server.
 	Networktimeserver *oval_def.EntityStateStringType `xml:"networktimeserver"`
 
+	// Computersleep: Specifies the computer sleep inactivity timer, or 0 for never.
 	Computersleep *oval_def.EntityStateIntType `xml:"computersleep"`
 
+	// Displaysleep: Specifies the display sleep inactivity timer, or 0 for never.
 	Displaysleep *oval_def.EntityStateIntType `xml:"displaysleep"`
 
+	// Harddisksleep: Specifies the hard disk sleep inactivity timer, or 0 for never.
 	Harddisksleep *oval_def.EntityStateIntType `xml:"harddisksleep"`
 
+	// Wakeonmodem: Specifies whether the computer will wake up if the modem is accessed.
 	Wakeonmodem *oval_def.EntityStateBoolType `xml:"wakeonmodem"`
 
+	// Wakeonnetworkaccess: Specifies whether the computer will wake up if the network is accessed.
 	Wakeonnetworkaccess *oval_def.EntityStateBoolType `xml:"wakeonnetworkaccess"`
 
+	// Restartfreeze: Specifies whether the computer will restart after freezing.
 	Restartfreeze *oval_def.EntityStateBoolType `xml:"restartfreeze"`
 
+	// Allowpowerbuttontosleepcomputer: Specifies whether the power button can be used to cause the computer to sleep.
 	Allowpowerbuttontosleepcomputer *oval_def.EntityStateBoolType `xml:"allowpowerbuttontosleepcomputer"`
 
+	// Remotelogin: Specifies whether remote logins are allowed.
 	Remotelogin *oval_def.EntityStateBoolType `xml:"remotelogin"`
 
+	// Remoteappleevents: Specifies whether remote Apple events are enabled.
 	Remoteappleevents *oval_def.EntityStateBoolType `xml:"remoteappleevents"`
 
+	// Computername: Specifies the computer's name.
 	Computername *oval_def.EntityStateStringType `xml:"computername"`
 
+	// Startupdisk: Specifies the startup disk.
 	Startupdisk *oval_def.EntityStateStringType `xml:"startupdisk"`
 
+	// Waitforstartupafterpowerfailure: Specifies the number of seconds the computer waits to start up after a power failure.
 	Waitforstartupafterpowerfailure *oval_def.EntityStateIntType `xml:"waitforstartupafterpowerfailure"`
 
+	// Disablekeyboardwhenenclosurelockisengaged: Specifies whether the keyboard is locked when the closure lock is engaged.
 	Disablekeyboardwhenenclosurelockisengaged *oval_def.EntityStateBoolType `xml:"disablekeyboardwhenenclosurelockisengaged"`
 
+	// Kernelbootarchitecturesetting: Specifies the kernel boot architecture setting.
 	Kernelbootarchitecturesetting *oval_def.EntityStateStringType `xml:"kernelbootarchitecturesetting"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1640,38 +1819,47 @@ type SystemsetupState struct {
 
 // XSD ComplexType declarations
 
+// EntityObjectDataTypeType: The EntityObjectDataTypeType complex type defines the different values that are valid for the data_type entity of a system_profiler object. These values describe the system_profiler XML data to be retrieved. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the index entity. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values. Please note that the values identified are for the data_type entity and are not valid values for the datatype attribute.
 type EntityObjectDataTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateDataTypeType: The EntityStateDataTypeType complex type defines the different values that are valid for the data_type entity of a system_profiler state. These values describe the system_profiler XML data to be retrieved. The empty string is also allowed as a valid value to support an empty element that is found when a variable reference is used within the index entity. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values. Please note that the values identified are for the data_type entity and are not valid values for the datatype attribute.
 type EntityStateDataTypeType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStatePermissionCompareType: The EntityStatePermissionCompareType complex type restricts a string value to more, less, or same which specifies if an actual permission is different than the expected permission (more or less restrictive) or if the permission is the same. The empty string is also allowed to support empty elements associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStatePermissionCompareType struct {
 	XMLName xml.Name
 
@@ -1679,19 +1867,23 @@ type EntityStatePermissionCompareType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStatePlistTypeType: The EntityStatePlistTypeType complex type restricts a string value to the seven values CFString, CFNumber, CFBoolean, CFDate, CFData, CFArray, and CFDictionary that specify the datatype of the value associated with a property list preference key. The empty string is also allowed to support empty elements associated with variable references. Note that when using pattern matches and variables care must be taken to ensure that the regular expression and variable values align with the enumerated values.
 type EntityStatePlistTypeType struct {
 	XMLName xml.Name
 
@@ -1699,17 +1891,20 @@ type EntityStatePlistTypeType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

@@ -8,67 +8,80 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the HP-UX specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core System Characteristic Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core System Characteristic Schema is not outlined here.
+
+// GetconfItem: These items contain getconf items.
 type GetconfItem struct {
 	XMLName xml.Name `xml:"getconf_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ParameterName: This is the parameter name to check
 	ParameterName *oval_sc.EntityItemStringType `xml:"parameter_name"`
 
+	// Pathname: This is the pathname to check
 	Pathname *oval_sc.EntityItemStringType `xml:"pathname"`
 
+	// Output: The output produced by the getconf command.
 	Output *oval_sc.EntityItemAnySimpleType `xml:"output"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// NddItem: This item represents data collected by the ndd command.
 type NddItem struct {
 	XMLName xml.Name `xml:"ndd_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Device: The name of the device for which the parameter was collected.
 	Device *oval_sc.EntityItemStringType `xml:"device"`
 
+	// Parameter: The name of a parameter for example, ip_forwarding
 	Parameter *oval_sc.EntityItemStringType `xml:"parameter"`
 
+	// Value: The observed value of the named parameter.
 	Value *oval_sc.EntityItemAnySimpleType `xml:"value"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// PatchItem: From /usr/sbin/swlist -l patch PHxx_yyyyy. See swlist manpage for specific fields
 type PatchItem struct {
 	XMLName xml.Name `xml:"patch_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// PatchName: This is the patch name to check.
 	PatchName *oval_sc.EntityItemStringType `xml:"patch_name"`
 
+	// Swtype: HP-UX patch names begin with 'PH'
 	Swtype *oval_sc.EntityItemStringType `xml:"swtype"`
 
+	// AreaPatched: The third and fourth characters in HP-UX patch names indicate the area of software being patched. CO - General HP-UX commands KL - Kernel patches NE - Network specific patches SS - All other subsystems (X11, starbase, etc.)
 	AreaPatched *oval_sc.EntityItemStringType `xml:"area_patched"`
 
+	// PatchBase: The sixth through tenth characters in HP-UX patch names represent a unique numeric identifier for the patch.
 	PatchBase *oval_sc.EntityItemStringType `xml:"patch_base"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// SwlistItem: Output of /usr/sbin/swlist command. Note: A quick way to check for the installation of a specific fileset is to use the command 'swlist -a version -l fileset filesetname'. See manpage for swlist for explanation of additional command options.
 type SwlistItem struct {
 	XMLName xml.Name `xml:"swlist_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Swlist: This is the name of the bundle or fileset to check.
 	Swlist *oval_sc.EntityItemStringType `xml:"swlist"`
 
 	Bundle *oval_sc.EntityItemStringType `xml:"bundle"`
@@ -84,74 +97,104 @@ type SwlistItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// TrustedItem: These items contain account settings for trusted HP-UX installations.
 type TrustedItem struct {
 	XMLName xml.Name `xml:"trusted_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Username: This is the name of the user being checked
 	Username *oval_sc.EntityItemStringType `xml:"username"`
 
+	// Uid: The user's ID
 	Uid *oval_sc.EntityItemIntType `xml:"uid"`
 
+	// Password: This is the encrypted version of the user's password
 	Password *oval_sc.EntityItemStringType `xml:"password"`
 
+	// AccountOwner: The Account owner for pseudo-users
 	AccountOwner *oval_sc.EntityItemIntType `xml:"account_owner"`
 
+	// BootAuth: Boot authorization
 	BootAuth *oval_sc.EntityItemStringType `xml:"boot_auth"`
 
+	// AuditId: getprpwaid uses the audit ID rather than the UID
 	AuditId *oval_sc.EntityItemStringType `xml:"audit_id"`
 
 	AuditFlag *oval_sc.EntityItemStringType `xml:"audit_flag"`
 
+	// PwChangeMin: Minimum time between password changes
 	PwChangeMin *oval_sc.EntityItemStringType `xml:"pw_change_min"`
 
+	// PwMaxSize: Maximum password length in characters
 	PwMaxSize *oval_sc.EntityItemIntType `xml:"pw_max_size"`
 
+	// PwExpiration: Password expiration time in seconds
 	PwExpiration *oval_sc.EntityItemIntType `xml:"pw_expiration"`
 
+	// PwLife: Trusted lifetime, after which the account is locked
 	PwLife *oval_sc.EntityItemStringType `xml:"pw_life"`
 
+	// PwChangeS: Time of last successful password change
 	PwChangeS *oval_sc.EntityItemStringType `xml:"pw_change_s"`
 
+	// PwChangeU: Time of last unsuccessful password change
 	PwChangeU *oval_sc.EntityItemStringType `xml:"pw_change_u"`
 
+	// AcctExpire: Absolute account lifetime in seconds
 	AcctExpire *oval_sc.EntityItemIntType `xml:"acct_expire"`
 
+	// MaxLlogin: Maximum time allowed between logins before the account is locked
 	MaxLlogin *oval_sc.EntityItemStringType `xml:"max_llogin"`
 
+	// ExpWarning: The time in seconds before expiration when a warning will appear
 	ExpWarning *oval_sc.EntityItemIntType `xml:"exp_warning"`
 
+	// UsrChgPw: Who can change this user's password
 	UsrChgPw *oval_sc.EntityItemStringType `xml:"usr_chg_pw"`
 
+	// GenPw: Allows user to use system-generated passwords
 	GenPw *oval_sc.EntityItemStringType `xml:"gen_pw"`
 
+	// PwRestrict: Whether a triviality check is performed on user-generated passwords
 	PwRestrict *oval_sc.EntityItemStringType `xml:"pw_restrict"`
 
+	// PwNull: Determines if null passwords are allowed for this account
 	PwNull *oval_sc.EntityItemStringType `xml:"pw_null"`
 
+	// PwGenChar: Allows password generator to use random printable ASCII characters
 	PwGenChar *oval_sc.EntityItemStringType `xml:"pw_gen_char"`
 
+	// PwGenLet: Allows password generator to use random letters
 	PwGenLet *oval_sc.EntityItemStringType `xml:"pw_gen_let"`
 
+	// LoginTime: Specifies the times when the user may login to this account
 	LoginTime *oval_sc.EntityItemStringType `xml:"login_time"`
 
+	// PwChanger: The user ID of the user who last changed the password on the user's account, if it was not the account owner
 	PwChanger *oval_sc.EntityItemIntType `xml:"pw_changer"`
 
+	// LoginTimeS: The time of the last successful login using this account
 	LoginTimeS *oval_sc.EntityItemStringType `xml:"login_time_s"`
 
+	// LoginTimeU: The time of the last unsuccessful login using this account
 	LoginTimeU *oval_sc.EntityItemStringType `xml:"login_time_u"`
 
+	// LoginTtyS: The terminal or remote host associated with the last successful login to the account
 	LoginTtyS *oval_sc.EntityItemStringType `xml:"login_tty_s"`
 
+	// LoginTtyU: The terminal or remote hosts associated with the last unsuccessful login to the account
 	LoginTtyU *oval_sc.EntityItemStringType `xml:"login_tty_u"`
 
+	// NumULogins: The number of unsuccessful login attempts since that last successful login
 	NumULogins *oval_sc.EntityItemIntType `xml:"num_u_logins"`
 
+	// MaxULogins: The maximum number of unsuccessful login attempts before the account is locked
 	MaxULogins *oval_sc.EntityItemIntType `xml:"max_u_logins"`
 
+	// LockFlag: Indicates whether the administrative lock on the account is set
 	LockFlag *oval_sc.EntityItemBoolType `xml:"lock_flag"`
 
 	Message []oval.MessageType `xml:"message"`
@@ -161,10 +204,13 @@ type TrustedItem struct {
 type SwlistItemVersion struct {
 	XMLName xml.Name `xml:"version"`
 
+	// Datatype: The optional datatype attribute determines the type of data expected (the default datatype is 'string'). Note that the datatype attribute simply defines the type of data as found on the system, it is not used during evaluation. An OVAL Definition defines how the data should be interpreted during analysis. If the definition states a datatype that is different than what the system characteristics presents, then a type cast must be made.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
+	// Status: The optional status attribute holds information regarding the success of the data collection. For example, if there was an error collecting a particular piece of data, then the status would be 'error'.
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 }
 

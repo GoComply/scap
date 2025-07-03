@@ -6,31 +6,40 @@ import (
 	"encoding/xml"
 )
 
-// Element
+// The following is a description of the common types that are shared across the different schemas within Open Vulnerability and Assessment Language (OVAL). Each type is described in detail and should provide the information necessary to understand what each represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between these type is not outlined here.
+
+// DeprecatedInfo: The deprecated_info element is used in documenting deprecation information for items in the OVAL Language. It is declared globally as it can be found in any of the OVAL schemas and is used as part of the appinfo documentation and therefore it is not an element that can be declared locally and based off a global type..
 type DeprecatedInfo struct {
 	XMLName xml.Name `xml:"deprecated_info"`
 
+	// Version: The required version child element details the version of OVAL in which the construct became deprecated.
 	Version string `xml:"version"`
 
+	// Reason: The required reason child element is used to provide an explanation as to why an item was deprecated and to direct a reader to possible alternative structures within OVAL.
 	Reason string `xml:"reason"`
 
+	// Comment: The optional comment child element is used to supply additional information regarding the element's deprecated status.
 	Comment string `xml:"comment"`
 }
 
-// Element
+// ElementMapping: The element_mapping element is used in documenting which tests, objects, states, and system characteristic items are associated with each other. It provides a way to explicitly and programatically associate the test, object, state, and item definitions.
 type ElementMapping struct {
 	XMLName xml.Name `xml:"element_mapping"`
 
+	// Test: The local name of an OVAL test.
 	Test ElementMapItemType `xml:"test"`
 
+	// Object: The local name of an OVAL object.
 	Object *ElementMapItemType `xml:"object"`
 
+	// State: The local name of an OVAL state.
 	State *ElementMapItemType `xml:"state"`
 
+	// Item: The local name of an OVAL item.
 	Item *ElementMapItemType `xml:"item"`
 }
 
-// Element
+// Notes: Element for containing notes; can be replaced using a substitution group.
 type Notes struct {
 	XMLName xml.Name `xml:"notes"`
 
@@ -39,83 +48,93 @@ type Notes struct {
 
 // XSD ComplexType declarations
 
+// ElementMapType: The ElementMapType is used to document the association between OVAL test, object, state, and item entities.
 type ElementMapType struct {
 	XMLName xml.Name
 
+	// Test: The local name of an OVAL test.
 	Test ElementMapItemType `xml:"test"`
 
+	// Object: The local name of an OVAL object.
 	Object *ElementMapItemType `xml:"object"`
 
+	// State: The local name of an OVAL state.
 	State *ElementMapItemType `xml:"state"`
 
+	// Item: The local name of an OVAL item.
 	Item *ElementMapItemType `xml:"item"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// ElementMapItemType: Defines a reference to an OVAL entity using the schema namespace and element name.
 type ElementMapItemType struct {
 	XMLName xml.Name
 
+	// TargetNamespace: The target_namespace attributes indicates what XML namespace the element belongs to. If not present, the namespace is that of the document in which the ElementMapItemType instance element appears.
 	TargetNamespace string `xml:"target_namespace,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// DeprecatedInfoType: The DeprecatedInfoType complex type defines a structure that will be used to flag schema-defined constructs as deprecated. It holds information related to the version of OVAL when the construct was deprecated along with a reason and comment.
 type DeprecatedInfoType struct {
 	XMLName xml.Name
 
+	// Version: The required version child element details the version of OVAL in which the construct became deprecated.
 	Version string `xml:"version"`
 
+	// Reason: The required reason child element is used to provide an explanation as to why an item was deprecated and to direct a reader to possible alternative structures within OVAL.
 	Reason string `xml:"reason"`
 
+	// Comment: The optional comment child element is used to supply additional information regarding the element's deprecated status.
 	Comment string `xml:"comment"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// GeneratorType: The GeneratorType complex type defines an element that is used to hold information about when a particular OVAL document was compiled, what version of the schema was used, what tool compiled the document, and what version of that tool was used.
 type GeneratorType struct {
 	XMLName xml.Name
 
+	// ProductName: The optional product_name specifies the name of the application used to generate the file. Product names SHOULD be expressed as CPE Names according to the Common Platform Enumeration: Name Matching Specification Version 2.3.
 	ProductName string `xml:"product_name"`
 
+	// ProductVersion: The optional product_version specifies the version of the application used to generate the file.
 	ProductVersion string `xml:"product_version"`
 
+	// SchemaVersion: The required schema_version specifies the version of the OVAL Schema that the document has been written in and that should be used for validation. The versions for both the Core and any platform extensions used should be declared in separate schema_version elements.
 	SchemaVersion []SchemaVersionType `xml:"schema_version"`
 
+	// Timestamp: The required timestamp specifies when the particular OVAL document was compiled. The format for the timestamp is yyyy-mm-ddThh:mm:ss. Note that the timestamp element does not specify when a definition (or set of definitions) was created or modified but rather when the actual XML document that contains the definition was created. For example, the document might have pulled a bunch of existing OVAL Definitions together, each of the definitions having been created at some point in the past. The timestamp in this case would be when the combined document was created.
 	Timestamp string `xml:"timestamp"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// SchemaVersionType: The core version MUST match on all platform schema versions.
 type SchemaVersionType struct {
 	XMLName xml.Name
 
+	// Platform: The platform attribute is available to indicate the URI of the target namespace for any platform extension being included. This platform attribute is to be omitted when specifying the core schema version.
 	Platform string `xml:"platform,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// MessageType: The MessageType complex type defines the structure for which messages are relayed from the data collection engine. Each message is a text string that has an associated level attribute identifying the type of message being sent. These messages could be error messages, warning messages, debug messages, etc. How the messages are used by tools and whether or not they are displayed to the user is up to the specific implementation. Please refer to the description of the MessageLevelEnumeration for more information about each type of message.
 type MessageType struct {
 	XMLName xml.Name
 
 	Level MessageLevelEnumeration `xml:"level,attr,omitempty"`
 
-	Text     string `xml:",chardata"`
-	InnerXml string `xml:",innerxml"`
+	Text string `xml:",chardata"`
 }
 
+// NotesType: The NotesType complex type is a container for one or more note child elements. Each note contains some information about the definition or tests that it references. A note may record an unresolved question about the definition or test or present the reason as to why a particular approach was taken.
 type NotesType struct {
 	XMLName xml.Name
 
 	Note []string `xml:",any"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations
 
+// CheckEnumeration: The CheckEnumeration simple type defines acceptable check values, which are used to determine the final result of something based on the results of individual components. When used to define the relationship between objects and states, each check value defines how many of the matching objects (items except those with a status of does not exist) must satisfy the given state for the test to return true. When used to define the relationship between instances of a given entity, the different check values defines how many instances must be true for the entity to return true. When used to define the relationship between entities and multiple variable values, each check value defines how many variable values must be true for the entity to return true.
 type CheckEnumeration string
 
 const CheckEnumerationAll CheckEnumeration = "all"
@@ -128,6 +147,7 @@ const CheckEnumerationNoneSatisfy CheckEnumeration = "none satisfy"
 
 const CheckEnumerationOnlyOne CheckEnumeration = "only one"
 
+// ClassEnumeration: The ClassEnumeration simple type defines the different classes of definitions. Each class defines a certain intent regarding how an OVAL Definition is written and what that definition is describing. The specified class gives a hint about the definition so a user can know what the definition writer is trying to say. Note that the class does not make a statement about whether a true result is good or bad as this depends on the use of an OVAL Definition. These classes are also used to group definitions by the type of system state they are describing. For example, this allows users to find all the vulnerability (or patch, or inventory, etc) definitions.
 type ClassEnumeration string
 
 const ClassEnumerationCompliance ClassEnumeration = "compliance"
@@ -140,6 +160,7 @@ const ClassEnumerationPatch ClassEnumeration = "patch"
 
 const ClassEnumerationVulnerability ClassEnumeration = "vulnerability"
 
+// SimpleDatatypeEnumeration: The SimpleDatatypeEnumeration simple type defines the legal datatypes that are used to describe the values of individual entities that can be represented in a XML string field. The value may have structure and a pattern, but it is represented as string content.
 type SimpleDatatypeEnumeration string
 
 const SimpleDatatypeEnumerationBinary SimpleDatatypeEnumeration = "binary"
@@ -166,12 +187,15 @@ const SimpleDatatypeEnumerationString SimpleDatatypeEnumeration = "string"
 
 const SimpleDatatypeEnumerationVersion SimpleDatatypeEnumeration = "version"
 
+// ComplexDatatypeEnumeration: The ComplexDatatypeEnumeration simple type defines the complex legal datatypes that are supported in OVAL. These datatype describe the values of individual entities where the entity has some complex structure beyond simple string like content.
 type ComplexDatatypeEnumeration string
 
 const ComplexDatatypeEnumerationRecord ComplexDatatypeEnumeration = "record"
 
+// DatatypeEnumeration: The DatatypeEnumeration simple type defines the legal datatypes that are used to describe the values of individual entities. A value should be interpreted according to the specified type. This is most important during comparisons. For example, is '21' less than '123'? will evaluate to true if the datatypes are 'int', but will evaluate to 'false' if the datatypes are 'string'. Another example is applying the 'equal' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are.
 type DatatypeEnumeration string
 
+// ExistenceEnumeration: The ExistenceEnumeration simple type defines acceptable existence values, which are used to determine a result based on the existence of individual components. The main use for this is for a test regarding the existence of objects on the system. Its secondary use is for a state regarding the existence of entities in corresponding items.
 type ExistenceEnumeration string
 
 const ExistenceEnumerationAllExist ExistenceEnumeration = "all_exist"
@@ -184,6 +208,7 @@ const ExistenceEnumerationNoneExist ExistenceEnumeration = "none_exist"
 
 const ExistenceEnumerationOnlyOneExists ExistenceEnumeration = "only_one_exists"
 
+// FamilyEnumeration: The FamilyEnumeration simple type is a listing of families that OVAL supports at this time. Since new family values can only be added with new version of the schema, the value of 'undefined' is to be used when the desired family is not available. Note that use of the undefined family value does not target all families, rather it means that some family other than one of the defined values is targeted.
 type FamilyEnumeration string
 
 const FamilyEnumerationAndroid FamilyEnumeration = "android"
@@ -212,6 +237,7 @@ const FamilyEnumerationVmwareInfrastructure FamilyEnumeration = "vmware_infrastr
 
 const FamilyEnumerationWindows FamilyEnumeration = "windows"
 
+// MessageLevelEnumeration: The MessageLevelEnumeration simple type defines the different levels associated with a message. There is no specific criteria about which messages get assigned which level. This is completely arbitrary and up to the content producer to decide what is an error message and what is a debug message.
 type MessageLevelEnumeration string
 
 const MessageLevelEnumerationDebug MessageLevelEnumeration = "debug"
@@ -224,6 +250,7 @@ const MessageLevelEnumerationInfo MessageLevelEnumeration = "info"
 
 const MessageLevelEnumerationWarning MessageLevelEnumeration = "warning"
 
+// OperationEnumeration: The OperationEnumeration simple type defines acceptable operations. Each operation defines how to compare entities against their actual values.
 type OperationEnumeration string
 
 const OperationEnumerationEquals OperationEnumeration = "equals"
@@ -252,6 +279,7 @@ const OperationEnumerationSubsetOf OperationEnumeration = "subset of"
 
 const OperationEnumerationSupersetOf OperationEnumeration = "superset of"
 
+// OperatorEnumeration: The OperatorEnumeration simple type defines acceptable operators. Each operator defines how to evaluate multiple arguments.
 type OperatorEnumeration string
 
 const OperatorEnumerationAnd OperatorEnumeration = "AND"
@@ -262,20 +290,29 @@ const OperatorEnumerationOr OperatorEnumeration = "OR"
 
 const OperatorEnumerationXor OperatorEnumeration = "XOR"
 
-type DefinitionIDPattern string
+// DefinitionIdpattern: Define the format for acceptable OVAL Definition ids. An urn format is used with the id starting with the word oval followed by a unique string, followed by the three letter code 'def', and ending with an integer.
+type DefinitionIdpattern string
 
-type ObjectIDPattern string
+// ObjectIdpattern: Define the format for acceptable OVAL Object ids. An urn format is used with the id starting with the word oval followed by a unique string, followed by the three letter code 'obj', and ending with an integer.
+type ObjectIdpattern string
 
-type StateIDPattern string
+// StateIdpattern: Define the format for acceptable OVAL State ids. An urn format is used with the id starting with the word oval followed by a unique string, followed by the three letter code 'ste', and ending with an integer.
+type StateIdpattern string
 
-type TestIDPattern string
+// TestIdpattern: Define the format for acceptable OVAL Test ids. An urn format is used with the id starting with the word oval followed by a unique string, followed by the three letter code 'tst', and ending with an integer.
+type TestIdpattern string
 
-type VariableIDPattern string
+// VariableIdpattern: Define the format for acceptable OVAL Variable ids. An urn format is used with the id starting with the word oval followed by a unique string, followed by the three letter code 'var', and ending with an integer.
+type VariableIdpattern string
 
-type ItemIDPattern int64
+// ItemIdpattern: Define the format for acceptable OVAL Item ids. The format is an integer. An item id is used to identify the different items found in an OVAL System Characteristics file.
+type ItemIdpattern int64
 
+// SchemaVersionPattern: Define the format for acceptable OVAL Language version strings.
 type SchemaVersionPattern string
 
+// EmptyStringType: The EmptyStringType simple type is a restriction of the built-in string simpleType. The only allowed string is the empty string with a length of zero. This type is used by certain elements to allow empty content when non-string data is accepted. See the EntityIntType in the OVAL Definition Schema for an example of its use.
 type EmptyStringType string
 
+// NonEmptyStringType: The NonEmptyStringType simple type is a restriction of the built-in string simpleType. Empty strings are not allowed. This type is used by comment attributes where an empty value is not allowed.
 type NonEmptyStringType string

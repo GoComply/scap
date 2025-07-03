@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the SharePoint specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// SpwebapplicationTest: The spwebapplication test is used to check the properties or permission settings of a SharePoint web application. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a spwebapplication_object and the optional state element specifies the data to check.
 type SpwebapplicationTest struct {
 	XMLName xml.Name `xml:"spwebapplication_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type SpwebapplicationTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpwebapplicationObject: The spwebapplication_object element is used by a spwebapplication test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpwebapplicationObject struct {
 	XMLName xml.Name `xml:"spwebapplication_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type SpwebapplicationObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Webapplicationurl: The webapplicationurl element defines the SPWebApplication to evaluate specific security settings or permissions.
 	Webapplicationurl *oval_def.EntityObjectStringType `xml:"webapplicationurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type SpwebapplicationObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpwebapplicationState: The spwebapplication_state element defines security settings and permissions that can be checked for a specified SPWebApplications.
 type SpwebapplicationState struct {
 	XMLName xml.Name `xml:"spwebapplication_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,108 +76,160 @@ type SpwebapplicationState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Webapplicationurl: The webapplicationurl element identifies a Web application.
 	Webapplicationurl *oval_def.EntityStateStringType `xml:"webapplicationurl"`
 
+	// Allowparttopartcommunication: If the allowparttopartcommunication is enabled it allows users to create connections between Web parts.
 	Allowparttopartcommunication *oval_def.EntityStateBoolType `xml:"allowparttopartcommunication"`
 
+	// Allowaccesstowebpartcatalog: If the allowaccesstowebpartcatalog is enabled it allows users access to the online Web part gallery.
 	Allowaccesstowebpartcatalog *oval_def.EntityStateBoolType `xml:"allowaccesstowebpartcatalog"`
 
+	// Blockedfileextention: The blockedfileextention element identifies one or more file extensions that should be blocked from the deployment.
 	Blockedfileextention *oval_def.EntityStateStringType `xml:"blockedfileextention"`
 
+	// Defaultquotatemplate: The defaultquotatemplate element identifies the default quota template set for the web application.
 	Defaultquotatemplate *oval_def.EntityStateStringType `xml:"defaultquotatemplate"`
 
+	// Externalworkflowparticipantsenabled: If the externalworkflowparticipantsenabled is enabled then users are allowed to participate in workflows.
 	Externalworkflowparticipantsenabled *oval_def.EntityStateBoolType `xml:"externalworkflowparticipantsenabled"`
 
+	// Recyclebinenabled: If the recyclebinenabled is enabled it will be easy to restore deleted files.
 	Recyclebinenabled *oval_def.EntityStateBoolType `xml:"recyclebinenabled"`
 
+	// Automaticallydeleteunusedsitecollections: If the automaticallydeleteunusedsitecollections is disabled, sites will not be automatically deleted.
 	Automaticallydeleteunusedsitecollections *oval_def.EntityStateBoolType `xml:"automaticallydeleteunusedsitecollections"`
 
+	// Selfservicesitecreationenabled: If the selfservicesitecreationenabled is enabled users will be allowed to create and manager their own top-level Web sites .
 	Selfservicesitecreationenabled *oval_def.EntityStateBoolType `xml:"selfservicesitecreationenabled"`
 
+	// Secondstagerecyclebinquota: The secondstagerecyclebinquota is the quota for the second stage recyle bin
 	Secondstagerecyclebinquota *oval_def.EntityStateIntType `xml:"secondstagerecyclebinquota"`
 
+	// Recyclebinretentionperiod: The recyclebinretentionperiod is the retention period for the recyle bin
 	Recyclebinretentionperiod *oval_def.EntityStateIntType `xml:"recyclebinretentionperiod"`
 
+	// Outboundmailserverinstance: The outboundmailserverinstance element identifies the string name of the SMPT server. Note that there is a small naming inconsistency here. The SharePoint SDK calls this 'outboundmailserviceinstance'.
 	Outboundmailserverinstance *oval_def.EntityStateStringType `xml:"outboundmailserverinstance"`
 
+	// Outboundmailsenderaddress: The outboundmailsenderaddress element identifies the address that the mail is being send from.
 	Outboundmailsenderaddress *oval_def.EntityStateStringType `xml:"outboundmailsenderaddress"`
 
+	// Outboundmailreplytoaddress: The outboundmailreplytoaddress element identifies the address that the mail should be replied to.
 	Outboundmailreplytoaddress *oval_def.EntityStateStringType `xml:"outboundmailreplytoaddress"`
 
+	// Secvalexpires: If the secvalexpires is enabled then the form will expire after the security validation time (timeout) .
 	Secvalexpires *oval_def.EntityStateBoolType `xml:"secvalexpires"`
 
+	// Timeout: The timeout is the amount of time before security validation expires in seconds.
 	Timeout *oval_def.EntityStateIntType `xml:"timeout"`
 
+	// Isadministrationwebapplication: If this is true, the web application to which this test refers is the Central Administration web application.
 	Isadministrationwebapplication *oval_def.EntityStateBoolType `xml:"isadministrationwebapplication"`
 
+	// Applicationpoolname: The applicationpoolname element identifies the web applications application pool name.
 	Applicationpoolname *oval_def.EntityStateStringType `xml:"applicationpoolname"`
 
+	// Applicationpoolusername: The applicationpoolusername element identifies the web applications application pool username.
 	Applicationpoolusername *oval_def.EntityStateStringType `xml:"applicationpoolusername"`
 
+	// Openitems: If the openitems is enabled the permission to view the source of documents with server-side file handlers is available to use for this web application..
 	Openitems *oval_def.EntityStateBoolType `xml:"openitems"`
 
+	// Addlistitems: If the addlistitems is enabled the permission to add items to lists, add documents to document libraries, and add Web discussion comments is available to use for this Web application.
 	Addlistitems *oval_def.EntityStateBoolType `xml:"addlistitems"`
 
+	// Approveitems: If approveitems is enabled the permission to approve a minor version of a list item or document is available to use for this the Web application.
 	Approveitems *oval_def.EntityStateBoolType `xml:"approveitems"`
 
+	// Deletelistitems: If the deletelistitems is enabled the permission to delete items from a list, documents from a document library, and Web discussion comments in documents is available to use for this Web application.
 	Deletelistitems *oval_def.EntityStateBoolType `xml:"deletelistitems"`
 
+	// Deleteversions: If the deleteversions is enabled the permission to delete past versions of a list item or document is available to use for this Web application.
 	Deleteversions *oval_def.EntityStateBoolType `xml:"deleteversions"`
 
+	// Editlistitems: If the editlistitems is enabled the permission to edit items in lists, edit documents in document libraries, edit Web discussion comments in documents, and customize Web Part Pages in document libraries is available to use for this Web application.
 	Editlistitems *oval_def.EntityStateBoolType `xml:"editlistitems"`
 
+	// Managelists: If the managelists is enabled the permission to create and delete lists, add or remove columns in a list, and add or remove public views of a list is available to use for this the Web application.
 	Managelists *oval_def.EntityStateBoolType `xml:"managelists"`
 
+	// Viewversions: If the viewversions is enabled the permission to view past versions of a list item or document is available to use for this Web application.
 	Viewversions *oval_def.EntityStateBoolType `xml:"viewversions"`
 
+	// Viewlistitems: If the viewlistitems is enabled the permission to view items in lists, documents in document libraries, and view Web discussion commentsis available is available to use for this Web application.
 	Viewlistitems *oval_def.EntityStateBoolType `xml:"viewlistitems"`
 
+	// Cancelcheckout: If the cancelcheckout is enabled the permission to discard or check in a document which is checked out to another user is available to use for this the Web application.
 	Cancelcheckout *oval_def.EntityStateBoolType `xml:"cancelcheckout"`
 
+	// Createalerts: If the createalerts is enabled the permission to Create e-mail alerts is available to use for this Web application.
 	Createalerts *oval_def.EntityStateBoolType `xml:"createalerts"`
 
+	// Viewformpages: If the viewformpages is enabled the permission to view forms, views, and application pages, and enumerate lists is available to use for this Web application.
 	Viewformpages *oval_def.EntityStateBoolType `xml:"viewformpages"`
 
+	// Viewpages: If the viewpages is enabled the permission to view pages in a Web site is available to use for this Web application.
 	Viewpages *oval_def.EntityStateBoolType `xml:"viewpages"`
 
+	// Addandcustomizepages: If addandcustomizepages is enabled the permission to add, change, or delete HTML pages or Web Part Pages, and edit the Web site using a Windows SharePoint Services–compatible editor is available to use for this Web application.
 	Addandcustomizepages *oval_def.EntityStateBoolType `xml:"addandcustomizepages"`
 
+	// Applystylesheets: If the applystylesheets is enabled the permission to Apply a style sheet (.css file) to the Web site is available to use for this Web application.
 	Applystylesheets *oval_def.EntityStateBoolType `xml:"applystylesheets"`
 
+	// Applythemeandborder: If the applythemeanborder is enabled the permission to apply a theme or borders to the entire Web site is available to use for this Web application.
 	Applythemeandborder *oval_def.EntityStateBoolType `xml:"applythemeandborder"`
 
+	// Browsedirectories: If the browsedirectories is enabled the permission to enumerate files and folders in a Web site using Microsoft Office SharePoint Designer and WebDAV interfaces is available to use for this Web application.
 	Browsedirectories *oval_def.EntityStateBoolType `xml:"browsedirectories"`
 
+	// Browseuserinfo: If the browseuserinfo is enabled the permission to view information about users of the Web site is available to use for this Web application.
 	Browseuserinfo *oval_def.EntityStateBoolType `xml:"browseuserinfo"`
 
+	// Creategroups: If the creategroups is enabled the permission to create a group of users that can be used anywhere within the site collection is available to use for this Web application.
 	Creategroups *oval_def.EntityStateBoolType `xml:"creategroups"`
 
+	// Createsscsite: If the createsscsite is enabled the permission to create a Web site using Self-Service Site Creation is available to use for this Web application.
 	Createsscsite *oval_def.EntityStateBoolType `xml:"createsscsite"`
 
+	// Editmyuserinfo: If the editmyuserinfo is enabled the permission to allows a user to change his or her user information, such as adding a picture is available to use for this Web application.
 	Editmyuserinfo *oval_def.EntityStateBoolType `xml:"editmyuserinfo"`
 
+	// Enumeratepermissions: If enumeratepermissions is enabled the permission to enumerate permissions on the Web site, list, folder, document, or list itemis is available to use for this Web application.
 	Enumeratepermissions *oval_def.EntityStateBoolType `xml:"enumeratepermissions"`
 
+	// Managealerts: If the managealerts is enabled the permission to manage alerts for all users of the Web site is available to use for this Web application.
 	Managealerts *oval_def.EntityStateBoolType `xml:"managealerts"`
 
+	// Managepermissions: If the managepermissions is enabled the permission to create and change permission levels on the Web site and assign permissions to users and groups is available to use for this Web application.
 	Managepermissions *oval_def.EntityStateBoolType `xml:"managepermissions"`
 
+	// Managesubwebs: If the managesubwebs is enabled the permission to create subsites such as team sites, Meeting Workspace sites, and Document Workspace sites is available to use for this Web application.
 	Managesubwebs *oval_def.EntityStateBoolType `xml:"managesubwebs"`
 
+	// Manageweb: If the manageweb is enabled the permission to perform all administration tasks for the Web site as well as manage content is available to use for this Web application.
 	Manageweb *oval_def.EntityStateBoolType `xml:"manageweb"`
 
+	// Open: If open is enabled the permission to allow users to open a Web site, list, or folder to access items inside that containeris available to use for this Web application.
 	Open *oval_def.EntityStateBoolType `xml:"open"`
 
+	// Useclientintegration: If the useclientintegration is enabled the permission to use features that launch client applications; otherwise, users must work on documents locally and upload changesis is available to use for this Web application.
 	Useclientintegration *oval_def.EntityStateBoolType `xml:"useclientintegration"`
 
+	// Useremoteapis: If the useremoteapis is enabled the permission to use SOAP, WebDAV, or Microsoft Office SharePoint Designer interfaces to access the Web siteis available to use for this Web application.
 	Useremoteapis *oval_def.EntityStateBoolType `xml:"useremoteapis"`
 
+	// Viewusagedata: If the viewusagedata is enabled the permission to view reports on Web site usage in documents is available to use for this Web application.
 	Viewusagedata *oval_def.EntityStateBoolType `xml:"viewusagedata"`
 
+	// Managepersonalviews: If the managepersonalviews is enabled the permission to Create, change, and delete personal views of lists is available to use for this Web application.
 	Managepersonalviews *oval_def.EntityStateBoolType `xml:"managepersonalviews"`
 
+	// Adddelprivatewebparts: If the adddelprivatewebparts is enabled the permission to add or remove personal Web Parts on a Web Part Page is available to use for this Web application.
 	Adddelprivatewebparts *oval_def.EntityStateBoolType `xml:"adddelprivatewebparts"`
 
+	// Updatepersonalwebparts: If the updatepersonalwebparts is enabled the permission to update Web Parts to display personalized informationis available to use for this Web application.
 	Updatepersonalwebparts *oval_def.EntityStateBoolType `xml:"updatepersonalwebparts"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -182,11 +237,11 @@ type SpwebapplicationState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpgroupTest: The spgroup test is used to check the group properties for site collections. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an spwebapplication_object and the optional state element specifies the data to check.
 type SpgroupTest struct {
 	XMLName xml.Name `xml:"spgroup_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -209,11 +264,11 @@ type SpgroupTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpgroupObject: The spgroup_object element is used by a spgroup test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpgroupObject struct {
 	XMLName xml.Name `xml:"spgroup_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -223,6 +278,7 @@ type SpgroupObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Sitecollectionurl: The sitecollectionurl element defines the Site Colection to evaluate specific group settings.
 	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -232,11 +288,11 @@ type SpgroupObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpgroupState: The spgroup_state element defines settings for groups in a site collections.
 type SpgroupState struct {
 	XMLName xml.Name `xml:"spgroup_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -246,14 +302,19 @@ type SpgroupState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Sitecollectionurl: The sitecollectionurl element identifies a Site Collection.
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
+	// Gname: The name element identifies a Group name.
 	Gname *oval_def.EntityStateStringType `xml:"gname"`
 
+	// Autoacceptrequesttojoinleave: If the autoacceptrequesttojoinleave is enabled it allows users to automatically join groups.
 	Autoacceptrequesttojoinleave *oval_def.EntityStateBoolType `xml:"autoacceptrequesttojoinleave"`
 
+	// Allowmemberseditmembership: If the allowmemberseditmembership is enabled than all group memebers will be allowed to edit the membership of a group..
 	Allowmemberseditmembership *oval_def.EntityStateBoolType `xml:"allowmemberseditmembership"`
 
+	// Onlyallowmembersviewmembership: If the onlyallowmembersviewmembership is enabled it allows users to automatically join groups.
 	Onlyallowmembersviewmembership *oval_def.EntityStateBoolType `xml:"onlyallowmembersviewmembership"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -261,11 +322,11 @@ type SpgroupState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpwebTest: The spweb test is used to check the properties for site collections. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an spwebapplication_object and the optional state element specifies the data to check. See https://msdn.microsoft.com/en-us/library/ms473633.aspx for more information.
 type SpwebTest struct {
 	XMLName xml.Name `xml:"spweb_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -288,11 +349,11 @@ type SpwebTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpwebObject: The spweb_object element is used by a spweb test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpwebObject struct {
 	XMLName xml.Name `xml:"spweb_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -302,8 +363,10 @@ type SpwebObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Webcollectionurl: Specifies a web site (this is the SPWeb object we want).
 	Webcollectionurl *oval_def.EntityObjectStringType `xml:"webcollectionurl"`
 
+	// Sitecollectionurl: Specifies a site collection.
 	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -313,11 +376,11 @@ type SpwebObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpwebState: The spweb_state element defines settings for a site collection.
 type SpwebState struct {
 	XMLName xml.Name `xml:"spweb_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -327,14 +390,19 @@ type SpwebState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Webcollectionurl: The webcollectionurl specifies a web site (the SPWeb object).
 	Webcollectionurl *oval_def.EntityStateStringType `xml:"webcollectionurl"`
 
+	// Sitecollectionurl: The sitecollectionurl element specifies a site collection.
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
+	// Secondarysitecolladmin: The secondarysitecolladmin element identifies a secondary site collection admin.
 	Secondarysitecolladmin *oval_def.EntityStateStringType `xml:"secondarysitecolladmin"`
 
+	// Secondsitecolladminenabled: A boolean that represents if the secondarysitecolladmin is enabled.
 	Secondsitecolladminenabled *oval_def.EntityStateBoolType `xml:"secondsitecolladminenabled"`
 
+	// Allowanonymousaccess: If the allowanonymousaccess is enabled users will be allowed to create and manager their own top-level Web sites .
 	Allowanonymousaccess *oval_def.EntityStateBoolType `xml:"allowanonymousaccess"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -342,11 +410,11 @@ type SpwebState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SplistTest: The splist test is used to check the properties of lists associated with a SharePoint site or site collection. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an splist_object and the optional state element specifies the data to check.
 type SplistTest struct {
 	XMLName xml.Name `xml:"splist_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -369,11 +437,11 @@ type SplistTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SplistObject: The splist_object element is used by a splist test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SplistObject struct {
 	XMLName xml.Name `xml:"splist_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -383,6 +451,7 @@ type SplistObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Spsiteurl: The spsiteurl element defines the Sharepoint website being specified ...
 	Spsiteurl *oval_def.EntityObjectStringType `xml:"spsiteurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -392,11 +461,11 @@ type SplistObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SplistState: The splist_state element defines the different information that can be used to evaluate the specified Sharepoint sites....
 type SplistState struct {
 	XMLName xml.Name `xml:"splist_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -406,12 +475,16 @@ type SplistState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Spsiteurl: The spsiteurl element identifies an Sharepoint site to test for.
 	Spsiteurl *oval_def.EntityStateStringType `xml:"spsiteurl"`
 
+	// Irmenabled: If the irmenabled option is enabled, documents are protected whenever they leave the control of the Sharepoint system.
 	Irmenabled *oval_def.EntityStateBoolType `xml:"irmenabled"`
 
+	// Enableversioning: If the enableversioning option is enabled, backup copies of documents are kept and managed by the Sharepoint system.
 	Enableversioning *oval_def.EntityStateBoolType `xml:"enableversioning"`
 
+	// Nocrawl: If the nocrawl option is enabled, the site is excluded from crawls that Sharepoint does when it indexes sites.
 	Nocrawl *oval_def.EntityStateBoolType `xml:"nocrawl"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -419,11 +492,11 @@ type SplistState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpantivirussettingsTest: The spantivirussettings test is used to check the settings for antivirus software associated with a SharePoint deployment.
 type SpantivirussettingsTest struct {
 	XMLName xml.Name `xml:"spantivirussettings_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -446,11 +519,11 @@ type SpantivirussettingsTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpantivirussettingsObject: The spantivirussettings_object element is used by a spantivirussettings test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpantivirussettingsObject struct {
 	XMLName xml.Name `xml:"spantivirussettings_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -460,8 +533,10 @@ type SpantivirussettingsObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Spwebservicename: The spwebservicename element denotes the web service for which antivirus settings will be checked.
 	Spwebservicename *oval_def.EntityObjectStringType `xml:"spwebservicename"`
 
+	// Spfarmname: The spfarmname element denotes the farm on which a web service to be queried resides.
 	Spfarmname *oval_def.EntityObjectStringType `xml:"spfarmname"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -471,11 +546,11 @@ type SpantivirussettingsObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpantivirussettingsState: The spantivirus_state element defines the different information that can be used to evaluate the specified Sharepoint sites....
 type SpantivirussettingsState struct {
 	XMLName xml.Name `xml:"spantivirussettings_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -485,24 +560,34 @@ type SpantivirussettingsState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Spwebservicename: The spwebservicename denotes the name of a SharePoint web service to be tested or * (the default) to test all web services.
 	Spwebservicename *oval_def.EntityStateStringType `xml:"spwebservicename"`
 
+	// Spfarmname: The spfarmname denotes the name of the farm on which the Sharepoint webservice resides or the local farm (default).
 	Spfarmname *oval_def.EntityStateStringType `xml:"spfarmname"`
 
+	// Allowdownload: Specifies whether infected documents can be downloaded on the SharePoint system.
 	Allowdownload *oval_def.EntityStateBoolType `xml:"allowdownload"`
 
+	// Cleaningenabled: Specifies whether the virus scanner should attempt to cure files that are infected.
 	Cleaningenabled *oval_def.EntityStateBoolType `xml:"cleaningenabled"`
 
+	// Downloadscanenabled: Specifies whetehr files are scanned for viruses when they are downloaded.
 	Downloadscanenabled *oval_def.EntityStateBoolType `xml:"downloadscanenabled"`
 
+	// Numberofthreads: The number of threads that the antivirus scanner can use to scan documents for viruses.
 	Numberofthreads *oval_def.EntityStateIntType `xml:"numberofthreads"`
 
+	// Skipsearchcrawl: Specifies whether to skip scanning for viruses during a search crawl.
 	Skipsearchcrawl *oval_def.EntityStateBoolType `xml:"skipsearchcrawl"`
 
+	// Timeout: Denotes the amount of time before the virus scanner times out in seconds.
 	Timeout *oval_def.EntityStateIntType `xml:"timeout"`
 
+	// Uploadscanenabled: Specifies whether files are scanned when they are uploaded.
 	Uploadscanenabled *oval_def.EntityStateBoolType `xml:"uploadscanenabled"`
 
+	// Vendorupdatecount: Denotes the current increment of the number of times the vendor has been updated.
 	Vendorupdatecount *oval_def.EntityStateIntType `xml:"vendorupdatecount"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -510,11 +595,11 @@ type SpantivirussettingsState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpsiteadministrationTest: The spsiteadministration test is used to check the properties of a site. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an spwebapplication_object and the optional state element specifies the data to check.
 type SpsiteadministrationTest struct {
 	XMLName xml.Name `xml:"spsiteadministration_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -537,11 +622,11 @@ type SpsiteadministrationTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpsiteadministrationObject: The spsiteadministration_object element is used by a spsiteadministration test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpsiteadministrationObject struct {
 	XMLName xml.Name `xml:"spsiteadministration_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -551,6 +636,7 @@ type SpsiteadministrationObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Sitecollectionurl: The sitecollectionurl element defines the site to evaluate.
 	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -560,11 +646,11 @@ type SpsiteadministrationObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpsiteadministrationState: The spspsiteadministration_state element defines security settings and permissions that can be checked for a specified SPSite.
 type SpsiteadministrationState struct {
 	XMLName xml.Name `xml:"spsiteadministration_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -574,10 +660,13 @@ type SpsiteadministrationState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Sitecollectionurl: The sitecollectionurl element identifies a site.
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
+	// Storagemaxlevel: The storagemaxlevel is the maximum storage allowed for the site.
 	Storagemaxlevel *oval_def.EntityStateIntType `xml:"storagemaxlevel"`
 
+	// Storagewarninglevel: When the storagewarninglevel is reached a site collection receive advance notice before available storage is expended.s.
 	Storagewarninglevel *oval_def.EntityStateIntType `xml:"storagewarninglevel"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -585,11 +674,11 @@ type SpsiteadministrationState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpsiteTest: The spsite test is used to check the properties of a site. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references an spwebapplication_object and the optional state element specifies the data to check.
 type SpsiteTest struct {
 	XMLName xml.Name `xml:"spsite_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -612,11 +701,11 @@ type SpsiteTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpsiteObject: The spsite_object element is used by a spsiteadministration test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpsiteObject struct {
 	XMLName xml.Name `xml:"spsite_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -626,6 +715,7 @@ type SpsiteObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Sitecollectionurl: The sitecollectionurl element defines the site to evaluate.
 	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -635,11 +725,11 @@ type SpsiteObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpsiteState: The spsite_state element defines security settings and permissions that can be checked for a specified SPSite.
 type SpsiteState struct {
 	XMLName xml.Name `xml:"spsite_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -649,10 +739,13 @@ type SpsiteState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Sitecollectionurl: The sitecollectionurl element identifies a site.
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
+	// Quotaname: The quota name is the name of quota template for a site collection.
 	Quotaname *oval_def.EntityStateStringType `xml:"quotaname"`
 
+	// Url: The URL is the full URL to the root Web site of the site collection, including host name, port number, and path.
 	Url *oval_def.EntityStateStringType `xml:"url"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -660,11 +753,11 @@ type SpsiteState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpcrawlruleTest: The spcrawlrule test is used to check the configuration or rules associated with the SharePoint system's built-in indexer and the sites or documents that will be indexed.
 type SpcrawlruleTest struct {
 	XMLName xml.Name `xml:"spcrawlrule_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -687,11 +780,11 @@ type SpcrawlruleTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpcrawlruleObject: The spcrawlrule_object element is used by a spcrawlrule test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpcrawlruleObject struct {
 	XMLName xml.Name `xml:"spcrawlrule_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -701,6 +794,7 @@ type SpcrawlruleObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Spsiteurl: The spsiteurl element denotes the resource on the SharePoint server (eg. a site or document) for which indexing settings will be checked.
 	Spsiteurl *oval_def.EntityObjectStringType `xml:"spsiteurl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -710,11 +804,11 @@ type SpcrawlruleObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpcrawlruleState: The spcrawlrule state element defines the various properties of the SharePoint indexer that can be checked.
 type SpcrawlruleState struct {
 	XMLName xml.Name `xml:"spcrawlrule_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -724,20 +818,28 @@ type SpcrawlruleState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Spsiteurl: The spsiteurl denotes the URL of a website or resource whose indexing properties should be tested.
 	Spsiteurl *oval_def.EntityStateStringType `xml:"spsiteurl"`
 
+	// Crawlashttp: Specifies whether the crawler should crawl content from a hierarchical content source, such as HTTP content.
 	Crawlashttp *oval_def.EntityStateBoolType `xml:"crawlashttp"`
 
+	// Enabled: Specifies whether a particular crawl rule is enabled.
 	Enabled *oval_def.EntityStateBoolType `xml:"enabled"`
 
+	// Followcomplexurls: Specifies whether the indexer should crawl websites that contain the question mark (?) character.
 	Followcomplexurls *oval_def.EntityStateBoolType `xml:"followcomplexurls"`
 
+	// Path: The path to which a particular crawl rule applies.
 	Path *oval_def.EntityStateStringType `xml:"path"`
 
+	// Priority: The priority setting for a particular crawl rule.
 	Priority *oval_def.EntityStateIntType `xml:"priority"`
 
+	// Suppressindexing: Specifies whether the crawler should exclude the content of items that this rule applies to from the content index.
 	Suppressindexing *oval_def.EntityStateBoolType `xml:"suppressindexing"`
 
+	// Accountname: A string containing the account name for the crawl rule.
 	Accountname *oval_def.EntityStateStringType `xml:"accountname"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -745,11 +847,11 @@ type SpcrawlruleState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpjobdefinitionTest: The spjobdefinition test is used to check the status of the various properties associated with scheduled jobs in the SharePoint system.
 type SpjobdefinitionTest struct {
 	XMLName xml.Name `xml:"spjobdefinition_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -772,11 +874,11 @@ type SpjobdefinitionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpjobdefinitionObject: The spjobdefinition_object element is used by a spjobdefinition test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpjobdefinitionObject struct {
 	XMLName xml.Name `xml:"spjobdefinition_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -786,6 +888,7 @@ type SpjobdefinitionObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Webappuri: The URI that represents the web application for which jobs should be checked.
 	Webappuri *oval_def.EntityObjectStringType `xml:"webappuri"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -795,11 +898,11 @@ type SpjobdefinitionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpjobdefinitionState: The various properties of a Sharepoint job that can be checked.
 type SpjobdefinitionState struct {
 	XMLName xml.Name `xml:"spjobdefinition_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -809,14 +912,19 @@ type SpjobdefinitionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Webappuri: The URI that represents the web application for which jobs should be checked.
 	Webappuri *oval_def.EntityStateStringType `xml:"webappuri"`
 
+	// Displayname: The name of the job as displayed in the SharePoint Central Administration site.
 	Displayname *oval_def.EntityStateStringType `xml:"displayname"`
 
+	// Isdisabled: Determines whether or not the job definition is enabled.
 	Isdisabled *oval_def.EntityStateBoolType `xml:"isdisabled"`
 
+	// Retry: Determines whether the job definition should be retried if it ends abnormally.
 	Retry *oval_def.EntityStateBoolType `xml:"retry"`
 
+	// Title: The title of a job as displayed in the SharePoint Central Administration site.
 	Title *oval_def.EntityStateStringType `xml:"title"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -824,11 +932,11 @@ type SpjobdefinitionState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Spjobdefinition510Test: The spjobdefinition test is used to check the status of the various properties associated with scheduled jobs in the SharePoint system.
 type Spjobdefinition510Test struct {
 	XMLName xml.Name `xml:"spjobdefinition510_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -851,11 +959,11 @@ type Spjobdefinition510Test struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Spjobdefinition510Object: The spjobdefinition510_object element is used by a spjobdefinition test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type Spjobdefinition510Object struct {
 	XMLName xml.Name `xml:"spjobdefinition510_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -865,8 +973,10 @@ type Spjobdefinition510Object struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Webappuri: The URI that represents the web application for which jobs should be checked.
 	Webappuri *oval_def.EntityObjectStringType `xml:"webappuri"`
 
+	// Displayname: The name of the job as displayed in the SharePoint Central Administration site.
 	Displayname *oval_def.EntityObjectStringType `xml:"displayname"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -876,11 +986,11 @@ type Spjobdefinition510Object struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// Spjobdefinition510State: The various properties of a Sharepoint job that can be checked.
 type Spjobdefinition510State struct {
 	XMLName xml.Name `xml:"spjobdefinition510_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -890,14 +1000,19 @@ type Spjobdefinition510State struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Webappuri: The URI that represents the web application for which jobs should be checked.
 	Webappuri *oval_def.EntityStateStringType `xml:"webappuri"`
 
+	// Displayname: The name of the job as displayed in the SharePoint Central Administration site.
 	Displayname *oval_def.EntityStateStringType `xml:"displayname"`
 
+	// Isdisabled: Determines whether or not the job definition is enabled.
 	Isdisabled *oval_def.EntityStateBoolType `xml:"isdisabled"`
 
+	// Retry: Determines whether the job definition should be retried if it ends abnormally.
 	Retry *oval_def.EntityStateBoolType `xml:"retry"`
 
+	// Title: The title of a job as displayed in the SharePoint Central Administration site.
 	Title *oval_def.EntityStateStringType `xml:"title"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -905,11 +1020,11 @@ type Spjobdefinition510State struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// BestbetTest: The bestbet test is used to get all the best bets associated with a site.
 type BestbetTest struct {
 	XMLName xml.Name `xml:"bestbet_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -932,11 +1047,11 @@ type BestbetTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// BestbetObject: The bestbet_object element is used by a bestbet test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type BestbetObject struct {
 	XMLName xml.Name `xml:"bestbet_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -946,8 +1061,10 @@ type BestbetObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Sitecollectionurl: The URL that represents the site collection.
 	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
 
+	// Bestbeturl: The URL that represents the best bet.
 	Bestbeturl *oval_def.EntityObjectStringType `xml:"bestbeturl"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -957,11 +1074,11 @@ type BestbetObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// BestbetState: The various properties of a Best Bet that can be checked.
 type BestbetState struct {
 	XMLName xml.Name `xml:"bestbet_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -971,12 +1088,16 @@ type BestbetState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Sitecollectionurl: The URL that represents the site collection.
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
+	// Bestbeturl: The name of the job as displayed in the SharePoint Central Administration site.
 	Bestbeturl *oval_def.EntityStateStringType `xml:"bestbeturl"`
 
+	// Title: The title of a best bet.
 	Title *oval_def.EntityStateStringType `xml:"title"`
 
+	// Description: Thedescription of a best bet..
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -984,11 +1105,11 @@ type BestbetState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InfopolicycollTest: The policycoll test is used to get all the Information Policies associated with a site.
 type InfopolicycollTest struct {
 	XMLName xml.Name `xml:"infopolicycoll_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1011,11 +1132,11 @@ type InfopolicycollTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InfopolicycollObject: The infopolicycoll_object element is used by a policycoll test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type InfopolicycollObject struct {
 	XMLName xml.Name `xml:"infopolicycoll_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1025,8 +1146,10 @@ type InfopolicycollObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Sitecollectionurl: The URL that represents the site collection.
 	Sitecollectionurl *oval_def.EntityObjectStringType `xml:"sitecollectionurl"`
 
+	// IdElm: The id that represents the Information Policy.
 	IdElm *oval_def.EntityObjectStringType `xml:"id"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1036,11 +1159,11 @@ type InfopolicycollObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// InfopolicycollState: The various properties of the Information Policy that can be checked.
 type InfopolicycollState struct {
 	XMLName xml.Name `xml:"infopolicycoll_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1050,14 +1173,19 @@ type InfopolicycollState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Sitecollectionurl: The URL that represents the site collection.
 	Sitecollectionurl *oval_def.EntityStateStringType `xml:"sitecollectionurl"`
 
+	// IdElm: The id of the Information Policy.
 	IdElm *oval_def.EntityStateStringType `xml:"id"`
 
+	// Name: The name of the Information Policy.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Description: The description of an Information Policy..
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
+	// Longdescription: The long description of an Information Policy..
 	Longdescription *oval_def.EntityStateStringType `xml:"longdescription"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1065,11 +1193,11 @@ type InfopolicycollState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpdiagnosticsserviceTest: The spdiagnosticsservice test is used to check the diagnostic properties associated with a Sharepoint system.
 type SpdiagnosticsserviceTest struct {
 	XMLName xml.Name `xml:"spdiagnosticsservice_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1092,11 +1220,11 @@ type SpdiagnosticsserviceTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpdiagnosticsserviceObject: The spdiagnosticsservice_object element is used by an spdiagnosticsservice test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpdiagnosticsserviceObject struct {
 	XMLName xml.Name `xml:"spdiagnosticsservice_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1106,6 +1234,7 @@ type SpdiagnosticsserviceObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Farmname: The farm whose diagnostic capabilities should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_def.EntityObjectStringType `xml:"farmname"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1115,11 +1244,11 @@ type SpdiagnosticsserviceObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpdiagnosticsserviceState: The various properties of a diagnostics service that can be checked.
 type SpdiagnosticsserviceState struct {
 	XMLName xml.Name `xml:"spdiagnosticsservice_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1129,18 +1258,25 @@ type SpdiagnosticsserviceState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Farmname: The farm whose diagnostic capabilities should be checked.
 	Farmname *oval_def.EntityStateStringType `xml:"farmname"`
 
+	// Displayname: The name of the diagnostic service as shown in the Sharepoint Central Administration site.
 	Displayname *oval_def.EntityStateStringType `xml:"displayname"`
 
+	// Logcutinterval: The number of minutes to capture events to a single log file. This value lies in the range 0 to 1440. The default value is 30.
 	Logcutinterval *oval_def.EntityStateIntType `xml:"logcutinterval"`
 
+	// Loglocation: The path to the file system directory where log files are created and stored.
 	Loglocation *oval_def.EntityStateStringType `xml:"loglocation"`
 
+	// Logstokeep: The value that indicates the number of log files to create. This lies in the range 0 to 1024 with a default of 96.
 	Logstokeep *oval_def.EntityStateIntType `xml:"logstokeep"`
 
+	// Required: The required property specifies whether an instance of the spdiagnosticsservice must be running on the farm.
 	Required *oval_def.EntityStateBoolType `xml:"required"`
 
+	// Typename: The friendly name for the service as displayed in the Central Administration and in logs. This should be "Windows Sharepoint Diagnostics Service" by default.
 	Typename *oval_def.EntityStateStringType `xml:"typename"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1148,11 +1284,11 @@ type SpdiagnosticsserviceState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpdiagnosticslevelTest: The spdiagnosticslevel_test is used to check the status of the logging features associated with a Sharepoint deployment.
 type SpdiagnosticslevelTest struct {
 	XMLName xml.Name `xml:"spdiagnosticslevel_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1175,11 +1311,11 @@ type SpdiagnosticslevelTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpdiagnosticslevelObject: The spdiagnosticslevel_object element is used by an spdiagnosticslevel test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SpdiagnosticslevelObject struct {
 	XMLName xml.Name `xml:"spdiagnosticslevel_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1189,6 +1325,7 @@ type SpdiagnosticslevelObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Farmname: The farm whose diagnostics levels should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_def.EntityObjectStringType `xml:"farmname"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1198,11 +1335,11 @@ type SpdiagnosticslevelObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SpdiagnosticslevelState: The various properties of a Diagnostics level that can be checked.
 type SpdiagnosticslevelState struct {
 	XMLName xml.Name `xml:"spdiagnosticslevel_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1212,16 +1349,22 @@ type SpdiagnosticslevelState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Farmname: The name of the farm for which diagnostics level properties should be checked.
 	Farmname *oval_def.EntityStateStringType `xml:"farmname"`
 
+	// Eventseverity: The event severity setting for a particular diagnostic level category.
 	Eventseverity *EntityStateEventSeverityType `xml:"eventseverity"`
 
+	// Hidden: Specifies whether the trace log category is hidden in the Windows Sharepoint Services Central Administration interface.
 	Hidden *oval_def.EntityStateBoolType `xml:"hidden"`
 
+	// Levelid: A string that represents the ID of the trace log category. This is its English language name.
 	Levelid *oval_def.EntityStateStringType `xml:"levelid"`
 
+	// Levelname: The name of the trace log category. This represents the localized name for the category.
 	Levelname *oval_def.EntityStateStringType `xml:"levelname"`
 
+	// Traceseverity: The trace severity setting for a particular diagnostic level category.
 	Traceseverity *EntityStateTraceSeverityType `xml:"traceseverity"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1229,11 +1372,11 @@ type SpdiagnosticslevelState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SppolicyfeatureTest: The sppolicyfeature test enables one to check the attributes associated with policies and policy features on the Sharepoint deployment.
 type SppolicyfeatureTest struct {
 	XMLName xml.Name `xml:"sppolicyfeature_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1256,11 +1399,11 @@ type SppolicyfeatureTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SppolicyfeatureObject: The sppolicyfeature_object element is used by an sppolicyfeature test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SppolicyfeatureObject struct {
 	XMLName xml.Name `xml:"sppolicyfeature_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1270,6 +1413,7 @@ type SppolicyfeatureObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Farmname: The farm whose policy features should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_def.EntityObjectStringType `xml:"farmname"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -1279,11 +1423,11 @@ type SppolicyfeatureObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SppolicyfeatureState: The various properties of a policy feature that can be checked.
 type SppolicyfeatureState struct {
 	XMLName xml.Name `xml:"sppolicyfeature_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1293,24 +1437,34 @@ type SppolicyfeatureState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Farmname: The farm whose policy features should be checked. Use .* for all farms or SPFarm.Local for the local farm.
 	Farmname *oval_def.EntityStateStringType `xml:"farmname"`
 
+	// Configpage: The URL to a web control used to edit policy instance-level settings.
 	Configpage *oval_def.EntityStateStringType `xml:"configpage"`
 
+	// Defaultcustomdata: The default values for any policy instance-level settings for a policy feature.
 	Defaultcustomdata *oval_def.EntityStateStringType `xml:"defaultcustomdata"`
 
+	// Description: The short description of the policy feature and of the service it provides.
 	Description *oval_def.EntityStateStringType `xml:"description"`
 
+	// Globalconfigpage: The URL to a web control used to edit server farm-level settings for this policy feature.
 	Globalconfigpage *oval_def.EntityStateStringType `xml:"globalconfigpage"`
 
+	// Globalcustomdata: The default settings for any server farm-level settings for this policy feature.
 	Globalcustomdata *oval_def.EntityStateStringType `xml:"globalcustomdata"`
 
+	// Group: The policy feature group to which a policy feature belongs.
 	Group *oval_def.EntityStateStringType `xml:"group"`
 
+	// Name: The name to display in the Microsoft Office Sharepoint Server 2007 interface for an information policy feature.
 	Name *oval_def.EntityStateStringType `xml:"name"`
 
+	// Publisher: The name of the creator of the policy feature as it is displayed in the Microsoft Office Sharepoint Server 2007 user interface.
 	Publisher *oval_def.EntityStateStringType `xml:"publisher"`
 
+	// State: Specifies whether the policy feature is hidden or visible.
 	State *EntityStatePolicyFeatureStateType `xml:"state"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1318,11 +1472,11 @@ type SppolicyfeatureState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SppolicyTest: The sppolicy test enables one to check the attributes of the policies associated with a particular URL Zone in a Sharepoint system.
 type SppolicyTest struct {
 	XMLName xml.Name `xml:"sppolicy_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1345,11 +1499,11 @@ type SppolicyTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SppolicyObject: The sppolicy_object element is used by an sppolicy test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type SppolicyObject struct {
 	XMLName xml.Name `xml:"sppolicy_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1359,8 +1513,10 @@ type SppolicyObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// Webappuri: The URI that represents the web application for which policies should be checked.
 	Webappuri *oval_def.EntityObjectStringType `xml:"webappuri"`
 
+	// Urlzone: The zone for which policies should be checked.
 	Urlzone *EntityObjectUrlZoneType `xml:"urlzone"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1368,11 +1524,11 @@ type SppolicyObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// SppolicyState: The various properties of a policy that can be checked.
 type SppolicyState struct {
 	XMLName xml.Name `xml:"sppolicy_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -1382,16 +1538,22 @@ type SppolicyState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// Webappuri: The URI that represents the web application for which policies should be checked.
 	Webappuri *oval_def.EntityStateStringType `xml:"webappuri"`
 
+	// Urlzone: The zone for which policies should be checked.
 	Urlzone *EntityStateUrlZoneType `xml:"urlzone"`
 
+	// Displayname: The user or group display name for a policy. This defaults to the user name if the display name cannot be resolved through Active Directory.
 	Displayname *oval_def.EntityStateStringType `xml:"displayname"`
 
+	// Issystemuser: Specifies whether the user identified by a particular policy is visible only as a System account within the Windows Sharepoint Services user interface.
 	Issystemuser *oval_def.EntityStateBoolType `xml:"issystemuser"`
 
+	// Username: The user name of the user or group that is associated with policy.
 	Username *oval_def.EntityStateStringType `xml:"username"`
 
+	// Policyroletype: The policy role type to apply globally in a Sharepoint web application to a user or group.
 	Policyroletype *EntityStatePolicyRoleType `xml:"policyroletype"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -1401,22 +1563,27 @@ type SppolicyState struct {
 
 // XSD ComplexType declarations
 
+// EntityObjectUrlZoneType: The EntityObjectUrlZoneType restricts a string value to a set of values that describe the different IIS Url Zones. The empty string is also allowed to support empty element associated with error conditions.
 type EntityObjectUrlZoneType struct {
 	XMLName xml.Name
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateEventSeverityType: The EntityStateEventSeverityType restricts a string value to a set of values that describe the different states that can be configured for a diagnostics level event severity level property of the diagnostics service.
 type EntityStateEventSeverityType struct {
 	XMLName xml.Name
 
@@ -1424,19 +1591,23 @@ type EntityStateEventSeverityType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateTraceSeverityType: The EntityStateTraceSeverityType restricts a string value to a set of values that describe the different states that can be configured for a diagnostics level trace severity level property of the diagnostics service.
 type EntityStateTraceSeverityType struct {
 	XMLName xml.Name
 
@@ -1444,19 +1615,23 @@ type EntityStateTraceSeverityType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStatePolicyRoleType: The EntityStatePolicyRoleType restricts a string value to a set of values that describe the different Policy settings for Access Control that are available for users.
 type EntityStatePolicyRoleType struct {
 	XMLName xml.Name
 
@@ -1464,19 +1639,23 @@ type EntityStatePolicyRoleType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStatePolicyFeatureStateType: The EntityStatePolicyRoleType restricts a string value to a set of values that describe the different policy feature states that can be configured for a policy feature.
 type EntityStatePolicyFeatureStateType struct {
 	XMLName xml.Name
 
@@ -1484,19 +1663,23 @@ type EntityStatePolicyFeatureStateType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
+// EntityStateUrlZoneType: The EntityStateUrlZoneType restricts a string value to a set of values that describe the different IIS Url Zones.
 type EntityStateUrlZoneType struct {
 	XMLName xml.Name
 
@@ -1504,17 +1687,20 @@ type EntityStateUrlZoneType struct {
 
 	CheckExistence string `xml:"check_existence,attr,omitempty"`
 
+	// Datatype: The optional datatype attribute specifies how the given operation should be applied to the data. Since we are dealing with XML everything is technically a string, but often the value is meant to represent some other datatype and this affects the way an operation is performed. For example, with the statement 'is 123 less than 98'. If the data is treated as integers the answer is no, but if the data is treated as strings, then the answer is yes. Specifying a datatype defines how the less than operation should be performed. Another way of thinking of things is that the datatype attribute specifies how the data should be cast before performing the operation (note that the default datatype is 'string'). In the previous example, if the datatype is set to int, then '123' and '98' should be cast as integers. Another example is applying the 'equals' operation to '1.0.0.0' and '1.0'. With datatype 'string' they are not equal, with datatype 'version' they are. Note that there are certain cases where a cast from one datatype to another is not possible. If a cast cannot be made, (trying to cast 'abc' to an integer) then an error should be reported. For example, if the datatype is set to 'integer' and the value is the empty string. There is no way to cast the empty string (or NULL) to an integer, and in cases like this an error should be reported.
 	Datatype oval.DatatypeEnumeration `xml:"datatype,attr,omitempty"`
 
+	// Operation: The optional operation attribute determines how the individual entities should be evaluated (the default operation is 'equals').
 	Operation oval.OperationEnumeration `xml:"operation,attr,omitempty"`
 
+	// Mask: The optional mask attribute is used to identify values that have been hidden for sensitivity concerns. This is used by the Result document which uses the System Characteristics schema to format the information found on a specific system. When the mask attribute is set to 'true' on an OVAL Entity or an OVAL Field, the corresponding collected value of that OVAL Entity or OVAL Field MUST NOT be present in the "results" section of the OVAL Results document; the "oval_definitions" section must not be altered and must be an exact copy of the definitions evaluated. Values MUST NOT be masked in OVAL System Characteristics documents that are not contained within an OVAL Results document. It is possible for masking conflicts to occur where one entity has mask set to true and another entity has mask set to false. A conflict will occur when the mask attribute is set differently on an OVAL Object and matching OVAL State or when more than one OVAL Objects identify the same OVAL Item(s). When such a conflict occurs the result is always to mask the entity.
 	Mask bool `xml:"mask,attr,omitempty"`
 
-	VarRef oval.VariableIDPattern `xml:"var_ref,attr,omitempty"`
+	// VarRef: The optional var_ref attribute refers the value of the element to a variable element. When supplied, the value(s) associated with the OVAL Variable should be used as the value(s) of the element. If there is an error computing the value of the variable, then that error should be passed up to the element referencing it. If the variable being referenced does not have a value (for example, if the variable pertains to the size of a file, but the file does not exist) then one of two results are possible. If the element is part of an object declaration, then the object element referencing it is considered to not exist. If the element is part of a state declaration, then the state element referencing it will evaluate to error.
+	VarRef oval.VariableIdpattern `xml:"var_ref,attr,omitempty"`
 
+	// VarCheck: The optional var_check attribute specifies how data collection or state evaluation should proceed when an element uses a var_ref attribute, and the associated variable defines more than one value. For example, if an object entity 'filename' with an operation of 'not equal' references a variable that returns five different values, and the var_check attribute has a value of 'all', then an actual file on the system matches only if the actual filename does not equal any of the variable values. As another example, if a state entity 'size' with an operation of 'less than' references a variable that has five different integer values, and the var_check attribute has a value of 'all', then the 'size' state entity evaluates to true only if the corresponding 'size' item entity is less than each of the five integers defined by the variable. If a variable does not have any value value when referenced by an OVAL Object the object should be considered to not exist. If a variable does not have any value when referenced by an OVAL State an error should be reported during OVAL analysis. When an OVAL State uses a var_ref, if both the state entity and a corresponding item entity are collections of values, the var_check is applied to each value of the item entity individually, and all must evaluate to true for the state entity to evaluate to true. In this condition, there is no value of var_check which enables an element-wise comparison, and so there is no way to determine whether the two entities are truly 'equal' in that sense. If var_ref is present but var_check is not, the element should be processed as if var_check has the value "all".
 	VarCheck oval.CheckEnumeration `xml:"var_check,attr,omitempty"`
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

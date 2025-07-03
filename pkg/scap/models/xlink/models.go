@@ -6,6 +6,8 @@ import (
 	"encoding/xml"
 )
 
+// This schema document provides attribute declarations and attribute group, complex type and simple type definitions which can be used in the construction of user schemas to define the structure of particular linking constructs, e.g. <![CDATA[ <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xl="http://www.w3.org/1999/xlink"> <xs:import namespace="http://www.w3.org/1999/xlink" location="http://www.w3.org/1999/xlink.xsd"> <xs:element name="mySimple"> <xs:complexType> ... <xs:attributeGroup ref="xl:simpleAttrs"/> ... </xs:complexType> </xs:element> ... </xs:schema>]]>
+
 // Element
 type Title struct {
 	XMLName xml.Name `xml:"title"`
@@ -28,16 +30,16 @@ type Arc struct {
 
 // XSD ComplexType declarations
 
+// Simple: Intended for use as the type of user-declared elements to make them simple links.
 type Simple struct {
 	XMLName xml.Name
 
 	InnerXml string `xml:",innerxml"`
 }
 
+// Extended: Intended for use as the type of user-declared elements to make them extended links. Note that the elements referenced in the content model are all abstract. The intention is that by simply declaring elements with these as their substitutionGroup, all the right things will happen.
 type Extended struct {
 	XMLName xml.Name
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type TitleEltType struct {
@@ -54,14 +56,10 @@ type ResourceType struct {
 
 type LocatorType struct {
 	XMLName xml.Name
-
-	InnerXml string `xml:",innerxml"`
 }
 
 type ArcType struct {
 	XMLName xml.Name
-
-	InnerXml string `xml:",innerxml"`
 }
 
 // XSD SimpleType declarations

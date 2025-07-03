@@ -8,18 +8,23 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Apache specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard item element defined in the Core System Characteristic Schema. Through extension, each item inherits a set of elements and attributes that are shared amongst all OVAL Items. Each item is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core System Characteristic Schema is not outlined here.
+
+// HttpdItem: The httpd item holds information about a installed Apache HTTPD binary. It extends the standard ItemType as defined in the oval-system-characteristics schema and one should refer to the ItemType description for more information.
 type HttpdItem struct {
 	XMLName xml.Name `xml:"httpd_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// Path: The path element specifies the directory component of the absolute path to a httpd binary found on the system.
 	Path *oval_sc.EntityItemStringType `xml:"path"`
 
+	// BinaryName: The name of the httpd binary.
 	BinaryName *oval_sc.EntityItemStringType `xml:"binary_name"`
 
+	// Version: The version entity holds the version of the specified httpd binary.
 	Version *oval_sc.EntityItemVersionType `xml:"version"`
 
 	Message []oval.MessageType `xml:"message"`

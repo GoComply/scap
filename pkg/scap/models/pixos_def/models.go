@@ -9,11 +9,13 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/xml_dsig"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the PIX specific tests found in Open Vulnerability and Assessment Language (OVAL). Each test is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// LineTest: The line_test is used to check the properties of specific output lines from a SHOW command, such as SHOW RUNNING-CONFIG. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a line_object and the optional state element specifies the data to check.
 type LineTest struct {
 	XMLName xml.Name `xml:"line_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -36,11 +38,11 @@ type LineTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineObject: The line_object element is used by a line_test to define the object to be evaluated. Each object extends the standard ObjectType as defined in the oval-definitions-schema and one should refer to the ObjectType description for more information. The common set element allows complex objects to be created using filters and set logic. Again, please refer to the description of the set element in the oval-definitions-schema.
 type LineObject struct {
 	XMLName xml.Name `xml:"line_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -50,6 +52,7 @@ type LineObject struct {
 
 	Set *oval_def.Set `xml:"set"`
 
+	// ShowSubcommand: The name of a SHOW sub-command.
 	ShowSubcommand *oval_def.EntityObjectStringType `xml:"show_subcommand"`
 
 	Filter []oval_def.Filter `xml:"filter"`
@@ -59,11 +62,11 @@ type LineObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// LineState: The line_state element defines the different information that can be used to evaluate the result of a specific SHOW sub-command. This includes the name of ths sub-command and the corresponding config line. Please refer to the individual elements in the schema for more details about what each represents.
 type LineState struct {
 	XMLName xml.Name `xml:"line_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -73,8 +76,10 @@ type LineState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// ShowSubcommand: The name of the SHOW sub-command.
 	ShowSubcommand *oval_def.EntityStateStringType `xml:"show_subcommand"`
 
+	// ConfigLine: The value returned from by the specified SHOW sub-command.
 	ConfigLine *oval_def.EntityStateStringType `xml:"config_line"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`
@@ -82,11 +87,11 @@ type LineState struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionTest: The version test is used to check the version of the PIX operating system. It is based off of the SHOW VERSION command. It extends the standard TestType as defined in the oval-definitions-schema and one should refer to the TestType description for more information. The required object element references a version_object and the optional state element specifies the data to check.
 type VersionTest struct {
 	XMLName xml.Name `xml:"version_test"`
 
-	Id oval.TestIDPattern `xml:"id,attr"`
+	Id oval.TestIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -109,11 +114,11 @@ type VersionTest struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionObject: The version_object element is used by a version test to define the different version information associated with a PIX system. There is actually only one object relating to version and this is the system as a whole. Therefore, there are no child entities defined. Any OVAL Test written to check version will reference the same version_object which is basically an empty object element.
 type VersionObject struct {
 	XMLName xml.Name `xml:"version_object"`
 
-	Id oval.ObjectIDPattern `xml:"id,attr"`
+	Id oval.ObjectIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -126,11 +131,11 @@ type VersionObject struct {
 	Notes *oval.NotesType `xml:"notes"`
 }
 
-// Element
+// VersionState: The version_state element defines the version information held within a Cisco PIX software release. The pix_release element specifies the whole PIX version information. The pix_major_release, pix_minor_release and pix_build elements specify seperated parts of PIX software version information. For instance, if the PIX version is 7.1(2.3)49, then pix_release is 7.1(2.3)49, pix_major_release is 7.1, pix_minor_release is 2.3 and pix_build is 49. See the SHOW VERSION command within PIX for more information.
 type VersionState struct {
 	XMLName xml.Name `xml:"version_state"`
 
-	Id oval.StateIDPattern `xml:"id,attr"`
+	Id oval.StateIdpattern `xml:"id,attr"`
 
 	Version uint64 `xml:"version,attr"`
 
@@ -140,12 +145,16 @@ type VersionState struct {
 
 	Deprecated bool `xml:"deprecated,attr,omitempty"`
 
+	// PixRelease: The pix_release element specifies the whole PIX version information.
 	PixRelease *oval_def.EntityStateStringType `xml:"pix_release"`
 
+	// PixMajorRelease: The pix_major_release is the dotted version that starts a version string. For example the pix_release 7.1(2.3)49 has a pix_major_release of 7.1.
 	PixMajorRelease *oval_def.EntityStateVersionType `xml:"pix_major_release"`
 
+	// PixMinorRelease: The pix_minor_release is the dotted version that starts a version string. For example the pix_release 7.1(2.3)49 has a pix_minor_release of 2.3.
 	PixMinorRelease *oval_def.EntityStateVersionType `xml:"pix_minor_release"`
 
+	// PixBuild: The pix_build is an integer. For example the pix_release 7.1(2.3)49 has a pix_build of 49.
 	PixBuild *oval_def.EntityStateIntType `xml:"pix_build"`
 
 	Signature *xml_dsig.SignatureType `xml:"Signature"`

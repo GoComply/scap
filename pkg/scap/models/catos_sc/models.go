@@ -8,26 +8,30 @@ import (
 	"github.com/gocomply/scap/pkg/scap/models/oval_sc"
 )
 
-// Element
+// The following is a description of the elements, types, and attributes that compose the Cisco CatOS specific system characteristic items found in Open Vulnerability and Assessment Language (OVAL). Each item is an extension of the standard test element defined in the Core Definition Schema. Through extension, each test inherits a set of elements and attributes that are shared amongst all OVAL tests. Each test is described in detail and should provide the information necessary to understand what each element and attribute represents. This document is intended for developers and assumes some familiarity with XML. A high level description of the interaction between the different tests and their relationship to the Core Definition Schema is not outlined here.
+
+// LineItem: Stores the properties of specific lines in the catos config file.
 type LineItem struct {
 	XMLName xml.Name `xml:"line_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// ShowSubcommand: The name of the SHOW sub-command.
 	ShowSubcommand *oval_sc.EntityItemStringType `xml:"show_subcommand"`
 
+	// ConfigLine: The value returned from by the specified SHOW sub-command.
 	ConfigLine *oval_sc.EntityItemStringType `xml:"config_line"`
 
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// ModuleItem: Stores results from SHOW MODULE command.
 type ModuleItem struct {
 	XMLName xml.Name `xml:"module_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
@@ -54,18 +58,21 @@ type ModuleItem struct {
 	Message []oval.MessageType `xml:"message"`
 }
 
-// Element
+// VersionItem: Stores results from SHOW VERSION command.
 type VersionItem struct {
 	XMLName xml.Name `xml:"version_item"`
 
-	Id oval.ItemIDPattern `xml:"id,attr"`
+	Id oval.ItemIdpattern `xml:"id,attr"`
 
 	Status oval_sc.StatusEnumeration `xml:"status,attr,omitempty"`
 
+	// SwitchSeries: The switch_series entity specifies the target Catalyst switch series for the given version of CatOS.
 	SwitchSeries *oval_sc.EntityItemStringType `xml:"switch_series"`
 
+	// ImageName: The image_name entity specifies the name of the CatOS image.
 	ImageName *oval_sc.EntityItemStringType `xml:"image_name"`
 
+	// CatosRelease: The catos_release entity specifies the release version of CatOS.
 	CatosRelease *oval_sc.EntityItemVersionType `xml:"catos_release"`
 
 	CatosMajorRelease *oval_sc.EntityItemVersionType `xml:"catos_major_release"`
